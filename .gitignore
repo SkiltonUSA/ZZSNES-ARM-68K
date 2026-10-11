@@ -10,3 +10,8 @@ __pycache__/
 *.adf
 *.hdf
 *.iso
+
+*.sfc
+*.smc
+*.zip
+!artifacts/pocketsnes/System-Test.sfc

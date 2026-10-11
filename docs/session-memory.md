@@ -40,3 +40,7 @@ No observed address becomes a static allocation. Layout passes all16,384
 64-byte alignments. Final Workbench only, no ARM owner; Roadie, bridge,
 ZZTemperature, NES/Mesen MUI still live. No firmware/AHI/startup changes.
 Temporary HTTP55031 stopped after transfer; GitHub backup is this standalone ZZSNES-ARM-68K repository.
+
+## First real-cartridge reference (native only)
+
+Super Mario World, SHA256 0838e531fe22c077528febe14cb3ff7c492f1f5fa8de354192bdff7137c27f5b, passed 600 startup/menu frames with active PCM after the test-only BRR signed-shift patch. No new ARM build or hardware run. See amiga/records/2026-10-10/pocketsnes-smw-native/. Cartridge bytes are local-only.

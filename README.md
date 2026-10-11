@@ -62,6 +62,16 @@ Important comparison limits:
 The initial Thumb experiment failed instruction-model validation and was never
 run on the Amiga. The saved executable is the verified ARM-mode build.
 
+## First real-cartridge reference (Mac only)
+
+The owner-supplied Super Mario World cartridge completed a 600-frame native
+ASan/UBSan startup/menu test with changing graphics and active PCM. This
+exposed a signed-shift issue in BRR decoding; a separate test-only patch now
+passes. **No Super Mario World A9 performance result exists yet.** The next
+step is matching those native checkpoints on ARM. ROM bytes are excluded.
+
+[Native game-test record](amiga/records/2026-10-10/pocketsnes-smw-native/).
+
 ## Saved executable
 
 [Download ZZSnes-Pocket-Bench](artifacts/pocketsnes/ZZSnes-Pocket-Bench)

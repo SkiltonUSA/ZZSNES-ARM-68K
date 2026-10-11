@@ -1,0 +1,11 @@
+FRAME n=60 video=62aa1dc5 width=256 height=224 pcm=7adcb44d samples=32081 nonzero=0
+FRAME n=120 video=a84c96f0 width=256 height=224 pcm=71cd6257 samples=64162 nonzero=24664
+FRAME n=180 video=a84c96f0 width=256 height=224 pcm=c601352f samples=96243 nonzero=24664
+FRAME n=240 video=62aa1dc5 width=256 height=224 pcm=304a5a9f samples=128325 nonzero=24664
+FRAME n=300 video=265777dd width=256 height=224 pcm=32759c35 samples=160406 nonzero=69502
+FRAME n=360 video=e69f3c20 width=256 height=224 pcm=b4bc1e1e samples=192487 nonzero=118807
+FRAME n=420 video=27f8d2ae width=256 height=224 pcm=f6940307 samples=224569 nonzero=167026
+FRAME n=480 video=5fb4105e width=256 height=224 pcm=3401ef87 samples=256650 nonzero=216841
+FRAME n=540 video=edf1acde width=256 height=224 pcm=5dbd901c samples=288731 nonzero=272499
+FRAME n=600 video=edf1acde width=256 height=224 pcm=a2053b75 samples=320813 nonzero=327934
+PASS native game startup; active PCM generated; no display/audio playback or hardware timing

@@ -1,0 +1,25 @@
+{
+  "scope": "Mac native sanitizer reference only; no ARM build, hardware run or audible playback",
+  "rom": {
+    "name": "Super Mario World (USA)",
+    "bytes": 524288,
+    "sha256": "0838e531fe22c077528febe14cb3ff7c492f1f5fa8de354192bdff7137c27f5b",
+    "map": "ordinary LoROM + SRAM",
+    "rom_bytes_in_repository": false
+  },
+  "frames": 600,
+  "scripted_input": "Start pressed for frames 360-367 and 480-487 (zero-based); no directional input",
+  "video": "256x224 RGB565, checkpoint hashes every 60 frames",
+  "samples": 320813,
+  "nonzero_interleaved_samples": 327934,
+  "final_video_hash": "edf1acde",
+  "final_cumulative_pcm_hash": "a2053b75",
+  "upstream": "libretro/snes9x2002 6ffbf9ef4f0063e1f1b78a40d10c50fc52f2524c",
+  "fix": "Test-only soundux BRR signed left shifts replaced with arithmetic multiplication; no baseline benchmark changes",
+  "limitations": [
+    "No sustained gameplay or compatibility claim",
+    "No A9 performance claim",
+    "Active PCM generated but not played through AHI",
+    "New patch needs ARM differential validation"
+  ]
+}
