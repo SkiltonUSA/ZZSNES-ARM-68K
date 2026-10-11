@@ -1,0 +1,38 @@
+amiga_run_script [OK]
+89358045e6941538fbdc601e5546291e  SD032G:Dev/ZZSnesLibrary/ZZSnesLibrary
+4fc02f99b9fcc8808c3696090f39fbca  SD032G:Dev/ZZSnesLibrary/ZZSnes-ui
+amiga_input_mouse_move Mouse moved -3000,-3000
+amiga_input_mouse_move Mouse moved 1200,303
+amiga_input_click Button left down
+amiga_input_click Button left up
+amiga_screenshot Screenshot saved: /var/folders/fg/qnn7bqhd78vfz3cxbqjd5wxr0000gn/T/amiga_screenshot_l3_turvh.ppm (680x261, RLE, 261 rows received)
+amiga_list_ports Public Message Ports (25):
+  TSPORT
+  WORKBENCH
+  DEFICONS
+  ToolsDaemon 2.1a © Nico François
+  REXX
+  AREXX
+  MagicMenu
+  SIXIES.BRIDGE.NETWATCH
+  AssignWedge.port
+  ZZTemperature.1
+  NewMeter
+  POPO.1
+  QDock
+  ROADIE
+  TCP/IP Control
+  AMIGABRIDGE
+  ZZNES_LIBRARY
+  ZZNES.1
+  ZZSNES_MESEN_UI
+  ZZSNES.1
+  ZZSNES_LIBRARY
+  ZZSNES.2
+  ConClip.rendezvous
+  lowlevel.library
+  deficons
+amiga_list_screens Screens (1):
+
+  Workbench Screen  1920x800  8bpp  LORES  @895EF90
+amiga_ping Amiga alive - clients: 0, chip: 2021920 bytes, fast: 616075432 bytes

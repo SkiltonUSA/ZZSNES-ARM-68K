@@ -20,3 +20,18 @@ assert abs(statistics.mean(samples)-json.loads((p/'results.json').read_text())['
 for marker in ['POCKETSNES PASS','CANCEL PASS active_work=1','witness_bad=0','register_mismatches=00000000','owned memory released']:
     assert marker in log,marker
 print('PASS: saved artifacts, pinned core sources, measured mean and hardware completion markers')
+
+# Verify the published displayed-frame rate and the exact release binary identities.
+p=root/'amiga/records/2026-10-10/pocketsnes-library'
+log=(p/'physical-border.log').read_text()
+m=re.search(r'END exit=0 frames=600 elapsed_us=(\d+)',log)
+assert m and round(600e6/int(m[1]),3)==52.447
+for marker in ['flips=600','fault=0','completed=320813','error=0','register_mismatches=00000000','witness_bad=0','owned memory released']:
+    assert marker in log,marker
+record=json.loads((root/'artifacts/pocketsnes-library/library-build.json').read_text())
+for name in ['ZZSnesLibrary','ZZSnes-Pocket','pocket.elf']:
+    assert hashlib.sha256((root/'artifacts/pocketsnes-library'/name).read_bytes()).hexdigest()==record['files'][name]['sha256']
+for p in (root/'artifacts').rglob('*'):
+    assert p.suffix.lower() not in ['.zzs','.sav','.srm','.smc','.nes'],p
+    if p.suffix.lower()=='.sfc':assert str(p.relative_to(root))=='artifacts/pocketsnes/System-Test.sfc'
+print('PASS: MUI release identities, displayed FPS, teardown and artifact ROM/state exclusions')

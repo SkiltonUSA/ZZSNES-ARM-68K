@@ -1,0 +1,10 @@
+ADAPTER frame=60 rc=0 video=62aa1dc5 pcm=7adcb44d samples=32081
+ADAPTER frame=120 rc=0 video=a84c96f0 pcm=71cd6257 samples=64162
+ADAPTER frame=180 rc=0 video=a84c96f0 pcm=c601352f samples=96243
+ADAPTER frame=240 rc=0 video=62aa1dc5 pcm=304a5a9f samples=128325
+ADAPTER frame=300 rc=0 video=265777dd pcm=32759c35 samples=160406
+ADAPTER frame=360 rc=0 video=e69f3c20 pcm=b4bc1e1e samples=192487
+ADAPTER frame=420 rc=0 video=27f8d2ae pcm=f6940307 samples=224569
+ADAPTER frame=480 rc=0 video=5fb4105e pcm=3401ef87 samples=256650
+ADAPTER frame=540 rc=0 video=edf1acde pcm=5dbd901c samples=288731
+ADAPTER frame=600 rc=0 video=edf1acde pcm=a2053b75 samples=320813

@@ -104,5 +104,35 @@ build is ARM mode, portable C, no VFP/NEON. The initial Thumb experiment was
 rejected during model validation and was never launched on the Amiga.
 
 Evidence: `amiga/records/2026-10-10/pocketsnes/`. The binary remains separate
-from the Mesen and NES Workbench launchers. Preserved in the standalone ZZSNES-ARM-68K development backup.
+from the Mesen and NES Workbench launchers. Backed up with test evidence at https://github.com/SkiltonUSA/ZZSNES-ARM-68K (private).
 
+
+## Real cartridge test — Super Mario World
+
+A separate external-ROM diagnostic now passes 600 startup/menu frames on the
+physical A9 with active PCM and native-matched video/audio checkpoints.
+Measured core average **5.01744 ms/frame (199.30 equivalent core FPS)**; measured
+60-frame batch means **3.92164–5.88238 ms**. This excludes presentation and audio
+playback and does not establish sustained gameplay performance. See the
+[method, results and lifecycle evidence](../records/2026-10-10/pocketsnes-smw-arm/README.md).
+Builds remain isolated under `.context/amiga/pocketsnes-game-arm`; no commercial
+ROM bytes are embedded in binaries or source.
+
+## Fullscreen stereo preview
+
+The separate `ZZSnes-Pocket` Workbench executable now runs the supplied SMW
+cartridge with ARM framebuffer presentation, XACP triple buffering, keyboard /
+joystick input and 32040 Hz stereo AHI output. Physical normal-presentation
+600-frame test: **54.93 displayed FPS**, all frames flipped and PCM completed.
+Periodic readback validation measured45.92FPS. AHI late-link events remain;
+60FPS, audible continuity and sustained gameplay are not established.
+Current AHI unit0 uses Paula. SRAM persistence and states are disabled.
+See [full test findings and controls](../records/2026-10-10/pocketsnes-player/README.md).
+Build with `python3 scripts/build_pocketsnes_player.py`; this is a separate
+SMW-only preview, not a general compatibility release.
+
+## MUI ROM library and illustrated save slots
+
+The new, separate [ZZSnes Library](library/README.md) adds per-ROM save states
+with thumbnails, favourites/history, controller testing, aspect controls and
+original SNES console bezels. The earlier preview above remains unchanged.

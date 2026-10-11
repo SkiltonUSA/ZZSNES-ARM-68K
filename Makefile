@@ -11,3 +11,11 @@ test-model: verify
 	$(MODEL_PYTHON) tests/amiga/pocketsnes/check_arm.py artifacts/pocketsnes/pocket.elf --profile-clock
 	$(MODEL_PYTHON) tests/amiga/mesen_snes/check_arm.py artifacts/mesen-snes/snes.elf
 	$(MODEL_PYTHON) tests/amiga/mesen_snes/check_system_arm.py artifacts/mesen-snes-system-words/system.elf
+
+.PHONY: package-library prepare-library test-library-host
+package-library: verify
+	$(PYTHON) scripts/package_pocketsnes_library.py
+prepare-library: verify
+	$(PYTHON) scripts/prepare_saved_library.py
+test-library-host:
+	$(PYTHON) tests/amiga/pocketsnes/check_library_host.py

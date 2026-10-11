@@ -1,0 +1,18 @@
+{
+  "upstream": "6ffbf9ef4f0063e1f1b78a40d10c50fc52f2524c",
+  "scope": "SMW fullscreen preview; A9 core/RGB565 presentation; 320x240 XACP triple buffer; 32040Hz stereo AHI unit0; SRAM persistence disabled",
+  "image_bytes": 455716,
+  "relocations": 3652,
+  "executable_bytes": 642752,
+  "executable_md5": "4fc02f99b9fcc8808c3696090f39fbca",
+  "sha256": {
+    "ZZSnes-Pocket": "5a8523c507f1bec9123e5220839896cbbf04acf3d1fa69247feb9cad0dd6d409",
+    "pocket.elf": "966f2204fc5ea855788fb21a3b7125677b5cb59905c0a9b08cfd168946e72e6e",
+    "host.c": "89b5aa22c8be4ac33400b81e68500c20a06b26d677ec07497be0f51acffa1c8c",
+    "worker.cpp": "b6c992aa289acaf6982c2d975fab843a8b71de231b7df487374190e5f8cd2bf9",
+    "player_audio.h": "fa0f4883668347355e69cdaedf05c7814e4f6825f8936e11cf6805344270df67",
+    "player.c": "70bc0d7ac9498f0dae96da9bd11f11d9132b04f63606c12c08da5bcf0286aa4d",
+    "pixels.h": "308ebf471cc5ac7deb4fe92deaa48fc5deb0f2068040a89b9632a3fa34aaf951",
+    "build_pocketsnes_library.py": "f82c0ee54f3ff525b5a1de00214e02cc44797242d59d22dde9594581cb08f9d8"
+  }
+}

@@ -66,3 +66,47 @@ workspace paths/hashes. Standalone changes select vendored PocketSNES sources
 and configurable toolchain commands; they do not change emulator algorithms.
 Saved executables are the exact hardware-tested versions, not a claim that
 every new compiler generates identical bytes.
+
+## MUI library and prerelease packaging
+
+The exact tested binaries are in `artifacts/pocketsnes-library/` and the earlier
+plain player in `artifacts/pocketsnes-player/`. To recreate the ROM-free ZIP:
+
+```sh
+make verify
+python3 scripts/package_pocketsnes_library.py
+```
+
+Output: `.context/releases/ZZSnes-Library-0.2.0-dev.zip` and `SHA256SUMS.txt`.
+The packager checks binary hashes, archive contents and executable flags; it
+starts from an explicit file list, not a copy of the installed user drawer.
+
+To rebuild the 68k player/launcher around the exact archived ARM payload:
+
+```sh
+python3 scripts/prepare_saved_library.py
+export AMIGA_CONTAINER_COMMAND='["podman","--connection","nuflix-converter-root"]'
+python3 scripts/build_pocketsnes_library.py --host-only
+python3 tests/amiga/pocketsnes/check_library_host.py
+```
+
+Use your container command (e.g. `["docker"]`) instead of the example's Mac
+connection. The backup validation rebuilt both binaries byte-for-byte.
+A full build omits `--host-only` and requires the configured
+`POCKET_TOOLCHAIN_COMMAND` container mounted on this checkout, as above. The
+standalone builder reads the hash-checked vendored core and archived libc.
+
+The save-state replay tests require the owner's SMW input at the ignored path
+`.context/amiga/pocketsnes-game/input.sfc`. Supply your own authorised copy;
+no build or test downloads it. With that file present:
+
+```sh
+python3 scripts/test_pocketsnes_library_native.py
+/path/to/unicorn-venv/bin/python tests/amiga/pocketsnes/check_library_arm.py
+```
+
+The second cartridge fixture is generated from original source. The ARM model
+uses the staged ELF and exact replay/presentation checks; native tests do not
+claim Amiga execution. Original workbench validation and logs live under
+`amiga/records/2026-10-10/pocketsnes-library/`. Source-level standalone changes
+only replace workspace tool paths with configurable prefixes and saved inputs.

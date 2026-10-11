@@ -1,0 +1,28 @@
+amiga_ping Amiga alive - clients: 0, chip: 2021920 bytes, fast: 617075672 bytes
+amiga_list_ports Public Message Ports (23):
+  TSPORT
+  WORKBENCH
+  DEFICONS
+  ToolsDaemon 2.1a © Nico François
+  REXX
+  AREXX
+  MagicMenu
+  SIXIES.BRIDGE.NETWATCH
+  AssignWedge.port
+  ZZTemperature.1
+  NewMeter
+  POPO.1
+  QDock
+  ROADIE
+  TCP/IP Control
+  AMIGABRIDGE
+  ZZNES_LIBRARY
+  ZZNES.1
+  ZZSNES_MESEN_UI
+  ZZSNES.1
+  ConClip.rendezvous
+  lowlevel.library
+  deficons
+amiga_list_screens Screens (1):
+
+  Workbench Screen  1920x800  8bpp  LORES  @895EF90

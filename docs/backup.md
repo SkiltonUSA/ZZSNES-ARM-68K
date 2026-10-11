@@ -17,3 +17,12 @@ Amiga clock was not authoritative; report dates use the Mac session. Raw logs
 retain measured values. README distinguishes physical results and pending work.
 
 [Validation of this separate checkout](backup-validation.md).
+
+## 11 October 2026 update
+
+Includes the SMW ARM diagnostic, fullscreen player and MUI/state/bezel work,
+exact hardware-tested player and launcher, generated build support, source
+adapters and all relevant test evidence. The v0.2.0-dev release ZIP has an
+empty ROM library and contains neither ROM images nor user save states.
+The existing original synthetic fixture remains in historical source artifacts.
+No fresh hardware test or deployment is needed for this packaging update.

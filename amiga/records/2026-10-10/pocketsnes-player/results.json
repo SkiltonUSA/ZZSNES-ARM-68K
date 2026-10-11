@@ -1,0 +1,26 @@
+{
+  "player600": {
+    "frames": 600,
+    "elapsed_us_including_initial_readback_and_audio_drain": 13067429,
+    "displayed_fps": 45.91568854133433,
+    "core_ms_per_frame": 6.165181666666666,
+    "arm_present_ms_per_frame": 2.272195,
+    "stereo_pairs_completed": 320813,
+    "audio_queue_late_link_counter": 53,
+    "verified_readback_frames": 11,
+    "native_video_checkpoints_match": true,
+    "clean_exit": true
+  },
+  "player600-normal": {
+    "frames": 600,
+    "elapsed_us_including_initial_readback_and_audio_drain": 10922301,
+    "displayed_fps": 54.93347967612319,
+    "core_ms_per_frame": 6.1781033333333335,
+    "arm_present_ms_per_frame": 2.27236,
+    "stereo_pairs_completed": 320813,
+    "audio_queue_late_link_counter": 56,
+    "verified_readback_frames": 1,
+    "native_video_checkpoints_match": true,
+    "clean_exit": true
+  }
+}

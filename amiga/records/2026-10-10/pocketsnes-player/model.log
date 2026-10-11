@@ -1,0 +1,23 @@
+PASS base=12000040 frame=60 padded=b87d5dc5 pcm=7adcb44d stereo_pairs=32081
+PASS base=12000040 frame=120 padded=9742f6f0 pcm=71cd6257 stereo_pairs=64162
+PASS base=12000040 frame=180 padded=9742f6f0 pcm=c601352f stereo_pairs=96243
+PASS base=12000040 frame=240 padded=b87d5dc5 pcm=304a5a9f stereo_pairs=128325
+PASS base=12000040 frame=300 padded=8525b7dd pcm=32759c35 stereo_pairs=160406
+PASS base=12000040 frame=360 padded=a8529c20 pcm=b4bc1e1e stereo_pairs=192487
+PASS base=12000040 frame=420 padded=5eeab2ae pcm=f6940307 stereo_pairs=224569
+PASS base=12000040 frame=480 padded=bfd3705e pcm=3401ef87 stereo_pairs=256650
+PASS base=12000040 frame=540 padded=5a400cde pcm=5dbd901c stereo_pairs=288731
+PASS base=12000040 frame=600 padded=5a400cde pcm=a2053b75 stereo_pairs=320813
+PASS presentation colours, row padding, end challenges, cancellation and mapping revocation
+PASS base=150020c0 frame=60 padded=b87d5dc5 pcm=7adcb44d stereo_pairs=32081
+PASS base=150020c0 frame=120 padded=9742f6f0 pcm=71cd6257 stereo_pairs=64162
+PASS base=150020c0 frame=180 padded=9742f6f0 pcm=c601352f stereo_pairs=96243
+PASS base=150020c0 frame=240 padded=b87d5dc5 pcm=304a5a9f stereo_pairs=128325
+PASS base=150020c0 frame=300 padded=8525b7dd pcm=32759c35 stereo_pairs=160406
+PASS base=150020c0 frame=360 padded=a8529c20 pcm=b4bc1e1e stereo_pairs=192487
+PASS base=150020c0 frame=420 padded=5eeab2ae pcm=f6940307 stereo_pairs=224569
+PASS base=150020c0 frame=480 padded=bfd3705e pcm=3401ef87 stereo_pairs=256650
+PASS base=150020c0 frame=540 padded=5a400cde pcm=5dbd901c stereo_pairs=288731
+PASS base=150020c0 frame=600 padded=5a400cde pcm=a2053b75 stereo_pairs=320813
+PASS presentation colours, row padding, end challenges, cancellation and mapping revocation
+PASS both relocated 600-frame stereo player models

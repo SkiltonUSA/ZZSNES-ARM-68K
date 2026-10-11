@@ -1,0 +1,4 @@
+PASS save-state AHI drain reaps both requests, resumes without stale link, preserves every PCM sample
+PASS actual audio worker: short flush, 1838 ordered blocks and forced partial flush, ring wrap, allocation/open failures, cancellation, device error, resource cleanup
+PASS: 16384 allocation alignments; private/shared/table/boundary permissions; L2 and unrelated RAM unmapped
+PASS disjoint tables/witness/video/stereo/control/ROM/state ranges before BSS

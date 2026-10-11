@@ -1,0 +1,66 @@
+amiga_run_script [OK]
+OWNED amiga=50000040 arm_candidate=101f0040 size=25165824 nonce=85a6617f
+BOOTSTRAP amiga=40c52800 arm=00e42800 (P96 allocated/locked)
+MAP status=4d415031 SCTLR=08c50878 MIDR=413fc090 MPIDR=80000001
+MAPPING PASS (eight nonce-derived words)
+ROM bytes=524288 fnv=ae8466a1
+ARM ready=41524d31 SCTLR=08c5187d MIDR=413fc090 MPIDR=80000001
+POCKETSNES SMW CPU/PPU/SPC/DSP; private inner WB/WA; MMU/I/D ON; shared and outer NC
+TIMER estimated_hz=333332807 calibration_us=2016647
+SAMPLE n=0 warmup=1 frames=60 total_frames=60 ticks=77502105 core_us=232506 video=62aa1dc5 pcm=7adcb44d samples=32081 width=256 height=224
+SAMPLE n=1 warmup=0 frames=60 total_frames=120 ticks=92337439 core_us=277012 video=a84c96f0 pcm=71cd6257 samples=64162 width=256 height=224
+SAMPLE n=2 warmup=0 frames=60 total_frames=180 ticks=100546503 core_us=301639 video=a84c96f0 pcm=c601352f samples=96243 width=256 height=224
+SAMPLE n=3 warmup=0 frames=60 total_frames=240 ticks=101717083 core_us=305151 video=62aa1dc5 pcm=304a5a9f samples=128325 width=256 height=224
+SAMPLE n=4 warmup=0 frames=60 total_frames=300 ticks=78432718 core_us=235298 video=265777dd pcm=32759c35 samples=160406 width=256 height=224
+SAMPLE n=5 warmup=0 frames=60 total_frames=360 ticks=117647320 core_us=352942 video=e69f3c20 pcm=b4bc1e1e samples=192487 width=256 height=224
+SAMPLE n=6 warmup=0 frames=60 total_frames=420 ticks=104021471 core_us=312064 video=27f8d2ae pcm=f6940307 samples=224569 width=256 height=224
+SAMPLE n=7 warmup=0 frames=60 total_frames=480 ticks=103231670 core_us=309695 video=5fb4105e pcm=3401ef87 samples=256650 width=256 height=224
+SAMPLE n=8 warmup=0 frames=60 total_frames=540 ticks=102642663 core_us=307928 video=edf1acde pcm=5dbd901c samples=288731 width=256 height=224
+SAMPLE n=9 warmup=0 frames=60 total_frames=600 ticks=102560593 core_us=307682 video=edf1acde pcm=a2053b75 samples=320813 width=256 height=224
+CANCEL PASS active_work=1 elapsed_us=133986
+POCKET_GAME PASS; 600 native-matched frames and active PCM, NOT display FPS
+EXIT epilogue=52455431 cache_echoes=0 rounds=0
+CACHE original=08c50878 running=08c5187d restored=08c50878
+MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=102f4000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=13
+REGISTER n=0 original=08c50878 restored=08c50878
+REGISTER n=1 original=00000000 restored=00000000
+REGISTER n=2 original=02000000 restored=02000000
+REGISTER n=3 original=00000000 restored=00000000
+REGISTER n=4 original=00000000 restored=00000000
+REGISTER n=5 original=00000001 restored=00000001
+REGISTER n=6 original=600101d3 restored=600101d3
+REGISTER n=7 original=00000006 restored=00000006
+REGISTER n=8 original=00001000 restored=00001000
+REGISTER n=9 original=00098aa4 restored=00098aa4
+REGISTER n=10 original=44e048e0 restored=44e048e0
+REGISTER n=11 original=00000000 restored=00000000
+REGISTER n=12 original=00000001 restored=00000001
+REGISTER n=13 original=72360000 restored=72360000
+LAUNCHER exit=0; owned memory released
+amiga_list_ports Public Message Ports (23):
+  TSPORT
+  WORKBENCH
+  DEFICONS
+  ToolsDaemon 2.1a © Nico François
+  REXX
+  AREXX
+  MagicMenu
+  SIXIES.BRIDGE.NETWATCH
+  AssignWedge.port
+  ZZTemperature.1
+  NewMeter
+  POPO.1
+  QDock
+  ROADIE
+  TCP/IP Control
+  AMIGABRIDGE
+  ZZNES_LIBRARY
+  ZZNES.1
+  ZZSNES_MESEN_UI
+  ZZSNES.1
+  ConClip.rendezvous
+  lowlevel.library
+  deficons
+amiga_list_screens Screens (1):
+
+  Workbench Screen  1920x800  8bpp  LORES  @895EF90

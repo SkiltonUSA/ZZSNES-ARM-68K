@@ -1,0 +1,22 @@
+PASS base=12000040 cancel=False frame=60 video=62aa1dc5 pcm=7adcb44d samples=32081
+PASS base=12000040 cancel=False frame=120 video=a84c96f0 pcm=71cd6257 samples=64162
+PASS base=12000040 cancel=False frame=180 video=a84c96f0 pcm=c601352f samples=96243
+PASS base=12000040 cancel=False frame=240 video=62aa1dc5 pcm=304a5a9f samples=128325
+PASS base=12000040 cancel=False frame=300 video=265777dd pcm=32759c35 samples=160406
+PASS base=12000040 cancel=False frame=360 video=e69f3c20 pcm=b4bc1e1e samples=192487
+PASS base=12000040 cancel=False frame=420 video=27f8d2ae pcm=f6940307 samples=224569
+PASS base=12000040 cancel=False frame=480 video=5fb4105e pcm=3401ef87 samples=256650
+PASS base=12000040 cancel=False frame=540 video=edf1acde pcm=5dbd901c samples=288731
+PASS base=12000040 cancel=False frame=600 video=edf1acde pcm=a2053b75 samples=320813
+PASS base=150020c0 cancel=False frame=60 video=62aa1dc5 pcm=7adcb44d samples=32081
+PASS base=150020c0 cancel=False frame=120 video=a84c96f0 pcm=71cd6257 samples=64162
+PASS base=150020c0 cancel=False frame=180 video=a84c96f0 pcm=c601352f samples=96243
+PASS base=150020c0 cancel=False frame=240 video=62aa1dc5 pcm=304a5a9f samples=128325
+PASS base=150020c0 cancel=False frame=300 video=265777dd pcm=32759c35 samples=160406
+PASS base=150020c0 cancel=False frame=360 video=e69f3c20 pcm=b4bc1e1e samples=192487
+PASS base=150020c0 cancel=False frame=420 video=27f8d2ae pcm=f6940307 samples=224569
+PASS base=150020c0 cancel=False frame=480 video=5fb4105e pcm=3401ef87 samples=256650
+PASS base=150020c0 cancel=False frame=540 video=edf1acde pcm=5dbd901c samples=288731
+PASS base=150020c0 cancel=False frame=600 video=edf1acde pcm=a2053b75 samples=320813
+PASS base=12000040 cancel=True frame=0 video=00000000 pcm=00000000 samples=0
+PASS two relocated 600-frame active-audio runs and cancellation

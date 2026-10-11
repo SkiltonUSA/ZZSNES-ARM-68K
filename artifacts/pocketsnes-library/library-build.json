@@ -1,0 +1,52 @@
+{
+  "version": "0.2.0-dev",
+  "upstream_commit": "6ffbf9ef4f0063e1f1b78a40d10c50fc52f2524c",
+  "scope": "MUI ROM library, five ROM-specific thumbnail save slots, ARM direct console bezel presentation, stereo AHI unit0",
+  "allocation_bytes": 33554432,
+  "state_version": 2,
+  "commercial_roms_included": false,
+  "files": {
+    "ZZSnesLibrary": {
+      "bytes": 91040,
+      "md5": "89358045e6941538fbdc601e5546291e",
+      "sha256": "83c7acf5fad314112f64394ffa54185ea58e48efbda2fa6fec26c61b89a1df41"
+    },
+    "ZZSnes-Pocket": {
+      "bytes": 642752,
+      "md5": "4fc02f99b9fcc8808c3696090f39fbca",
+      "sha256": "5a8523c507f1bec9123e5220839896cbbf04acf3d1fa69247feb9cad0dd6d409"
+    },
+    "pocket.elf": {
+      "bytes": 1655216,
+      "md5": "68bc5a80bd1371d745b986d05b63bb3f",
+      "sha256": "966f2204fc5ea855788fb21a3b7125677b5cb59905c0a9b08cfd168946e72e6e"
+    },
+    "Library-System-Test.sfc": {
+      "bytes": 32768,
+      "md5": "b81a38303ca34814d176a810d653ca38",
+      "sha256": "900d5d14ae304539bdac1c1fe9313e7a47cffb0782740cb378daeb65a6f0041f"
+    }
+  },
+  "source_sha256": {
+    "amiga/pocketsnes/library/thumbnail.h": "d724e958f3ac116dcafb99660cbe28d49cd3249a6371c9a66cddf35b8ab7cc62",
+    "amiga/pocketsnes/library/view.h": "c3469526f64cbfa3a326690a944845ef5ab71b663711abef9030c7e7753cda63",
+    "amiga/pocketsnes/library/README.md": "692c49fdc4aec7bca57fc11318d8afdb83016613b56230ccde505a131fc2787f",
+    "amiga/pocketsnes/library/LICENSE-xSysInfo": "323187598a84a70032b38d9f483ba9c0f6172b0635ef32ce924393356f279829",
+    "amiga/pocketsnes/library/cartridge.h": "11c690db9d1cad7b13a6191e00b4fb41f2676785a9d61951ac21baf21f361ad5",
+    "amiga/pocketsnes/library/state_format.h": "df3d01b7aaccc4fd3cb82d136497a8a58fdf148224de38d812bb1733e41d04bf",
+    "amiga/pocketsnes/library/mixer.inc": "cfc6bfdb45e5641be6d9ddaeea30b87367a087074a0e75026ea4641563bff30b",
+    "amiga/pocketsnes/library/launcher.c": "47b16ea533fa6ba52b244212693db9a7d13d9c44016bc58786e141278825a480",
+    "amiga/pocketsnes/library/player.c": "70bc0d7ac9498f0dae96da9bd11f11d9132b04f63606c12c08da5bcf0286aa4d",
+    "scripts/pocketsnes_library.py": "3faf6127f61e750c02a3fed3b27ee36dfe76c5816c9c218b2a9e8d6387049104",
+    "scripts/build_pocketsnes_library.py": "6bfd655820b01ef421729a707996594a77c10fc880f8932dfde507015c0851ab",
+    "scripts/build_pocketsnes_player.py": "28b3cf66c3720437e50ca8a4c7f7a36090d558ede00c67197196f1ba86628a6e",
+    "scripts/build_pocketsnes_arm.py": "27132bba60f5e6068e3b397d474da4d471f481c04bbb9982fc9ece55425b9487",
+    "scripts/build_pocketsnes.py": "7775318e4d6eed01b5104314cb5ee7066da8346751ee9dad480233f6ac35f601",
+    "scripts/fceux_ui.py": "a6b7415fbaa0dbdbc68e1fd2a7e7501138af498245118bd56e2a6ce9a253a049",
+    "scripts/fceux_states.py": "ac21e0993b91d6b72bfc0a87ff131a282a8b7fbd30b9476d216e64ea086aa4d5",
+    "tests/amiga/pocketsnes/check_library_arm.py": "d86efe96347359b5f10878770d9bd7e2273173231aae81fd81e5bd269c374c52",
+    "tests/amiga/pocketsnes/check_library_host.py": "cefe55a261c9e84fb176c2c8b9eb982d38e261216785647c94c69bfed1c09c67",
+    "tests/amiga/pocketsnes/library_native.c": "cfd035b85b94d516a0c960443e826de19279920cd440c3ce1f0b354322cca074",
+    "tests/amiga/pocketsnes/library_view.c": "7c44fc6d67d8eb34ef5f038d910eeeebbb14d3d8552dd1182d3cbb9a9e0f61aa"
+  }
+}

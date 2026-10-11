@@ -1,0 +1,417 @@
+--- mesen_nes/host.c
++++ fceux-player/host.c
+@@ -54,6 +54,7 @@
+ static volatile uint8_t *shared;
+ static const struct ad_io *syncio;
+ static uint32_t sequence;
++static uint64_t frame_reply_ticks,present_reply_ticks;
+ static const char *rom_path;
+ static ULONG frame_limit;
+ static struct Window *window;
+@@ -65,6 +66,10 @@
+ static int truecolor;
+ #endif
+ static int core_only;
++static ULONG next_frame_us;
++static int player_audit,fc_scripted_input;
++static ULONG present_pre_us,present_request_us,present_post_us;
++static int verify_frame(unsigned n){return n==1 || (player_audit && n%60==0);}
+ #ifndef NES_DIRECT
+ static struct RenderInfo render;
+ #endif
+@@ -75,15 +80,13 @@
+ static UBYTE buttons;
+ static ULONG us(void){struct timeval t;GetSysTime(&t);return t.tv_secs*1000000u+t.tv_micro;}
+ int nes_arguments(int argc,char **argv){
+-#ifdef NES_PLAYER
++ if(argc<=1)return argc;
+  if(argc==2){rom_path=argv[1];return 1;}
+- player_demo=argc>=4;
+-#endif
+- if(argc>5){puts("Usage: ZZNes <nonce> RUN [ROM.nes|DEMO|CORE] [frame_limit]");return -1;}
+- if(argc>=4 && !strcmp(argv[3],"CORE")){core_only=1;frame_limit=6;}
+- else if(argc>=4 && strcmp(argv[3],"DEMO"))rom_path=argv[3];
+- if(argc==5){char *end;errno=0;frame_limit=strtoul(argv[4],&end,10);if(errno||*end||!frame_limit||frame_limit>36000)return -1;}
+- return argc>3?3:argc;
++ if(argc<4||argc>6){puts("Usage: ZZFceux [ROM.nes] or <nonce> RUN <ROM.nes> [frame_limit] [VERIFY|INPUT]");return -1;}
++ rom_path=argv[3];
++ if(argc>=5){char *end;errno=0;frame_limit=strtoul(argv[4],&end,10);if(errno||*end||!frame_limit||frame_limit>36000)return -1;}
++ if(argc==6){if(!strcmp(argv[5],"VERIFY"))player_audit=1;else if(!strcmp(argv[5],"INPUT"))fc_scripted_input=1;else return -1;}
++ return 3;
+ }
+ static void paint(void){
+ #ifdef NES_FULLSCREEN
+@@ -136,6 +139,9 @@
+  waits++;return 1;
+ }
+ #ifdef NES_FULLSCREEN
++#include "wait_profile.h"
++#include "frame_profile.h"
++#include "joystick.h"
+ #include "fullscreen.h"
+ #endif
+ #ifdef NES_PLAYER
+@@ -157,6 +163,8 @@
+   syncio->pull(reply,96,NULL);
+   if(ad_get(reply,0)==sequence){if(ad_get(reply,68)!=(token^ZZ_XOR)){puts("MAILBOX FAIL");return 0;}
+    if(ad_get(reply,4)){printf("NES error=%u op=%u\n",(ULONG)ad_get(reply,4),op);return 0;}
++   if(op==NES_FRAME)frame_reply_ticks+=ad_get(reply,48);
++   if(op==NES_PRESENT)present_reply_ticks+=ad_get(reply,48);
+    return 1;}
+ #ifdef NES_DIRECT
+   /* Do not enter Intuition/graphics while a bitmap is locked. */
+@@ -170,7 +178,8 @@
+ #ifdef NES_LEGACY_HOST
+   Delay(1);
+ #else
+-  if(!pause_us(1000))return 0;
++  /* PRESENT holds a bitmap lock: bounded polling avoids yielding here. */
++  if(op!=NES_PRESENT && op!=NES_FRAME && !profile_pause(1,1000))return 0;
+ #endif
+  }while((ULONG)(us()-start)<(op==NES_PRESENT?50000u:10000000u));
+  puts("NES request timeout");return 0;
+@@ -180,9 +189,10 @@
+ #endif
+ #ifdef NES_DIRECT
+ static int present(ULONG raw_hash,ULONG frame){
++ ULONG profile_start=us(),profile_request,profile_after;
+  struct RenderInfo ri;struct ConfigDev *card=FindConfigDev(NULL,0x6d6e,4);
+  ULONG span,addr,nonce,i,x,y,pitch,bpp=nd_bpp(direct_format),bad=0;
+- int verify=frame==1 || frame%60==0;
++ int verify=verify_frame(frame);
+  if(!card||!direct_bitmap)return 0;
+ #ifdef NES_FULLSCREEN
+  if(!full_drain())return 0;
+@@ -215,7 +225,9 @@
+  ad_put(ri.Memory,0,nonce);ad_put(ri.Memory,span-4,nonce^0x31415926u);
+  syncio->push(ri.Memory,4,NULL);syncio->push((uint8_t *)ri.Memory+span-4,4,NULL);
+  ad_put(shared+MB_HOST,16,ri.BytesPerRow);ad_put(shared+MB_HOST,20,direct_format);ad_put(shared+MB_HOST,24,nonce);
++ profile_request=us();present_pre_us+=profile_request-profile_start;
+  if(!request(NES_PRESENT,addr))return 0; /* Keep locked on error until Core1 reset. */
++ profile_after=us();present_request_us+=profile_after-profile_request;
+  if(ad_get(shared+MB_REPLY,24)!=raw_hash)return 0;
+  direct_ticks+=ad_get(shared+MB_REPLY,28);direct_challenges++;
+  /* Explicit diagnostic readback on frame 1 and each 60th. Never read live
+@@ -254,6 +266,7 @@
+   if(bad){printf("DIRECT READBACK FAIL frame=%u bytes=%u\n",frame,bad);return 0;}
+   direct_verified++;
+  }
++ present_post_us+=us()-profile_after;
+  direct_ready=1;
+  return 1;
+ }
+@@ -279,11 +292,11 @@
+  else memcpy(rom,demo_rom,size);
+  if(size>NES_ROM_LIMIT){puts("ROM exceeds player cartridge limit");goto done;}
+ #ifdef NES_PLAYER
+- {int id=nes_cartridge(rom,size);if(id<0){puts("Unsupported cartridge: require clean NTSC iNES, mapper 0/1/2/3/4/7/90; see ReadMe");goto done;}printf("CARTRIDGE mapper=%d PRG=%u CHR=%u battery=%u\n",id,rom[4]*16384u,rom[5]*8192u,(ULONG)!!(rom[6]&2));}
++ {int id=nes_cartridge(rom,size);if(id<0){puts("Unsupported cartridge: require clean NTSC iNES, mapper 0/90, CHR ROM, no battery/trainer/four-screen; see ReadMe");goto done;}printf("CARTRIDGE mapper=%d PRG=%u CHR=%u battery=%u\n",id,rom[4]*16384u,rom[5]*8192u,(ULONG)!!(rom[6]&2));}
+ #endif
+  memcpy((void *)(base+NES_ROM),rom,size);io->push(base+NES_ROM,size,NULL);io->barrier(NULL);
+  puts("STAGE ROM published; initializing core");fflush(stdout);
+- if(!request(NES_INIT,size)){puts("Only NTSC iNES NROM, 16/32 KiB PRG, 0/8 KiB CHR; no trainer/battery supported");goto done;}
++ if(!request(NES_INIT,size)){puts("FCEUX core rejected cartridge: NTSC mapper 0/90 CHR ROM only");goto done;}
+ #ifdef NES_PLAYER
+  if(!player_load_save())goto done;
+ #endif
+@@ -330,7 +343,7 @@
+  truecolor?"Picasso96 ARGB":"indexed pens"
+ #endif
+  );
+- window=OpenWindowTags(NULL,WA_Title,(ULONG)"ZZNes ARM preview - arrows, Z/X, Enter; Q quits",WA_PubScreen,(ULONG)screen,
++ window=OpenWindowTags(NULL,WA_Title,(ULONG)"ZZFceux ARM preview - arrows, Z/X, Enter; Q quits",WA_PubScreen,(ULONG)screen,
+   WA_Left,80,WA_Top,70,WA_InnerWidth,256,WA_InnerHeight,240,
+   WA_Flags,WFLG_CLOSEGADGET|WFLG_DRAGBAR|WFLG_DEPTHGADGET|WFLG_ACTIVATE|WFLG_SIMPLE_REFRESH,
+   WA_IDCMP,IDCMP_CLOSEWINDOW|IDCMP_RAWKEY|IDCMP_REFRESHWINDOW|IDCMP_INACTIVEWINDOW,TAG_DONE);
+@@ -346,10 +359,11 @@
+ #endif
+  );
+ #ifdef NES_PLAYER
++ fc_joy_open();
+  if(!core_only)player_audio_open();
+- puts("PLAYER Mesen CPU/PPU/APU, NTSC; P pause, M mute, Q/Esc quit; no timing hacks");
+-#endif
+- printf("ZZNES START ROM=%s bytes=%u timer_hz=%u core_only=%u\n",rom_path?rom_path:"built-in original demo",size,rate,(ULONG)core_only);fflush(stdout);start=us();
++ puts("PLAYER FCEUX CPU/old PPU/APU, NTSC 32kHz quality0; P pause, M mute, Q/Esc quit; no frameskip");
++#endif
++ printf("ZZFCEUX START ROM=%s bytes=%u timer_hz=%u core_only=%u\n",rom_path?rom_path:"built-in original demo",size,rate,(ULONG)core_only);fflush(stdout);start=us();
+  while(!quit && (!frame_limit||frames<frame_limit)){
+ #ifdef NES_PLAYER
+   /* The previous flip can finish while Core1 emulates the next frame.
+@@ -357,6 +371,7 @@
+   if(!full_poll())goto done;
+   if(!direct_locked)events();
+   if(player_paused){
++   next_frame_us=0;fc_last_flip=0;fc_joy_buttons=0;
+    player_audio_flush();
+    before=us();if(!full_drain())goto done;flip_drain_us+=us()-before;
+    events();if(quit)break;
+@@ -366,19 +381,22 @@
+   events();
+ #endif
+   if(quit)break;
+-  frame_start=us();before=frame_start;if(!request(NES_FRAME,buttons))goto done;request_us+=us()-before;
++  fc_profile_frame=frames;
++  frame_start=us();next_frame_us=fc_next_deadline(frame_start,next_frame_us);before=frame_start;{ UBYTE input=(UBYTE)(buttons|fc_joy_buttons);if(fc_scripted_input)input=frames>=89&&frames<99?8:0;static UBYTE last;
++  if(input!=last){fc_input_changes++;}last=input;
++  if(!request(NES_FRAME,input | (verify_frame(frames+1)?256u:0u))){goto done;}request_us+=us()-before;fc_sample(0,us()-before);}
+ #ifdef NES_PLAYER
+   if(quit){rc=0;goto done;}
+   /* AHI may process input while waiting: release any outstanding bitmap lock first. */
+-  before=us();if(!full_drain())goto done;flip_drain_us+=us()-before;
+-  before=us();if(!core_only&&!player_audio_frame())goto done;audio_us+=us()-before;
++  before=us();if(!full_drain())goto done;flip_drain_us+=us()-before;fc_sample(1,us()-before);fc_read_buttons();
++  before=us();if(!core_only&&!player_audio_frame())goto done;audio_us+=us()-before;fc_sample(2,us()-before);
+   if(quit){rc=0;goto done;}
+ #endif
+   frame_core_us=(ULONG)((uint64_t)ad_get(base+MB_REPLY,28)*1000000u/rate);
+ #ifdef NES_DIRECT
+   output_hash=ad_get(base+MB_REPLY,32);
+   if(!core_only){
+-   before=us();if(!present(ad_get(base+MB_REPLY,24),frames+1))goto done;draw_us+=us()-before;
++   before=us();if(!present(ad_get(base+MB_REPLY,24),frames+1))goto done;draw_us+=us()-before;fc_sample(3,us()-before);
+   }
+ #else
+   before=us();io->pull(base+NES_OUTPUT,NES_PIXELS,NULL);
+@@ -406,9 +424,15 @@
+    (ULONG)ad_get(base+MB_REPLY,20),(ULONG)ad_get(base+MB_REPLY,24),output_hash,frame_core_us);fflush(stdout);}
+   /* Bound the emulation rate without busy spinning. Reset a late deadline
+    * to avoid a burst of catch-up frames after a window drag or task switch. */
+-  { ULONG elapsed=us()-frame_start,target=16639u;
+-    if(elapsed<target && !pause_us(target-elapsed))goto done;
+-  }
++  { ULONG elapsed=us()-frame_start,target=(LONG)(next_frame_us-frame_start)>0?next_frame_us-frame_start:0;
++    while(elapsed<target){
++     if(!full_poll())goto done;
++     if(!direct_locked){events();if(quit)break;}
++     if(!direct_locked && target-elapsed>4000u && !profile_pause(4,1000))goto done;
++     elapsed=us()-frame_start;
++    }
++  }
++  fc_sample(4,us()-frame_start);
+   #ifndef NES_PLAYER
+   if((ULONG)(us()-start)>300000000u)quit=1; // bounded preview session
+   #endif
+@@ -433,13 +457,17 @@
+ #ifdef NES_FULLSCREEN
+  if(full_fault)rc=20;
+ #endif
+- if(start)printf("ZZNES END exit=%d frames=%u elapsed_us=%u core_total_us=%u output_hash=%08x\n",rc,frames,(ULONG)(us()-start),total_core_us,output_hash);
++ if(start)printf("ZZFCEUX END exit=%d frames=%u elapsed_us=%u core_total_us=%u output_hash=%08x\n",rc,frames,(ULONG)(us()-start),total_core_us,output_hash);
+ #ifdef NES_DIRECT
+  printf("DIRECT_END challenges=%u verified_frames=%u copy_us=%u\n",direct_challenges,direct_verified,rate?(ULONG)((uint64_t)direct_ticks*1000000u/rate):0);
+ #endif
+ #ifdef NES_PLAYER
+  printf("PLAYER_PROFILE audio_prepare_us=%u flip_drain_us=%u audio_wait_us=%u audio_copy_us=%u audio_send_us=%u\n",audio_us,flip_drain_us,audio_wait_us,audio_copy_us,audio_send_us);
+ #endif
++ printf("ARM_REQUEST_PROFILE frame_us=%u present_us=%u\n",rate?(ULONG)(frame_reply_ticks*1000000u/rate):0,rate?(ULONG)(present_reply_ticks*1000000u/rate):0);
++ printf("PRESENT_PROFILE pre_us=%u request_us=%u post_us=%u\n",present_pre_us,present_request_us,present_post_us);
++ fc_profile_print();fc_joy_close();
++ print_wait_profile();
+  printf("PROFILE frames=%u request_us=%u copy_us=%u colour_us=%u draw_us=%u waits=%u\n",frames,request_us,copy_us,colour_us,draw_us,waits);
+  if(indices){FreeVec(indices);indices=NULL;}
+ #ifndef NES_FULLSCREEN
+--- mesen_nes/player_frontend.h
++++ fceux-player/player_frontend.h
+@@ -13,7 +13,7 @@
+  struct FileRequester *r;int ok=0;
+  if(rom_path||player_demo)return 1;
+  AslBase=OpenLibrary("asl.library",38);if(!AslBase)return 0;
+- r=AllocAslRequestTags(ASL_FileRequest,ASLFR_TitleText,(ULONG)"ZZNes - select an NTSC .nes cartridge",ASLFR_InitialPattern,(ULONG)"#?.nes",ASLFR_DoPatterns,TRUE,TAG_DONE);
++ r=AllocAslRequestTags(ASL_FileRequest,ASLFR_TitleText,(ULONG)"ZZFceux - select an NTSC .nes cartridge",ASLFR_InitialDrawer,(ULONG)"PROGDIR:ROMs",ASLFR_InitialPattern,(ULONG)"#?.nes",ASLFR_DoPatterns,TRUE,TAG_DONE);
+  if(r){if(AslRequestTags(r,TAG_DONE)){
+    if(strlen((const char *)r->fr_Drawer)<sizeof(chosen_rom)){strcpy(chosen_rom,(const char *)r->fr_Drawer);if(AddPart(chosen_rom,r->fr_File,sizeof(chosen_rom))){rom_path=chosen_rom;ok=1;}}
+   }else quit=1;FreeAslRequest(r);}
+--- mesen_nes/player_audio.h
++++ fceux-player/player_audio.h
+@@ -33,31 +33,39 @@
+  port=CreateMsgPort();if(!port)goto finish;
+  for(i=0;i<2;i++){
+   req[i]=(struct AHIRequest *)CreateIORequest(port,sizeof(struct AHIRequest));
+-  data[i]=AllocVec(2048,MEMF_PUBLIC);
++  data[i]=AllocVec(6144,MEMF_PUBLIC);
+   if(!req[i]||!data[i])goto finish;
+  }
+  req[0]->ahir_Version=4;
+  if(OpenDevice(AHINAME,0,(struct IORequest *)req[0],0))goto finish;
+  opened=1;
+- req[1]->ahir_Std.io_Device=req[0]->ahir_Std.io_Device;
+- req[1]->ahir_Std.io_Unit=req[0]->ahir_Std.io_Unit;req[1]->ahir_Version=4;
++ CopyMem(req[0],req[1],sizeof(*req[1])); /* AHI documented clone after OpenDevice. */
+  audio_opened=1;audio_started=1;Signal(audio_parent,1UL<<audio_parent_signal);
+  for(;;){
+-  ULONG available,n,index;int other=slot^1;
++  ULONG available,n,index,blocks,k;int other=slot^1;
+   if(audio_stop==1)break;
+   Forbid();available=audio_write-audio_read;Permit();
++  if(!available)audio_force=0;
+   if(!primed&&(available>=AUDIO_PREBUFFER||audio_stop==2||audio_force))primed=1;
+   /* Keep the previous request intact until its linked successor has been
+    * submitted. Reap a slot only when it is about to be reused. */
+-  if(primed&&available&&(!active[slot]||CheckIO((struct IORequest *)req[slot]))){
++  if(primed&&available&&(available>=3||audio_stop==2||audio_force)&&(!active[slot]||CheckIO((struct IORequest *)req[slot]))){
+    if(active[slot]){
+-    WaitIO((struct IORequest *)req[slot]);active[slot]=0;
++    profile_wait_io((struct IORequest *)req[slot]);active[slot]=0;
+     if(req[slot]->ahir_Std.io_Error){audio_error=1;break;}
+     audio_completed+=submitted_count[slot];
+    }
+-   index=audio_read%AUDIO_SLOTS;n=audio_queue[index].count;
+-   CopyMem(audio_queue[index].data,data[slot],n*2);
+-   Forbid();audio_read++;Permit();
++   /* Coalesce three immutable NES blocks without dropping/resampling PCM.
++    * A short final block is flushed by stop/pause. Never exceed 6144 bytes. */
++   blocks=available>=3?3:available;n=0;
++   for(k=0;k<blocks;k++){
++    ULONG count;
++    index=(audio_read+k)%AUDIO_SLOTS;count=audio_queue[index].count;
++    if(count>1024){audio_error=1;break;}
++    CopyMem(audio_queue[index].data,data[slot]+n*2,count*2);n+=count;
++   }
++   if(audio_error)break;
++   Forbid();audio_read+=blocks;Permit();
+    req[slot]->ahir_Std.io_Command=CMD_WRITE;
+    req[slot]->ahir_Std.io_Data=data[slot];req[slot]->ahir_Std.io_Length=n*2;
+    req[slot]->ahir_Std.io_Offset=0;req[slot]->ahir_Frequency=32000;
+@@ -66,7 +74,7 @@
+    if(active[other]&&CheckIO((struct IORequest *)req[other]))audio_gaps++;
+    req[slot]->ahir_Link=active[other]?req[other]:NULL;
+    /* AHI can rewrite io_Length from bytes to samples; retain our count. */
+-   submitted_count[slot]=n;SendIO((struct IORequest *)req[slot]);
++   submitted_count[slot]=n;profile_send_io((struct IORequest *)req[slot]);
+    active[slot]=1;audio_submitted+=n;slot=other;
+    continue;
+   }
+@@ -83,7 +91,7 @@
+  for(i=0;i<2;i++)if(active[i]){
+   int aborted=!CheckIO((struct IORequest *)req[i]);
+   if(aborted)AbortIO((struct IORequest *)req[i]);
+-  WaitIO((struct IORequest *)req[i]);
++  profile_wait_io((struct IORequest *)req[i]);
+   if(!aborted&&!req[i]->ahir_Std.io_Error)audio_completed+=submitted_count[i];
+   else if(!aborted)audio_error=1;
+  }
+@@ -124,7 +132,7 @@
+  /* AHI may load preferences/drivers using DOS: use a Process, not an Exec
+   * Task. No shell file handles or CLI are inherited by the child. */
+  audio_task=(struct Task *)CreateNewProcTags(NP_Entry,(ULONG)audio_worker,
+-  NP_Name,(ULONG)"ZZNes audio",NP_Priority,0,NP_StackSize,32768,
++  NP_Name,(ULONG)"ZZFceux audio",NP_Priority,5,NP_StackSize,32768,
+   NP_Input,0,NP_Output,0,NP_CloseInput,FALSE,NP_CloseOutput,FALSE,TAG_DONE);
+  if(!audio_task)goto fail;
+  while(!audio_started)Wait(1UL<<audio_parent_signal);
+@@ -134,7 +142,7 @@
+  player_audio_close();puts("AHI unavailable: running muted; APU timing remains enabled");return 0;
+ }
+ static void player_audio_flush(void){audio_force=1;audio_wake();}
+-static int player_audio_submit(void){return !audio_error;}
++static int player_audio_submit(void){audio_wake();return !audio_error;}
+ static int player_audio_frame(void){
+  ULONG n=ad_get(shared+MB_REPLY,40),start,index,available;
+  if(n>1024||audio_error)return 0;
+@@ -145,7 +153,7 @@
+   if(available<AUDIO_SLOTS)break;
+   events();if(quit)return 1;
+   if(audio_done||audio_error||(ULONG)(us()-start)>500000u)return 0;
+-  if(!pause_us(1000))return 0;
++  if(!profile_pause(5,1000))return 0;
+  }
+  audio_wait_us+=us()-start;start=us();index=audio_write%AUDIO_SLOTS;
+  syncio->pull(shared+NES_AUDIO,n*2,NULL);
+@@ -154,5 +162,5 @@
+  audio_queue[index].count=n;audio_copy_us+=us()-start;
+  Forbid();audio_write++;available=audio_write-audio_read;
+  if(available>audio_highwater)audio_highwater=available;
+- Permit();audio_samples+=n;audio_wake();return 1;
++ Permit();audio_samples+=n;return 1;
+ }
+--- mesen_nes/fullscreen.h
++++ fceux-player/fullscreen.h
+@@ -29,7 +29,7 @@
+  int status;
+  if(full_slots.pending<0)return !full_fault;
+  status=nf_ack(&full_slots,full_ack_count());
+- if(status==1){full_wait_us+=us()-full_pending_us;full_unlock();return 1;}
++ if(status==1){fc_flip_sample();full_wait_us+=us()-full_pending_us;full_unlock();return 1;}
+  if(status<0 || (ULONG)(us()-full_pending_us)>100000u){
+   /* Cancellation clears pending before restoring slot zero. Lock is still
+    * held: the screen and origin cannot change underneath this transaction. */
+@@ -39,7 +39,7 @@
+  return 1;
+ }
+ static int full_drain(void){
+- while(full_slots.pending>=0){if(!full_poll())return 0;if(!pause_us(1000)){full_fault=1;return 0;}}
++ while(full_slots.pending>=0){if(!full_poll())return 0;/* Bounded full_poll deadline; do not sleep under bitmap lock. */}
+  return !full_fault;
+ }
+ static int full_queue(void){
+@@ -70,7 +70,7 @@
+  full_allocation=direct_bitmap;
+  full_screen=OpenScreenTags(NULL,SA_DisplayID,mode,SA_Width,320,SA_Height,240,
+   SA_Depth,depth,SA_BitMap,(ULONG)direct_bitmap,SA_AutoScroll,FALSE,SA_Quiet,TRUE,
+-  SA_ShowTitle,FALSE,SA_Type,CUSTOMSCREEN,SA_Title,(ULONG)"ZZNes fullscreen",TAG_DONE);
++  SA_ShowTitle,FALSE,SA_Type,CUSTOMSCREEN,SA_Title,(ULONG)"ZZFceux fullscreen",TAG_DONE);
+  if(!full_screen){puts("FULLSCREEN custom screen open failed");return 0;}
+  printf("FULLSCREEN_BITMAP allocated=%08x screen=%08x width=%u height=%u allocated_height=%u screen_height=%u on_board=%u/%u memory=%08x/%08x pitch=%u/%u\n",
+   (ULONG)direct_bitmap,(ULONG)full_screen->RastPort.BitMap,(ULONG)full_screen->Width,(ULONG)full_screen->Height,
+@@ -96,7 +96,7 @@
+   full_unlock();
+  }
+  window=OpenWindowTags(NULL,WA_CustomScreen,(ULONG)full_screen,WA_Left,0,WA_Top,0,
+-  WA_Width,320,WA_Height,240,WA_Title,(ULONG)"ZZNes fullscreen - Q/Esc quits",
++  WA_Width,320,WA_Height,240,WA_Title,(ULONG)"ZZFceux fullscreen - Q/Esc quits",
+   WA_Flags,WFLG_BACKDROP|WFLG_BORDERLESS|WFLG_RMBTRAP|WFLG_ACTIVATE,
+   WA_IDCMP,IDCMP_RAWKEY|IDCMP_INACTIVEWINDOW|IDCMP_MOUSEBUTTONS,TAG_DONE);
+  if(!window)return 0;
+--- mesen_nes/worker.cpp
++++ fceux-player/worker.cpp
+@@ -1,7 +1,7 @@
+ // GPL-3.0-or-later. Private cached core; explicit publication to the 68k.
+ #include "wire.h"
+ #include "mmu.h"
+-#include "core.h"
++#include "nes_api.h"
+ #ifdef NES_DIRECT
+ extern "C" uint32_t nes_present(volatile uint8_t *,uint32_t,uint32_t,uint32_t,uint32_t);
+ #endif
+@@ -36,7 +36,7 @@
+  ad_put(base,ZZ_DIAG+4,sctlr);ad_put(base,ZZ_DIAG+8,midr);ad_put(base,ZZ_DIAG+12,mpidr);ad_put(base,ZZ_DIAG,ZZ_READY);barrier();
+  while(!stopped()){
+   volatile uint8_t *cmd=base+MB_HOST,*reply=base+MB_REPLY;uint32_t next=ad_get(cmd,0);if(next==seq)continue;
+-  barrier();uint32_t op=ad_get(cmd,4),token=ad_get(cmd,8),arg=ad_get(cmd,12),error=0,elapsed=0;
++  barrier();uint32_t request_start=(uint32_t)ticks();uint32_t op=ad_get(cmd,4),token=ad_get(cmd,8),arg=ad_get(cmd,12),error=0,elapsed=0;
+   if(next!=seq+1 || token!=(next^ad_get(base,ZZ_CONTROL)))error=4;
+   else if(op==NES_INIT && !initialized){
+    error=arg>NES_ROM_LIMIT?1:nes_init((const uint8_t *)base+NES_ROM,arg,(uint16_t *)(base+NES_BUFFER_A),(uint16_t *)(base+NES_BUFFER_B));
+@@ -52,7 +52,7 @@
+ #endif
+   }else if(op==NES_FRAME && initialized){
+    uint32_t start=(uint32_t)ticks();error=nes_frame((uint8_t)arg,stopped);elapsed=(uint32_t)ticks()-start;
+-   if(!error)publish_frame();
++   if(!error && (arg&256u))publish_frame();
+ #ifdef NES_PLAYER
+    const int16_t *pcm;unsigned count=nes_audio(&pcm);
+    if(count>1024)error=8;
+@@ -74,7 +74,7 @@
+ #endif
+   // Transfer checksum independently checks cached output publication.
+   uint32_t hash=2166136261u;
+-  if(op==NES_FRAME && !error)for(unsigned i=0;i<NES_OUTPUT_BYTES;i++)hash=(hash^base[NES_OUTPUT+i])*16777619u;
+-  ad_put(reply,32,hash);ad_put(reply,68,token^ZZ_XOR);barrier();ad_put(reply,0,next);barrier();seq=next;
++  if(op==NES_FRAME && !error && (arg&256u))for(unsigned i=0;i<NES_OUTPUT_BYTES;i++)hash=(hash^base[NES_OUTPUT+i])*16777619u;
++  ad_put(reply,48,(uint32_t)ticks()-request_start);ad_put(reply,32,hash);ad_put(reply,68,token^ZZ_XOR);barrier();ad_put(reply,0,next);barrier();seq=next;
+  }
+ }
+--- mesen_nes/direct.cpp
++++ fceux-player/direct.cpp
+@@ -3,8 +3,8 @@
+ #include "wire.h"
+ #include "mmu.h"
+ #include "direct_plan.h"
+-#include "direct_pixels.h"
+-#include "core.h"
++#include "fast_pixels.h"
++#include "nes_api.h"
+ static void tlb(){uint32_t zero=0;__asm__ volatile("dsb sy\n mcr p15,0,%0,c8,c7,0\n dsb sy\n isb"::"r"(zero):"memory");}
+ extern "C" uint32_t nes_present(volatile uint8_t *base,uint32_t addr,uint32_t pitch,uint32_t format,uint32_t nonce){
+  uint32_t span=nd_span(addr,pitch,format),*state=(uint32_t *)(base+MB_MMU_STATE);

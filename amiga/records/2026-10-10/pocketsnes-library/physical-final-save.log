@@ -1,0 +1,117 @@
+OWNED amiga=50000040 arm_candidate=101f0040 size=33554432 nonce=85a89167
+BOOTSTRAP amiga=40c52800 arm=00e42800 (P96 allocated/locked)
+MAP status=4d415031 SCTLR=08c50878 MIDR=413fc090 MPIDR=80000001
+MAPPING PASS (eight nonce-derived words)
+ARM ready=41524d31 SCTLR=08c5187d MIDR=413fc090 MPIDR=80000001
+CARTRIDGE SNES ordinary LoROM bytes=524288
+STAGE ROM published; initializing core
+STATE load OK path=PROGDIR:States/ae8466a18aa41dc9-1.zzs
+STAGE core initialized; calibrating clock
+STAGE opening display
+FULLSCREEN_BITMAP allocated=091fb3f4 screen=093850b8 width=320 height=240 allocated_height=720 screen_height=720 on_board=1/1 memory=096d172c/40d07b00 pitch=1280/1280
+FULLSCREEN mode=50031303 native_format=9 depth=32 slots=3 geometry=320x240 SNES=256x224 + 8px top/bottom
+BUFFERS pixels=00000000 indices=098a273c legacy_host=0
+JOYSTICK available=1 port=1; red=B blue=Y green=Select play=Start
+AUDIO task: AHI unit 0, 32040 Hz stereo; 8 queue slots, 3-frame prebuffer
+PLAYER PocketSNES CPU/PPU/SPC/DSP, NTSC 32040Hz stereo; P pause, M mute, Q/Esc quit; no frameskip
+ZZSNES_POCKET START ROM=SD032G:Dev/ZZSnes-Pocket/SMW-Test.sfc bytes=524288 timer_hz=333332593 core_only=0
+FRAME n=1 cycles=834 core_hash=bfd3705e output_hash=2bad217e cpu_ppu_us=6723
+FRAME n=60 cycles=893 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6442
+FRAME n=120 cycles=953 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6612
+FRAME n=180 cycles=1013 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6773
+FRAME n=240 cycles=1073 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6560
+FRAME n=300 cycles=1133 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6644
+FRAME n=360 cycles=1193 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6412
+FRAME n=420 cycles=1253 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6657
+FRAME n=480 cycles=1313 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6649
+FRAME n=540 cycles=1373 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6431
+FRAME n=600 cycles=1433 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6619
+FRAME n=660 cycles=1493 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6630
+FRAME n=720 cycles=1553 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6682
+FRAME n=780 cycles=1613 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6437
+FRAME n=840 cycles=1673 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6468
+FRAME n=900 cycles=1733 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6509
+FRAME n=960 cycles=1793 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6626
+FRAME n=1020 cycles=1853 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6352
+FRAME n=1080 cycles=1913 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6469
+FRAME n=1140 cycles=1973 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6474
+FRAME n=1200 cycles=2033 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6558
+FRAME n=1260 cycles=2093 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6424
+FRAME n=1320 cycles=2153 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6593
+FRAME n=1380 cycles=2213 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6535
+FRAME n=1440 cycles=2273 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6466
+FRAME n=1500 cycles=2333 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6497
+FRAME n=1560 cycles=2393 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6490
+FRAME n=1620 cycles=2453 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6524
+FRAME n=1680 cycles=2513 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6445
+FRAME n=1740 cycles=2573 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6305
+FRAME n=1800 cycles=2633 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6635
+FRAME n=1860 cycles=2693 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6477
+FRAME n=1920 cycles=2753 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6509
+FRAME n=1980 cycles=2813 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6282
+FRAME n=2040 cycles=2873 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6355
+FRAME n=2100 cycles=2933 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6410
+FRAME n=2160 cycles=2993 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6462
+FRAME n=2220 cycles=3053 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6513
+FRAME n=2280 cycles=3113 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6600
+FRAME n=2340 cycles=3173 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6614
+STATE save OK bytes=686196 path=PROGDIR:States/ae8466a18aa41dc9-1.zzs
+FRAME n=2400 cycles=3233 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6506
+FRAME n=2460 cycles=3293 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6305
+FRAME n=2520 cycles=3353 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6621
+FRAME n=2580 cycles=3413 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6585
+FRAME n=2640 cycles=3473 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6619
+FRAME n=2700 cycles=3533 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6391
+FRAME n=2760 cycles=3593 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6559
+FRAME n=2820 cycles=3653 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6549
+FRAME n=2880 cycles=3713 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6656
+FRAME n=2940 cycles=3773 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6672
+STATE load OK path=PROGDIR:States/ae8466a18aa41dc9-1.zzs
+FRAME n=3000 cycles=3257 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6807
+FRAME n=3060 cycles=3317 core_hash=5eeab2ae output_hash=811c9dc5 cpu_ppu_us=6398
+FRAME n=3120 cycles=3377 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6775
+FRAME n=3180 cycles=3437 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6385
+FRAME n=3240 cycles=3497 core_hash=bfd3705e output_hash=811c9dc5 cpu_ppu_us=6592
+FULLSCREEN_END queued=3245 flips=3245 pending=-1 ack_wait_us=37174676 fault=0
+AUDIO_TASK queued=1734530 submitted=1734530 completed=1734530 highwater=3 error=0 stopped=1
+AUDIO_END samples=1734530 gaps=328
+STAGE closing frontend; requesting ARM return next
+ZZSNES_POCKET END exit=0 frames=3244 elapsed_us=61515233 core_total_us=21198564 output_hash=811c9dc5
+DIRECT_END challenges=3245 verified_frames=1 copy_us=10730821
+PLAYER_PROFILE audio_prepare_us=1910799 flip_drain_us=12323405 audio_wait_us=89677 audio_copy_us=1569966 audio_send_us=0
+ARM_REQUEST_PROFILE frame_us=21265273 present_us=10736383
+PRESENT_PROFILE pre_us=2118850 request_us=12349148 post_us=1062782
+FRAME_TIMING stage=0 count=3184 mean_us=7255 max_us=28130 bins=0,2967,156,8,53,0
+FRAME_TIMING stage=1 count=3184 mean_us=3812 max_us=26237 bins=658,2444,68,5,9,0
+FRAME_TIMING stage=2 count=3184 mean_us=606 max_us=9987 bins=3117,66,1,0,0,0
+FRAME_TIMING stage=3 count=3184 mean_us=4746 max_us=31977 bins=0,3087,18,0,79,0
+FRAME_TIMING stage=4 count=3184 mean_us=17735 max_us=56740 bins=0,0,2146,662,249,127
+FRAME_TIMING stage=5 count=3186 mean_us=18847 max_us=2167197 bins=0,36,2617,214,292,27
+INPUT_PROFILE changes=0
+JOYSTICK_END polls=3244 active=0 last_type=40000000
+AUDIO_IO_PROFILE send_us=5661704 waitio_us=41983
+WAIT_PROFILE kind=0 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=1 calls=86 requested_us=86000 actual_us=113034 max_us=6030
+WAIT_PROFILE kind=2 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=3 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=4 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=5 calls=0 requested_us=0 actual_us=0 max_us=0
+PROFILE frames=3244 request_us=23484105 copy_us=0 colour_us=0 draw_us=15716549 waits=133
+EXIT epilogue=52455431 cache_echoes=0 rounds=0
+CACHE original=08c50878 running=08c5187d restored=08c50878
+MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=102f4000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=6495
+REGISTER n=0 original=08c50878 restored=08c50878
+REGISTER n=1 original=00000000 restored=00000000
+REGISTER n=2 original=02000000 restored=02000000
+REGISTER n=3 original=00000000 restored=00000000
+REGISTER n=4 original=00000000 restored=00000000
+REGISTER n=5 original=00000001 restored=00000001
+REGISTER n=6 original=600101d3 restored=600101d3
+REGISTER n=7 original=00000006 restored=00000006
+REGISTER n=8 original=00001000 restored=00001000
+REGISTER n=9 original=00098aa4 restored=00098aa4
+REGISTER n=10 original=44e048e0 restored=44e048e0
+REGISTER n=11 original=00000000 restored=00000000
+REGISTER n=12 original=00000001 restored=00000001
+REGISTER n=13 original=72360000 restored=72360000
+LAUNCHER exit=0; owned memory released

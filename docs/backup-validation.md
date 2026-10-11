@@ -19,3 +19,8 @@ Logs: [native](../amiga/records/2026-10-10/standalone-backup/native.log),
 [68k rebuild](../amiga/records/2026-10-10/standalone-backup/host.log).
 Upstream whitespace is preserved to retain source hashes; authored backup
 README, guides and verifier pass whitespace checks.
+
+## MUI prerelease update — 11 October 2026
+
+Both current 68k executables rebuild byte-for-byte. The standalone audio-state
+drain/MMU checks and ROM-free package audit pass. See [release validation](../amiga/records/2026-10-11/library-release/).

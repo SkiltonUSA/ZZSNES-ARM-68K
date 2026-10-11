@@ -1,0 +1,7 @@
+PASS base=12000040 state=686196 bytes; exact 30-frame video/stereo replay at restored frame400
+PASS corrupted thumbnail and different-ROM header rejected without frame advance
+PASS all border variants, widescreen/masks, endian layouts, challenges, row guards and mapping revoke
+PASS base=150020c0 state=686196 bytes; exact 30-frame video/stereo replay at restored frame400
+PASS corrupted thumbnail and different-ROM header rejected without frame advance
+PASS all border variants, widescreen/masks, endian layouts, challenges, row guards and mapping revoke
+PASS relocated state survives fresh Core1 address, no persisted runtime pointers

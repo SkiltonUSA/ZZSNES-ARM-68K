@@ -1,0 +1,10 @@
+FRAME n=60 padded=b87d5dc5 visible=62aa1dc5 pcm=7adcb44d pairs=32081 nonzero=0
+FRAME n=120 padded=9742f6f0 visible=a84c96f0 pcm=71cd6257 pairs=64162 nonzero=24664
+FRAME n=180 padded=9742f6f0 visible=a84c96f0 pcm=c601352f pairs=96243 nonzero=24664
+FRAME n=240 padded=b87d5dc5 visible=62aa1dc5 pcm=304a5a9f pairs=128325 nonzero=24664
+FRAME n=300 padded=8525b7dd visible=265777dd pcm=32759c35 pairs=160406 nonzero=69502
+FRAME n=360 padded=a8529c20 visible=e69f3c20 pcm=b4bc1e1e pairs=192487 nonzero=118807
+FRAME n=420 padded=5eeab2ae visible=27f8d2ae pcm=f6940307 pairs=224569 nonzero=167026
+FRAME n=480 padded=bfd3705e visible=5fb4105e pcm=3401ef87 pairs=256650 nonzero=216841
+FRAME n=540 padded=5a400cde visible=edf1acde pcm=5dbd901c pairs=288731 nonzero=272499
+FRAME n=600 padded=5a400cde visible=edf1acde pcm=a2053b75 pairs=320813 nonzero=327934

@@ -1,0 +1,87 @@
+--- fixture-baseline/soundux.c
++++ game-experiment/soundux.c
+@@ -276,11 +276,11 @@
+          for (i = 8; i != 0; i--)
+          {
+             sample1 = *compressed++;
+-            sample2 = sample1 << 4;
++            sample2 = sample1 * 16;
+             sample2 >>= 4;
+             sample1 >>= 4;
+-            *raw++ = ((int32) sample1 << shift);
+-            *raw++ = ((int32) sample2 << shift);
++            *raw++ = ((int32) sample1 * (1 << shift));
++            *raw++ = ((int32) sample2 * (1 << shift));
+          }
+          prev1 = *(raw - 2);
+          prev0 = *(raw - 1);
+@@ -289,33 +289,33 @@
+          for (i = 8; i != 0; i--)
+          {
+             sample1 = *compressed++;
+-            sample2 = sample1 << 4;
++            sample2 = sample1 * 16;
+             sample2 >>= 4;
+             sample1 >>= 4;
+             prev0 = (int16) prev0;
+-            *raw++ = prev1 = ((int32) sample1 << shift) + prev0 - (prev0 >> 4);
++            *raw++ = prev1 = ((int32) sample1 * (1 << shift)) + prev0 - (prev0 >> 4);
+             prev1 = (int16) prev1;
+-            *raw++ = prev0 = ((int32) sample2 << shift) + prev1 - (prev1 >> 4);
++            *raw++ = prev0 = ((int32) sample2 * (1 << shift)) + prev1 - (prev1 >> 4);
+          }
+          break;
+       case 2:
+          for (i = 8; i != 0; i--)
+          {
+             sample1 = *compressed++;
+-            sample2 = sample1 << 4;
++            sample2 = sample1 * 16;
+             sample2 >>= 4;
+             sample1 >>= 4;
+ 
+-            out = (sample1 << shift) - prev1 + (prev1 >> 4);
++            out = (sample1 * (1 << shift)) - prev1 + (prev1 >> 4);
+             prev1 = (int16) prev0;
+             prev0 &= ~3;
+-            *raw++ = prev0 = out + (prev0 << 1) - (prev0 >> 5) -
++            *raw++ = prev0 = out + (prev0 * 2) - (prev0 >> 5) -
+                (prev0 >> 4);
+ 
+-            out = (sample2 << shift) - prev1 + (prev1 >> 4);
++            out = (sample2 * (1 << shift)) - prev1 + (prev1 >> 4);
+             prev1 = (int16) prev0;
+             prev0 &= ~3;
+-            *raw++ = prev0 = out + (prev0 << 1) - (prev0 >> 5) -
++            *raw++ = prev0 = out + (prev0 * 2) - (prev0 >> 5) -
+                (prev0 >> 4);
+          }
+          break;
+@@ -323,22 +323,22 @@
+          for (i = 8; i != 0; i--)
+          {
+             sample1 = *compressed++;
+-            sample2 = sample1 << 4;
++            sample2 = sample1 * 16;
+             sample2 >>= 4;
+             sample1 >>= 4;
+-            out = (sample1 << shift);
++            out = (sample1 * (1 << shift));
+ 
+             out = out - prev1 + (prev1 >> 3) + (prev1 >> 4);
+             prev1 = (int16) prev0;
+             prev0 &= ~3;
+-            *raw++ = prev0 = out + (prev0 << 1) - (prev0 >> 3) -
++            *raw++ = prev0 = out + (prev0 * 2) - (prev0 >> 3) -
+                (prev0 >> 4) - (prev1 >> 6);
+ 
+-            out = (sample2 << shift);
++            out = (sample2 * (1 << shift));
+             out = out - prev1 + (prev1 >> 3) + (prev1 >> 4);
+             prev1 = (int16) prev0;
+             prev0 &= ~3;
+-            *raw++ = prev0 = out + (prev0 << 1) - (prev0 >> 3) -
++            *raw++ = prev0 = out + (prev0 * 2) - (prev0 >> 3) -
+                (prev0 >> 4) - (prev1 >> 6);
+          }
+          break;

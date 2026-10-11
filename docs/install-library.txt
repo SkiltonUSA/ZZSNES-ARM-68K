@@ -1,0 +1,45 @@
+ZZSnes Library 0.2.0-dev - Workbench installation
+
+Requires the verified ZZ9000 XX19c / XACP 1.7 firmware setup, ZZ9000 Fast RAM
+with a free 32 MiB allocation, Picasso96, MUI 3.8-compatible muimaster.library,
+AHI and AmigaOS 3.x. Tested on A4000TX/TF4060 with AmigaOS 3.2.3. Other hardware
+or newer firmware combinations have not been verified by this release.
+
+1. Extract ZZSnes-Library-0.2.0-dev.zip with an Amiga-compatible ZIP utility,
+   preserving the ZZSnesLibrary drawer, its contents and .info files.
+2. Copy that drawer to a writable location, for example SD032G:Dev/.
+   Keep ZZSnesLibrary and ZZSnes-ui together. For an existing installation,
+   preserve Library.cfg, ROMs/ and States/; replace programs and documentation.
+3. Close any other application using ZZ9000 ARM Core1, such as ZZQuake.
+4. Double-click ZZSnesLibrary. Add your own .sfc/.smc files or a ROM folder.
+   No ROMs, save states, firmware, MUI or OS files are supplied.
+
+If your extraction utility drops executable protection, open a Shell:
+
+  CD SD032G:Dev/ZZSnesLibrary
+  Protect ZZSnesLibrary +e
+  Protect ZZSnes-ui +e
+  Stack 65536
+  ZZSnesLibrary
+
+Select a game, choose Save slots 1-5, then Play. F5 saves; F8 loads.
+Resume slot opens the game at its saved position after restarting the app.
+A thumbnail is captured with each save. The previous file is kept as .bak.
+These version-2 states belong to this player, not other SNES emulators.
+
+Arrows: move; Z=B, X=Y, A=A, S=X, C/V=L/R; Enter=Start; left Shift=Select.
+P pauses, M mutes, Q/Escape returns to Library. Standard joystick: port 2.
+The Controllers tab provides a live test and fire-button mapping.
+
+Display: choose your monitor aspect (4:3 or widescreen), black/white surrounds
+or SNES purple, Super Famicom or charcoal console borders; optional edge masks.
+
+Limits: standard NTSC LoROM/HiROM <=4 MiB, no enhancement chips, 256x224 output.
+Only SMW and an original test cartridge have been verified. Separate battery
+files are not written; SRAM is included in save states. Audio scheduling still
+needs work. The 600-frame bordered test measured 52.45 displayed FPS, not a
+promise of sustained 60 FPS. AHI unit 0 uses your existing settings.
+
+This is an experimental private development prerelease, with component notices
+in licenses/ and THIRD_PARTY.md. Source and test evidence:
+https://github.com/SkiltonUSA/ZZSNES-ARM-68K/tree/v0.2.0-dev
