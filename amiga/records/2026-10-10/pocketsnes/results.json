@@ -1,0 +1,15 @@
+{
+  "hardware": "A4000TX / ZZ9000 Cortex-A9 Core1",
+  "frames_per_sample": 6,
+  "measured_samples": 10,
+  "warmup_samples": 1,
+  "mean_ms_per_frame": 4.616585244750973,
+  "median_ms_per_frame": 4.617200146002297,
+  "min_ms_per_frame": 4.604666370496064,
+  "max_ms_per_frame": 4.6296789213966045,
+  "prior_mesen_ms_per_frame": 39.945,
+  "prior_mesen_to_pocket_ratio": 8.652499170337471,
+  "scope": "Headless original startup fixture; different startup boundaries/overscan and audio output rate; not game/display FPS",
+  "timing_excludes": "Initialisation, load, deinit, video validation/hash; no display or audio hardware I/O",
+  "timing_includes": "CPU/bus/PPU/DMA/SPC/DSP and silent PCM hash callback"
+}

@@ -1,0 +1,12 @@
+.context/
+.tools/
+__pycache__/
+*.pyc
+*.dSYM/
+.DS_Store
+.env
+.env.*
+*.sav
+*.adf
+*.hdf
+*.iso

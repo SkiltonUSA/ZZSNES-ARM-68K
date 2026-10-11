@@ -1,0 +1,1 @@
+PASS ARM memory: 3096 calls; exact read/write bounds, alignment, bytes, canaries, return value

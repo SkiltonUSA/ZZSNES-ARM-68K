@@ -1,0 +1,29 @@
+{
+  "upstream": "6ffbf9ef4f0063e1f1b78a40d10c50fc52f2524c",
+  "url": "https://github.com/libretro/snes9x2002",
+  "scope": "Original six-frame headless fixture; portable C CPU/PPU/SPC/DSP; no frameskip, idle shutdown or game speed patches. No display/audio-device FPS.",
+  "allocation": 25165824,
+  "image_bytes": 457004,
+  "relocations": 3641,
+  "source_hashes": {
+    "amiga/pocketsnes/runtime.c": "6c9c51a6406bc5c46ad31f8cf4945cbb277f0b92627fbdb3be5d61ead504899d",
+    "amiga/pocketsnes/libc-sources.json": "4d2c48ad55636629d072e2bd97cbd1d8b60c8715807b1b31e5b404b956fd8335",
+    "amiga/pocketsnes/README.md": "8c1b1abdca93ebb1feb85386511c6989c7426d84a1496ed86b79d53e32702735",
+    "amiga/pocketsnes/elf.py": "ed7cfb3638d15b847a3878c18bfe39185555808f17bd744d781a249a53c06664",
+    "amiga/pocketsnes/libc_config.h": "0946dbead6aeafdfdb7e54ff72b080c95aac08ab230af0fdf689db86f5885e0f",
+    "amiga/pocketsnes/bench.c": "a38e5ffd21b4d3e5054306c5b4ad77f500a72d7d9f854ea7d35c25b3d345d9ca",
+    "amiga/pocketsnes/payload.ld": "c7db24611e6b57bb754230b1b4ce470d812c3a501cff994db798d54935e0f334",
+    "scripts/build_pocketsnes_libc.py": "d67969dc77f24f114f20d5cb3eeff7cc5b53121543269c717497b4da02b47bb5",
+    "scripts/build_pocketsnes_host.py": "5fab788e4a887fd35630e43206bec416b95e1113fc3fd441a1240f2410f15a4b",
+    "scripts/build_pocketsnes.py": "cf56dee476140e2d17f6bdc5b4d4c6fcababfc6a1884b3df1211430781407e8a",
+    "scripts/build_pocketsnes_arm.py": "8a2f0296c68bf8ccd0b66ddf15fa7b7b72ea89e903f4c5174ec14b4f6b0d8634"
+  },
+  "outputs": {
+    "pocket.elf": "8ab07c53e55e86837ebc495a035e34f7f1ba0f1e6308959b0872987812b7c240",
+    "ZZSnes-Pocket-Bench": "42fe8178cec4e6825126b750153f884d83bfb47022986316cdcd80ae20720052",
+    "System-Test.sfc": "64074848f3bf47acc3174140960fa04757aa7dc90c82a44879f1fc717ee5aa73",
+    "integration.patch": "57516d3eb2e891d5b21948f0c7e308d6e84ac69bdb8780062c3d4c0de1d87f4a",
+    "libc.a": "b046bc12e8913027da2dab9974dacbf54519c9124ebd4b94e5ba27b3407e2cb1"
+  },
+  "executable_md5": "78a67d1434e85d6b304916333514e262"
+}

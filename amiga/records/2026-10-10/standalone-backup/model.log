@@ -1,0 +1,17 @@
+python3 scripts/verify_backup.py
+PASS: saved artifacts, pinned core sources, measured mean and hardware completion markers
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/amiga/mesen-bench/venv/bin/python tests/amiga/pocketsnes/check_arm.py artifacts/pocketsnes/pocket.elf --profile-clock
+PASS ARM model base=12000040 corrupt=False cancel=False status=0 checked=6
+PASS ARM model base=150020c0 corrupt=False cancel=False status=0 checked=6
+PASS ARM model base=12000040 corrupt=True cancel=False status=5 checked=6
+PASS ARM model base=12000040 corrupt=False cancel=True status=2 checked=2
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/amiga/mesen-bench/venv/bin/python tests/amiga/mesen_snes/check_arm.py artifacts/mesen-snes/snes.elf
+PASS ARM model base=12000040 corrupt=False cancel=False status=0 checked=5144
+PASS ARM model base=150020c0 corrupt=False cancel=False status=0 checked=5144
+PASS ARM model base=12000040 corrupt=True cancel=False status=1 checked=8
+PASS ARM model base=12000040 corrupt=False cancel=True status=2 checked=128
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/amiga/mesen-bench/venv/bin/python tests/amiga/mesen_snes/check_system_arm.py artifacts/mesen-snes-system-words/system.elf
+PASS ARM model base=12000040 corrupt=False cancel=False status=0 checked=6
+PASS ARM model base=150020c0 corrupt=False cancel=False status=0 checked=6
+PASS ARM model base=12000040 corrupt=True cancel=False status=5 checked=1
+PASS ARM model base=12000040 corrupt=False cancel=True status=2 checked=0

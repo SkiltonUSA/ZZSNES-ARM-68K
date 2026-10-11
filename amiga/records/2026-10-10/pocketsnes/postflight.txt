@@ -1,0 +1,33 @@
+amiga_ping Amiga alive - clients: 0, chip: 2021920 bytes, fast: 617079808 bytes
+amiga_list_ports Public Message Ports (23):
+  TSPORT
+  WORKBENCH
+  DEFICONS
+  ToolsDaemon 2.1a © Nico François
+  REXX
+  AREXX
+  MagicMenu
+  SIXIES.BRIDGE.NETWATCH
+  AssignWedge.port
+  ZZTemperature.1
+  NewMeter
+  POPO.1
+  QDock
+  ROADIE
+  TCP/IP Control
+  AMIGABRIDGE
+  ZZNES_LIBRARY
+  ZZNES.1
+  ZZSNES_MESEN_UI
+  ZZSNES.1
+  ConClip.rendezvous
+  lowlevel.library
+  deficons
+amiga_list_screens Screens (1):
+
+  Workbench Screen  1920x800  8bpp  LORES  @895EF90
+amiga_run_script [OK]
+f1a45b2fe4c9e5f73b1e33cf7951dfd8  SD032G:Dev/ZZSnes-Mesen/ZZSnes-Mesen-System
+d7235d37b73138b770e01bdf44fff3cf  SD032G:Dev/ZZSnes-Mesen/ZZSnes-Mesen
+571d796cb818a426f1b99f48b192f619  SD032G:Dev/ZZFceuxPlayer/Library-0.3/ZZNesLibrary
+e056592277459fdf784c1f4c1fefe388  SD032G:Dev/ZZFceuxPlayer/Library-0.3/ZZFceux-ui

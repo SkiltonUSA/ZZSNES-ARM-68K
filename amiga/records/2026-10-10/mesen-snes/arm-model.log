@@ -1,0 +1,4 @@
+PASS ARM model base=12000040 corrupt=False cancel=False status=0 checked=5144
+PASS ARM model base=150020c0 corrupt=False cancel=False status=0 checked=5144
+PASS ARM model base=12000040 corrupt=True cancel=False status=1 checked=8
+PASS ARM model base=12000040 corrupt=False cancel=True status=2 checked=128

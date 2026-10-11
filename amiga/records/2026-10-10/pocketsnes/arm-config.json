@@ -1,0 +1,30 @@
+{
+  "compiler": "arm-none-eabi-gcc 15.3.rel1 (existing zzffmpeg-toolchain container)",
+  "arm_flags": [
+    "-Os",
+    "-mcpu=cortex-a9",
+    "-marm",
+    "-mfloat-abi=soft",
+    "-mno-unaligned-access",
+    "-fPIC",
+    "-fno-strict-aliasing",
+    "-fvisibility=hidden",
+    "-ffunction-sections",
+    "-fdata-sections"
+  ],
+  "runtime_sources": {
+    "amiga/pocketsnes/bench.c": "a38e5ffd21b4d3e5054306c5b4ad77f500a72d7d9f854ea7d35c25b3d345d9ca",
+    "amiga/pocketsnes/runtime.c": "6c9c51a6406bc5c46ad31f8cf4945cbb277f0b92627fbdb3be5d61ead504899d",
+    "amiga/pocketsnes/libc_config.h": "0946dbead6aeafdfdb7e54ff72b080c95aac08ab230af0fdf689db86f5885e0f",
+    "amiga/pocketsnes/payload.ld": "c7db24611e6b57bb754230b1b4ce470d812c3a501cff994db798d54935e0f334",
+    "amiga/ffmpeg_bench/heap.c": "90215cbb44bd9797b3ea2d9ac66cdfb16474da47f640a7b07b9e4ca5aa267a3c",
+    "amiga/mesen_snes/system/memory.c": "0e865abf10ad26ba8503696d30bfd2ba4f5bcfe0720e7d1104189d1e19233d11"
+  },
+  "generated_mmu_sources": {
+    "worker.cpp": "cc791e64f3b415d3b283b10902ee756117c5c0d45dbfe5f6f778a7a8673ef61b",
+    "mmu.c": "ce15e67e460084fafed1bd604955ceb8c2c197c00419d229a5c4b78cbd4b3173",
+    "mmu.h": "954a4038c78e1a67fa696592b80bf1fb61aa72eaf7a0f1830d3ba75453382ef7",
+    "mmu_plan.h": "55b20a87022ab86af2d2f3b352bf678b98b3c52325fd7368046d73d7a141dd14",
+    "mmu_asm.S": "091613d841e5bb04ceacd7274459619410ed2ad1e72b1dc8b004e75a1a37545a"
+  }
+}

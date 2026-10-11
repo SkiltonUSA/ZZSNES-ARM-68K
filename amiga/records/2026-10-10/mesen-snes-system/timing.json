@@ -1,0 +1,38 @@
+{
+  "initial": {
+    "warm_batch_us": [
+      244273,
+      244523,
+      244294,
+      244306,
+      244273,
+      244184,
+      244225,
+      244125,
+      244341,
+      244461
+    ],
+    "frames_per_batch": 6,
+    "mean_batch_us": 244300.5,
+    "mean_frame_us": 40716.75,
+    "scope": "Headless original startup fixture; not game/display FPS"
+  },
+  "mui": {
+    "warm_batch_us": [
+      244118,
+      244318,
+      244453,
+      244531,
+      244246,
+      244158,
+      244251,
+      244429,
+      244362,
+      244310
+    ],
+    "frames_per_batch": 6,
+    "mean_batch_us": 244317.6,
+    "mean_frame_us": 40719.6,
+    "scope": "Headless original startup fixture; not game/display FPS"
+  }
+}

@@ -1,0 +1,2 @@
+amiga_run_script [OK]
+78a67d1434e85d6b304916333514e262  SD032G:Dev/ZZSnes-Pocket/ZZSnes-Pocket-Bench

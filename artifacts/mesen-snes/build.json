@@ -1,0 +1,73 @@
+{
+  "scope": "SNES 65C816 CPU smoke diagnostic only. No PPU/SPC/DSP/DMA/cartridge or game FPS.",
+  "upstream": {
+    "repo": "https://github.com/SourMesen/Mesen2",
+    "commit": "b9fa69ddc6d0a331fb103fdb5eef6904305703c2",
+    "license": "GPL-3.0-or-later",
+    "files": {
+      "SnesCpu.cpp": {
+        "path": "Core/SNES/SnesCpu.cpp",
+        "sha256": "ea81ccb2b6093fdde5ff2d1bfbc4a4a88a596e39b841e94786f343c5974491b8"
+      },
+      "SnesCpu.h": {
+        "path": "Core/SNES/SnesCpu.h",
+        "sha256": "05dfa1d3e589ece2f7ef6f0495ebb96d0ca9d47df73bb8039f7863c16a155803"
+      },
+      "SnesCpu.Instructions.h": {
+        "path": "Core/SNES/SnesCpu.Instructions.h",
+        "sha256": "9b24ffaf04411f309a2d0b7899c6a883d64b146b42513cdbd850ba44f34649bd"
+      },
+      "SnesCpu.Shared.h": {
+        "path": "Core/SNES/SnesCpu.Shared.h",
+        "sha256": "dd84d0794c9588adfd28932659edb07a7b5b9d2d052fbcd4696925026237210f"
+      },
+      "SnesCpuTypes.h": {
+        "path": "Core/SNES/SnesCpuTypes.h",
+        "sha256": "5394d51e2dd6e765eb8805e318d8f1b3407d2bd2a7076047250936e5838d1b9d"
+      },
+      "MemoryOperationType.h": {
+        "path": "Core/Shared/MemoryOperationType.h",
+        "sha256": "bc83397293b3f353223a56b92f70db17fb17cbfcc12a8c9e42d3e6a0de89547d"
+      },
+      "LICENSE": {
+        "path": "LICENSE",
+        "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+      }
+    }
+  },
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "cache_policy": "Existing owned 1 MiB mapping; private inner WB/WA, outer/shared NC; MMU/I/D enabled.",
+  "image_bytes": 125848,
+  "relocations": 0,
+  "checked_instructions": 5144,
+  "expected_cycles": 15436,
+  "expected_hash": "e4b09881",
+  "source_hashes": {
+    "amiga/mesen_bench/mmu_asm.S": "091613d841e5bb04ceacd7274459619410ed2ad1e72b1dc8b004e75a1a37545a",
+    "amiga/mesen_bench/mmu.c": "ce15e67e460084fafed1bd604955ceb8c2c197c00419d229a5c4b78cbd4b3173",
+    "amiga/mesen_bench/worker.cpp": "cc791e64f3b415d3b283b10902ee756117c5c0d45dbfe5f6f778a7a8673ef61b",
+    "amiga/mesen_bench/runtime.c": "ba4920e21bad0d91ca1172cedf360f3f79fddf328a6e010b69f80a327d1d1437",
+    "amiga/mesen_snes/bench.cpp": "6aa1360c4df6734cc73f9c99fcec369ccb7c6223646bb362bfd75df895c6aa63",
+    "scripts/build_mesen_snes.py": "1b01d44e346e00a725c312fd09c72d9c40594a3fa34059a3caa5acd8ded4f9ed",
+    "amiga/mesen_snes/platform.h": "2196baabe8f48a3304eb1bf700388cdfd37ea556ea55be13b18474b65acfb62d",
+    "amiga/mesen_bench/host.c": "bb15c56f3c3c59d66713955f6a32839bb9e190b3db80e083637b28ba4be5056e",
+    "amiga/mesen_bench/wire.h": "8f71e131f7dd256305738cc862b48b996f02c6155713099ddb9cb5e2ae8ff60d",
+    "amiga/mesen_bench/bench.h": "a20e8c89f42e6b90396974a8cb87fa808775f3b0af59170280d4bdd56aa7e521",
+    "amiga/mesen_bench/mmu.h": "954a4038c78e1a67fa696592b80bf1fb61aa72eaf7a0f1830d3ba75453382ef7",
+    "amiga/mesen_bench/mmu_plan.h": "743a33f7aa78562b393b0268101f4b96e3cc9b1c523b7e47339dd138eb7d912b",
+    "amiga/mesen_bench/mmu_payload.ld": "1ce0684ef2a3e90202839adeee19ce9920a0cc04143833a358d99986e7edd1c5",
+    "amiga/arm_debug/zz9000/launcher.c": "55c6cc6386c0c7f6c7e3e4a2563ddf8d08067e7594cb0bd30464a97e971c873f",
+    "amiga/arm_debug/zz9000/layout.h": "ad287948f8fed9b54e3bf3ca177d1e2e5c2bb590d55ff209d99eb3ad767f3ff6",
+    "amiga/arm_debug/zz9000/mapping_probe.S": "ceddcbe4b077c0fd0b723d9f8f1ad06d2380433dc15c3b2d9ca6b7f734439b1d",
+    "amiga/arm_debug/protocol.h": "66a0b4ffa70ae72c5b2222749ddfccc2706014ce631122bca59ad6635e18c0f4",
+    "amiga/mesen_snes/launcher.c": "07832ffe6287d121e3508e8649f2b7bc308d95bf7c52f7c7574a5c73affacd8a"
+  },
+  "outputs": {
+    "snes.elf": "8d514594ffbf2508a3f0c2f4a2b5fa59600c1ebc721250faf476c7a0bd258318",
+    "ZZSnes-Mesen-CPU": "d9e46ac3d503f5eecbe05f955551aaa3c5a828ca0700ec88b7190a0cf61563df",
+    "ZZSnes-Mesen": "c8804e10a15732707a1af66b9b2159d223c43de113cec13fe4471350e89b9a7e",
+    "integration.patch": "99568e5891c65d4302ca378bb77da33c477ef7a15ed7f0701c1385f9e228e90a",
+    "native.log": "a4d1878d403b4ebfb4eaf3bad2ae9eb9a0e3f173bcd3c7797e2a57f71505c13c"
+  },
+  "executable_md5": "cd3fb1fe04dc9aba419c4e29bbde6f56"
+}

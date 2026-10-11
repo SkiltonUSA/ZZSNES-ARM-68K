@@ -1,0 +1,1022 @@
+--- upstream/SNES/SnesCpu.h
++++ generated/SNES/SnesCpu.h
+@@ -7,7 +7,7 @@
+ 
+ #include "pch.h"
+ #include "SNES/SnesCpuTypes.h"
+-#include "Utilities/ISerializable.h"
++
+ #include "Shared/MemoryOperationType.h"
+ 
+ class MemoryMappings;
+@@ -16,7 +16,7 @@
+ class SnesConsole;
+ class Emulator;
+ 
+-class SnesCpu : public ISerializable
++class SnesCpu
+ {
+ private:
+ 	static constexpr uint32_t NmiVector = 0x00FFEA;
+@@ -355,7 +355,6 @@
+ 	void ClearIrqSource(SnesIrqSource source);
+ 
+ 	// Inherited via ISerializable
+-	void Serialize(Serializer &s) override;
+ 
+ #ifdef DUMMYCPU
+ private:
+--- upstream/SNES/SnesCpu.cpp
++++ generated/SNES/SnesCpu.cpp
+@@ -1,7 +1,7 @@
+ #include "pch.h"
+-#include "Utilities/Serializer.h"
+-#include "Shared/Emulator.h"
+-#include "Shared/CheatManager.h"
++
++
++
+ #include "SNES/SnesCpuTypes.h"
+ #include "SNES/SnesCpu.h"
+ #include "SNES/SnesConsole.h"
+@@ -9,7 +9,7 @@
+ #include "SNES/SnesDmaController.h"
+ #include "SNES/SnesCpu.Instructions.h"
+ #include "SNES/SnesCpu.Shared.h"
+-#include "Shared/EventType.h"
++
+ #include "Shared/MemoryOperationType.h"
+ 
+ #ifndef DUMMYCPU
+--- upstream/SNES/SnesCpu.Shared.h
++++ generated/SNES/SnesCpu.Shared.h
+@@ -623,9 +623,4 @@
+ 	return (_state.PS & flag) == flag;
+ }
+ 
+-void SnesCpu::Serialize(Serializer &s)
+-{
+-	SV(_state.A); SV(_state.CycleCount); SV(_state.D); SV(_state.DBR); SV(_state.EmulationMode); SV(_state.IrqSource); SV(_state.K);
+-	SV(_state.NmiFlagCounter); SV(_state.PC); SV(_state.PrevIrqSource); SV(_state.PS); SV(_state.SP); SV(_state.StopState);
+-	SV(_state.X); SV(_state.Y); SV(_state.IrqLock); SV(_state.NeedNmi); SV(_waiOver);
+-}
++
+--- upstream/SNES/SnesPpu.h
++++ generated/SNES/SnesPpu.h
+@@ -1,8 +1,7 @@
+ #pragma once
+ #include "pch.h"
+ #include "SNES/SnesPpuTypes.h"
+-#include "Utilities/ISerializable.h"
+-#include "Utilities/Timer.h"
++
+ 
+ class Emulator;
+ class SnesConsole;
+@@ -11,7 +10,7 @@
+ class Spc;
+ class EmuSettings;
+ 
+-class SnesPpu : public ISerializable
++class SnesPpu
+ {
+ public:
+ 	constexpr static uint32_t SpriteRamSize = 544;
+@@ -261,6 +260,4 @@
+ 	
+ 	uint8_t Read(uint16_t addr);
+ 	void Write(uint32_t addr, uint8_t value);
+-
+-	void Serialize(Serializer &s) override;
+ };--- upstream/SNES/SnesPpu.cpp
++++ generated/SNES/SnesPpu.cpp
+@@ -7,19 +7,18 @@
+ #include "SNES/InternalRegisters.h"
+ #include "SNES/SnesControlManager.h"
+ #include "SNES/SnesDmaController.h"
+-#include "SNES/Debugger/SnesPpuTools.h"
+-#include "Debugger/Debugger.h"
+-#include "Shared/Emulator.h"
+-#include "Shared/EmuSettings.h"
+-#include "Shared/Video/VideoDecoder.h"
+-#include "Shared/Video/VideoRenderer.h"
+-#include "Shared/NotificationManager.h"
+-#include "Shared/RenderedFrame.h"
+-#include "Shared/MessageManager.h"
+-#include "Shared/EventType.h"
+-#include "Shared/RewindManager.h"
+-#include "Utilities/HexUtilities.h"
+-#include "Utilities/Serializer.h"
++
++
++
++
++
++
++
++
++
++
++
++
+ 
+ SnesPpu::SnesPpu(Emulator* emu, SnesConsole* console)
+ {
+@@ -394,6 +393,7 @@
+ 
+ bool SnesPpu::ProcessEndOfScanline(uint16_t& hClock)
+ {
++	SS_PROFILE_SCOPE(0);
+ 	if(hClock >= 1364 || (hClock == 1360 && _scanline == 240 && _oddFrame && !_state.ScreenInterlace)) {
+ 		//"In non-interlace mode scanline 240 of every other frame (those with $213f.7=1) is only 1360 cycles."
+ 		if(_scanline < _vblankStartScanline) {
+@@ -860,6 +860,7 @@
+ 
+ void SnesPpu::RenderScanline()
+ {
++	SS_PROFILE_SCOPE(0);
+ 	int32_t hPos = GetCycle();
+ 
+ 	if(hPos <= 255 || _spriteEvalEnd < 255) {
+@@ -1118,7 +1119,7 @@
+ 		color |= ((chrData[3] >> shift) & 0x01) << 6;
+ 		color |= ((chrData[3] >> (7 + shift)) & 0x02) << 6;
+ 	} else {
+-		throw std::runtime_error("unsupported bpp");
++		assert(false); return 0;
+ 	}
+ 	return color;
+ }
+@@ -1518,7 +1519,7 @@
+ 	}
+ 	_needFullFrame = false;
+ 
+-	RenderedFrame frame(_currentBuffer, width, height, _useHighResOutput ? 0.5 : 1.0, _frameCount, _console->GetControlManager()->GetPortStates());
++	RenderedFrame frame(_currentBuffer, width, height, _useHighResOutput ? 0.5 : 1.0, _frameCount);
+ 	_emu->GetVideoDecoder()->UpdateFrame(frame, isRewinding, isRewinding);
+ 
+ 	if(!_skipRender) {
+@@ -1549,29 +1550,10 @@
+ }
+ 
+ void SnesPpu::DebugProcessMode7Overlay()
+-{
+-	//Store mode 7 related information in ppu tools to allow tilemap viewer to display mode 7 overlay
+-	SnesPpuTools* ppuTools = ((SnesPpuTools*)_emu->InternalGetDebugger()->GetPpuTools(CpuType::Snes));
+-	ppuTools->SetPpuScanlineState(_scanline, _state.ForcedBlank ? 0 : _state.BgMode, _debugMode7StartX, _debugMode7StartY, _debugMode7EndX, _debugMode7EndY);
+-	if(_scanline == _vblankStartScanline - 1) {
+-		for(int i = _scanline + 1; i < 239; i++) {
+-			ppuTools->SetPpuScanlineState(i, 0, 0, 0, 0, 0);
+-		}
+-	}
+-	_debugMode7StartX = _debugMode7StartY = _debugMode7EndX = _debugMode7EndY = 0;
+-}
++{}
+ 
+ void SnesPpu::DebugProcessMainSubScreenViews()
+-{
+-	//Store main/sub screen buffers in ppu tools to allow display main/sub screen view in tilemap viewer
+-	SnesPpuTools* ppuTools = ((SnesPpuTools*)_emu->InternalGetDebugger()->GetPpuTools(CpuType::Snes));
+-	ppuTools->SetPpuRowBuffers(_scanline - 1, _drawStartX, _drawEndX, _mainScreenBuffer, _subScreenBuffer);
+-	if(_scanline == _vblankStartScanline - 1) {
+-		for(int i = _scanline; i < 239; i++) {
+-			ppuTools->SetPpuRowBuffers(i, _drawStartX, _drawEndX, nullptr, nullptr);
+-		}
+-	}
+-}
++{}
+ 
+ void SnesPpu::FillInterlacedFrame()
+ {
+@@ -1709,6 +1691,7 @@
+ 
+ uint8_t SnesPpu::Read(uint16_t addr)
+ {
++	SS_PROFILE_SCOPE(0);
+ 	if(_scanline < _vblankStartScanline) {
+ 		RenderScanline();
+ 	}
+@@ -1881,6 +1864,7 @@
+ 
+ void SnesPpu::Write(uint32_t addr, uint8_t value)
+ {
++	SS_PROFILE_SCOPE(0);
+ 	if(_scanline < _vblankStartScanline) {
+ 		RenderScanline();
+ 	}
+@@ -2250,67 +2234,7 @@
+ 	}
+ }
+ 
+-void SnesPpu::Serialize(Serializer &s)
+-{
+-	SV(_state.ForcedBlank); SV(_state.ScreenBrightness); SV(_scanline); SV(_frameCount);  SV(_state.BgMode);
+-	SV(_state.Mode1Bg3Priority); SV(_state.MainScreenLayers); SV(_state.SubScreenLayers); SV(_state.VramAddress); SV(_state.VramIncrementValue); SV(_state.VramAddressRemapping);
+-	SV(_state.VramAddrIncrementOnSecondReg); SV(_state.VramReadBuffer); SV(_state.Ppu1OpenBus); SV(_state.Ppu2OpenBus); SV(_state.CgramAddress); SV(_state.MosaicSize); SV(_state.MosaicEnabled);
+-	SV(_state.OamMode); SV(_state.OamBaseAddress); SV(_state.OamAddressOffset); SV(_state.OamRamAddress); SV(_state.EnableOamPriority);
+-	SV(_oamWriteBuffer); SV(_timeOver); SV(_rangeOver); SV(_state.HiResMode); SV(_state.ScreenInterlace); SV(_state.ObjInterlace);
+-	SV(_state.OverscanMode); SV(_state.DirectColorMode); SV(_state.ColorMathClipMode); SV(_state.ColorMathPreventMode); SV(_state.ColorMathAddSubscreen); SV(_state.ColorMathEnabled);
+-	SV(_state.ColorMathSubtractMode); SV(_state.ColorMathHalveResult); SV(_state.FixedColor); SV(_hvScrollLatchValue); SV(_hScrollLatchValue); 
+-	SV(_state.MaskLogic[0]); SV(_state.MaskLogic[1]); SV(_state.MaskLogic[2]); SV(_state.MaskLogic[3]); SV(_state.MaskLogic[4]); SV(_state.MaskLogic[5]);
+-	SV(_state.WindowMaskMain[0]); SV(_state.WindowMaskMain[1]); SV(_state.WindowMaskMain[2]); SV(_state.WindowMaskMain[3]); SV(_state.WindowMaskMain[4]);
+-	SV(_state.WindowMaskSub[0]); SV(_state.WindowMaskSub[1]); SV(_state.WindowMaskSub[2]); SV(_state.WindowMaskSub[3]); SV(_state.WindowMaskSub[4]);
+-	SV(_state.Mode7.CenterX); SV(_state.Mode7.CenterY); SV(_state.ExtBgEnabled); SV(_state.Mode7.FillWithTile0); SV(_state.Mode7.HorizontalMirroring);
+-	SV(_state.Mode7.HScroll); SV(_state.Mode7.LargeMap); SV(_state.Mode7.Matrix[0]); SV(_state.Mode7.Matrix[1]); SV(_state.Mode7.Matrix[2]); SV(_state.Mode7.Matrix[3]);
+-	SV(_state.Mode7.ValueLatch); SV(_state.Mode7.VerticalMirroring); SV(_state.Mode7.VScroll);
+-	SV(_state.CgramAddressLatch); SV(_state.CgramWriteBuffer);
+-	SV(_state.InternalOamAddress);
+-	SV(_state.InternalCgramAddress);
+-
+-	for(int i = 0; i < 4; i++) {
+-		SVI(_state.Layers[i].ChrAddress); SVI(_state.Layers[i].DoubleHeight); SVI(_state.Layers[i].DoubleWidth); SVI(_state.Layers[i].HScroll);
+-		SVI(_state.Layers[i].LargeTiles); SVI(_state.Layers[i].TilemapAddress); SVI(_state.Layers[i].VScroll);
+-	}
+-
+-	for(int i = 0; i < 2; i++) {
+-		SVI(_state.Window[i].ActiveLayers[0]); SVI(_state.Window[i].ActiveLayers[1]); SVI(_state.Window[i].ActiveLayers[2]); SVI(_state.Window[i].ActiveLayers[3]); SVI(_state.Window[i].ActiveLayers[4]); SVI(_state.Window[i].ActiveLayers[5]);
+-		SVI(_state.Window[i].InvertedLayers[0]); SVI(_state.Window[i].InvertedLayers[1]); SVI(_state.Window[i].InvertedLayers[2]); SVI(_state.Window[i].InvertedLayers[3]); SVI(_state.Window[i].InvertedLayers[4]); SVI(_state.Window[i].InvertedLayers[5]);
+-		SVI(_state.Window[i].Left); SVI(_state.Window[i].Right);
+-	}
+-
+-	SVArray(_vram, SnesPpu::VideoRamSize >> 1);
+-	SVArray(_oamRam, SnesPpu::SpriteRamSize);
+-	SVArray(_cgram, SnesPpu::CgRamSize >> 1);
+-	
+-	if(s.GetFormat() != SerializeFormat::Map) {
+-		//Hide these entries from the Lua API
+-		SV(_horizontalLocation); SV(_horizontalLocToggle); SV(_verticalLocation); SV(_verticalLocationToggle); SV(_locationLatched);
+-		SV(_oddFrame); SV(_vblankStartScanline);
+-		SV(_nmiScanline); SV(_vblankEndScanline); SV(_adjustedVblankEndScanline); SV(_baseVblankEndScanline);
+-		SV(_overclockEnabled);
+-
+-		SV(_drawStartX); SV(_drawEndX);
+-		SV(_mosaicScanlineCounter);
+-
+-		for(int i = 0; i < 33; i++) {
+-			SVI(_layerData[0].Tiles[i].ChrData[0]); SVI(_layerData[0].Tiles[i].ChrData[1]); SVI(_layerData[0].Tiles[i].ChrData[2]); SVI(_layerData[0].Tiles[i].ChrData[3]);
+-			SVI(_layerData[0].Tiles[i].TilemapData); SVI(_layerData[0].Tiles[i].VScroll);
+-			SVI(_layerData[1].Tiles[i].ChrData[0]); SVI(_layerData[1].Tiles[i].ChrData[1]); SVI(_layerData[1].Tiles[i].ChrData[2]); SVI(_layerData[1].Tiles[i].ChrData[3]);
+-			SVI(_layerData[1].Tiles[i].TilemapData); SVI(_layerData[1].Tiles[i].VScroll);
+-			SVI(_layerData[2].Tiles[i].ChrData[0]); SVI(_layerData[2].Tiles[i].ChrData[1]); SVI(_layerData[2].Tiles[i].ChrData[2]); SVI(_layerData[2].Tiles[i].ChrData[3]);
+-			SVI(_layerData[2].Tiles[i].TilemapData); SVI(_layerData[2].Tiles[i].VScroll);
+-			SVI(_layerData[3].Tiles[i].ChrData[0]); SVI(_layerData[3].Tiles[i].ChrData[1]); SVI(_layerData[3].Tiles[i].ChrData[2]); SVI(_layerData[3].Tiles[i].ChrData[3]);
+-			SVI(_layerData[3].Tiles[i].TilemapData); SVI(_layerData[3].Tiles[i].VScroll);
+-		}
+-		SV(_hOffset); SV(_vOffset); SV(_fetchBgStart); SV(_fetchBgEnd); SV(_fetchSpriteStart); SV(_fetchSpriteEnd);
+-	}
+-
+-	if(!s.IsSaving() && _interlacedFrame && _emu->GetRewindManager()->IsRewinding()) {
+-		_needFullFrame = true;
+-	}
+-}
++
+ 
+ void SnesPpu::RandomizeState()
+ {
+--- upstream/SNES/SnesMemoryManager.h
++++ generated/SNES/SnesMemoryManager.h
+@@ -1,8 +1,8 @@
+ #pragma once
+ #include "pch.h"
+ #include "SNES/MemoryMappings.h"
+-#include "Debugger/DebugTypes.h"
+-#include "Utilities/ISerializable.h"
++
++
+ #include "Shared/MemoryType.h"
+ 
+ class IMemoryHandler;
+@@ -26,7 +26,7 @@
+ 	EndOfScanline
+ };
+ 
+-class SnesMemoryManager : public ISerializable
++class SnesMemoryManager
+ {
+ public:
+ 	constexpr static uint32_t WorkRamSize = 0x20000;
+@@ -111,6 +111,4 @@
+ 	bool IsWorkRam(uint32_t cpuAddress);
+ 
+ 	uint32_t GetWramPosition();
+-
+-	void Serialize(Serializer &s) override;
+ };
+--- upstream/SNES/SnesMemoryManager.cpp
++++ generated/SNES/SnesMemoryManager.cpp
+@@ -8,13 +8,13 @@
+ #include "SNES/RegisterHandlerA.h"
+ #include "SNES/RegisterHandlerB.h"
+ #include "SNES/RamHandler.h"
+-#include "Debugger/DebugTypes.h"
+-#include "Shared/MessageManager.h"
+-#include "Shared/Emulator.h"
+-#include "Shared/EmuSettings.h"
+-#include "Shared/CheatManager.h"
+-#include "Utilities/Serializer.h"
+-#include "Utilities/HexUtilities.h"
++
++
++
++
++
++
++
+ #include "Shared/MemoryOperationType.h"
+ 
+ void SnesMemoryManager::Initialize(SnesConsole *console)
+@@ -470,14 +470,4 @@
+ 	return _registerHandlerB->GetWramPosition();
+ }
+ 
+-void SnesMemoryManager::Serialize(Serializer &s)
+-{
+-	SV(_masterClock); SV(_openBus); SV(_cpuSpeed); SV(_hClock); SV(_dramRefreshPosition);
+-	SV(_memTypeBusA); SV(_nextEvent); SV(_nextEventClock);
+-	SVArray(_workRam, SnesMemoryManager::WorkRamSize);
+-	SV(_registerHandlerB);
+-
+-	if(!s.IsSaving()) {
+-		UpdateExecCallbacks();
+-	}
+-}
++
+--- upstream/SNES/SnesDmaController.h
++++ generated/SNES/SnesDmaController.h
+@@ -2,11 +2,10 @@
+ #include "pch.h"
+ #include "SNES/SnesCpuTypes.h"
+ #include "SNES/DmaControllerTypes.h"
+-#include "Utilities/ISerializable.h"
+ 
+ class SnesMemoryManager;
+ 
+-class SnesDmaController final : public ISerializable
++class SnesDmaController final
+ {
+ private:
+ 	static constexpr uint8_t HdmaChannelFlag = 0x40;
+@@ -58,6 +57,4 @@
+ 
+ 	uint8_t GetActiveChannel();
+ 	DmaChannelConfig GetChannelConfig(uint8_t channel);
+-
+-	void Serialize(Serializer &s) override;
+ };--- upstream/SNES/SnesDmaController.cpp
++++ generated/SNES/SnesDmaController.cpp
+@@ -2,8 +2,7 @@
+ #include "SNES/SnesDmaController.h"
+ #include "SNES/DmaControllerTypes.h"
+ #include "SNES/SnesMemoryManager.h"
+-#include "Shared/MessageManager.h"
+-#include "Utilities/Serializer.h"
++
+ 
+ static constexpr uint8_t _transferByteCount[8] = { 1, 2, 2, 4, 4, 4, 2, 4 };
+ static constexpr uint8_t _transferOffset[8][4] = {
+@@ -635,14 +634,4 @@
+ 	return _state.Channel[channel];
+ }
+ 
+-void SnesDmaController::Serialize(Serializer &s)
+-{
+-	SV(_hdmaPending); SV(_state.HdmaChannels); SV(_dmaPending); SV(_dmaClockCounter); SV(_hdmaInitPending); SV(_dmaStartDelay); SV(_needToProcess);
+-	for(int i = 0; i < 8; i++) {
+-		SVI(_state.Channel[i].Decrement); SVI(_state.Channel[i].DestAddress); SVI(_state.Channel[i].DoTransfer); SVI(_state.Channel[i].FixedTransfer);
+-		SVI(_state.Channel[i].HdmaBank); SVI(_state.Channel[i].HdmaFinished); SVI(_state.Channel[i].HdmaIndirectAddressing);
+-		SVI(_state.Channel[i].HdmaLineCounterAndRepeat); SVI(_state.Channel[i].HdmaTableAddress);
+-		SVI(_state.Channel[i].InvertDirection); SVI(_state.Channel[i].SrcAddress); SVI(_state.Channel[i].SrcBank); SVI(_state.Channel[i].TransferMode);
+-		SVI(_state.Channel[i].TransferSize); SVI(_state.Channel[i].UnusedControlFlag); SVI(_state.Channel[i].DmaActive); SVI(_state.Channel[i].UnusedRegister);
+-	}
+-}
++
+--- upstream/SNES/InternalRegisters.h
++++ generated/SNES/InternalRegisters.h
+@@ -5,13 +5,12 @@
+ #include "SNES/SnesPpu.h"
+ #include "SNES/SnesMemoryManager.h"
+ #include "SNES/InternalRegisterTypes.h"
+-#include "Utilities/ISerializable.h"
+ 
+ class SnesConsole;
+ class SnesMemoryManager;
+ class SnesControlManager;
+ 
+-class InternalRegisters final : public ISerializable
++class InternalRegisters final
+ {
+ private:
+ 	Emulator* _emu = nullptr;
+@@ -74,8 +73,6 @@
+ 
+ 	InternalRegisterState GetState();
+ 	AluState GetAluState();
+-
+-	void Serialize(Serializer &s) override;
+ };
+ 
+ void InternalRegisters::UpdateIrqLevel()
+--- upstream/SNES/InternalRegisters.cpp
++++ generated/SNES/InternalRegisters.cpp
+@@ -6,10 +6,9 @@
+ #include "SNES/SnesControlManager.h"
+ #include "SNES/SnesMemoryManager.h"
+ #include "SNES/InternalRegisterTypes.h"
+-#include "Shared/MessageManager.h"
+-#include "Shared/Emulator.h"
+-#include "Utilities/Serializer.h"
+-#include "Utilities/HexUtilities.h"
++
++
++
+ 
+ InternalRegisters::InternalRegisters()
+ {
+@@ -391,24 +390,4 @@
+ 	return _aluMulDiv.GetState();
+ }
+ 
+-void InternalRegisters::Serialize(Serializer& s)
+-{
+-	SV(_state.EnableFastRom); SV(_nmiFlag); SV(_state.EnableNmi); SV(_state.EnableHorizontalIrq); SV(_state.EnableVerticalIrq); SV(_state.HorizontalTimer);
+-	SV(_state.VerticalTimer); SV(_state.IoPortOutput); SV(_state.ControllerData[0]); SV(_state.ControllerData[1]); SV(_state.ControllerData[2]); SV(_state.ControllerData[3]);
+-	SV(_irqLevel); SV(_needIrq); SV(_state.EnableAutoJoypadRead); SV(_irqFlag);
+-
+-	SV(_aluMulDiv);
+-
+-	SV(_autoReadClockStart);
+-	SV(_autoReadNextClock);
+-	SV(_autoReadActive);
+-	SV(_autoReadDisabled);
+-	SV(_autoReadPort1Value);
+-	SV(_autoReadPort2Value);
+-
+-	SV(_hCounter);
+-	SV(_vCounter);
+-	if(!s.IsSaving()) {
+-		_irqEnabled = _state.EnableHorizontalIrq || _state.EnableVerticalIrq;
+-	}
+-}
++
+--- upstream/SNES/AluMulDiv.h
++++ generated/SNES/AluMulDiv.h
+@@ -1,11 +1,10 @@
+ #pragma once
+ #include "pch.h"
+ #include "SNES/InternalRegisterTypes.h"
+-#include "Utilities/ISerializable.h"
+ 
+ class SnesCpu;
+ 
+-class AluMulDiv final : public ISerializable
++class AluMulDiv final
+ {
+ private:
+ 	SnesCpu *_cpu = nullptr;
+@@ -28,6 +27,4 @@
+ 	void Write(uint16_t addr, uint8_t value);
+ 
+ 	AluState GetState();
+-
+-	void Serialize(Serializer &s) override;
+ };--- upstream/SNES/AluMulDiv.cpp
++++ generated/SNES/AluMulDiv.cpp
+@@ -2,7 +2,6 @@
+ #include "SNES/AluMulDiv.h"
+ #include "SNES/SnesCpu.h"
+ #include "SNES/InternalRegisterTypes.h"
+-#include "Utilities/Serializer.h"
+ 
+ void AluMulDiv::Initialize(SnesCpu* cpu)
+ {
+@@ -72,7 +71,7 @@
+ 		case 0x4217: return (uint8_t)(_state.MultOrRemainderResult >> 8);
+ 	}
+ 
+-	throw std::runtime_error("ALU: invalid address");
++	ss_fail();
+ }
+ 
+ void AluMulDiv::Write(uint16_t addr, uint8_t value)
+@@ -112,7 +111,7 @@
+ 			}
+ 			break;
+ 
+-		default: throw std::runtime_error("ALU: invalid address");
++		default: ss_fail();
+ 	}
+ }
+ 
+@@ -121,8 +120,4 @@
+ 	return _state;
+ }
+ 
+-void AluMulDiv::Serialize(Serializer &s)
+-{
+-	SV(_state.MultOperand1); SV(_state.MultOperand2); SV(_state.MultOrRemainderResult); SV(_state.Dividend); SV(_state.Divisor); SV(_state.DivResult);
+-	SV(_divCounter); SV(_multCounter); SV(_shift); SV(_prevCpuCycle);
+-}
++
+--- upstream/SNES/MemoryMappings.h
++++ generated/SNES/MemoryMappings.h
+@@ -1,6 +1,5 @@
+ #pragma once
+ #include "pch.h"
+-#include "Debugger/DebugTypes.h"
+ 
+ class IMemoryHandler;
+ 
+--- upstream/SNES/MemoryMappings.cpp
++++ generated/SNES/MemoryMappings.cpp
+@@ -28,13 +28,13 @@
+ void MemoryMappings::RegisterHandler(uint8_t startBank, uint8_t endBank, uint16_t startAddr, uint16_t endAddr, IMemoryHandler* handler)
+ {
+ 	if((startAddr & 0xFFF) != 0 || (endAddr & 0xFFF) != 0xFFF || startBank > endBank || startAddr > endAddr) {
+-		throw std::runtime_error("invalid start/end address");
++		assert(false); return;
+ 	}
+ 
+ 	for(uint32_t bank = startBank; bank <= endBank; bank++) {
+ 		for(uint32_t addr = startAddr; addr < endAddr; addr += 0x1000) {
+ 			/*if(_handlers[addr >> 12]) {
+-			throw std::runtime_error("handler already set");
++			ss_fail();
+ 			}*/
+ 
+ 			_handlers[(bank << 4) | (addr >> 12)] = handler;
+--- upstream/SNES/IMemoryHandler.h
++++ generated/SNES/IMemoryHandler.h
+@@ -1,6 +1,5 @@
+ #pragma once
+ #include "pch.h"
+-#include "Debugger/DebugTypes.h"
+ 
+ class IMemoryHandler
+ {
+--- upstream/SNES/RamHandler.h
++++ generated/SNES/RamHandler.h
+@@ -1,7 +1,6 @@
+ #pragma once
+ #include "pch.h"
+ #include "SNES/IMemoryHandler.h"
+-#include "Debugger/DebugTypes.h"
+ 
+ class RamHandler : public IMemoryHandler
+ {
+--- upstream/SNES/RegisterHandlerB.h
++++ generated/SNES/RegisterHandlerB.h
+@@ -1,7 +1,6 @@
+ #pragma once
+ #include "pch.h"
+ #include "SNES/IMemoryHandler.h"
+-#include "Utilities/ISerializable.h"
+ 
+ class SnesConsole;
+ class Emulator;
+@@ -11,7 +10,7 @@
+ class Msu1;
+ class CheatManager;
+ 
+-class RegisterHandlerB : public IMemoryHandler, public ISerializable
++class RegisterHandlerB : public IMemoryHandler
+ {
+ private:
+ 	Emulator* _emu;
+@@ -36,6 +35,4 @@
+ 	AddressInfo GetAbsoluteAddress(uint32_t address) override;
+ 	
+ 	uint32_t GetWramPosition();
+-
+-	void Serialize(Serializer &s) override;
+ };--- upstream/SNES/RegisterHandlerB.cpp
++++ generated/SNES/RegisterHandlerB.cpp
+@@ -4,11 +4,10 @@
+ #include "SNES/SnesPpu.h"
+ #include "SNES/Spc.h"
+ #include "SNES/BaseCartridge.h"
+-#include "SNES/Coprocessors/SA1/Sa1.h"
+-#include "SNES/Coprocessors/MSU1/Msu1.h"
+-#include "Shared/Emulator.h"
+-#include "Shared/CheatManager.h"
+-#include "Utilities/Serializer.h"
++
++
++
++
+ 
+ RegisterHandlerB::RegisterHandlerB(SnesConsole *console, SnesPpu * ppu, Spc * spc, uint8_t * workRam) : IMemoryHandler(MemoryType::SnesRegister)
+ {
+@@ -94,7 +93,4 @@
+ 	return _wramPosition;
+ }
+ 
+-void RegisterHandlerB::Serialize(Serializer &s)
+-{
+-	SV(_wramPosition);
+-}
++
+--- upstream/SNES/Spc.h
++++ generated/SNES/Spc.h
+@@ -11,7 +11,6 @@
+ #include "SNES/SnesCpuTypes.h"
+ #include "SNES/SpcTimer.h"
+ #include "Shared/MemoryOperationType.h"
+-#include "Utilities/ISerializable.h"
+ 
+ class SnesConsole;
+ class Emulator;
+@@ -20,7 +19,7 @@
+ class Dsp;
+ struct AddressInfo;
+ 
+-class Spc : public ISerializable
++class Spc
+ {
+ public:
+ 	static constexpr int SpcRamSize = 0x10000;
+@@ -322,8 +321,6 @@
+ 
+ 	void LoadSpcFile(SpcFileData* spcData);
+ 
+-	void Serialize(Serializer &s) override;
+-
+ #ifdef DUMMYSPC
+ private:
+ 	uint32_t _memOpCounter = 0;
+--- upstream/SNES/Spc.cpp
++++ generated/SNES/Spc.cpp
+@@ -2,7 +2,7 @@
+ #include "SNES/Spc.h"
+ #include "SNES/SnesConsole.h"
+ #include "SNES/SnesMemoryManager.h"
+-#include "SNES/SpcFileData.h"
++
+ #ifndef DUMMYSPC
+ #include "SNES/DSP/Dsp.h"
+ #else
+@@ -12,10 +12,10 @@
+ #define Spc DummySpc
+ #define DUMMYSPC
+ #endif
+-#include "Shared/Emulator.h"
+-#include "Shared/EmuSettings.h"
+-#include "Shared/Audio/SoundMixer.h"
+-#include "Utilities/Serializer.h"
++
++
++
++
+ #include "Shared/MemoryOperationType.h"
+ 
+ Spc::Spc(SnesConsole* console)
+@@ -123,12 +123,14 @@
+ 
+ void Spc::UpdateClockRatio()
+ {
++	#ifndef SS_INTEGER_CLOCK
+ 	_clockRatio = (double)(_spcSampleRate * 64) / _console->GetMasterClockRate();
++#endif
+ 
+ 	//If the target cycle is off by more than 20 cycles, reset the counter to match what was expected
+ 	//This can happen due to overclocking (which disables the SPC for some scanlines) or if the SPC's 
+ 	//internal sample rate is changed between versions (e.g 32000hz -> 32040hz)
+-	uint64_t targetCycle = (uint64_t)(_memoryManager->GetMasterClock() * _clockRatio);
++	uint64_t targetCycle = (uint64_t)(SS_CLOCK(_memoryManager->GetMasterClock(), _clockRatio, _spcSampleRate));
+ 	if(std::abs((int64_t)targetCycle - (int64_t)_state.Cycle) > 20) {
+ 		_state.Cycle = targetCycle;
+ 	}
+@@ -137,7 +139,7 @@
+ void Spc::ExitExecLoop()
+ {
+ #ifndef DUMMYSPC
+-	_state.Cycle = _memoryManager->GetMasterClock() * _clockRatio;
++	_state.Cycle = SS_CLOCK(_memoryManager->GetMasterClock(), _clockRatio, _spcSampleRate);
+ #endif
+ }
+ 
+@@ -364,7 +366,7 @@
+ 		//However, always delaying to the next SPC cycle causes Kawasaki Superbike Challenge to freeze on boot.
+ 		//Delaying only when the write occurs in the SPC cycle's second half allows both games to work (at the default 32040hz.)
+ 		//This solution behaves as if the CPU values were latched/updated every 2mhz tick (which matches the SPC's input clock)
+-		if(_memoryManager->GetMasterClock() * _clockRatio - _state.Cycle <= 1) {
++		if(SS_FIRST_HALF(_memoryManager->GetMasterClock(), _clockRatio, _spcSampleRate, _state.Cycle)) {
+ 			_state.CpuRegs[addr & 0x03] = value;
+ 		} else {
+ 			_pendingCpuRegUpdate = true;
+@@ -391,6 +393,7 @@
+ 
+ void Spc::ProcessEndFrame()
+ {
++	SS_PROFILE_SCOPE(1);
+ 	Run();
+ 
+ 	UpdateClockRatio();
+@@ -449,47 +452,7 @@
+ 	return _spcBios;
+ }
+ 
+-void Spc::Serialize(Serializer &s)
+-{
+-	if(s.IsSaving() && s.GetFormat() != SerializeFormat::Map) {
+-		//Catch up SPC to main CPU before creating the state
+-		Run();
+-	}
+-
+-	SV(_state.A); SV(_state.Cycle); SV(_state.PC); SV(_state.PS); SV(_state.SP); SV(_state.X); SV(_state.Y);
+-	SV(_state.CpuRegs[0]); SV(_state.CpuRegs[1]); SV(_state.CpuRegs[2]); SV(_state.CpuRegs[3]);
+-	SV(_state.OutputReg[0]); SV(_state.OutputReg[1]); SV(_state.OutputReg[2]); SV(_state.OutputReg[3]);
+-	SV(_state.RamReg[0]); SV(_state.RamReg[1]);
+-	SV(_state.ExternalSpeed); SV(_state.InternalSpeed); SV(_state.WriteEnabled); SV(_state.TimersEnabled);
+-	SV(_state.DspReg); SV(_state.RomEnabled); SV(_clockRatio); SV(_state.TimersDisabled);
+-
+-	s.PushNamePrefix("timer0", -1);
+-	_state.Timer0.Serialize(s);
+-	s.PopNamePrefix();
+-
+-	s.PushNamePrefix("timer1", -1);
+-	_state.Timer1.Serialize(s);
+-	s.PopNamePrefix();
+-
+-	s.PushNamePrefix("timer2", -1);
+-	_state.Timer2.Serialize(s);
+-	s.PopNamePrefix();
+-
+-	SVArray(_ram, Spc::SpcRamSize);
+-
+-	SV(_dsp);
+-
+-	if(s.GetFormat() != SerializeFormat::Map) {
+-		if(!s.IsSaving()) {
+-			UpdateClockRatio();
+-		}
+-
+-		SV(_operandA); SV(_operandB); SV(_tmp1); SV(_tmp2); SV(_tmp3); SV(_opCode); SV(_opStep); SV(_opSubStep); SV(_enabled);
+-
+-		SVArray(_state.NewCpuRegs, 4);
+-		SV(_pendingCpuRegUpdate);
+-	}
+-}
++
+ 
+ uint8_t Spc::GetOpCode()
+ {
+@@ -569,57 +532,3 @@
+ 	return (CheckFlag(SpcFlags::DirectPage) ? 0x100 : 0) + offset;
+ }
+ 
+-void Spc::LoadSpcFile(SpcFileData* data)
+-{
+-	memcpy(_ram, data->SpcRam, Spc::SpcRamSize);
+-
+-	if(data->HasExtraRam) {
+-		bool extraRamContainsIpl = memcmp(data->SpcExtraRam, _spcBios, 0x40) == 0;
+-		if(!extraRamContainsIpl) {
+-			bool ramContainsIpl = memcmp(data->SpcRam + 0xFFC0, _spcBios, 0x40) == 0;
+-			bool isSpcRamEmpty = true;
+-			bool isExtraRamEmpty = true;
+-			for(int i = 0; i < 0x40; i++) {
+-				if(data->SpcExtraRam[i] != 0 && data->SpcExtraRam[i] != 0xFF) {
+-					isExtraRamEmpty = false;
+-				}
+-				if(data->SpcRam[i+0xFFC0] != 0 && data->SpcRam[i + 0xFFC0] != 0xFF) {
+-					isSpcRamEmpty = false;
+-				}
+-			}
+-
+-			if(ramContainsIpl || (isSpcRamEmpty && !isExtraRamEmpty)) {
+-				//Use extra ram section only if the main spc FFC0-FFFF section is empty or contains the IPL code
+-				memcpy(_ram + 0xFFC0, data->SpcExtraRam, 0x40);
+-			}
+-		}
+-	}
+-
+-	_dsp->LoadSpcFileRegs(data->DspRegs);
+-
+-	_state.PC = data->PC;
+-	_state.A = data->A;
+-	_state.X = data->X;
+-	_state.Y = data->Y;
+-	_state.PS = data->PS;
+-	_state.SP = data->SP;
+-
+-	Write(0xF1, data->ControlReg);
+-	_state.DspReg = data->DspRegSelect;
+-
+-	_state.CpuRegs[0] = data->CpuRegs[0];
+-	_state.CpuRegs[1] = data->CpuRegs[1];
+-	_state.CpuRegs[2] = data->CpuRegs[2];
+-	_state.CpuRegs[3] = data->CpuRegs[3];
+-	
+-	_state.RamReg[0] = data->RamRegs[0];
+-	_state.RamReg[1] = data->RamRegs[1];
+-
+-	_state.Timer0.SetTarget(data->TimerTarget[0]);
+-	_state.Timer1.SetTarget(data->TimerTarget[1]);
+-	_state.Timer2.SetTarget(data->TimerTarget[2]);
+-
+-	_state.Timer0.SetOutput(data->TimerOutput[0]);
+-	_state.Timer1.SetOutput(data->TimerOutput[0]);
+-	_state.Timer2.SetOutput(data->TimerOutput[0]);
+-}--- upstream/SNES/Spc.Instructions.cpp
++++ generated/SNES/Spc.Instructions.cpp
+@@ -1,11 +1,11 @@
+ #include "pch.h"
+ #include "SNES/Spc.h"
+ #include "SNES/SnesMemoryManager.h"
+-#include "Shared/Emulator.h"
+-#include "Utilities/HexUtilities.h"
++
+ 
+ void Spc::Run()
+ {
++	SS_PROFILE_SCOPE(1);
+ 	if(!_enabled) {
+ 		//Used to temporarily disable the SPC when overclocking is enabled
+ 		return;
+@@ -16,7 +16,7 @@
+ 	}
+ 
+ 	//Minus 1 because each call to ProcessCycle increments _state.Cycle by 2
+-	int64_t targetCycle = (int64_t)(_memoryManager->GetMasterClock() * _clockRatio) - 1;
++	int64_t targetCycle = (int64_t)(SS_CLOCK(_memoryManager->GetMasterClock(), _clockRatio, _spcSampleRate)) - 1;
+ 	while((int64_t)_state.Cycle < targetCycle) {
+ 		ProcessCycle();
+ 	}
+--- upstream/SNES/SpcTimer.h
++++ generated/SNES/SpcTimer.h
+@@ -1,6 +1,5 @@
+ #pragma once
+ #include "pch.h"
+-#include "Utilities/Serializer.h"
+ 
+ template<uint8_t rate>
+ class SpcTimer
+@@ -91,8 +90,5 @@
+ 		_output = value;
+ 	}
+ 
+-	void Serialize(Serializer &s)
+-	{
+-		SV(_stage0); SV(_stage1); SV(_stage2); SV(_output); SV(_target); SV(_enabled); SV(_timersEnabled); SV(_prevStage1);
+-	}
++
+ };--- upstream/SNES/DSP/Dsp.h
++++ generated/SNES/DSP/Dsp.h
+@@ -2,13 +2,12 @@
+ #include "pch.h"
+ #include "SNES/DSP/DspVoice.h"
+ #include "SNES/DSP/DspTypes.h"
+-#include "Utilities/ISerializable.h"
+ 
+ class Emulator;
+ class SnesConsole;
+ class Spc;
+ 
+-class Dsp final : public ISerializable
++class Dsp final
+ {
+ private:
+ 	DspState _state = {};
+@@ -77,6 +76,4 @@
+ 	}
+ 
+ 	void Exec();
+-
+-	void Serialize(Serializer& s) override;
+ };
+--- upstream/SNES/DSP/Dsp.cpp
++++ generated/SNES/DSP/Dsp.cpp
+@@ -2,9 +2,8 @@
+ #include "SNES/DSP/Dsp.h"
+ #include "SNES/Spc.h"
+ #include "SNES/SnesConsole.h"
+-#include "Shared/Emulator.h"
+-#include "Shared/EmuSettings.h"
+-#include "Utilities/Serializer.h"
++
++
+ 
+ //Quoted comments are from anomie's DSP document (with modifications by jwdonal)
+ 
+@@ -370,52 +369,4 @@
+ 	}
+ }
+ 
+-void Dsp::Serialize(Serializer& s)
+-{
+-	SVArray(_state.Regs, 128);
+-	SVArray(_state.ExternalRegs, 128);
+-
+-	for(int i = 0; i < 8; i++) {
+-		SVI(_voices[i]);
+-	}
+-
+-	SV(_state.NoiseLfsr);
+-	SV(_state.Counter);
+-	SV(_state.Step);
+-	SV(_state.OutRegBuffer);
+-	SV(_state.EnvRegBuffer);
+-	SV(_state.VoiceEndBuffer);
+-
+-	SV(_state.VoiceOutput);
+-	SVArray(_state.OutSamples, 2);
+-
+-	SV(_state.Pitch);
+-	SV(_state.SampleAddress);
+-	SV(_state.BrrNextAddress);
+-	SV(_state.DirSampleTableAddress);
+-	SV(_state.NoiseOn);
+-	SV(_state.PitchModulationOn);
+-	SV(_state.KeyOn);
+-	SV(_state.NewKeyOn);
+-	SV(_state.KeyOff);
+-	SV(_state.EveryOtherSample);
+-	SV(_state.SourceNumber);
+-	SV(_state.BrrHeader);
+-	SV(_state.BrrData);
+-	SV(_state.Looped);
+-	SV(_state.Adsr1);
+-
+-	SVArray(_state.EchoIn, 2);
+-	SVArray(_state.EchoOut, 2);
+-	
+-	int16_t* echoHistory = &_state.EchoHistory[0][0];
+-	SVArray(echoHistory, 8*2);
+-
+-	SV(_state.EchoPointer);
+-	SV(_state.EchoLength);
+-	SV(_state.EchoOffset);
+-	SV(_state.EchoHistoryPos);
+-	SV(_state.EchoRingBufferAddress);
+-	SV(_state.EchoOn);
+-	SV(_state.EchoEnabled);
+-}
++
+--- upstream/SNES/DSP/DspVoice.h
++++ generated/SNES/DSP/DspVoice.h
+@@ -1,13 +1,12 @@
+ #pragma once
+ #include "pch.h"
+ #include "SNES/DSP/DspTypes.h"
+-#include "Utilities/ISerializable.h"
+ 
+ class Spc;
+ class Dsp;
+ struct SnesConfig;
+ 
+-class DspVoice final : public ISerializable
++class DspVoice final
+ {
+ private:
+ 	Spc* _spc = nullptr;
+@@ -53,6 +52,4 @@
+ 	void Step7();
+ 	void Step8();
+ 	void Step9();
+-
+-	void Serialize(Serializer& s) override;
+ };
+--- upstream/SNES/DSP/DspVoice.cpp
++++ generated/SNES/DSP/DspVoice.cpp
+@@ -4,8 +4,7 @@
+ #include "SNES/DSP/DspTypes.h"
+ #include "SNES/DSP/DspInterpolation.h"
+ #include "SNES/Spc.h"
+-#include "Shared/Emulator.h"
+-#include "Shared/EmuSettings.h"
++
+ 
+ void DspVoice::Init(uint8_t voiceIndex, Spc* spc, Dsp* dsp, uint8_t* dspVoiceRegs, SnesConfig* cfg)
+ {
+@@ -263,8 +262,8 @@
+ 	int32_t output = 0;
+ 	switch(_cfg->InterpolationType) {
+ 		case DspInterpolationType::Gauss: output = DspInterpolation::Gauss(_interpolationPos, _sampleBuffer, _bufferPos); break;
+-		case DspInterpolationType::Cubic: output = DspInterpolation::Cubic(_interpolationPos, _sampleBuffer, _bufferPos); break;
+-		case DspInterpolationType::Sinc: output = DspInterpolation::Sinc(_interpolationPos, _sampleBuffer, _bufferPos); break;
++		case DspInterpolationType::Cubic: assert(false); output = 0; break;
++		case DspInterpolationType::Sinc: assert(false); output = 0; break;
+ 		case DspInterpolationType::None: output = _sampleBuffer[((_interpolationPos >> 12) + _bufferPos) % 12]; break;
+ 	}
+ 
+@@ -378,19 +377,4 @@
+ 	_dsp->WriteVoiceReg(_voiceIndex, DspVoiceRegs::Envelope, _shared->EnvRegBuffer);
+ }
+ 
+-void DspVoice::Serialize(Serializer& s)
+-{
+-	SV(_envVolume);
+-	SV(_prevCalculatedEnv);
+-	SV(_interpolationPos);
+-	SV(_envMode);
+-
+-	SV(_brrAddress);
+-	SV(_brrOffset);
+-	SV(_voiceBit);
+-	SV(_keyOnDelay);
+-	SV(_envOut);
+-	SV(_bufferPos);
+-
+-	SVArray(_sampleBuffer, 12);
+-}
++

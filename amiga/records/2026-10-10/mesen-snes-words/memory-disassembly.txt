@@ -1,0 +1,517 @@
+
+.context/amiga/mesen-snes-profile-words/20-memory.arm.o:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+00000000 <memcpy>:
+       0: e92d4830     	push	{r4, r5, r11, lr}
+       4: e0213000     	eor	r3, r1, r0
+       8: e3130003     	tst	r3, #3
+       c: 0a000003     	beq	0x20 <memcpy+0x20>      @ imm = #0xc
+      10: e1a0c001     	mov	r12, r1
+      14: e1a03000     	mov	r3, r0
+      18: e1a0e002     	mov	lr, r2
+      1c: ea000035     	b	0xf8 <memcpy+0xf8>      @ imm = #0xd4
+      20: e3520000     	cmp	r2, #0
+      24: 12103003     	andsne	r3, r0, #3
+      28: 1a000003     	bne	0x3c <memcpy+0x3c>      @ imm = #0xc
+      2c: e1a0c001     	mov	r12, r1
+      30: e1a03000     	mov	r3, r0
+      34: e1a0e002     	mov	lr, r2
+      38: ea000019     	b	0xa4 <memcpy+0xa4>      @ imm = #0x64
+      3c: e1a0c001     	mov	r12, r1
+      40: e1a03000     	mov	r3, r0
+      44: e4dce001     	ldrb	lr, [r12], #1
+      48: e4c3e001     	strb	lr, [r3], #1
+      4c: e252e001     	subs	lr, r2, #1
+      50: 12134003     	andsne	r4, r3, #3
+      54: 0a000012     	beq	0xa4 <memcpy+0xa4>      @ imm = #0x48
+      58: e5d13001     	ldrb	r3, [r1, #0x1]
+      5c: e281c002     	add	r12, r1, #2
+      60: e252e002     	subs	lr, r2, #2
+      64: e5c03001     	strb	r3, [r0, #0x1]
+      68: e2803002     	add	r3, r0, #2
+      6c: 12134003     	andsne	r4, r3, #3
+      70: 0a00000b     	beq	0xa4 <memcpy+0xa4>      @ imm = #0x2c
+      74: e5d13002     	ldrb	r3, [r1, #0x2]
+      78: e281c003     	add	r12, r1, #3
+      7c: e252e003     	subs	lr, r2, #3
+      80: e5c03002     	strb	r3, [r0, #0x2]
+      84: e2803003     	add	r3, r0, #3
+      88: 12134003     	andsne	r4, r3, #3
+      8c: 0a000004     	beq	0xa4 <memcpy+0xa4>      @ imm = #0x10
+      90: e5d13003     	ldrb	r3, [r1, #0x3]
+      94: e242e004     	sub	lr, r2, #4
+      98: e281c004     	add	r12, r1, #4
+      9c: e5c03003     	strb	r3, [r0, #0x3]
+      a0: e2803004     	add	r3, r0, #4
+      a4: e35e0010     	cmp	lr, #16
+      a8: 3a00000b     	blo	0xdc <memcpy+0xdc>      @ imm = #0x2c
+      ac: e59c1000     	ldr	r1, [r12]
+      b0: e24ee010     	sub	lr, lr, #16
+      b4: e59c2004     	ldr	r2, [r12, #0x4]
+      b8: e35e000f     	cmp	lr, #15
+      bc: e59c4008     	ldr	r4, [r12, #0x8]
+      c0: e59c500c     	ldr	r5, [r12, #0xc]
+      c4: e28cc010     	add	r12, r12, #16
+      c8: e5832004     	str	r2, [r3, #0x4]
+      cc: e5834008     	str	r4, [r3, #0x8]
+      d0: e583500c     	str	r5, [r3, #0xc]
+      d4: e4831010     	str	r1, [r3], #16
+      d8: 8afffff3     	bhi	0xac <memcpy+0xac>      @ imm = #-0x34
+      dc: e35e0004     	cmp	lr, #4
+      e0: 3a000004     	blo	0xf8 <memcpy+0xf8>      @ imm = #0x10
+      e4: e49c1004     	ldr	r1, [r12], #4
+      e8: e24ee004     	sub	lr, lr, #4
+      ec: e35e0003     	cmp	lr, #3
+      f0: e4831004     	str	r1, [r3], #4
+      f4: 8afffffa     	bhi	0xe4 <memcpy+0xe4>      @ imm = #-0x18
+      f8: e35e0000     	cmp	lr, #0
+      fc: 0a000003     	beq	0x110 <memcpy+0x110>    @ imm = #0xc
+     100: e4dc1001     	ldrb	r1, [r12], #1
+     104: e25ee001     	subs	lr, lr, #1
+     108: e4c31001     	strb	r1, [r3], #1
+     10c: 1afffffb     	bne	0x100 <memcpy+0x100>    @ imm = #-0x14
+     110: e8bd8830     	pop	{r4, r5, r11, pc}
+
+00000114 <memset>:
+     114: e92d4800     	push	{r11, lr}
+     118: e3520000     	cmp	r2, #0
+     11c: 12103003     	andsne	r3, r0, #3
+     120: 1a000002     	bne	0x130 <memset+0x1c>     @ imm = #0x8
+     124: e1a0e000     	mov	lr, r0
+     128: e1a0c002     	mov	r12, r2
+     12c: ea000011     	b	0x178 <memset+0x64>     @ imm = #0x44
+     130: e1a0e000     	mov	lr, r0
+     134: e252c001     	subs	r12, r2, #1
+     138: e4ce1001     	strb	r1, [lr], #1
+     13c: 0a00000d     	beq	0x178 <memset+0x64>     @ imm = #0x34
+     140: e21e3003     	ands	r3, lr, #3
+     144: 15c01001     	strbne	r1, [r0, #0x1]
+     148: 1280e002     	addne	lr, r0, #2
+     14c: 1252c002     	subsne	r12, r2, #2
+     150: 0a000008     	beq	0x178 <memset+0x64>     @ imm = #0x20
+     154: e21e3003     	ands	r3, lr, #3
+     158: 15c01002     	strbne	r1, [r0, #0x2]
+     15c: 1280e003     	addne	lr, r0, #3
+     160: 1252c003     	subsne	r12, r2, #3
+     164: 0a000003     	beq	0x178 <memset+0x64>     @ imm = #0xc
+     168: e21e3003     	ands	r3, lr, #3
+     16c: 1242c004     	subne	r12, r2, #4
+     170: 1280e004     	addne	lr, r0, #4
+     174: 15c01003     	strbne	r1, [r0, #0x3]
+     178: e3003101     	movw	r3, #0x101
+     17c: e6ef2071     	uxtb	r2, r1
+     180: e3403101     	movt	r3, #0x101
+     184: e35c0010     	cmp	r12, #16
+     188: e0020392     	mul	r2, r2, r3
+     18c: 3a000006     	blo	0x1ac <memset+0x98>     @ imm = #0x18
+     190: e58e200c     	str	r2, [lr, #0xc]
+     194: e24cc010     	sub	r12, r12, #16
+     198: e58e2008     	str	r2, [lr, #0x8]
+     19c: e35c000f     	cmp	r12, #15
+     1a0: e58e2004     	str	r2, [lr, #0x4]
+     1a4: e48e2010     	str	r2, [lr], #16
+     1a8: 8afffff8     	bhi	0x190 <memset+0x7c>     @ imm = #-0x20
+     1ac: e35c0004     	cmp	r12, #4
+     1b0: 3a000003     	blo	0x1c4 <memset+0xb0>     @ imm = #0xc
+     1b4: e48e2004     	str	r2, [lr], #4
+     1b8: e24cc004     	sub	r12, r12, #4
+     1bc: e35c0003     	cmp	r12, #3
+     1c0: 8afffffb     	bhi	0x1b4 <memset+0xa0>     @ imm = #-0x14
+     1c4: e35c0000     	cmp	r12, #0
+     1c8: 08bd8800     	popeq	{r11, pc}
+     1cc: e4ce1001     	strb	r1, [lr], #1
+     1d0: e25cc001     	subs	r12, r12, #1
+     1d4: 1afffffc     	bne	0x1cc <memset+0xb8>     @ imm = #-0x10
+     1d8: e8bd8800     	pop	{r11, pc}
+
+000001dc <__aeabi_memcpy>:
+     1dc: e92d4010     	push	{r4, lr}
+     1e0: e0213000     	eor	r3, r1, r0
+     1e4: e3130003     	tst	r3, #3
+     1e8: 0a000003     	beq	0x1fc <__aeabi_memcpy+0x20> @ imm = #0xc
+     1ec: e1a0c001     	mov	r12, r1
+     1f0: e1a03000     	mov	r3, r0
+     1f4: e1a0e002     	mov	lr, r2
+     1f8: ea000035     	b	0x2d4 <__aeabi_memcpy+0xf8> @ imm = #0xd4
+     1fc: e3520000     	cmp	r2, #0
+     200: 12103003     	andsne	r3, r0, #3
+     204: 1a000003     	bne	0x218 <__aeabi_memcpy+0x3c> @ imm = #0xc
+     208: e1a0c001     	mov	r12, r1
+     20c: e1a03000     	mov	r3, r0
+     210: e1a0e002     	mov	lr, r2
+     214: ea000019     	b	0x280 <__aeabi_memcpy+0xa4> @ imm = #0x64
+     218: e1a0c001     	mov	r12, r1
+     21c: e1a03000     	mov	r3, r0
+     220: e4dce001     	ldrb	lr, [r12], #1
+     224: e4c3e001     	strb	lr, [r3], #1
+     228: e252e001     	subs	lr, r2, #1
+     22c: 12134003     	andsne	r4, r3, #3
+     230: 0a000012     	beq	0x280 <__aeabi_memcpy+0xa4> @ imm = #0x48
+     234: e5d13001     	ldrb	r3, [r1, #0x1]
+     238: e281c002     	add	r12, r1, #2
+     23c: e252e002     	subs	lr, r2, #2
+     240: e5c03001     	strb	r3, [r0, #0x1]
+     244: e2803002     	add	r3, r0, #2
+     248: 12134003     	andsne	r4, r3, #3
+     24c: 0a00000b     	beq	0x280 <__aeabi_memcpy+0xa4> @ imm = #0x2c
+     250: e5d13002     	ldrb	r3, [r1, #0x2]
+     254: e281c003     	add	r12, r1, #3
+     258: e252e003     	subs	lr, r2, #3
+     25c: e5c03002     	strb	r3, [r0, #0x2]
+     260: e2803003     	add	r3, r0, #3
+     264: 12134003     	andsne	r4, r3, #3
+     268: 0a000004     	beq	0x280 <__aeabi_memcpy+0xa4> @ imm = #0x10
+     26c: e5d13003     	ldrb	r3, [r1, #0x3]
+     270: e242e004     	sub	lr, r2, #4
+     274: e281c004     	add	r12, r1, #4
+     278: e5c03003     	strb	r3, [r0, #0x3]
+     27c: e2803004     	add	r3, r0, #4
+     280: e35e0010     	cmp	lr, #16
+     284: 3a00000b     	blo	0x2b8 <__aeabi_memcpy+0xdc> @ imm = #0x2c
+     288: e59c0000     	ldr	r0, [r12]
+     28c: e24ee010     	sub	lr, lr, #16
+     290: e59c1004     	ldr	r1, [r12, #0x4]
+     294: e35e000f     	cmp	lr, #15
+     298: e59c2008     	ldr	r2, [r12, #0x8]
+     29c: e59c400c     	ldr	r4, [r12, #0xc]
+     2a0: e28cc010     	add	r12, r12, #16
+     2a4: e5831004     	str	r1, [r3, #0x4]
+     2a8: e5832008     	str	r2, [r3, #0x8]
+     2ac: e583400c     	str	r4, [r3, #0xc]
+     2b0: e4830010     	str	r0, [r3], #16
+     2b4: 8afffff3     	bhi	0x288 <__aeabi_memcpy+0xac> @ imm = #-0x34
+     2b8: e35e0004     	cmp	lr, #4
+     2bc: 3a000004     	blo	0x2d4 <__aeabi_memcpy+0xf8> @ imm = #0x10
+     2c0: e49c0004     	ldr	r0, [r12], #4
+     2c4: e24ee004     	sub	lr, lr, #4
+     2c8: e35e0003     	cmp	lr, #3
+     2cc: e4830004     	str	r0, [r3], #4
+     2d0: 8afffffa     	bhi	0x2c0 <__aeabi_memcpy+0xe4> @ imm = #-0x18
+     2d4: e35e0000     	cmp	lr, #0
+     2d8: 08bd8010     	popeq	{r4, pc}
+     2dc: e4dc0001     	ldrb	r0, [r12], #1
+     2e0: e25ee001     	subs	lr, lr, #1
+     2e4: e4c30001     	strb	r0, [r3], #1
+     2e8: 1afffffb     	bne	0x2dc <__aeabi_memcpy+0x100> @ imm = #-0x14
+     2ec: e8bd8010     	pop	{r4, pc}
+
+000002f0 <__aeabi_memcpy4>:
+     2f0: e92d4010     	push	{r4, lr}
+     2f4: e0213000     	eor	r3, r1, r0
+     2f8: e3130003     	tst	r3, #3
+     2fc: 0a000003     	beq	0x310 <__aeabi_memcpy4+0x20> @ imm = #0xc
+     300: e1a0c001     	mov	r12, r1
+     304: e1a03000     	mov	r3, r0
+     308: e1a0e002     	mov	lr, r2
+     30c: ea000035     	b	0x3e8 <__aeabi_memcpy4+0xf8> @ imm = #0xd4
+     310: e3520000     	cmp	r2, #0
+     314: 12103003     	andsne	r3, r0, #3
+     318: 1a000003     	bne	0x32c <__aeabi_memcpy4+0x3c> @ imm = #0xc
+     31c: e1a0c001     	mov	r12, r1
+     320: e1a03000     	mov	r3, r0
+     324: e1a0e002     	mov	lr, r2
+     328: ea000019     	b	0x394 <__aeabi_memcpy4+0xa4> @ imm = #0x64
+     32c: e1a0c001     	mov	r12, r1
+     330: e1a03000     	mov	r3, r0
+     334: e4dce001     	ldrb	lr, [r12], #1
+     338: e4c3e001     	strb	lr, [r3], #1
+     33c: e252e001     	subs	lr, r2, #1
+     340: 12134003     	andsne	r4, r3, #3
+     344: 0a000012     	beq	0x394 <__aeabi_memcpy4+0xa4> @ imm = #0x48
+     348: e5d13001     	ldrb	r3, [r1, #0x1]
+     34c: e281c002     	add	r12, r1, #2
+     350: e252e002     	subs	lr, r2, #2
+     354: e5c03001     	strb	r3, [r0, #0x1]
+     358: e2803002     	add	r3, r0, #2
+     35c: 12134003     	andsne	r4, r3, #3
+     360: 0a00000b     	beq	0x394 <__aeabi_memcpy4+0xa4> @ imm = #0x2c
+     364: e5d13002     	ldrb	r3, [r1, #0x2]
+     368: e281c003     	add	r12, r1, #3
+     36c: e252e003     	subs	lr, r2, #3
+     370: e5c03002     	strb	r3, [r0, #0x2]
+     374: e2803003     	add	r3, r0, #3
+     378: 12134003     	andsne	r4, r3, #3
+     37c: 0a000004     	beq	0x394 <__aeabi_memcpy4+0xa4> @ imm = #0x10
+     380: e5d13003     	ldrb	r3, [r1, #0x3]
+     384: e242e004     	sub	lr, r2, #4
+     388: e281c004     	add	r12, r1, #4
+     38c: e5c03003     	strb	r3, [r0, #0x3]
+     390: e2803004     	add	r3, r0, #4
+     394: e35e0010     	cmp	lr, #16
+     398: 3a00000b     	blo	0x3cc <__aeabi_memcpy4+0xdc> @ imm = #0x2c
+     39c: e59c0000     	ldr	r0, [r12]
+     3a0: e24ee010     	sub	lr, lr, #16
+     3a4: e59c1004     	ldr	r1, [r12, #0x4]
+     3a8: e35e000f     	cmp	lr, #15
+     3ac: e59c2008     	ldr	r2, [r12, #0x8]
+     3b0: e59c400c     	ldr	r4, [r12, #0xc]
+     3b4: e28cc010     	add	r12, r12, #16
+     3b8: e5831004     	str	r1, [r3, #0x4]
+     3bc: e5832008     	str	r2, [r3, #0x8]
+     3c0: e583400c     	str	r4, [r3, #0xc]
+     3c4: e4830010     	str	r0, [r3], #16
+     3c8: 8afffff3     	bhi	0x39c <__aeabi_memcpy4+0xac> @ imm = #-0x34
+     3cc: e35e0004     	cmp	lr, #4
+     3d0: 3a000004     	blo	0x3e8 <__aeabi_memcpy4+0xf8> @ imm = #0x10
+     3d4: e49c0004     	ldr	r0, [r12], #4
+     3d8: e24ee004     	sub	lr, lr, #4
+     3dc: e35e0003     	cmp	lr, #3
+     3e0: e4830004     	str	r0, [r3], #4
+     3e4: 8afffffa     	bhi	0x3d4 <__aeabi_memcpy4+0xe4> @ imm = #-0x18
+     3e8: e35e0000     	cmp	lr, #0
+     3ec: 08bd8010     	popeq	{r4, pc}
+     3f0: e4dc0001     	ldrb	r0, [r12], #1
+     3f4: e25ee001     	subs	lr, lr, #1
+     3f8: e4c30001     	strb	r0, [r3], #1
+     3fc: 1afffffb     	bne	0x3f0 <__aeabi_memcpy4+0x100> @ imm = #-0x14
+     400: e8bd8010     	pop	{r4, pc}
+
+00000404 <__aeabi_memcpy8>:
+     404: e92d4010     	push	{r4, lr}
+     408: e0213000     	eor	r3, r1, r0
+     40c: e3130003     	tst	r3, #3
+     410: 0a000003     	beq	0x424 <__aeabi_memcpy8+0x20> @ imm = #0xc
+     414: e1a0c001     	mov	r12, r1
+     418: e1a03000     	mov	r3, r0
+     41c: e1a0e002     	mov	lr, r2
+     420: ea000035     	b	0x4fc <__aeabi_memcpy8+0xf8> @ imm = #0xd4
+     424: e3520000     	cmp	r2, #0
+     428: 12103003     	andsne	r3, r0, #3
+     42c: 1a000003     	bne	0x440 <__aeabi_memcpy8+0x3c> @ imm = #0xc
+     430: e1a0c001     	mov	r12, r1
+     434: e1a03000     	mov	r3, r0
+     438: e1a0e002     	mov	lr, r2
+     43c: ea000019     	b	0x4a8 <__aeabi_memcpy8+0xa4> @ imm = #0x64
+     440: e1a0c001     	mov	r12, r1
+     444: e1a03000     	mov	r3, r0
+     448: e4dce001     	ldrb	lr, [r12], #1
+     44c: e4c3e001     	strb	lr, [r3], #1
+     450: e252e001     	subs	lr, r2, #1
+     454: 12134003     	andsne	r4, r3, #3
+     458: 0a000012     	beq	0x4a8 <__aeabi_memcpy8+0xa4> @ imm = #0x48
+     45c: e5d13001     	ldrb	r3, [r1, #0x1]
+     460: e281c002     	add	r12, r1, #2
+     464: e252e002     	subs	lr, r2, #2
+     468: e5c03001     	strb	r3, [r0, #0x1]
+     46c: e2803002     	add	r3, r0, #2
+     470: 12134003     	andsne	r4, r3, #3
+     474: 0a00000b     	beq	0x4a8 <__aeabi_memcpy8+0xa4> @ imm = #0x2c
+     478: e5d13002     	ldrb	r3, [r1, #0x2]
+     47c: e281c003     	add	r12, r1, #3
+     480: e252e003     	subs	lr, r2, #3
+     484: e5c03002     	strb	r3, [r0, #0x2]
+     488: e2803003     	add	r3, r0, #3
+     48c: 12134003     	andsne	r4, r3, #3
+     490: 0a000004     	beq	0x4a8 <__aeabi_memcpy8+0xa4> @ imm = #0x10
+     494: e5d13003     	ldrb	r3, [r1, #0x3]
+     498: e242e004     	sub	lr, r2, #4
+     49c: e281c004     	add	r12, r1, #4
+     4a0: e5c03003     	strb	r3, [r0, #0x3]
+     4a4: e2803004     	add	r3, r0, #4
+     4a8: e35e0010     	cmp	lr, #16
+     4ac: 3a00000b     	blo	0x4e0 <__aeabi_memcpy8+0xdc> @ imm = #0x2c
+     4b0: e59c0000     	ldr	r0, [r12]
+     4b4: e24ee010     	sub	lr, lr, #16
+     4b8: e59c1004     	ldr	r1, [r12, #0x4]
+     4bc: e35e000f     	cmp	lr, #15
+     4c0: e59c2008     	ldr	r2, [r12, #0x8]
+     4c4: e59c400c     	ldr	r4, [r12, #0xc]
+     4c8: e28cc010     	add	r12, r12, #16
+     4cc: e5831004     	str	r1, [r3, #0x4]
+     4d0: e5832008     	str	r2, [r3, #0x8]
+     4d4: e583400c     	str	r4, [r3, #0xc]
+     4d8: e4830010     	str	r0, [r3], #16
+     4dc: 8afffff3     	bhi	0x4b0 <__aeabi_memcpy8+0xac> @ imm = #-0x34
+     4e0: e35e0004     	cmp	lr, #4
+     4e4: 3a000004     	blo	0x4fc <__aeabi_memcpy8+0xf8> @ imm = #0x10
+     4e8: e49c0004     	ldr	r0, [r12], #4
+     4ec: e24ee004     	sub	lr, lr, #4
+     4f0: e35e0003     	cmp	lr, #3
+     4f4: e4830004     	str	r0, [r3], #4
+     4f8: 8afffffa     	bhi	0x4e8 <__aeabi_memcpy8+0xe4> @ imm = #-0x18
+     4fc: e35e0000     	cmp	lr, #0
+     500: 08bd8010     	popeq	{r4, pc}
+     504: e4dc0001     	ldrb	r0, [r12], #1
+     508: e25ee001     	subs	lr, lr, #1
+     50c: e4c30001     	strb	r0, [r3], #1
+     510: 1afffffb     	bne	0x504 <__aeabi_memcpy8+0x100> @ imm = #-0x14
+     514: e8bd8010     	pop	{r4, pc}
+
+00000518 <__aeabi_memclr>:
+     518: e3510000     	cmp	r1, #0
+     51c: 12102003     	andsne	r2, r0, #3
+     520: 1a000004     	bne	0x538 <__aeabi_memclr+0x20> @ imm = #0x10
+     524: e1a02000     	mov	r2, r0
+     528: e1a0c001     	mov	r12, r1
+     52c: e35c0010     	cmp	r12, #16
+     530: 2a000013     	bhs	0x584 <__aeabi_memclr+0x6c> @ imm = #0x4c
+     534: ea00001a     	b	0x5a4 <__aeabi_memclr+0x8c> @ imm = #0x68
+     538: e3a03000     	mov	r3, #0
+     53c: e1a02000     	mov	r2, r0
+     540: e4c23001     	strb	r3, [r2], #1
+     544: e251c001     	subs	r12, r1, #1
+     548: 0a00000b     	beq	0x57c <__aeabi_memclr+0x64> @ imm = #0x2c
+     54c: e2123003     	ands	r3, r2, #3
+     550: 13a02000     	movne	r2, #0
+     554: 15c02001     	strbne	r2, [r0, #0x1]
+     558: 12802002     	addne	r2, r0, #2
+     55c: 1251c002     	subsne	r12, r1, #2
+     560: 0a000005     	beq	0x57c <__aeabi_memclr+0x64> @ imm = #0x14
+     564: e2123003     	ands	r3, r2, #3
+     568: 13a02000     	movne	r2, #0
+     56c: 15c02002     	strbne	r2, [r0, #0x2]
+     570: 12802003     	addne	r2, r0, #3
+     574: 1251c003     	subsne	r12, r1, #3
+     578: 1a000017     	bne	0x5dc <__aeabi_memclr+0xc4> @ imm = #0x5c
+     57c: e35c0010     	cmp	r12, #16
+     580: 3a000007     	blo	0x5a4 <__aeabi_memclr+0x8c> @ imm = #0x1c
+     584: e3a00000     	mov	r0, #0
+     588: e582000c     	str	r0, [r2, #0xc]
+     58c: e24cc010     	sub	r12, r12, #16
+     590: e5820008     	str	r0, [r2, #0x8]
+     594: e35c000f     	cmp	r12, #15
+     598: e5820004     	str	r0, [r2, #0x4]
+     59c: e4820010     	str	r0, [r2], #16
+     5a0: 8afffff8     	bhi	0x588 <__aeabi_memclr+0x70> @ imm = #-0x20
+     5a4: e35c0004     	cmp	r12, #4
+     5a8: 3a000004     	blo	0x5c0 <__aeabi_memclr+0xa8> @ imm = #0x10
+     5ac: e3a00000     	mov	r0, #0
+     5b0: e4820004     	str	r0, [r2], #4
+     5b4: e24cc004     	sub	r12, r12, #4
+     5b8: e35c0003     	cmp	r12, #3
+     5bc: 8afffffb     	bhi	0x5b0 <__aeabi_memclr+0x98> @ imm = #-0x14
+     5c0: e35c0000     	cmp	r12, #0
+     5c4: 012fff1e     	bxeq	lr
+     5c8: e3a00000     	mov	r0, #0
+     5cc: e4c20001     	strb	r0, [r2], #1
+     5d0: e25cc001     	subs	r12, r12, #1
+     5d4: 1afffffc     	bne	0x5cc <__aeabi_memclr+0xb4> @ imm = #-0x10
+     5d8: e12fff1e     	bx	lr
+     5dc: e2123003     	ands	r3, r2, #3
+     5e0: 13a02000     	movne	r2, #0
+     5e4: 1241c004     	subne	r12, r1, #4
+     5e8: 15c02003     	strbne	r2, [r0, #0x3]
+     5ec: 12802004     	addne	r2, r0, #4
+     5f0: e35c0010     	cmp	r12, #16
+     5f4: 2affffe2     	bhs	0x584 <__aeabi_memclr+0x6c> @ imm = #-0x78
+     5f8: eaffffe9     	b	0x5a4 <__aeabi_memclr+0x8c> @ imm = #-0x5c
+
+000005fc <__aeabi_memclr4>:
+     5fc: e3510000     	cmp	r1, #0
+     600: 12102003     	andsne	r2, r0, #3
+     604: 1a000004     	bne	0x61c <__aeabi_memclr4+0x20> @ imm = #0x10
+     608: e1a02000     	mov	r2, r0
+     60c: e1a0c001     	mov	r12, r1
+     610: e35c0010     	cmp	r12, #16
+     614: 2a000013     	bhs	0x668 <__aeabi_memclr4+0x6c> @ imm = #0x4c
+     618: ea00001a     	b	0x688 <__aeabi_memclr4+0x8c> @ imm = #0x68
+     61c: e3a03000     	mov	r3, #0
+     620: e1a02000     	mov	r2, r0
+     624: e4c23001     	strb	r3, [r2], #1
+     628: e251c001     	subs	r12, r1, #1
+     62c: 0a00000b     	beq	0x660 <__aeabi_memclr4+0x64> @ imm = #0x2c
+     630: e2123003     	ands	r3, r2, #3
+     634: 13a02000     	movne	r2, #0
+     638: 15c02001     	strbne	r2, [r0, #0x1]
+     63c: 12802002     	addne	r2, r0, #2
+     640: 1251c002     	subsne	r12, r1, #2
+     644: 0a000005     	beq	0x660 <__aeabi_memclr4+0x64> @ imm = #0x14
+     648: e2123003     	ands	r3, r2, #3
+     64c: 13a02000     	movne	r2, #0
+     650: 15c02002     	strbne	r2, [r0, #0x2]
+     654: 12802003     	addne	r2, r0, #3
+     658: 1251c003     	subsne	r12, r1, #3
+     65c: 1a000017     	bne	0x6c0 <__aeabi_memclr4+0xc4> @ imm = #0x5c
+     660: e35c0010     	cmp	r12, #16
+     664: 3a000007     	blo	0x688 <__aeabi_memclr4+0x8c> @ imm = #0x1c
+     668: e3a00000     	mov	r0, #0
+     66c: e582000c     	str	r0, [r2, #0xc]
+     670: e24cc010     	sub	r12, r12, #16
+     674: e5820008     	str	r0, [r2, #0x8]
+     678: e35c000f     	cmp	r12, #15
+     67c: e5820004     	str	r0, [r2, #0x4]
+     680: e4820010     	str	r0, [r2], #16
+     684: 8afffff8     	bhi	0x66c <__aeabi_memclr4+0x70> @ imm = #-0x20
+     688: e35c0004     	cmp	r12, #4
+     68c: 3a000004     	blo	0x6a4 <__aeabi_memclr4+0xa8> @ imm = #0x10
+     690: e3a00000     	mov	r0, #0
+     694: e4820004     	str	r0, [r2], #4
+     698: e24cc004     	sub	r12, r12, #4
+     69c: e35c0003     	cmp	r12, #3
+     6a0: 8afffffb     	bhi	0x694 <__aeabi_memclr4+0x98> @ imm = #-0x14
+     6a4: e35c0000     	cmp	r12, #0
+     6a8: 012fff1e     	bxeq	lr
+     6ac: e3a00000     	mov	r0, #0
+     6b0: e4c20001     	strb	r0, [r2], #1
+     6b4: e25cc001     	subs	r12, r12, #1
+     6b8: 1afffffc     	bne	0x6b0 <__aeabi_memclr4+0xb4> @ imm = #-0x10
+     6bc: e12fff1e     	bx	lr
+     6c0: e2123003     	ands	r3, r2, #3
+     6c4: 13a02000     	movne	r2, #0
+     6c8: 1241c004     	subne	r12, r1, #4
+     6cc: 15c02003     	strbne	r2, [r0, #0x3]
+     6d0: 12802004     	addne	r2, r0, #4
+     6d4: e35c0010     	cmp	r12, #16
+     6d8: 2affffe2     	bhs	0x668 <__aeabi_memclr4+0x6c> @ imm = #-0x78
+     6dc: eaffffe9     	b	0x688 <__aeabi_memclr4+0x8c> @ imm = #-0x5c
+
+000006e0 <__aeabi_memclr8>:
+     6e0: e3510000     	cmp	r1, #0
+     6e4: 12102003     	andsne	r2, r0, #3
+     6e8: 1a000004     	bne	0x700 <__aeabi_memclr8+0x20> @ imm = #0x10
+     6ec: e1a02000     	mov	r2, r0
+     6f0: e1a0c001     	mov	r12, r1
+     6f4: e35c0010     	cmp	r12, #16
+     6f8: 2a000013     	bhs	0x74c <__aeabi_memclr8+0x6c> @ imm = #0x4c
+     6fc: ea00001a     	b	0x76c <__aeabi_memclr8+0x8c> @ imm = #0x68
+     700: e3a03000     	mov	r3, #0
+     704: e1a02000     	mov	r2, r0
+     708: e4c23001     	strb	r3, [r2], #1
+     70c: e251c001     	subs	r12, r1, #1
+     710: 0a00000b     	beq	0x744 <__aeabi_memclr8+0x64> @ imm = #0x2c
+     714: e2123003     	ands	r3, r2, #3
+     718: 13a02000     	movne	r2, #0
+     71c: 15c02001     	strbne	r2, [r0, #0x1]
+     720: 12802002     	addne	r2, r0, #2
+     724: 1251c002     	subsne	r12, r1, #2
+     728: 0a000005     	beq	0x744 <__aeabi_memclr8+0x64> @ imm = #0x14
+     72c: e2123003     	ands	r3, r2, #3
+     730: 13a02000     	movne	r2, #0
+     734: 15c02002     	strbne	r2, [r0, #0x2]
+     738: 12802003     	addne	r2, r0, #3
+     73c: 1251c003     	subsne	r12, r1, #3
+     740: 1a000017     	bne	0x7a4 <__aeabi_memclr8+0xc4> @ imm = #0x5c
+     744: e35c0010     	cmp	r12, #16
+     748: 3a000007     	blo	0x76c <__aeabi_memclr8+0x8c> @ imm = #0x1c
+     74c: e3a00000     	mov	r0, #0
+     750: e582000c     	str	r0, [r2, #0xc]
+     754: e24cc010     	sub	r12, r12, #16
+     758: e5820008     	str	r0, [r2, #0x8]
+     75c: e35c000f     	cmp	r12, #15
+     760: e5820004     	str	r0, [r2, #0x4]
+     764: e4820010     	str	r0, [r2], #16
+     768: 8afffff8     	bhi	0x750 <__aeabi_memclr8+0x70> @ imm = #-0x20
+     76c: e35c0004     	cmp	r12, #4
+     770: 3a000004     	blo	0x788 <__aeabi_memclr8+0xa8> @ imm = #0x10
+     774: e3a00000     	mov	r0, #0
+     778: e4820004     	str	r0, [r2], #4
+     77c: e24cc004     	sub	r12, r12, #4
+     780: e35c0003     	cmp	r12, #3
+     784: 8afffffb     	bhi	0x778 <__aeabi_memclr8+0x98> @ imm = #-0x14
+     788: e35c0000     	cmp	r12, #0
+     78c: 012fff1e     	bxeq	lr
+     790: e3a00000     	mov	r0, #0
+     794: e4c20001     	strb	r0, [r2], #1
+     798: e25cc001     	subs	r12, r12, #1
+     79c: 1afffffc     	bne	0x794 <__aeabi_memclr8+0xb4> @ imm = #-0x10
+     7a0: e12fff1e     	bx	lr
+     7a4: e2123003     	ands	r3, r2, #3
+     7a8: 13a02000     	movne	r2, #0
+     7ac: 1241c004     	subne	r12, r1, #4
+     7b0: 15c02003     	strbne	r2, [r0, #0x3]
+     7b4: 12802004     	addne	r2, r0, #4
+     7b8: e35c0010     	cmp	r12, #16
+     7bc: 2affffe2     	bhs	0x74c <__aeabi_memclr8+0x6c> @ imm = #-0x78
+     7c0: eaffffe9     	b	0x76c <__aeabi_memclr8+0x8c> @ imm = #-0x5c

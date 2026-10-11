@@ -1,0 +1,40 @@
+OWNED amiga=50000040 arm_candidate=101f0040 size=4194304 nonce=85a5e9f7
+BOOTSTRAP amiga=40c52800 arm=00e42800 (P96 allocated/locked)
+MAP status=4d415031 SCTLR=08c50878 MIDR=413fc090 MPIDR=80000001
+MAPPING PASS (eight nonce-derived words)
+ARM ready=41524d31 SCTLR=08c5187d MIDR=413fc090 MPIDR=80000001
+MESEN2 SNES SYSTEM; CPU/PPU/DMA/SPC/DSP; headless fixture; private inner WB/WA; MMU/I/D ON; shared and outer NC
+TIMER estimated_hz=333332583 calibration_us=2004286
+VERIFY checked=6 mismatch=0 cycles=277071 hash=1e1e29c5 errors=0 unsupported=0
+SYSTEM master=2093734 spc=199650 pcm=2cfa6c7d samples=3119
+SAMPLE n=0 warmup=1 frames=6 cycles=277071 ticks=79920692 core_us=239762 hash=1e1e29c5
+SAMPLE n=1 warmup=0 frames=6 cycles=277071 ticks=79916395 core_us=239749 hash=1e1e29c5
+SAMPLE n=2 warmup=0 frames=6 cycles=277071 ticks=79831479 core_us=239494 hash=1e1e29c5
+SAMPLE n=3 warmup=0 frames=6 cycles=277071 ticks=79842185 core_us=239527 hash=1e1e29c5
+SAMPLE n=4 warmup=0 frames=6 cycles=277071 ticks=79867721 core_us=239603 hash=1e1e29c5
+SAMPLE n=5 warmup=0 frames=6 cycles=277071 ticks=79943799 core_us=239831 hash=1e1e29c5
+SAMPLE n=6 warmup=0 frames=6 cycles=277071 ticks=79813508 core_us=239441 hash=1e1e29c5
+SAMPLE n=7 warmup=0 frames=6 cycles=277071 ticks=79891236 core_us=239674 hash=1e1e29c5
+SAMPLE n=8 warmup=0 frames=6 cycles=277071 ticks=79981502 core_us=239945 hash=1e1e29c5
+SAMPLE n=9 warmup=0 frames=6 cycles=277071 ticks=79983203 core_us=239950 hash=1e1e29c5
+SAMPLE n=10 warmup=0 frames=6 cycles=277071 ticks=79874147 core_us=239622 hash=1e1e29c5
+CANCEL PASS active_work=1 elapsed_us=133393
+MESEN_SNES_SYSTEM PASS; headless startup fixture, NOT game/display FPS
+EXIT epilogue=52455431 cache_echoes=0 rounds=0
+CACHE original=08c50878 running=08c5187d restored=08c50878
+MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=10234000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=15
+REGISTER n=0 original=08c50878 restored=08c50878
+REGISTER n=1 original=00000000 restored=00000000
+REGISTER n=2 original=02000000 restored=02000000
+REGISTER n=3 original=00000000 restored=00000000
+REGISTER n=4 original=00000000 restored=00000000
+REGISTER n=5 original=00000001 restored=00000001
+REGISTER n=6 original=600101d3 restored=600101d3
+REGISTER n=7 original=00000006 restored=00000006
+REGISTER n=8 original=00001000 restored=00001000
+REGISTER n=9 original=00098aa4 restored=00098aa4
+REGISTER n=10 original=44e048e0 restored=44e048e0
+REGISTER n=11 original=00000000 restored=00000000
+REGISTER n=12 original=00000001 restored=00000001
+REGISTER n=13 original=72360000 restored=72360000
+LAUNCHER exit=0; owned memory released

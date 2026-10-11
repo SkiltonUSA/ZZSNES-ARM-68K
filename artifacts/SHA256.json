@@ -1,0 +1,16 @@
+{
+  "artifacts/mesen-snes/ZZSnes-Mesen-CPU": "d9e46ac3d503f5eecbe05f955551aaa3c5a828ca0700ec88b7190a0cf61563df",
+  "artifacts/mesen-snes/build.json": "33f3b7300d15389e4d1576358bc5290869a4a355821c2c5823ce2c6f50e29e93",
+  "artifacts/mesen-snes/snes.elf": "8d514594ffbf2508a3f0c2f4a2b5fa59600c1ebc721250faf476c7a0bd258318",
+  "artifacts/mesen-snes-system-words/ZZSnes-Mesen": "fc0e5073b65ae1ffcbf50349d471aead515f2ba98a8f967c60bc3e04fea0200f",
+  "artifacts/mesen-snes-system-words/ZZSnes-Mesen-System-Words": "59b78ff3cc4f9627ff12c508d1eeec68348c6999ea4181555d44b7ab85e56808",
+  "artifacts/mesen-snes-system-words/build.json": "6d974fd2151444e5bc5165daecfd54db503e0d04f8711b6183224243f286e847",
+  "artifacts/mesen-snes-system-words/system.elf": "b75535cef4f8c059ddac4f80fa83bcb10d62b0d8a74c5fc0c2534386887bab2c",
+  "artifacts/pocketsnes/System-Test.sfc": "64074848f3bf47acc3174140960fa04757aa7dc90c82a44879f1fc717ee5aa73",
+  "artifacts/pocketsnes/ZZSnes-Pocket-Bench": "42fe8178cec4e6825126b750153f884d83bfb47022986316cdcd80ae20720052",
+  "artifacts/pocketsnes/arm-config.json": "14dc3987badd04948c0239600052e6990c2978c95a94e64e416e68603d816416",
+  "artifacts/pocketsnes/build-support/libc.a": "b046bc12e8913027da2dab9974dacbf54519c9124ebd4b94e5ba27b3407e2cb1",
+  "artifacts/pocketsnes/build.json": "33b5a9a7c7272676e1ed450dc37616623372f98a227c0effd753384b350ec980",
+  "artifacts/pocketsnes/mmu_plan.h": "55b20a87022ab86af2d2f3b352bf678b98b3c52325fd7368046d73d7a141dd14",
+  "artifacts/pocketsnes/pocket.elf": "8ab07c53e55e86837ebc495a035e34f7f1ba0f1e6308959b0872987812b7c240"
+}

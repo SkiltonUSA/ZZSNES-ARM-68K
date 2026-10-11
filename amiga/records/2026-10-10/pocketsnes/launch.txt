@@ -1,0 +1,2 @@
+amiga_run_script [OK]
+PocketSNES-test-finished

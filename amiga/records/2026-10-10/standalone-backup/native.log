@@ -1,0 +1,509 @@
+python3 scripts/verify_backup.py
+PASS: saved artifacts, pinned core sources, measured mean and hardware completion markers
+python3 scripts/build_pocketsnes.py
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/memmap.c:878:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  878 |    sprintf (Memory.ROMName, "%s", Safe (Memory.ROMName));
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/memmap.c:879:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  879 |    sprintf (Memory.ROMId, "%s", Safe (Memory.ROMId));
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/memmap.c:880:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  880 |    sprintf (Memory.CompanyId, "%s", Safe (Memory.CompanyId));
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/memmap.c:882:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  882 |    sprintf (String, "\"%s\" [%s] %s, %s, Type: %s, Mode: %s, TV: %s, S-RAM: %s, ROMId: %s Company: %2.2s",
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/memmap.c:1823:5: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1823 |     sprintf (tmp, "%dKb", (CPU.Memory_SRAMMask + 1) / 1024);
+      |     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/memmap.c:1833:5: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1833 |     sprintf (tmp, "%dMbits", (Memory.ROMSize >= 7 && Memory.ROMSize < 38 ? 1u << (Memory.ROMSize - 7) : 0u));
+      |     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/memmap.c:1851:5: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1851 |     sprintf (tmp, "%s", Contents [(Memory.ROMType & 0xf) % 3]);
+      |     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/memmap.c:1854:2: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1854 |         sprintf (tmp, "%s+%s", tmp, CoPro [(Memory.ROMType & 0xf0) >> 4]);
+      |         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/memmap.c:1862:5: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1862 |     sprintf (tmp, "%02x", Memory.ROMSpeed & ~0x10);
+      |     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+9 warnings generated.
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2585:4: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 2585 |    BranchCheck2();
+      |    ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2487:8: note: expanded from macro 'BranchCheck2'
+ 2487 |        else\
+      |        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2606:4: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 2606 |    BranchCheck1();
+      |    ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2625:4: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 2625 |    BranchCheck1();
+      |    ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2645:4: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 2645 |    BranchCheck1();
+      |    ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3903:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 3903 |       BranchCheck1();
+      |       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3918:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 3918 |       BranchCheck1();
+      |       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:4005:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 4005 |       BranchCheck1();
+      |       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:4020:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 4020 |       BranchCheck2();
+      |       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2487:8: note: expanded from macro 'BranchCheck2'
+ 2487 |        else\
+      |        ^
+8 warnings generated.
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3330:33: warning: operator '>>' has lower precedence than '+'; '+' will be evaluated first [-Wshift-op-parentheses]
+ 3330 |       PushW(CPU.PC - CPU.PCBase + 1);
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3330:33: note: place parentheses around the '+' expression to silence this warning
+ 3330 |       PushW(CPU.PC - CPU.PCBase + 1);
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3349:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3349 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3349:20: note: place parentheses around the '-' expression to silence this warning
+ 3349 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3383:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3383 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3383:20: note: place parentheses around the '-' expression to silence this warning
+ 3383 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3411:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3411 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3411:20: note: place parentheses around the '-' expression to silence this warning
+ 3411 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3447:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3447 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3447:20: note: place parentheses around the '-' expression to silence this warning
+ 3447 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3475:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3475 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3475:20: note: place parentheses around the '-' expression to silence this warning
+ 3475 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3510:33: warning: operator '>>' has lower precedence than '+'; '+' will be evaluated first [-Wshift-op-parentheses]
+ 3510 |       PushW(CPU.PC - CPU.PCBase + 1);
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3510:33: note: place parentheses around the '+' expression to silence this warning
+ 3510 |       PushW(CPU.PC - CPU.PCBase + 1);
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3529:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3529 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3529:20: note: place parentheses around the '-' expression to silence this warning
+ 3529 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3601:30: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3601 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3601:30: note: place parentheses around the '-' expression to silence this warning
+ 3601 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3623:30: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3623 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3623:30: note: place parentheses around the '-' expression to silence this warning
+ 3623 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from /Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1cpu.c:100:
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3633:30: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3633 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:3633:30: note: place parentheses around the '-' expression to silence this warning
+ 3633 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+11 warnings generated.
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/snapshot.c:486:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  486 |    sprintf(buffer, "%s:%04d\n", SNAPSHOT_MAGIC, SNAPSHOT_VERSION);
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/snapshot.c:793:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  793 |    sprintf(buffer, "%s:%06d:", name, size);
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/snapshot.c:929:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  929 |    sprintf(buffer, "%s:%06d:", name, data_size);
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/snapshot.c:956:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  956 |    sprintf(buffer, "%s:%04d\n", SNAPSHOT_MAGIC, SNAPSHOT_VERSION);
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+4 warnings generated.
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/spc700.c:98:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+   98 |    sprintf(String, "Sound CPU in unknown state executing %s at %04lX\n%s\n", s, IAPU.PC - IAPU.RAM, buffer);
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+1 warning generated.
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/ppu_.c:1288:22: warning: & has lower precedence than <; < will be evaluated first [-Wparentheses]
+ 1288 |          if (Address & 3 < 2)
+      |                      ^~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/ppu_.c:1288:22: note: place parentheses around the '<' expression to silence this warning
+ 1288 |          if (Address & 3 < 2)
+      |                      ^      
+      |                        (    )
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/ppu_.c:1288:22: note: place parentheses around the & expression to evaluate it first
+ 1288 |          if (Address & 3 < 2)
+      |                      ^
+      |              (          )
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/ppu_.c:1294:35: warning: & has lower precedence than ==; == will be evaluated first [-Wparentheses]
+ 1294 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                                   ^~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/ppu_.c:1294:35: note: place parentheses around the '==' expression to silence this warning
+ 1294 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                                   ^
+      |                                     (     )
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/ppu_.c:1294:35: note: place parentheses around the & expression to evaluate it first
+ 1294 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                                   ^
+      |                           (          )
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/ppu_.c:1294:44: warning: operator '?:' has lower precedence than '&'; '&' will be evaluated first [-Wbitwise-conditional-parentheses]
+ 1294 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                           ~~~~~~~~~~~~~~~~ ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/ppu_.c:1294:44: note: place parentheses around the '&' expression to silence this warning
+ 1294 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                                            ^
+      |                           (               )
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/ppu_.c:1294:44: note: place parentheses around the '?:' expression to evaluate it first
+ 1294 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                                            ^            
+      |                                     (                   )
+3 warnings generated.
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/gfx.c:1461:16: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 1461 |                else
+      |                ^
+1 warning generated.
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+ 1231 |    RENDER_CLIPPED_TILEHI(WRITE_4PIXELSHI16, WRITE_4PIXELSHI16_FLIPPED, 4)
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:282:52: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  282 |        /*if ((dd = (*(uint32 *) bp) & d1))*/if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                 ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: note: place parentheses around the assignment to silence this warning
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:282:52: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  282 |        /*if ((dd = (*(uint32 *) bp) & d1))*/if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                    ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: note: use '==' to turn this assignment into an equality comparison
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:282:52: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  282 |        /*if ((dd = (*(uint32 *) bp) & d1))*/if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                    ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+ 1231 |    RENDER_CLIPPED_TILEHI(WRITE_4PIXELSHI16, WRITE_4PIXELSHI16_FLIPPED, 4)
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:294:56: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  294 |        /*if ((dd = *(uint32 *) (bp + 4) & d1))*/if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                     ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: note: place parentheses around the assignment to silence this warning
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:294:56: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  294 |        /*if ((dd = *(uint32 *) (bp + 4) & d1))*/if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: note: use '==' to turn this assignment into an equality comparison
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:294:56: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  294 |        /*if ((dd = *(uint32 *) (bp + 4) & d1))*/if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+ 1231 |    RENDER_CLIPPED_TILEHI(WRITE_4PIXELSHI16, WRITE_4PIXELSHI16_FLIPPED, 4)
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:306:56: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  306 |        /*if ((dd = *(uint32 *) (bp + 4) & d1))*/if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                     ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: note: place parentheses around the assignment to silence this warning
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:306:56: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  306 |        /*if ((dd = *(uint32 *) (bp + 4) & d1))*/if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: note: use '==' to turn this assignment into an equality comparison
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:306:56: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  306 |        /*if ((dd = *(uint32 *) (bp + 4) & d1))*/if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                        ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+ 1231 |    RENDER_CLIPPED_TILEHI(WRITE_4PIXELSHI16, WRITE_4PIXELSHI16_FLIPPED, 4)
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:315:53: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  315 |        /*if ((dd = (*(uint32 *) bp) & d1))*/ if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                  ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: note: place parentheses around the assignment to silence this warning
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:315:53: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  315 |        /*if ((dd = (*(uint32 *) bp) & d1))*/ if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                     ^
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.c:1231:4: note: use '==' to turn this assignment into an equality comparison
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/pocketsnes/src/tile.h:315:53: note: expanded from macro 'RENDER_CLIPPED_TILEHI'
+  315 |        /*if ((dd = (*(uint32 *) bp) & d1))*/ if (dd = (((((uint32)bp[6])<<24)|(((uint32)bp[4])<<16)|(((uint32)bp[2])<<8)|((uint32)bp[0]))&d1)) \
+      |                                                     ^
+4 warnings generated.
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+POCKET rc=0 checked=6 mismatches=0 frames=6 video=67711dc5 errors=0 width=256 height=224 audio=77d82d05 samples=3208
+POCKET rc=0 checked=6 mismatches=0 frames=6 video=67711dc5 errors=0 width=256 height=224 audio=77d82d05 samples=3208
+POCKET rc=0 checked=6 mismatches=0 frames=6 video=67711dc5 errors=0 width=256 height=224 audio=77d82d05 samples=3208
+
+python3 scripts/build_mesen_snes.py
+MESEN_SNES_CPU status=0/0 checked=5144 mismatch=0 cycles=15436 hash=e4b09881 errors=0 unsupported=0 pc=803c expected_pc=803c a=995a expected_a=995a cancel=2/128
+python3 scripts/build_mesen_snes_system.py --integer-clock
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/mesen-snes-system/SNES/DSP/DspVoice.cpp:91:11: warning: enumeration value 'Release' not handled in switch [-Wswitch]
+   91 |                         switch(_envMode) {
+      |                                ^~~~~~~~
+/Users/dskilton/conductor/workspaces/sixies_development/port-louis/.context/ZZSNES-ARM-68K/.context/amiga/mesen-snes-system/SNES/DSP/DspVoice.cpp:91:11: note: add missing switch cases
+   91 |                         switch(_envMode) {
+      |                                ^
+   92 |                                 case EnvelopeMode::Attack:
+1 warning generated.
+FRAME n=1 rc=0 master=306920 cpu=40560 spc=29266 video=345dd865 size=256x239 samples=457 pcm=ed494b0d nonzero=0
+FRAME n=2 rc=0 master=664274 cpu=87861 spc=63342 video=1e1e29c5 size=256x239 samples=989 pcm=b5de2a2d nonzero=0
+FRAME n=3 rc=0 master=1021650 cpu=135165 spc=97420 video=1e1e29c5 size=256x239 samples=1522 pcm=c2407695 nonzero=0
+FRAME n=4 rc=0 master=1379004 cpu=182466 spc=131496 video=1e1e29c5 size=256x239 samples=2054 pcm=5baba2b5 nonzero=0
+FRAME n=5 rc=0 master=1736380 cpu=229770 spc=165574 video=1e1e29c5 size=256x239 samples=2587 pcm=656b6b5d nonzero=0
+FRAME n=6 rc=0 master=2093734 cpu=277071 spc=199650 video=1e1e29c5 size=256x239 samples=3119 pcm=2cfa6c7d nonzero=0
+CHECK pixels=PASS dma=PASS spc_boot_ports=PASS wram_mirrors=PASS serial_pad=PASS cancellation=PASS reject_chip_and_truncation=PASS

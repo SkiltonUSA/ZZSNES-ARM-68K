@@ -1,0 +1,44 @@
+amiga_list_ports Public Message Ports (23):
+  TSPORT
+  WORKBENCH
+  DEFICONS
+  ToolsDaemon 2.1a © Nico François
+  REXX
+  AREXX
+  MagicMenu
+  SIXIES.BRIDGE.NETWATCH
+  AssignWedge.port
+  ZZTemperature.1
+  NewMeter
+  POPO.1
+  QDock
+  ROADIE
+  TCP/IP Control
+  AMIGABRIDGE
+  ZZNES_LIBRARY
+  ZZNES.1
+  ZZSNES_MESEN_UI
+  ZZSNES.1
+  ConClip.rendezvous
+  lowlevel.library
+  deficons
+amiga_list_screens Screens (1):
+
+  Workbench Screen  1920x800  8bpp  LORES  @895EF90
+amiga_run_script [OK]
+Directory "SD032G:Dev" on Thursday 09-Oct-25
+ZZFractal                       Dir ----rwed Today     17:45:24
+ZZFractal-0.1                   Dir ----rwed Today     18:19:13
+SDLZZFractal-0.2                Dir ----rwed Today     20:48:16
+SDLZZFractal-0.3                Dir ----rwed Today     22:21:44
+ZZVideo-0.1                     Dir ----rwed Today     23:20:51
+SDLZZFractal-0.4                Dir ----rwed Today     17:04:21
+ZZNes-Diagnostic                Dir ----rwed Today     15:57:43
+ZZNesPreview                    Dir ----rwed Today     16:00:55
+ZZNesPlayer                     Dir ----rwed Today     15:56:56
+ZZNesFullscreen                 Dir ----rwed Today     16:45:56
+ZZPicoDriveMD                   Dir ----rwed Today     16:14:05
+FceuxBench                      Dir ----rwed Today     16:19:19
+ZZFceuxPlayer                   Dir ----rwed Today     16:04:24
+ZZSnes-Mesen                    Dir ----rwed Today     21:51:02
+14 directories - 28 blocks used

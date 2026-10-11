@@ -1,0 +1,31 @@
+{
+  "repository": "https://github.com/RetroPie/ARMSNES-libretro",
+  "revision": "dbea0479cb6fba8583c0ca642ad70dd1bf0b58d1",
+  "scope": "Assembler acceptance only. Not linked/executed; no correctness, ABI or performance claim.",
+  "flags": [
+    "--target=arm-none-eabi",
+    "-mcpu=cortex-a9",
+    "-marm",
+    "-mfloat-abi=soft"
+  ],
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "original_assembly": {
+    "spc_decode.S": "pass",
+    "spc700a.s": "fail: legacy conditional load/store suffix order"
+  },
+  "adaptation": {
+    "pattern": "\\b(ldr|str)(eq|ne|cs|cc|mi|pl|vs|vc|hi|ls|ge|lt|gt|le|hs|lo)(sb|sh|b|h)\\b",
+    "replacement": "group1+group3+group2",
+    "count": 1914,
+    "adapted_assembly": "pass"
+  },
+  "input_sha256": {
+    "spc_decode.S": "b1f3783041ce7af21914fa9627b113b1df8890622057bb270eb94f4a8eb97a4e",
+    "spc700a.s": "41ff8d5acf1be2b8ae5ff0b0bd7083766c9a826cb23887f7fcd81ad59fad8345"
+  },
+  "output_sha256": {
+    "spc_decode.arm.o": "bfcdeb33bcf0f8bb715b318500cb45a2330d2fadeba9ad09e197e8ed49441763",
+    "spc700a.arm.o": "bbb94ebc88db156956a48aca7150767869c77dd682422781b6cafa07208e21d4",
+    "spc700a-unified.s": "cd0f29bec343c0f29af17d8fa70818002b3bdc02c3d7ddd2eec1316803aaba28"
+  }
+}

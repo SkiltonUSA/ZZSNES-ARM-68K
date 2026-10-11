@@ -1,0 +1,17 @@
+{
+  "ZZSnes-Mesen": {
+    "bytes": 42536,
+    "md5": "daebe82ae5e5d182d54be1d4e393c89d",
+    "sha256": "c8804e10a15732707a1af66b9b2159d223c43de113cec13fe4471350e89b9a7e"
+  },
+  "ZZSnes-Mesen-CPU": {
+    "bytes": 194776,
+    "md5": "cd3fb1fe04dc9aba419c4e29bbde6f56",
+    "sha256": "d9e46ac3d503f5eecbe05f955551aaa3c5a828ca0700ec88b7190a0cf61563df"
+  },
+  "build.json": {
+    "bytes": 4299,
+    "md5": "d272bb9e180e4147cd50f019929ad1a0",
+    "sha256": "33f3b7300d15389e4d1576358bc5290869a4a355821c2c5823ce2c6f50e29e93"
+  }
+}

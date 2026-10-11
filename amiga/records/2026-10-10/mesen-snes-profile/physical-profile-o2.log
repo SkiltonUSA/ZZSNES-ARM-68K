@@ -1,0 +1,51 @@
+OWNED amiga=50000040 arm_candidate=101f0040 size=4194304 nonce=85a54fa3
+BOOTSTRAP amiga=40c52800 arm=00e42800 (P96 allocated/locked)
+MAP status=4d415031 SCTLR=08c50878 MIDR=413fc090 MPIDR=80000001
+MAPPING PASS (eight nonce-derived words)
+ARM ready=41524d31 SCTLR=08c5187d MIDR=413fc090 MPIDR=80000001
+MESEN2 SNES SYSTEM; CPU/PPU/DMA/SPC/DSP; headless fixture; private inner WB/WA; MMU/I/D ON; shared and outer NC
+TIMER estimated_hz=333332090 calibration_us=2003980
+VERIFY checked=6 mismatch=0 cycles=277071 hash=1e1e29c5 errors=0 unsupported=0
+SYSTEM master=2093734 spc=199650 pcm=2cfa6c7d samples=3119
+SAMPLE n=0 warmup=1 frames=6 cycles=277071 ticks=81144698 core_us=243435 hash=1e1e29c5
+PROFILE n=0 ppu_ticks=41194422 spc_ticks=12511838 residual_ticks=27438438 ppu_calls=4635 spc_calls=12
+SAMPLE n=1 warmup=0 frames=6 cycles=277071 ticks=81160834 core_us=243483 hash=1e1e29c5
+PROFILE n=1 ppu_ticks=41187537 spc_ticks=12480106 residual_ticks=27493191 ppu_calls=4635 spc_calls=12
+SAMPLE n=2 warmup=0 frames=6 cycles=277071 ticks=81441628 core_us=244325 hash=1e1e29c5
+PROFILE n=2 ppu_ticks=41161979 spc_ticks=12455960 residual_ticks=27823689 ppu_calls=4635 spc_calls=12
+SAMPLE n=3 warmup=0 frames=6 cycles=277071 ticks=81286787 core_us=243861 hash=1e1e29c5
+PROFILE n=3 ppu_ticks=41173057 spc_ticks=12457238 residual_ticks=27656492 ppu_calls=4635 spc_calls=12
+SAMPLE n=4 warmup=0 frames=6 cycles=277071 ticks=81353242 core_us=244060 hash=1e1e29c5
+PROFILE n=4 ppu_ticks=41157941 spc_ticks=12488462 residual_ticks=27706839 ppu_calls=4635 spc_calls=12
+SAMPLE n=5 warmup=0 frames=6 cycles=277071 ticks=81504710 core_us=244515 hash=1e1e29c5
+PROFILE n=5 ppu_ticks=41181792 spc_ticks=12497736 residual_ticks=27825182 ppu_calls=4635 spc_calls=12
+SAMPLE n=6 warmup=0 frames=6 cycles=277071 ticks=81415761 core_us=244248 hash=1e1e29c5
+PROFILE n=6 ppu_ticks=41179172 spc_ticks=12495089 residual_ticks=27741500 ppu_calls=4635 spc_calls=12
+SAMPLE n=7 warmup=0 frames=6 cycles=277071 ticks=81614307 core_us=244843 hash=1e1e29c5
+PROFILE n=7 ppu_ticks=41178404 spc_ticks=12484840 residual_ticks=27951063 ppu_calls=4635 spc_calls=12
+SAMPLE n=8 warmup=0 frames=6 cycles=277071 ticks=81491051 core_us=244474 hash=1e1e29c5
+PROFILE n=8 ppu_ticks=41183422 spc_ticks=12480178 residual_ticks=27827451 ppu_calls=4635 spc_calls=12
+SAMPLE n=9 warmup=0 frames=6 cycles=277071 ticks=81598586 core_us=244796 hash=1e1e29c5
+PROFILE n=9 ppu_ticks=41174840 spc_ticks=12508727 residual_ticks=27915019 ppu_calls=4635 spc_calls=12
+SAMPLE n=10 warmup=0 frames=6 cycles=277071 ticks=81226458 core_us=243680 hash=1e1e29c5
+PROFILE n=10 ppu_ticks=41180798 spc_ticks=12471314 residual_ticks=27574346 ppu_calls=4635 spc_calls=12
+CANCEL PASS active_work=1 elapsed_us=134227
+MESEN_SNES_SYSTEM PASS; headless startup fixture, NOT game/display FPS
+EXIT epilogue=52455431 cache_echoes=0 rounds=0
+CACHE original=08c50878 running=08c5187d restored=08c50878
+MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=10234000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=15
+REGISTER n=0 original=08c50878 restored=08c50878
+REGISTER n=1 original=00000000 restored=00000000
+REGISTER n=2 original=02000000 restored=02000000
+REGISTER n=3 original=00000000 restored=00000000
+REGISTER n=4 original=00000000 restored=00000000
+REGISTER n=5 original=00000001 restored=00000001
+REGISTER n=6 original=600101d3 restored=600101d3
+REGISTER n=7 original=00000006 restored=00000006
+REGISTER n=8 original=00001000 restored=00001000
+REGISTER n=9 original=00098aa4 restored=00098aa4
+REGISTER n=10 original=44e048e0 restored=44e048e0
+REGISTER n=11 original=00000000 restored=00000000
+REGISTER n=12 original=00000001 restored=00000001
+REGISTER n=13 original=72360000 restored=72360000
+LAUNCHER exit=0; owned memory released

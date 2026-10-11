@@ -1,0 +1,3 @@
+amiga_run_script [OK]
+99be2ef0692ffab154588e1fe7685089  SD032G:Dev/ZZSnes-Pocket/ReadMe.txt
+d2899813a90047c7360ff6874518dbee  SD032G:Dev/ZZSnes-Pocket/build.json

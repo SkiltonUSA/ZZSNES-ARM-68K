@@ -1,0 +1,66 @@
+{
+  "physical-baseline.log": {
+    "scope": "Original six-frame startup fixture; no RTG presentation or audio playback; not game FPS",
+    "timer_hz": 333331600,
+    "warm_samples": 10,
+    "mean_frame_us": 40697.71666666667
+  },
+  "physical-profile.log": {
+    "scope": "Original six-frame startup fixture; no RTG presentation or audio playback; not game FPS",
+    "timer_hz": 333332961,
+    "warm_samples": 10,
+    "mean_frame_us": 40796.9,
+    "stages": {
+      "ppu": {
+        "mean_frame_us": 20325.835753958538,
+        "percent": 49.82193116233657
+      },
+      "spc": {
+        "mean_frame_us": 6420.363821546388,
+        "percent": 15.737356545938997
+      },
+      "residual": {
+        "mean_frame_us": 14050.765294704834,
+        "percent": 34.440712291724445
+      }
+    },
+    "calls_per_batch": {
+      "ppu_calls": [
+        4635
+      ],
+      "spc_calls": [
+        12
+      ]
+    },
+    "measurement_note": "Coarse nested exclusive scopes. Residual includes CPU/bus/scheduling and instrumentation overhead; not isolated CPU time."
+  },
+  "physical-profile-o2.log": {
+    "scope": "Original six-frame startup fixture; no RTG presentation or audio playback; not game FPS",
+    "timer_hz": 333332090,
+    "warm_samples": 10,
+    "mean_frame_us": 40704.75,
+    "stages": {
+      "ppu": {
+        "mean_frame_us": 20588.023893329122,
+        "percent": 50.57883532876949
+      },
+      "spc": {
+        "mean_frame_us": 6241.005778951556,
+        "percent": 15.332350749882785
+      },
+      "residual": {
+        "mean_frame_us": 13875.790356698031,
+        "percent": 34.08881392134772
+      }
+    },
+    "calls_per_batch": {
+      "ppu_calls": [
+        4635
+      ],
+      "spc_calls": [
+        12
+      ]
+    },
+    "measurement_note": "Coarse nested exclusive scopes. Residual includes CPU/bus/scheduling and instrumentation overhead; not isolated CPU time."
+  }
+}
