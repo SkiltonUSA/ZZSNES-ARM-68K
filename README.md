@@ -42,23 +42,13 @@ XX19c / XACP 1.7 firmware. Only one Core1 application may run at a time.
 Other firmware combinations are not established by these tests. No global AHI
 or firmware changes are included. Direct ARM-to-ZZ9000AX audio is not implemented.
 
-## Compatibility and validation
+## Compatibility
 
 Automatic PAL/NTSC handling is implemented for supported standard LoROM/HiROM
 cartridges; high-resolution/interlaced output and enhancement-chip support are
 not established. See the compatibility guide for Contra III and cartridge
 restrictions. Current audio is 32,040 Hz stereo; the accepted four-slot C0
 fullscreen handoff is retained.
-
-The Beta promotes the timed cadence experiment into normal unlimited play,
-with real input, SRAM, states and snapshots enabled. It passed a 627-frame
-interactive lifecycle with paused save/load and snapshots, then a 120-frame
-fresh-process resume. Standalone battery files use `.sav`; save states also
-include SRAM.
-
-The recorded physical runs completed audio delivery, display acknowledgements,
-register/MMU/cache-witness restoration and owned-memory release without reported
-errors. Native/instruction-model tests do not substitute for these hardware checks.
 
 ## Build, backup and credits
 
