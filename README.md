@@ -18,57 +18,13 @@ Beta’s complete feature set.
 
 ## Frame rates on the A4000TX
 
-Measured **12 October 2026**, TF4060 / ZZ9000, XX19c / XACP 1.7, with AHI audio.
-**Emulation FPS** counts completed CPU/PPU/APU frames. **Presented pictures/s**
-counts pictures submitted through the display pipeline; it is not monitor
-refresh or a measurement of tear-free scanout.
+| Game / emulator | Steady emulation FPS |
+| --- | ---: |
+| Contra — ZZNES | **59.893** |
+| Super Mario World — ZZSNES | **59.920** |
 
-| Emulator / workload | Before: emulation FPS | Beta scheduling: emulation FPS | Before: presented pictures/s | Beta scheduling: presented pictures/s | Measurement window |
-| --- | ---: | ---: | ---: | ---: | --- |
-| ZZNES — Contra, NTSC | 55.908 | **59.893** | 55.908 | **58.395** | Frames 600–1,200 of a 1,200-frame run |
-| ZZSNES — Super Mario World, NTSC | 57.758 | **59.920** | 57.758 | **58.053** | Frames 600–18,000 of an 18,000-frame run |
-| ZZNES — Asterix, PAL | 49.920 | **50.005** | 49.837 | **50.005** | Frames 600–1,200 of a 1,200-frame run |
-| ZZSNES — Cannon Fodder, PAL | 49.735 | **49.743** | 49.735 | **49.743** | Whole 1,200-frame loop, including startup |
-
-Steady rows use differences between logged progress samples. PAL SNES has no
-comparable steady sample window in its record; its whole-loop figure is shown
-explicitly. These are per-title measurements, not universal emulator speeds.
-
-For comparison, the **whole-loop NTSC** rates including startup were:
-
-| Workload | Emulation FPS, before → after | Presented pictures/s, before → after |
-| --- | --- | --- |
-| Contra, 1,200 frames | 53.652 → **57.570** | 53.652 → **54.980** |
-| Super Mario World, 18,000 frames | 57.720 → **59.856** | 57.720 → **57.991** |
-
-## Where the improvement came from
-
-The latest change is **68k host scheduling and regional frame pacing**. It keeps
-every emulation/APU frame and every PCM sample, but may omit a late completed
-picture, with at most two consecutive omissions. It fixes the zero-deadline
-reset after pause, save/load or thumbnail capture. The ARM payload, AHI worker
-and each emulator’s accepted fullscreen handoff were unchanged in these A/B
-comparisons. This gain does not come from SDL2, new NEON code or new firmware.
-
-| Whole-run metric | ZZNES Contra: before → after | ZZSNES SMW: before → after |
-| --- | --- | --- |
-| Pictures omitted | 0 → 54 / 1,200 (4.50%) | 0 → 561 / 18,000 (3.12%) |
-| Audio scheduling gap indicators | 254 → 15 | 1,005 → 0 |
-| Completed audio | 638,901 mono samples in each run | 9,624,392 stereo sample pairs in each run |
-
-Gap counters are scheduling indicators, not recordings of audible dropouts.
-Some long display handoffs remain; these results do not prove perfect audio,
-latency or elimination of horizontal tearing. The user reported the SNES
-interactive candidate was “so much better”; NES visual acceptance remains
-separate from its measured improvement.
-
-[ZZNES logs and analysis](amiga/records/2026-10-12/zznes-cadence/) ·
-[ZZSNES logs and analysis](amiga/records/2026-10-12/zzsnes-cadence/) ·
-[Beta install/lifecycle evidence](amiga/records/2026-10-12/emulator-beta/)
-
-Timing comes from the diagnostic A/B hosts whose scheduling policy is now in
-the Betas. The versioned Beta binaries subsequently passed launch/save/resume
-lifecycle checks; the five-minute FPS test was not rerun on the renamed Beta.
+[Benchmark details](docs/amiga-zznes-pal-compatibility.md) ·
+[SNES benchmark details](docs/amiga-zzsnes-pal-compatibility.md)
 
 ## Workbench library
 

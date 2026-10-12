@@ -16,9 +16,9 @@ for system,series,rate in [('zznes','contra',32000),('zznes','pal',32000),('zzsn
   actual=m.analyze(p/expected['file'],audio_rate=rate)
   if system=='zznes':actual['mono_samples']=actual.pop('stereo_pairs');actual['audio_rate']=rate
   assert actual==expected,(system,series,'raw analysis mismatch')
-  row=actual.get('steady',actual)
-  for k in ['emulated_fps','presentations_per_second']:assert f'{row[k]:.3f}' in readme,(system,series,k)
+  if series in ['contra','long'] and '-1-Cadence-' in actual['file']:
+   assert f"{actual['steady']['emulated_fps']:.3f}" in readme,(system,series,'README rate')
 for p in list(snapshot.rglob('*'))+list((root/meta['artifact_dir']).rglob('*')):
  if p.is_file():assert p.suffix.lower() not in ['.nes','.sfc','.smc','.zzs','.sav','.srm','.adf','.hdf','.rom','.iso','.zip'],p
 assert not (root/meta['artifact_dir']/'Library.cfg').exists()
-print('PASS:',len(checks),'archived file hashes; all four timing comparisons match raw hardware logs and README; private ROM/state/config exclusions')
+print('PASS:',len(checks),'archived file hashes; all four timing comparisons match raw hardware logs; two headline README rates verified; private ROM/state/config exclusions')
