@@ -37,6 +37,8 @@ Beta’s complete feature set.
 SNES save slots contain miniature screenshots. Existing NES state files do
 not contain embedded screenshots; its game library uses separate captures.
 
+**MUI 3.8 or a compatible version must be installed separately; MUI is not included.**
+
 Requires the verified AmigaOS 3.2.3 / Picasso96 / MUI / AHI setup and compatible
 XX19c / XACP 1.7 firmware. Only one Core1 application may run at a time.
 Other firmware combinations are not established by these tests. No global AHI
