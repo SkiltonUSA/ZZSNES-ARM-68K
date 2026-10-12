@@ -1,0 +1,14 @@
+Windows on screen @895EE38 (11):
+
+  ZZNES - 0.5.0 Beta  pos=(580,231)  size=760x338  @90D9C5C
+  cdity  pos=(122,14)  size=518x377  @90D8B14
+  util  pos=(77,48)  size=496x152  @90C8F04
+  Aminet  pos=(50,28)  size=497x143  @90A339C
+  AMINET13  100% full  0B free  635.6MB in  pos=(21,7)  size=705x297  @8F8F8D4
+  System  1% full  3.7GB free  35.9MB in u  pos=(602,59)  size=566x202  @8861E54
+  AmigaShell  pos=(0,449)  size=1920x130  @8860854
+  AmigaBridge v1.20  -  TCP  2345 (bsdsock  pos=(260,95)  size=420x117  @886339C
+  Roadie 1.3.9  pos=(634,60)  size=230x250  @917B3C4
+  (untitled)  pos=(21,713)  size=600x63  @8F9B22C
+  (untitled)  pos=(0,11)  size=1920x789  @89653F4
+PASS UI launch, screenshots, clean exit

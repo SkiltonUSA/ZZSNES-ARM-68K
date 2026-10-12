@@ -1,0 +1,30 @@
+{
+  "repository": "https://github.com/SourMesen/Mesen",
+  "commit": "e1180957b31979d4b82d613af9263fcb9442a685",
+  "license": "Mesen GPL-3.0-or-later; Utilities/blip_buf LGPL-2.1-or-later",
+  "files": {
+    "APU.h": "d1f1d6bf10d8b81138022ecd5b3058ded636fa83a431a06487c0f7f8d9090afc",
+    "APU.cpp": "cc78654f51956b1e627336553ba4960f7f024fa4601c9667ec26012ad35ed5d6",
+    "BaseApuChannel.h": "22eb944e347ef393eb0a0085745bb091ed3d75311daf559d5d7e2343e7cd1b44",
+    "ApuLengthCounter.h": "5e5343e42a7adf6b62eb346cfb48dbee52b51aabda7663e3499c1e4680ca3c5e",
+    "ApuEnvelope.h": "60956ce4a6fec4ede476495bf9198e8e61a3ece61ada12e9766212b2adf889dd",
+    "ApuFrameCounter.h": "71ecb46aae59100d39499a180ca3370c9fc52c881deeb5ed1d793719e20fdc08",
+    "SquareChannel.h": "6bca6c7a607f00a8853f214bff90e4eab6805e2f5b5bcf0cae634d2eeff3fe6d",
+    "TriangleChannel.h": "e5718f59599304a0273c59e3c2fcd44cf3bcc0e6a0cfcdc38bcc2ef4140ccba4",
+    "NoiseChannel.h": "be209063f1dc7642db05383cd4f63a3c74f41df3123276d12a5260c28ee5ac21",
+    "DeltaModulationChannel.h": "9fe7f525170c1fc2b4b1777bb904ac88d88c5a5502a4cff68d643d8723995aa9",
+    "DeltaModulationChannel.cpp": "2675f98a95612408b1fa2c8f8eb81bee9f7319dd31ae58fb3ca561bac5f76117",
+    "SoundMixer.h": "7269c0e77757d902f8bf04dd50c66508d41f3cd04449ab8e3db44010ae32c923",
+    "SoundMixer.cpp": "869cc091fe217a49dd94b861bcd418f39d36053cceea2741dbc0886c4589cda1",
+    "MMC1.h": "29bb4792af432d68b33455d955469cd71850123bd60053c791f5902cc8e0654b",
+    "MMC3.h": "9f55054f9f8f6989cf8250f8c2464c34290ee9623007d3a257594cf57f46280a",
+    "CNROM.h": "b48fdf0039bfb698f19d57dffc950fe379ab6ad57af81628c449223bad75b00d",
+    "A12Watcher.h": "e4bf842f15e39c31ef02aa1e2225c70d0b1818f7794ab8eb6fab6af0d7354ba8",
+    "NROM.h": "5aece6e0e7c883f2575872cd43ae7498e7462dafec27b05b15cff40ed8d2b407",
+    "UNROM.h": "0868d67635e6a3cfec062a6b8826a38e6f7d4f744ee196b06f58db5cc38ea022",
+    "AXROM.h": "c4d0b4f0f1283d47090f27c4d9174aaa9947998b4a491f78c97912b70bb02bfc",
+    "blip_buf.cpp": "527b2d0d5289a231109be06746d09730101666a1d50209f4e6cea2c3aa6417ec",
+    "blip_buf.h": "30aaeb33f190521f739b24b71e3029d2ddf099b81fda872621861b3162bf2e44",
+    "JyCompany.h": "96c0b872b4288cd66062fc1f954d565d769a65ffd92317433cd22f4e0850c625"
+  }
+}

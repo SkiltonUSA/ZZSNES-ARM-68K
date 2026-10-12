@@ -1,0 +1,44 @@
+{
+  "Baseline-1200": {
+    "frames": 1200,
+    "loop_cap_us": 49000000,
+    "audio_rate": 32040,
+    "audio_slots": 8,
+    "audio_prebuffer": 6,
+    "arm_audio_worker_handoff_unchanged": true,
+    "md5": "7b985d39b563ad805382139d38c357a4",
+    "sha256": {
+      "host.c": "b999962020023da38f0d697cf144018e4dd7282c6ca7d37ba8c7c8cfa4f083b5",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "frame_profile.h": "036a9f92114b5c9ec72ac61c5340274ae999d96442692b9c679ba01aa52c4a44",
+      "player_audio.h": "50966044dfd89aed17f85025e64a569cc40b5470a6cb2225e6556eb05d15a24e",
+      "fullscreen.h": "872612f21460dec547118be64a5502d895d569b396ecc7234ab584e7a114269f",
+      "flip_plan.h": "5ad7c812d6ef2f0dceb33b346123205367384cce0433d508e6f238bd5e002802",
+      "pocket.elf": "b81a6ccc9e62b1d5cf9376161a59976f74d7829718c9d02c0b48437fb410ba3b",
+      "zz_payload.h": "8a534f2eb553c08262e4bc52faa85b81e8906a3c068f0ccfc25be9bc46e45231",
+      "ZZSnes-Baseline-1200": "1de125e66f031a03aeb3ceb61a9b5962551f22836210732736bc42ff78e8beee"
+    }
+  },
+  "Cadence-1200": {
+    "frames": 1200,
+    "loop_cap_us": 49000000,
+    "audio_rate": 32040,
+    "audio_slots": 8,
+    "audio_prebuffer": 6,
+    "arm_audio_worker_handoff_unchanged": true,
+    "md5": "f278d48eee555c23559608b105ad3896",
+    "sha256": {
+      "host.c": "b5d9f6b4e7c34b612a9ecaebf2e114505b9273de75b69b4196e7a8f92ae9c1bb",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "frame_profile.h": "036a9f92114b5c9ec72ac61c5340274ae999d96442692b9c679ba01aa52c4a44",
+      "player_audio.h": "50966044dfd89aed17f85025e64a569cc40b5470a6cb2225e6556eb05d15a24e",
+      "fullscreen.h": "872612f21460dec547118be64a5502d895d569b396ecc7234ab584e7a114269f",
+      "flip_plan.h": "5ad7c812d6ef2f0dceb33b346123205367384cce0433d508e6f238bd5e002802",
+      "pocket.elf": "b81a6ccc9e62b1d5cf9376161a59976f74d7829718c9d02c0b48437fb410ba3b",
+      "zz_payload.h": "8a534f2eb553c08262e4bc52faa85b81e8906a3c068f0ccfc25be9bc46e45231",
+      "ZZSnes-Cadence-1200": "3c0f3539dc5832aa0a1d88ae81bff4fc48a167681a366bf7752e4855564984fc"
+    }
+  }
+}

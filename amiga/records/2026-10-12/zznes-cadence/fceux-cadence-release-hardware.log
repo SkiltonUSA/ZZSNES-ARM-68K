@@ -1,0 +1,9 @@
+10.0.0.40 - - [12/Oct/2026 12:23:51] "GET /life-2ca59c77-0.cfg HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 12:23:51] "GET /life-2ca59c77-1.cfg HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 12:23:52] "GET /ZZFceux-ui HTTP/1.0" 200 -
+START MMC5 release lifecycle
+PASS snapshot, paused save/load, resume beyond frame 300, normal quit and checked restoration
+PASS fresh-process state resume
+INSTALLED SD032G:Dev/ZZNes-Borders/ZZFceux-ui MD5 1d71b0627bce977fe1703db69dd9cc8a backup SD032G:Dev/ZZNes-Borders/ZZFceux-ui.pre-cadence-20261012
+DONE Workbench, no Core1 owner
+Transfer server stopped

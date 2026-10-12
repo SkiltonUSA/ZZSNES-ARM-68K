@@ -19,3 +19,9 @@ prepare-library: verify
 	$(PYTHON) scripts/prepare_saved_library.py
 test-library-host:
 	$(PYTHON) tests/amiga/pocketsnes/check_library_host.py
+
+.PHONY: beta verify-beta
+beta:
+	$(PYTHON) scripts/build_beta.py
+verify-beta:
+	$(PYTHON) scripts/verify_beta.py

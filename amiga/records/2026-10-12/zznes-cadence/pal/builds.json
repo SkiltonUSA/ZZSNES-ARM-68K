@@ -1,0 +1,36 @@
+{
+  "Baseline-1200": {
+    "frames": 1200,
+    "loop_cap_us": 51400000,
+    "audio_rate": 32000,
+    "audio_slots": 8,
+    "audio_prebuffer": 3,
+    "md5": "b8513d21aa561e9f95287424dc97831c",
+    "sha256": {
+      "host.c": "287f273362b5f6fd3d2a207997cde9340ca5b6c5ad0a04170146ab9675f6934b",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "player_audio.h": "63d587bf0108da20097f925952630c77a72dc8fbc7293647b5de443a5965ab78",
+      "fullscreen.h": "70a5b415a5aee55b50e592673cc54ba9d9152a7506e7a205bce44454edcf26ea",
+      "fceux.elf": "6da63cb9e4f54f236b67d6d5e64344016f1bd46d4baf13b1635627ef5f845db5",
+      "zz_payload.h": "2c4a52e211a750111e05ace6047038c33ef67da9c96d9f2f37a66a15fcbff943",
+      "ZZNes-Baseline-1200": "df18a7491cc3bfaffcda371a7f6b3aa41f4bad0258e9f37249e7e971e78986f2"
+    }
+  },
+  "Cadence-1200": {
+    "frames": 1200,
+    "loop_cap_us": 51400000,
+    "audio_rate": 32000,
+    "audio_slots": 8,
+    "audio_prebuffer": 3,
+    "md5": "d00a09e83085b808eb0ac26e1643dec0",
+    "sha256": {
+      "host.c": "b5818e42902d3fea2117a36b3dabbf959ec6966d470eec09b495d6c93bfb78de",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "player_audio.h": "63d587bf0108da20097f925952630c77a72dc8fbc7293647b5de443a5965ab78",
+      "fullscreen.h": "70a5b415a5aee55b50e592673cc54ba9d9152a7506e7a205bce44454edcf26ea",
+      "fceux.elf": "6da63cb9e4f54f236b67d6d5e64344016f1bd46d4baf13b1635627ef5f845db5",
+      "zz_payload.h": "2c4a52e211a750111e05ace6047038c33ef67da9c96d9f2f37a66a15fcbff943",
+      "ZZNes-Cadence-1200": "ed6830a156928d10c4fa2f6bfd29d03337db25bc65be1c505d454561f2e1e330"
+    }
+  }
+}

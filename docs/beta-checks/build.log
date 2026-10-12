@@ -1,0 +1,5 @@
+python3 scripts/verify_beta.py
+PASS: 427 archived file hashes; all four timing comparisons match raw hardware logs and README; private ROM/state/config exclusions
+python3 scripts/build_beta.py
+PASS: Beta player and MUI library built; ARM payload unchanged; no hardware access
+Outputs: .context/beta-rebuild (debug paths differ from the original workspace; use archived artifacts for exact installed bytes)

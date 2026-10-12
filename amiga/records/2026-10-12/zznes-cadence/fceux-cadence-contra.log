@@ -1,0 +1,25 @@
+10.0.0.40 - - [12/Oct/2026 12:20:52] "GET /Start-contra-Baseline-1200 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 12:20:53] "GET /Start-contra-Cadence-1200 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 12:20:54] "GET /ZZNes-Baseline-1200 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 12:20:57] "GET /ZZNes-Cadence-1200 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 12:20:59] "GET /contra-Baseline-1200.cfg HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 12:21:00] "GET /contra-Cadence-1200.cfg HTTP/1.0" 200 -
+Staged and hash-verified Baseline-1200,Cadence-1200
+START contra-0-Baseline-1200
+PASS contra-0-Baseline-1200 
+CADENCE_RUN frames=1200 elapsed_us=22366458 shown=1200 omitted=0 rebases=0 late_max=0 max_streak=0 period_us=16639
+FULLSCREEN_END queued=1200 flips=1200 pending=-1 ack_wait_us=14806179 fault=0
+AUDIO_TASK queued=638901 submitted=638901 completed=638901 highwater=3 error=0 stopped=1
+AUDIO_END samples=638901 gaps=254
+FRAME_TIMING stage=5 count=1141 mean_us=17811 max_us=50397 bins=0,12,871,128,125,5
+LAUNCHER exit=0; owned memory released
+START contra-1-Cadence-1200
+PASS contra-1-Cadence-1200 
+CADENCE_RUN frames=1200 elapsed_us=20844068 shown=1146 omitted=54 rebases=1 late_max=12777 max_streak=2 period_us=16639
+FULLSCREEN_END queued=1146 flips=1146 pending=-1 ack_wait_us=13860124 fault=0
+AUDIO_TASK queued=638901 submitted=638901 completed=638901 highwater=3 error=0 stopped=1
+AUDIO_END samples=638901 gaps=15
+FRAME_TIMING stage=5 count=1097 mean_us=17343 max_us=50395 bins=0,0,1026,33,33,5
+LAUNCHER exit=0; owned memory released
+DONE: Workbench, no Core1 owner, normal player/library unchanged.
+Transfer server stopped.

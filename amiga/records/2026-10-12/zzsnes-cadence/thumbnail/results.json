@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Thumbnail-600",
+    "frames": 600,
+    "emulated_fps": 54.99916263774884,
+    "shown": 600,
+    "omitted": 0,
+    "verified": true,
+    "summary": [
+      "SNAPSHOT saved SD032G:Dev/ZZSnes-Cadence/AutoTitle-be7a1bbb8bda.zzp",
+      "THUMBNAIL continued past capture frame",
+      "CADENCE_RUN frames=600 elapsed_us=10909257 shown=600 omitted=0 rebases=0 late_max=0 max_streak=0 period_us=16689",
+      "FULLSCREEN_END queued=600 flips=600 pending=-1 ack_wait_us=7022969 fault=0",
+      "AUDIO_TASK queued=320813 submitted=320813 completed=320813 highwater=6 error=0 stopped=1",
+      "AUDIO_END samples=320813 gaps=33",
+      "GAME_AUDIO_END frames=600 present_requests=600",
+      "FRAME_TIMING stage=5 count=540 mean_us=17422 max_us=83999 bins=0,5,480,24,30,1",
+      "LAUNCHER exit=0; owned memory released"
+    ],
+    "visual_result": "not evaluated"
+  }
+]

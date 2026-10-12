@@ -1,0 +1,22 @@
+{
+  "changes": [
+    {
+      "old": "Asterix EU.nes",
+      "new": "Asterix (E).nes",
+      "rom_md5": "17c6b5cc593cc8276cb6131584bfd609"
+    },
+    {
+      "old": "AussieRules AU.nes",
+      "new": "AussieRules (E).nes",
+      "rom_md5": "00493c46a5915eeaa833a35d562ac0da"
+    },
+    {
+      "old": "HammerinHarry EU.nes",
+      "new": "HammerHarry (E).nes",
+      "rom_md5": "10935d03a033e558b04e5515d460fa8e"
+    }
+  ],
+  "ROM_bytes_unchanged": true,
+  "state_listing_before": "Directory: SD032G:Emulator/ZZNES/States (2 entries)\n  FILE e60c4221-1.zzs                    15497  \n  FILE e60c4221-1.zzs.bak                15497  ",
+  "config_md5": "d5945a009efb70c23b3cbaa65feaca2b"
+}

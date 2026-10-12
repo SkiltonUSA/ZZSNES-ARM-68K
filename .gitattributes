@@ -1,0 +1,6 @@
+
+# Preserve byte-for-byte archived source, build inputs and evidence.
+development/beta-20261012/** -text -whitespace
+amiga/records/2026-10-12/** -text -whitespace
+artifacts/beta-*/* -text
+artifacts/beta-*/ZZ* binary

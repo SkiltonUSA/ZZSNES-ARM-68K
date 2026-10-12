@@ -1,0 +1,217 @@
+{
+  "ZZNES": {
+    "version": "0.5.0 Beta",
+    "player": "ZZFceux-ui",
+    "normal_input_and_states": true,
+    "base": ".context/amiga/fceux-cadence/Release",
+    "sources": {
+      "pace.h": "3a4ffa01a21fe43321371ff1177d20c6bfe83ab40c91917906a6a62eca6f94ab",
+      "sound.h": "c98aaf04cee2d97c44acd4b8fa69233c6e933df087748473b15a07d742e0aad0",
+      "wire.h": "a8606b5949e051a7c70ce71b967f1ed5486518f140031f7700fc1184fddc1fa3",
+      "state_host.h": "fab975e47f123717b2b66bccd017467aaa55043071e9c8097ab4528c45bdc5db",
+      "mmu_plan.h": "743a33f7aa78562b393b0268101f4b96e3cc9b1c523b7e47339dd138eb7d912b",
+      "release-host-test.c": "5fcbdf2955d4adbb7c2fd7375cf7132e8dbc256e74c19dc39d7780f282923821",
+      "fast_pixels.h": "4ceb71e43a67d31fb83c0a608fd4f6a70b36496177bfdf65587b91c678841c9f",
+      "mapping.elf": "f1b38259586890e03a1646116dc40d45fea4c0d4c495bf1fce013df76445f2cd",
+      "snapshot_host.h": "eb7b557a4520fbad019e16a45ce16c22a3d55185358a3627024e47f68c27b780",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "nes_api.h": "a6bf7145dfc689a66204082dbbc47661ff70bca6e46f6123e7c99614c25141e2",
+      "ui_model.h": "6615b930a7bbaf1eec9c72abbbadb2ebc4cddc9be78be9ffae9e6c2243b8c3e4",
+      "player_frontend.h": "4668728e37ed991b6b1145168e3828361e1dbcb3104368b2f58c13f3e970aeac",
+      "state_core.h": "a994621eab3457663da2a64fe984219e48aff2fb9232eefd6da539bfd0c19826",
+      "types.h": "7c27233268023928a5fa4978baf516e3a002ebef10fb1fff4b7fe2620e7194f9",
+      "direct_plan.h": "fded9cc402cde7fd006cd27b12946b09c49971ad08fb39f6ba5bf32bb46033bc",
+      "library_mui.h": "16f0d0b70e294b81a455dc034c9cbafbd84419e42837219791dce985f4261e42",
+      "x6502.h": "38739a923159607ac0dc27799a10ff8ffd386118051618b8d6f6f16335631293",
+      "x6502abbrev.h": "539d56c9a740c316b6aa7072643b4e8d9d47e37a978ddffc194fe5c64961d76e",
+      "joystick.h": "8d3af68b666bdf66b7034de0a0785496e87c20e46fcbf0345cfcf929b94946a6",
+      "demo.h": "c781f7bdca089fa505b45495506ad6c81c085de421046c3f8e03bea66ad05a6e",
+      "border_art.h": "570981b54c7e4f94a6d7310e8182ee4f569cbf430f026d9186559fd523d292ce",
+      "mmu.h": "954a4038c78e1a67fa696592b80bf1fb61aa72eaf7a0f1830d3ba75453382ef7",
+      "audio-worker-under-test.h": "895d50432d5c6a5b04ac7ba79f00a9ff49525e7dda819ae9024049bb9bed8f0a",
+      "git.h": "21a9def86532c484912d590242a73389d10e9d85b6f438230c70ff89f28f6cf5",
+      "view.h": "585c347fdfcb9e2e0ae0cd66f40f698208c556b931d4c6a2eefed69a5736887d",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "wait_profile.h": "8fd69f35a770743f48fcc523afe6f7ea3d94b15aef51b0039d07f2663a188ae0",
+      "x6502struct.h": "53d1ff9ed0ee88a0e310e2eb3a06d1744e494c6ae86ef6bdeb04a9568eb1e21f",
+      "snapshot_format.h": "b7b974df0ec328d958f2c326be4a4d1e4bc815f029aa4c4d1a15c15a452a037b",
+      "fceux.elf": "6da63cb9e4f54f236b67d6d5e64344016f1bd46d4baf13b1635627ef5f845db5",
+      "fceu.h": "a25879e6fa31939cea94485d8cb3f51a83c6dbdf8f60df0c09cd093dcd579501",
+      "library_controller.h": "bda238c433d0cdf2759234414ccff619a341ee43a30ca0b2a75443838597802a",
+      "session.h": "a46c7007cd39eb4073c50662952068f23c643f1d71d70c691105d1f50f2e546f",
+      "cart.h": "4735c1d1d807ddcb80e9c01b2c72bb50a4034e2f5e72a20d38a0bed440988281",
+      "ppu.h": "22a9c2b5de021810915a516b7536a28e01b6e2ab5dee54f9e07d1771ce55668f",
+      "player_audio.h": "63d587bf0108da20097f925952630c77a72dc8fbc7293647b5de443a5965ab78",
+      "library_preview.h": "d464a204e0568253ee3a49c509b8b4beda979a1a09a24582175c3ef5291b73b6",
+      "library_saves.h": "7908eb61e664b3307b9f5750db6e584e4b779d2062ab8d0731490d742e641d82",
+      "border_assets.h": "1d0a2155b3ba94657c66a0407bf3498927efe1ba5c6f4c527e9d03f1ffba1ab0",
+      "host.c": "24c704becaf3d20d1b12f3d7c05021276e0ef681095083dcefa024029b6f554b",
+      "fullscreen.h": "70a5b415a5aee55b50e592673cc54ba9d9152a7506e7a205bce44454edcf26ea",
+      "cartridge.h": "93e941334f4a78cd54ca3284d90a278d779cdd493f8371f23832540992cceb3b",
+      "player_palette.h": "11f0ab98612c1c63e8d60db9b0137986f5d4dc8aa50677a0a14577a4da2fe2bf",
+      "zz_payload.h": "2c4a52e211a750111e05ace6047038c33ef67da9c96d9f2f37a66a15fcbff943",
+      "mmc3.h": "efb4103357e771924d3c298c684752f63eb29d1514fa3156ccb126cd396682b6",
+      "filter.h": "e71b14799179e3dcf2af56eb1d8892bbe2bfc13cfaceebcb00151fe7a48d4701",
+      "launcher.c": "a3d9230d4764578c54808de60e39f6771ae321de5c3d0650db9b23db59b325cc",
+      "fcoeffs.h": "6868fda0d1f9eb59f9c3723f84d4963eb76fdf57af6ebe3358e5cd9f7f160d90",
+      "mmu.c": "ce15e67e460084fafed1bd604955ceb8c2c197c00419d229a5c4b78cbd4b3173",
+      "frame_profile.h": "1cff97ee03fc34323ec30243cc5d1496dbc7f212e41cb69081a2ff61d9bf18d1"
+    },
+    "files": {
+      "LICENSE-Snes9x": {
+        "bytes": 3196,
+        "md5": "a42295ffbe67badc828182ca73d82bad",
+        "sha256": "7c99d452508b90c46d74ac5d516d3d7de4ff3406bc7c4ad595215205369594ba"
+      },
+      "COPYING3": {
+        "bytes": 35147,
+        "md5": "d32239bcb673463ab874e80d47fae504",
+        "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+      },
+      "ZZFceux-ui": {
+        "bytes": 506648,
+        "md5": "d8793363fa6b5a281471da85c158b024",
+        "sha256": "95f6e98568a2866d0ab6d8f7673441080b0b2c9f06238a66e86b48ae04f09f26"
+      },
+      "Credits.txt": {
+        "bytes": 2093,
+        "md5": "24f9a7a1f7cbfd0237fad3d813feb4e8",
+        "sha256": "68c74759a281d72ac4cb10627531193a23e44617776bee176dca8613d2d4aff5"
+      },
+      "LICENSE-xSysInfo": {
+        "bytes": 1331,
+        "md5": "f4b96a97bed261f4ffa100412ea9897d",
+        "sha256": "323187598a84a70032b38d9f483ba9c0f6172b0635ef32ce924393356f279829"
+      },
+      "ZZNES": {
+        "bytes": 227268,
+        "md5": "a910355e15dbfa8b61219538e915507a",
+        "sha256": "af081448cd254eca9bbbf529e03141ebb56848295e3c8314bb3778608ef34f22"
+      },
+      "ZZNES.info": {
+        "bytes": 482,
+        "md5": "434377f5366892d894ebcc62e9d81d28",
+        "sha256": "ca76b18364e1d5c6fe1507e15e6c2114cbae5831d378a473412340ba047dcb66"
+      },
+      "ReadMe.txt": {
+        "bytes": 194,
+        "md5": "64501753cca509963cb0ef9a24df02c2",
+        "sha256": "ddd83a04f374ec449b4b4a37ae77c5b44555f17e324ce64ebcabca808cebbb63"
+      },
+      "Version.txt": {
+        "bytes": 33,
+        "md5": "0055449ab308cd6f48b9195fb3b4a391",
+        "sha256": "d64a0620f18e1cf8dc2705477cb674ef73c07e8618e87387abbbaea1e53be3a8"
+      }
+    }
+  },
+  "ZZSNES": {
+    "version": "0.4.0 Beta",
+    "player": "ZZSnes-ui",
+    "normal_input_and_states": true,
+    "base": ".context/amiga/pocketsnes-scanout/C0",
+    "sources": {
+      "flip-under-test.h": "6e23e8dc67448533ef30d5501a31be3380e2654ecc9886bf61292c6c772684f3",
+      "pace.h": "241a57ec73514fd0cc41136bce6e98462dd8cea64a068e53d194785ed8b12039",
+      "wire.h": "eadcf3689ffff20c46ed7dc80edad6307ad5ba0912bd9f54c82d8a82a9a6f795",
+      "state_host.h": "4e3c5b8e915ebc24819534253495944c9be6855523ace2660859b0f33b276441",
+      "mmu_plan.h": "376dc32bdf5e038c5e5b81fa6aeb6c9e48b8d86262fadcd0fd4f1ed091b814f4",
+      "fast_pixels.h": "4ceb71e43a67d31fb83c0a608fd4f6a70b36496177bfdf65587b91c678841c9f",
+      "mapping.elf": "8a92dded380bec857f19fce823de4671e579fa0e0c15a40678a7c96c2c4c0583",
+      "snapshot_host.h": "eb7b557a4520fbad019e16a45ce16c22a3d55185358a3627024e47f68c27b780",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "nes_api.h": "d5681bdae57479e449c4d309105be718f2369af6a61b4bb3bed69ec8386edb10",
+      "ui_model.h": "8894b7a21867331f23eb0c559ec74444760846acba8671592e7715e369c39694",
+      "player_frontend.h": "96361caea4a535affe3c6d2bf772c296bf7a2b970cf35abbd96b44b021ffd3ba",
+      "gate-host-test.c": "2238c3725285999dd420239ec600f07644530044fdd4f5f391bdd3d8e4c12926",
+      "direct_plan.h": "fded9cc402cde7fd006cd27b12946b09c49971ad08fb39f6ba5bf32bb46033bc",
+      "view_fast.h": "29080c08f4747a019925aa00f36ab27eb991a14ee1671a845585b96fdaa371e1",
+      "library_mui.h": "323fb8413eff08d1d7618643ea9d2e1522eb9e7229d30cecc49ae221633cad20",
+      "thumbnail.h": "d724e958f3ac116dcafb99660cbe28d49cd3249a6371c9a66cddf35b8ab7cc62",
+      "joystick.h": "86e35b737f2c2f1ca2659670983dec7b71072f70a680a5a9aa88c62896d192de",
+      "demo.h": "5786bea739ec9615e0976d48778540a374ae20a027b26f20eac6920bb5c8de99",
+      "fixture.h": "94de20e4ec28b307bba70cf82bc258e731c13691adad2d9cb542aa8af20bddda",
+      "border_art.h": "570981b54c7e4f94a6d7310e8182ee4f569cbf430f026d9186559fd523d292ce",
+      "mmu.h": "954a4038c78e1a67fa696592b80bf1fb61aa72eaf7a0f1830d3ba75453382ef7",
+      "audio-worker-under-test.h": "18afa356e04084dfe835d168a3fb02ed6710d6895ca9dd038e01ae82581d9ac0",
+      "view.h": "96d79d045422b51f6a2cefa2b9da7298334786de18cead7adb3790b382cc51ea",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "wait_profile.h": "8fd69f35a770743f48fcc523afe6f7ea3d94b15aef51b0039d07f2663a188ae0",
+      "snapshot_format.h": "b7b974df0ec328d958f2c326be4a4d1e4bc815f029aa4c4d1a15c15a452a037b",
+      "audio-worker-test.c": "8b6cd646f2c4e063b5d55381b44ad1035961a5188f5cc3675f643b9f3eb60351",
+      "library_controller.h": "bda238c433d0cdf2759234414ccff619a341ee43a30ca0b2a75443838597802a",
+      "session.h": "959970c8a506d957af81c13eecfaec51a302ba4dd4023d39b7c36a98e7ad3704",
+      "player_audio.h": "50966044dfd89aed17f85025e64a569cc40b5470a6cb2225e6556eb05d15a24e",
+      "pocket.elf": "b81a6ccc9e62b1d5cf9376161a59976f74d7829718c9d02c0b48437fb410ba3b",
+      "library_preview.h": "d464a204e0568253ee3a49c509b8b4beda979a1a09a24582175c3ef5291b73b6",
+      "library_saves.h": "e0c3deb5789d50492df6e24d5ec4d3e1a7eeaa5fda3171b6b7d030e41acd4990",
+      "border_assets.h": "1d0a2155b3ba94657c66a0407bf3498927efe1ba5c6f4c527e9d03f1ffba1ab0",
+      "host.c": "78920151fa1595ab1b5cdd65f3599d5f3f17c7f11258a2ac42353b07173a3be8",
+      "fullscreen.h": "872612f21460dec547118be64a5502d895d569b396ecc7234ab584e7a114269f",
+      "cartridge.h": "38d7333fade5c9f28d0404d9eed35c5ab3e9bfeb072e7146b65d829bf7cd908c",
+      "pixels.h": "308ebf471cc5ac7deb4fe92deaa48fc5deb0f2068040a89b9632a3fa34aaf951",
+      "native_height.h": "7965892f91a521331bbed254ddbbc7604dc224ab9f9fa3ab4c8bd87f9bfd2507",
+      "scanout_gate.h": "763be9225c23d1480f484725d9723c29198a362e646eb4587edf814a37cf08fb",
+      "flip_plan.h": "5ad7c812d6ef2f0dceb33b346123205367384cce0433d508e6f238bd5e002802",
+      "state_format.h": "df3d01b7aaccc4fd3cb82d136497a8a58fdf148224de38d812bb1733e41d04bf",
+      "player_palette.h": "11f0ab98612c1c63e8d60db9b0137986f5d4dc8aa50677a0a14577a4da2fe2bf",
+      "region.h": "9e959c9ec8081d29f7d54997db496f15a082278fa1073ed5f1eca15ff30678ad",
+      "zz_payload.h": "8a534f2eb553c08262e4bc52faa85b81e8906a3c068f0ccfc25be9bc46e45231",
+      "flip-host-test.c": "a214d7222aeeadd57ce157b3980e48be00d75315e157eb1c3ac1f5b6d809a6ba",
+      "gate-under-test.h": "d2858110c96e45409d7148e407893b80a6b785dfe60839ce34ec307c8c00ae41",
+      "scanout_measure.h": "bc7d92b30d6d7ffc4fea1c628151ff026b4daaf0e109c3ba07c8f2e58b7e2dc8",
+      "launcher.c": "e0e753c32bbedfab66fdb51a6f7c2119c79357abfc917ded8b645404b5313f64",
+      "mmu.c": "ce15e67e460084fafed1bd604955ceb8c2c197c00419d229a5c4b78cbd4b3173",
+      "row_copy_arm.h": "c22ae10b0dc05bb91225d91e25907929b7e9908cdee0169a2b3d106bb6952ec8",
+      "player.c": "e8dfb921b8e56d9c5fc28d7a4e6429287f7bd5b681716d2e8fa7d16d7dc5a531",
+      "frame_profile.h": "1cff97ee03fc34323ec30243cc5d1496dbc7f212e41cb69081a2ff61d9bf18d1"
+    },
+    "files": {
+      "ZZSNES": {
+        "bytes": 227384,
+        "md5": "b7f9836eccb52b95dee79ab599ee83e3",
+        "sha256": "63dcab4170b26f7ba37f642d7add80a0a3e57403c1d7c366fea2bc19c5efbc55"
+      },
+      "LICENSE-Snes9x": {
+        "bytes": 3196,
+        "md5": "a42295ffbe67badc828182ca73d82bad",
+        "sha256": "7c99d452508b90c46d74ac5d516d3d7de4ff3406bc7c4ad595215205369594ba"
+      },
+      "COPYING3": {
+        "bytes": 35147,
+        "md5": "d32239bcb673463ab874e80d47fae504",
+        "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+      },
+      "Credits.txt": {
+        "bytes": 2093,
+        "md5": "24f9a7a1f7cbfd0237fad3d813feb4e8",
+        "sha256": "68c74759a281d72ac4cb10627531193a23e44617776bee176dca8613d2d4aff5"
+      },
+      "LICENSE-xSysInfo": {
+        "bytes": 1331,
+        "md5": "f4b96a97bed261f4ffa100412ea9897d",
+        "sha256": "323187598a84a70032b38d9f483ba9c0f6172b0635ef32ce924393356f279829"
+      },
+      "ZZSNES.info": {
+        "bytes": 482,
+        "md5": "434377f5366892d894ebcc62e9d81d28",
+        "sha256": "ca76b18364e1d5c6fe1507e15e6c2114cbae5831d378a473412340ba047dcb66"
+      },
+      "ReadMe.txt": {
+        "bytes": 196,
+        "md5": "5155b15e4ba82c12cd5d184008c21b38",
+        "sha256": "9b2979bd48d9b9769777e8595c2cbf72ea3dd313b3c445e80179f476b566367c"
+      },
+      "Version.txt": {
+        "bytes": 34,
+        "md5": "012e2ec1be0cf2c1a6d067462cb0f9b9",
+        "sha256": "e0cd4ca82203f8333a7fb6e87d82fea8aee6793812071453a39f62f82d50eaaa"
+      },
+      "ZZSnes-ui": {
+        "bytes": 812932,
+        "md5": "fb15cf02f0f125da707c3e97e2e58b67",
+        "sha256": "33ab9c59e5e22764f09410e97f7fdb999cfd281373f29957a4a0d3f33796d249"
+      }
+    }
+  }
+}

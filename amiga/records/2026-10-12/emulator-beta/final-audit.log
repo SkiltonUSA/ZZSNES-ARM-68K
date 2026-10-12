@@ -1,0 +1,61 @@
+amiga_list_ports Public Message Ports (19):
+  TSPORT
+  WORKBENCH
+  DEFICONS
+  ToolsDaemon 2.1a © Nico François
+  REXX
+  AREXX
+  MagicMenu
+  SIXIES.BRIDGE.NETWATCH
+  AssignWedge.port
+  ZZTemperature.1
+  NewMeter
+  POPO.1
+  QDock
+  ROADIE
+  TCP/IP Control
+  AMIGABRIDGE
+  ConClip.rendezvous
+  lowlevel.library
+  deficons
+amiga_list_screens Screens (1):
+
+  Amiga Workbench Release 3.2 Kickstart 47  1920x800  8bpp  LORES  @895EE38
+amiga_list_dir Directory: SD032G:Emulator (4 entries)
+  DIR  ZZNES                                 -  
+  FILE ZZNES.info                         1484  
+  DIR  ZZSNES                                -  
+  FILE ZZSNES.info                        1484  
+amiga_list_dir Directory: SD032G:Emulator/ZZNES/ROMs (11 entries)
+  FILE 011 Mario Bros.nes                24592  
+  FILE SuperMarioWorld.nes              786448  
+  FILE Controller-Test.nes               24592  
+  FILE Airwolf                               0  
+  FILE Asterix EU.nes                   131088  
+  FILE AussieRules AU.nes               262160  
+  FILE Castlevania3 US.nes              393232  
+  FILE Contra                                0  
+  FILE Contra Force US.nes              262160  
+  FILE Donkey Kong 3.nes                 24592  
+  FILE HammerinHarry EU.nes             262160  
+amiga_list_dir Directory: SD032G:Emulator/ZZSNES/ROMs (10 entries)
+  FILE SMW-Test.sfc                     524288  
+  FILE Library-Test.sfc                  32768  
+  FILE AeroFighters US.sfc             1310720  
+  FILE Aladdin                               0  
+  FILE AnotherWorld EU.sfc             1048576  
+  FILE BattletoadsDD US.sfc            1048576  
+  FILE CannonFodder EU.sfc             1572864  
+  FILE Chaos Engine EU.sfc             1572864  
+  FILE Contra III US.sfc               1048576  
+  FILE F-Zero                                0  
+amiga_run_script [OK]
+a910355e15dbfa8b61219538e915507a  SD032G:Emulator/ZZNES/ZZNES
+d8793363fa6b5a281471da85c158b024  SD032G:Emulator/ZZNES/ZZFceux-ui
+edda3a7eb40507f42b02bfb404d6bd13  SD032G:Emulator/ZZNES/Library.cfg
+edda3a7eb40507f42b02bfb404d6bd13  SD032G:Emulator/ZZNES/Library.bak
+b7f9836eccb52b95dee79ab599ee83e3  SD032G:Emulator/ZZSNES/ZZSNES
+fb15cf02f0f125da707c3e97e2e58b67  SD032G:Emulator/ZZSNES/ZZSnes-ui
+015a6b5156bf8fe1da4e3b1082c2a159  SD032G:Emulator/ZZSNES/Library.cfg
+015a6b5156bf8fe1da4e3b1082c2a159  SD032G:Emulator/ZZSNES/Library.bak
+3c6f4089ba3300e4257a02e26d8913cc  SD032G:Emulator/ZZNES/States/e60c4221-1.zzs

@@ -1,0 +1,23 @@
+{
+  "Thumbnail-600": {
+    "frames": 600,
+    "loop_cap_us": 37000000,
+    "audio_rate": 32040,
+    "audio_slots": 8,
+    "audio_prebuffer": 6,
+    "arm_audio_worker_handoff_unchanged": true,
+    "md5": "472f82e740542fbf906916d50948678f",
+    "sha256": {
+      "host.c": "edc19c7faaa018f5b683f9d862011355a0808d990057667cb4fe05411267c19c",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "frame_profile.h": "036a9f92114b5c9ec72ac61c5340274ae999d96442692b9c679ba01aa52c4a44",
+      "player_audio.h": "50966044dfd89aed17f85025e64a569cc40b5470a6cb2225e6556eb05d15a24e",
+      "fullscreen.h": "872612f21460dec547118be64a5502d895d569b396ecc7234ab584e7a114269f",
+      "flip_plan.h": "5ad7c812d6ef2f0dceb33b346123205367384cce0433d508e6f238bd5e002802",
+      "pocket.elf": "b81a6ccc9e62b1d5cf9376161a59976f74d7829718c9d02c0b48437fb410ba3b",
+      "zz_payload.h": "8a534f2eb553c08262e4bc52faa85b81e8906a3c068f0ccfc25be9bc46e45231",
+      "ZZSnes-Thumbnail-600": "d92ca38f4cb7faffb91f888ff90870827a4bb066823841dfc9f6f35bb9c4d7d2"
+    }
+  }
+}

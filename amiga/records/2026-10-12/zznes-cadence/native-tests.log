@@ -1,0 +1,8 @@
+PASS period=16639 display=16800 shown=17744 omitted=256 elapsed=299497100
+PASS period=16639 display=16800 shown=17744 omitted=256 elapsed=299497100
+PASS period=19998 display=16800 shown=18000 omitted=0 elapsed=359924004
+PASS period=19998 display=20000 shown=17948 omitted=52 elapsed=359943500
+PASS period=20000 display=16800 shown=18000 omitted=0 elapsed=359960000
+PASS period=20000 display=20000 shown=17950 omitted=50 elapsed=359983500
+PASS wrap, bounded catch-up, presentation gaps, regional cadence and reset
+PASS 200000 handoffs/omissions, ACK wrap, no writes to front/pending, clean drain

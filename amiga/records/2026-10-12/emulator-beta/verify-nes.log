@@ -1,0 +1,5 @@
+10.0.0.40 - - [12/Oct/2026 13:35:11] "GET /life-39fcd827-1.cfg HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:35:12] "GET /life-39fcd827-0.cfg HTTP/1.0" 200 -
+PASS migrated NES user save loaded, 120 frames, clean return
+DONE Workbench, no Core1 owner
+Transfer server stopped

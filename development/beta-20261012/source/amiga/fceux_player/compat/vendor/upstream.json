@@ -1,0 +1,11 @@
+{
+  "repo": "https://github.com/Rezzy-dev/fceux",
+  "commit": "4d01530b6689b06a6d7cf0679b63625e3270ae9a",
+  "files": {
+    "mmc1.cpp": "3e40addde27a930c179d48af2105917ec454521d2437884dbea16196400d86a2",
+    "mmc3.cpp": "f5aaee0906dd3c84be902d6f81edc5fccc4f06e9d32c79c3b03c729c65236380",
+    "mmc3.h": "0e9f30e188f21fd891e4b9d61c2928be505c948cdbf65950e3379f05c3341ea8",
+    "mmc5.cpp": "25bd221d1daf6ec9b910d1585a3bfccb8a97c854860892e46a4f6d6499aebbd2",
+    "datalatch.cpp": "716717132693a07e72c0fc50f9608b61337e1701e11ba6af342a96e55d778639"
+  }
+}

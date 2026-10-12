@@ -1,0 +1,50 @@
+[
+  {
+    "frames": 1200,
+    "elapsed_us": 21326761,
+    "shown": 1200,
+    "omitted": 0,
+    "rebases": 0,
+    "late_max_us": 0,
+    "max_streak": 0,
+    "period_us": 16689,
+    "file": "short2-0-Baseline-1200.log",
+    "emulated_fps": 56.2673347349839,
+    "presentations_per_second": 56.2673347349839,
+    "omitted_percent": 0.0,
+    "stereo_pairs": 641626,
+    "audio_highwater": 6,
+    "gap_indicators": 89,
+    "host_ack": {
+      "count": 1141,
+      "mean_us": 17539,
+      "max_us": 50392,
+      "over_20ms": 84
+    },
+    "clean_exit": true
+  },
+  {
+    "frames": 1200,
+    "elapsed_us": 20355401,
+    "shown": 1163,
+    "omitted": 37,
+    "rebases": 1,
+    "late_max_us": 8780,
+    "max_streak": 2,
+    "period_us": 16689,
+    "file": "short2-1-Cadence-1200.log",
+    "emulated_fps": 58.95241267907225,
+    "presentations_per_second": 57.13471328813419,
+    "omitted_percent": 3.0833333333333335,
+    "stereo_pairs": 641626,
+    "audio_highwater": 6,
+    "gap_indicators": 0,
+    "host_ack": {
+      "count": 1107,
+      "mean_us": 17209,
+      "max_us": 50403,
+      "over_20ms": 22
+    },
+    "clean_exit": true
+  }
+]

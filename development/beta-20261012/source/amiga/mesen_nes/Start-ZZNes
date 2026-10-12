@@ -1,0 +1,4 @@
+; Development preview for this A4000TX; close other Core1 apps first.
+CD SD032G:Dev/ZZNesPreview
+Stack 65536
+ZZNes >SD032G:Dev/ZZNes-Diagnostic/preview.log

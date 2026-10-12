@@ -1,0 +1,107 @@
+[
+  {
+    "source": "SD032G:Dev/ZZFceuxPlayer/Release-0.2.0-rc1/ROMs/011 Mario Bros.nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/011 Mario Bros.nes",
+    "md5": "8d8e0b86dd870302bf4a994e76c55c83"
+  },
+  {
+    "source": "SD032G:Dev/ZZFceuxPlayer/Release-0.2.0-rc1/ROMs/002 Super Mario World.nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/SuperMarioWorld.nes",
+    "md5": "d36859ab669d91122a282c0e80af6f80"
+  },
+  {
+    "source": "SD032G:Dev/ZZFceuxPlayer/Release-0.2.0-rc1/ROMs/Controller-Test.nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/Controller-Test.nes",
+    "md5": "befb4099e9240fc55a6367fcf06e3d3c"
+  },
+  {
+    "source": "SD032G:Dev/ZZNes-Borders/ROMs/Airwolf (Japan).nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/Airwolf (Japan).nes",
+    "md5": "bdb6c1b72c6cf039a748a2f6a354813b"
+  },
+  {
+    "source": "SD032G:Dev/ZZNes-Borders/ROMs/Asterix (Europe) (En,Fr,De,Es,It).nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/Asterix EU.nes",
+    "md5": "17c6b5cc593cc8276cb6131584bfd609"
+  },
+  {
+    "source": "SD032G:Dev/ZZNes-Borders/ROMs/Aussie Rules Footy (Australia).nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/AussieRules AU.nes",
+    "md5": "00493c46a5915eeaa833a35d562ac0da"
+  },
+  {
+    "source": "SD032G:Dev/ZZNes-Borders/ROMs/Castlevania III - Dracula's Curse (USA).nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/Castlevania3 US.nes",
+    "md5": "d16a502d0125f23cc3d980ddc6b6f2e8"
+  },
+  {
+    "source": "SD032G:Dev/ZZNes-Borders/ROMs/Contra (USA).nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/Contra (USA).nes",
+    "md5": "7bdad8b4a7a56a634c9649d20bd3011b"
+  },
+  {
+    "source": "SD032G:Dev/ZZNes-Borders/ROMs/Contra Force (USA).nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/Contra Force US.nes",
+    "md5": "af7bb9a170ba5728829c3080035e897a"
+  },
+  {
+    "source": "SD032G:Dev/ZZNes-Borders/ROMs/Donkey Kong 3 (World).nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/Donkey Kong 3.nes",
+    "md5": "a267179a14c89ee73b0031de07c9e5c7"
+  },
+  {
+    "source": "SD032G:Dev/ZZNes-Borders/ROMs/Hammerin' Harry (Europe).nes",
+    "destination": "SD032G:Emulator/ZZNES/ROMs/HammerinHarry EU.nes",
+    "md5": "10935d03a033e558b04e5515d460fa8e"
+  },
+  {
+    "source": "SD032G:Dev/ZZSnes-Pocket/SMW-Test.sfc",
+    "destination": "SD032G:Emulator/ZZSNES/ROMs/SMW-Test.sfc",
+    "md5": "cdd3c8c37322978ca8669b34bc89c804"
+  },
+  {
+    "source": "SD032G:Dev/ZZSnesLibrary/ROMs/Library-System-Test.sfc",
+    "destination": "SD032G:Emulator/ZZSNES/ROMs/Library-Test.sfc",
+    "md5": "b81a38303ca34814d176a810d653ca38"
+  },
+  {
+    "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Aero Fighters (USA).sfc",
+    "destination": "SD032G:Emulator/ZZSNES/ROMs/AeroFighters US.sfc",
+    "md5": "510b850d22a6f3d67ccbfdd979501943"
+  },
+  {
+    "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Aladdin (USA).sfc",
+    "destination": "SD032G:Emulator/ZZSNES/ROMs/Aladdin (USA).sfc",
+    "md5": "8e00910312b30663768d907114d301c2"
+  },
+  {
+    "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Another World (Europe).sfc",
+    "destination": "SD032G:Emulator/ZZSNES/ROMs/AnotherWorld EU.sfc",
+    "md5": "9075cb9a818c85b477a4f496fd529bed"
+  },
+  {
+    "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Battletoads-Double Dragon (USA).sfc",
+    "destination": "SD032G:Emulator/ZZSNES/ROMs/BattletoadsDD US.sfc",
+    "md5": "3c433a8aa73986e1361423303e92785b"
+  },
+  {
+    "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Cannon Fodder (Europe).sfc",
+    "destination": "SD032G:Emulator/ZZSNES/ROMs/CannonFodder EU.sfc",
+    "md5": "8a61ea1d3b53375aae00cc69367dec7e"
+  },
+  {
+    "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Chaos Engine, The (Europe).sfc",
+    "destination": "SD032G:Emulator/ZZSNES/ROMs/Chaos Engine EU.sfc",
+    "md5": "2450fe375d298f14d6b433c8b8c2a17e"
+  },
+  {
+    "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Contra III - The Alien Wars (USA).sfc",
+    "destination": "SD032G:Emulator/ZZSNES/ROMs/Contra III US.sfc",
+    "md5": "ede82658dafdd6febbfbe6a9c9082500"
+  },
+  {
+    "source": "SD032G:Dev/ZZSnes-Borders/ROMs/F-Zero (USA).sfc",
+    "destination": "SD032G:Emulator/ZZSNES/ROMs/F-Zero (USA).sfc",
+    "md5": "6f334790120e1fe1a972ff184d2cfc50"
+  }
+]

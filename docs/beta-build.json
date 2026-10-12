@@ -1,0 +1,8 @@
+{
+  "console": "ZZSNES",
+  "version": "0.4.0 Beta",
+  "player": "ZZSnes-ui",
+  "artifact_dir": "artifacts/beta-0.4.0",
+  "snapshot_dir": "development/beta-20261012",
+  "image": "docker.io/amigadev/crosstools@sha256:93ca1a47903b61873f6638881b44f9f2d6086a39f1b9b916a26faff3a8ea4d3d"
+}

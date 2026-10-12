@@ -1,0 +1,64 @@
+[
+  {
+    "frames": 18000,
+    "elapsed_us": 311848034,
+    "shown": 18000,
+    "omitted": 0,
+    "rebases": 0,
+    "late_max_us": 0,
+    "max_streak": 0,
+    "period_us": 16689,
+    "file": "long-0-Baseline-18000.log",
+    "emulated_fps": 57.72042160766035,
+    "presentations_per_second": 57.72042160766035,
+    "omitted_percent": 0.0,
+    "stereo_pairs": 9624392,
+    "audio_highwater": 6,
+    "gap_indicators": 1005,
+    "host_ack": {
+      "count": 17941,
+      "mean_us": 17307,
+      "max_us": 51110,
+      "over_20ms": 998
+    },
+    "steady": {
+      "seconds": 301.258403,
+      "emulated_fps": 57.75772501854496,
+      "presentations_per_second": 57.75772501854496,
+      "gaps_added": 988,
+      "produced_pcm_seconds_minus_wall_seconds": -10.884526595505633
+    },
+    "clean_exit": true
+  },
+  {
+    "frames": 18000,
+    "elapsed_us": 300720381,
+    "shown": 17439,
+    "omitted": 561,
+    "rebases": 1,
+    "late_max_us": 18524,
+    "max_streak": 2,
+    "period_us": 16689,
+    "file": "long-1-Cadence-18000.log",
+    "emulated_fps": 59.85626893708943,
+    "presentations_per_second": 57.99074855521681,
+    "omitted_percent": 3.1166666666666667,
+    "stereo_pairs": 9624392,
+    "audio_highwater": 6,
+    "gap_indicators": 0,
+    "host_ack": {
+      "count": 17384,
+      "mean_us": 17224,
+      "max_us": 51563,
+      "over_20ms": 390
+    },
+    "steady": {
+      "seconds": 290.388247,
+      "emulated_fps": 59.91978043105856,
+      "presentations_per_second": 58.05331370728651,
+      "gaps_added": 0,
+      "produced_pcm_seconds_minus_wall_seconds": -0.014370595505624806
+    },
+    "clean_exit": true
+  }
+]

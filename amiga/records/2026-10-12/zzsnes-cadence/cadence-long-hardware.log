@@ -1,0 +1,46 @@
+10.0.0.40 - - [12/Oct/2026 11:44:39] "GET /Start-long-Baseline-18000 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 11:44:40] "GET /Start-long-Cadence-18000 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 11:44:41] "GET /ZZSnes-Baseline-18000 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 11:44:44] "GET /ZZSnes-Cadence-18000 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 11:44:48] "GET /long-Baseline-18000.cfg HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 11:44:48] "GET /long-Cadence-18000.cfg HTTP/1.0" 200 -
+Staged and hash-verified Baseline-18000,Cadence-18000
+START long-0-Baseline-18000
+RUNNING long-0-Baseline-18000 31 seconds
+RUNNING long-0-Baseline-18000 62 seconds
+RUNNING long-0-Baseline-18000 94 seconds
+RUNNING long-0-Baseline-18000 125 seconds
+RUNNING long-0-Baseline-18000 157 seconds
+RUNNING long-0-Baseline-18000 188 seconds
+RUNNING long-0-Baseline-18000 219 seconds
+RUNNING long-0-Baseline-18000 251 seconds
+RUNNING long-0-Baseline-18000 283 seconds
+RUNNING long-0-Baseline-18000 314 seconds
+PASS long-0-Baseline-18000 
+CADENCE_RUN frames=18000 elapsed_us=311848034 shown=18000 omitted=0 rebases=0 late_max=0 max_streak=0 period_us=16689
+FULLSCREEN_END queued=18000 flips=18000 pending=-1 ack_wait_us=210515559 fault=0
+AUDIO_TASK queued=9624392 submitted=9624392 completed=9624392 highwater=6 error=0 stopped=1
+AUDIO_END samples=9624392 gaps=1005
+GAME_AUDIO_END frames=18000 present_requests=18000
+FRAME_TIMING stage=5 count=17941 mean_us=17307 max_us=51110 bins=0,232,15909,802,948,50
+LAUNCHER exit=0; owned memory released
+START long-1-Cadence-18000
+RUNNING long-1-Cadence-18000 32 seconds
+RUNNING long-1-Cadence-18000 63 seconds
+RUNNING long-1-Cadence-18000 94 seconds
+RUNNING long-1-Cadence-18000 127 seconds
+RUNNING long-1-Cadence-18000 158 seconds
+RUNNING long-1-Cadence-18000 190 seconds
+RUNNING long-1-Cadence-18000 221 seconds
+RUNNING long-1-Cadence-18000 252 seconds
+RUNNING long-1-Cadence-18000 284 seconds
+PASS long-1-Cadence-18000 
+CADENCE_RUN frames=18000 elapsed_us=300720381 shown=17439 omitted=561 rebases=1 late_max=18524 max_streak=2 period_us=16689
+FULLSCREEN_END queued=17439 flips=17439 pending=-1 ack_wait_us=202604946 fault=0
+AUDIO_TASK queued=9624392 submitted=9624392 completed=9624392 highwater=6 error=0 stopped=1
+AUDIO_END samples=9624392 gaps=0
+GAME_AUDIO_END frames=18000 present_requests=17439
+FRAME_TIMING stage=5 count=17384 mean_us=17224 max_us=51563 bins=0,1,16054,939,302,88
+LAUNCHER exit=0; owned memory released
+DONE: Workbench, no Core1 owner, normal player/library unchanged.
+Transfer server stopped.

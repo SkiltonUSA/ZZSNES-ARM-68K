@@ -1,0 +1,310 @@
+{
+  "ZZNES": {
+    "old": "SD032G:Dev/ZZNes-Borders",
+    "new": "SD032G:Emulator/ZZNES",
+    "original_config_md5": "27b5815a3cf6ed6cc7a5b9ba84bedb93",
+    "roms": [
+      {
+        "source": "SD032G:Dev/ZZFceuxPlayer/Release-0.2.0-rc1/ROMs/011 Mario Bros.nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/011 Mario Bros.nes",
+        "portable": "PROGDIR:ROMs/011 Mario Bros.nes"
+      },
+      {
+        "source": "SD032G:Dev/ZZFceuxPlayer/Release-0.2.0-rc1/ROMs/002 Super Mario World.nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/SuperMarioWorld.nes",
+        "portable": "PROGDIR:ROMs/SuperMarioWorld.nes"
+      },
+      {
+        "source": "SD032G:Dev/ZZFceuxPlayer/Release-0.2.0-rc1/ROMs/Controller-Test.nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/Controller-Test.nes",
+        "portable": "PROGDIR:ROMs/Controller-Test.nes"
+      },
+      {
+        "source": "SD032G:Dev/ZZNes-Borders/ROMs/Airwolf (Japan).nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/Airwolf (Japan).nes",
+        "portable": "PROGDIR:ROMs/Airwolf (Japan).nes"
+      },
+      {
+        "source": "SD032G:Dev/ZZNes-Borders/ROMs/Asterix (Europe) (En,Fr,De,Es,It).nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/Asterix EU.nes",
+        "portable": "PROGDIR:ROMs/Asterix EU.nes"
+      },
+      {
+        "source": "SD032G:Dev/ZZNes-Borders/ROMs/Aussie Rules Footy (Australia).nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/AussieRules AU.nes",
+        "portable": "PROGDIR:ROMs/AussieRules AU.nes"
+      },
+      {
+        "source": "SD032G:Dev/ZZNes-Borders/ROMs/Castlevania III - Dracula's Curse (USA).nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/Castlevania3 US.nes",
+        "portable": "PROGDIR:ROMs/Castlevania3 US.nes"
+      },
+      {
+        "source": "SD032G:Dev/ZZNes-Borders/ROMs/Contra (USA).nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/Contra (USA).nes",
+        "portable": "PROGDIR:ROMs/Contra (USA).nes"
+      },
+      {
+        "source": "SD032G:Dev/ZZNes-Borders/ROMs/Contra Force (USA).nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/Contra Force US.nes",
+        "portable": "PROGDIR:ROMs/Contra Force US.nes"
+      },
+      {
+        "source": "SD032G:Dev/ZZNes-Borders/ROMs/Donkey Kong 3 (World).nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/Donkey Kong 3.nes",
+        "portable": "PROGDIR:ROMs/Donkey Kong 3.nes"
+      },
+      {
+        "source": "SD032G:Dev/ZZNes-Borders/ROMs/Hammerin' Harry (Europe).nes",
+        "destination": "SD032G:Emulator/ZZNES/ROMs/HammerinHarry EU.nes",
+        "portable": "PROGDIR:ROMs/HammerinHarry EU.nes"
+      }
+    ],
+    "artwork": [],
+    "entries": [
+      {
+        "old": "SD032G:Dev/ZZFceuxPlayer/Release-0.2.0-rc1/ROMs/011 Mario Bros.nes",
+        "new": "PROGDIR:ROMs/011 Mario Bros.nes"
+      },
+      {
+        "old": "SD032G:Dev/ZZFceuxPlayer/Release-0.2.0-rc1/ROMs/002 Super Mario World.nes",
+        "new": "PROGDIR:ROMs/SuperMarioWorld.nes"
+      },
+      {
+        "old": "SD032G:Dev/ZZFceuxPlayer/Release-0.2.0-rc1/ROMs/Controller-Test.nes",
+        "new": "PROGDIR:ROMs/Controller-Test.nes"
+      },
+      {
+        "old": "SD032G:Dev/ZZNes-Borders/ROMs/Airwolf (Japan).nes",
+        "new": "PROGDIR:ROMs/Airwolf (Japan).nes"
+      },
+      {
+        "old": "SD032G:Dev/ZZNes-Borders/ROMs/Asterix (Europe) (En,Fr,De,Es,It).nes",
+        "new": "PROGDIR:ROMs/Asterix EU.nes"
+      },
+      {
+        "old": "SD032G:Dev/ZZNes-Borders/ROMs/Aussie Rules Footy (Australia).nes",
+        "new": "PROGDIR:ROMs/AussieRules AU.nes"
+      },
+      {
+        "old": "SD032G:Dev/ZZNes-Borders/ROMs/Castlevania III - Dracula's Curse (USA).nes",
+        "new": "PROGDIR:ROMs/Castlevania3 US.nes"
+      },
+      {
+        "old": "SD032G:Dev/ZZNes-Borders/ROMs/Contra (USA).nes",
+        "new": "PROGDIR:ROMs/Contra (USA).nes"
+      },
+      {
+        "old": "SD032G:Dev/ZZNes-Borders/ROMs/Contra Force (USA).nes",
+        "new": "PROGDIR:ROMs/Contra Force US.nes"
+      },
+      {
+        "old": "SD032G:Dev/ZZNes-Borders/ROMs/Donkey Kong 3 (World).nes",
+        "new": "PROGDIR:ROMs/Donkey Kong 3.nes"
+      },
+      {
+        "old": "SD032G:Dev/ZZNes-Borders/ROMs/Hammerin' Harry (Europe).nes",
+        "new": "PROGDIR:ROMs/HammerinHarry EU.nes"
+      }
+    ],
+    "state_renames": [
+      {
+        "old": "54842890-1.zzs",
+        "new": "e60c4221-1.zzs"
+      },
+      {
+        "old": "54842890-1.zzs.bak",
+        "new": "e60c4221-1.zzs.bak"
+      }
+    ],
+    "states": [
+      {
+        "name": "54842890-1.zzs",
+        "size": 15497,
+        "type": "file"
+      },
+      {
+        "name": "54842890-1.zzs.bak",
+        "size": 15497,
+        "type": "file"
+      }
+    ],
+    "snapshots": [
+      {
+        "name": "ce138fe800000000.zzp.bak",
+        "size": 28704,
+        "type": "file"
+      },
+      {
+        "name": "ce138fe800000000.zzp",
+        "size": 28704,
+        "type": "file"
+      },
+      {
+        "name": "9802075800000000.zzp",
+        "size": 28704,
+        "type": "file"
+      },
+      {
+        "name": "781228a000000000.zzp",
+        "size": 28704,
+        "type": "file"
+      },
+      {
+        "name": "2cc87b2e00000000.zzp",
+        "size": 28704,
+        "type": "file"
+      },
+      {
+        "name": "29145eb800000000.zzp",
+        "size": 28704,
+        "type": "file"
+      }
+    ]
+  },
+  "ZZSNES": {
+    "old": "SD032G:Dev/ZZSnes-Borders",
+    "new": "SD032G:Emulator/ZZSNES",
+    "original_config_md5": "9c03f1df97b570a152502c172ca9ef85",
+    "roms": [
+      {
+        "source": "SD032G:Dev/ZZSnes-Pocket/SMW-Test.sfc",
+        "destination": "SD032G:Emulator/ZZSNES/ROMs/SMW-Test.sfc",
+        "portable": "PROGDIR:ROMs/SMW-Test.sfc"
+      },
+      {
+        "source": "SD032G:Dev/ZZSnesLibrary/ROMs/Library-System-Test.sfc",
+        "destination": "SD032G:Emulator/ZZSNES/ROMs/Library-Test.sfc",
+        "portable": "PROGDIR:ROMs/Library-Test.sfc"
+      },
+      {
+        "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Aero Fighters (USA).sfc",
+        "destination": "SD032G:Emulator/ZZSNES/ROMs/AeroFighters US.sfc",
+        "portable": "PROGDIR:ROMs/AeroFighters US.sfc"
+      },
+      {
+        "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Aladdin (USA).sfc",
+        "destination": "SD032G:Emulator/ZZSNES/ROMs/Aladdin (USA).sfc",
+        "portable": "PROGDIR:ROMs/Aladdin (USA).sfc"
+      },
+      {
+        "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Another World (Europe).sfc",
+        "destination": "SD032G:Emulator/ZZSNES/ROMs/AnotherWorld EU.sfc",
+        "portable": "PROGDIR:ROMs/AnotherWorld EU.sfc"
+      },
+      {
+        "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Battletoads-Double Dragon (USA).sfc",
+        "destination": "SD032G:Emulator/ZZSNES/ROMs/BattletoadsDD US.sfc",
+        "portable": "PROGDIR:ROMs/BattletoadsDD US.sfc"
+      },
+      {
+        "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Cannon Fodder (Europe).sfc",
+        "destination": "SD032G:Emulator/ZZSNES/ROMs/CannonFodder EU.sfc",
+        "portable": "PROGDIR:ROMs/CannonFodder EU.sfc"
+      },
+      {
+        "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Chaos Engine, The (Europe).sfc",
+        "destination": "SD032G:Emulator/ZZSNES/ROMs/Chaos Engine EU.sfc",
+        "portable": "PROGDIR:ROMs/Chaos Engine EU.sfc"
+      },
+      {
+        "source": "SD032G:Dev/ZZSnes-Borders/ROMs/Contra III - The Alien Wars (USA).sfc",
+        "destination": "SD032G:Emulator/ZZSNES/ROMs/Contra III US.sfc",
+        "portable": "PROGDIR:ROMs/Contra III US.sfc"
+      },
+      {
+        "source": "SD032G:Dev/ZZSnes-Borders/ROMs/F-Zero (USA).sfc",
+        "destination": "SD032G:Emulator/ZZSNES/ROMs/F-Zero (USA).sfc",
+        "portable": "PROGDIR:ROMs/F-Zero (USA).sfc"
+      }
+    ],
+    "artwork": [],
+    "entries": [
+      {
+        "old": "SD032G:Dev/ZZSnes-Pocket/SMW-Test.sfc",
+        "new": "PROGDIR:ROMs/SMW-Test.sfc"
+      },
+      {
+        "old": "SD032G:Dev/ZZSnesLibrary/ROMs/Library-System-Test.sfc",
+        "new": "PROGDIR:ROMs/Library-Test.sfc"
+      },
+      {
+        "old": "SD032G:Dev/ZZSnes-Borders/ROMs/Aero Fighters (USA).sfc",
+        "new": "PROGDIR:ROMs/AeroFighters US.sfc"
+      },
+      {
+        "old": "SD032G:Dev/ZZSnes-Borders/ROMs/Aladdin (USA).sfc",
+        "new": "PROGDIR:ROMs/Aladdin (USA).sfc"
+      },
+      {
+        "old": "SD032G:Dev/ZZSnes-Borders/ROMs/Another World (Europe).sfc",
+        "new": "PROGDIR:ROMs/AnotherWorld EU.sfc"
+      },
+      {
+        "old": "SD032G:Dev/ZZSnes-Borders/ROMs/Battletoads-Double Dragon (USA).sfc",
+        "new": "PROGDIR:ROMs/BattletoadsDD US.sfc"
+      },
+      {
+        "old": "SD032G:Dev/ZZSnes-Borders/ROMs/Cannon Fodder (Europe).sfc",
+        "new": "PROGDIR:ROMs/CannonFodder EU.sfc"
+      },
+      {
+        "old": "SD032G:Dev/ZZSnes-Borders/ROMs/Chaos Engine, The (Europe).sfc",
+        "new": "PROGDIR:ROMs/Chaos Engine EU.sfc"
+      },
+      {
+        "old": "SD032G:Dev/ZZSnes-Borders/ROMs/Contra III - The Alien Wars (USA).sfc",
+        "new": "PROGDIR:ROMs/Contra III US.sfc"
+      },
+      {
+        "old": "SD032G:Dev/ZZSnes-Borders/ROMs/F-Zero (USA).sfc",
+        "new": "PROGDIR:ROMs/F-Zero (USA).sfc"
+      }
+    ],
+    "state_renames": [],
+    "states": [
+      {
+        "name": "bd6be8fa937f7914-1.zzs",
+        "size": 686196,
+        "type": "file"
+      },
+      {
+        "name": "ae8466a18aa41dc9-1.zzs.bak",
+        "size": 686196,
+        "type": "file"
+      },
+      {
+        "name": "ae8466a18aa41dc9-1.zzs",
+        "size": 686196,
+        "type": "file"
+      }
+    ],
+    "snapshots": [
+      {
+        "name": "ae8466a18aa41dc9.zzp",
+        "size": 28704,
+        "type": "file"
+      },
+      {
+        "name": "ae8466a18aa41dc9.zzp.bak",
+        "size": 28704,
+        "type": "file"
+      },
+      {
+        "name": "176375b1ca7c8593.zzp",
+        "size": 28704,
+        "type": "file"
+      },
+      {
+        "name": "9330195904ee24ad.zzp",
+        "size": 28704,
+        "type": "file"
+      },
+      {
+        "name": "6b59318952997401.zzp",
+        "size": 28704,
+        "type": "file"
+      }
+    ]
+  }
+}

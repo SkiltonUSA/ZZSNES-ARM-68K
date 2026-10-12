@@ -1,0 +1,128 @@
+{
+  "Thumbnail-600": {
+    "frames": 600,
+    "loop_cap_us": 37000000,
+    "audio_rate": 32040,
+    "audio_slots": 8,
+    "audio_prebuffer": 6,
+    "arm_audio_worker_handoff_unchanged": true,
+    "md5": "472f82e740542fbf906916d50948678f",
+    "sha256": {
+      "host.c": "edc19c7faaa018f5b683f9d862011355a0808d990057667cb4fe05411267c19c",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "frame_profile.h": "036a9f92114b5c9ec72ac61c5340274ae999d96442692b9c679ba01aa52c4a44",
+      "player_audio.h": "50966044dfd89aed17f85025e64a569cc40b5470a6cb2225e6556eb05d15a24e",
+      "fullscreen.h": "872612f21460dec547118be64a5502d895d569b396ecc7234ab584e7a114269f",
+      "flip_plan.h": "5ad7c812d6ef2f0dceb33b346123205367384cce0433d508e6f238bd5e002802",
+      "pocket.elf": "b81a6ccc9e62b1d5cf9376161a59976f74d7829718c9d02c0b48437fb410ba3b",
+      "zz_payload.h": "8a534f2eb553c08262e4bc52faa85b81e8906a3c068f0ccfc25be9bc46e45231",
+      "ZZSnes-Thumbnail-600": "d92ca38f4cb7faffb91f888ff90870827a4bb066823841dfc9f6f35bb9c4d7d2"
+    }
+  },
+  "Baseline-1200": {
+    "frames": 1200,
+    "loop_cap_us": 49000000,
+    "audio_rate": 32040,
+    "audio_slots": 8,
+    "audio_prebuffer": 6,
+    "arm_audio_worker_handoff_unchanged": true,
+    "md5": "7b985d39b563ad805382139d38c357a4",
+    "sha256": {
+      "host.c": "b999962020023da38f0d697cf144018e4dd7282c6ca7d37ba8c7c8cfa4f083b5",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "frame_profile.h": "036a9f92114b5c9ec72ac61c5340274ae999d96442692b9c679ba01aa52c4a44",
+      "player_audio.h": "50966044dfd89aed17f85025e64a569cc40b5470a6cb2225e6556eb05d15a24e",
+      "fullscreen.h": "872612f21460dec547118be64a5502d895d569b396ecc7234ab584e7a114269f",
+      "flip_plan.h": "5ad7c812d6ef2f0dceb33b346123205367384cce0433d508e6f238bd5e002802",
+      "pocket.elf": "b81a6ccc9e62b1d5cf9376161a59976f74d7829718c9d02c0b48437fb410ba3b",
+      "zz_payload.h": "8a534f2eb553c08262e4bc52faa85b81e8906a3c068f0ccfc25be9bc46e45231",
+      "ZZSnes-Baseline-1200": "1de125e66f031a03aeb3ceb61a9b5962551f22836210732736bc42ff78e8beee"
+    }
+  },
+  "Cadence-1200": {
+    "frames": 1200,
+    "loop_cap_us": 49000000,
+    "audio_rate": 32040,
+    "audio_slots": 8,
+    "audio_prebuffer": 6,
+    "arm_audio_worker_handoff_unchanged": true,
+    "md5": "f278d48eee555c23559608b105ad3896",
+    "sha256": {
+      "host.c": "b5d9f6b4e7c34b612a9ecaebf2e114505b9273de75b69b4196e7a8f92ae9c1bb",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "frame_profile.h": "036a9f92114b5c9ec72ac61c5340274ae999d96442692b9c679ba01aa52c4a44",
+      "player_audio.h": "50966044dfd89aed17f85025e64a569cc40b5470a6cb2225e6556eb05d15a24e",
+      "fullscreen.h": "872612f21460dec547118be64a5502d895d569b396ecc7234ab584e7a114269f",
+      "flip_plan.h": "5ad7c812d6ef2f0dceb33b346123205367384cce0433d508e6f238bd5e002802",
+      "pocket.elf": "b81a6ccc9e62b1d5cf9376161a59976f74d7829718c9d02c0b48437fb410ba3b",
+      "zz_payload.h": "8a534f2eb553c08262e4bc52faa85b81e8906a3c068f0ccfc25be9bc46e45231",
+      "ZZSnes-Cadence-1200": "3c0f3539dc5832aa0a1d88ae81bff4fc48a167681a366bf7752e4855564984fc"
+    }
+  },
+  "Baseline-18000": {
+    "frames": 18000,
+    "loop_cap_us": 385000000,
+    "audio_rate": 32040,
+    "audio_slots": 8,
+    "audio_prebuffer": 6,
+    "arm_audio_worker_handoff_unchanged": true,
+    "md5": "dd0b2df302167fb40b8720cb908277ca",
+    "sha256": {
+      "host.c": "e07cc565e49fba63d3239e2bd5214e67ab01c627d045916ec14ca04c97e80fa9",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "frame_profile.h": "1cff97ee03fc34323ec30243cc5d1496dbc7f212e41cb69081a2ff61d9bf18d1",
+      "player_audio.h": "50966044dfd89aed17f85025e64a569cc40b5470a6cb2225e6556eb05d15a24e",
+      "fullscreen.h": "872612f21460dec547118be64a5502d895d569b396ecc7234ab584e7a114269f",
+      "flip_plan.h": "5ad7c812d6ef2f0dceb33b346123205367384cce0433d508e6f238bd5e002802",
+      "pocket.elf": "b81a6ccc9e62b1d5cf9376161a59976f74d7829718c9d02c0b48437fb410ba3b",
+      "zz_payload.h": "8a534f2eb553c08262e4bc52faa85b81e8906a3c068f0ccfc25be9bc46e45231",
+      "ZZSnes-Baseline-18000": "e342b791e1ddb3735bc499db49d29adb5d82d00d22ac7fc1a601f552f5f1cafa"
+    }
+  },
+  "Cadence-18000": {
+    "frames": 18000,
+    "loop_cap_us": 385000000,
+    "audio_rate": 32040,
+    "audio_slots": 8,
+    "audio_prebuffer": 6,
+    "arm_audio_worker_handoff_unchanged": true,
+    "md5": "60df5985a37dc43ed2efcfcf20a4e969",
+    "sha256": {
+      "host.c": "ed2eb3e05b9651758ff72d6800b9aed65f29f77fc69a682bbe44652c20f9a87f",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "frame_profile.h": "1cff97ee03fc34323ec30243cc5d1496dbc7f212e41cb69081a2ff61d9bf18d1",
+      "player_audio.h": "50966044dfd89aed17f85025e64a569cc40b5470a6cb2225e6556eb05d15a24e",
+      "fullscreen.h": "872612f21460dec547118be64a5502d895d569b396ecc7234ab584e7a114269f",
+      "flip_plan.h": "5ad7c812d6ef2f0dceb33b346123205367384cce0433d508e6f238bd5e002802",
+      "pocket.elf": "b81a6ccc9e62b1d5cf9376161a59976f74d7829718c9d02c0b48437fb410ba3b",
+      "zz_payload.h": "8a534f2eb553c08262e4bc52faa85b81e8906a3c068f0ccfc25be9bc46e45231",
+      "ZZSnes-Cadence-18000": "5ed1a8c7d17afb26bc0369a05a23d35f3ab49108054f25a9f5d387599b87833d"
+    }
+  },
+  "Interactive-18000": {
+    "frames": 18000,
+    "loop_cap_us": 385000000,
+    "audio_rate": 32040,
+    "audio_slots": 8,
+    "audio_prebuffer": 6,
+    "arm_audio_worker_handoff_unchanged": true,
+    "md5": "785a9ed07556d1b058764249f18fcd75",
+    "sha256": {
+      "host.c": "24fede7a1da00da6f40e31fae622c988d2ea17a41398ee65d43f2aa91adbb782",
+      "cadence.h": "767085eb094d17f0fe07195d4d0a0b0553585cd1acd3818a3f26f06bcdd22807",
+      "pace_target.h": "e61d553becb9675d65bdc35554a4625d071a1e701c18c6dd9413b6ffa3a48951",
+      "frame_profile.h": "1cff97ee03fc34323ec30243cc5d1496dbc7f212e41cb69081a2ff61d9bf18d1",
+      "player_audio.h": "50966044dfd89aed17f85025e64a569cc40b5470a6cb2225e6556eb05d15a24e",
+      "fullscreen.h": "872612f21460dec547118be64a5502d895d569b396ecc7234ab584e7a114269f",
+      "flip_plan.h": "5ad7c812d6ef2f0dceb33b346123205367384cce0433d508e6f238bd5e002802",
+      "pocket.elf": "b81a6ccc9e62b1d5cf9376161a59976f74d7829718c9d02c0b48437fb410ba3b",
+      "zz_payload.h": "8a534f2eb553c08262e4bc52faa85b81e8906a3c068f0ccfc25be9bc46e45231",
+      "ZZSnes-Interactive-18000": "d7084f812e689c99f131806af8257ba4cf73bb01ae3588f1776dfb33a1d30e77"
+    }
+  }
+}

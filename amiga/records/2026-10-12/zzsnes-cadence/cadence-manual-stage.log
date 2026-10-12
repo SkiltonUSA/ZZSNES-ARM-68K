@@ -1,0 +1,6 @@
+10.0.0.40 - - [12/Oct/2026 11:58:13] "GET /Start-manual-Interactive-18000 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 11:58:14] "GET /ZZSnes-Interactive-18000 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 11:58:18] "GET /manual-Interactive-18000.cfg HTTP/1.0" 200 -
+Staged and hash-verified Interactive-18000
+DONE: Workbench, no Core1 owner, normal player/library unchanged.
+Transfer server stopped.

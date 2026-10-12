@@ -1,0 +1,26 @@
+10.0.0.40 - - [12/Oct/2026 13:28:13] "GET /ZZNES/COPYING3 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:14] "GET /ZZNES/Credits.txt HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:15] "GET /ZZNES/LICENSE-Snes9x HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:15] "GET /ZZNES/LICENSE-xSysInfo HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:16] "GET /ZZNES/Library.bak HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:16] "GET /ZZNES/Library.cfg HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:17] "GET /ZZNES/ReadMe.txt HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:17] "GET /ZZNES/Version.txt HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:18] "GET /ZZNES/ZZFceux-ui HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:20] "GET /ZZNES/ZZNES HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:23] "GET /ZZNES/ZZNES.info HTTP/1.0" 200 -
+STAGED ZZNES 11 ROMs; all copied files MD5 verified
+10.0.0.40 - - [12/Oct/2026 13:28:55] "GET /ZZSNES/COPYING3 HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:57] "GET /ZZSNES/Credits.txt HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:57] "GET /ZZSNES/LICENSE-Snes9x HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:58] "GET /ZZSNES/LICENSE-xSysInfo HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:58] "GET /ZZSNES/Library.bak HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:28:59] "GET /ZZSNES/Library.cfg HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:29:01] "GET /ZZSNES/ReadMe.txt HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:29:01] "GET /ZZSNES/Version.txt HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:29:02] "GET /ZZSNES/ZZSNES HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:29:03] "GET /ZZSNES/ZZSNES.info HTTP/1.0" 200 -
+10.0.0.40 - - [12/Oct/2026 13:29:04] "GET /ZZSNES/ZZSnes-ui HTTP/1.0" 200 -
+STAGED ZZSNES 10 ROMs; all copied files MD5 verified
+DONE staged both Betas; source folders retained pending launch/save verification
+Transfer server stopped

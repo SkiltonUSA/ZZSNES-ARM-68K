@@ -1,0 +1,6 @@
+; ZZNes fullscreen development preview: XX19c / XACP 1.7 only.
+; Do not run alongside another ZZ9000 Core1 application.
+FailAt 10
+Stack 65536
+CD SD032G:Dev/ZZNesFullscreen
+ZZNes >SD032G:Dev/ZZNes-Diagnostic/fullscreen-preview.log

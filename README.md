@@ -1,111 +1,128 @@
-# ZZSNES-ARM-68K
+# ZZSNES — 0.4.0 Beta
 
-A Workbench SNES emulator for the **Amiga 4000TX / ZZ9000 Cortex-A9**, with a
-native **MUI ROM library**, stereo AHI output and illustrated save slots.
-The 68k manages AmigaOS, files, input, audio and display lifecycle; the ARM runs
-PocketSNES/Snes9x2002 and writes directly into ZZ9000 display buffers through
-**XANI's XACP interface**.
+A native MUI emulator library for **AmigaOS / ZZ9000 Cortex-A9**, using
+**PocketSNES / Snes9x2002** and **[XANI’s XACP platform](https://github.com/Xanxi-Amiga/XACP-ZZ9000)**.
+The ARM runs emulation and renders into ZZ9000 display buffers; the 68k handles
+AmigaOS, ROM files, input, display coordination and AHI audio delivery.
 
-**[Download v0.2.0-dev](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.2.0-dev)** ·
-[Installation](docs/install-library.txt) · [Controls and limits](amiga/pocketsnes/library/README.md)
+**[Current Beta executables](artifacts/beta-0.4.0/)** ·
+[Build and backup](docs/beta-backup.md) ·
+[Library guide](docs/amiga-game-library-ui.md) ·
+[Compatibility and timing details](docs/amiga-zzsnes-pal-compatibility.md)
 
-This is a private experimental development prerelease. The ROM-free ZIP
-contains the exact tested 68k executables, Workbench icons, an empty library,
-documentation and license notices. Source, ARM payloads, build support and test
-evidence are retained here. It does not contain AmigaOS or firmware.
+This backup contains the exact installed Beta executables, editable source,
+verified build inputs, ARM payload and hardware test records. ROMs, personal
+library settings, save files, AmigaOS and firmware are not included. Older
+GitHub releases and build targets remain historical; they do not contain this
+Beta’s complete feature set.
 
-## Current application
+## Frame rates on the A4000TX
 
-- Add ROMs or a folder; browse favourites and recently played games.
-- Five save slots per ROM, each with a captured **128x112 screenshot**.
-- **F5 saves**, **F8 loads**, and **Resume slot** restores in a new player session.
-  Previous saves are retained as `.bak`; states are identified by ROM contents.
-- Controller test and fire-button mapping, keyboard and physical-port-2 joystick.
-- 4:3 / widescreen monitor settings, edge masks, black/white surrounds and original
-  SNES purple, Super Famicom four-colour and charcoal console bezels.
-- Fullscreen XACP buffer flipping and clean return to the MUI library.
+Measured **12 October 2026**, TF4060 / ZZ9000, XX19c / XACP 1.7, with AHI audio.
+**Emulation FPS** counts completed CPU/PPU/APU frames. **Presented pictures/s**
+counts pictures submitted through the display pipeline; it is not monitor
+refresh or a measurement of tear-free scanout.
 
-Install in a writable drawer and double-click `ZZSnesLibrary`. Keep its
-`ZZSnes-ui` player beside it. On the development Amiga it is installed at
-`SD032G:Dev/ZZSnesLibrary/`. Existing Mesen and SMW-only previews remain separate.
+| Emulator / workload | Before: emulation FPS | Beta scheduling: emulation FPS | Before: presented pictures/s | Beta scheduling: presented pictures/s | Measurement window |
+| --- | ---: | ---: | ---: | ---: | --- |
+| ZZNES — Contra, NTSC | 55.908 | **59.893** | 55.908 | **58.395** | Frames 600–1,200 of a 1,200-frame run |
+| ZZSNES — Super Mario World, NTSC | 57.758 | **59.920** | 57.758 | **58.053** | Frames 600–18,000 of an 18,000-frame run |
+| ZZNES — Asterix, PAL | 49.920 | **50.005** | 49.837 | **50.005** | Frames 600–1,200 of a 1,200-frame run |
+| ZZSNES — Cannon Fodder, PAL | 49.735 | **49.743** | 49.735 | **49.743** | Whole 1,200-frame loop, including startup |
 
-Verified setup: A4000TX, TF4060, AmigaOS 3.2.3, ZZ9000 **XX19c / XACP 1.7**,
-Picasso96, MUI and AHI, with a free 32 MiB ZZ9000 Fast RAM allocation. Other
-firmware/hardware combinations are unverified. Close other Core1 applications
-before launching. No global audio or firmware configuration changes are made.
+Steady rows use differences between logged progress samples. PAL SNES has no
+comparable steady sample window in its record; its whole-loop figure is shown
+explicitly. These are per-title measurements, not universal emulator speeds.
 
-## Measured results
+For comparison, the **whole-loop NTSC** rates including startup were:
 
-Physical measurements on 10 October 2026; core-only and displayed rates have
-different scopes and must not be compared as equivalent game FPS.
+| Workload | Emulation FPS, before → after | Presented pictures/s, before → after |
+| --- | --- | --- |
+| Contra, 1,200 frames | 53.652 → **57.570** | 53.652 → **54.980** |
+| Super Mario World, 18,000 frames | 57.720 → **59.856** | 57.720 → **57.991** |
 
-| Test | Measured result | Scope |
-| --- | ---: | --- |
-| Mesen2 scalar-word diagnostic | 39.945 ms/frame | Earlier headless original checkerboard |
-| PocketSNES original checkerboard | 4.6166 ms/frame | Ten six-frame headless batches |
-| SMW ARM core | 5.017 ms/frame | 600 startup/menu frames; excludes display/audio playback |
-| Plain fullscreen preview | 54.933 displayed FPS | 600 scripted-Start frames, stereo AHI |
-| **MUI player with scaled console bezel** | **52.447 displayed FPS** | 600 scripted-Start frames, stereo AHI |
+## Where the improvement came from
 
-The final bezel renderer averages **3.320 ms/frame**, down from about 11.2 ms
-in the initial uncached implementation. It caches scaling coordinates and
-static artwork. The plain preview used 2.272 ms/frame for presentation; the
-new bezel adds scaling work. These tests do not establish sustained 60 FPS.
+The latest change is **68k host scheduling and regional frame pacing**. It keeps
+every emulation/APU frame and every PCM sample, but may omit a late completed
+picture, with at most two consecutive omissions. It fixes the zero-deadline
+reset after pause, save/load or thumbnail capture. The ARM payload, AHI worker
+and each emulator’s accepted fullscreen handoff were unchanged in these A/B
+comparisons. This gain does not come from SDL2, new NEON code or new firmware.
 
-The final bordered run completed all 600 flips and 320,813 stereo sample pairs,
-with zero display faults or AHI device errors. It recorded **83 late-link
-scheduling events**: audible continuity still needs refinement. AHI unit 0 on
-the test Amiga is currently Paula; direct ARM/ZZ9000AX audio is not implemented.
+| Whole-run metric | ZZNES Contra: before → after | ZZSNES SMW: before → after |
+| --- | --- | --- |
+| Pictures omitted | 0 → 54 / 1,200 (4.50%) | 0 → 561 / 18,000 (3.12%) |
+| Audio scheduling gap indicators | 254 → 15 | 1,005 → 0 |
+| Completed audio | 638,901 mono samples in each run | 9,624,392 stereo sample pairs in each run |
 
-[Library results and logs](amiga/records/2026-10-10/pocketsnes-library/) ·
-[Plain player](amiga/records/2026-10-10/pocketsnes-player/) ·
-[SMW core](amiga/records/2026-10-10/pocketsnes-smw-arm/) ·
-[Original diagnostic](amiga/pocketsnes/README.md)
+Gap counters are scheduling indicators, not recordings of audible dropouts.
+Some long display handoffs remain; these results do not prove perfect audio,
+latency or elimination of horizontal tearing. The user reported the SNES
+interactive candidate was “so much better”; NES visual acceptance remains
+separate from its measured improvement.
 
-## Save-state and hardware verification
+[ZZNES logs and analysis](amiga/records/2026-10-12/zznes-cadence/) ·
+[ZZSNES logs and analysis](amiga/records/2026-10-12/zzsnes-cadence/) ·
+[Beta install/lifecycle evidence](amiga/records/2026-10-12/emulator-beta/)
 
-SMW and the original 32 KiB test cartridge have independent saves and visibly
-correct thumbnails. Hardware tests pass save, paused load, fresh-process
-resume, overwrite/backup rotation and clean exit. States are 686,196 bytes on
-A9, include SRAM and are tied to this player/version; standalone battery `.srm`
-files are not yet written.
+Timing comes from the diagnostic A/B hosts whose scheduling policy is now in
+the Betas. The versioned Beta binaries subsequently passed launch/save/resume
+lifecycle checks; the five-minute FPS test was not rerun on the renamed Beta.
 
-Native ASan/UBSan and relocated A9 instruction models reproduce the next 30
-video frames and stereo PCM exactly after restoration, including loading at
-a different ARM allocation address. Additional state covers upstream snapshot
-omissions in mixer, echo/filter history, fractional audio timing and rendering.
-Runtime pointers are rebuilt. Corrupt-thumbnail and wrong-ROM saves are rejected.
+## Workbench library
 
-Physical runs confirm RET1, all 14 restored registers, cache/MMU restoration,
-zero witness mismatches and owned-memory release. The single-Core1 guard,
-runtime mapping probe and temporary framebuffer mappings remain mandatory.
-Instruction-model tests alone do not establish physical cache correctness.
+- Games, Display, Controllers, Save states and About tabs.
+- ROM/folder import, search, recent history, favourites and local game snapshots.
+- Joystick test and fire mapping, 4:3/widescreen correction, borders and overscan masks.
+- Five save slots **per game**, save deletion and continue/resume selection.
+- F5 saves, F8 loads, F9 captures library artwork; P pauses, Q/Escape returns.
 
-## Compatibility and next work
+SNES save slots contain miniature screenshots. Existing NES state files do
+not contain embedded screenshots; its game library uses separate captures.
 
-Current gate: standard NTSC Japan/USA LoROM/HiROM, up to 4 MiB, cartridge types
-0–2, no enhancement chips, 256x224 video. `.sfc` and `.smc`, with or without a
-512-byte copier header, are accepted. PAL, high-resolution/interlaced output,
-enhancement chips and broad game compatibility are not established. Only SMW
-and an original fixture have been validated, not an entire catalogue.
+On the owner’s Amiga, open **`SD032G:Emulator/ZZSNES/ZZSNES`**.
+Keep `ZZSnes-ui` in the same writable drawer. The window/About page identifies
+**0.4.0 Beta**. ROMs, States and Snapshots live alongside the application.
+For a fresh installation, copy the current artifact drawer to a writable
+location and add your own ROMs through the library. Use short ROM filenames
+(at most 20 characters on short-name filesystems) to leave space for `.sav.bak`
+and `.sav.tmp`; display titles may remain long.
 
-Next: audio/frame pacing, longer gameplay and joystick tests, battery SRAM
-persistence, then more cartridges. See [roadmap](docs/roadmap.md).
+Requires the verified AmigaOS 3.2.3 / Picasso96 / MUI / AHI setup and compatible
+XX19c / XACP 1.7 firmware. Only one Core1 application may run at a time.
+Other firmware combinations are not established by these tests. No global AHI
+or firmware changes are included. Direct ARM-to-ZZ9000AX audio is not implemented.
 
-## Source, build and acknowledgements
+## Compatibility and validation
 
-[Build and verification](docs/build.md) · [Handoff](docs/session-memory.md) ·
-[Backup scope](docs/backup.md) · [Component notices](THIRD_PARTY.md)
+Automatic PAL/NTSC handling is implemented for supported standard LoROM/HiROM
+cartridges; high-resolution/interlaced output and enhancement-chip support are
+not established. See the compatibility guide for Contra III and cartridge
+restrictions. Current audio is 32,040 Hz stereo; the accepted four-slot C0
+fullscreen handoff is retained.
 
-Core: [libretro/snes9x2002](https://github.com/libretro/snes9x2002), pinned to
-`6ffbf9ef4f0063e1f1b78a40d10c50fc52f2524c`, portable C in ARM mode; no VFP/NEON,
-frame skipping or game speed patches. The Mesen2 diagnostic/reference work is
-preserved separately. This repository does not relicense imported components.
+The Beta promotes the timed cadence experiment into normal unlimited play,
+with real input, SRAM, states and snapshots enabled. It passed a 627-frame
+interactive lifecycle with paused save/load and snapshots, then a 120-frame
+fresh-process resume. Standalone battery files use `.sav`; save states also
+include SRAM.
 
-Thanks to **XANI / Xanxi** for
-[XACP-ZZ9000](https://github.com/Xanxi-Amiga/XACP-ZZ9000), its firmware interface,
-fullscreen examples and assistance. Shared ARM ownership/MMU tooling comes
-from [Amiga-MCP-Debugger](https://github.com/SkiltonUSA/Amiga-MCP-Debugger).
-MUI patterns come from [xSysInfo](https://github.com/SkiltonUSA/xSysInfo) and
-our [ZZNES application](https://github.com/SkiltonUSA/ZZNes-ARM-68K).
-Console bezels are original procedural artwork.
+The recorded physical runs completed audio delivery, display acknowledgements,
+register/MMU/cache-witness restoration and owned-memory release without reported
+errors. Native/instruction-model tests do not substitute for these hardware checks.
+
+## Build, backup and credits
+
+Run `make verify-beta` to verify archived hashes and recalculate the frame-rate
+results from raw logs. `make beta` rebuilds the 68k player and MUI library from
+archived inputs, retaining the exact tested ARM payload. See
+[backup/build scope](docs/beta-backup.md) for the editable source snapshot and
+historical core rebuild paths. Neither command launches the Amiga.
+
+Development: **Codex assisted, Amiga-Bridge MCP**. Interface: **MUI**.
+Thanks to **XANI / Xanxi** for XACP and to the FCEUX/FCE Ultra and
+Snes9x/PocketSNES developers for their cores. Component licences and original
+attributions remain with their sources and executable packages.
+
+[Earlier README and measurements](docs/history/readme-before-beta-20261012.md).

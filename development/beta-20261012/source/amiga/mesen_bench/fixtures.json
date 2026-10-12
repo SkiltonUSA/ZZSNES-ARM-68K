@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/christopherpow/nes-test-roms",
+  "commit": "95d8f621ae55cee0d09b91519a8989ae0e64753b",
+  "author": "Kevin Horton (nestest ROM)",
+  "files": {
+    "nestest.log": "442c4dd5539c7e88b3fd73c7b732a7eadbd22b47c2cd9e58397ef147f64f6f8f",
+    "nestest.txt": "8291241ba9a0885b9a604a4685101a1473e22b3aa070bc828e3b8c342d7f71fb",
+    "nestest.nes": "f67d55fd6b3cf0bad1cc85f1df0d739c65b53e79cecb7fea8f77ec0eadab0004"
+  }
+}

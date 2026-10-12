@@ -1,0 +1,12 @@
+{
+  "bytes": 28704,
+  "width": 128,
+  "height": 112,
+  "rom_bytes": 524288,
+  "rom_hash": "ae8466a1",
+  "rom_hash2": "8aa41dc9",
+  "checksum": "0f9af343",
+  "sha256": "8b27e25d6a5a20a7332f134d4977c79c0a69a527841cedd01c6f84280b597546",
+  "valid": true,
+  "private_image_not_for_commit": true
+}

@@ -1,0 +1,81 @@
+OWNED amiga=50000040 arm_candidate=101f0040 size=4194304 nonce=858e9b21
+BOOTSTRAP amiga=40c52980 arm=00e42980 (P96 allocated/locked)
+MAP status=4d415031 SCTLR=08c50878 MIDR=413fc090 MPIDR=80000001
+MAPPING PASS (eight nonce-derived words)
+ARM ready=41524d31 SCTLR=08c5187d MIDR=413fc090 MPIDR=80000001
+REGION NTSC period_us=16639
+CARTRIDGE mapper=5 PRG=262144 CHR=131072 battery=0
+STAGE ROM published; initializing core
+STAGE core initialized; calibrating clock
+STAGE opening display
+FULLSCREEN_BITMAP allocated=090d9174 screen=090d9908 width=320 height=240 allocated_height=720 screen_height=720 on_board=1/1 memory=0979654c/40cd7ac0 pitch=1280/1280
+FULLSCREEN mode=50031303 native_format=9 depth=32 slots=3 geometry=320x240 NES=256x240
+BUFFERS pixels=00000000 indices=0996755c legacy_host=0
+JOYSTICK available=1 port=1; red=A blue=B green=Select play=Start
+AUDIO task: AHI unit 0, 32000 Hz mono; 8 queue slots, 3-frame prebuffer
+PLAYER FCEUX CPU/old PPU/APU, auto-region 32kHz quality0; P pause, M mute, Q/Esc quit; bounded picture omission; every core/APU frame retained
+ZZFCEUX START ROM=SD032G:Dev/ZZNes-Borders/ROMs/Castlevania III - Dracula's Curse (USA).nes bytes=393232 timer_hz=333333544 core_only=0
+FRAME n=1 cycles=29782 core_hash=b87d5dc5 output_hash=3fde1dc5 cpu_ppu_us=3508
+FRAME n=60 cycles=1786832 core_hash=f97cd25d output_hash=811c9dc5 cpu_ppu_us=6540
+FRAME n=120 cycles=3573661 core_hash=83fb7d15 output_hash=811c9dc5 cpu_ppu_us=6594
+FRAME n=180 cycles=5360492 core_hash=50b10e55 output_hash=811c9dc5 cpu_ppu_us=6582
+FRAME n=240 cycles=7147321 core_hash=ad0d7bd1 output_hash=811c9dc5 cpu_ppu_us=6678
+SNAPSHOT saved SD032G:Dev/ZZNes-Cadence/life-2ca59c77.zzp
+FRAME n=300 cycles=8934151 core_hash=c7481804 output_hash=811c9dc5 cpu_ppu_us=6620
+FRAME n=360 cycles=10720982 core_hash=aac77310 output_hash=811c9dc5 cpu_ppu_us=6665
+FRAME n=420 cycles=12507812 core_hash=4a5068a0 output_hash=811c9dc5 cpu_ppu_us=6621
+FRAME n=480 cycles=14294643 core_hash=83bab073 output_hash=811c9dc5 cpu_ppu_us=6681
+STATE save OK bytes=16616 path=SD032G:Dev/ZZNes-Cadence/life-2ca59c77.zzs
+STATE save OK bytes=16616 path=SD032G:Dev/ZZNes-Cadence/life-2ca59c77.zzs
+STATE save OK bytes=16616 path=SD032G:Dev/ZZNes-Cadence/life-2ca59c77.zzs
+STATE load OK path=SD032G:Dev/ZZNes-Cadence/life-2ca59c77.zzs
+STATE load OK path=SD032G:Dev/ZZNes-Cadence/life-2ca59c77.zzs
+STATE load OK path=SD032G:Dev/ZZNes-Cadence/life-2ca59c77.zzs
+SNAPSHOT saved SD032G:Dev/ZZNes-Cadence/life-2ca59c77.zzp
+FRAME n=540 cycles=16081472 core_hash=f588f180 output_hash=811c9dc5 cpu_ppu_us=6884
+FRAME n=600 cycles=17868302 core_hash=6508c9a4 output_hash=811c9dc5 cpu_ppu_us=6867
+FRAME n=660 cycles=19655132 core_hash=62867e20 output_hash=811c9dc5 cpu_ppu_us=6913
+FRAME n=720 cycles=21441962 core_hash=de12208d output_hash=811c9dc5 cpu_ppu_us=6857
+FULLSCREEN_END queued=701 flips=701 pending=-1 ack_wait_us=8427057 fault=0
+AUDIO_TASK queued=398778 submitted=398778 completed=398778 highwater=3 error=0 stopped=1
+AUDIO_END samples=398778 gaps=26
+STAGE closing frontend; requesting ARM return next
+ZZFCEUX END exit=0 frames=749 elapsed_us=28025248 core_total_us=4994157 output_hash=811c9dc5
+DIRECT_END challenges=701 verified_frames=1 copy_us=1638877
+PLAYER_PROFILE audio_prepare_us=314688 flip_drain_us=3187587 audio_wait_us=22458 audio_copy_us=218734 audio_send_us=0
+ARM_REQUEST_PROFILE frame_us=5439214 present_us=2042251
+PRESENT_PROFILE pre_us=384399 request_us=2344285 post_us=1483484
+FRAME_TIMING stage=0 count=689 mean_us=7708 max_us=28861 bins=0,658,26,2,3,0
+FRAME_TIMING stage=1 count=689 mean_us=4162 max_us=18411 bins=105,569,12,3,0,0
+FRAME_TIMING stage=2 count=689 mean_us=441 max_us=10376 bins=682,6,1,0,0,0
+FRAME_TIMING stage=3 count=643 mean_us=4522 max_us=211650 bins=0,626,4,0,12,1
+FRAME_TIMING stage=4 count=689 mean_us=16897 max_us=225228 bins=0,6,495,138,39,11
+FRAME_TIMING stage=5 count=642 mean_us=17899 max_us=83995 bins=0,0,577,28,28,9
+INPUT_PROFILE changes=0
+JOYSTICK_END polls=749 active=0 last_type=30000000
+AUDIO_IO_PROFILE send_us=526891 waitio_us=8748
+WAIT_PROFILE kind=0 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=1 calls=21 requested_us=21000 actual_us=30926 max_us=5233
+WAIT_PROFILE kind=2 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=3 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=4 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=5 calls=0 requested_us=0 actual_us=0 max_us=0
+PROFILE frames=749 request_us=5721709 copy_us=0 colour_us=0 draw_us=4052653 waits=1328
+EXIT epilogue=52455431 cache_echoes=0 rounds=0
+CACHE original=08c50878 running=08c5187d restored=08c50878
+MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=10234000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=1459
+REGISTER n=0 original=08c50878 restored=08c50878
+REGISTER n=1 original=00000000 restored=00000000
+REGISTER n=2 original=02000001 restored=02000001
+REGISTER n=3 original=00000000 restored=00000000
+REGISTER n=4 original=00000000 restored=00000000
+REGISTER n=5 original=00000001 restored=00000001
+REGISTER n=6 original=600101d3 restored=600101d3
+REGISTER n=7 original=00000006 restored=00000006
+REGISTER n=8 original=00000000 restored=00000000
+REGISTER n=9 original=00098aa4 restored=00098aa4
+REGISTER n=10 original=44e048e0 restored=44e048e0
+REGISTER n=11 original=00000000 restored=00000000
+REGISTER n=12 original=00000001 restored=00000001
+REGISTER n=13 original=72360000 restored=72360000
+LAUNCHER exit=0; owned memory released

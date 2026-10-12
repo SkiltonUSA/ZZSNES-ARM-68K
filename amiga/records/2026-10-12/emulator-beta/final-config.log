@@ -1,0 +1,8 @@
+amiga_push_file Transferred 1287 bytes in 0.1s (14666 B/s), 2 chunks, CRC32 verified
+amiga_push_file Transferred 1287 bytes in 0.1s (13087 B/s), 2 chunks, CRC32 verified
+amiga_push_file Transferred 1130 bytes in 0.1s (8769 B/s), 2 chunks, CRC32 verified
+amiga_push_file Transferred 1130 bytes in 0.1s (13318 B/s), 2 chunks, CRC32 verified
+amiga_run_script [OK]
+edda3a7eb40507f42b02bfb404d6bd13  SD032G:Emulator/ZZNES/Library.cfg
+015a6b5156bf8fe1da4e3b1082c2a159  SD032G:Emulator/ZZSNES/Library.cfg
+3c6f4089ba3300e4257a02e26d8913cc  SD032G:Emulator/ZZNES/States/e60c4221-1.zzs

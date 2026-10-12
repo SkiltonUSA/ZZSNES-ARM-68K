@@ -1,0 +1,5 @@
+{
+  "apparent_sidecars": 12,
+  "genuine_separate_battery_files": 0,
+  "finding": "All existing .sav/.sav.bak lookups resolved to the same bytes as the long-named ROM. Filesystem truncation aliases; not actual battery saves. Originals untouched. New ROM basenames limited to 20 characters; no suffix aliases retained."
+}

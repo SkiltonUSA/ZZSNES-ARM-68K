@@ -1,0 +1,28 @@
+{
+  "ZZNES": {
+    "LICENSE-Snes9x": "a42295ffbe67badc828182ca73d82bad",
+    "COPYING3": "d32239bcb673463ab874e80d47fae504",
+    "Library.cfg": "edda3a7eb40507f42b02bfb404d6bd13",
+    "Library.bak": "edda3a7eb40507f42b02bfb404d6bd13",
+    "ZZFceux-ui": "d8793363fa6b5a281471da85c158b024",
+    "Credits.txt": "24f9a7a1f7cbfd0237fad3d813feb4e8",
+    "LICENSE-xSysInfo": "f4b96a97bed261f4ffa100412ea9897d",
+    "ZZNES": "a910355e15dbfa8b61219538e915507a",
+    "ZZNES.info": "434377f5366892d894ebcc62e9d81d28",
+    "ReadMe.txt": "64501753cca509963cb0ef9a24df02c2",
+    "Version.txt": "0055449ab308cd6f48b9195fb3b4a391"
+  },
+  "ZZSNES": {
+    "ZZSNES": "b7f9836eccb52b95dee79ab599ee83e3",
+    "LICENSE-Snes9x": "a42295ffbe67badc828182ca73d82bad",
+    "COPYING3": "d32239bcb673463ab874e80d47fae504",
+    "Library.cfg": "015a6b5156bf8fe1da4e3b1082c2a159",
+    "Library.bak": "015a6b5156bf8fe1da4e3b1082c2a159",
+    "Credits.txt": "24f9a7a1f7cbfd0237fad3d813feb4e8",
+    "LICENSE-xSysInfo": "f4b96a97bed261f4ffa100412ea9897d",
+    "ZZSNES.info": "434377f5366892d894ebcc62e9d81d28",
+    "ReadMe.txt": "5155b15e4ba82c12cd5d184008c21b38",
+    "Version.txt": "012e2ec1be0cf2c1a6d067462cb0f9b9",
+    "ZZSnes-ui": "fb15cf02f0f125da707c3e97e2e58b67"
+  }
+}

@@ -1,0 +1,6 @@
+nes: PASS v1 migration/v2 round-trip, library limits, titles, artwork links, search/filter/order, history overflow, hostile paths, malformed preferences
+nes: PASS save envelope: ROM identity, size, ABI, truncation, corruption; newest-file ordering
+nes: PASS delete: save+backup, backup-only, absent files, permission failures, directory refusal, unrelated save/artwork preservation
+snes: PASS v1 migration/v2 round-trip, library limits, titles, artwork links, search/filter/order, history overflow, hostile paths, malformed preferences
+snes: PASS save envelope: ROM identity, size, ABI, truncation, corruption; newest-file ordering
+snes: PASS delete: save+backup, backup-only, absent files, permission failures, directory refusal, unrelated save/artwork preservation

@@ -1,0 +1,36 @@
+[
+  {
+    "label": "Baseline-1200",
+    "frames": 1200,
+    "emulated_fps": 53.65176730262789,
+    "shown": 1200,
+    "omitted": 0,
+    "verified": true,
+    "summary": [
+      "CADENCE_RUN frames=1200 elapsed_us=22366458 shown=1200 omitted=0 rebases=0 late_max=0 max_streak=0 period_us=16639",
+      "FULLSCREEN_END queued=1200 flips=1200 pending=-1 ack_wait_us=14806179 fault=0",
+      "AUDIO_TASK queued=638901 submitted=638901 completed=638901 highwater=3 error=0 stopped=1",
+      "AUDIO_END samples=638901 gaps=254",
+      "FRAME_TIMING stage=5 count=1141 mean_us=17811 max_us=50397 bins=0,12,871,128,125,5",
+      "LAUNCHER exit=0; owned memory released"
+    ],
+    "visual_result": "not evaluated"
+  },
+  {
+    "label": "Cadence-1200",
+    "frames": 1200,
+    "emulated_fps": 57.57033607835093,
+    "shown": 1146,
+    "omitted": 54,
+    "verified": true,
+    "summary": [
+      "CADENCE_RUN frames=1200 elapsed_us=20844068 shown=1146 omitted=54 rebases=1 late_max=12777 max_streak=2 period_us=16639",
+      "FULLSCREEN_END queued=1146 flips=1146 pending=-1 ack_wait_us=13860124 fault=0",
+      "AUDIO_TASK queued=638901 submitted=638901 completed=638901 highwater=3 error=0 stopped=1",
+      "AUDIO_END samples=638901 gaps=15",
+      "FRAME_TIMING stage=5 count=1097 mean_us=17343 max_us=50395 bins=0,0,1026,33,33,5",
+      "LAUNCHER exit=0; owned memory released"
+    ],
+    "visual_result": "not evaluated"
+  }
+]
