@@ -16,6 +16,12 @@ library settings, save files, AmigaOS and firmware are not included. Older
 GitHub releases and build targets remain historical; they do not contain this
 Beta’s complete feature set.
 
+## Screenshots
+
+![ZZSNES Workbench interface](docs/screenshots/interface.png)
+
+![Super Mario World running in ZZSNES](docs/screenshots/gameplay.png)
+
 ## Frame rates on the A4000TX
 
 | Game / emulator | Steady emulation FPS |
