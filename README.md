@@ -37,14 +37,6 @@ Beta’s complete feature set.
 SNES save slots contain miniature screenshots. Existing NES state files do
 not contain embedded screenshots; its game library uses separate captures.
 
-On the owner’s Amiga, open **`SD032G:Emulator/ZZSNES/ZZSNES`**.
-Keep `ZZSnes-ui` in the same writable drawer. The window/About page identifies
-**0.4.0 Beta**. ROMs, States and Snapshots live alongside the application.
-For a fresh installation, copy the current artifact drawer to a writable
-location and add your own ROMs through the library. Use short ROM filenames
-(at most 20 characters on short-name filesystems) to leave space for `.sav.bak`
-and `.sav.tmp`; display titles may remain long.
-
 Requires the verified AmigaOS 3.2.3 / Picasso96 / MUI / AHI setup and compatible
 XX19c / XACP 1.7 firmware. Only one Core1 application may run at a time.
 Other firmware combinations are not established by these tests. No global AHI
