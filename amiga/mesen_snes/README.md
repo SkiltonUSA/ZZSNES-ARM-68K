@@ -31,12 +31,12 @@ would produce a misleading fast CPU test rather than an emulator.
 
 The desktop frontend is Avalonia/.NET, not suitable for this Amiga port. The
 native MUI frontend follows our xSysInfo-based UI patterns. Future presentation
-should use the existing XANI-style XACP fullscreen flipping with ARM conversion
+should use the existing Xanai-style XACP fullscreen flipping with ARM conversion
 into a verified, OS-owned RTG bitmap. Do not assume the NES fixed 256x240 layout
 covers SNES hires/interlace. Audio initially needs the proven host/AHI queue;
 no direct ARM-to-ZZ9000AX audio ownership is assumed.
 
-XACP acknowledgement: [XANI's XACP-ZZ9000 platform](https://github.com/Xanxi-Amiga/XACP-ZZ9000).
+XACP acknowledgement: [Xanai's XACP-ZZ9000 platform](https://github.com/Xanxi-Amiga/XACP-ZZ9000).
 The current loader uses the verified XX19c/XACP 1.7 launch contract. No firmware
 change, newer 1.8 interface or additional static DDR address is introduced.
 

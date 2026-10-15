@@ -48,7 +48,7 @@ are the validation cases. No commercial ROM is included in builds.
 
 Native 68k MUI handles files, controls, AHI and lifecycle; Core1 runs the SNES
 core, builds RGB565 frames and presents directly to locked ZZ9000 bitmaps.
-XANI's XACP fullscreen buffer-flipping approach is retained. Audio uses the
+Xanai's XACP fullscreen buffer-flipping approach is retained. Audio uses the
 existing AHI unit 0 setting (Paula on this machine); no driver settings change.
 
 The 32 MiB allocation remains Exec-owned with runtime mapping verification,

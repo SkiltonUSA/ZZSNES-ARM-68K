@@ -1,7 +1,7 @@
 # ZZSNES — 0.4.0 Beta
 
 A native MUI emulator library for **AmigaOS / ZZ9000 Cortex-A9**, using
-**PocketSNES / Snes9x2002** and **[XANI’s XACP platform](https://github.com/Xanxi-Amiga/XACP-ZZ9000)**.
+**PocketSNES / Snes9x2002** and **[Xanai’s XACP platform](https://github.com/Xanxi-Amiga/XACP-ZZ9000)**.
 The ARM runs emulation and renders into ZZ9000 display buffers; the 68k handles
 AmigaOS, ROM files, input, display coordination and AHI audio delivery.
 
@@ -67,7 +67,7 @@ archived inputs, retaining the exact tested ARM payload. See
 historical core rebuild paths. Neither command launches the Amiga.
 
 Development: **Codex assisted, Amiga-Bridge MCP**. Interface: **MUI**.
-Thanks to **XANI / Xanxi** for XACP and to the FCEUX/FCE Ultra and
+Thanks to **Xanai / Xanxi** for XACP and to the FCEUX/FCE Ultra and
 Snes9x/PocketSNES developers for their cores. Component licences and original
 attributions remain with their sources and executable packages.
 

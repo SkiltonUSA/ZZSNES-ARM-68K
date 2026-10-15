@@ -1,5 +1,5 @@
 /* GPL-3.0-or-later. Independent byte-format packing for the ARM presenter.
- * Words are little-endian ARM stores. No dependency on XANI/PicoDrive code. */
+ * Words are little-endian ARM stores. No dependency on Xanai/PicoDrive code. */
 #pragma once
 #include "direct_plan.h"
 #include "palette.h"
