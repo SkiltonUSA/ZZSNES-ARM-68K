@@ -40,7 +40,7 @@ actions, and game-specific save cards. This is original native MUI code;
 no Linux shell/GTK or LaunchBox code, artwork or metadata database is bundled.
 The five-slot save gallery is our design for our existing state formats.
 MUI construction and lifecycle patterns retain the xSysInfo BSD attribution;
-the shared frontend remains GPL-3.0-or-later. Xanai's XACP fullscreen handoff
+the shared frontend remains GPL-3.0-or-later. Xanxi's XACP fullscreen handoff
 remains in the emulation players.
 
 ## Games page
@@ -282,7 +282,7 @@ player and library; the older cached player remains NTSC-only.
 ## About tab — 12 October 2026
 
 Both libraries include an About tab with separate credits for the Amiga port,
-the active emulator core, Xanai/XACP and MUI (Magic User Interface). The accompanying xSysInfo licence notice is retained for adapted code. ZZNES uses FCEUX; ZZSNES uses Snes9x2002/PocketSNES. Core licence
+the active emulator core, Xanxi/XACP and MUI (Magic User Interface). The accompanying xSysInfo licence notice is retained for adapted code. ZZNES uses FCEUX; ZZSNES uses Snes9x2002/PocketSNES. Core licence
 terms are shown independently from the interface licence. Full attribution
 and pinned source revisions are in `amiga/fceux_player/Credits.txt`, also
 installed in both emulator drawers with the licence notices.

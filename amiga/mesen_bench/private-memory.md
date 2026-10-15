@@ -107,7 +107,7 @@ python3 scripts/analyze_mesen_cache.py
 
 Primary references reviewed:
 
-- [Xanai's XACP 1.7 notes](https://github.com/Xanxi-Amiga/XACP-ZZ9000/blob/main/docs/XACP_V1_7_DEVELOPER_NOTES.md): Core1 must avoid generic operations reaching shared PL310.
+- [Xanxi's XACP 1.7 notes](https://github.com/Xanxi-Amiga/XACP-ZZ9000/blob/main/docs/XACP_V1_7_DEVELOPER_NOTES.md): Core1 must avoid generic operations reaching shared PL310.
 - [XX19c Core1 launch implementation](https://github.com/Xanxi-Amiga/XACP-ZZ9000/blob/main/firmware/source/XX19c/ZZ9000_proto.sdk/ZZ9000OS/src/core2.c): firmware launch-side L1 maintenance and synchronous reset sequencing.
 - [Arm Cortex-A9 TRM](https://documentation-service.arm.com/static/5e8e264088295d1e18d37ce8): translation/control/cache registers and maintenance.
 - [AMD/Xilinx L1 cache implementation](https://github.com/Xilinx/embeddedsw/blob/master/lib/bsp/standalone/src/arm/cortexa9/xil_cache.c): L1 set/way geometry and clean/invalidate sequencing, separate from L2.
