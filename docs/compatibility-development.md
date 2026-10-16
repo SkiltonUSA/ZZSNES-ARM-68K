@@ -96,6 +96,13 @@ serialization, graphics accuracy and longer gameplay checks are still required.
 
 ### MesenCE and FX3
 
+The development launcher shows **Warning: FX3 is not supported** when a
+selected cartridge has MesenCE's FX3 header type (`0x17` or `0x18`). Launch
+remains disabled. Detection also works after ZIP decoding and copier-header
+removal; it does not classify ordinary Super FX games by filename.
+`make test-fx3-warning` checks all cartridge IDs and malformed headers under
+ASan/UBSan. No FX3 game execution or new chip support is claimed.
+
 [MesenCE's GSU implementation](https://github.com/nesdev-org/MesenCE/blob/4b8a196e299b3de297b204fd1208d2981562c89b/Core/SNES/Coprocessors/GSU/Gsu.cpp)
 has explicit FX3 mappings and a four-times emulated clock multiplier.
 Its [instruction implementation](https://github.com/nesdev-org/MesenCE/blob/4b8a196e299b3de297b204fd1208d2981562c89b/Core/SNES/Coprocessors/GSU/Gsu.Instructions.cpp)

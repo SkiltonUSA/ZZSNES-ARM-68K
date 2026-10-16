@@ -1,3 +1,13 @@
+## FX3 launcher warning — 16 October 2026
+
+Installed launcher-only update in SD032G:Emulator/ZZSNES/ZZSNES, MD5
+`a67d4eab72cf083cb7b7f0961b523c67`. Prior launcher retained as ZZSNES.pre-fx3;
+Library.cfg checksum unchanged. Player/ARM and published beta assets unchanged.
+Selected valid FX3 header types 0x17/0x18 show an unsupported warning; launch
+remains disabled. Plain/ZIP selection uses the existing normalized ROM loader.
+Native sanitizer header tests, large-library tests, current build and hash
+verification passed. No physical FX3 ROM/UI interaction or gameplay test.
+
 # Super FX ROM timing candidate — 16 October 2026
 
 The compatibility overlay now also initializes all Super FX ROM-bank timings.

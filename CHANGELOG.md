@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased launcher changes
+
+- Warn when a selected cartridge identifies as FX3; keep launch disabled.
+- Recognize FX3 separately from regular Super FX, including ZIP cartridges.
+
 ## Unreleased compatibility research
 
 - Fix zero-cycle Super FX ROM-bank timings in the candidate. Star Fox 2 now

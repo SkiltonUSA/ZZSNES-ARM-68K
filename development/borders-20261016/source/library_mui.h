@@ -23,6 +23,9 @@
 #endif
 #include "ui_model.h"
 #include "cartridge.h"
+#ifdef LIBRARY_SNES
+#include "cartridge_warning.h"
+#endif
 #include "library_preview.h"
 #include "library_saves.h"
 #include "library_controller.h"
@@ -140,7 +143,7 @@ static void identify(void){unsigned n;UBYTE*p;rom_valid=0;rom_id=rom_id2=rom_byt
  int error=em_rom_load(model.entry[selected].path,p,LIB_LIMIT,&n,LIB_SNES,cartridge_name,sizeof(cartridge_name));
  if(error){snprintf(details,sizeof(details),"%s",em_rom_message(error));FreeVec(p);return;}
 #ifdef LIBRARY_SNES
- {unsigned skip=snes_skip(n);int h=snes_header(p+skip,n-skip);if(h>=0){rom_id=snes_hash(p+skip,n-skip);rom_id2=snes_hash2(p+skip,n-skip);rom_bytes=n-skip;rom_valid=1;
+ {unsigned skip=snes_skip(n);int h=snes_header(p+skip,n-skip);if(snes_fx3(p+skip,n-skip))strcpy(details,SNES_FX3_WARNING);else if(h>=0){rom_id=snes_hash(p+skip,n-skip);rom_id2=snes_hash2(p+skip,n-skip);rom_bytes=n-skip;rom_valid=1;
   snprintf(details,sizeof(details),"Header supported: %s %s\nGameplay compatibility varies by title.",snes_pal(p+skip,n-skip)?"PAL":"NTSC",h==0x7fc0?"LoROM":"HiROM");}
  else strcpy(details,"Unsupported cartridge: requires NTSC/PAL LoROM/HiROM\nup to 4 MiB, without enhancement chips.");}
 #else
@@ -303,7 +306,7 @@ static int session_write(int resume){FILE *f;char p[UI_PATH];int ok;
  ui_hex(f,model.entry[selected].path);fputc('\n',f);slotpath(p,model.slot);ui_hex(f,p);fputc('\n',f);snapshotpath(p);ui_hex(f,p);fputc('\n',f);fprintf(f,"DISPLAY %u %u %u %u\n",model.windowed,model.scanlines,model.fps,model.optimise);ok=!ferror(f);if(fclose(f))ok=0;return ok;}
 #include "library_launch.h"
 static void play(int resume){char path[UI_PATH],session[UI_PATH],qplayer[UI_PATH*2+4],qsession[UI_PATH*2+4],command[UI_PATH*4+40];BPTR dir;
- if(selected<0){message("Select a game first.");return;}identify();if(!rom_valid){message("Game is missing or outside this player's cartridge support.");return;}collect();
+ if(selected<0){message("Select a game first.");return;}identify();if(!rom_valid){message(details);return;}collect();
  if(resume&&!read_state(model.slot,NULL)){message("That save is missing, damaged or for another cartridge.");update_slots();return;}
  dir=CreateDir("PROGDIR:States");if(dir)UnLock(dir);
  dir=CreateDir("PROGDIR:Snapshots");if(dir)UnLock(dir);
