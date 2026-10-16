@@ -1,0 +1,30 @@
+CORE cpu=7f:0a6d rom_speed=8 apu=0467 out=05,00 gsu=928a
+RUN frames=600 changed=112 last=0a02aeb4
+STATE bytes=687028 frame=600
+REPLAY mismatch frame=4 video=4d237dc3/575db8ec pcm=b529ebf9/b529ebf9
+REPLAY mismatch frame=5 video=4d237dc3/575db8ec pcm=ac8bca69/ac8bca69
+REPLAY mismatch frame=6 video=4d237dc3/575db8ec pcm=cb8c9a6b/cb8c9a6b
+REPLAY mismatch frame=7 video=00523c17/150bda66 pcm=6aa11d68/6aa11d68
+REPLAY mismatch frame=8 video=00523c17/150bda66 pcm=123301d7/123301d7
+REPLAY mismatch frame=9 video=00523c17/150bda66 pcm=a3cf3f47/a3cf3f47
+REPLAY mismatch frame=10 video=f0f90bee/7c4a4dcc pcm=a5d45250/a5d45250
+REPLAY mismatch frame=11 video=f0f90bee/7c4a4dcc pcm=8547ed31/8547ed31
+REPLAY mismatch frame=12 video=f0f90bee/7c4a4dcc pcm=6da3fb59/6da3fb59
+REPLAY mismatch frame=13 video=6ff4fdd3/c22e5f25 pcm=ada6170f/ada6170f
+REPLAY mismatch frame=14 video=6ff4fdd3/c22e5f25 pcm=6a1da66e/6a1da66e
+REPLAY mismatch frame=15 video=6ff4fdd3/c22e5f25 pcm=8fe973cd/8fe973cd
+REPLAY mismatch frame=16 video=f1dbc44a/bd566c54 pcm=fb1ac40b/fb1ac40b
+REPLAY mismatch frame=17 video=f1dbc44a/bd566c54 pcm=8d591cf6/8d591cf6
+REPLAY mismatch frame=18 video=f1dbc44a/bd566c54 pcm=9433ea25/9433ea25
+REPLAY mismatch frame=19 video=0d0ea614/7ec21cd0 pcm=ccc7a30d/ccc7a30d
+REPLAY mismatch frame=20 video=0d0ea614/7ec21cd0 pcm=5558d508/5558d508
+REPLAY mismatch frame=21 video=0d0ea614/7ec21cd0 pcm=26c4f2d3/26c4f2d3
+REPLAY mismatch frame=22 video=faf49504/88584bdd pcm=c39ec032/c39ec032
+REPLAY mismatch frame=23 video=faf49504/88584bdd pcm=c2613574/c2613574
+REPLAY mismatch frame=24 video=faf49504/88584bdd pcm=f1a972aa/f1a972aa
+REPLAY mismatch frame=25 video=167e2474/5b77dfcc pcm=fff12028/fff12028
+REPLAY mismatch frame=26 video=167e2474/5b77dfcc pcm=e894e44d/e894e44d
+REPLAY mismatch frame=27 video=167e2474/5b77dfcc pcm=05e71ef9/05e71ef9
+REPLAY mismatch frame=28 video=983bd5f2/3b424766 pcm=8c8da621/8c8da621
+REPLAY mismatch frame=29 video=983bd5f2/3b424766 pcm=3481bb47/3481bb47
+REPLAY mismatches=26

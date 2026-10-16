@@ -58,3 +58,7 @@ test-border:
 	mkdir -p .context
 	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/borders-20261016/source -Idevelopment/borders-20261016/player -Idevelopment/beta-20261015/build-inputs/player tests/amiga/emulator/border.c -o .context/test-border
 	.context/test-border
+
+.PHONY: test-superfx-timing
+test-superfx-timing:
+	$(PYTHON) scripts/test_superfx_timing.py

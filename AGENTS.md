@@ -32,3 +32,6 @@ Compatibility candidate overlays live in development/compatibility-20261016/.
 They require an explicit build_current.py --arm --compatibility or
 --experimental-chips flag. The normal release is deliberately unchanged. Read
 docs/compatibility-development.md before enabling a chip or claiming game support.
+
+Run `make test-superfx-timing` after mapper changes. The isolated Super FX
+candidate fixes ROM-bank timings; special-chip states remain incomplete.

@@ -1,0 +1,30 @@
+CORE cpu=00:ff95 rom_speed=8 apu=ffc0 out=00,00 gsu=0000
+RUN frames=2400 changed=0 last=00000000
+REPLAY mismatch frame=0 video=567c78af/4f79110d pcm=d43ddd6a/d43ddd6a
+REPLAY mismatch frame=4 video=8a311da0/435233a9 pcm=b4b9785c/b4b9785c
+REPLAY mismatch frame=5 video=8a311da0/435233a9 pcm=e7a0c347/e7a0c347
+REPLAY mismatch frame=6 video=8a311da0/435233a9 pcm=560729a0/560729a0
+REPLAY mismatch frame=7 video=d7e14e3e/713c4050 pcm=13bf3c04/13bf3c04
+REPLAY mismatch frame=8 video=d7e14e3e/713c4050 pcm=24fe842d/24fe842d
+REPLAY mismatch frame=9 video=d7e14e3e/713c4050 pcm=df8e5be9/df8e5be9
+REPLAY mismatch frame=10 video=0ac7526c/c74f9b30 pcm=0a32218f/0a32218f
+REPLAY mismatch frame=11 video=0ac7526c/c74f9b30 pcm=ac6c4793/ac6c4793
+REPLAY mismatch frame=12 video=0ac7526c/c74f9b30 pcm=f124cdad/f124cdad
+REPLAY mismatch frame=13 video=dc3a984e/e3aae0ec pcm=971ed529/971ed529
+REPLAY mismatch frame=14 video=dc3a984e/e3aae0ec pcm=74412649/74412649
+REPLAY mismatch frame=15 video=dc3a984e/e3aae0ec pcm=c0da0767/c0da0767
+REPLAY mismatch frame=16 video=26315e8f/dc3a984e pcm=16a839a5/16a839a5
+REPLAY mismatch frame=17 video=26315e8f/dc3a984e pcm=089361cf/089361cf
+REPLAY mismatch frame=18 video=26315e8f/dc3a984e pcm=4fc1e479/4fc1e479
+REPLAY mismatch frame=19 video=aefd2755/8032e659 pcm=17819957/17819957
+REPLAY mismatch frame=20 video=aefd2755/8032e659 pcm=bc12d4d4/bc12d4d4
+REPLAY mismatch frame=21 video=aefd2755/8032e659 pcm=9c87e5ac/9c87e5ac
+REPLAY mismatch frame=22 video=a8f9e12a/71c0762f pcm=94b5d6e0/94b5d6e0
+REPLAY mismatch frame=23 video=a8f9e12a/71c0762f pcm=1d2a585b/1d2a585b
+REPLAY mismatch frame=24 video=a8f9e12a/71c0762f pcm=d59a8051/d59a8051
+REPLAY mismatch frame=25 video=435233a9/91b64acd pcm=b435caa7/b435caa7
+REPLAY mismatch frame=26 video=435233a9/91b64acd pcm=c4e93435/c4e93435
+REPLAY mismatch frame=27 video=435233a9/91b64acd pcm=4c6faee7/4c6faee7
+REPLAY mismatch frame=28 video=d12efbf9/95fde4e3 pcm=a51a4f1d/a51a4f1d
+REPLAY mismatch frame=29 video=d12efbf9/95fde4e3 pcm=e1d49474/e1d49474
+REPLAY mismatches=27

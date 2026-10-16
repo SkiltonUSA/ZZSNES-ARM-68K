@@ -1,0 +1,7 @@
+Whitespace-normalized comparison with the archived source.
+--- a/src/memmap.c
++++ b/src/memmap.c
+@@ -1299 +1299,2 @@
+-        for (i = c; i < c + 8; i++)
++        /* Initialise ROM timings too: zero-cycle fetches break APU handshakes. */
++        for (i = c; i < c + 16; i++)

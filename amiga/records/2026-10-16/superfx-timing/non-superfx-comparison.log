@@ -1,0 +1,12 @@
+PASS unchanged standard/SA1 execution and replay: frames=600 cartridge_index=0
+PASS unchanged standard/SA1 execution and replay: frames=600 cartridge_index=2
+PASS unchanged standard/SA1 execution and replay: frames=600 cartridge_index=6
+PASS unchanged standard/SA1 execution and replay: frames=600 cartridge_index=7
+PASS unchanged standard/SA1 execution and replay: frames=600 cartridge_index=8
+PASS unchanged standard/SA1 execution and replay: frames=600 cartridge_index=9
+PASS unchanged standard/SA1 execution and replay: frames=2400 cartridge_index=0
+PASS unchanged standard/SA1 execution and replay: frames=2400 cartridge_index=2
+PASS unchanged standard/SA1 execution and replay: frames=2400 cartridge_index=6
+PASS unchanged standard/SA1 execution and replay: frames=2400 cartridge_index=7
+PASS unchanged standard/SA1 execution and replay: frames=2400 cartridge_index=8
+PASS unchanged standard/SA1 execution and replay: frames=2400 cartridge_index=9

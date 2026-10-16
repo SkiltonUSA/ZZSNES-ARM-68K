@@ -1,0 +1,5 @@
+CORE cpu=7e:3b2f rom_speed=8 apu=04e5 out=12,00 gsu=b301
+RUN frames=600 changed=89 last=58e08aaa
+STATE bytes=687028 frame=600
+REPLAY mismatch frame=0 video=afdf46aa/58e08aaa pcm=396714b4/396714b4
+REPLAY mismatches=1

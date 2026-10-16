@@ -1,0 +1,31 @@
+CORE cpu=7e:3b8c rom_speed=8 apu=048c out=03,c4 gsu=b0e2
+RUN frames=2400 changed=393 last=4c6ce7f0
+STATE bytes=687028 frame=2400
+REPLAY mismatch frame=0 video=6deecce6/4c6ce7f0 pcm=2b345ad5/2b345ad5
+REPLAY mismatch frame=4 video=2473ca08/3cac0800 pcm=02e632a3/02e632a3
+REPLAY mismatch frame=5 video=2473ca08/2473ca08 pcm=9c6e9ea6/3cd5587a
+REPLAY mismatch frame=6 video=2473ca08/2473ca08 pcm=2cf9694a/4f03fbf3
+REPLAY mismatch frame=7 video=30fa6688/2473ca08 pcm=4542981d/4e5cd9c2
+REPLAY mismatch frame=8 video=30fa6688/30fa6688 pcm=7d6ac47b/0916ae48
+REPLAY mismatch frame=9 video=30fa6688/30fa6688 pcm=4918ccad/24b98b95
+REPLAY mismatch frame=10 video=f3d97e53/30fa6688 pcm=88b74e69/48f44752
+REPLAY mismatch frame=11 video=f3d97e53/30fa6688 pcm=c797cc37/cc9cbd41
+REPLAY mismatch frame=12 video=f3d97e53/f3d97e53 pcm=30ba8eee/3e31a2d3
+REPLAY mismatch frame=13 video=0c04246c/f3d97e53 pcm=8efa9dad/f40ee2f5
+REPLAY mismatch frame=14 video=0c04246c/f3d97e53 pcm=d4040b0c/37cce7a8
+REPLAY mismatch frame=15 video=0c04246c/0c04246c pcm=03a6906a/fe2ff98e
+REPLAY mismatch frame=16 video=1f83fcb0/0c04246c pcm=20b382a6/62126fb7
+REPLAY mismatch frame=17 video=1f83fcb0/0c04246c pcm=3be5e18e/929184c7
+REPLAY mismatch frame=18 video=1f83fcb0/0c04246c pcm=478fb22f/5c95686a
+REPLAY mismatch frame=19 video=40dbeafc/1f83fcb0 pcm=f6c88a39/1ce30c42
+REPLAY mismatch frame=20 video=40dbeafc/1f83fcb0 pcm=2bd1d802/0693fbd4
+REPLAY mismatch frame=21 video=40dbeafc/1f83fcb0 pcm=bd332753/84f38340
+REPLAY mismatch frame=22 video=f9adeb8a/1f83fcb0 pcm=5a0ffe35/9d5a8f3d
+REPLAY mismatch frame=23 video=f9adeb8a/40dbeafc pcm=d0bd3f68/937253b6
+REPLAY mismatch frame=24 video=f9adeb8a/40dbeafc pcm=7d0437a5/1b60f025
+REPLAY mismatch frame=25 video=acd453b6/40dbeafc pcm=4a34c267/9e1a0c2d
+REPLAY mismatch frame=26 video=acd453b6/f9adeb8a pcm=be5b9a4e/e78a1ef2
+REPLAY mismatch frame=27 video=acd453b6/f9adeb8a pcm=9021a856/5d0d3637
+REPLAY mismatch frame=28 video=acd453b6/f9adeb8a pcm=2605085d/67692a8c
+REPLAY mismatch frame=29 video=c42198c4/acd453b6 pcm=65c7dbcf/7069d599
+REPLAY mismatches=27

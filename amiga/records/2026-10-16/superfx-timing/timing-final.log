@@ -1,0 +1,2 @@
+PASS: Super FX bank timing fully initialized from zero and stale tables
+PASS: mapped CPU CMP/DEX/BNE costs 30/14/22 master clocks

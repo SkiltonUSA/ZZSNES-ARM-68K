@@ -1,3 +1,27 @@
+# Super FX ROM timing candidate — 16 October 2026
+
+The compatibility overlay now also initializes all Super FX ROM-bank timings.
+This fixes zero-cycle fetches in low-bank ROM, which sent the next sound command
+before the SPC driver cleared its ports. Native Star Fox 2 and Star Fox now
+produce changing video and execute GSU code. Eleven cartridges completed
+600/2400-frame sanitizer surveys; special-chip state failures remain. Doom's
+replay passes both checkpoints; no general audio-state fix is claimed.
+
+Original mapper/CPU timing regression passes; pre-fix control fails as expected.
+Six standard/SA1 cartridge results are unchanged. A9 build/presenter model and
+two-base original SuperFX-header fixture state replay pass. The fixture does
+not execute GSU code. Full chip serialization/graphics accuracy remain pending.
+
+Candidate tested separately at SD032G:Dev/FXTimingZZSNES/ZZSnes-ui: Star Fox 2,
+Star Fox and Doom each completed 1200 no-input windowed frames with clean
+register/cache witnesses and owned-memory release. Main 0.6.1 beta, library,
+ROMs and states unchanged. Star Fox 2 intro captured in a second clean run.
+No Core1 owner remains; DOSBox launcher/idle ports were left as found.
+No release and no firmware changes. See
+compatibility-development.md and records/2026-10-16/superfx-timing/.
+
+---
+
 # Compatibility candidate — isolated, not a release
 
 `development/compatibility-20261016/` adds explicit sprite-cache reconstruction

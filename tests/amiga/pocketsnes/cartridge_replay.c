@@ -4,6 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "state_format.h"
+#include "snes9x.h"
+#include "memmap.h"
+#include "apu.h"
+#include "fxinst.h"
+extern FxRegs_s GSU;
 int nes_init(const uint8_t*,uint32_t,uint16_t*,uint16_t*);int nes_frame(uint16_t,int(*)(void));
 uint32_t nes_hash(void);uint32_t nes_frames(void);unsigned nes_audio(const int16_t**);void pocket_player_close(void);
 unsigned fc_state_store(uint8_t*,unsigned);int fc_state_load(const uint8_t*,unsigned);
@@ -16,6 +21,7 @@ int main(int argc,char**argv){assert(argc>=2);unsigned count=argc>2?atoi(argv[2]
  FILE*f=fopen(argv[1],"rb");assert(f);assert(!fseek(f,0,SEEK_END));long n=ftell(f);rewind(f);assert(n>0&&n<=0x400000);uint8_t*rom=malloc(n);assert(fread(rom,1,n,f)==(unsigned)n);fclose(f);
  assert(!nes_init(rom,n,0,0));unsigned changes=0,last=0;
  if(argc<4)for(unsigned i=0;i<count;i++){int e=nes_frame(i>=360&&i<368?8:0,0);if(e){printf("FRAME failure %u code=%d\n",i,e);return 2;}unsigned hash=nes_hash();changes+=last!=hash;last=hash;}
+ printf("CORE cpu=%02x:%04lx rom_speed=%d apu=%04lx out=%02x,%02x gsu=%04x\n",Registers.PB,(long)(CPU.PC-CPU.PCBase),CPU.MemSpeed,(long)(IAPU.PC-IAPU.RAM),APU.OutPorts[0],APU.OutPorts[1],GSU.avReg[15]);
  printf("RUN frames=%u changed=%u last=%08x\n",count,changes,last);fflush(stdout);
  FILE*pic=fopen("last-frame.rgb565","wb");assert(pic);assert(fwrite(nes_pixels(),2,256*240,pic)==256*240);fclose(pic);
  uint8_t*s=malloc(PS_STATE_MAX);unsigned size;

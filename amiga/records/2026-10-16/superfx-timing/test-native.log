@@ -1,0 +1,4 @@
+PASS: saved artifacts, pinned core sources, measured mean and hardware completion markers
+PASS: MUI release identities, displayed FPS, teardown and artifact ROM/state exclusions
+CHECK pixels=PASS dma=PASS spc_boot_ports=PASS wram_mirrors=PASS serial_pad=PASS cancellation=PASS reject_chip_and_truncation=PASS
+PASS 1074 current source/artifact hashes and private-data exclusions

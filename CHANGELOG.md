@@ -2,6 +2,10 @@
 
 ## Unreleased compatibility research
 
+- Fix zero-cycle Super FX ROM-bank timings in the candidate. Star Fox 2 now
+  completes sound startup and executes Super FX; Star Fox also produces video.
+- Add an original mapper/CPU timing regression, with a failing pre-fix control.
+
 - Candidate: rebuild derived sprite lists after state restore; resolves the
   frame-600 Imperium and Stunt Race FX video replay failures without a format change.
 - Add longer, fresh-process replay diagnostics and isolated A9 chip builds.

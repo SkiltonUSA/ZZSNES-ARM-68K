@@ -3,7 +3,7 @@
 The normal 0.6.1 Beta still supports standard cartridges. Super FX and SA-1
 remain experimental; the following work does **not** enable them in the release.
 
-## Implemented candidate fix
+## Implemented candidate fixes
 
 Rebuild the derived sprite list with `S9xSetupOBJ()` after restoring the complete
 snapshot. This leaves the serialized format unchanged. At frame 600, Imperium
@@ -11,11 +11,12 @@ and Stunt Race FX now reproduce all 30 subsequent video/PCM hashes, including
 loading into a fresh native process. Previously Imperium differed for one frame
 and Stunt Race FX for 18 frames. Longer tests still expose other failures.
 
-The change is isolated in `development/compatibility-20261016/`, with a patch
+The ROM timing correction described below is also included. Both changes are
+isolated in `development/compatibility-20261016/`, with a patch
 against the archived core. `make current` and `make current-arm` retain the
 released source/payload. The diagnostic build uses the explicit flags below.
 
-## Results
+## Earlier sprite-only candidate results
 
 Each native run uses ASan/UBSan, presses Start at frames 360–367, saves at the
 specified checkpoint, and compares the following 30 video and PCM hashes after
@@ -46,14 +47,62 @@ still reserves 32 MiB; none of these ROMs exceeds the existing 4 MiB ROM limit.
 The normal installation, ROMs and existing states were not replaced. The
 candidate was tested in a separate development drawer.
 
-## Star Fox 2 startup lead
+## Super FX ROM timing fix
 
-In the native 2,400-frame diagnostic, the 65816 remained at `$03:E580`, in a
-loop comparing the sound ports against `$BBAA`. SPC700 execution was at `$0651`
-with output ports zero; Super FX had not started. This identifies the immediate
-wait condition, not its root cause. Merely changing the GSU RAM bank count from
-one to two did not resolve the blank screen in a separate native experiment;
-that RAM change is not included in the candidate.
+The startup lead is now traced to `SuperFXROMMap()`: its timing loop initialized
+only the lower eight 4 KiB blocks in each bank. ROM at `$00–3F:8000–FFFF` could
+therefore retain zero-cycle fetch timings. A first-load Star Fox 2 trace showed
+`CPU.MemSpeed = 0`; the later FastROM update covers upper banks, not these banks.
+
+The candidate initializes all 16 blocks, preserving six-cycle I/O and eight-cycle
+slow ROM/RAM timings. No sound-port acknowledgements are fabricated, and no
+per-game delay, ROM patch, APU overclock or extra RAM is used.
+
+An independent native comparison with
+[Snes9x2005](https://github.com/libretro/snes9x2005/tree/a79dfe9047e7fec58808aefe48ad2bf499c7af11)
+showed the same initial upload bytes, but different ordering afterward: the old
+core sent command `$0F` before the SPC driver cleared its input ports with `$F1=$F0`.
+The corrected timing lets initialization finish before that command arrives.
+The original regression fixture verifies the bank table from both zero and
+stale values, then checks mapped CMP/DEX/BNE costs of 30/14/22 master clocks.
+It fails against the old mapper and passes with the candidate under ASan/UBSan.
+
+The repeated 11-cartridge native survey completed 600 and 2,400 frames per ROM
+without sanitizer errors. Start is pressed at frames 360–367. Both Star Fox
+and Star Fox 2 now produce changing video and execute Super FX. Star Fox 2
+records 112 and 712 picture changes respectively; these are checkpoint counters,
+not display FPS or proof of complete graphical accuracy.
+
+| Super FX title | Frame 600 replay | Frame 2,400 replay |
+| --- | --- | --- |
+| Star Fox 2 | Video differs | Video differs |
+| Star Fox | Video differs | Video differs |
+| Super Star Fox Weekend | Video differs | Video/PCM differ |
+| Stunt Race FX | Exact | Video differs |
+| Doom | Exact | Exact |
+
+Same-process and fresh-process results agree. Standard-cartridge results and
+Kirby Super Star's remaining state issue are unchanged by this mapper-only fix.
+Doom previously differed in PCM at frame 2,400; its execution path has changed,
+so this result does not establish that the general audio-state problem is solved.
+
+Star Fox 2, Star Fox and Doom also completed 1,200-frame windowed runs on the
+A4000TX, with clean register/cache restoration and owned-memory release. These
+no-input startup runs establish lifecycle behaviour, not full gameplay support.
+
+[Follow-up evidence](../amiga/records/2026-10-16/superfx-timing/).
+The candidate remains separate from the published beta. Complete chip-state
+serialization, graphics accuracy and longer gameplay checks are still required.
+
+### MesenCE and FX3
+
+[MesenCE's GSU implementation](https://github.com/nesdev-org/MesenCE/blob/4b8a196e299b3de297b204fd1208d2981562c89b/Core/SNES/Coprocessors/GSU/Gsu.cpp)
+has explicit FX3 mappings and a four-times emulated clock multiplier.
+Its [instruction implementation](https://github.com/nesdev-org/MesenCE/blob/4b8a196e299b3de297b204fd1208d2981562c89b/Core/SNES/Coprocessors/GSU/Gsu.Instructions.cpp)
+adds FX3 commands but still permits an interrupt on STOP, despite comments that
+FX3 hardware has no IRQs. It is a useful comparison reference, not a host-speed
+optimization or a fix needed by this regular Super FX cartridge. No MesenCE
+code has been copied into the PocketSNES core.
 
 The supplied [UltraStarFox2 source](https://github.com/Sunlitspace542/ultrastarfox2/tree/3397698f99cf89d5b7bcaec2ffcd520d4fc84a91)
 is useful for following the sound-upload and coprocessor startup sequences.
@@ -90,8 +139,8 @@ relative-pointer fields remain the reference described in
 
 ## Next compatibility work
 
-1. Trace Star Fox 2's sound-upload/reset handshake and compare it against a
-   newer Snes9x core before changing timing or adding a game-specific workaround.
+1. Check Star Fox/Star Fox 2 rendering and gameplay after the ROM-timing fix;
+   do not confuse changing video with full cartridge compatibility.
 2. Complete Super FX internal-state serialization without storing host pointers.
 3. Preserve the raster/HDMA and audio timing state exposed by the longer replays;
    Super Star Fox Weekend can return from the core with a frame partly drawn.
@@ -99,6 +148,14 @@ relative-pointer fields remain the reference described in
    on hardware. Enable individual cartridge families only after these pass.
 
 ## Reproduction
+
+Original timing regression (no commercial ROM or hardware required):
+
+```sh
+make test-superfx-timing
+# Expected to fail at the mapper assertion, demonstrating the old bug:
+python3 scripts/test_superfx_timing.py --baseline
+```
 
 Native survey (provide your own ZIP cartridges):
 

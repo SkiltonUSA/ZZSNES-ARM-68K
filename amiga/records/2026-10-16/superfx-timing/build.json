@@ -1,0 +1,17 @@
+{
+  "reference_core": "libretro/snes9x2005",
+  "reference_revision": "a79dfe9047e7fec58808aefe48ad2bf499c7af11",
+  "sha256": {
+    "development/compatibility-20261016/core/src/memmap.c": "3f2ece49dbee861bee1e4995ce5b0970cd65ec7b6700ec150e81561e6f82d6ee",
+    "development/compatibility-20261016/core/src/snapshot.c": "cef8de0cf7dfc57a51683b1a8cd590d0b91762d140e42d215a84ee397f95dc48",
+    "scripts/compatibility_native.py": "18f626753be6731161517de6f7d376edf72f5b0bb7913db0766cb96f629126e7",
+    "scripts/probe_cartridges.py": "740fa9257fe7e5d49e249d727abfbb997bf25a6a37fc0fd79ed1ebcab36d6731",
+    "scripts/test_superfx_timing.py": "075bab2b81c12b8afc7867437ba70e01f621d26e513ab6179c98e9b595345572",
+    "tests/amiga/pocketsnes/superfx_timing.c": "1ec4e197be469165d0a4c16124973621d4582c691a4e8926ddfd59faabb9be12",
+    "tests/amiga/pocketsnes/cartridge_replay.c": "4c19d4e37d4aec7bfd5c92b5af63a4de94eced9f8fd92a762e9466cdcfc4359c",
+    ".context/compatibility-build/player/pocket.elf": "f1ea419238ec9ea30d31cd37911682abf3e90909c031e68633de987f2dcdbc88",
+    ".context/compatibility-build/ZZSnes-ui": "e8a5f58d31cdcde7a1558787ded9410952b0309ccce63f7725d60f9472756719"
+  },
+  "compiled_memmap_sha256": "2d91f9268802655e9ef0cccdb6817d90eb9799377c7384bffcaa56b339b1a059",
+  "source_normalization": "memmap.c line endings, indentation and trailing whitespace normalized after compilation; normalized compiled and published source verified identical"
+}

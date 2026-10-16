@@ -1,0 +1,4 @@
+CORE cpu=00:ff9c rom_speed=8 apu=ffc0 out=00,00 gsu=0000
+RUN frames=2400 changed=0 last=00000000
+REPLAY mismatch frame=0 video=f35ce55b/2ed47ada pcm=326c53f5/326c53f5
+REPLAY mismatches=1
