@@ -1,0 +1,110 @@
+[
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-0-baseline.log",
+    "case": "baseline",
+    "presented": 579,
+    "arm_present_us": 2976.9740932642485,
+    "steady_emulation_fps": 60.00240009600384,
+    "steady_present_fps": 57.97773654916512
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-0-optimised.log",
+    "case": "optimised",
+    "presented": 582,
+    "arm_present_us": 2976.561855670103,
+    "steady_emulation_fps": 60.08532115604158,
+    "steady_present_fps": 58.19366852886406
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-0-soft-neon.log",
+    "case": "soft-neon",
+    "presented": 581,
+    "arm_present_us": 3148.881239242685,
+    "steady_emulation_fps": 59.9880023995201,
+    "steady_present_fps": 57.97773654916512
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-0-soft-scalar.log",
+    "case": "soft-scalar",
+    "presented": 581,
+    "arm_present_us": 3786.764199655766,
+    "steady_emulation_fps": 60.103377809832914,
+    "steady_present_fps": 58.08550185873606
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-1-baseline.log",
+    "case": "baseline",
+    "presented": 582,
+    "arm_present_us": 2976.857388316151,
+    "steady_emulation_fps": 59.991601175835385,
+    "steady_present_fps": 58.197055229005414
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-1-optimised.log",
+    "case": "optimised",
+    "presented": 577,
+    "arm_present_us": 2977.2790294627384,
+    "steady_emulation_fps": 60.00240009600384,
+    "steady_present_fps": 57.421762848119435
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-1-soft-neon.log",
+    "case": "soft-neon",
+    "presented": 581,
+    "arm_present_us": 3148.5851979345957,
+    "steady_emulation_fps": 59.991601175835385,
+    "steady_present_fps": 57.97773654916512
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-1-soft-scalar.log",
+    "case": "soft-scalar",
+    "presented": 575,
+    "arm_present_us": 3787.2921739130434,
+    "steady_emulation_fps": 59.98080614203455,
+    "steady_present_fps": 57.421762848119435
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-2-baseline.log",
+    "case": "baseline",
+    "presented": 575,
+    "arm_present_us": 2977.062608695652,
+    "steady_emulation_fps": 60.01680470531749,
+    "steady_present_fps": 57.53408894770151
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-2-optimised.log",
+    "case": "optimised",
+    "presented": 578,
+    "arm_present_us": 2977.1020761245672,
+    "steady_emulation_fps": 59.9880023995201,
+    "steady_present_fps": 57.75339301183944
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-2-soft-neon.log",
+    "case": "soft-neon",
+    "presented": 579,
+    "arm_present_us": 3149.027633851468,
+    "steady_emulation_fps": 59.99880002399952,
+    "steady_present_fps": 57.86702158439905
+  },
+  {
+    "console": "ZZSNES",
+    "file": "ZZSNES-bench-2-soft-scalar.log",
+    "case": "soft-scalar",
+    "presented": 573,
+    "arm_present_us": 3787.9319371727747,
+    "steady_emulation_fps": 60.175713082200026,
+    "steady_present_fps": 57.30987449137486
+  }
+]

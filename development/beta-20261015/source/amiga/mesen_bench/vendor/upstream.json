@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/SourMesen/Mesen",
+  "commit": "e1180957b31979d4b82d613af9263fcb9442a685",
+  "license": "GPL-3.0-or-later",
+  "files": {
+    "LICENSE": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "Types.h": "dc307ee41735da89d271ca2aa256609b50a12f47779c32915b5e3fe7496e44ca",
+    "CPU.h": "46a26d125a2556880f6a9d5404e473c7803c859bdf14f2fb36087bb0cc2f0693",
+    "CPU.cpp": "b4d63b84d6f6968d0f38f410fb7d05e9ff4758c928164ed06a283330a9d3dcf4"
+  }
+}

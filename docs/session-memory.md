@@ -1,3 +1,23 @@
+# Current beta: ZZSNES 0.5.0
+
+Current editable sources and exact build inputs: `development/beta-20261015/`.
+Artifacts: `artifacts/beta-0.5.0/`. `make current-arm` rebuilds the complete
+pair; `make test-current` runs native/model checks. Physical results are in
+`amiga/records/2026-10-15/refresh/`. See `current-development.md` for the selected
+optimisations and rejected alternatives. Native/model tests are not hardware proof.
+
+The shared sidebar, mounted-drive discovery, asynchronous startup/loading panels,
+window/fullscreen switching, FPS and software scanlines are enabled. Preserve
+existing ROM paths and library/save files when upgrading. Only one Core1 owner;
+retain runtime mapping, cache witnesses and reset-before-free on every path.
+
+Installed and checksum-verified on the A4000TX. Previous executables, icon and
+library preferences are retained in `Rollback-1015` under the application drawer.
+The installer preserved the existing library files; no original ROM/state files
+were changed. Test ROM copies were used in a separate development drawer.
+
+---
+
 # Current Beta handoff — 12 October 2026
 
 Current: ZZSNES 0.4.0 Beta, `SD032G:Emulator/ZZSNES/ZZSNES`;

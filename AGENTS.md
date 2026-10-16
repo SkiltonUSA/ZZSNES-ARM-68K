@@ -17,3 +17,6 @@ addresses as allocations. Only the recorded XX19c/XACP 1.7 contract is verified.
 Builds/tests do not deploy or connect automatically. Read current hardware
 ownership before any explicitly authorised physical test. Keep .context/ and
 .tools/ ignored. Update the handoff when installed state changes.
+
+Current beta source/build inputs are in `development/beta-20261015/`; use
+`make current-arm`, `make test-current` and `make verify-current` for that path.

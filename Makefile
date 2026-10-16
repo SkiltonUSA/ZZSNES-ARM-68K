@@ -25,3 +25,18 @@ beta:
 	$(PYTHON) scripts/build_beta.py
 verify-beta:
 	$(PYTHON) scripts/verify_beta.py
+
+# Current sidebar/display beta
+current:
+	$(PYTHON) scripts/build_current.py
+current-arm:
+	$(PYTHON) scripts/build_current.py --arm
+verify-current:
+	$(PYTHON) scripts/verify_current.py
+test-current:
+	mkdir -p .context
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/beta-20261015/source/amiga/fceux_player -Idevelopment/beta-20261015/source/amiga/emulator tests/amiga/emulator/model.c -o .context/test-current
+	.context/test-current
+	$(CC) -O2 -g -fsanitize=address,undefined -Itests/amiga/emulator/mock -Idevelopment/beta-20261015/source/amiga/fceux_player tests/amiga/emulator/scan.c -o .context/test-scan
+	.context/test-scan
+	$(MODEL_PYTHON) tests/amiga/emulator/check_current_arm.py

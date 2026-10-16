@@ -1,0 +1,22 @@
+# Changelog
+
+## 0.5.0 Beta
+
+- Sidebar MUI launcher, original branding and Workbench icon.
+- Startup/loading panels; loading ends after the first completed frame.
+- Fullscreen/window switching, optional FPS and three software scanline styles.
+- Guarded NEON row stores and fused byte dimming; scalar fallback and comparison.
+- Add, rename and confirmed deletion; incremental mounted-volume ROM discovery.
+- Existing cadence, AHI batching, mapper/region handling and save formats retained.
+
+## 0.4.0 Beta
+
+- Regional cadence and accepted four-slot C0 fullscreen presentation.
+- PAL/NTSC, standard cartridge compatibility, SRAM and screenshot save slots.
+- Interactive MUI library and About page.
+
+## 0.2.0 development
+
+- PocketSNES MUI library, thumbnail save states and fullscreen integration.
+
+Historical build records retain the detailed intermediate experiments.

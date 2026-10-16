@@ -1,0 +1,54 @@
+{
+  "nes": {
+    "source_sha256": "2da2131d16eb3ff31d121980dea6833c01b11786c0f670bb9ebd5a1c1fb0244d",
+    "source_size": [
+      1600,
+      900
+    ],
+    "source_rectangles": [
+      [
+        0,
+        0,
+        195,
+        900
+      ],
+      [
+        1405,
+        0,
+        1600,
+        900
+      ]
+    ],
+    "panel_size": [
+      40,
+      240
+    ],
+    "bytes": 38400
+  },
+  "snes": {
+    "source_sha256": "ca476bf049862c5ac58c947fa04c8faa2123c58165071a23cbd5bec4e9feb477",
+    "source_size": [
+      1920,
+      1080
+    ],
+    "source_rectangles": [
+      [
+        0,
+        0,
+        240,
+        1080
+      ],
+      [
+        1680,
+        0,
+        1920,
+        1080
+      ]
+    ],
+    "panel_size": [
+      40,
+      240
+    ],
+    "bytes": 38400
+  }
+}
