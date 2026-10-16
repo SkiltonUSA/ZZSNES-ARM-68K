@@ -1,3 +1,13 @@
+# Title-bar cleanup — 16 October 2026
+
+Current launcher source removes the window title text. Version remains in the
+footer and About. The published logo beta ZIP remains unchanged; this is a
+subsequent local/source update. Previous installed launcher and settings are
+in Rollback-title-1016. Player, icons and libraries are unchanged.
+Both builds passed; the physical windows have blank title bars and close cleanly.
+
+---
+
 # Colour logo update: ZZSNES 0.5.2 Beta
 
 Current launcher sources/artwork: development/logo-20261016/. New supplied

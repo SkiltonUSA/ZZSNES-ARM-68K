@@ -336,7 +336,7 @@ static int build(void){Object *add,*scan,*save,*exit,*listview,*all,*recent,*fav
  preview_class=MUI_CreateCustomClass(NULL,MUIC_Area,NULL,sizeof(struct preview_instance),(APTR)preview_dispatch);if(!preview_class)return 0;
  app=ApplicationObject,MUIA_Application_Title,(ULONG)LIB_TITLE " Library",MUIA_Application_Version,(ULONG)version,
  MUIA_Application_Base,(ULONG)LIB_TITLE,MUIA_Application_Description,(ULONG)"Native ZZ9000 game library",
- SubWindow,win=WindowObject,MUIA_Window_Title,(ULONG)LIB_TITLE LIB_WINDOW,MUIA_Window_ID,
+ SubWindow,win=WindowObject,MUIA_Window_Title,(ULONG)"",MUIA_Window_ID,
 #ifdef LIBRARY_SNES
  0x534e5549,
 #else

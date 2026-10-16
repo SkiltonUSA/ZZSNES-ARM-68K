@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Remove launcher title-bar text; keep version in the footer and About.
+
 ## 0.5.2 Beta
 
 - New colour logo in the sidebar, startup and loading screens.
