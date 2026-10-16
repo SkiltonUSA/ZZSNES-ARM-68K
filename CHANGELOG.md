@@ -1,11 +1,22 @@
 # Changelog
 
+## Unreleased display and FX3 candidates
+
+- Add Thin scanlines at 640×480: retain every image row and insert one-pixel
+  black separators, improving small-text detail compared with Classic at 320×240.
+- Retain the existing modes; support Thin in windows and fullscreen, with FPS
+  overlay, switching and clean library snapshots.
+- Implement experimental FX3 register/memory mapping, MERGE framebuffer clears,
+  STOP behaviour and bounded scheduling in PocketSNES, informed by MesenCE.
+- Add original native/A9 instruction fixtures and ordinary-cartridge regressions.
+  Commercial FX3 compatibility and complete special-chip states remain unverified.
+
 ## Unreleased launcher changes
 
 - Allow Super FX games, including Star Fox 2 and Doom, to launch with Play.
 - Route these cartridges to the timing-corrected experimental player.
 - FX3 warnings are advisory; Play remains enabled, including for ZIP cartridges.
-- FX3 instruction extensions are not implemented; successful gameplay is not promised.
+- FX3 support remains experimental; successful gameplay is not promised.
 
 ## Unreleased compatibility research
 

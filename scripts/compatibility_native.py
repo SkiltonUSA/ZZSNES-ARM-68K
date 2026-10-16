@@ -7,6 +7,7 @@ def build(source,O,*,experimental=False,baseline=False,fx3=False):
  shutil.copytree(snap/'source/core',core,dirs_exist_ok=True)
  if not baseline:
   shutil.copytree(r/'development/compatibility-20261016/core',core,dirs_exist_ok=True)
+ if fx3:shutil.copytree(r/'development/fx3-20261016/core',core,dirs_exist_ok=True)
  inc=O/'include';shutil.copytree(snap/'build-inputs/player',inc,dirs_exist_ok=True)
  p=inc/'cartridge.h';s=p.read_text()
  if experimental:s=s.replace('(map==0x20+i||map==0x30+i||contra)&&type<=2','(((map==0x20+i||map==0x30+i||contra)&&type<=2)||(!i&&map==0x20&&(type==0x13||type==0x14||type==0x15||type==0x1a))||(!i&&map==0x23&&(type==0x34||type==0x35)))')

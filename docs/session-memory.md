@@ -1,3 +1,38 @@
+## Thin scanlines and FX3 core candidate — 16 October 2026
+
+Installed at SD032G:Emulator/ZZSNES with transfer checksums and complete
+preferences verification. Thin (640x480) is selected; all other settings and
+library entries are retained. ROMs and existing saves are unchanged. Previous
+launcher, players and Library.cfg are in Rollback-thin-1016. Restore settings
+alongside the old executables if rolling back, because old UI rejects mode 4.
+
+- ZZSNES: MD5 16851a8ecbe5edbddad95d30ea2455f4
+- ZZSnes-ui: MD5 1454cf88306a0804a29609044a3704d6
+- ZZSnes-FX: MD5 21f01ced3fb39ed61723cdc4d1053612
+
+Build this installed development candidate with current-thin and
+current-thin-superfx. Normal builds/published 0.6.1 release remain separate.
+Thin renders intact logical rows with one-pixel black separators at 640x480;
+all earlier modes retain 320x240. Window/fullscreen switching, capture and F10
+passed. Physical fullscreen SMW 1200-frame run: post-warm-up loop mean16653us;
+whole-run displayed45.56fps including startup/readback. No constant60fps claim.
+
+Supplemental player includes experimental FX3 mapping/MMIO/MERGE/STOP and bounded
+instruction slices, informed by MesenCE. Native sanitizers, relocated A9 tests,
+ordinary-cartridge signature regressions and physical instruction fixture pass.
+Physical frame600 hash08285dc5 matches the native checkerboard; pre-fix stays
+blank. Star Fox2/Doom120-frame lifecycle checks pass. No commercial FX3 or
+complete special-chip-state support claim. See docs/fx3-development.md,
+docs/thin-scanlines.md and amiga/records/2026-10-16/fx3-thin/.
+
+The bridge truncated a large direct Library.cfg write; verification caught it
+before launcher restart. Recovered the entire file via HTTP and byte-compared
+it with the intended single-field edit. Launcher restart requires Stack65536;
+the first lower-stack attempt exited without opening, corrected restart passed.
+Only launcher is open; no Core1 owner/test player. No firmware changes.
+
+---
+
 ## Super FX Play and advisory FX3 warning — 16 October 2026
 
 Supersedes the blocking FX3 notice below. Play now launches ordinary Super FX

@@ -1,0 +1,158 @@
+/* GPL-3.0-or-later. Independent implementation of the XX19c deferred-PAN
+ * handoff demonstrated by Xanxi's ZZPicoDriveMD. See zzpicodrive-review.md.
+ * Included by host.c after its timer helpers. No PicoDrive source reused. */
+#include "flip_plan.h"
+static unsigned em_width(void){return fc_scanlines==4?640:320;}
+static unsigned em_height(void){return fc_scanlines==4?480:240;}
+static struct Screen *full_screen;
+static struct BitMap *full_allocation;
+static volatile UBYTE *full_board;
+static struct nf_slots full_slots={0,1,-1,0,0,3}; /* Core init precedes screen open. */
+static ULONG full_pitch,full_origin,full_pending_us,full_wait_us;
+static UWORD *full_pointer;
+static int full_fault,full_attached,full_usedpan,full_origin_known;
+static ULONG trial_ack_blank,trial_ack_active;
+#include "scanout_gate.h"
+static struct sg_gate full_gate;
+static ULONG gate_count,gate_total_us,gate_max_us,gate_timeouts;
+#define SCANOUT_GATE_MODE 0u
+static int full_blank(void){return (*(volatile UWORD *)(full_board+0x4c)&0x20u)!=0;}
+static void full_write(unsigned reg,UWORD v){*(volatile UWORD *)(full_board+reg)=v;}
+static UWORD full_ack_count(void){return *(volatile UWORD *)(full_board+0x46);}
+static int full_front(void){if(fc_windowed)return window!=NULL;return full_screen && IntuitionBase->FirstScreen==full_screen;}
+static void full_pan(ULONG offset,int deferred){
+ /* Keep unrelated graphics tasks out of this short register transaction.
+  * Bitmap lock prevents screen switches while a deferred flip is pending. */
+ Forbid();
+ full_write(0x44,deferred?1:2);
+ full_write(0x10,0);full_write(0x12,0);
+ full_write(0x14,(UWORD)(full_pitch/4));full_write(0x30,2);
+ full_write(0x0a,(UWORD)(offset>>16));full_write(0x0c,(UWORD)offset);
+ Permit();
+}
+static void full_unlock(void){
+ if(direct_locked){p96UnlockBitMap(direct_bitmap,direct_lock);direct_locked=0;}
+}
+static int full_gate_error(void){
+ full_pan(full_origin,0);full_slots.pending=-1;full_gate.phase=0;
+ full_fault=1;full_unlock();puts("SCANOUT gate/ACK failed; pending cancelled");return 0;
+}
+static int full_poll(void){
+ if(fc_windowed)return !full_fault;
+ int status;
+ if(full_fault)return 0;
+ if(full_gate.phase){
+  ULONG now=us();
+  if(full_ack_count()!=(UWORD)(full_slots.ack+1))return full_gate_error();
+  status=sg_poll(&full_gate,full_blank(),now);
+  if(status<0){gate_timeouts++;return full_gate_error();}
+  if(!status)return 1;
+  {ULONG dt=now-full_gate.start;gate_count++;gate_total_us+=dt;if(dt>gate_max_us)gate_max_us=dt;}
+  full_wait_us+=now-full_pending_us;full_unlock();return 1;
+ }
+ if(full_slots.pending<0)return 1;
+ status=nf_ack(&full_slots,full_ack_count());
+ if(status==1){
+  int blank=full_blank();ULONG now=us();
+  if(blank)trial_ack_blank++;else trial_ack_active++;
+  fc_flip_sample();sg_begin(&full_gate,SCANOUT_GATE_MODE,blank,now);
+  if(!full_gate.phase){full_wait_us+=now-full_pending_us;full_unlock();}
+  return 1;
+ }
+ if(status<0 || (ULONG)(us()-full_pending_us)>100000u)return full_gate_error();
+ return 1;
+}
+static int full_drain(void){
+ while(full_slots.pending>=0 || full_gate.phase){if(!full_poll())return 0;/* Bounded full_poll deadline; do not sleep under bitmap lock. */}
+ return !full_fault;
+}
+static int full_queue(void){
+ if(fc_windowed){full_slots.front=full_slots.render;full_slots.flips++;full_unlock();return 1;}
+ if(full_fault || full_gate.phase || !direct_locked || !full_attached || !nf_queue(&full_slots,full_ack_count()))return 0;
+ full_pending_us=us();
+ full_usedpan=1;
+ full_pan(full_origin+(ULONG)full_slots.pending*em_height()*full_pitch,1);
+ return 1;
+}
+#include "scanout_measure.h"
+static int em_fullscreen_open(void){
+ struct ConfigDev *card=FindConfigDev(NULL,0x6d6e,4);
+ ULONG mode,format,depth;
+ if(!card)return 0;
+ full_board=card->cd_BoardAddr;nf_init(&full_slots);
+ mode=p96BestModeIDTags(P96BIDTAG_NominalWidth,em_width(),P96BIDTAG_NominalHeight,em_height(),
+   P96BIDTAG_Depth,32,TAG_DONE);
+ if(mode==0xffffffffu || p96GetModeIDAttr(mode,P96IDA_WIDTH)!=em_width() ||
+    p96GetModeIDAttr(mode,P96IDA_HEIGHT)!=em_height()){printf("FULLSCREEN requires an existing %ux%u true-colour RTG mode\n",em_width(),em_height());return 0;}
+ format=p96GetModeIDAttr(mode,P96IDA_RGBFORMAT);depth=p96GetModeIDAttr(mode,P96IDA_DEPTH);
+ if(format==RGBFB_B8G8R8A8)direct_format=ND_BGRA32;
+ else if(format==RGBFB_A8R8G8B8)direct_format=ND_ARGB32;
+ else {printf("FULLSCREEN unsupported mode pixel format=%u\n",format);return 0;}
+ direct_native_format=format;
+ /* All slots belong to the actual screen bitmap. P96 sees the entire
+  * scanout allocation, unlike independently allocated, untracked backbuffers. */
+ direct_bitmap=p96AllocBitMap(em_width(),4*em_height(),depth,BMF_DISPLAYABLE|BMF_CLEAR,NULL,format);
+ if(!direct_bitmap)return 0;
+ full_allocation=direct_bitmap;
+ full_screen=OpenScreenTags(NULL,SA_DisplayID,mode,SA_Width,em_width(),SA_Height,em_height(),
+  SA_Depth,depth,SA_BitMap,(ULONG)direct_bitmap,SA_AutoScroll,FALSE,SA_Quiet,TRUE,
+  SA_ShowTitle,FALSE,SA_Type,CUSTOMSCREEN,SA_Title,(ULONG)"ZZSnes-Pocket fullscreen",TAG_DONE);
+ if(!full_screen){puts("FULLSCREEN custom screen open failed");return 0;}
+ printf("FULLSCREEN_BITMAP allocated=%08x screen=%08x width=%u height=%u allocated_height=%u screen_height=%u on_board=%u/%u memory=%08x/%08x pitch=%u/%u\n",
+  (ULONG)direct_bitmap,(ULONG)full_screen->RastPort.BitMap,(ULONG)full_screen->Width,(ULONG)full_screen->Height,
+  p96GetBitMapAttr(direct_bitmap,P96BMA_HEIGHT),p96GetBitMapAttr(full_screen->RastPort.BitMap,P96BMA_HEIGHT),
+  p96GetBitMapAttr(direct_bitmap,P96BMA_ISONBOARD),p96GetBitMapAttr(full_screen->RastPort.BitMap,P96BMA_ISONBOARD),
+  p96GetBitMapAttr(direct_bitmap,P96BMA_MEMORY),p96GetBitMapAttr(full_screen->RastPort.BitMap,P96BMA_MEMORY),
+  p96GetBitMapAttr(direct_bitmap,P96BMA_BYTESPERROW),p96GetBitMapAttr(full_screen->RastPort.BitMap,P96BMA_BYTESPERROW));
+ /* Intuition/P96 may clone the supplied BitMap and place the screen copy in
+  * VRAM. Use the real screen bitmap; retain the caller allocation for cleanup. */
+ direct_bitmap=full_screen->RastPort.BitMap;
+ if((unsigned)full_screen->Width!=em_width() || (unsigned)full_screen->Height!=em_height() ||
+    !p96GetBitMapAttr(direct_bitmap,P96BMA_ISONBOARD) ||
+    p96GetBitMapAttr(direct_bitmap,P96BMA_WIDTH)<em_width() ||
+    p96GetBitMapAttr(direct_bitmap,P96BMA_HEIGHT)<4*em_height() ||
+    p96GetBitMapAttr(direct_bitmap,P96BMA_RGBFORMAT)!=format){puts("FULLSCREEN screen bitmap validation failed");return 0;}
+ {
+  struct RenderInfo ri;ULONG memory,span;
+  memset(&ri,0,sizeof(ri));direct_lock=p96LockBitMap(direct_bitmap,(UBYTE *)&ri,sizeof(ri));direct_locked=1;
+  memory=(ULONG)ri.Memory;span=4*em_height()*(ULONG)ri.BytesPerRow;
+  if(ri.BytesPerRow<(LONG)(em_width()*4) || ri.BytesPerRow>4096 || (ri.BytesPerRow&3) ||
+     memory<(ULONG)full_board+0x10000u || memory>(ULONG)full_board+0x4000000u-span)return 0;
+  memset(ri.Memory,0,span);CacheClearE(ri.Memory,span,CACRF_ClearD);
+  full_unlock();
+ }
+ window=OpenWindowTags(NULL,WA_CustomScreen,(ULONG)full_screen,WA_Left,0,WA_Top,0,
+  WA_Width,em_width(),WA_Height,em_height(),WA_Title,(ULONG)"ZZSnes-Pocket fullscreen - Q/Esc quits",
+  WA_Flags,WFLG_BACKDROP|WFLG_BORDERLESS|WFLG_RMBTRAP|WFLG_ACTIVATE,
+  WA_IDCMP,IDCMP_RAWKEY|IDCMP_INACTIVEWINDOW|IDCMP_MOUSEBUTTONS,TAG_DONE);
+ if(!window)return 0;
+ full_pointer=AllocMem(12,MEMF_CHIP|MEMF_CLEAR);
+ if(full_pointer)SetPointer(window,full_pointer,1,16,0,0);
+ direct_readback=AllocVec(em_height()*4096,MEMF_PUBLIC);if(!direct_readback)return 0;
+ full_attached=1;
+ printf("FULLSCREEN mode=%08x native_format=%u depth=%u slots=4 geometry=%ux%u\n",mode,format,depth,em_width(),em_height());
+ return 1;
+}
+/* Called only after synchronous Core1 reset, before bitmap/library release. */
+static void full_cleanup(void){
+ if(full_usedpan && full_screen){
+  struct RenderInfo ri;
+  /* Cancel even if another screen is now foremost. Never pan over Workbench. */
+  full_write(0x44,2);
+  if(!direct_locked){memset(&ri,0,sizeof(ri));full_origin_known=0;
+   direct_lock=p96LockBitMap(direct_bitmap,(UBYTE *)&ri,sizeof(ri));direct_locked=1;
+   if(ri.BytesPerRow>=(LONG)(em_width()*4) && ri.BytesPerRow<=4096 &&
+      (ULONG)ri.Memory>=(ULONG)full_board+0x10000u &&
+      (ULONG)ri.Memory<=(ULONG)full_board+0x4000000u-4*em_height()*(ULONG)ri.BytesPerRow){
+    full_origin=(ULONG)ri.Memory-(ULONG)full_board-0x10000u;full_pitch=ri.BytesPerRow;full_origin_known=1;}}
+  if(full_front() && full_origin_known)full_pan(full_origin,0);
+ }
+ full_slots.pending=-1;full_gate.phase=0;full_unlock();
+ if(window){if(full_pointer)ClearPointer(window);CloseWindow(window);window=NULL;}
+ if(full_pointer){FreeMem(full_pointer,12);full_pointer=NULL;}
+ if(full_screen){CloseScreen(full_screen);full_screen=NULL;}
+ /* The screen copy belongs to Intuition. Free only our supplied bitmap. */
+ direct_bitmap=full_allocation;full_allocation=NULL;
+
+ full_attached=0;
+}

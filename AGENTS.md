@@ -40,5 +40,11 @@ Super FX launcher integration uses `make current-superfx` (`--arm --superfx`).
 The supplemental ZZSnes-FX player uses the compatibility overlay and the
 shared host/ARM gate in development/fx3-20261016/cartridge.h. The normal
 player remains for standard ROMs. FX3 notices are advisory, not a launch veto.
-No FX3 instruction-extension support is claimed. Run test-fx3-warning and
-test-library-large, plus native and relocated ARM tests after player changes.
+Experimental FX3 behaviour is documented in docs/fx3-development.md. Run
+test-fx3, test-fx3-warning and test-library-large, plus native and relocated ARM
+tests after player changes. Commercial FX3 compatibility remains unverified.
+
+Thin scanlines are a separate 640x480 presentation candidate; see
+docs/thin-scanlines.md and development/thin-scanlines-20261016. Use
+current-thin/current-thin-superfx, test-thin-geometry and the opt-in relocated
+pixel tests. Preserve the original modes and every logical image row.

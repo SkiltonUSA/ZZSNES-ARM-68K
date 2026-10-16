@@ -1,0 +1,2 @@
+PASS A9 base=12000040: FX3 VCR, intact 4 MiB ROM, MERGE 0..6, STOP and bounded execution
+PASS A9 base=150020c0: FX3 VCR, intact 4 MiB ROM, MERGE 0..6, STOP and bounded execution

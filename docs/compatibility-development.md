@@ -3,6 +3,11 @@
 The normal 0.6.1 Beta still supports standard cartridges. Super FX and SA-1
 remain experimental; the following work does **not** enable them in the release.
 
+The supplemental development player now includes an [experimental FX3
+implementation](fx3-development.md), with native, relocated A9 and original
+physical instruction-fixture checks. Earlier launcher-only results below did
+not exercise those extensions. Commercial FX3 games remain unverified.
+
 ## Implemented candidate fixes
 
 Rebuild the derived sprite list with `S9xSetupOBJ()` after restoring the complete
@@ -100,9 +105,9 @@ The development launcher permits Super FX and FX3 launches with Play. Ordinary
 Super FX cartridges use the timing-corrected player; FX3 header types `0x17`
 and `0x18` display an advisory compatibility warning without blocking launch.
 Detection works after ZIP decoding and copier-header removal, without filename
-guessing. FX3 instruction extensions remain unimplemented.
+guessing. At this launcher-only stage, FX3 extensions were not yet implemented.
 `make test-fx3-warning` checks all cartridge IDs and malformed headers under
-ASan/UBSan. No FX3 game execution or new chip support is claimed.
+ASan/UBSan. That header test alone establishes no FX3 game execution.
 
 [MesenCE's GSU implementation](https://github.com/nesdev-org/MesenCE/blob/4b8a196e299b3de297b204fd1208d2981562c89b/Core/SNES/Coprocessors/GSU/Gsu.cpp)
 has explicit FX3 mappings and a four-times emulated clock multiplier.
@@ -206,6 +211,6 @@ previously tested Star Fox 2 and Doom. Warning text does not disable Play.
 
 This uses the same compatibility mapper/state overlay as the isolated tests,
 with a narrower gate admitting Super FX/FX3 and standard cartridges, not SA-1.
-The 4 MiB bound and header checks remain. FX3-specific instructions, expanded
-mappings and timing are not implemented by permitting a launch. Special-chip
+The 4 MiB bound and header checks remain. Permitting a launch alone did not
+implement FX3; the later core overlay is documented separately above. Special-chip
 save-state accuracy remains experimental. Published beta archives are unchanged.

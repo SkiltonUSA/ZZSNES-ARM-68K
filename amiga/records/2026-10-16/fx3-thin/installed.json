@@ -1,0 +1,22 @@
+{
+  "ZZSNES": {
+    "bytes": 217280,
+    "md5": "16851a8ecbe5edbddad95d30ea2455f4",
+    "sha256": "90efc789d6389a0e61bcf805ecf816716c35050bdd7e05f8ee4a40d0b1e3b262"
+  },
+  "ZZSnes-FX": {
+    "bytes": 894840,
+    "md5": "21f01ced3fb39ed61723cdc4d1053612",
+    "sha256": "9d2325be5873a340b4fac67a762bcdcf8c07cd07a17f88828dbee3979ddda16a"
+  },
+  "ZZSnes-ui": {
+    "bytes": 865016,
+    "md5": "1454cf88306a0804a29609044a3704d6",
+    "sha256": "4b26f2829adcab32e5d9d46b4381628ebe1c77d278375067a73268776f75bacb"
+  },
+  "Library.cfg": {
+    "before_md5": "4ecfe1ae7d6717bd8b7b0a7370262562",
+    "after_md5": "f6186a528d3af43b00714d1fbaf104d3",
+    "change": "scanlines=4 (Thin); all other settings/entries retained"
+  }
+}

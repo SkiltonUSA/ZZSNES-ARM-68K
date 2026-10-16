@@ -72,3 +72,17 @@ test-fx3-warning:
 .PHONY: current-superfx
 current-superfx:
 	$(PYTHON) scripts/build_current.py --arm --superfx
+
+.PHONY: test-fx3 current-thin current-thin-superfx
+test-fx3:
+	$(PYTHON) scripts/test_fx3.py
+current-thin:
+	$(PYTHON) scripts/build_current.py --arm --thin-scanlines
+current-thin-superfx:
+	$(PYTHON) scripts/build_current.py --arm --superfx --thin-scanlines
+
+.PHONY: test-thin-geometry
+test-thin-geometry:
+	mkdir -p .context
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/thin-scanlines-20261016/player tests/amiga/emulator/thin_geometry.c -o .context/test-thin-geometry
+	.context/test-thin-geometry

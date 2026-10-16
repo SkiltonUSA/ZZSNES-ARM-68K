@@ -6,5 +6,6 @@ Host and ARM use this same header. The library detects the same types and
 launches ZZSnes-FX automatically; warnings are advisory.
 
 The player uses the compatibility overlay's Super FX timing correction and
-sprite-cache reconstruction. It does not implement MesenCE's FX3 extension.
+sprite-cache reconstruction, followed by the experimental FX3 C overlay in
+`core/`. See [implementation and validation](../../docs/fx3-development.md).
 Standard games retain the normal player. No ROM bytes are patched.

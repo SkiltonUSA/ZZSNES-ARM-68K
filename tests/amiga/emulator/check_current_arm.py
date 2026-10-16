@@ -27,7 +27,7 @@ def engine(path,base):
   u.hook_add(UC_HOOK_CODE,neon,begin=sym['em_copy_neon'],end=sym['em_copy_neon'])
  def pixels(uc,*a):uc.reg_write(UC_ARM_REG_R0,source);uc.reg_write(UC_ARM_REG_PC,uc.reg_read(UC_ARM_REG_LR))
  u.hook_add(UC_HOOK_CODE,pixels,begin=sym[symbol],end=sym[symbol])
- addr=0x02fff800;mapping=addr&~4095;u.mem_map(mapping,0x100000)
+ addr=0x02fff800;mapping=addr&~4095;u.mem_map(mapping,0x200000)
  l1=(base+(0x100000 if snes else 0x40000)+16383)&~16383
  u.mem_write(l1,bytes(0xc000));u.mem_write(base+control+0x2000+60,struct.pack('<I',l1))
  def call(symbol,*args):
@@ -76,6 +76,32 @@ for base in [0x12000040,0x150020c0]:
    assert bytes(u.mem_read(mapping,0x100000))==before and bytes(u.mem_read(l1,16384))==bytes(16384)
   u.mem_write(base+control+128,bytes(4))
   print('PASS',name,hex(base),'format',fmt,'view',opt,'baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation',flush=True)
+  if os.environ.get('TEST_THIN_SCANLINES'):
+   # Every old unfiltered row survives, twice as wide, followed by a black row.
+   # The chosen address/pitch straddles THREE 1 MiB mapping sections.
+   hpitch=2576;hspan=479*hpitch+2560
+   for fast in (0,1):
+    u.mem_write(base+control+0x800+36,struct.pack('>II',4,fast))
+    u.mem_write(mapping,b'\xa5'*0x200000)
+    u.mem_write(addr,struct.pack('>I',nonce));u.mem_write(addr+hspan-4,struct.pack('>I',nonce^0x31415926))
+    assert call('nes_present',base,addr,hpitch,fmt,nonce)==0
+    wanted=bytearray(b'\xa5'*0x200000)
+    for y in range(240):
+     source=addr-mapping+y*pitch;target=addr-mapping+y*2*hpitch
+     row=b''.join(baseline[source+x*4:source+x*4+4]*2 for x in range(320))
+     wanted[target:target+2560]=row
+     wanted[target+hpitch:target+hpitch+2560]=bytes(2560)
+    assert bytes(u.mem_read(mapping,0x200000))==wanted,'Thin erased or altered a game row / crossed a row boundary'
+    assert bytes(u.mem_read(l1,16384))==bytes(16384),'Thin mapping not revoked'
+   for stop,challenge,expected in ((0,nonce+1,7),(1,nonce,2)):
+    u.mem_write(base+control+128,struct.pack('>I',stop))
+    u.mem_write(addr,struct.pack('>I',nonce));u.mem_write(addr+hspan-4,struct.pack('>I',nonce^0x31415926))
+    before=bytes(u.mem_read(mapping,0x200000))
+    assert call('nes_present',base,addr,hpitch,fmt,challenge)==expected
+    assert bytes(u.mem_read(mapping,0x200000))==before
+    assert bytes(u.mem_read(l1,16384))==bytes(16384)
+   u.mem_write(base+control+128,bytes(4))
+   print('PASS Thin: every logical row preserved, black separators, row guards, three-section mapping revoked, cancellation',flush=True)
 
  assert counts['neon']>0,'NEON path did not execute'
  print('NEON row calls:',counts['neon'],flush=True)

@@ -1,0 +1,311 @@
+--- previous/cpu.c
++++ fx3/cpu.c
+@@ -142,6 +142,10 @@
+          S9xSpc7110Reset();*/
+    S9xResetCPU();
+    S9xResetPPU();
++#ifdef SUPER_FX
++   /* PPU reset overwrites FillRAM; restore FX3 registers after it. */
++   if (Fx3Active) S9xResetSuperFX();
++#endif
+    S9xResetSRTC();
+    if (Settings.SDD1)
+       S9xResetSDD1();
+--- previous/fxemu.c
++++ fx3/fxemu.c
+@@ -90,6 +90,8 @@
+ *******************************************************************************/
+ #include "fxemu.h"
+ #include "fxinst.h"
++
++uint8 Fx3Active;
+ #include "memmap.h"
+ #include <stdlib.h>
+ #include <string.h>
+@@ -237,7 +239,7 @@
+ void fx_updateRamBank(uint8 Byte)
+ {
+    // Update BankReg and Bank pointer
+-   GSU.vRamBankReg = (uint32)Byte & (FX_RAM_BANKS - 1);
++   GSU.vRamBankReg = (uint32)Byte & (Fx3Active ? 1 : FX_RAM_BANKS - 1);
+    GSU.pvRamBank = GSU.apvRamBank[Byte & 0x3];
+ }
+ 
+@@ -261,7 +263,7 @@
+    GSU.vStatusReg = (uint32)READ_WORD(&p[GSU_SFR]);
+    GSU.vPrgBankReg = (uint32)p[GSU_PBR];
+    GSU.vRomBankReg = (uint32)p[GSU_ROMBR];
+-   GSU.vRamBankReg = ((uint32)p[GSU_RAMBR]) & (FX_RAM_BANKS - 1);
++   GSU.vRamBankReg = ((uint32)p[GSU_RAMBR]) & (Fx3Active ? 1 : FX_RAM_BANKS - 1);
+    GSU.vCacheBaseReg = (uint32)READ_WORD(&p[GSU_CBR]);
+ 
+    /* Update status register variables */
+@@ -531,20 +533,28 @@
+    GSU.vPrevMode = ~0;
+ 
+    /* The GSU can't access more than 2mb (16mbits) */
+-   if (GSU.nRomBanks > 0x20)
++   if (Fx3Active)
++      GSU.nRomBanks = (psFxInfo->nRomBanks + 1) / 2; /* 64 KiB banks */
++   else if (GSU.nRomBanks > 0x20)
+       GSU.nRomBanks = 0x20;
+ 
+    /* Clear FxChip register space */
+    memset(GSU.pvRegisters, 0, 0x300);
+ 
+    /* Set FxChip version Number */
+-   GSU.pvRegisters[0x3b] = 0;
++   GSU.pvRegisters[0x3b] = Fx3Active ? 0x52 : 0;
+ 
+    /* Make ROM bank table */
+    for (i = 0; i < 256; i++)
+    {
+       uint32 b = i & 0x7f;
+-      if (b >= 0x40)
++      if (Fx3Active)
++      {
++         uint32 bytes = psFxInfo->nRomBanks << 15;
++         uint32 offset = b < 0x40 ? b << 15 : (b - 0x40) << 16;
++         GSU.apvRomBank[i] = GSU.pvRom + offset % bytes;
++      }
++      else if (b >= 0x40)
+       {
+          if (GSU.nRomBanks > 1)
+             b %= GSU.nRomBanks;
+@@ -578,6 +588,7 @@
+ 
+ static uint8 fx_checkStartAddress()
+ {
++   if (Fx3Active) return GSU.vPrgBankReg <= 0x71;
+    /* Check if we start inside the cache */
+    if (GSU.bCacheActive && R15 >= GSU.vCacheBaseReg && R15 < (GSU.vCacheBaseReg + 512))
+       return TRUE;
+--- previous/fxemu.h
++++ fx3/fxemu.h
+@@ -146,3 +146,6 @@
+ 
+ #endif
+ 
++
++/* Cartridge-derived FX3 mode, re-established by InitROM (not a state pointer). */
++extern uint8 Fx3Active;
+--- previous/fxinst.c
++++ fx3/fxinst.c
+@@ -121,13 +121,13 @@
+    GSU.vInstCount = GSU.vCounter;
+ 
+    /* Check if we need to generate an IRQ */
+-   if (!(GSU.pvRegisters[GSU_CFGR] & 0x80))
++   if (!Fx3Active && !(GSU.pvRegisters[GSU_CFGR] & 0x80))
+       SF(IRQ);
+ 
+    GSU.vPlotOptionReg = 0;
+    GSU.vPipe = 1;
+    CLRFLAGS;
+-   R15++;
++   if (Fx3Active) { R15 = 0; CF(IRQ); } else R15++;
+ }
+ 
+ /* 01 - nop - no operation */
+@@ -1536,8 +1536,29 @@
+ }
+ 
+ /* 70 - merge - R7 as upper byte, R8 as lower byte (used for texture-mapping) */
++/* FX3 MERGE command port: planar renderer already performs commands 0..2.
++ * Commands 3..5 clear nine tile rows each: 18 visible tiles, pitch 20.
++ * Colour 0x81 sets planes 0 and 7. Generate it rather than storing a bitmap. */
++static void fx3_command(void)
++{
++   unsigned command = USEX16(R0);
++   if (command >= 3 && command <= 5)
++   {
++      unsigned first = (command - 3) * 9;
++      for (unsigned row = first; row < first + 9; row++)
++         for (unsigned col = 0; col < 18; col++)
++         {
++            uint8 *tile = GSU.pvRam + 0x10000 + (row * 20 + col) * 64;
++            memset(tile, 0, 64);
++            for (unsigned y = 0; y < 8; y++)
++            { tile[y * 2] = 0xff; tile[49 + y * 2] = 0xff; }
++         }
++   }
++}
++
+ static INLINE void fx_merge()
+ {
++   if (Fx3Active) { fx3_command(); R15++; CLRFLAGS; return; }
+    uint32 v = (R7 & 0xff00) | ((R8 & 0xff00) >> 8);
+    R15++;
+    DREG = v;
+@@ -2973,7 +2994,7 @@
+ /* df(ALT2) - ramb - set current RAM bank */
+ static INLINE void fx_ramb()
+ {
+-   GSU.vRamBankReg = SREG & (FX_RAM_BANKS - 1);
++   GSU.vRamBankReg = SREG & (Fx3Active ? 1 : FX_RAM_BANKS - 1);
+    GSU.pvRamBank = GSU.apvRamBank[GSU.vRamBankReg & 0x3];
+    CLRFLAGS;
+    R15++;
+--- previous/fxinst.h
++++ fx3/fxinst.h
+@@ -369,13 +369,13 @@
+ #define RAM(adr) GSU.pvRamBank[USEX16(adr)]
+ 
+ /* Read current ROM-Bank */
+-#define ROM(idx) (GSU.pvRomBank[USEX16(idx)])
++#define ROM(idx) (GSU.pvRomBank[USEX16(idx) & (Fx3Active && GSU.vRomBankReg < 0x40 ? 0x7fff : 0xffff)])
+ 
+ /* Access the current value in the pipe */
+ #define PIPE GSU.vPipe
+ 
+ /* Access data in the current program bank */
+-#define PRGBANK(idx) GSU.pvPrgBank[USEX16(idx)]
++#define PRGBANK(idx) GSU.pvPrgBank[USEX16(idx) & (Fx3Active && GSU.vPrgBankReg < 0x40 ? 0x7fff : 0xffff)]
+ 
+ /* Update pipe from ROM */
+ #if 0
+@@ -473,3 +473,5 @@
+ 
+ #endif
+ 
++
++extern uint8 Fx3Active;
+--- previous/memmap.c
++++ fx3/memmap.c
+@@ -625,6 +625,39 @@
+    S9xReset ();
+ }
+ 
++/* FX3 CPU map. No ROM replication: the GSU masks the low-bank address.
++ * Keeping ROM immutable preserves cartridge bytes above 2 MiB. */
++static void Fx3ROMMap(void)
++{
++   for (unsigned bank = 0; bank < 256; bank++)
++      for (unsigned page = 0; page < 16; page++)
++      {
++         unsigned i = bank * 16 + page;
++         uint8 *ptr = (uint8 *) MAP_NONE;
++         int ram = 0, rom = 0;
++         Memory.MemorySpeed[i] = SLOW_ONE_CYCLE;
++         if ((bank & 0x7f) < 0x40)
++         {
++            if (page < 2) { ptr = Memory.RAM; ram = 1; }
++            else if (page == 2 || page == 7) ptr = (uint8 *) MAP_PPU;
++            else if (page == 4 || page == 5) ptr = (uint8 *) MAP_CPU;
++            else if (page >= 8)
++            { ptr = Memory.ROM + (((bank & 0x3f) << 15) % Memory.CalculatedSize) - 0x8000; rom = 1; }
++            if (page == 2 || page == 3) Memory.MemorySpeed[i] = ONE_CYCLE;
++         }
++         else if ((bank >= 0x40 && bank <= 0x6f) || bank >= 0xc0)
++         { ptr = Memory.ROM + (((bank & 0x3f) << 16) % Memory.CalculatedSize); rom = 1; }
++         else if (bank == 0x70 || bank == 0x71)
++         { ptr = SRAM + ((bank - 0x70) << 16); ram = 1; }
++         else if (bank == 0x7e || bank == 0x7f)
++         { ptr = Memory.RAM + ((bank - 0x7e) << 16); ram = 1; }
++         Memory.Map[i] = ptr;
++         Memory.BlockIsRAM[i] = ram;
++         Memory.BlockIsROM[i] = rom;
++      }
++   WriteProtectROM();
++}
++
+ void InitROM (bool8_32 Interleaved)
+ {
+    uint32 remainder;
+@@ -641,6 +674,8 @@
+    Settings.SuperScopeMaster = Settings.SuperScope;
+    Settings.DSP1Master = Settings.ForceDSP1;
+    Settings.SuperFX = FALSE;
++   Fx3Active = 0;
++   SuperFX.nRamBanks = 1;
+    Settings.SA1 = FALSE;
+    Settings.C4 = FALSE;
+    Settings.SDD1 = FALSE;
+@@ -730,7 +765,9 @@
+       if (Settings.SuperFX)
+       {
+          //SRAM = ROM + 1024 * 1024 * 4;
+-         SuperFXROMMap ();
++         Fx3Active = Memory.ROMType == 0x17 || Memory.ROMType == 0x18;
++         if (Fx3Active) { SuperFX.nRamBanks = 2; Fx3ROMMap(); }
++         else SuperFXROMMap ();
+          Settings.MultiPlayer5Master = FALSE;
+          //Settings.MouseMaster = FALSE;
+          //Settings.SuperScopeMaster = FALSE;
+@@ -859,8 +896,8 @@
+ 
+    if (Settings.SuperFX)
+    {
+-      CPU.Memory_SRAMMask = 0xffff;
+-      Memory.SRAMSize = 16;
++      CPU.Memory_SRAMMask = Fx3Active ? 0x1ffff : 0xffff;
++      Memory.SRAMSize = Fx3Active ? (Memory.ROMType == 0x18 ? 7 : 0) : 16;
+    }
+    else
+    {
+--- previous/ppu_.c
++++ fx3/ppu_.c
+@@ -140,6 +140,14 @@
+ /**********************************************************************************************/
+ void S9xSetPPU(uint8 Byte, uint16 Address)
+ {
++   if (Fx3Active && Address >= 0x7000 && Address < 0x8000)
++   {
++      unsigned reg = Address & 0x3ff;
++      if (reg >= 0x300) return;
++      Address = 0x3000 | reg;
++      if ((Memory.FillRAM[0x3030] & FLG_G) && reg != 0x30 && reg != 0x3a) return;
++   }
++   else if (Fx3Active && Address >= 0x3000 && Address < 0x4000) return;
+    if (Address <= 0x2183)
+    {
+       switch (Address)
+@@ -959,6 +967,15 @@
+ uint8 S9xGetPPU(uint16 Address)
+ {
+    uint8 byte = 0;
++   if (Fx3Active && Address >= 0x7000 && Address < 0x8000)
++   {
++      unsigned reg = Address & 0x3ff;
++      if (reg >= 0x300) return (uint8)(Address >> 8); /* Existing MAP_NONE bus convention. */
++      Address = 0x3000 | reg;
++      if ((Memory.FillRAM[0x3030] & FLG_G) && reg != 0x30 && reg != 0x31 &&
++          reg != 0x3b && reg != 0x1e && reg != 0x1f) return 0;
++   }
++   else if (Fx3Active && Address >= 0x3000 && Address < 0x4000) return (uint8)(Address >> 8); /* Existing MAP_NONE bus convention. */
+ 
+    if (Address <= 0x2190)
+    {
+@@ -1356,6 +1373,7 @@
+ 
+       if (!Settings.SuperFX)
+          return (0x30);
++      if (Fx3Active && Address == 0x303b) return 0x52;
+       byte = Memory.FillRAM [Address];
+ 
+       //if (Address != 0x3030 && Address != 0x3031)
+@@ -2522,17 +2540,21 @@
+    if (Settings.SuperFX)
+    {
+       if ((Memory.FillRAM [0x3000 + GSU_SFR] & FLG_G) &&
+-            (Memory.FillRAM [0x3000 + GSU_SCMR] & 0x18) == 0x18)
++            (Fx3Active || (Memory.FillRAM [0x3000 + GSU_SCMR] & 0x18) == 0x18))
+       {
+          int GSUStatus;
+ 
+-         if (!Settings.WinterGold)
++         /* FX3 has 4x the legacy per-line budget. Always bound the slice:
++          * an unending guest loop must not prevent Core1 cancellation. */
++         if (Fx3Active)
++            FxEmulate((Memory.FillRAM[0x3039] & 1) ? 2800 : 1400);
++         else if (!Settings.WinterGold)
+             FxEmulate(~0);
+          else
+             FxEmulate((Memory.FillRAM [0x3000 + GSU_CLSR] & 1) ? 700 : 350);
+          GSUStatus = Memory.FillRAM [0x3000 + GSU_SFR] |
+                          (Memory.FillRAM [0x3000 + GSU_SFR + 1] << 8);
+-         if ((GSUStatus & (FLG_G | FLG_IRQ)) == FLG_IRQ)
++         if (!Fx3Active && (GSUStatus & (FLG_G | FLG_IRQ)) == FLG_IRQ)
+          {
+             // Trigger a GSU IRQ.
+             S9xSetIRQ(GSU_IRQ_SOURCE);

@@ -1,0 +1,6 @@
+PASS FX3 CPU mappings, MMIO mirrors/holes, VCR, ROM preservation and two RAM banks
+PASS FX3 MERGE 0..6, clear regions/stride/planes, low-ROM mirror, extended-ROM/RAM execution, STOP R15/no IRQ
+PASS FX3 bounded execution, CPU polling/cancellation, clock counts 467/933, ROM data banks
+PASS FX3 CPU mappings, MMIO mirrors/holes, VCR, ROM preservation and two RAM banks
+PASS FX3 MERGE 0..6, clear regions/stride/planes, low-ROM mirror, extended-ROM/RAM execution, STOP R15/no IRQ
+PASS FX3 bounded execution, CPU polling/cancellation, clock counts 467/933, ROM data banks

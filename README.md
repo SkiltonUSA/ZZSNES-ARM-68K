@@ -72,7 +72,9 @@ Automatic PAL/NTSC timing for supported standard SNES cartridges.
 [Expanded-memory comparison](docs/snes-memory-compatibility.md) · [Cartridge test findings](docs/cartridge-survey.md).
 The published beta supports standard cartridges. The development launcher also
 starts Super FX games through the experimental player. FX3 shows an advisory
-warning and permits a launch attempt; FX3 extensions are not implemented.
+warning and permits a launch attempt. The supplemental development core now
+implements [experimental FX3 behaviour](docs/fx3-development.md), informed by
+MesenCE; commercial FX3 gameplay has not been validated.
 SA-1 remains disabled.
 [Compatibility development and current test findings](docs/compatibility-development.md).
 Audio: 32,040 Hz stereo through AHI.
@@ -81,6 +83,9 @@ Development: **Codex assisted, Amiga-Bridge MCP**. Interface: **MUI**.
 Thanks to **Xanxi** for XACP, and the **PocketSNES / Snes9x2002** contributors for the core.
 The software scanline effects and NEON presentation work are shared with ZZDosBox;
 they do not require the separate ZZ9000 scanline application or an FPGA change.
+
+[Thin scanlines candidate](docs/thin-scanlines.md): 640×480 output preserves every
+image row and inserts narrow black separators. Separate from the published beta.
 
 ZIP decompression uses Mark Adler’s **puff** from zlib; its notice is included.
 Component licences and notices are included. The Snes9x core is non-commercial.

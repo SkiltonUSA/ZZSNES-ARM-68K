@@ -1,0 +1,29 @@
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/borders-20261016/source -Idevelopment/beta-20261015/source/amiga/emulator tests/amiga/emulator/model.c -o .context/test-current
+.context/test-current
+PASS settings v2/v3 migration, bounded scanline arithmetic and FPS glyph bounds
+cc -O2 -g -fsanitize=address,undefined -Itests/amiga/emulator/mock -Idevelopment/borders-20261016/source tests/amiga/emulator/scan.c -o .context/test-scan
+.context/test-scan
+PASS mounted/unmounted volumes, hot-plug discovery, PROGDIR deduplication, ZIP candidate filtering, link exclusion, cancellation and DOS resource release
+../amiga/mesen-bench/venv/bin/python tests/amiga/emulator/check_current_arm.py
+PASS ZZSNES 0x12000040 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+NEON row calls: 720
+PASS ZZSNES 0x150020c0 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+NEON row calls: 720
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/borders-20261016/source tests/amiga/emulator/large_library.c -o .context/test-large
+.context/test-large
+PASS 20000 ROMs: growth, duplicate index, sort/search/filter, rename, persistence, deletion and allocation-failure recovery (0.174s)
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/borders-20261016/source tests/amiga/emulator/legacy_model.c -o .context/test-legacy
+.context/test-legacy
+PASS v1 migration/v2 round-trip, dynamic library growth, titles, artwork links, search/filter/order, history overflow, hostile paths, malformed preferences
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/fx3-20261016 -Idevelopment/borders-20261016/source tests/amiga/pocketsnes/fx3_warning.c -o .context/test-fx3-warning
+.context/test-fx3-warning
+PASS FX3 warning: all cartridge IDs, copier headers, invalid headers, truncated input; FX3 launch allowed

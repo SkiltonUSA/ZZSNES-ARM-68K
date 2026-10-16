@@ -57,6 +57,11 @@ Software scanlines: **Off**, **Classic** (alternating black rows), **Soft** (5/8
 on alternating rows), or **Gradient** (8/8, 6/8, 4/8, 6/8). They work with either
 display mode and the optional FPS overlay. They change this emulator's output only.
 
+The development build also offers **Thin (640x480)**. It keeps each image row and
+inserts a black line below it, avoiding Classic's loss of alternate rows of small
+text. Thin uses a larger window or an existing 640×480 fullscreen RTG mode and
+requires more rendering work. The published 0.6.1 package does not include it.
+
 **On-screen FPS** counts presented frames over roughly one-second intervals.
 **Optimised presenter** enables guarded NEON row stores/dimming when firmware has
 already enabled NEON. Disable it for a scalar baseline comparison. It does not
