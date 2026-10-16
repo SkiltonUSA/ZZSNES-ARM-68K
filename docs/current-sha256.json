@@ -981,8 +981,8 @@
   "development/borders-20261016/source/ui_model.h": "5dc22cfcb9a9a74b4d80318853699c3f3c8a6b2eae7957e21f7db4590fe76dba",
   "development/borders-20261016/source/library_mui.h": "da64f4f101929d8ff961a7e215550c39165229301ad6bdc1e7bf926728a3a5a4",
   "development/borders-20261016/source/library_launch.h": "fe7cec96d404d4c7667d9a5328753a3cbb16a2b28002a261652a94d98de750c7",
-  "development/borders-20261016/source/library_brand.h": "5effc93917d716f880f39468f2924327ab095670a141e786f36e81be6603c860",
-  "development/borders-20261016/source/library_style.h": "6594b1e1083880bd06d1adca49a7d07dbeaf8a7579c70cd8610736d185609ddc",
+  "development/borders-20261016/source/library_brand.h": "6daeccd525642bbb476f7ecff9c76084e379b140d3cbb5b4f28401a40162ea5a",
+  "development/borders-20261016/source/library_style.h": "f08268c5209f1f37e44edd443bfebaf3fd4567aecf15ecbe891bcdc9978f8f8e",
   "development/borders-20261016/source/icon.c": "56c7aa755e40f03239ad8b11dc9d7ef56a763a0820fe45c2cc184d3033cd7034",
   "development/borders-20261016/source/ui_path_index.h": "6a72b1cdf281f58403ead61c0dd0ecfdd3a4c8ddd87866ef741c5f7b71e8e6e1",
   "development/borders-20261016/source/library_keys.h": "8fd79392c2941e4e39bd9291337c8749c46552cf97aef420b0cea3534e18bb2c",
@@ -1100,5 +1100,8 @@
   "development/thin-scanlines-20261016/player/fullscreen.h": "5c132c344b80e79255339b53aa86d5d1dc87534146244ab9198ee9570c7d6bd3",
   "development/thin-scanlines-20261016/player/display_math.h": "8311e7109f45cf4932081bec788f837d08beaa730ee2e57f97575bbdfaf16e00",
   "development/thin-scanlines-20261016/player/window_display.h": "704d10d68b96db1cbeaf96567c23e8b050dd5d0f2ddaeaa6d0407121740d09b8",
-  "development/fx3-20261016/README.md": "7447b0bccec808341982dc2a68cb0b4c20cbe406219fb2b3b6bfa31b4f82e827"
+  "development/fx3-20261016/README.md": "7447b0bccec808341982dc2a68cb0b4c20cbe406219fb2b3b6bfa31b4f82e827",
+  "development/borders-20261016/source/launch-art.h": "8aae949eef3a4aa6cd13f94d77731a5f1e36d07351f46d3170fdc9dea93250c2",
+  "development/borders-20261016/assets/launch.png": "48029406d3502d22198b962729eaf0107fc4b791a3a9aea39225df61eec6e3d1",
+  "scripts/prepare_launch_art.py": "4d92efa77b91aa30e25494a3befad5a7a93bb27dfad7869b98bb48b0f3a5256b"
 }

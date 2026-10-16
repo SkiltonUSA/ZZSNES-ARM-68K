@@ -1,3 +1,21 @@
+## Supplied Launch artwork — 16 October 2026
+
+Launcher-only update: the red Launch text control now uses the supplied artwork
+as an interactive MUI Bodychunk button. Original PNG is retained under
+`development/borders-20261016/assets/launch.png`; regenerate the embedded
+192x64 six-plane resource with `python3 scripts/prepare_launch_art.py`
+(ImageMagick required for conversion only). Native MUI still owns focus,
+pressed notifications and disabled state. No runtime PNG dependency is added.
+
+Installed ZZSNES: MD5 `d2b2a1a491bd77b79ed34a1fc8953fd9`, 224948 bytes.
+Backup: `Rollback-launch-art-1016` in the application drawer. Preferences and
+players were checksum-verified unchanged during installation. No ROM/save,
+firmware, scanline or discovery changes. Current release assets remain unchanged.
+Both m68k builds, large-library/legacy tests and current hash verification pass.
+Physical artwork clicks launched the selected game in both emulators; F10
+returned to each library and released Core1. Both launcher windows remain open.
+Private screenshots and interaction evidence: workspace `.context/amiga/launch-art/`.
+
 ## Red Launch and manual ROM scans — 16 October 2026
 
 Launcher-only update installed in SD032G:Emulator/ZZSNES/ZZSNES.

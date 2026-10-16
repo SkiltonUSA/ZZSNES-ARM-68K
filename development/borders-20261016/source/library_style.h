@@ -26,10 +26,3 @@ static Object *ui_button(const char *text){return TextObject,ButtonFrame,
 /* Shared rhythm keeps secondary tabs/forms visually consistent. */
 #define UI_PAGE MUIA_Group_Spacing,8,InnerSpacing(10,8)
 #define UI_PANEL(name) GroupFrameT(name),MUIA_Background,MUII_GroupBack,MUIA_Group_Spacing,6,InnerSpacing(10,8)
-
-/* MUI pen-spec background; scoped to this button, never global preferences. */
-static Object *ui_launch_button(void){return TextObject,ButtonFrame,
- MUIA_Font,ui_font(),MUIA_InputMode,MUIV_InputMode_RelVerify,
- MUIA_Background,(ULONG)"2:re0e0e0e0,40404040,40404040",
- MUIA_CycleChain,1,MUIA_InnerTop,5,MUIA_InnerBottom,5,
- MUIA_Text_PreParse,(ULONG)"\33c\33b",MUIA_Text_Contents,(ULONG)"Launch",End;}

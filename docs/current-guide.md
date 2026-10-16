@@ -96,4 +96,5 @@ Choose a drive or directory with **Browse...**, then press **Scan once**.
 Subdirectories are included; existing library entries are skipped. **Stop scan**
 ends a scan while retaining games already found. No automatic or background
 drive discovery runs on startup or when a USB drive is inserted.
-The red **Launch** button stays in the bottom bar on every page.
+The red **Launch** artwork is a button in the bottom bar on every page.
+It is embedded in the launcher; no external image or PNG datatype is required.

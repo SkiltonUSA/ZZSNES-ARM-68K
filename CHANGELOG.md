@@ -2,6 +2,8 @@
 
 ## Unreleased launcher navigation
 
+- Use the supplied Launch artwork as an embedded MUI button in both launchers.
+
 - Add a red Launch button to the permanent bottom bar, visible on every page.
 - Replace automatic mounted-drive discovery with Disks / Browse / Scan once.
 - Keep Continue and save-state actions separate from starting a game.
