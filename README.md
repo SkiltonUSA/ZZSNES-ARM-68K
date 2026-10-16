@@ -70,8 +70,10 @@ These are presentation-stage savings, not equivalent increases in game FPS.
 Automatic PAL/NTSC timing for supported standard SNES cartridges.
 [Cartridge restrictions and tested games](docs/amiga-zzsnes-pal-compatibility.md).
 [Expanded-memory comparison](docs/snes-memory-compatibility.md) · [Cartridge test findings](docs/cartridge-survey.md).
-Super FX and SA-1 are not yet enabled.
-The development launcher identifies FX3 cartridges with an explicit unsupported warning.
+The published beta supports standard cartridges. The development launcher also
+starts Super FX games through the experimental player. FX3 shows an advisory
+warning and permits a launch attempt; FX3 extensions are not implemented.
+SA-1 remains disabled.
 [Compatibility development and current test findings](docs/compatibility-development.md).
 Audio: 32,040 Hz stereo through AHI.
 

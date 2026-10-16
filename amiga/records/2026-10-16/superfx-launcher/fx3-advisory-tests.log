@@ -1,0 +1,11 @@
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/fx3-20261016 -Idevelopment/borders-20261016/source tests/amiga/pocketsnes/fx3_warning.c -o .context/test-fx3-warning
+.context/test-fx3-warning
+PASS FX3 warning: all cartridge IDs, copier headers, invalid headers, truncated input; FX3 launch allowed
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/borders-20261016/source tests/amiga/emulator/large_library.c -o .context/test-large
+.context/test-large
+PASS 20000 ROMs: growth, duplicate index, sort/search/filter, rename, persistence, deletion and allocation-failure recovery (0.171s)
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/borders-20261016/source tests/amiga/emulator/legacy_model.c -o .context/test-legacy
+.context/test-legacy
+PASS v1 migration/v2 round-trip, dynamic library growth, titles, artwork links, search/filter/order, history overflow, hostile paths, malformed preferences

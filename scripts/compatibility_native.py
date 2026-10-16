@@ -2,7 +2,7 @@
 from pathlib import Path
 import shutil,subprocess,hashlib
 
-def build(source,O,*,experimental=False,baseline=False):
+def build(source,O,*,experimental=False,baseline=False,fx3=False):
  r=Path(__file__).resolve().parents[1];snap=r/'development/beta-20261015';core=O/'native-core';O.mkdir(parents=True,exist_ok=True)
  shutil.copytree(snap/'source/core',core,dirs_exist_ok=True)
  if not baseline:
@@ -10,6 +10,7 @@ def build(source,O,*,experimental=False,baseline=False):
  inc=O/'include';shutil.copytree(snap/'build-inputs/player',inc,dirs_exist_ok=True)
  p=inc/'cartridge.h';s=p.read_text()
  if experimental:s=s.replace('(map==0x20+i||map==0x30+i||contra)&&type<=2','(((map==0x20+i||map==0x30+i||contra)&&type<=2)||(!i&&map==0x20&&(type==0x13||type==0x14||type==0x15||type==0x1a))||(!i&&map==0x23&&(type==0x34||type==0x35)))')
+ if fx3:s=(r/'development/fx3-20261016/cartridge.h').read_text()
  p.write_text(s);(core/"cartridge.h").write_text(s)
  names='apu apuaux c4 c4emu cheats cheats2 clip data dsp1 fxemu fxinst globals dma memmap cpu cpuexec cpuops sa1 sa1cpu sdd1 sdd1emu snapshot soundux spc700 srtc ppu_ gfx tile'.split()
  sources=[core/'src'/f'{n}.c'for n in names]+[core/'libretro/libretro.c',core/'libretro/libretro-common/streams/memory_stream.c',core/'player.c',source]

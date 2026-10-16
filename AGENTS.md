@@ -35,3 +35,10 @@ docs/compatibility-development.md before enabling a chip or claiming game suppor
 
 Run `make test-superfx-timing` after mapper changes. The isolated Super FX
 candidate fixes ROM-bank timings; special-chip states remain incomplete.
+
+Super FX launcher integration uses `make current-superfx` (`--arm --superfx`).
+The supplemental ZZSnes-FX player uses the compatibility overlay and the
+shared host/ARM gate in development/fx3-20261016/cartridge.h. The normal
+player remains for standard ROMs. FX3 notices are advisory, not a launch veto.
+No FX3 instruction-extension support is claimed. Run test-fx3-warning and
+test-library-large, plus native and relocated ARM tests after player changes.

@@ -96,10 +96,11 @@ serialization, graphics accuracy and longer gameplay checks are still required.
 
 ### MesenCE and FX3
 
-The development launcher shows **Warning: FX3 is not supported** when a
-selected cartridge has MesenCE's FX3 header type (`0x17` or `0x18`). Launch
-remains disabled. Detection also works after ZIP decoding and copier-header
-removal; it does not classify ordinary Super FX games by filename.
+The development launcher permits Super FX and FX3 launches with Play. Ordinary
+Super FX cartridges use the timing-corrected player; FX3 header types `0x17`
+and `0x18` display an advisory compatibility warning without blocking launch.
+Detection works after ZIP decoding and copier-header removal, without filename
+guessing. FX3 instruction extensions remain unimplemented.
 `make test-fx3-warning` checks all cartridge IDs and malformed headers under
 ASan/UBSan. No FX3 game execution or new chip support is claimed.
 
@@ -194,3 +195,17 @@ python3 tests/amiga/pocketsnes/check_current_state.py \
 
 The state model checks two relocation bases and rejects corrupted/wrong-ROM
 states. Longer game runs require more time than the six-frame original fixture.
+
+## Launcher integration
+
+Build `make current-superfx` with the documented ARM toolchain. It produces
+`ZZSNES` and `ZZSnes-FX` under `.context/fx3-build/`. Install both beside the
+normal `ZZSnes-ui`; the launcher chooses the player from the selected ROM header.
+Standard games continue to use the normal player. Super FX games include the
+previously tested Star Fox 2 and Doom. Warning text does not disable Play.
+
+This uses the same compatibility mapper/state overlay as the isolated tests,
+with a narrower gate admitting Super FX/FX3 and standard cartridges, not SA-1.
+The 4 MiB bound and header checks remain. FX3-specific instructions, expanded
+mappings and timing are not implemented by permitting a launch. Special-chip
+save-state accuracy remains experimental. Published beta archives are unchanged.

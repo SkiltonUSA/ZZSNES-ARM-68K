@@ -66,5 +66,9 @@ test-superfx-timing:
 .PHONY: test-fx3-warning
 test-fx3-warning:
 	mkdir -p .context
-	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/borders-20261016/source -Idevelopment/borders-20261016/build-inputs tests/amiga/pocketsnes/fx3_warning.c -o .context/test-fx3-warning
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/fx3-20261016 -Idevelopment/borders-20261016/source tests/amiga/pocketsnes/fx3_warning.c -o .context/test-fx3-warning
 	.context/test-fx3-warning
+
+.PHONY: current-superfx
+current-superfx:
+	$(PYTHON) scripts/build_current.py --arm --superfx

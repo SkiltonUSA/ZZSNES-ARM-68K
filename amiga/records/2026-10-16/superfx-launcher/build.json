@@ -1,0 +1,14 @@
+{
+  "ZZSNES": {
+    "bytes": 217252,
+    "sha256": "aa1aacebf360b3b96e8255a387bd8e8e4215326b2920663ac457e54093034d4d"
+  },
+  "ZZSnes-FX": {
+    "bytes": 861536,
+    "sha256": "55019b7148dfd5810c9389870b00616200cab5964c8ea0c9c0349076fdca4aed"
+  },
+  "player/pocket.elf": {
+    "bytes": 1755432,
+    "sha256": "c467f71649925cec188f8df24d8286d822c381917dbd5242701286a66fa18637"
+  }
+}

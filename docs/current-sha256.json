@@ -979,7 +979,7 @@
   "development/borders-20261016/borders/emuelec.json": "04769e71b37627aa12fd66061d2d697046612eaece03dbc385dbb457a8306693",
   "development/borders-20261016/source/library_scan.h": "acc0132388160b215838cd7fcf6d68a4efdb9abaff48705de837446eb5d267c2",
   "development/borders-20261016/source/ui_model.h": "aa5a9ba73522d5169cc1c6d31fdb6dc6f9cdc5ed782a8b912be861bfe718c50d",
-  "development/borders-20261016/source/library_mui.h": "e9a2ca03339751b28e0446c6be3f8d1d328bd13eb0668f04f4ba388fd3ea3e7c",
+  "development/borders-20261016/source/library_mui.h": "c94d6181a188db65f659e82406d420f3ab232ed4060f738bbb8d881b02f1afad",
   "development/borders-20261016/source/library_launch.h": "fe7cec96d404d4c7667d9a5328753a3cbb16a2b28002a261652a94d98de750c7",
   "development/borders-20261016/source/library_brand.h": "5effc93917d716f880f39468f2924327ab095670a141e786f36e81be6603c860",
   "development/borders-20261016/source/library_style.h": "f08268c5209f1f37e44edd443bfebaf3fd4567aecf15ecbe891bcdc9978f8f8e",
@@ -1073,5 +1073,6 @@
   "amiga/records/2026-10-16/border/results.json": "6e80f01ff5431d9451c853875e4e8bef1d822e1533a7dc4b877fd93da208adbf",
   "amiga/records/2026-10-16/cartridges/native.txt": "1603a136e45d836f52425d7329a203e8592535756db532f220239ff28d22ffba",
   "amiga/records/2026-10-16/cartridges/survey.json": "9e2932b6d657d140572138a36e884e631cea0882775f5c980ab0292699b3992a",
-  "development/borders-20261016/source/cartridge_warning.h": "4658e8d13fedda82856025a894da572a94b087ba4e03f2365d5f6bc2e360f780"
+  "development/borders-20261016/source/cartridge_warning.h": "d821432ea39263f3b8b4be8a068668babc9d6046e0bbc4ba287a0f4a092cc4e8",
+  "development/fx3-20261016/cartridge.h": "891d65aac2fefc8e0450f6fa4381c61baf45dcb7836344221f831aaede10bab0"
 }

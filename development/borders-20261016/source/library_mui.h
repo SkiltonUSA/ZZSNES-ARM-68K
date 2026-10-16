@@ -73,7 +73,7 @@ static Object *scan_drives,*change_list,*navigation,*heading,*display_mode,*scan
 static Object *cards[5],*card_text[5],*card_resume[5],*card_delete[5];
 static char card_labels[5][180],details[400],summary_line[180],count_line[80];
 static char save_heading[UI_TITLE+24],selected_path[UI_PATH];
-static int present_slots[5],valid_slots[5],latest_slot=-1,rom_valid,selection_busy,needs_details,legacy_config;
+static int present_slots[5],valid_slots[5],latest_slot=-1,rom_valid,rom_fx,selection_busy,needs_details,legacy_config;
 static uint32_t rom_id,rom_id2,rom_bytes;
 static ULONG previous_joy;
 static struct ui_model model;
@@ -137,14 +137,14 @@ static int library_candidate(const char*p){
  return em_rom_extension(p,LIB_SNES)?1:0;
 }
 static char cartridge_name[512];
-static void identify(void){unsigned n;UBYTE*p;rom_valid=0;rom_id=rom_id2=rom_bytes=0;
+static void identify(void){unsigned n;UBYTE*p;rom_valid=rom_fx=0;rom_id=rom_id2=rom_bytes=0;
  strcpy(details,"Select a game to see its details.");if(selected<0)return;
  p=AllocVec(LIB_LIMIT,MEMF_PUBLIC);if(!p){strcpy(details,"Not enough memory to inspect this cartridge.");return;}
  int error=em_rom_load(model.entry[selected].path,p,LIB_LIMIT,&n,LIB_SNES,cartridge_name,sizeof(cartridge_name));
  if(error){snprintf(details,sizeof(details),"%s",em_rom_message(error));FreeVec(p);return;}
 #ifdef LIBRARY_SNES
- {unsigned skip=snes_skip(n);int h=snes_header(p+skip,n-skip);if(snes_fx3(p+skip,n-skip))strcpy(details,SNES_FX3_WARNING);else if(h>=0){rom_id=snes_hash(p+skip,n-skip);rom_id2=snes_hash2(p+skip,n-skip);rom_bytes=n-skip;rom_valid=1;
-  snprintf(details,sizeof(details),"Header supported: %s %s\nGameplay compatibility varies by title.",snes_pal(p+skip,n-skip)?"PAL":"NTSC",h==0x7fc0?"LoROM":"HiROM");}
+ {unsigned skip=snes_skip(n);int h=snes_header(p+skip,n-skip);rom_fx=snes_fx_kind(p+skip,n-skip);if(h>=0||rom_fx){rom_id=snes_hash(p+skip,n-skip);rom_id2=snes_hash2(p+skip,n-skip);rom_bytes=n-skip;rom_valid=1;
+  if(rom_fx)strcpy(details,rom_fx==3?SNES_FX3_WARNING:SNES_FX_WARNING);else snprintf(details,sizeof(details),"Header supported: %s %s\nGameplay compatibility varies by title.",snes_pal(p+skip,n-skip)?"PAL":"NTSC",h==0x7fc0?"LoROM":"HiROM");}
  else strcpy(details,"Unsupported cartridge: requires NTSC/PAL LoROM/HiROM\nup to 4 MiB, without enhancement chips.");}
 #else
  {int mapper=nes_cartridge(p,n);if(mapper>=0){rom_id=bytes_hash(p,n);rom_bytes=n;rom_valid=1;snprintf(details,sizeof(details),"Header supported: %s, mapper %d\nGameplay compatibility varies by title.",fc_rom_pal(p,n,cartridge_name)?"PAL":"NTSC",mapper);}
@@ -313,7 +313,7 @@ static void play(int resume){char path[UI_PATH],session[UI_PATH],qplayer[UI_PATH
  if(!session_write(resume)){message("Cannot write launch settings. Check that the drawer is writable.");return;}
  ui_played(&model,selected);if(!prefs_write()){message("Cannot save library settings. Check drawer permissions.");return;}
  strcpy(path,appdir);strcpy(session,appdir);
- if(!AddPart(path,LIB_PLAYER,sizeof(path))||!AddPart(session,"Session.cfg",sizeof(session))||
+ if(!AddPart(path,rom_fx?"ZZSnes-FX":LIB_PLAYER,sizeof(path))||!AddPart(session,"Session.cfg",sizeof(session))||
     !ui_quote(qplayer,sizeof(qplayer),path)||!ui_quote(qsession,sizeof(qsession),session)){message("Application path is too long.");return;}
  snprintf(command,sizeof(command),"%s --session %s",qplayer,qsession);
  if(!launch_child(command))message("Could not start the player.");

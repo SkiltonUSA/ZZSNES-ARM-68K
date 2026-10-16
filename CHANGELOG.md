@@ -2,8 +2,10 @@
 
 ## Unreleased launcher changes
 
-- Warn when a selected cartridge identifies as FX3; keep launch disabled.
-- Recognize FX3 separately from regular Super FX, including ZIP cartridges.
+- Allow Super FX games, including Star Fox 2 and Doom, to launch with Play.
+- Route these cartridges to the timing-corrected experimental player.
+- FX3 warnings are advisory; Play remains enabled, including for ZIP cartridges.
+- FX3 instruction extensions are not implemented; successful gameplay is not promised.
 
 ## Unreleased compatibility research
 

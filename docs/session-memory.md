@@ -1,3 +1,28 @@
+## Super FX Play and advisory FX3 warning — 16 October 2026
+
+Supersedes the blocking FX3 notice below. Play now launches ordinary Super FX
+(including Star Fox 2 and Doom) and permits FX3 attempts with advisory text.
+Header detection chooses supplemental ZZSnes-FX automatically. It uses the
+previously tested compatibility timing/state overlay; FX3-specific instruction
+extensions are NOT implemented. Standard games retain the normal ZZSnes-ui.
+
+Installed in SD032G:Emulator/ZZSNES, checksum verified:
+- ZZSNES: dcd11c7a3893c86d8bacd7073d11a95f
+- ZZSnes-FX: 549bd6e5bdc8028bf2bdbf2a1237f6af
+
+Previous launcher: ZZSNES.pre-fxplay. Library.cfg and normal ZZSnes-ui MD5s
+unchanged. No ROM, firmware or published release changes. Build supplemental
+player with make current-superfx; source gate in development/fx3-20261016.
+
+Header/large-library sanitizer tests, native suite, two-base ARM presenter and
+original FX3-header fixture state tests passed. Isolated physical library:
+Doom, Star Fox 2 and original FX3-header fixture each launched via Play and
+exited via F10 with clean register/cache witnesses and memory release. No full
+FX3 instruction or special-chip state compatibility claim. First automated
+Star Fox 2 click was too early during ROM inspection; corrected test passed.
+No Core1 owner or test library left running; DOSBox launcher left untouched.
+Evidence: amiga/records/2026-10-16/superfx-launcher/.
+
 ## FX3 launcher warning — 16 October 2026
 
 Installed launcher-only update in SD032G:Emulator/ZZSNES/ZZSNES, MD5
