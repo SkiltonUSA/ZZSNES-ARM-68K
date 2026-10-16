@@ -1,4 +1,4 @@
-# ZZSNES 0.5.1 Beta
+# ZZSNES 0.5.2 Beta
 
 Extract the package into a writable drawer and open **ZZSNES**. Keep the player
 executable beside it. When upgrading, retain your ROMs, States, Snapshots and

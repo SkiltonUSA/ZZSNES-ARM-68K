@@ -1,3 +1,18 @@
+# Colour logo update: ZZSNES 0.5.2 Beta
+
+Current launcher sources/artwork: development/logo-20261016/. New supplied
+colour logo in the sidebar, startup/loading panels and Workbench icon.
+Physical launcher appearance checked; icon.library colour-image round trip
+and existing icon launch metadata checks passed. Standalone make current and
+make verify-current passed. Player and ARM payload unchanged.
+
+Installed with launcher/MakeIcon checksum checks and unchanged Library.cfg.
+Previous files and icon retained in Rollback-logo-1016. Initial installed
+library opening was slow; do not infer startup performance from this visual
+update. The isolated empty-library launchers opened normally.
+
+---
+
 # Large-library update: ZZSNES 0.5.1 Beta
 
 Launcher-only update: dynamic library storage, path indexes and sorting.

@@ -21,5 +21,5 @@ ownership before any explicitly authorised physical test. Keep .context/ and
 Current beta source/build inputs are in `development/beta-20261015/`; use
 `make current-arm`, `make test-current` and `make verify-current` for that path.
 
-The current launcher source is `development/library-20261016/source/`; use
+The current launcher source is `development/logo-20261016/source/`; use
 `make test-library-large` after library changes. Player snapshot stays unchanged.

@@ -106,3 +106,9 @@ Run `make test-library-large`. New evidence is in
 `amiga/records/2026-10-16/large-library/`. The v1/v2/v3 settings formats and existing
 save keys remain compatible. Allocation failure does not silently replace an
 existing settings file. Scanning retains accepted entries if memory runs out.
+
+## Colour logos
+
+Current launcher source and artwork: development/logo-20261016/.
+Supplied PNGs generate embedded MUI palettes and palette-mapped Workbench icons.
+The ARM player is unchanged. See that snapshot README for regeneration.

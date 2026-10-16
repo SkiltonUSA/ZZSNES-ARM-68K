@@ -1,11 +1,13 @@
-# ZZSNES — 0.5.1 Beta
+# ZZSNES — 0.5.2 Beta
+
+<img src="docs/screenshots/logo.png" width="160" alt="ZZSNES logo">
 
 A native **MUI** game library for **AmigaOS and ZZ9000**, using **PocketSNES / Snes9x2002**
 and **[Xanxi’s XACP platform](https://github.com/Xanxi-Amiga/XACP-ZZ9000)**.
 The Cortex-A9 runs emulation and fullscreen rendering. The 68k handles AmigaOS,
 files, controls, display coordination and batched AHI audio.
 
-**[Download 0.5.1 Beta](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.5.1-beta)** ·
+**[Download 0.5.2 Beta](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.5.2-beta)** ·
 [User guide](docs/current-guide.md) · [Changes](CHANGELOG.md) ·
 [Build and measurements](docs/current-development.md) · [Interface gallery](docs/current-interface.md)
 
@@ -14,7 +16,7 @@ files, controls, display coordination and batched AHI audio.
 ## Features
 
 - ZZDosBox-style sidebar: Games, Display, Controllers, Save states and About.
-- Original logo, Workbench icon, startup panel and loading panel with controls.
+- Colour logo, Workbench icon, startup panel and loading panel with controls.
 - Add ROMs or folders; search, favourites, recent games and captured artwork.
 - Rename titles and delete games with confirmation.
 - Automatic ROM discovery on mounted Workbench volumes, including USB storage.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.2 Beta
+
+- New colour logo in the sidebar, startup and loading screens.
+- Matching palette-mapped Workbench icon with transparency.
+- Existing icon position and launch settings preserved when updating.
+
 ## 0.5.1 Beta
 
 - Remove the 128-ROM cap; library and display storage grow with available memory.

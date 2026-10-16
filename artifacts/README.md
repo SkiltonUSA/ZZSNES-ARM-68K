@@ -1,3 +1,9 @@
+# Current logo update: ZZSNES 0.5.2 Beta
+
+Complete package in beta-0.5.2/. New launcher and colour icon; unchanged player.
+
+---
+
 # Current launcher update: ZZSNES 0.5.1 Beta
 
 `beta-0.5.1/` includes the growing-library launcher and unchanged tested
