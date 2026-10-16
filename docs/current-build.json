@@ -1,6 +1,6 @@
 {
   "console": "ZZSNES",
-  "version": "0.5.0 Beta",
+  "version": "0.6.0 Beta",
   "image_bytes": 535164,
   "relocations": 3652,
   "sources": {
@@ -46,11 +46,11 @@
     ".context/amiga/emulator-next/ZZSNES/player/neon_state.S": "e04645be1ce32924bb93d7a38baaeb87db423e786bb96c76774bef3ca311174e"
   },
   "files": {
-    "ZZSnes-ui": "09b8615f8e27f85e5f21a72a4f28eb07e84114521420a13f71b49292a2fbde61",
+    "ZZSnes-ui": "fcee1dfff018a3ad44bfe5fd9c2fa0ac09135d11669f202995f1f94232b1ea01",
     "pocket.elf": "4d5cd05901c6ab6cb35542f80fdc12ae155e94a7088bd32a76cabcdec13c6e51"
   },
   "snapshot_dir": "development/beta-20261015",
-  "artifact_dir": "artifacts/beta-0.5.3",
+  "artifact_dir": "artifacts/beta-0.6.0",
   "player": "ZZSnes-ui",
   "image": "docker.io/amigadev/crosstools@sha256:93ca1a47903b61873f6638881b44f9f2d6086a39f1b9b916a26faff3a8ea4d3d",
   "arm_sources": [
@@ -138,6 +138,7 @@
     "-I/work/amiga/mesen_bench",
     "-DRETRO_API="
   ],
-  "library_snapshot_dir": "development/logo-20261016",
-  "launcher_version": "0.5.3 Beta"
+  "library_snapshot_dir": "development/zip-20261016",
+  "launcher_version": "0.6.0 Beta",
+  "host_snapshot_dir": "development/zip-20261016/host"
 }

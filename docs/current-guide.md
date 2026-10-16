@@ -1,4 +1,4 @@
-# ZZSNES 0.5.3 Beta
+# ZZSNES 0.6.0 Beta
 
 Extract the package into a writable drawer and open **ZZSNES**. Keep the player
 executable beside it. When upgrading, retain your ROMs, States, Snapshots and
@@ -23,7 +23,28 @@ by your installed USB/filesystem drivers. Automatic discovery checks for new
 volumes while the library is idle. It never mounts disks or launches files.
 Scanning shows results as they arrive. **Stop scan** cancels the search. The library
 grows with available memory; there is no fixed ROM-count limit. Use Scan drives again after adding files to an existing
-volume. ZIP archives must be extracted first.
+volume.
+
+### ZIP cartridges
+
+Add, Folder and Scan drives accept ZIPs containing one matching cartridge
+(`.nes` for ZZNES; `.sfc` or `.smc` for ZZSNES). Stored and deflated ZIPs work;
+no external unpacker or temporary extraction drawer is needed. Companion text
+files and macOS metadata are ignored. The game is checked against its CRC before
+being sent to the ARM.
+
+Multi-ROM, encrypted, split and ZIP64 archives are not supported. Extract the
+selected game from those archives first. Existing cartridge-size and hardware
+restrictions still apply. ZIP loading does not enable new cartridge processors.
+
+The archive path is retained in the library. Renaming the library title retains
+its saves. Converting an existing raw-ROM entry into a ZIP is a new library path;
+ZZNES path-based saves are not automatically migrated. ZZSNES content-based save
+identity is unchanged. Keep old saves when reorganising your collection.
+
+**Delete removes the entire selected ZIP archive**, plus that entry’s associated
+saves and captured snapshot, after confirmation. It does not delete just the
+member inside the archive.
 
 ## Display
 

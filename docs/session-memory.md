@@ -1,3 +1,18 @@
+# ZZSNES 0.6.0 Beta — direct ZIP loading
+
+Installed the new launcher/player pair with checksum checks. Existing Library.cfg,
+Library.bak, ROMs, saves and icon metadata were retained. Previous executables
+and settings are in the application drawer's Rollback-zip-1016 directory.
+Only the 68k launcher/player changed; ARM payload bytes are unchanged.
+
+Plain/ZIP bounded runs, invalid-CRC rejection, paused save/load/snapshot and MUI
+launch/return passed on A4000TX. Native ZIP, large-library, scanner and relocated
+presenter checks passed. See zip-validation.md for evidence and limitations.
+Current launcher/host sources: development/zip-20261016/. Use make current and
+make test-zip. Expanded SNES hardware remains a separate task, pending cartridge.
+
+---
+
 # Release 0.5.3 Beta
 
 Packaged the blank-title-bar update with the colour logo. Standalone rebuild

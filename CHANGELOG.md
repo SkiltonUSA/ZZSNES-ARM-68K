@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.0 Beta
+
+- Load single-cartridge ZIPs directly in the library and player.
+- Discover ZIP cartridges through Add, Folder and mounted-drive scanning.
+- Stored/deflate support, bounded decompression and CRC checks before ARM use.
+- Preserve member filenames for NES PAL detection; no temporary ROM files.
+- Explicit whole-archive deletion confirmation.
+- Existing ARM core, cartridge limits and save formats retained.
+
 ## 0.5.3 Beta
 
 - Remove launcher title-bar text; keep version in the footer and About.

@@ -35,16 +35,20 @@ verify-current:
 	$(PYTHON) scripts/verify_current.py
 test-current:
 	mkdir -p .context
-	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/logo-20261016/source -Idevelopment/beta-20261015/source/amiga/emulator tests/amiga/emulator/model.c -o .context/test-current
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/zip-20261016/source -Idevelopment/beta-20261015/source/amiga/emulator tests/amiga/emulator/model.c -o .context/test-current
 	.context/test-current
-	$(CC) -O2 -g -fsanitize=address,undefined -Itests/amiga/emulator/mock -Idevelopment/logo-20261016/source tests/amiga/emulator/scan.c -o .context/test-scan
+	$(CC) -O2 -g -fsanitize=address,undefined -Itests/amiga/emulator/mock -Idevelopment/zip-20261016/source tests/amiga/emulator/scan.c -o .context/test-scan
 	.context/test-scan
 	$(MODEL_PYTHON) tests/amiga/emulator/check_current_arm.py
 
 .PHONY: test-library-large
 test-library-large:
 	mkdir -p .context
-	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/logo-20261016/source tests/amiga/emulator/large_library.c -o .context/test-large
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/zip-20261016/source tests/amiga/emulator/large_library.c -o .context/test-large
 	.context/test-large
-	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/logo-20261016/source tests/amiga/emulator/legacy_model.c -o .context/test-legacy
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/zip-20261016/source tests/amiga/emulator/legacy_model.c -o .context/test-legacy
 	.context/test-legacy
+
+.PHONY: test-zip
+test-zip:
+	ROM_ZIP_INCLUDE=development/zip-20261016/source/zip $(PYTHON) tests/amiga/emulator/zip/test.py

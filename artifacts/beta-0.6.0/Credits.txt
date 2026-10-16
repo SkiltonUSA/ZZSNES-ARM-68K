@@ -1,0 +1,52 @@
+ZZNES / ZZSNES - credits and source acknowledgements
+
+AMIGA DEVELOPMENT
+SkiltonUSA: AmigaOS 68K frontend, ZZ9000 Cortex-A9 integration, MUI game
+library, save-state integration, presentation and scheduling optimisation.
+Development: Codex assisted, Amiga-Bridge MCP
+https://github.com/SkiltonUSA/ZZNes-ARM-68K
+https://github.com/SkiltonUSA/ZZSNES-ARM-68K
+
+ZZNES CORE
+FCEUX / FCE Ultra, Xodnizel and the upstream contributors.
+This port uses Rezzy-dev/fceux, revision
+4d01530b6689b06a6d7cf0679b63625e3270ae9a.
+https://github.com/Rezzy-dev/fceux
+The core is GPL-2.0-or-later; source file notices identify individual authors.
+The current ZZNES player uses FCEUX, not Mesen.
+
+ZZSNES CORE
+libretro/snes9x2002 (PocketSNES), revision
+6ffbf9ef4f0063e1f1b78a40d10c50fc52f2524c.
+https://github.com/libretro/snes9x2002
+Original Snes9x: Gary Henderson and Jerremy Koot, with the Snes9x,
+PocketSNES and libretro contributors. Individual source notices also credit
+additional CPU, PPU and sound contributors.
+The core retains the Snes9x non-commercial licence, not the interface GPL.
+See LICENSE-Snes9x for the upstream notice. The current player does not use
+Mesen or DrPocketSNES's assembly renderer.
+
+ZZ9000 PLATFORM
+Xanxi (Xanxi-Amiga): XACP-ZZ9000, its application interfaces and examples.
+The fullscreen/PAN handoff was informed by the ZZPicoDriveMD example.
+The Amiga port implements its own host code; acknowledgement of an example
+is not a claim that Xanxi wrote, reviewed or endorsed this port.
+https://github.com/Xanxi-Amiga/XACP-ZZ9000
+
+USER INTERFACE
+MUI (Magic User Interface): the native Amiga user interface toolkit used for
+windows, tabs and controls.
+
+Library browsing and save-gallery ideas: sc0ttj/rom-loader and LaunchBox.
+These inspired the interface; no code or artwork was copied from them.
+https://github.com/sc0ttj/rom-loader
+https://www.launchbox-app.com/
+
+The native interface and original port integration source are GPL-3.0-or-later.
+See COPYING3. Third-party code retains its own notices and licence terms.
+The full source repositories preserve upstream file-level attribution.
+
+ZIP DECOMPRESSION
+Mark Adler, puff 2.3 from zlib v1.3.1 (unmodified).
+https://github.com/madler/zlib/tree/v1.3.1/contrib/puff
+See LICENSE-puff for the licence notice.

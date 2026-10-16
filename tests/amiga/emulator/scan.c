@@ -8,9 +8,11 @@ struct node{const char*path;int type;const char*children[8];};
 static struct node nodes[]={
  {"System:",2,{NULL}},
  {"RAM Disk:",2,{"ROMs","Link","notes.txt",NULL}},
- {"RAM Disk:ROMs",2,{"Existing.nes","New.NES",NULL}},
+ {"RAM Disk:ROMs",2,{"Existing.nes","New.NES","Packed.zip","Other.zip",NULL}},
  {"RAM Disk:ROMs/Existing.nes",-3,{NULL}},
  {"RAM Disk:ROMs/New.NES",-3,{NULL}},
+ {"RAM Disk:ROMs/Packed.zip",-3,{NULL}},
+ {"RAM Disk:ROMs/Other.zip",-3,{NULL}},
  {"RAM Disk:Link",3,{NULL}},
  {"RAM Disk:notes.txt",-3,{NULL}},
  {"USB:",2,{"USB.nes",NULL}},
@@ -39,7 +41,8 @@ static void scan_caption(int active){caption=active;}
 static void message(const char*s){(void)s;}
 static void refresh(void){refreshes++;}
 static int prefs_write(void){writes++;return 1;}
-static int ui_extension(const char*s){unsigned n=strlen(s);return n>4&&!strcasecmp(s+n-4,".nes");}
+static int ui_extension(const char*s){unsigned n=strlen(s);return n>4&&(!strcasecmp(s+n-4,".nes")||!strcasecmp(s+n-4,".zip"));}
+static int library_candidate(const char*s){if(strstr(s,"Other.zip"))return 0;return strstr(s,"Packed.zip")?2:1;}
 /* SDK types already declared by the mock above. */
 #define SCAN_TEST_TYPES
 #include "library_scan.h"
@@ -48,13 +51,13 @@ int main(void){
  for(unsigned i=0;i<3;i++){volumes[i].next=&volumes[i+1];volumes[i+1].dol_Name=(BPTR)names[i];volumes[i+1].dol_Task=(void*)1;}
  volumes[3].dol_Task=NULL; // Remembered, unmounted USB volume: no request to insert it.
  ui_defaults(&model);assert(ui_add(&model,"PROGDIR:Existing.nes")==0);
- scan_begin(0);assert(scan_count==2);finish();assert(model.count==2&&writes==1);
+ scan_begin(0);assert(scan_count==2);finish();assert(model.count==3&&writes==1);
  assert(!strcmp(model.entry[0].path,"PROGDIR:Existing.nes")); // Preserve old save key.
  scan_begin(0);assert(!scan_active);
- volumes[3].dol_Task=(void*)1;scan_begin(0);assert(scan_count==1);finish();assert(model.count==3&&writes==2);
- scan_begin(1);finish();assert(model.count==3&&writes==2);
+ volumes[3].dol_Task=(void*)1;scan_begin(0);assert(scan_count==1);finish();assert(model.count==4&&writes==2);
+ scan_begin(1);finish();assert(model.count==4&&writes==2);
  scan_begin(1);assert(scan_push("RAM Disk:"));scan_stop();assert(!locks&&!allocated);
  resolve_failure=1;scan_existing_count=~0u;assert(scan_known("PROGDIR:Existing.nes")==1);resolve_failure=0;scan_stop();
  ui_dispose(&model);
- puts("PASS mounted/unmounted volumes, hot-plug discovery, PROGDIR deduplication, link exclusion, cancellation and DOS resource release");
+ puts("PASS mounted/unmounted volumes, hot-plug discovery, PROGDIR deduplication, ZIP candidate filtering, link exclusion, cancellation and DOS resource release");
 }

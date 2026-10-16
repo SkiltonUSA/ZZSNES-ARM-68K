@@ -1,4 +1,4 @@
-# ZZSNES — 0.5.3 Beta
+# ZZSNES — 0.6.0 Beta
 
 <img src="docs/screenshots/logo.png" width="160" alt="ZZSNES logo">
 
@@ -7,7 +7,7 @@ and **[Xanxi’s XACP platform](https://github.com/Xanxi-Amiga/XACP-ZZ9000)**.
 The Cortex-A9 runs emulation and fullscreen rendering. The 68k handles AmigaOS,
 files, controls, display coordination and batched AHI audio.
 
-**[Download 0.5.3 Beta](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.5.3-beta)** ·
+**[Download 0.6.0 Beta](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.6.0-beta)** ·
 [User guide](docs/current-guide.md) · [Changes](CHANGELOG.md) ·
 [Build and measurements](docs/current-development.md) · [Interface gallery](docs/current-interface.md)
 
@@ -17,6 +17,7 @@ files, controls, display coordination and batched AHI audio.
 
 - ZZDosBox-style sidebar: Games, Display, Controllers, Save states and About.
 - Colour logo, Workbench icon, startup panel and loading panel with controls.
+- Single-ROM ZIP loading (stored/deflate); no external unpacker required.
 - Add ROMs or folders; search, favourites, recent games and captured artwork.
 - Rename titles and delete games with confirmation.
 - Automatic ROM discovery on mounted Workbench volumes, including USB storage.
@@ -68,6 +69,7 @@ These are presentation-stage savings, not equivalent increases in game FPS.
 
 Automatic PAL/NTSC timing for supported standard SNES cartridges.
 [Cartridge restrictions and tested games](docs/amiga-zzsnes-pal-compatibility.md).
+[Expanded-memory comparison and next steps](docs/snes-memory-compatibility.md).
 Audio: 32,040 Hz stereo through AHI.
 
 Development: **Codex assisted, Amiga-Bridge MCP**. Interface: **MUI**.
@@ -75,4 +77,5 @@ Thanks to **Xanxi** for XACP, and the **PocketSNES / Snes9x2002** contributors f
 The software scanline effects and NEON presentation work are shared with ZZDosBox;
 they do not require the separate ZZ9000 scanline application or an FPGA change.
 
+ZIP decompression uses Mark Adler’s **puff** from zlib; its notice is included.
 Component licences and notices are included. The Snes9x core is non-commercial.

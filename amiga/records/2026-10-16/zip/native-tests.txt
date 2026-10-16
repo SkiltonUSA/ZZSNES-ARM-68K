@@ -1,0 +1,15 @@
+PASS 40 ZIP/plain cases under ASan/UBSan; output guards, exact bytes, CRC, bounds and rejection paths
+PASS 20000 ROMs: growth, duplicate index, sort/search/filter, rename, persistence, deletion and allocation-failure recovery (0.181s)
+PASS v1 migration/v2 round-trip, dynamic library growth, titles, artwork links, search/filter/order, history overflow, hostile paths, malformed preferences
+PASS settings v2/v3 migration, bounded scanline arithmetic and FPS glyph bounds
+PASS mounted/unmounted volumes, hot-plug discovery, PROGDIR deduplication, ZIP candidate filtering, link exclusion, cancellation and DOS resource release
+PASS ZZSNES 0x12000040 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+NEON row calls: 720
+PASS ZZSNES 0x150020c0 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+NEON row calls: 720

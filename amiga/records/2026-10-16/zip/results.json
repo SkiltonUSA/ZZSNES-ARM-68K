@@ -1,0 +1,50 @@
+{
+  "plain": {
+    "exit": 0,
+    "owned_memory_released": true,
+    "register_mismatches": 0,
+    "cache_witness_errors": 0,
+    "frames": 120
+  },
+  "zip": {
+    "exit": 0,
+    "owned_memory_released": true,
+    "register_mismatches": 0,
+    "cache_witness_errors": 0,
+    "frames": 120
+  },
+  "bad": {
+    "exit": 20,
+    "owned_memory_released": true
+  },
+  "lifecycle": {
+    "exit": 0,
+    "owned_memory_released": true,
+    "register_mismatches": 0,
+    "cache_witness_errors": 0,
+    "save_load_snapshot": true
+  },
+  "ui-player": {
+    "exit": 0,
+    "owned_memory_released": true,
+    "register_mismatches": 0,
+    "cache_witness_errors": 0,
+    "save_load_snapshot": true
+  },
+  "arm_payload_sha256": "0f3521ea5fba82d4769b8c5c5a981a960d543744c3035e5564c67ea3ad9226f3",
+  "artifacts": {
+    "ZZSNES": "b13de39af31c736a00a4c1eccf678f6c1b3104ddcf2038f2c29de1f4c392445a",
+    "ZZSNES.png": "45bbc3d9ee8545e3a0a4cfe826835f12128daa96be734bb96b1ca4d8d666b57b",
+    "LICENSE-Snes9x": "7c99d452508b90c46d74ac5d516d3d7de4ff3406bc7c4ad595215205369594ba",
+    "COPYING3": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "Credits.txt": "039b2714b2aa9dd8e189ea519a69acabdd49fb4b698ab007824395fb5193dde4",
+    "LICENSE-xSysInfo": "323187598a84a70032b38d9f483ba9c0f6172b0635ef32ce924393356f279829",
+    "ZZSNES.info": "d30c1bcb250c2e2e76239b38f5abff524dc2447a329fc2f2dce1a8d28d5df924",
+    "MakeIcon": "e2bfda7cb64a8208dc3330b28de47591bd378ec10043177ab8f8c616eef254b9",
+    "ReadMe.txt": "a9afe1bce6115a178c05c1a4a11ec73eec67b37ff2b5e8a19d158ecee8d4ac57",
+    "Version.txt": "3a28b36b16261dbcc7df4fc6f0fabc7aa31404beed3f286a429e407f8fcf52ff",
+    "ZZSnes-ui": "fcee1dfff018a3ad44bfe5fd9c2fa0ac09135d11669f202995f1f94232b1ea01",
+    "SHA256SUMS": "95d761963c833a439da6e36ab77db35a76116348e9acf1d586495b4363e708c8",
+    "LICENSE-puff": "969b7be2a930db0cdcb19b0e5b29ae6741f5a8f663b6dba6d647e12ec60cfa8e"
+  }
+}

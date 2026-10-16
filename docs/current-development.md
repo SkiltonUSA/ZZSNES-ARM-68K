@@ -109,6 +109,13 @@ existing settings file. Scanning retains accepted entries if memory runs out.
 
 ## Colour logos
 
-Current launcher source and artwork: development/logo-20261016/.
+Current launcher source and artwork: development/zip-20261016/.
 Supplied PNGs generate embedded MUI palettes and palette-mapped Workbench icons.
-The ARM player is unchanged. See that snapshot README for regeneration.
+The ARM payload is unchanged. See that snapshot README for regeneration.
+
+## ZIP loading
+
+The 68k library and player share a bounded ZIP32 reader. The player decompresses
+before publishing the cartridge to Core1; the ARM payload and transfer layout
+are unchanged. This is a loading feature, not an emulation-speed optimisation.
+No external library or unpacker is required. See [validation](zip-validation.md).
