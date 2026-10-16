@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.5.3 Beta
 
 - Remove launcher title-bar text; keep version in the footer and About.
 

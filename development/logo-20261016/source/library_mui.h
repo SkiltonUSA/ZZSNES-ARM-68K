@@ -34,7 +34,7 @@
 #define LIB_PORT "ZZSNES_LIBRARY"
 #define LIB_PLAYER "ZZSnes-ui"
 #define LIB_SESSION "ZZSNESSESSION2"
-#define LIB_VERSION "0.5.2 Beta"
+#define LIB_VERSION "0.5.3 Beta"
 #define LIB_PATTERN "#?.(sfc|smc)"
 #define LIB_SYSTEM "Super Nintendo Entertainment System"
 #define LIB_LIMIT 0x400200u
@@ -43,7 +43,7 @@
 #define LIB_PORT "ZZNES_LIBRARY"
 #define LIB_PLAYER "ZZFceux-ui"
 #define LIB_SESSION "ZZSESSION1"
-#define LIB_VERSION "0.6.2 Beta"
+#define LIB_VERSION "0.6.3 Beta"
 #define LIB_PATTERN "#?.nes"
 #define LIB_SYSTEM "Nintendo Entertainment System"
 #define LIB_LIMIT 0xc0010u

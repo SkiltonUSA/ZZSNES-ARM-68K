@@ -1,3 +1,10 @@
+# Current release: ZZSNES 0.5.3 Beta
+
+Complete executable package: beta-0.5.3/. Colour logos and blank launcher title
+bar; version remains in the footer and About. The player is unchanged.
+
+---
+
 # Current logo update: ZZSNES 0.5.2 Beta
 
 Complete package in beta-0.5.2/. New launcher and colour icon; unchanged player.

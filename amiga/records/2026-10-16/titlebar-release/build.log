@@ -1,0 +1,2 @@
+python3 scripts/build_current.py
+PASS: rebuilt ZZSNES with verified ARM payload at $WORKSPACE/.context/ZZSNES-ARM-68K/.context/current-build

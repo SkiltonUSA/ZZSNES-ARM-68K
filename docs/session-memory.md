@@ -1,3 +1,12 @@
+# Release 0.5.3 Beta
+
+Packaged the blank-title-bar update with the colour logo. Standalone rebuild
+passed. Exact title-bar behavior was checked on hardware before this version
+bump; the new package itself has not been redeployed. The installed launcher
+still reports 0.5.2 Beta with the same title-bar change. ARM/player unchanged.
+
+---
+
 # Title-bar cleanup — 16 October 2026
 
 Current launcher source removes the window title text. Version remains in the
