@@ -1,4 +1,4 @@
-# ZZSNES 0.6.0 Beta
+# ZZSNES 0.6.1 Beta
 
 Extract the package into a writable drawer and open **ZZSNES**. Keep the player
 executable beside it. When upgrading, retain your ROMs, States, Snapshots and
@@ -62,7 +62,11 @@ display mode and the optional FPS overlay. They change this emulator's output on
 already enabled NEON. Disable it for a scalar baseline comparison. It does not
 change CPU emulation, game timing or firmware policy.
 
-Monitor shape, border themes and overscan masks remain available.
+**EmuELEC bezel** adds the supplied dark speaker panels. Both supplied PNGs
+have the same frame, so they share one border choice. Their centre scanline
+textures are excluded; use the Scanlines selector independently. The game
+viewport is unchanged. NES needs widescreen mode for external side panels;
+its 4:3 viewport fills the screen.
 
 ## Controls and saves
 

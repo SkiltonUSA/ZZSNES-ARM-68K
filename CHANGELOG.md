@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.1 Beta
+
+- Add EmuELEC side-panel theme to both display modes.
+- Keep viewport geometry, overscan and scanlines independent.
+- Compact 16-colour artwork table; existing memory layout retained.
+- Cartridge support and emulation core unchanged.
+
 ## 0.6.0 Beta
 
 - Load single-cartridge ZIPs directly in the library and player.

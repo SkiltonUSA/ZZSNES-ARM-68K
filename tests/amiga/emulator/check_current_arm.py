@@ -5,7 +5,7 @@ from unicorn import Uc,UC_ARCH_ARM,UC_MODE_ARM,UC_HOOK_CODE
 from unicorn.arm_const import *
 ROOT=Path(__file__).resolve().parents[3]
 name="ZZSNES";snes=name=='ZZSNES';snap=ROOT/'development/beta-20261015'
-new=snap/'build-inputs/player';old=ROOT/'development/beta-20261012/build-inputs/player'
+new=ROOT/'development/borders-20261016/player';old=ROOT/'development/beta-20261012/build-inputs/player'
 elf='pocket.elf'if snes else'fceux.elf';block=0x2000000 if snes else 0x400000;control=0x180000 if snes else 0x80000
 spec=importlib.util.spec_from_file_location('pack',snap/'source/core/elf.py');pack=importlib.util.module_from_spec(spec);spec.loader.exec_module(pack);unpack=pack.unpack
 raw=bytes(((i*31+i//71)&255 for i in range(122880)))

@@ -109,7 +109,7 @@ existing settings file. Scanning retains accepted entries if memory runs out.
 
 ## Colour logos
 
-Current launcher source and artwork: development/zip-20261016/.
+Current launcher source and artwork: development/borders-20261016/.
 Supplied PNGs generate embedded MUI palettes and palette-mapped Workbench icons.
 The ARM payload is unchanged. See that snapshot README for regeneration.
 
@@ -119,3 +119,9 @@ The 68k library and player share a bounded ZIP32 reader. The player decompresses
 before publishing the cartridge to Core1; the ARM payload and transfer layout
 are unchanged. This is a loading feature, not an emulation-speed optimisation.
 No external library or unpacker is required. See [validation](zip-validation.md).
+
+## EmuELEC border
+
+Current frontend and presentation overlays: development/borders-20261016/.
+The packed ARM image now includes the compact border table. The emulator core
+and allocation layout are unchanged. See [border validation](emuelec-border.md).

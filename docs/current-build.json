@@ -1,7 +1,7 @@
 {
   "console": "ZZSNES",
-  "version": "0.6.0 Beta",
-  "image_bytes": 535164,
+  "version": "0.6.1 Beta",
+  "image_bytes": 544844,
   "relocations": 3652,
   "sources": {
     ".context/amiga/pocketsnes-regions/build/src/apu.c": "d503c877cc661a204d2786114e8135f19c4da1d2baedbdcf1384fab573ec8ad1",
@@ -46,11 +46,11 @@
     ".context/amiga/emulator-next/ZZSNES/player/neon_state.S": "e04645be1ce32924bb93d7a38baaeb87db423e786bb96c76774bef3ca311174e"
   },
   "files": {
-    "ZZSnes-ui": "fcee1dfff018a3ad44bfe5fd9c2fa0ac09135d11669f202995f1f94232b1ea01",
-    "pocket.elf": "4d5cd05901c6ab6cb35542f80fdc12ae155e94a7088bd32a76cabcdec13c6e51"
+    "ZZSnes-ui": "0fa9b0289c45603f8994ff13b506d46d7f1e4097c9291b7d14cbde1fea9f4135",
+    "pocket.elf": "8cbdada44c020a1e63be29de740c487e680ca7ff471235a9b8206d7d6fd6f64f"
   },
   "snapshot_dir": "development/beta-20261015",
-  "artifact_dir": "artifacts/beta-0.6.0",
+  "artifact_dir": "artifacts/beta-0.6.1",
   "player": "ZZSnes-ui",
   "image": "docker.io/amigadev/crosstools@sha256:93ca1a47903b61873f6638881b44f9f2d6086a39f1b9b916a26faff3a8ea4d3d",
   "arm_sources": [
@@ -138,7 +138,16 @@
     "-I/work/amiga/mesen_bench",
     "-DRETRO_API="
   ],
-  "library_snapshot_dir": "development/zip-20261016",
-  "launcher_version": "0.6.0 Beta",
-  "host_snapshot_dir": "development/zip-20261016/host"
+  "library_snapshot_dir": "development/borders-20261016",
+  "launcher_version": "0.6.1 Beta",
+  "host_snapshot_dir": "development/borders-20261016/host",
+  "player_overlay_dir": "development/borders-20261016/player",
+  "presentation_overlays": {
+    "development/borders-20261016/player/border_art.h": "4715df8cbb80a4d528437ff5a5793997c140f71b5f0b7506357b045b48d79e7c",
+    "development/borders-20261016/player/view.h": "d8d006129e92e9ddf59c7f604a9a8bc0d571c95f415d2e74919fcb22903692ad",
+    "development/borders-20261016/player/emuelec_assets.h": "9a328665bad9f5b76e7bca135aee59de74e9b7d997de227b90ce31fb925f7489",
+    "development/borders-20261016/player/session.h": "d1877f518bea0f482cc48fa97a0f82f0602e710e294b393e22307e588c3b5945",
+    "development/borders-20261016/player/pocket.elf": "8cbdada44c020a1e63be29de740c487e680ca7ff471235a9b8206d7d6fd6f64f",
+    "development/borders-20261016/player/zz_payload.h": "8fb7a8e7bf6c1a434e853233eef7ea30b40aca3bc9ddc2ea4b5b575557dbce9c"
+  }
 }

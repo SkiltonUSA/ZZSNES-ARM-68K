@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Super R-Type (USA)",
+    "rom_bytes": 1048576,
+    "map": "0x20",
+    "type": "0x0",
+    "hardware": "Standard LoROM",
+    "native_frames": 600,
+    "native_replay": "pass",
+    "physical": "120 frames; clean exit"
+  },
+  {
+    "title": "Super Star Fox Weekend (USA)",
+    "rom_bytes": 1048576,
+    "map": "0x20",
+    "type": "0x13",
+    "hardware": "Super FX",
+    "native_frames": 600,
+    "native_replay": "video mismatch",
+    "physical": "Not run"
+  },
+  {
+    "title": "Super Street Fighter II (USA)",
+    "rom_bytes": 4194304,
+    "map": "0x31",
+    "type": "0x0",
+    "hardware": "Standard Fast HiROM",
+    "native_frames": 600,
+    "native_replay": "pass",
+    "physical": "120 frames; clean exit"
+  },
+  {
+    "title": "Stunt Race FX (USA) (Rev 1)",
+    "rom_bytes": 1048576,
+    "map": "0x20",
+    "type": "0x1a",
+    "hardware": "Super FX",
+    "native_frames": 600,
+    "native_replay": "video mismatch",
+    "physical": "Not run"
+  },
+  {
+    "title": "Star Fox 2 (USA)",
+    "rom_bytes": 1048576,
+    "map": "0x20",
+    "type": "0x1a",
+    "hardware": "Super FX",
+    "native_frames": 600,
+    "native_replay": "pass",
+    "physical": "Not run"
+  },
+  {
+    "title": "Star Fox (USA) (Rev 2)",
+    "rom_bytes": 1048576,
+    "map": "0x20",
+    "type": "0x13",
+    "hardware": "Super FX",
+    "native_frames": 600,
+    "native_replay": "pass",
+    "physical": "Not run"
+  },
+  {
+    "title": "Kirby Super Star (USA)",
+    "rom_bytes": 4194304,
+    "map": "0x23",
+    "type": "0x35",
+    "hardware": "SA-1",
+    "native_frames": 600,
+    "native_replay": "pass",
+    "physical": "Not run"
+  },
+  {
+    "title": "Imperium (USA)",
+    "rom_bytes": 1048576,
+    "map": "0x20",
+    "type": "0x0",
+    "hardware": "Standard LoROM",
+    "native_frames": 600,
+    "native_replay": "video mismatch",
+    "physical": "120 frames; clean exit"
+  },
+  {
+    "title": "GunForce (USA)",
+    "rom_bytes": 524288,
+    "map": "0x20",
+    "type": "0x0",
+    "hardware": "Standard LoROM",
+    "native_frames": 600,
+    "native_replay": "pass",
+    "physical": "120 frames; clean exit"
+  },
+  {
+    "title": "Final Fantasy III (USA) (Rev 1)",
+    "rom_bytes": 3145728,
+    "map": "0x31",
+    "type": "0x2",
+    "hardware": "Standard Fast HiROM + 8 KiB SRAM",
+    "native_frames": 600,
+    "native_replay": "pass",
+    "physical": "120 frames; clean exit"
+  },
+  {
+    "title": "Doom (USA)",
+    "rom_bytes": 2097152,
+    "map": "0x20",
+    "type": "0x14",
+    "hardware": "Super FX",
+    "native_frames": 600,
+    "native_replay": "pass",
+    "physical": "Not run"
+  }
+]

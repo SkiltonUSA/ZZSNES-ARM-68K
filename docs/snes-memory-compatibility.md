@@ -54,8 +54,10 @@ PocketSNES would not be a drop-in port.
    teardown checks before enabling it in the normal launcher.
 6. Treat each enhancement chip as a separate compatibility/performance task.
 
-No new test cartridge was attached to this request at the time of the review.
-Cartridge-specific implementation and physical validation remain pending.
+The supplied cartridge set has now been inspected. None exceeds 4 MiB or needs
+larger standard SRAM. Five use Super FX, one uses SA-1, and five use standard
+hardware. See [the cartridge survey](cartridge-survey.md) for native findings
+and physical-test scope. Chip support is still excluded from the normal player.
 
 ## Reviewed sources
 

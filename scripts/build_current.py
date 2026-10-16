@@ -14,6 +14,7 @@ def main():
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
  shutil.copytree(library_snap/'source/zip',lib/'zip',dirs_exist_ok=True)
  shutil.copytree(ROOT/m['host_snapshot_dir'],stage,dirs_exist_ok=True)
+ shutil.copytree(ROOT/m['player_overlay_dir'],stage,dirs_exist_ok=True)
  shutil.copy2(library_snap/'source/icon.c',lib/'icon.c')
  (lib/'icon.c').write_text((lib/'icon.c').read_text().replace('DOSBox icon',m['console']+' icon'))
  if m['console']=='ZZNES':

@@ -1,0 +1,24 @@
+{
+  "sources": {
+    "emuelec-1px.png": "cc91969759da7025b753e071de2c730284ce9805f8ed06ab57960b1dc6080b2e",
+    "emuelec-2px.png": "a16848c99ca03e0ed4e1916099ac4fb7f0bccb7f9004117a22d17ed71c83943a"
+  },
+  "rectangles": [
+    [
+      0,
+      0,
+      240,
+      1080
+    ],
+    [
+      1680,
+      0,
+      1920,
+      1080
+    ]
+  ],
+  "identical_side_panels": true,
+  "bytes": 9632,
+  "palette_colors": 16,
+  "centre_overlay_imported": false
+}

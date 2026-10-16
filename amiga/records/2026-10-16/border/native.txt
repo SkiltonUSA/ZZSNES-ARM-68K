@@ -1,0 +1,13 @@
+PASS EmuELEC theme persistence, valid geometry, panel bounds and opaque output
+PASS settings v2/v3 migration, bounded scanline arithmetic and FPS glyph bounds
+PASS mounted/unmounted volumes, hot-plug discovery, PROGDIR deduplication, ZIP candidate filtering, link exclusion, cancellation and DOS resource release
+PASS ZZSNES 0x12000040 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+NEON row calls: 720
+PASS ZZSNES 0x150020c0 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+NEON row calls: 720
