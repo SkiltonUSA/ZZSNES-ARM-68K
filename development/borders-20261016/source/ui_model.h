@@ -17,7 +17,7 @@ struct ui_entry {char path[UI_PATH],title[UI_TITLE],art[UI_PATH];unsigned favori
 struct ui_model {unsigned count,clock,monitor,theme,mask,vmask,slot,mute,fire,last,filter,windowed,scanlines,fps,optimise,autoscan;unsigned capacity;struct ui_entry *entry;struct ui_path_index paths;};
 /* Models are zero-initialised before first use. Reset releases owned storage. */
 static void ui_dispose(struct ui_model*m){free(m->entry);ui_index_free(&m->paths);memset(m,0,sizeof(*m));}
-static void ui_defaults(struct ui_model *m){ui_dispose(m);m->optimise=1;m->autoscan=1;
+static void ui_defaults(struct ui_model *m){ui_dispose(m);m->optimise=1;m->autoscan=0;
 #ifdef LIBRARY_SNES
  m->theme=2;
 #else

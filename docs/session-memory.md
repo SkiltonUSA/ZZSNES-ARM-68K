@@ -1,3 +1,31 @@
+## Red Launch and manual ROM scans — 16 October 2026
+
+Launcher-only update installed in SD032G:Emulator/ZZSNES/ZZSNES.
+MD5: `cbecb6868c2b7ad83108d70435f9c962` (214820 bytes).
+The permanent bottom bar contains red Launch, Save settings and Quit.
+Disks has a directory field, Browse requester and Scan once / Stop scan.
+No startup, periodic or newly mounted-volume discovery remains. Legacy autoscan
+preferences are ignored and saved as zero; the file format stays compatible.
+Directory aliases are resolved before duplicate lookup. ROMs and players are
+unchanged; the SNES Thin mode remains selected. Initial files/preferences are
+retained in Rollback-launch-1016; the intermediate build is in Rollback-launch2-1016.
+Published release assets have not been replaced.
+
+Both pinned m68k builds, 20,000-entry and legacy-library sanitizer tests,
+settings/presentation arithmetic tests, and explicit-scan sanitizer tests pass.
+The scan tests cover idle inactivity, selected roots, recursion, aliases,
+ZIP candidates, cancellation and DOS resource cleanup. Hash verification passes.
+
+Physical UI checks: red Launch visible on Games and Display, Disks controls
+visible, explicit ROM-directory scans complete without new duplicates. NES
+Super Mario World (mapper 90) and SNES Aladdin launched from Display and returned
+through F10 with Core1 released. The first SNES F10 was sent before the fullscreen
+window appeared; waiting for its window and focusing it resolved the test.
+The first scan test exposed a PROGDIR alias mismatch; fixed and regression-tested.
+Only its 11 appended duplicate entries were removed, preserving the prior library.
+No save-state or ROM deletion, player replacement or firmware changes.
+Private evidence: workspace .context/amiga/launcher-controls/.
+
 ## Thin scanlines and FX3 core candidate — 16 October 2026
 
 Installed at SD032G:Emulator/ZZSNES with transfer checksums and complete

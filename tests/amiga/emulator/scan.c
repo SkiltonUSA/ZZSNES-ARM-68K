@@ -20,7 +20,7 @@ static struct node nodes[]={
 };
 static unsigned locks,allocated,refreshes,writes;
 static int resolve_failure;
-static BPTR Lock(const char*p,int mode){(void)mode;if(!strcmp(p,"RAM:"))p="RAM Disk:";if(!strcmp(p,"PROGDIR:Existing.nes"))p="RAM Disk:ROMs/Existing.nes";
+static BPTR Lock(const char*p,int mode){(void)mode;if(!strcmp(p,"PROGDIR:"))p="RAM Disk:ROMs";if(!strcmp(p,"RAM:"))p="RAM Disk:";if(!strcmp(p,"PROGDIR:Existing.nes"))p="RAM Disk:ROMs/Existing.nes";
  for(unsigned i=0;i<sizeof(nodes)/sizeof(*nodes);i++)if(!strcasecmp(p,nodes[i].path)){locks++;return(BPTR)&nodes[i];}return 0;}
 static void UnLock(BPTR p){assert(p&&locks);locks--;}
 static struct FileInfoBlock*AllocDosObject(int type,void*args){(void)type;(void)args;allocated++;return calloc(1,sizeof(struct FileInfoBlock));}
@@ -30,11 +30,6 @@ static int NameFromLock(BPTR p,char*out,unsigned cap){if(resolve_failure){memset
 static int AddPart(char*p,const char*n,unsigned cap){size_t used=strlen(p);if(used+strlen(n)+2>=cap)return 0;if(used&&p[used-1]!=':')strcat(p,"/");strcat(p,n);return 1;}
 static int ExNext(BPTR p,struct FileInfoBlock*f){struct node*n=(void*)p;const char*child=n->children[f->cursor++];char path[512];BPTR q;
  if(!child)return 0;strcpy(path,n->path);assert(AddPart(path,child,sizeof(path)));q=Lock(path,0);assert(q);f->fib_DirEntryType=((struct node*)q)->type;strcpy(f->fib_FileName,child);UnLock(q);return 1;}
-static unsigned char names[][20]={{6,'S','y','s','t','e','m'},{8,'R','A','M',' ','D','i','s','k'},{3,'U','S','B'}};
-static struct DosList volumes[4];
-static struct DosList*LockDosList(int flags){(void)flags;return volumes;}
-static struct DosList*NextDosEntry(struct DosList*d,int flags){(void)flags;return d->next;}
-static void UnLockDosList(int flags){(void)flags;}
 static struct ui_model model;
 static int caption;
 static void scan_caption(int active){caption=active;}
@@ -48,16 +43,20 @@ static int library_candidate(const char*s){if(strstr(s,"Other.zip"))return 0;ret
 #include "library_scan.h"
 static void finish(void){unsigned rounds=0;while(scan_active){scan_step();assert(++rounds<100);}assert(!locks&&!allocated&&!caption);}
 int main(void){
- for(unsigned i=0;i<3;i++){volumes[i].next=&volumes[i+1];volumes[i+1].dol_Name=(BPTR)names[i];volumes[i+1].dol_Task=(void*)1;}
- volumes[3].dol_Task=NULL; // Remembered, unmounted USB volume: no request to insert it.
- ui_defaults(&model);assert(ui_add(&model,"PROGDIR:Existing.nes")==0);
- scan_begin(0);assert(scan_count==2);finish();assert(model.count==3&&writes==1);
- assert(!strcmp(model.entry[0].path,"PROGDIR:Existing.nes")); // Preserve old save key.
- scan_begin(0);assert(!scan_active);
- volumes[3].dol_Task=(void*)1;scan_begin(0);assert(scan_count==1);finish();assert(model.count==4&&writes==2);
- scan_begin(1);finish();assert(model.count==4&&writes==2);
- scan_begin(1);assert(scan_push("RAM Disk:"));scan_stop();assert(!locks&&!allocated);
+ ui_defaults(&model);assert(!model.autoscan);assert(ui_add(&model,"PROGDIR:Existing.nes")==0);
+ /* Idle ticks and new mounted volumes must never discover anything. */
+ for(unsigned i=0;i<250;i++)scan_step();assert(model.count==1&&!writes&&!locks);
+ scan_begin("RAM Disk:ROMs");finish();assert(model.count==3&&writes==1);
+ assert(!strcmp(model.entry[0].path,"PROGDIR:Existing.nes"));
+ scan_begin("PROGDIR:");finish();assert(model.count==3);
+ scan_begin("RAM Disk:");finish();assert(model.count==3); /* dedup, links excluded */
+ for(unsigned i=0;i<250;i++)scan_step();assert(model.count==3);
+ scan_begin("USB:");finish();assert(model.count==4);
+ scan_begin("Missing:");assert(!scan_active&&!locks&&!allocated);
+ scan_begin("RAM Disk:notes.txt");assert(!scan_active&&!locks&&!allocated);
+ scan_begin("");assert(!scan_active);
+ scan_begin("RAM Disk:");scan_stop();scan_step();assert(!locks&&!allocated);
  resolve_failure=1;scan_existing_count=~0u;assert(scan_known("PROGDIR:Existing.nes")==1);resolve_failure=0;scan_stop();
  ui_dispose(&model);
- puts("PASS mounted/unmounted volumes, hot-plug discovery, PROGDIR deduplication, ZIP candidate filtering, link exclusion, cancellation and DOS resource release");
+ puts("PASS explicit directory scans, idle inactivity, recursion, dedup, ZIP filtering, invalid roots, cancellation and DOS resource release");
 }

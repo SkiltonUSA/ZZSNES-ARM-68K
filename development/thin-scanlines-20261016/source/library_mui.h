@@ -69,7 +69,7 @@
 struct Library *MUIMasterBase,*AslBase,*LowLevelBase;
 static Object *app,*win,*list,*pages,*search,*title_edit,*selected_text,*status_text,*monitor,*theme,*mask,*vmask,*slot,*mute,*fire,*joytext;
 static Object *start,*resume,*latest,*fav,*remove_button,*rename_button,*art_button,*clear_art,*hero,*summary,*count_text,*save_title;
-static Object *scan_drives,*change_list,*navigation,*heading,*display_mode,*scanline_mode,*fps_option,*optimise_option,*autoscan_option;
+static Object *scan_drives,*change_list,*navigation,*heading,*display_mode,*scanline_mode,*fps_option,*optimise_option,*scan_path;
 static Object *cards[5],*card_text[5],*card_resume[5],*card_delete[5];
 static char card_labels[5][180],details[400],summary_line[180],count_line[80];
 static char save_heading[UI_TITLE+24],selected_path[UI_PATH];
@@ -83,7 +83,7 @@ static unsigned visible_capacity,search_ticks;
 static char search_seen[UI_TITLE];
 static char status[240],joy[400];
 static const char version[]="$VER: " LIB_TITLE " Library " LIB_VERSION " (16.10.2026)";
-static const char *tabs[]={"Games","Display","Controllers","Save states","About",NULL};
+static const char *tabs[]={"Games","Display","Controllers","Save states","Disks","About",NULL};
 static const char *display_choices[]={"Fullscreen","Workbench window",NULL};
 static const char *scanline_choices[]={"Off","Classic","Soft","Gradient","Thin (640x480)",NULL};
 static const char *filters[]={"All ROMs","Recently played","Favourites",NULL};
@@ -118,7 +118,7 @@ static Object *multiline(const char*s,unsigned lines){return NewObject(multiline
 static Object *textline(const char *s){return TextObject,MUIA_Font,ui_font(),MUIA_Text_Contents,(ULONG)s,End;}
 static Object *cycle(const char **items){return CycleObject,MUIA_Font,ui_font(),MUIA_Cycle_Entries,(ULONG)items,End;}
 static void message(const char *s){snprintf(status,sizeof(status),"%s",s);set(status_text,MUIA_Text_Contents,(ULONG)status);}
-static void collect(void){if(selected>=0)model.last=selected+1;model.monitor=value(monitor,MUIA_Cycle_Active);model.theme=value(theme,MUIA_Cycle_Active);model.mask=value(mask,MUIA_Cycle_Active);model.vmask=value(vmask,MUIA_Cycle_Active);model.slot=value(slot,MUIA_Cycle_Active);model.mute=!!value(mute,MUIA_Selected);model.fire=value(fire,MUIA_Cycle_Active);model.windowed=value(display_mode,MUIA_Cycle_Active);model.scanlines=value(scanline_mode,MUIA_Cycle_Active);model.fps=!!value(fps_option,MUIA_Selected);model.optimise=!!value(optimise_option,MUIA_Selected);model.autoscan=!!value(autoscan_option,MUIA_Selected);}
+static void collect(void){if(selected>=0)model.last=selected+1;model.monitor=value(monitor,MUIA_Cycle_Active);model.theme=value(theme,MUIA_Cycle_Active);model.mask=value(mask,MUIA_Cycle_Active);model.vmask=value(vmask,MUIA_Cycle_Active);model.slot=value(slot,MUIA_Cycle_Active);model.mute=!!value(mute,MUIA_Selected);model.fire=value(fire,MUIA_Cycle_Active);model.windowed=value(display_mode,MUIA_Cycle_Active);model.scanlines=value(scanline_mode,MUIA_Cycle_Active);model.fps=!!value(fps_option,MUIA_Selected);model.optimise=!!value(optimise_option,MUIA_Selected);model.autoscan=0;}
 static int preserve_legacy(void){FILE*src,*dst;char buf[1024];size_t n;int ok=1;BPTR lock;
  if(!legacy_config)return 1;lock=Lock("PROGDIR:Library.pre-browser",ACCESS_READ);if(lock){UnLock(lock);legacy_config=0;return 1;}
  src=fopen("PROGDIR:Library.cfg","rb");if(!src)return 0;dst=fopen("PROGDIR:Library.pre-browser","wb");if(!dst){fclose(src);return 0;}
@@ -273,7 +273,7 @@ static void search_poll(void){const char*q=(const char*)value(search,MUIA_String
  if(strcmp(q,search_seen)){snprintf(search_seen,sizeof(search_seen),"%s",q);search_ticks=4;}
  else if(search_ticks&&!--search_ticks)refresh();
 }
-static void scan_caption(int active){set(scan_drives,MUIA_Text_Contents,(ULONG)(active?"Stop scan":"Scan drives"));}
+static void scan_caption(int active){set(scan_drives,MUIA_Text_Contents,(ULONG)(active?"Stop scan":"Scan once"));}
 #include "library_scan.h"
 static void artwork(void){struct FileRequester*r;char path[UI_PATH];if(selected<0)return;set(app,MUIA_Application_Sleep,TRUE);
  r=AllocAslRequestTags(ASL_FileRequest,ASLFR_TitleText,(ULONG)"Choose local artwork (up to 512 x 512)",ASLFR_InitialDrawer,(ULONG)"PROGDIR:Artwork",TAG_DONE);
@@ -285,19 +285,16 @@ static void artwork(void){struct FileRequester*r;char path[UI_PATH];if(selected<
 
 static void browse(int drawer){struct FileRequester *r;char p[UI_PATH];unsigned before=model.count,rejected=0;
  set(app,MUIA_Application_Sleep,TRUE);
- r=AllocAslRequestTags(ASL_FileRequest,ASLFR_TitleText,(ULONG)(drawer?"Add a folder of games":"Add a game"),ASLFR_InitialDrawer,(ULONG)"PROGDIR:ROMs",ASLFR_InitialPattern,(ULONG)LIB_PATTERN,ASLFR_DoPatterns,TRUE,ASLFR_DrawersOnly,drawer,TAG_DONE);
+ r=AllocAslRequestTags(ASL_FileRequest,ASLFR_TitleText,(ULONG)(drawer?"Choose a drive or ROM directory":"Add a game"),ASLFR_InitialDrawer,(ULONG)"PROGDIR:ROMs",ASLFR_InitialPattern,(ULONG)LIB_PATTERN,ASLFR_DoPatterns,TRUE,ASLFR_DrawersOnly,drawer,TAG_DONE);
  if(r){if(AslRequestTags(r,TAG_DONE)&&strlen(r->fr_Drawer)<sizeof(p)){
    strcpy(p,r->fr_Drawer);
-   if(drawer){BPTR lock=Lock(p,ACCESS_READ);struct FileInfoBlock *fib=AllocDosObject(DOS_FIB,NULL);
-    if(lock&&fib&&Examine(lock,fib))while(ExNext(lock,fib)){char full[UI_PATH];
-     if(fib->fib_DirEntryType<0&&ui_extension(fib->fib_FileName)){strcpy(full,p);if(AddPart(full,fib->fib_FileName,sizeof(full))&&library_candidate(full))if(ui_add(&model,full)<0)rejected++;}}
-    if(lock)UnLock(lock);if(fib)FreeDosObject(DOS_FIB,fib);
+   if(drawer){set(scan_path,MUIA_String_Contents,(ULONG)p);
    }else if(AddPart(p,r->fr_File,sizeof(p))){
     if(em_rom_zip(p)){int e=em_rom_probe(p,LIB_LIMIT,LIB_SNES);if(e){FreeAslRequest(r);set(app,MUIA_Application_Sleep,FALSE);message(em_rom_message(e));return;}}
     int added=ui_add(&model,p);if(added<0)rejected++;else selected=added;}
   }FreeAslRequest(r);}
  set(app,MUIA_Application_Sleep,FALSE);refresh();
- if(model.count>before){if(!prefs_write())message("Added to this session; preferences could not be saved.");else message("ROM library saved. Select a game and press Play.");}
+ if(model.count>before){if(!prefs_write())message("Added to this session; preferences could not be saved.");else message("ROM library saved. Select a game and press Launch.");}
  if(rejected)message("Some files could not be added. Check free memory and path lengths.");
 }
 static int session_write(int resume){FILE *f;char p[UI_PATH];int ok;
@@ -337,7 +334,7 @@ static Object*save_card(unsigned i){Object*o;static const char*labels[]={"Slot 1
   Child,card_resume[i]=ui_button("Resume"),Child,card_delete[i]=ui_button("Delete..."),End;return o;
 }
 #include "library_brand.h"
-static int build(void){Object *add,*scan,*save,*exit,*listview,*all,*recent,*favourites,*saves;
+static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*recent,*favourites,*saves;
  program_list_class=MUI_CreateCustomClass(NULL,MUIC_Listview,NULL,sizeof(struct program_list_data),(APTR)program_list_dispatch);if(!program_list_class)return 0;
  controller_class=MUI_CreateCustomClass(NULL,MUIC_Area,NULL,sizeof(struct controller_instance),(APTR)controller_dispatch);if(!controller_class)return 0;
  multiline_class=MUI_CreateCustomClass(NULL,MUIC_Text,NULL,0,(APTR)multiline_dispatch);if(!multiline_class)return 0;
@@ -364,11 +361,10 @@ static int build(void){Object *add,*scan,*save,*exit,*listview,*all,*recent,*fav
     Child,HGroup,Child,TextObject,MUIA_Font,ui_font(),MUIA_HorizWeight,0,MUIA_Text_Contents,(ULONG)"Search:",End,Child,search=StringObject,MUIA_Font,ui_font(),StringFrame,MUIA_String_MaxLen,UI_TITLE,End,End,
     Child,HGroup,Child,all=ui_button("All games"),Child,recent=ui_button("Recently played"),Child,favourites=ui_button("Favourites"),End,
     Child,count_text=textline("Your game library"),
-    Child,HGroup,Child,autoscan_option=CheckMark(FALSE),Child,textline("Find ROMs on mounted drives automatically"),End,
     Child,HGroup,
      Child,VGroup,MUIA_Weight,45,
       Child,listview=program_list_new(&list),
-      Child,HGroup,Child,add=ui_button("Add..."),Child,scan=ui_button("Folder..."),Child,scan_drives=ui_button("Scan drives"),End,
+      Child,HGroup,Child,add=ui_button("Add..."),End,
       Child,HGroup,Child,fav=ui_button("Favourite on/off"),Child,remove_button=ui_button("Delete..."),End,
      End,
      Child,VGroup,GroupFrameT("Selected game"),MUIA_Weight,55,
@@ -378,7 +374,7 @@ static int build(void){Object *add,*scan,*save,*exit,*listview,*all,*recent,*fav
        Child,summary=multiline("No saves yet.",2),
        Child,art_button=ui_button("Artwork..."),Child,clear_art=ui_button("Clear artwork"),End,End,
       Child,textline("F9 in game: capture library picture."),
-      Child,start=ui_button("Play from start"),Child,latest=ui_button("Continue latest save"),Child,saves=ui_button("Choose save state..."),
+      Child,latest=ui_button("Continue latest save"),Child,saves=ui_button("Choose save state..."),
       Child,VSpace(0),
      End,
     End,
@@ -407,6 +403,13 @@ static int build(void){Object *add,*scan,*save,*exit,*listview,*all,*recent,*fav
     Child,HGroup,Child,save_card(0),Child,save_card(1),Child,save_card(2),Child,save_card(3),Child,save_card(4),End,
     Child,HGroup,Child,textline("Active save slot:"),Child,slot=cycle(slots),Child,resume=ui_button("Resume chosen slot"),End,
     Child,textline("F5 saves; F8 restores, including while paused. Previous saves kept as .bak.\nContinue uses the newest readable save by the Amiga file date."),
+    Child,VSpace(0),End,
+   Child,VGroup,UI_PAGE,
+    Child,VGroup,UI_PANEL("Local ROM scan"),
+     Child,textline("Drive or directory:"),
+     Child,HGroup,Child,scan_path=StringObject,MUIA_Font,ui_font(),StringFrame,MUIA_String_MaxLen,UI_PATH,MUIA_String_Contents,(ULONG)"PROGDIR:ROMs",End,Child,scan_browse=ui_button("Browse..."),End,
+     Child,HGroup,Child,scan_drives=ui_button("Scan once"),Child,HSpace(0),End,
+     Child,textline("Includes subdirectories. Scanning starts only when requested."),End,
     Child,VSpace(0),End,
    Child,VGroup,
     Child,textline("\33b" LIB_TITLE " " LIB_VERSION " for AmigaOS / ZZ9000\33n"),
@@ -439,17 +442,17 @@ static int build(void){Object *add,*scan,*save,*exit,*listview,*all,*recent,*fav
    End,
   End,
   Child,status_text=TextObject,MUIA_Font,ui_font(),TextFrame,MUIA_Text_SetMin,FALSE,MUIA_FixHeightTxt,(ULONG)"Ag",MUIA_Text_Contents,(ULONG)"",End,
-  Child,HGroup,Child,save=ui_button("Save settings"),Child,exit=ui_button("Quit"),Child,HSpace(0),Child,textline(LIB_VERSION),End,
+  Child,HGroup,Child,start=ui_launch_button(),Child,save=ui_button("Save settings"),Child,exit=ui_button("Quit"),Child,HSpace(0),Child,textline(LIB_VERSION),End,
  End,End,End;
  if(!app)return 0;
- {const char*changes[]={LIB_VERSION " - EmuELEC bezel",
+ {const char*changes[]={"Red Launch button available on every page",LIB_VERSION " - EmuELEC bezel",
    "Load ZIP cartridges directly",
    "Libraries grow with available memory",
    "Fast path lookup and sorting for large ROM collections",
  "Sidebar navigation; startup and loading screens; original logos.",
  "Fullscreen / window switching; optional FPS and software scanlines.",
  "Guarded NEON presentation with integer fallback; baseline comparison.",
- "Mounted-drive ROM discovery; Add, Rename and confirmed Delete.",
+ "Disks: user-selected, one-time ROM scan; no automatic drive scanning.",
  "Previous beta - regional cadence, batched audio and save states.",NULL};
  for(unsigned i=0;changes[i];i++)DoMethod(change_list,MUIM_List_InsertSingle,(ULONG)changes[i],MUIV_List_Insert_Bottom);}
 
@@ -457,7 +460,7 @@ static int build(void){Object *add,*scan,*save,*exit,*listview,*all,*recent,*fav
  set(navigation,MUIA_List_Active,0);notify(navigation,MUIA_List_Active,MUIV_EveryTime,ID_NAV);
  notify(scan_drives,MUIA_Pressed,FALSE,ID_SCAN_DRIVES);
  notify(win,MUIA_Window_CloseRequest,TRUE,MUIV_Application_ReturnID_Quit);notify(exit,MUIA_Pressed,FALSE,MUIV_Application_ReturnID_Quit);
- notify(add,MUIA_Pressed,FALSE,ID_ADD);notify(scan,MUIA_Pressed,FALSE,ID_SCAN);notify(fav,MUIA_Pressed,FALSE,ID_FAV);notify(remove_button,MUIA_Pressed,FALSE,ID_REMOVE);
+ notify(add,MUIA_Pressed,FALSE,ID_ADD);notify(scan_browse,MUIA_Pressed,FALSE,ID_SCAN);notify(fav,MUIA_Pressed,FALSE,ID_FAV);notify(remove_button,MUIA_Pressed,FALSE,ID_REMOVE);
  notify(start,MUIA_Pressed,FALSE,ID_PLAY);notify(resume,MUIA_Pressed,FALSE,ID_RESUME);notify(save,MUIA_Pressed,FALSE,ID_SAVE);
  notify(list,MUIA_List_Active,MUIV_EveryTime,ID_SELECT);notify(slot,MUIA_Cycle_Active,MUIV_EveryTime,ID_SLOT);
  notify(listview,MUIA_Listview_DoubleClick,TRUE,ID_PLAY);notify(search,MUIA_String_Acknowledge,MUIV_EveryTime,ID_SEARCH);
@@ -465,7 +468,7 @@ static int build(void){Object *add,*scan,*save,*exit,*listview,*all,*recent,*fav
  notify(latest,MUIA_Pressed,FALSE,ID_LATEST);notify(saves,MUIA_Pressed,FALSE,ID_SAVES);
  notify(rename_button,MUIA_Pressed,FALSE,ID_RENAME);notify(art_button,MUIA_Pressed,FALSE,ID_ART);notify(clear_art,MUIA_Pressed,FALSE,ID_CLEAR_ART);
  for(unsigned i=0;i<5;i++){notify(card_resume[i],MUIA_Pressed,FALSE,ID_SLOT_RESUME+i);notify(card_delete[i],MUIA_Pressed,FALSE,ID_SLOT_DELETE+i);}
- set(display_mode,MUIA_Cycle_Active,model.windowed);set(scanline_mode,MUIA_Cycle_Active,model.scanlines);set(fps_option,MUIA_Selected,model.fps);set(optimise_option,MUIA_Selected,model.optimise);set(autoscan_option,MUIA_Selected,model.autoscan);
+ set(display_mode,MUIA_Cycle_Active,model.windowed);set(scanline_mode,MUIA_Cycle_Active,model.scanlines);set(fps_option,MUIA_Selected,model.fps);set(optimise_option,MUIA_Selected,model.optimise);
  set(monitor,MUIA_Cycle_Active,model.monitor);set(theme,MUIA_Cycle_Active,model.theme);set(mask,MUIA_Cycle_Active,model.mask);set(vmask,MUIA_Cycle_Active,model.vmask);set(slot,MUIA_Cycle_Active,model.slot);set(mute,MUIA_Selected,model.mute);set(fire,MUIA_Cycle_Active,model.fire);
  return 1;
 }
@@ -489,8 +492,8 @@ int main(void){struct MsgPort *port=NULL,*owner=NULL;struct timerequest *timer=N
   id=DoMethod(app,MUIM_Application_NewInput,(ULONG)&signals);
   switch(id){case (ULONG)MUIV_Application_ReturnID_Quit:if(!child_running)running=0;break;
    case ID_ADD:browse(0);break;case ID_SCAN:browse(1);break;case ID_SELECT:selection();break;case ID_FILTER:refresh();break;
-   case ID_NAV:{ULONG n=value(navigation,MUIA_List_Active);if(n<5){set(pages,MUIA_Group_ActivePage,n);set(heading,MUIA_Text_Contents,(ULONG)tabs[n]);}}break;
-   case ID_SCAN_DRIVES:if(scan_active){scan_stop();message("Scan stopped.");}else scan_begin(1);break;
+   case ID_NAV:{ULONG n=value(navigation,MUIA_List_Active);if(n<6){set(pages,MUIA_Group_ActivePage,n);set(heading,MUIA_Text_Contents,(ULONG)tabs[n]);}}break;
+   case ID_SCAN_DRIVES:if(scan_active){scan_stop();message("Scan stopped.");}else scan_begin((const char*)value(scan_path,MUIA_String_Contents));break;
    case ID_SEARCH:refresh();break;
    case ID_ALL:model.filter=0;refresh();break;case ID_RECENT:model.filter=1;refresh();break;case ID_FAVOURITES:model.filter=2;refresh();break;
    case ID_RENAME:if(selected>=0){ui_clean(model.entry[selected].title,UI_TITLE,(const char*)value(title_edit,MUIA_String_Contents));refresh();message(prefs_write()?"Display title saved; ROM filename unchanged.":"Could not save title.");}break;
@@ -507,7 +510,7 @@ int main(void){struct MsgPort *port=NULL,*owner=NULL;struct timerequest *timer=N
   if(!id&&needs_details){needs_details=0;identify();update_slots();}
   if(!running)break;
   if(pending&&CheckIO((struct IORequest *)timer)){WaitIO((struct IORequest *)timer);pending=0;}
-  if(!pending){launch_poll();if(!child_running&&!startup_ticks){search_poll();joystick();if(!scan_active&&value(autoscan_option,MUIA_Selected)&&++scan_ticks>=200){scan_ticks=0;scan_begin(0);}scan_step();}timer->tr_node.io_Command=TR_ADDREQUEST;timer->tr_time.tv_secs=0;timer->tr_time.tv_micro=50000;SendIO((struct IORequest *)timer);pending=1;}
+  if(!pending){launch_poll();if(!child_running&&!startup_ticks){search_poll();joystick();scan_step();}timer->tr_node.io_Command=TR_ADDREQUEST;timer->tr_time.tv_secs=0;timer->tr_time.tv_micro=50000;SendIO((struct IORequest *)timer);pending=1;}
   if(!id){ULONG got=Wait(signals|(1UL<<port->mp_SigBit)|SIGBREAKF_CTRL_C);if(got&SIGBREAKF_CTRL_C)running=0;}
  }
  scan_stop();rc=prefs_write()?0:20;

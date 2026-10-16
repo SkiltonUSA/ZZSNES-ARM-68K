@@ -1,11 +1,10 @@
-/* GPL-3.0-or-later. Incremental read-only discovery on mounted DOS volumes.
+/* GPL-3.0-or-later. Incremental read-only discovery below one user-selected directory.
  * Never follow directory links, mount disks, or launch discovered software. */
 #include <dos/dosextens.h>
 #define SCAN_DEPTH 24
-#define SCAN_VOLUMES 64
 static struct {BPTR lock;struct FileInfoBlock *fib;char path[UI_PATH];} scan_stack[SCAN_DEPTH];
-static char scan_roots[SCAN_VOLUMES][UI_PATH],scan_seen[SCAN_VOLUMES][UI_PATH];
-static unsigned scan_count,scan_root,scan_depth,scan_added,scan_seen_count,scan_ticks,scan_steps,scan_reported;
+static char scan_root_path[UI_PATH];
+static unsigned scan_depth,scan_added,scan_steps,scan_reported;
 static int scan_active,scan_dirty,scan_failed;
 static struct ui_path_index scan_existing;
 static unsigned scan_existing_count=~0u;
@@ -28,25 +27,17 @@ static int scan_push(const char *path){BPTR lock;struct FileInfoBlock*fib;unsign
  if(!fib||!Examine(lock,fib)||fib->fib_DirEntryType<=0){if(fib)FreeDosObject(DOS_FIB,fib);UnLock(lock);return 0;}
  scan_stack[n].lock=lock;scan_stack[n].fib=fib;strcpy(scan_stack[n].path,path);scan_depth++;return 1;
 }
-static void scan_begin(int force){struct DosList*dl;unsigned count=0;char current[SCAN_VOLUMES][UI_PATH];
+static void scan_begin(const char *path){
  if(scan_active)return;
- dl=LockDosList(LDF_VOLUMES|LDF_READ);
- if(dl){while((dl=NextDosEntry(dl,LDF_VOLUMES))&&count<SCAN_VOLUMES){
-  const UBYTE*b=(const UBYTE*)BADDR(dl->dol_Name);unsigned len=b?b[0]:0;
-  if(dl->dol_Task&&len&&len<UI_PATH-2){memcpy(current[count],b+1,len);current[count][len]=':';current[count][len+1]=0;count++;}}
-  UnLockDosList(LDF_VOLUMES|LDF_READ);}
- scan_count=scan_root=scan_added=scan_steps=scan_reported=0;scan_failed=0;scan_existing_count=~0u;
- for(unsigned i=0;i<count;i++){unsigned j=0;for(;j<scan_seen_count;j++)if(!strcasecmp(current[i],scan_seen[j]))break;
-  if(force||j==scan_seen_count)strcpy(scan_roots[scan_count++],current[i]);}
- /* Offer RAM results first; a mounted optical disc must not hide quick finds. */
- {BPTR ram=Lock("RAM:",ACCESS_READ);char root[UI_PATH],temp[UI_PATH];
-  if(ram){if(NameFromLock(ram,root,sizeof(root)))for(unsigned i=0;i<scan_count;i++)if(!strcasecmp(root,scan_roots[i])){strcpy(temp,scan_roots[0]);strcpy(scan_roots[0],scan_roots[i]);strcpy(scan_roots[i],temp);break;}UnLock(ram);}}
- scan_seen_count=count;memcpy(scan_seen,current,count*UI_PATH);scan_active=scan_count!=0;scan_caption(scan_active);
- if(scan_active)message("Scanning mounted drives...");
+ if(!path||!*path||strlen(path)>=UI_PATH||!scan_push(path)){message("Choose an accessible drive or directory.");return;}
+ /* Resolve PROGDIR/assign aliases once, matching the existing-path index. */
+ if(!NameFromLock(scan_stack[0].lock,scan_root_path,sizeof(scan_root_path))){scan_stop();message("Could not resolve the scan directory.");return;}
+ strcpy(scan_stack[0].path,scan_root_path);scan_added=scan_steps=scan_reported=0;scan_failed=0;scan_dirty=1;
+ scan_existing_count=~0u;scan_active=1;scan_caption(1);message("Scanning selected directory...");
 }
 static void scan_step(void){unsigned budget=24;
  while(scan_active&&budget--){
-  if(!scan_depth){if(scan_root==scan_count){scan_stop();break;}scan_push(scan_roots[scan_root++]);continue;}
+  if(!scan_depth){scan_stop();break;}
   unsigned n=scan_depth-1;struct FileInfoBlock*fib=scan_stack[n].fib;char path[UI_PATH];
   if(!ExNext(scan_stack[n].lock,fib)){scan_pop();continue;}
   strcpy(path,scan_stack[n].path);if(!AddPart(path,fib->fib_FileName,sizeof(path)))continue;
@@ -64,8 +55,8 @@ static void scan_step(void){unsigned budget=24;
  }
  if(scan_active&&++scan_steps%20==0){char msg[180];
   if(scan_reported!=scan_added){refresh();scan_reported=scan_added;}
-  snprintf(msg,sizeof(msg),"Scanning %.120s - %u games found",scan_roots[scan_root?scan_root-1:0],scan_added);message(msg);
+  snprintf(msg,sizeof(msg),"Scanning %.120s - %u games found",scan_root_path,scan_added);message(msg);
  }
- if(!scan_active&&scan_dirty){char msg[80];refresh();snprintf(msg,sizeof(msg),"Added %u games from mounted drives.",scan_added);
+ if(!scan_active&&scan_dirty){char msg[80];refresh();snprintf(msg,sizeof(msg),"Scan complete: %u games added.",scan_added);
   if(!prefs_write())message("Games found; settings could not be saved.");else if(!scan_failed)message(msg);scan_dirty=0;}
 }

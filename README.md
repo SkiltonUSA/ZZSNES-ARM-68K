@@ -20,7 +20,8 @@ files, controls, display coordination and batched AHI audio.
 - Single-ROM ZIP loading (stored/deflate); no external unpacker required.
 - Add ROMs or folders; search, favourites, recent games and captured artwork.
 - Rename titles and delete games with confirmation.
-- Automatic ROM discovery on mounted Workbench volumes, including USB storage.
+- Disks: scan a chosen directory or mounted drive once, including USB storage.
+- Red Launch button available on every launcher page.
 - No fixed ROM-count limit; tested with 20,000 entries per library.
 - Fullscreen or Workbench window; **Alt+Return** switches during play.
 - Optional FPS overlay and **Classic, Soft or Gradient** software scanlines.

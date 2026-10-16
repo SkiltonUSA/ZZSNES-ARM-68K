@@ -4,7 +4,7 @@
 #include "display_math.h"
 static struct ui_model a,b;
 int main(void){
- ui_defaults(&a);assert(a.optimise&&a.autoscan);assert(ui_add(&a,"USB0:Games/Test.nes")==0);
+ ui_defaults(&a);assert(a.optimise&&!a.autoscan);assert(ui_add(&a,"USB0:Games/Test.nes")==0);
  assert(ui_add(&a,"usb0:games/test.nes")==0&&a.count==1);
  a.windowed=1;a.scanlines=3;a.fps=1;a.optimise=0;
  FILE*f=tmpfile();assert(f&&ui_write(f,&a));rewind(f);assert(ui_read(f,&b));fclose(f);

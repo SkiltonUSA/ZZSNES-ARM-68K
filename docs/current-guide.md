@@ -10,7 +10,11 @@ helps OS, I/O and audio servicing. Performance on a 68030 is not yet verified.
 
 ## Games
 
-**Add** selects a ROM; **Folder** imports a drawer. Search, Recent and Favourites
+Select a game, then use **Launch** in the bottom bar. It stays visible on every
+page, so you can adjust settings and launch without returning to Games.
+**Continue latest save** and the save-slot controls resume saved progress.
+
+**Add** selects a ROM; **Disks** scans a chosen drawer or drive. Search, Recent and Favourites
 filter the list. Search updates shortly after typing stops; Return applies it
 immediately. Up/Down selects a game; a letter jumps to the first matching title.
 **Rename** changes its library title while preserving its filename and saves.
@@ -18,16 +22,12 @@ immediately. Up/Down selects a game; a letter jumps to the first matching title.
 **Delete** asks Yes/No, then removes the ROM file and its associated battery saves,
 library save states and captured snapshot. Imported artwork is not deleted.
 
-**Scan drives** searches mounted Workbench volumes, including USB volumes supplied
-by your installed USB/filesystem drivers. Automatic discovery checks for new
-volumes while the library is idle. It never mounts disks or launches files.
-Scanning shows results as they arrive. **Stop scan** cancels the search. The library
-grows with available memory; there is no fixed ROM-count limit. Use Scan drives again after adding files to an existing
-volume.
+The library grows with available memory; there is no fixed ROM-count limit.
+Use **Disks / Scan once** to discover ROMs in a selected directory or USB drive.
 
 ### ZIP cartridges
 
-Add, Folder and Scan drives accept ZIPs containing one matching cartridge
+Add and Scan once accept ZIPs containing one matching cartridge
 (`.nes` for ZZNES; `.sfc` or `.smc` for ZZSNES). Stored and deflated ZIPs work;
 no external unpacker or temporary extraction drawer is needed. Companion text
 files and macOS metadata are ignored. The game is checked against its CRC before
@@ -89,3 +89,11 @@ Five slots are maintained per game. The Save states page supports resume and
 confirmed deletion. Previous states are retained as `.bak` on overwrite.
 The loading panel stays active until the first completed frame or a launch error.
 The About page contains credits and a scrolling change list.
+
+## Disks
+
+Choose a drive or directory with **Browse...**, then press **Scan once**.
+Subdirectories are included; existing library entries are skipped. **Stop scan**
+ends a scan while retaining games already found. No automatic or background
+drive discovery runs on startup or when a USB drive is inserted.
+The red **Launch** button stays in the bottom bar on every page.
