@@ -4,6 +4,10 @@ Extract the package into a writable drawer and open **ZZSNES**. Keep the player
 executable beside it. When upgrading, retain your ROMs, States, Snapshots and
 Library.cfg; older library settings are read automatically.
 
+The TF4060 is part of the test machine, not a requirement. Host executables
+target 68020 instructions; the ZZ9000 Cortex-A9 runs emulation. A faster 68k
+helps OS, I/O and audio servicing. Performance on a 68030 is not yet verified.
+
 ## Games
 
 **Add** selects a ROM; **Folder** imports a drawer. Search, Recent and Favourites

@@ -34,7 +34,16 @@ Save-state previews include miniature screenshots.
 - **ZZ9000** with compatible **XACP firmware**; tested on **XX19c / XACP 1.7**.
 - **Picasso96**, **AHI**, and **MUI 3.8 or compatible**, installed separately.
 - A writable application drawer and your own ROMs.
-- AmigaOS: tested on **3.2.3** with a TF4060-equipped A4000TX.
+- AmigaOS and a Zorro III Amiga; host executables target the **68020 instruction set**.
+
+**A TF4060 or 68060 accelerator is not required.** The ZZ9000 Cortex-A9 runs
+the emulation. A faster 68k helps file access, input, window updates and AHI
+audio servicing; it does not increase the ARM clock speed.
+
+**Tested configuration:** A4000TX, TF4060/68060, AmigaOS 3.2.3.
+The 68020 build target is not a measured minimum-speed guarantee. These builds
+have not yet been validated on a 68030, and the published FPS results apply
+to the tested configuration.
 
 The SNES core reserves 32 MiB of ZZ9000 RAM, plus display and OS allocations.
 Only one Core1 application can run at a time.
