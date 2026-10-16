@@ -64,8 +64,9 @@ compatibility, visual/audio acceptance by a person, or other firmware support.
 `make verify-current` checks archived source/artifact hashes. `make current`
 rebuilds the 68k player, MUI library and icon helper around the tested ARM image.
 `make current-arm` also recompiles the ARM payload. Neither deploys or launches
-hardware. The editable snapshot and exact prepared inputs are in
-`development/beta-20261015/`; older snapshots remain historical.
+hardware. Player sources/inputs remain in `development/beta-20261015/`. Current launcher
+sources/inputs are in `development/library-20261016/`; historical snapshots stay
+unchanged. The launcher update does not change the ARM player or its measurements.
 
 Requirements: Python 3, the pinned `amigadev/crosstools` image recorded in
 `docs/current-build.json`, and Podman (or Docker via `BETA_CONTAINER_COMMAND`).
@@ -82,3 +83,26 @@ Full standalone ARM rebuilds were compared with the tested payload after
 packing and relocation extraction; payload bytes and relocation lists matched.
 Debug paths can differ in rebuilt 68k files, so published artifacts retain their
 own checksums.
+
+## Large libraries
+
+The launcher now grows entry storage and the visible-row index dynamically.
+Case-insensitive hash indexes replace repeated linear duplicate searches, and
+`qsort` replaces insertion sorting. MUI copies row strings, so the old fixed
+row-text array is removed. List refreshes suppress intermediate redraws. Search polls the edited string
+with a 200 ms typing delay because this MUI version does not notify Contents for
+each keystroke; Return also applies the filter.
+There is no configured ROM-count ceiling; allocations are checked against
+available memory and the platform's address/index representation.
+
+20,000 synthetic entries passed native ASan/UBSan checks for persistence,
+search/filter/sorting, rename, duplicate lookup, removal and allocation failure.
+Both physical MUI launchers loaded and saved 20,000 entries unchanged, including
+selection beyond the old cap. This exercises library metadata, not cartridge
+compatibility for 20,000 games. First opening took about 27 seconds on the test
+machine; this is not an instantaneous-loading claim.
+
+Run `make test-library-large`. New evidence is in
+`amiga/records/2026-10-16/large-library/`. The v1/v2/v3 settings formats and existing
+save keys remain compatible. Allocation failure does not silently replace an
+existing settings file. Scanning retains accepted entries if memory runs out.

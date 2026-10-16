@@ -17,13 +17,14 @@ static struct node nodes[]={
  {"USB:USB.nes",-3,{NULL}},
 };
 static unsigned locks,allocated,refreshes,writes;
+static int resolve_failure;
 static BPTR Lock(const char*p,int mode){(void)mode;if(!strcmp(p,"RAM:"))p="RAM Disk:";if(!strcmp(p,"PROGDIR:Existing.nes"))p="RAM Disk:ROMs/Existing.nes";
  for(unsigned i=0;i<sizeof(nodes)/sizeof(*nodes);i++)if(!strcasecmp(p,nodes[i].path)){locks++;return(BPTR)&nodes[i];}return 0;}
 static void UnLock(BPTR p){assert(p&&locks);locks--;}
 static struct FileInfoBlock*AllocDosObject(int type,void*args){(void)type;(void)args;allocated++;return calloc(1,sizeof(struct FileInfoBlock));}
 static void FreeDosObject(int type,void*p){(void)type;assert(allocated);allocated--;free(p);}
 static int Examine(BPTR p,struct FileInfoBlock*f){f->fib_DirEntryType=((struct node*)p)->type;f->cursor=0;return 1;}
-static int NameFromLock(BPTR p,char*out,unsigned cap){return snprintf(out,cap,"%s",((struct node*)p)->path)<(int)cap;}
+static int NameFromLock(BPTR p,char*out,unsigned cap){if(resolve_failure){memset(out,'x',cap);return 0;}return snprintf(out,cap,"%s",((struct node*)p)->path)<(int)cap;}
 static int AddPart(char*p,const char*n,unsigned cap){size_t used=strlen(p);if(used+strlen(n)+2>=cap)return 0;if(used&&p[used-1]!=':')strcat(p,"/");strcat(p,n);return 1;}
 static int ExNext(BPTR p,struct FileInfoBlock*f){struct node*n=(void*)p;const char*child=n->children[f->cursor++];char path[512];BPTR q;
  if(!child)return 0;strcpy(path,n->path);assert(AddPart(path,child,sizeof(path)));q=Lock(path,0);assert(q);f->fib_DirEntryType=((struct node*)q)->type;strcpy(f->fib_FileName,child);UnLock(q);return 1;}
@@ -53,5 +54,7 @@ int main(void){
  volumes[3].dol_Task=(void*)1;scan_begin(0);assert(scan_count==1);finish();assert(model.count==3&&writes==2);
  scan_begin(1);finish();assert(model.count==3&&writes==2);
  scan_begin(1);assert(scan_push("RAM Disk:"));scan_stop();assert(!locks&&!allocated);
+ resolve_failure=1;scan_existing_count=~0u;assert(scan_known("PROGDIR:Existing.nes")==1);resolve_failure=0;scan_stop();
+ ui_dispose(&model);
  puts("PASS mounted/unmounted volumes, hot-plug discovery, PROGDIR deduplication, link exclusion, cancellation and DOS resource release");
 }

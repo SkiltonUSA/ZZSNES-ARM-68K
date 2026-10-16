@@ -14,5 +14,6 @@ int main(void){
  uint32_t p=value*0x01010101u;assert(em_scan_dim(p,level)==((value*level)>>3)*0x01010101u);}
  for(unsigned mode=0;mode<4;mode++)for(unsigned row=0;row<240;row++)assert(em_scan_level(mode,row)<=8);
  for(unsigned fps=0;fps<1000;fps++)for(unsigned y=0;y<12;y++)for(unsigned x=0;x<44;x++){int v=em_fps_ink(x,y,fps);assert(v>=-1&&v<=1);}
+ ui_dispose(&a);ui_dispose(&b);
  puts("PASS settings v2/v3 migration, bounded scanline arithmetic and FPS glyph bounds");return 0;
 }

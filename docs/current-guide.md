@@ -1,4 +1,4 @@
-# ZZSNES 0.5.0 Beta
+# ZZSNES 0.5.1 Beta
 
 Extract the package into a writable drawer and open **ZZSNES**. Keep the player
 executable beside it. When upgrading, retain your ROMs, States, Snapshots and
@@ -7,7 +7,8 @@ Library.cfg; older library settings are read automatically.
 ## Games
 
 **Add** selects a ROM; **Folder** imports a drawer. Search, Recent and Favourites
-filter the list. Up/Down selects a game; a letter jumps to the first matching title.
+filter the list. Search updates shortly after typing stops; Return applies it
+immediately. Up/Down selects a game; a letter jumps to the first matching title.
 **Rename** changes its library title while preserving its filename and saves.
 
 **Delete** asks Yes/No, then removes the ROM file and its associated battery saves,
@@ -17,7 +18,7 @@ library save states and captured snapshot. Imported artwork is not deleted.
 by your installed USB/filesystem drivers. Automatic discovery checks for new
 volumes while the library is idle. It never mounts disks or launches files.
 Scanning shows results as they arrive. **Stop scan** cancels the search. The library
-holds up to 128 entries. Use Scan drives again after adding files to an existing
+grows with available memory; there is no fixed ROM-count limit. Use Scan drives again after adding files to an existing
 volume. ZIP archives must be extracted first.
 
 ## Display

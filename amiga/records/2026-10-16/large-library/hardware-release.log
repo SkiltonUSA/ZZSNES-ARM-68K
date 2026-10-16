@@ -1,0 +1,8 @@
+10.0.0.40 - - [16/Oct/2026 07:09:45] "GET /ZZNES HTTP/1.0" 200 -
+10.0.0.40 - - [16/Oct/2026 07:09:47] "GET /ZZNES.cfg HTTP/1.0" 200 -
+ZZNES opened 25.55 seconds
+ZZNES 20,000 entries persisted unchanged and clean exit
+10.0.0.40 - - [16/Oct/2026 07:10:47] "GET /ZZSNES HTTP/1.0" 200 -
+10.0.0.40 - - [16/Oct/2026 07:10:48] "GET /ZZSNES.cfg HTTP/1.0" 200 -
+ZZSNES opened 27.36 seconds
+ZZSNES 20,000 entries persisted unchanged and clean exit

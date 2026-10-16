@@ -20,3 +20,6 @@
 
 ![About](screenshots/about.png)
 
+## Large libraries
+
+[20,000-entry check on the Amiga](../amiga/records/2026-10-16/large-library/README.md).

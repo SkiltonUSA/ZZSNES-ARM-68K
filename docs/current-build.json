@@ -50,7 +50,7 @@
     "pocket.elf": "4d5cd05901c6ab6cb35542f80fdc12ae155e94a7088bd32a76cabcdec13c6e51"
   },
   "snapshot_dir": "development/beta-20261015",
-  "artifact_dir": "artifacts/beta-0.5.0",
+  "artifact_dir": "artifacts/beta-0.5.1",
   "player": "ZZSnes-ui",
   "image": "docker.io/amigadev/crosstools@sha256:93ca1a47903b61873f6638881b44f9f2d6086a39f1b9b916a26faff3a8ea4d3d",
   "arm_sources": [
@@ -137,5 +137,7 @@
     "-I/work/.context/amiga/pocketsnes-regions/build/libretro/libretro-common/include",
     "-I/work/amiga/mesen_bench",
     "-DRETRO_API="
-  ]
+  ],
+  "library_snapshot_dir": "development/library-20261016",
+  "launcher_version": "0.5.1 Beta"
 }

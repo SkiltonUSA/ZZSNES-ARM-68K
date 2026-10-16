@@ -9,7 +9,11 @@ def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
  p=argparse.ArgumentParser();p.add_argument('--arm',action='store_true');a=p.parse_args()
  m=json.loads((ROOT/'docs/current-build.json').read_text());snap=ROOT/m['snapshot_dir'];source=snap/'source';out=ROOT/'.context/current-build';stage=out/'player';lib=out/'library'
- shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);shutil.copytree(snap/'build-inputs/library',lib,dirs_exist_ok=True)
+ shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
+ shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
+ for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
+ if m['console']=='ZZNES':
+  p=lib/'library_mui.h';s=p.read_text();s=s.replace('"Header supported: NTSC, mapper %d\\nGameplay compatibility varies by title.",mapper','"Header supported: %s, mapper %d\\nGameplay compatibility varies by title.",fc_rom_pal(p,n,model.entry[selected].path)?"PAL":"NTSC",mapper').replace('NTSC mapper 0 or 90, without trainer or battery.','mapper 0/1/2/4/5/90; no trainer or battery.');p.write_text(s)
  snes=m['console']=='ZZSNES';rel=lambda p:str(p.relative_to(ROOT));inside=lambda p:os.environ.get('ARM_CONTAINER_ROOT','/work')+'/'+rel(p)
  if a.arm:
   core=source/'core';objects=[]

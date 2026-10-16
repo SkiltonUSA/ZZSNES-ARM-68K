@@ -1,3 +1,16 @@
+# Large-library update: ZZSNES 0.5.1 Beta
+
+Launcher-only update: dynamic library storage, path indexes and sorting.
+No fixed ROM-count cap. Player binary/ARM payload unchanged. Source and prepared
+launcher inputs: `development/library-20261016/`. `make test-library-large`
+validates large collections and failure recovery. Physical 20,000-entry MUI
+load/save and live-search checks passed; see the 16 October records.
+Installed under the existing Emulator drawer with executable checksum checks.
+Previous launcher and preferences retained in `Rollback-1016`; existing library
+bytes were unchanged by installation. No player, ROM or save files replaced.
+
+---
+
 # Current beta: ZZSNES 0.5.0
 
 Current editable sources and exact build inputs: `development/beta-20261015/`.

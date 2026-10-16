@@ -1,3 +1,10 @@
+# Current launcher update: ZZSNES 0.5.1 Beta
+
+`beta-0.5.1/` includes the growing-library launcher and unchanged tested
+player from 0.5.0. Old release artifacts remain immutable.
+
+---
+
 # Current: ZZSNES 0.5.0 Beta
 
 `beta-0.5.0/` contains the installed launcher/player pair, Workbench icon and

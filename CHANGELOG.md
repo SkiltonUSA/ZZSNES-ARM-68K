@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.1 Beta
+
+- Remove the 128-ROM cap; library and display storage grow with available memory.
+- Hash-based duplicate detection and faster sorting for large collections.
+- Live search with a short typing delay on MUI.
+- Graceful allocation failure; retain discovered entries and existing settings.
+- Existing preferences, favourites, history and save paths remain compatible.
+
 ## 0.5.0 Beta
 
 - Sidebar MUI launcher, original branding and Workbench icon.
