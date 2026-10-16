@@ -1,0 +1,6 @@
+RUN frames=2400 changed=0 last=00000000
+REPLAY mismatch frame=0 video=cd94b1ef/66e697d9 pcm=9be2bdf6/a96111a6
+REPLAY mismatch frame=1 video=659ff485/659ff485 pcm=1ccbb783/66f7b40d
+REPLAY mismatch frame=24 video=9bdab330/9bdab330 pcm=18f37c63/de2ee9ef
+REPLAY mismatch frame=25 video=6efdf7d2/6efdf7d2 pcm=9bb87def/7afed4cc
+REPLAY mismatches=4

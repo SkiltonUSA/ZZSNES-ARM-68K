@@ -1,5 +1,8 @@
 # Supplied SNES cartridge survey
 
+**Follow-up:** [compatibility candidate, longer replay tests and A9 checks](compatibility-development.md).
+The table below records the original survey before that work.
+
 All eleven archives contain one cartridge. None exceeds the current 4 MiB ROM
 limit. Super Street Fighter II is exactly 4 MiB and needs no enhancement chip.
 The selection exercises five Super FX cartridges, one SA-1 cartridge and five

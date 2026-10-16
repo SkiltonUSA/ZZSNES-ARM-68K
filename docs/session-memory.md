@@ -1,3 +1,22 @@
+# Compatibility candidate — isolated, not a release
+
+`development/compatibility-20261016/` adds explicit sprite-cache reconstruction
+on restore. The two frame-600 replay failures (Imperium/Stunt Race FX) now pass
+same/fresh-process checks. Longer replays still fail for multiple games; blank
+Star Fox/Star Fox 2 checkpoints are not compatibility passes. Star Fox 2 is
+waiting on sound ports before Super FX begins in the native diagnostic.
+
+Candidate player tested in a separate development drawer: seven 600-frame
+physical runs and Imperium paused save/load/snapshot/exit, clean ownership,
+register/cache witnesses and teardown. Native sanitizers, two-base ARM state
+model and presenter regressions passed within their stated scope. Main 0.6.1
+installation/payload unchanged. See compatibility-development.md and logs.
+Use explicit `build_current.py --arm --experimental-chips` for CLI chip tests;
+`--compatibility` retains the normal gate. Neither flag changes the MUI gate.
+Normal make current/current-arm still builds the release. No firmware changes.
+
+---
+
 # ZZSNES 0.6.1 Beta — EmuELEC border
 
 Matching rebuilt launcher/player installed with checksums. Original files and

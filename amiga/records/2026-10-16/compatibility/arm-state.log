@@ -1,0 +1,5 @@
+PASS base=12000040 state=686196 bytes; exact 30-frame video/stereo replay at restored frame6
+PASS corrupted thumbnail and different-ROM header rejected without frame advance
+PASS base=150020c0 state=686196 bytes; exact 30-frame video/stereo replay at restored frame6
+PASS corrupted thumbnail and different-ROM header rejected without frame advance
+PASS relocated state survives a fresh Core1 address

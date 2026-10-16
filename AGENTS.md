@@ -27,3 +27,8 @@ payload remains from the original snapshot. Run `make test-zip` after archive ch
 
 Current ARM presentation overlays and packed image are in the snapshot player/
 directory. Run make test-border and make test-current after border changes.
+
+Compatibility candidate overlays live in development/compatibility-20261016/.
+They require an explicit build_current.py --arm --compatibility or
+--experimental-chips flag. The normal release is deliberately unchanged. Read
+docs/compatibility-development.md before enabling a chip or claiming game support.

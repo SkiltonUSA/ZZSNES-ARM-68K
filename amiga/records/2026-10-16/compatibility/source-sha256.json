@@ -1,0 +1,5 @@
+{
+  "development/compatibility-20261016/snapshot.patch": "165540cd552c9472033cf3e04cccf975caf148ae05ff2181c3d12aa4f291fff4",
+  "development/compatibility-20261016/README.md": "b4b79d3bf26ecef4b94725979c3ed18b53f364b6aa91dcf1d39098ade6d44651",
+  "development/compatibility-20261016/core/src/snapshot.c": "cef8de0cf7dfc57a51683b1a8cd590d0b91762d140e42d215a84ee397f95dc48"
+}

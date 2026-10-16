@@ -1,0 +1,19 @@
+RUN frames=2400 changed=482 last=b8a6b22a
+STATE bytes=687028 frame=2400
+REPLAY mismatch frame=14 video=1f1745ee/1f1745ee pcm=edda2549/81e05c0e
+REPLAY mismatch frame=15 video=1f1745ee/1f1745ee pcm=19565c9e/f37fb66a
+REPLAY mismatch frame=16 video=3b85a5fe/3b85a5fe pcm=e0a3e4df/8c3fc530
+REPLAY mismatch frame=17 video=3b85a5fe/3b85a5fe pcm=078920e6/17dbb44f
+REPLAY mismatch frame=18 video=3b85a5fe/3b85a5fe pcm=16c4ca10/a1f00561
+REPLAY mismatch frame=19 video=3b85a5fe/3b85a5fe pcm=54cda27a/c113a129
+REPLAY mismatch frame=20 video=1f1745ee/1f1745ee pcm=fb3376f3/a8020352
+REPLAY mismatch frame=21 video=1f1745ee/1f1745ee pcm=05334ab4/e9139bfd
+REPLAY mismatch frame=22 video=1f1745ee/1f1745ee pcm=0efe3cc7/c50f9507
+REPLAY mismatch frame=23 video=1f1745ee/1f1745ee pcm=e40eb897/07e92274
+REPLAY mismatch frame=24 video=3b85a5fe/3b85a5fe pcm=bd4763c2/c4200cd9
+REPLAY mismatch frame=25 video=3b85a5fe/3b85a5fe pcm=af654397/f601e1f5
+REPLAY mismatch frame=26 video=3b85a5fe/3b85a5fe pcm=8902e84d/d114cd04
+REPLAY mismatch frame=27 video=3b85a5fe/3b85a5fe pcm=22dbe00e/6a9b4957
+REPLAY mismatch frame=28 video=1f1745ee/1f1745ee pcm=8a66224e/e14b86a8
+REPLAY mismatch frame=29 video=1f1745ee/1f1745ee pcm=d7dfa254/4ca89104
+REPLAY mismatches=16

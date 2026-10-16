@@ -1,0 +1,4 @@
+RUN frames=2400 changed=892 last=8d684de4
+STATE bytes=687028 frame=2400
+REPLAY mismatch frame=0 video=51265147/8ea3f6e4 pcm=c7671aad/c7671aad
+REPLAY mismatches=1

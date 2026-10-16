@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased compatibility research
+
+- Candidate: rebuild derived sprite lists after state restore; resolves the
+  frame-600 Imperium and Stunt Race FX video replay failures without a format change.
+- Add longer, fresh-process replay diagnostics and isolated A9 chip builds.
+- Record remaining Super FX/SA-1, raster and audio failures; normal cartridge
+  support and the published 0.6.1 Beta are unchanged.
+
 ## 0.6.1 Beta
 
 - Add EmuELEC side-panel theme to both display modes.

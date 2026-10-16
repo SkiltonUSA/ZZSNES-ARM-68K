@@ -1,0 +1,16 @@
+[
+  {
+    "rom": "Imperium (USA).zip",
+    "frames": 600,
+    "baseline": true,
+    "status": 3,
+    "fresh_status": -6
+  },
+  {
+    "rom": "Stunt Race FX (USA) (Rev 1).zip",
+    "frames": 600,
+    "baseline": true,
+    "status": 3,
+    "fresh_status": -6
+  }
+]

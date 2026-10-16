@@ -1,0 +1,16 @@
+{
+  "experimental_gate": true,
+  "base_version": "0.6.1 Beta",
+  "core_overlay": "development/compatibility-20261016/core",
+  "files": {
+    "pocket.elf": {
+      "bytes": 1756180,
+      "sha256": "b91c3d5b34ce01ea85a005ce81d7417b327b66b792078e5ccbc147be4d464832"
+    },
+    "ZZSnes-ui": {
+      "bytes": 861664,
+      "sha256": "60f4e177b27e366dc256ffb94159c2d36520c197be805347de19a4643349de2f"
+    }
+  },
+  "installed_in_main_launcher": false
+}

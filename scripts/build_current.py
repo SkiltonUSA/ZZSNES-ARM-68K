@@ -7,8 +7,10 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--arm',action='store_true');a=p.parse_args()
- m=json.loads((ROOT/'docs/current-build.json').read_text());snap=ROOT/m['snapshot_dir'];source=snap/'source';out=ROOT/'.context/current-build';stage=out/'player';lib=out/'library'
+ p=argparse.ArgumentParser();p.add_argument('--arm',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ if (a.experimental_chips or a.compatibility) and not a.arm:p.error('compatibility experiments require --arm')
+ compatibility=a.experimental_chips or a.compatibility
+ m=json.loads((ROOT/'docs/current-build.json').read_text());snap=ROOT/m['snapshot_dir'];source=snap/'source';out=ROOT/('.context/compatibility-build'if compatibility else'.context/current-build');stage=out/'player';lib=out/'library'
  shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
  shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
@@ -22,6 +24,14 @@ def main():
  snes=m['console']=='ZZSNES';rel=lambda p:str(p.relative_to(ROOT));inside=lambda p:os.environ.get('ARM_CONTAINER_ROOT','/work')+'/'+rel(p)
  if a.arm:
   core=source/'core';objects=[]
+  if compatibility:
+   core=out/'core'
+   shutil.copytree(source/'core',core,dirs_exist_ok=True)
+   shutil.copytree(ROOT/'development/compatibility-20261016/core',core,dirs_exist_ok=True)
+  if a.experimental_chips:
+   header=(stage/'cartridge.h').read_text()
+   header=header.replace('(map==0x20+i||map==0x30+i||contra)&&type<=2','(((map==0x20+i||map==0x30+i||contra)&&type<=2)||(!i&&map==0x20&&(type==0x13||type==0x14||type==0x15||type==0x1a))||(!i&&map==0x23&&(type==0x34||type==0x35)))')
+   (stage/'cartridge.h').write_text(header);(core/'cartridge.h').write_text(header)
   if snes:
    prefix=json.loads(os.environ.get('ARM_BUILD_COMMAND','[]'))
    flags=m['arm_flags'];flags=[f for f in flags if not f.startswith('-I')];flags=[inside(source/'amiga/pocketsnes/libc_config.h')if f=='/work/amiga/pocketsnes/libc_config.h'else f for f in flags]
@@ -33,6 +43,7 @@ def main():
    flags+=['-I'+str(d)for d in [stage,core,*[source/'amiga'/d for d in ['fceux_bench','mesen_nes','mesen_bench','arm_debug','arm_debug/zz9000']]]]
   for i,relpath in enumerate(m['arm_sources']):
    src=ROOT/relpath
+   if src.is_relative_to(source/'core'):src=core/src.relative_to(source/'core')
    if src.parent==snap/'build-inputs/player':src=stage/src.name
    obj=stage/f'{i}.o';objects.append(obj);cpp=src.suffix=='.cpp';cc=('arm-none-eabi-g++'if cpp else'arm-none-eabi-gcc')if snes else os.environ.get('CLANG','clang')
    args=flags+(['-std=c++14','-fno-exceptions','-fno-rtti']+([]if snes else['-nostdinc++'])if cpp else[])

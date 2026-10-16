@@ -1,0 +1,13 @@
+--- a/src/snapshot.c
++++ b/src/snapshot.c
+@@ -678,6 +678,10 @@
+ #endif
+    S9xReschedule();
+ 
++   /* Derived sprite lists are not part of the snapshot. Rebuild only after
++    * all PPU/RAM state has been restored, before the first resumed frame. */
++   S9xSetupOBJ();
++
+    S9xSRTCPostLoadState();
+    if (Settings.SDD1)  S9xSDD1PostLoadState();
+ 
