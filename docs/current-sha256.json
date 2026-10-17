@@ -979,7 +979,7 @@
   "development/borders-20261016/borders/emuelec.json": "04769e71b37627aa12fd66061d2d697046612eaece03dbc385dbb457a8306693",
   "development/borders-20261016/source/library_scan.h": "493c32301e50e5df1d17cda886076ac089248198dc474bf88b7e01d5759fd196",
   "development/borders-20261016/source/ui_model.h": "5dc22cfcb9a9a74b4d80318853699c3f3c8a6b2eae7957e21f7db4590fe76dba",
-  "development/borders-20261016/source/library_mui.h": "da64f4f101929d8ff961a7e215550c39165229301ad6bdc1e7bf926728a3a5a4",
+  "development/borders-20261016/source/library_mui.h": "c89e53522fa6b24c431a6d5a2d0e4bfc23373c0517b639fe7be6d80e0c914662",
   "development/borders-20261016/source/library_launch.h": "fe7cec96d404d4c7667d9a5328753a3cbb16a2b28002a261652a94d98de750c7",
   "development/borders-20261016/source/library_brand.h": "5effc93917d716f880f39468f2924327ab095670a141e786f36e81be6603c860",
   "development/borders-20261016/source/library_style.h": "6594b1e1083880bd06d1adca49a7d07dbeaf8a7579c70cd8610736d185609ddc",
@@ -1093,12 +1093,15 @@
   "development/fx3-20261016/core/src/fxinst.h": "1df77df726b9adc6970c988a0272e70bab0c36efc70e5ed3796f2b78197ef527",
   "development/thin-scanlines-20261016/host/host.c": "dcbc079a32cde41b8957c4682455cf7bf9edf0c72cbada901f00b3ee9bbed620",
   "development/thin-scanlines-20261016/source/ui_model.h": "4fa5a9f15eb3e4a25e5d5be0978513382aea25d9f399380bc25bdfb7eddffb8f",
-  "development/thin-scanlines-20261016/source/library_mui.h": "e8d1c9166474fea787b9ba83c1f653b917a5f082fe7484224409f4c848db0050",
+  "development/thin-scanlines-20261016/source/library_mui.h": "cd791159d0b03bd13d59fdfda2dbb94652db642916b10592a295f2ed41b711cf",
   "development/thin-scanlines-20261016/player/direct.cpp": "17a6012fb51eb61db016b5157f94f31152448062612b87e7c7746b0ecf4a4fd6",
   "development/thin-scanlines-20261016/player/direct_plan.h": "c7bf6bacd1f9729ffdc5b58478688599c5247f1fd3766e53ad963cc47cf41f32",
   "development/thin-scanlines-20261016/player/session.h": "12cfb2e816f1daf71dcfec41c5438774ad8e7bf89039c8b3d7092956b8f3f196",
   "development/thin-scanlines-20261016/player/fullscreen.h": "5c132c344b80e79255339b53aa86d5d1dc87534146244ab9198ee9570c7d6bd3",
   "development/thin-scanlines-20261016/player/display_math.h": "8311e7109f45cf4932081bec788f837d08beaa730ee2e57f97575bbdfaf16e00",
   "development/thin-scanlines-20261016/player/window_display.h": "704d10d68b96db1cbeaf96567c23e8b050dd5d0f2ddaeaa6d0407121740d09b8",
-  "development/fx3-20261016/README.md": "7447b0bccec808341982dc2a68cb0b4c20cbe406219fb2b3b6bfa31b4f82e827"
+  "development/fx3-20261016/README.md": "7447b0bccec808341982dc2a68cb0b4c20cbe406219fb2b3b6bfa31b4f82e827",
+  "artifacts/development/scanline-label-20261017/README.md": "ef78db9507138f173e37e4bc7bd2e56de2e1ec9aee94cd0cbcb7214867fc1acb",
+  "artifacts/development/scanline-label-20261017/SHA256SUMS": "93047e707c2ffc54c87517fa43f1bfa4d02d7fe3f3412faf22f1d719d181f1a6",
+  "artifacts/development/scanline-label-20261017/ZZSNES": "d9fe1cb04308ba48fd6e703511189c9319c87c30ee4e8481db4e9738254ed6b9"
 }

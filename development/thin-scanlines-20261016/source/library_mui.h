@@ -382,7 +382,7 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
    Child,VGroup,MUIA_Group_Spacing,8,
     Child,ColGroup(2),GroupFrameT("Presentation"),
      Child,TextObject,MUIA_Font,ui_font(),MUIA_FixWidth,180,MUIA_Text_Contents,(ULONG)"Display",End,Child,display_mode=cycle(display_choices),
-     Child,textline("Scanlines"),Child,scanline_mode=cycle(scanline_choices),
+     Child,textline("Software scanlines"),Child,scanline_mode=cycle(scanline_choices),
      Child,textline("On-screen FPS"),Child,HGroup,Child,fps_option=CheckMark(FALSE),Child,HSpace(0),End,
      Child,textline("Optimised presenter"),Child,HGroup,Child,optimise_option=CheckMark(TRUE),Child,HSpace(0),End,End,
     Child,textline("Alt + Return switches display during play. F10 returns to the library."),
@@ -468,6 +468,7 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
  notify(latest,MUIA_Pressed,FALSE,ID_LATEST);notify(saves,MUIA_Pressed,FALSE,ID_SAVES);
  notify(rename_button,MUIA_Pressed,FALSE,ID_RENAME);notify(art_button,MUIA_Pressed,FALSE,ID_ART);notify(clear_art,MUIA_Pressed,FALSE,ID_CLEAR_ART);
  for(unsigned i=0;i<5;i++){notify(card_resume[i],MUIA_Pressed,FALSE,ID_SLOT_RESUME+i);notify(card_delete[i],MUIA_Pressed,FALSE,ID_SLOT_DELETE+i);}
+ set(scanline_mode,MUIA_ShortHelp,(ULONG)"ARM software effect from ZZDosBox.\nNo ZZScanlines utility required.\nTurn global Workbench scanlines off to avoid double filtering.");
  set(display_mode,MUIA_Cycle_Active,model.windowed);set(scanline_mode,MUIA_Cycle_Active,model.scanlines);set(fps_option,MUIA_Selected,model.fps);set(optimise_option,MUIA_Selected,model.optimise);
  set(monitor,MUIA_Cycle_Active,model.monitor);set(theme,MUIA_Cycle_Active,model.theme);set(mask,MUIA_Cycle_Active,model.mask);set(vmask,MUIA_Cycle_Active,model.vmask);set(slot,MUIA_Cycle_Active,model.slot);set(mute,MUIA_Selected,model.mute);set(fire,MUIA_Cycle_Active,model.fire);
  return 1;
