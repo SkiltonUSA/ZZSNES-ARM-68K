@@ -117,3 +117,13 @@ test-scanline-key:
 	mkdir -p .context
 	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/host tests/amiga/emulator/scanline_key.c -o .context/test-scanline-key
 	.context/test-scanline-key
+
+.PHONY: test-rom-manager launcher
+launcher:
+	$(PYTHON) scripts/build_launcher.py
+test-rom-manager:
+	mkdir -p .context
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/source -Idevelopment/borders-20261016/source tests/amiga/emulator/rom_manager.c -o .context/test-rom-manager
+	.context/test-rom-manager
+	$(CC) -O2 -g -fsanitize=address,undefined -Itests/amiga/emulator/mock -Idevelopment/borders-20261016/source tests/amiga/emulator/scan.c -o .context/test-rom-scan
+	.context/test-rom-scan

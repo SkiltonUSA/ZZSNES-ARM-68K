@@ -1,0 +1,31 @@
+diff --git a/src/amiga/main.c b/src/amiga/main.c
+index fa7c8b3..c080309 100644
+--- a/src/amiga/main.c
++++ b/src/amiga/main.c
+@@ -911,7 +911,12 @@ static int install_entry(const aidx_index *idx, const aidx_entry *e)
+     /* Packages with a portable recipe run it; the fetch-only Aminet entries fall
+      * back to a generic install (extract into the configured install drawer). */
+     if (e->has_recipe) {
+-        char *json = read_file(amipkg_data_path("packages.json"));
++        char catalog[AMIPKG_PREFIX_MAX + 96];
++        char *json;
++        /* The merged entry retains its winning repository. Read the recipe
++         * from that verified cache, including explicitly qualified installs. */
++        arepo_catalog_path(entry_repo(e), catalog, sizeof catalog);
++        json = read_file(catalog);
+         tree = json ? ajson_parse(json) : NULL;
+         free(json);
+         entry_obj = tree ? find_entry_obj_by_id(tree, e->id) : NULL;
+diff --git a/src/core/store.h b/src/core/store.h
+index cd911a1..ecf6f53 100644
+--- a/src/core/store.h
++++ b/src/core/store.h
+@@ -36,7 +36,7 @@ char *amipkg_data_path(const char *rel);
+ 
+ /* THE version - single source for $VER tags, About boxes, the UA string
+  * and the self-seeded receipt. Bump HERE (plus the catalog entry). */
+-#define AMIPKG_VERSION "0.7.11"
++#define AMIPKG_VERSION "0.7.11-zztest1"
+ #define AMIPKG_VERDATE "15.8.2026"
+ 
+ /* Shown by BOTH GUIs when a shelled-out command produced NOTHING at all.

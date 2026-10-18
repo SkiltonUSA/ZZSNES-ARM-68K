@@ -1,5 +1,14 @@
 # Changelog
 
+## Development — ROM Manager and temperature
+
+- Bulk import from a selected directory or mounted SD/USB drive, including subfolders.
+- Confirmed duplicate library-entry removal using decoded ROM content; files and saves kept.
+- Verified save-state, battery-save, snapshot and library backups into new folders.
+- Live read-only ZZ9000 Zynq temperature beside the version number.
+- Experimental amipkg LHA/recipe builder with automatic install-missing Xanxi controls.
+  Custom repositories require the documented local amipkg 0.7.11 recipe fix.
+
 ## Scanline backend development update
 
 - Fullscreen: Xanxi FPGA Classic/Soft/Gradient; window: Soft software filtering.

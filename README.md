@@ -20,7 +20,8 @@ files, controls, display coordination and batched AHI audio.
 - Single-ROM ZIP loading (stored/deflate); no external unpacker required.
 - Add ROMs or folders; search, favourites, recent games and captured artwork.
 - Rename titles and delete games with confirmation.
-- Disks: scan a chosen directory or mounted drive once, including USB storage.
+- [ROM Manager](docs/rom-manager.md): bulk folder import, duplicate-entry cleanup and verified save-state backups to disk or USB.
+- Live ZZ9000 temperature beside the launcher version.
 - Red Launch button available on every launcher page.
 - No fixed ROM-count limit; tested with 20,000 entries per library.
 - Fullscreen or Workbench window; **Alt+Return** switches during play.
@@ -33,7 +34,7 @@ Save-state previews include miniature screenshots.
 
 ## Scanlines
 
-[Download the development package](artifacts/development/fpga-scanlines-20261018/ZZSNES-0.6.2-dev-fpga.zip).
+[Download the development package](artifacts/development/rom-manager-20261018/ZZSNES-0.6.2-dev-fpga.zip).
 
 The current development package uses **Xanxi’s FPGA scanlines in fullscreen**
 and **Soft software scanlines in a Workbench window**. The two effects do not
@@ -53,7 +54,7 @@ Thanks to [Xanxi’s zz9000-scanlines](https://github.com/Xanxi-Amiga/zz9000-sca
 for the hardware interface and bundled tools. Windowed Soft filtering remains
 our ARM software routine shared with ZZDosBox. Previous tagged beta downloads
 use software scanlines in both modes; those archives have not been replaced.
-[Installation and controls](docs/scanline-install.txt) · [Integration report](docs/fpga-scanlines-20261018.md).
+[Automatic package-manager installation (experimental)](docs/package-manager.md) · [Installation and controls](docs/scanline-install.txt) · [Integration report](docs/fpga-scanlines-20261018.md).
 
 Hardware filtering occurs after framebuffer readback, so F9 screenshots do not
 capture the FPGA effect. The following images show the earlier software effect.

@@ -445,3 +445,27 @@ Temporary HTTP55031 stopped after transfer; GitHub backup is this standalone ZZS
 ## First real-cartridge reference (native only)
 
 Super Mario World, SHA256 0838e531fe22c077528febe14cb3ff7c492f1f5fa8de354192bdff7137c27f5b, passed 600 startup/menu frames with active PCM after the test-only BRR signed-shift patch. No new ARM build or hardware run. See amiga/records/2026-10-10/pocketsnes-smw-native/. Cartridge bytes are local-only.
+
+## ROM Manager and package-manager pilot — 18 October 2026
+
+Current development launcher adds ROM Manager (bulk recursive import, confirmed
+duplicate-entry cleanup, verified save/battery/snapshot backups) and read-only
+ZZ9000 temperature beside the version. Duplicate matching compares decoded ROM
+bytes; first entry retained, favourite/history merged; no ROM/save deletion.
+Native sanitizers and 20,000-entry tests passed. Both physical launcher fixtures
+removed three duplicates (raw copy, ZIP copy, canonical alias), retained one
+different and one missing entry, imported two nested ROMs, and verified all five
+backup files. Fixture ROM/save bytes remained identical. NES confirmation Cancel
+left Library.cfg byte-identical. Temperature displayed 58.0 C alongside the
+separate sensor monitor; independent ONCE sample was 57.7 C later in the session.
+
+Installed launcher 247,460 bytes, SHA256
+`5eb2ad5c38252a4be028c04ae91f71d70cb1da3fbc898873ab2bc40e365f85c9`. Previous launcher and Library.cfg are in the local
+Rollback-manager-1018 drawer. Deployment preserved live Library.cfg byte-for-byte.
+ARM players and firmware unchanged; no game launches in this UI test. Actual
+USB media backup was not exercised; mounted paths use normal AmigaDOS I/O.
+
+The amipkg package builder bundles Xanxi tools and automatically runs the
+install-missing helper. Physical isolated amipkg pilot passed with the local
+0.7.11-zztest1 recipe-origin fix; stock 0.7.11 fails custom-repo recipes. See
+docs/package-manager.md. No public feed or new tagged release was created.

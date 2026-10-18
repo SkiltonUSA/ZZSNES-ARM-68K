@@ -1,0 +1,1 @@
+Derived from thomas-luebker/amipkg dist/mklha.py at 66cfb9888f7d6b28d1411ff254817ee14ed4e043 (Apache-2.0). Local changes: import-safe main guard and reject filenames exceeding the level-0 header capacity. Stored LHA, no compression.

@@ -30,3 +30,11 @@ To rebuild controls with an Amiga GCC toolchain:
   m68k-amigaos-gcc -std=gnu99 -noixemul -m68020 -O2 vendor/ZZScanlines.c -lamiga -o ZZScanlines
   m68k-amigaos-gcc -std=gnu99 -noixemul -m68020 -O2 vendor/ZZScanlinesGUI.c -lamiga -o ZZScanlinesGUI
   m68k-amigaos-gcc -std=gnu99 -noixemul -m68020 -O2 install.c -lamiga -o Install-Scanlines
+
+ROM Manager
+-----------
+Use ROM Manager for one-time bulk folder import, duplicate library-entry cleanup
+and verified save-state backups to a mounted disk or USB drive. Duplicate cleanup
+keeps ROM files and saves. Backups include states, snapshots, library settings
+and battery saves; the completed folder contains Backup.txt ending in COMPLETE.
+The footer shows the ZZ9000 Zynq temperature beside the version number.

@@ -4,7 +4,7 @@
 #define SCAN_DEPTH 24
 static struct {BPTR lock;struct FileInfoBlock *fib;char path[UI_PATH];} scan_stack[SCAN_DEPTH];
 static char scan_root_path[UI_PATH];
-static unsigned scan_depth,scan_added,scan_steps,scan_reported;
+static unsigned scan_depth,scan_added,scan_steps,scan_reported,scan_skipped,scan_rejected;
 static int scan_active,scan_dirty,scan_failed;
 static struct ui_path_index scan_existing;
 static unsigned scan_existing_count=~0u;
@@ -32,7 +32,7 @@ static void scan_begin(const char *path){
  if(!path||!*path||strlen(path)>=UI_PATH||!scan_push(path)){message("Choose an accessible drive or directory.");return;}
  /* Resolve PROGDIR/assign aliases once, matching the existing-path index. */
  if(!NameFromLock(scan_stack[0].lock,scan_root_path,sizeof(scan_root_path))){scan_stop();message("Could not resolve the scan directory.");return;}
- strcpy(scan_stack[0].path,scan_root_path);scan_added=scan_steps=scan_reported=0;scan_failed=0;scan_dirty=1;
+ strcpy(scan_stack[0].path,scan_root_path);scan_added=scan_steps=scan_reported=scan_skipped=scan_rejected=0;scan_failed=0;scan_dirty=1;
  scan_existing_count=~0u;scan_active=1;scan_caption(1);message("Scanning selected directory...");
 }
 static void scan_step(void){unsigned budget=24;
@@ -44,8 +44,8 @@ static void scan_step(void){unsigned budget=24;
   if(fib->fib_DirEntryType==ST_USERDIR){scan_push(path);continue;}
   if(fib->fib_DirEntryType==ST_FILE&&ui_extension(path)){
    int candidate=library_candidate(path);if(candidate!=1)budget=0;
-   if(!candidate)continue;
-   int known=scan_known(path);if(known>0)continue;
+   if(!candidate){scan_rejected++;continue;}
+   int known=scan_known(path);if(known>0){scan_skipped++;continue;}
    unsigned before=model.count;
    if(known<0||ui_add(&model,path)<0){scan_failed=1;scan_stop();message("Scan stopped: not enough memory. Games already found are retained.");break;}
    if(model.count>before){scan_added++;scan_dirty=1;
@@ -57,6 +57,6 @@ static void scan_step(void){unsigned budget=24;
   if(scan_reported!=scan_added){refresh();scan_reported=scan_added;}
   snprintf(msg,sizeof(msg),"Scanning %.120s - %u games found",scan_root_path,scan_added);message(msg);
  }
- if(!scan_active&&scan_dirty){char msg[80];refresh();snprintf(msg,sizeof(msg),"Scan complete: %u games added.",scan_added);
+ if(!scan_active&&scan_dirty){char msg[160];refresh();snprintf(msg,sizeof(msg),"Import complete: %u added, %u already listed, %u unsupported archives.",scan_added,scan_skipped,scan_rejected);
   if(!prefs_write())message("Games found; settings could not be saved.");else if(!scan_failed)message(msg);scan_dirty=0;}
 }

@@ -1,7 +1,7 @@
 /* GPL-3.0-or-later. Native MUI 3.8 launcher for ZZNes ARM.
  * MUI construction/notification/event-loop patterns adapted from xSysInfo,
  * Copyright (c) 2025 xsysinfo contributors, BSD-2-Clause; see LICENSE-xSysInfo.
- * This process never owns Core1 or touches the display card. */
+ * This process never owns Core1; its only card access is the read-only temperature sensor. */
 #include <exec/memory.h>
 #include <devices/timer.h>
 #include <libraries/mui.h>
@@ -83,7 +83,7 @@ static unsigned visible_capacity,search_ticks;
 static char search_seen[UI_TITLE];
 static char status[240],joy[400];
 static const char version[]="$VER: " LIB_TITLE " Library " LIB_VERSION " (16.10.2026)";
-static const char *tabs[]={"Games","Display","Controllers","Save states","Disks","About",NULL};
+static const char *tabs[]={"Games","Display","Controllers","Save states","Disks","ROM Manager","About",NULL};
 static const char *display_choices[]={"Fullscreen","Workbench window",NULL};
 static const char *scaling_choices[]={"Sharp pixels","Smooth scrolling",NULL};
 static const char *scanline_choices[]={"Off","Classic","Soft","Gradient",NULL};
@@ -101,7 +101,7 @@ static const char *fires[]={"Fire = SNES B","Fire = SNES Y",NULL};
 #else
 static const char *fires[]={"Fire = NES A","Fire = NES B",NULL};
 #endif
-enum {ID_ADD=1,ID_SCAN,ID_SELECT,ID_FILTER,ID_FAV,ID_REMOVE,ID_PLAY,ID_RESUME,ID_SAVE,ID_SLOT,ID_LATEST,ID_SAVES,ID_RENAME,ID_ART,ID_CLEAR_ART,ID_SEARCH,ID_ALL,ID_RECENT,ID_FAVOURITES,ID_NAV=50,ID_SCAN_DRIVES,ID_SLOT_RESUME=110,ID_SLOT_DELETE=120};
+enum {ID_ADD=1,ID_SCAN,ID_SELECT,ID_FILTER,ID_FAV,ID_REMOVE,ID_PLAY,ID_RESUME,ID_SAVE,ID_SLOT,ID_LATEST,ID_SAVES,ID_RENAME,ID_ART,ID_CLEAR_ART,ID_SEARCH,ID_ALL,ID_RECENT,ID_FAVOURITES,ID_NAV=50,ID_SCAN_DRIVES,ID_MANAGER_IMPORT,ID_MANAGER_DUPLICATES,ID_MANAGER_BACKUP,ID_MANAGER_BROWSE_IMPORT,ID_MANAGER_BROWSE_BACKUP,ID_MANAGER_CANCEL,ID_SLOT_RESUME=110,ID_SLOT_DELETE=120};
 static void notify(Object *o,ULONG attr,ULONG val,ULONG id){DoMethod(o,MUIM_Notify,attr,val,(ULONG)app,2,MUIM_Application_ReturnID,id);}
 static ULONG value(Object *o,ULONG attr){ULONG n=0;get(o,attr,&n);return n;}
 /* MUI 3.8 does not relayout a Text when its content grows to more lines.
@@ -303,6 +303,8 @@ static int session_write(int resume){FILE *f;char p[UI_PATH];int ok;
  fprintf(f,LIB_SESSION "\n%u %u %u %u\n",model.monitor|(model.theme<<1)|(model.mask<<4)|(model.vmask<<6)|(model.smooth<<9),model.mute,model.fire,resume);
  ui_hex(f,model.entry[selected].path);fputc('\n',f);slotpath(p,model.slot);ui_hex(f,p);fputc('\n',f);snapshotpath(p);ui_hex(f,p);fputc('\n',f);fprintf(f,"DISPLAY %u %u %u %u\n",model.windowed,model.scanlines,model.fps,model.optimise);ok=!ferror(f);if(fclose(f))ok=0;return ok;}
 #include "library_launch.h"
+#include "library_manager.h"
+#include "library_temperature.h"
 static void play(int resume){char path[UI_PATH],session[UI_PATH],qplayer[UI_PATH*2+4],qsession[UI_PATH*2+4],command[UI_PATH*4+40];BPTR dir;
  if(selected<0){message("Select a game first.");return;}identify();if(!rom_valid){message(details);return;}collect();
  if(resume&&!read_state(model.slot,NULL)){message("That save is missing, damaged or for another cartridge.");update_slots();return;}
@@ -336,6 +338,7 @@ static Object*save_card(unsigned i){Object*o;static const char*labels[]={"Slot 1
 }
 #include "library_brand.h"
 static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*recent,*favourites,*saves;
+ Object *manager_import,*manager_duplicates,*manager_backup,*manager_browse_import,*manager_browse_backup;
  program_list_class=MUI_CreateCustomClass(NULL,MUIC_Listview,NULL,sizeof(struct program_list_data),(APTR)program_list_dispatch);if(!program_list_class)return 0;
  controller_class=MUI_CreateCustomClass(NULL,MUIC_Area,NULL,sizeof(struct controller_instance),(APTR)controller_dispatch);if(!controller_class)return 0;
  multiline_class=MUI_CreateCustomClass(NULL,MUIC_Text,NULL,0,(APTR)multiline_dispatch);if(!multiline_class)return 0;
@@ -413,6 +416,24 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
      Child,HGroup,Child,scan_drives=ui_button("Scan once"),Child,HSpace(0),End,
      Child,textline("Includes subdirectories. Scanning starts only when requested."),End,
     Child,VSpace(0),End,
+   Child,VGroup,UI_PAGE,
+    Child,manager_controls=VGroup,
+     Child,VGroup,UI_PANEL("Import ROMs"),
+      Child,textline("SD, USB or local directory:"),
+      Child,HGroup,Child,manager_import_path=StringObject,MUIA_Font,ui_font(),StringFrame,MUIA_String_MaxLen,UI_PATH,MUIA_String_Contents,(ULONG)"PROGDIR:ROMs",End,Child,manager_browse_import=ui_button("Browse..."),End,
+      Child,HGroup,Child,manager_import=ui_button("Import ROM folder"),Child,HSpace(0),End,
+     End,
+     Child,VGroup,UI_PANEL("Library cleanup"),
+      Child,HGroup,Child,manager_duplicates=ui_button("Delete duplicates..."),Child,HSpace(0),End,
+     End,
+     Child,VGroup,UI_PANEL("Save-state backup"),
+      Child,textline("Backup destination:"),
+      Child,HGroup,Child,manager_backup_path=StringObject,MUIA_Font,ui_font(),StringFrame,MUIA_String_MaxLen,UI_PATH,MUIA_String_Contents,(ULONG)"",End,Child,manager_browse_backup=ui_button("Browse..."),End,
+      Child,HGroup,Child,manager_backup=ui_button("Back up save states"),Child,HSpace(0),End,
+     End,
+    End,
+    Child,HGroup,Child,manager_cancel=ui_button("Cancel operation"),Child,HSpace(0),End,
+    Child,VSpace(0),End,
    Child,VGroup,
     Child,textline("\33b" LIB_TITLE " " LIB_VERSION " for AmigaOS / ZZ9000\33n"),
     Child,VGroup,GroupFrameT("Amiga development"),
@@ -444,13 +465,14 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
    End,
   End,
   Child,status_text=TextObject,MUIA_Font,ui_font(),TextFrame,MUIA_Text_SetMin,FALSE,MUIA_FixHeightTxt,(ULONG)"Ag",MUIA_Text_Contents,(ULONG)"",End,
-  Child,HGroup,Child,start=ui_launch_button(),Child,save=ui_button("Save settings"),Child,exit=ui_button("Quit"),Child,HSpace(0),Child,textline(LIB_VERSION),End,
+  Child,HGroup,Child,start=ui_launch_button(),Child,save=manager_settings_save=ui_button("Save settings"),Child,exit=ui_button("Quit"),Child,HSpace(0),Child,textline(LIB_VERSION),Child,temperature_text=TextObject,MUIA_Font,ui_font(),MUIA_Text_SetMin,FALSE,MUIA_FixWidthTxt,(ULONG)"ZZ9000: 150.0 C",MUIA_Text_Contents,(ULONG)"ZZ9000: n/a",End,End,
  End,End,End;
  if(!app)return 0;
  {const char*changes[]={LIB_VERSION " - Optimisation candidate",
 "Faster ARM rendering and O2 core compilation",
 "Faster library sorting and metadata I/O",
-"Red Launch button available on every page","EmuELEC bezel",
+"ROM Manager: bulk import, duplicate cleanup and verified save backups",
+   "Red Launch button available on every page","EmuELEC bezel",
    "Load ZIP cartridges directly",
    "Libraries grow with available memory",
    "Fast path lookup and sorting for large ROM collections",
@@ -464,6 +486,16 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
  for(unsigned i=0;tabs[i];i++)DoMethod(navigation,MUIM_List_InsertSingle,(ULONG)tabs[i],MUIV_List_Insert_Bottom);
  set(navigation,MUIA_List_Active,0);notify(navigation,MUIA_List_Active,MUIV_EveryTime,ID_NAV);
  notify(scan_drives,MUIA_Pressed,FALSE,ID_SCAN_DRIVES);
+ notify(manager_import,MUIA_Pressed,FALSE,ID_MANAGER_IMPORT);
+ notify(manager_duplicates,MUIA_Pressed,FALSE,ID_MANAGER_DUPLICATES);
+ notify(manager_backup,MUIA_Pressed,FALSE,ID_MANAGER_BACKUP);
+ notify(manager_browse_import,MUIA_Pressed,FALSE,ID_MANAGER_BROWSE_IMPORT);
+ notify(manager_browse_backup,MUIA_Pressed,FALSE,ID_MANAGER_BROWSE_BACKUP);
+ notify(manager_cancel,MUIA_Pressed,FALSE,ID_MANAGER_CANCEL);
+ set(manager_cancel,MUIA_Disabled,TRUE);
+ set(manager_import,MUIA_ShortHelp,(ULONG)"One scan including subdirectories. Adds library entries; files stay on the selected disk.");
+ set(manager_duplicates,MUIA_ShortHelp,(ULONG)"Compares decoded ROM contents, including ZIPs. Keeps the first entry; merges favourites and history. ROM files and saves are kept.");
+ set(manager_backup,MUIA_ShortHelp,(ULONG)"Creates a new verified backup folder: states, screenshots, library settings and battery saves. Choose a mounted SD, USB or local disk.");
  notify(win,MUIA_Window_CloseRequest,TRUE,MUIV_Application_ReturnID_Quit);notify(exit,MUIA_Pressed,FALSE,MUIV_Application_ReturnID_Quit);
  notify(add,MUIA_Pressed,FALSE,ID_ADD);notify(scan_browse,MUIA_Pressed,FALSE,ID_SCAN);notify(fav,MUIA_Pressed,FALSE,ID_FAV);notify(remove_button,MUIA_Pressed,FALSE,ID_REMOVE);
  notify(start,MUIA_Pressed,FALSE,ID_PLAY);notify(resume,MUIA_Pressed,FALSE,ID_RESUME);notify(save,MUIA_Pressed,FALSE,ID_SAVE);
@@ -493,15 +525,22 @@ int main(void){struct MsgPort *port=NULL,*owner=NULL;struct timerequest *timer=N
  if(!MUIMasterBase||!AslBase||!GfxBase)goto done;
  if(config_bad){puts("Could not load Library.cfg. Check free memory and the settings file; no files changed.");goto done;}
  KeymapBase=OpenLibrary("keymap.library",37);style_open();
- if(!build())goto done;refresh();loading_window=splash_create(0);startup_ticks=20;if(!loading_window)set(win,MUIA_Window_Open,TRUE);
+ if(!build())goto done;temperature_init();refresh();loading_window=splash_create(0);startup_ticks=20;if(!loading_window)set(win,MUIA_Window_Open,TRUE);
  port=CreateMsgPort();if(!port)goto done;timer=(struct timerequest *)CreateIORequest(port,sizeof(*timer));if(!timer)goto done;
  if(OpenDevice(TIMERNAME,UNIT_MICROHZ,(struct IORequest *)timer,0))goto done;opened=1;
  while(running){
   id=DoMethod(app,MUIM_Application_NewInput,(ULONG)&signals);
+  if(manager_mode&&id!=(ULONG)MUIV_Application_ReturnID_Quit&&id!=ID_MANAGER_CANCEL)id=0;
   switch(id){case (ULONG)MUIV_Application_ReturnID_Quit:if(!child_running)running=0;break;
    case ID_ADD:browse(0);break;case ID_SCAN:browse(1);break;case ID_SELECT:selection();break;case ID_FILTER:refresh();break;
-   case ID_NAV:{ULONG n=value(navigation,MUIA_List_Active);if(n<6){set(pages,MUIA_Group_ActivePage,n);set(heading,MUIA_Text_Contents,(ULONG)tabs[n]);}}break;
+   case ID_NAV:{ULONG n=value(navigation,MUIA_List_Active);if(n<7){set(pages,MUIA_Group_ActivePage,n);set(heading,MUIA_Text_Contents,(ULONG)tabs[n]);}}break;
    case ID_SCAN_DRIVES:if(scan_active){scan_stop();message("Scan stopped.");}else scan_begin((const char*)value(scan_path,MUIA_String_Contents));break;
+   case ID_MANAGER_BROWSE_IMPORT:manager_browse(manager_import_path,"Choose a ROM drive or directory");break;
+   case ID_MANAGER_BROWSE_BACKUP:manager_browse(manager_backup_path,"Choose a backup disk or directory");break;
+   case ID_MANAGER_IMPORT:if(scan_active)message("Finish the directory scan first.");else{scan_begin((const char*)value(manager_import_path,MUIA_String_Contents));if(scan_active){manager_mode=3;manager_enable(1);}}break;
+   case ID_MANAGER_DUPLICATES:manager_duplicates_begin();break;
+   case ID_MANAGER_BACKUP:manager_backup_begin();break;
+   case ID_MANAGER_CANCEL:manager_finish(manager_mode==2?"Backup cancelled. Verified files remain in the partial folder.":"Operation cancelled.");break;
    case ID_SEARCH:refresh();break;
    case ID_ALL:model.filter=0;refresh();break;case ID_RECENT:model.filter=1;refresh();break;case ID_FAVOURITES:model.filter=2;refresh();break;
    case ID_RENAME:if(selected>=0){ui_clean(model.entry[selected].title,UI_TITLE,(const char*)value(title_edit,MUIA_String_Contents));refresh();message(prefs_write()?"Display title saved; ROM filename unchanged.":"Could not save title.");}break;
@@ -518,9 +557,10 @@ int main(void){struct MsgPort *port=NULL,*owner=NULL;struct timerequest *timer=N
   if(!id&&needs_details){needs_details=0;identify();update_slots();}
   if(!running)break;
   if(pending&&CheckIO((struct IORequest *)timer)){WaitIO((struct IORequest *)timer);pending=0;}
-  if(!pending){launch_poll();if(!child_running&&!startup_ticks){search_poll();joystick();scan_step();}timer->tr_node.io_Command=TR_ADDREQUEST;timer->tr_time.tv_secs=0;timer->tr_time.tv_micro=50000;SendIO((struct IORequest *)timer);pending=1;}
+  if(!pending){launch_poll();if(!child_running&&!startup_ticks){if(!manager_mode){search_poll();joystick();}scan_step();manager_step();temperature_poll();}timer->tr_node.io_Command=TR_ADDREQUEST;timer->tr_time.tv_secs=0;timer->tr_time.tv_micro=50000;SendIO((struct IORequest *)timer);pending=1;}
   if(!id){ULONG got=Wait(signals|(1UL<<port->mp_SigBit)|SIGBREAKF_CTRL_C);if(got&SIGBREAKF_CTRL_C)running=0;}
  }
+ if(manager_mode)manager_finish("Operation stopped.");
  scan_stop();rc=prefs_write()?0:20;
 done:
  if(pending){AbortIO((struct IORequest *)timer);WaitIO((struct IORequest *)timer);}if(opened)CloseDevice((struct IORequest *)timer);if(timer)DeleteIORequest((struct IORequest *)timer);if(port)DeleteMsgPort(port);
