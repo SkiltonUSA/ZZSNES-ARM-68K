@@ -125,3 +125,9 @@ No external library or unpacker is required. See [validation](zip-validation.md)
 Current frontend and presentation overlays: development/borders-20261016/.
 The packed ARM image now includes the compact border table. The emulator core
 and allocation layout are unchanged. See [border validation](emuelec-border.md).
+
+## Optimisation candidate
+
+The opt-in 0.6.2-dev build and measured changes are documented in
+[optimisation results](optimisation-20261018.md). The default beta rebuild and
+existing tagged releases retain their archived inputs.

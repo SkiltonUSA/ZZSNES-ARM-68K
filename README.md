@@ -74,6 +74,9 @@ Only one Core1 application can run at a time.
 
 ## Performance
 
+An opt-in **0.6.2-dev optimisation candidate** adds faster ARM presentation, an O2 core build and faster large libraries.
+[Measurements and validation](docs/optimisation-20261018.md). Existing release downloads are unchanged.
+
 The established steady emulation measurements remain:
 
 | Game / emulator | Steady emulation FPS |

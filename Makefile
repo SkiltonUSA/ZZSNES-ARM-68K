@@ -86,3 +86,19 @@ test-thin-geometry:
 	mkdir -p .context
 	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/thin-scanlines-20261016/player tests/amiga/emulator/thin_geometry.c -o .context/test-thin-geometry
 	.context/test-thin-geometry
+
+# Measured development candidate; neither target deploys to hardware.
+optimisation:
+	$(PYTHON) scripts/build_current.py --arm --optimisation --core-o2
+test-optimisation-native:
+	mkdir -p .context
+	$(CXX) -std=c++14 -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/player -Idevelopment/borders-20261016/player -Idevelopment/beta-20261015/build-inputs/player tests/amiga/emulator/optimisation.cpp -o .context/test-optimisation-pixels
+	.context/test-optimisation-pixels
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/source -Idevelopment/borders-20261016/source tests/amiga/emulator/optimisation_library.c -o .context/test-optimisation-library
+	.context/test-optimisation-library
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/source -Idevelopment/borders-20261016/source tests/amiga/emulator/legacy_model.c -o .context/test-optimisation-legacy
+	.context/test-optimisation-legacy
+
+.PHONY: test-optimisation-arm
+test-optimisation-arm:
+	CURRENT_ARM_DIR=.context/optimisation-o2-build/player TEST_THIN_SCANLINES=1 $(MODEL_PYTHON) tests/amiga/emulator/check_current_arm.py

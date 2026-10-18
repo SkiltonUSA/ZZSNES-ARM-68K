@@ -1,0 +1,2 @@
+/usr/bin/arm-none-eabi-ld: warning: /work/.context/ZZSNES-ARM-68K/.context/optimisation-o2-fx-build/player/pocket.elf has a LOAD segment with RWX permissions
+PASS: rebuilt ZZSNES ARM recompiled at <workspace>/.context/ZZSNES-ARM-68K/.context/optimisation-o2-fx-build

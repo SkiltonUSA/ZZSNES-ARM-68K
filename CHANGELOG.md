@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.2-dev — optimisation candidate (not a tagged release)
+
+- Remove per-pixel region tests from ARM presentation by processing contiguous spans.
+- Add a measured `-O2` core build, retaining soft float and existing numerical rules.
+- Preserve Thin scanlines and the separate Super FX player.
+- Faster large-library sorting, metadata writing and token parsing.
+- Add native, relocated ARM and physical validation; see [measurements](docs/optimisation-20261018.md).
+
 ## Unreleased launcher navigation
 
 - Label the existing effect Software scanlines; explain that ZZScanlines is not required.

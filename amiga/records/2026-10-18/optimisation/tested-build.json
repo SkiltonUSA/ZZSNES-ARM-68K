@@ -1,0 +1,30 @@
+{
+  "baseline_commit": "892622ab959247959178288bbc52420406a4c73a",
+  "installed": {
+    "ZZSNES": {
+      "previous_md5": "d121c43915a8feb61e16b45b88b8054e",
+      "md5": "ca57a26fde48fa5fb30d7fd09fd9ad06",
+      "sha256": "711eddd800ef6be2d6bd769ca929ff9609639259c7d540591fab968a5576919c",
+      "bytes": 216728
+    },
+    "ZZSnes-ui": {
+      "previous_md5": "1454cf88306a0804a29609044a3704d6",
+      "md5": "17f01b67ee37399d21165643a7ec7577",
+      "sha256": "dd0af191f9d2bd221c7c581a4841b4d091a7fd44f08544e0d30acb0065c74024",
+      "bytes": 1000656
+    },
+    "ZZSnes-FX": {
+      "previous_md5": "21f01ced3fb39ed61723cdc4d1053612",
+      "md5": "b4aadb767a64da87a5bca499b1479e67",
+      "sha256": "65bf0d4097a173b40aa8786d4235af9df450c341b89edbcbc0169d157d38f9cb",
+      "bytes": 1031808
+    }
+  },
+  "source_sha256": {
+    "development/optimisation-20261018/README.md": "007b4865a7a80a5a66c093b792c9314bfbaa47c4e164a9c9eada41c6380efa7f",
+    "development/optimisation-20261018/host/host.c": "b89cbdb170f6ef27f248b287d1fc5a6d0c7ca523d6c0e212538cac363de86909",
+    "development/optimisation-20261018/player/view_fast.h": "d8306f4409fcacb16bc3121000de5414212832bb3964741ea7a19f4189dc1d7f",
+    "development/optimisation-20261018/source/library_mui.h": "7871dab025d3ec59a855d7cff4cb9303aa65733a66f6068290179d6b4e97e0de",
+    "development/optimisation-20261018/source/ui_model.h": "9c6637b05390b9debda7186b1d3b51db2eab824620fae7b617f32e4503484b63"
+  }
+}

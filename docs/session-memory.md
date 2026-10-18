@@ -1,3 +1,21 @@
+## Optimisation candidate — 18 October 2026 (UTC)
+
+Installed and checksum-verified **0.6.2-dev**, with rollback copies of executables
+and preferences. Tagged releases and default release rebuilds are unchanged.
+See [measurements, failures and reproduction](optimisation-20261018.md) and
+[tested binary/source hashes](../amiga/records/2026-10-18/optimisation/tested-build.json).
+
+SNES uses row spans and GCC O2, including the supplemental Super FX player.
+Thin scanlines and existing settings are retained. No new special-chip
+compatibility or complete Super FX save-state support is claimed.
+
+Both launchers opened and closed on hardware with library entries/settings
+preserved. Final pause/save/load/snapshot/switch/exit and fresh-process resume
+passed. The isolated early SNES interactive startup failure is retained in the
+report; do not present this candidate as a tagged release or a universal FPS gain.
+Core1 is free and the bridge/network remain running. No saved Workbench mode,
+firmware or global AHI changes. Private receipts are in the workspace handoff.
+
 ## Red Launch and manual ROM scans — 16 October 2026
 
 Launcher-only update installed in SD032G:Emulator/ZZSNES/ZZSNES.

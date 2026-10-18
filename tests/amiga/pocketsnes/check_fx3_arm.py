@@ -61,7 +61,7 @@ for base in (0x12000040, 0x150020c0):
     for command in range(7):
         u.mem_write(ram, bytes([0x5a])*0x20000)
         u.mem_write(code + 0x200100, bytes([0xf0, command, 0, 0x70, 0, 1]))
-        call('S9xResetSuperFX')
+        call('S9xReset') # Real reset path; the GSU-only helper can be inlined at -O2.
         put(0x60, 0x7034)
         put(0, 0x701e)
         put(1, 0x701f)
@@ -78,7 +78,7 @@ for base in (0x12000040, 0x150020c0):
                         expected[start+row*2] = expected[start+49+row*2] = 255
         assert bytes(u.mem_read(ram, len(expected))) == bytes(expected), command
     # Bounded execution must return to the host; CPU can still stop the GSU.
-    call('S9xResetSuperFX')
+    call('S9xReset') # Real reset path; the GSU-only helper can be inlined at -O2.
     u.mem_write(code + 0x200100, bytes([5, 0xfe, 1]))
     put(0x60, 0x7034)
     put(0, 0x701e)

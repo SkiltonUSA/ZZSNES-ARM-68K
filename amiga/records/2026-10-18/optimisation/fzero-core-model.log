@@ -1,0 +1,7 @@
+PASS 0x12000040 120 frames video/PCM exact
+PASS 0x12000040 240 frames video/PCM exact
+PASS 0x12000040 360 frames video/PCM exact
+PASS 0x12000040 480 frames video/PCM exact
+PASS 0x12000040 600 frames video/PCM exact
+PASS relocated core equivalence 0x12000040 600 FZero.sfc
+PASS relocated core equivalence 0x150020c0 6 FZero.sfc

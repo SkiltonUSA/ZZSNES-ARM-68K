@@ -7,13 +7,20 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--arm',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ if a.optimisation:a.thin_scanlines=True
  if (a.experimental_chips or a.compatibility or a.fx3) and not a.arm:p.error('compatibility experiments require --arm')
  compatibility=a.experimental_chips or a.compatibility or a.fx3
  if a.thin_scanlines and not a.arm:p.error('thin scanlines require --arm')
  m=json.loads((ROOT/'docs/current-build.json').read_text());snap=ROOT/m['snapshot_dir'];source=snap/'source';out=ROOT/('.context/fx3-build'if a.fx3 else'.context/compatibility-build'if compatibility else'.context/current-build');stage=out/'player';lib=out/'library'
  if a.thin_scanlines:
   out=ROOT/('.context/thin-fx3-build' if a.fx3 else '.context/thin-build');stage=out/'player';lib=out/'library'
+ if a.core_o2 and not a.optimisation:p.error('--core-o2 requires --optimisation')
+ if a.optimisation:
+  if not a.arm:p.error('optimisation candidate requires --arm')
+  out=ROOT/('.context/optimisation-fx-build' if a.fx3 else '.context/optimisation-build');stage=out/'player';lib=out/'library'
+ if a.core_o2:out=ROOT/('.context/optimisation-o2-fx-build' if a.fx3 else '.context/optimisation-o2-build');stage=out/'player';lib=out/'library'
+ if a.optimisation:m['version']='0.6.2-dev'
  shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
  shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
@@ -25,6 +32,12 @@ def main():
   shutil.copytree(thin/'host',stage,dirs_exist_ok=True)
   shutil.copytree(thin/'player',stage,dirs_exist_ok=True)
   shutil.copytree(thin/'source',lib,dirs_exist_ok=True)
+ if a.optimisation:
+  overlay=ROOT/'development/optimisation-20261018'
+  shutil.copytree(overlay/'player',stage,dirs_exist_ok=True)
+  if (overlay/'source').exists():shutil.copytree(overlay/'source',lib,dirs_exist_ok=True)
+  if (overlay/'host').exists():shutil.copytree(overlay/'host',stage,dirs_exist_ok=True)
+  header=lib/'library_mui.h';header.write_text(header.read_text().replace('0.6.1 Beta','0.6.2-dev'))
  shutil.copy2(library_snap/'source/icon.c',lib/'icon.c')
  (lib/'icon.c').write_text((lib/'icon.c').read_text().replace('DOSBox icon',m['console']+' icon'))
  if m['console']=='ZZNES':
@@ -45,7 +58,7 @@ def main():
    (stage/'cartridge.h').write_text(header);(core/'cartridge.h').write_text(header)
   if snes:
    prefix=json.loads(os.environ.get('ARM_BUILD_COMMAND','[]'))
-   flags=m['arm_flags'];flags=[f for f in flags if not f.startswith('-I')];flags=[inside(source/'amiga/pocketsnes/libc_config.h')if f=='/work/amiga/pocketsnes/libc_config.h'else f for f in flags]
+   flags=[('-O2' if f=='-Os' and a.core_o2 else f) for f in m['arm_flags']];flags=[f for f in flags if not f.startswith('-I')];flags=[inside(source/'amiga/pocketsnes/libc_config.h')if f=='/work/amiga/pocketsnes/libc_config.h'else f for f in flags]
    includes=[stage,core,*[source/'amiga'/d for d in ['mesen_nes','mesen_bench','arm_debug','arm_debug/zz9000']],core/'src',core/'libretro',core/'libretro/libretro-common/include']
    flags+=['-DEM_SNES']+['-I'+(inside(d)if prefix else str(d))for d in includes]
    if not prefix:flags=[str(source/'amiga/pocketsnes/libc_config.h')if f==inside(source/'amiga/pocketsnes/libc_config.h')else f for f in flags]
