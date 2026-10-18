@@ -292,7 +292,10 @@ static int present(ULONG raw_hash,ULONG frame){
    UBYTE *pixel=direct_readback+y*pitch+x*bpp;
    ULONG c;UBYTE want[4];
 #ifdef NES_PLAYER
-   {int sx=fv_source(vx,view_opt),sy=fv_y(vy,view_opt);if(sx<0||sy<0)c=fv_border(vx,vy,view_opt);else {unsigned index=((unsigned)indices[2*(sy*256+sx)]<<8)|indices[2*(sy*256+sx)+1];c=pocket_rgb(index);}}
+   {int sx=fv_source(vx,view_opt),sy=fv_y(vy,view_opt);if(sx<0||sy<0)c=fv_border(vx,vy,view_opt);else if(view_opt&512){unsigned a,b,w;fv_sample(vx,view_opt,&a,&b,&w);
+    unsigned ia=sy*256+a,ib=sy*256+b;
+    c=fv_blend(pocket_rgb(((unsigned)indices[2*ia]<<8)|indices[2*ia+1]),pocket_rgb(((unsigned)indices[2*ib]<<8)|indices[2*ib+1]),w);
+   }else {unsigned index=((unsigned)indices[2*(sy*256+sx)]<<8)|indices[2*(sy*256+sx)+1];c=pocket_rgb(index);}}
 #else
    if(indices[y*256+x]>=64){bad++;continue;}
    c=nes_palette[indices[y*256+x]];

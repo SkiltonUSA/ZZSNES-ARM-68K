@@ -14,10 +14,10 @@
 #define UI_CONFIG_PREFIX "ZZNESUI"
 #endif
 struct ui_entry {char path[UI_PATH],title[UI_TITLE],art[UI_PATH];unsigned favorite,played;};
-struct ui_model {unsigned count,clock,monitor,theme,mask,vmask,slot,mute,fire,last,filter,windowed,scanlines,fps,optimise,autoscan;unsigned capacity;struct ui_entry *entry;struct ui_path_index paths;};
+struct ui_model {unsigned count,clock,monitor,theme,mask,vmask,slot,mute,fire,last,filter,windowed,scanlines,fps,optimise,autoscan,smooth;unsigned capacity;struct ui_entry *entry;struct ui_path_index paths;};
 /* Models are zero-initialised before first use. Reset releases owned storage. */
 static void ui_dispose(struct ui_model*m){free(m->entry);ui_index_free(&m->paths);memset(m,0,sizeof(*m));}
-static void ui_defaults(struct ui_model *m){ui_dispose(m);m->optimise=1;m->autoscan=0;
+static void ui_defaults(struct ui_model *m){ui_dispose(m);m->optimise=1;m->autoscan=0;m->windowed=0;m->scanlines=2;
 #ifdef LIBRARY_SNES
  m->theme=2;
 #else
@@ -57,7 +57,7 @@ static int ui_unhex(char *out,const char *p){unsigned n=0;while(p[0]&&p[0]!='\n'
  if(a>15||b>15||!(a*16+b))return 0;out[n++]=(char)(a*16+b);p+=2;
  }out[n]=0;return ui_path_ok(out);}
 static int ui_write(FILE *f,const struct ui_model *m){unsigned i;
- fprintf(f,UI_CONFIG_PREFIX "3\n%u %u %u %u %u %u %u %u %u %u %u %u %u %u %u\n",m->clock,m->monitor,m->theme,m->mask,m->vmask,m->slot,m->mute,m->fire,m->last,m->filter,m->windowed,m->scanlines,m->fps,m->optimise,m->autoscan);
+ fprintf(f,UI_CONFIG_PREFIX "4\n%u %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u\n",m->clock,m->monitor,m->theme,m->mask,m->vmask,m->slot,m->mute,m->fire,m->last,m->filter,m->windowed,m->scanlines,m->fps,m->optimise,m->autoscan,m->smooth);
  for(i=0;i<m->count;i++){fprintf(f,"%u %u ",m->entry[i].favorite,m->entry[i].played);ui_hex(f,m->entry[i].path);fputc(' ',f);
   if(*m->entry[i].title)ui_hex(f,m->entry[i].title);else fputc('-',f);fputc(' ',f);
   if(*m->entry[i].art)ui_hex(f,m->entry[i].art);else fputc('-',f);fputc('\n',f);}return !ferror(f);}
@@ -73,11 +73,11 @@ static int ui_unsigned(const char *p,unsigned *out){
  while(*p){unsigned d=(unsigned char)*p++-'0';if(d>9||n>(UINT_MAX-d)/10)return 0;n=n*10+d;}
  *out=n;return 1;
 }
-static int ui_read(FILE *f,struct ui_model *m){char line[2400],path[UI_PATH],decoded[UI_PATH],*ph,*th="-",*ah="-";unsigned fav,played;int pos,id,v2,v3;
+static int ui_read(FILE *f,struct ui_model *m){char line[2400],path[UI_PATH],decoded[UI_PATH],*ph,*th="-",*ah="-";unsigned fav,played;int pos,id,v2,v3,v4;
  ui_defaults(m);if(!fgets(line,sizeof(line),f))return 0;
- v3=!strcmp(line,UI_CONFIG_PREFIX "3\n");v2=v3||!strcmp(line,UI_CONFIG_PREFIX "2\n");if(!v2&&strcmp(line,UI_CONFIG_PREFIX "1\n"))return 0;
- if(!fgets(line,sizeof(line),f)||sscanf(line,"%u %u %u %u %u %u %u %u %u %u %u %u %u %u %u",&m->clock,&m->monitor,&m->theme,&m->mask,&m->vmask,&m->slot,&m->mute,&m->fire,&m->last,&m->filter,&m->windowed,&m->scanlines,&m->fps,&m->optimise,&m->autoscan)!=(v3?15:v2?10:8)||m->filter>2||
- m->windowed>1||m->scanlines>4||m->fps>1||m->optimise>1||m->autoscan>1||m->monitor>1||m->theme>7||m->mask>2||m->vmask>2||m->slot>4||m->mute>1||m->fire>1)return 0;
+ v4=!strcmp(line,UI_CONFIG_PREFIX "4\n");v3=v4||!strcmp(line,UI_CONFIG_PREFIX "3\n");v2=v3||!strcmp(line,UI_CONFIG_PREFIX "2\n");if(!v2&&strcmp(line,UI_CONFIG_PREFIX "1\n"))return 0;
+ if(!fgets(line,sizeof(line),f)||sscanf(line,"%u %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u",&m->clock,&m->monitor,&m->theme,&m->mask,&m->vmask,&m->slot,&m->mute,&m->fire,&m->last,&m->filter,&m->windowed,&m->scanlines,&m->fps,&m->optimise,&m->autoscan,&m->smooth)!=(v4?16:v3?15:v2?10:8)||m->filter>2||
+ m->smooth>1||m->windowed>1||m->scanlines>4||m->fps>1||m->optimise>1||m->autoscan>1||m->monitor>1||m->theme>7||m->mask>2||m->vmask>2||m->slot>4||m->mute>1||m->fire>1)return 0;
  while(fgets(line,sizeof(line),f)){
   pos=0;
   if(v2){char *cursor=line;

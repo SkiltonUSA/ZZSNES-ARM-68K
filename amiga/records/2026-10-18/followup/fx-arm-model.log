@@ -1,0 +1,18 @@
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 3 0
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 3 16
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 4 17
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 3 80
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 4 91
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 4 161
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 3 256
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 4 417
+PASS NEON all weights, short/tail lengths, guards and AAPCS callee-saved D8-D15 0x12000040
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 3 0
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 3 16
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 4 17
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 3 80
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 4 91
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 4 161
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 3 256
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 4 417
+PASS NEON all weights, short/tail lengths, guards and AAPCS callee-saved D8-D15 0x150020c0

@@ -69,7 +69,7 @@
 struct Library *MUIMasterBase,*AslBase,*LowLevelBase;
 static Object *app,*win,*list,*pages,*search,*title_edit,*selected_text,*status_text,*monitor,*theme,*mask,*vmask,*slot,*mute,*fire,*joytext;
 static Object *start,*resume,*latest,*fav,*remove_button,*rename_button,*art_button,*clear_art,*hero,*summary,*count_text,*save_title;
-static Object *scan_drives,*change_list,*navigation,*heading,*display_mode,*scanline_mode,*fps_option,*optimise_option,*scan_path;
+static Object *scan_drives,*change_list,*navigation,*heading,*display_mode,*scanline_mode,*fps_option,*optimise_option,*scan_path,*scaling_mode;
 static Object *cards[5],*card_text[5],*card_resume[5],*card_delete[5];
 static char card_labels[5][180],details[400],summary_line[180],count_line[80];
 static char save_heading[UI_TITLE+24],selected_path[UI_PATH];
@@ -85,6 +85,7 @@ static char status[240],joy[400];
 static const char version[]="$VER: " LIB_TITLE " Library " LIB_VERSION " (16.10.2026)";
 static const char *tabs[]={"Games","Display","Controllers","Save states","Disks","About",NULL};
 static const char *display_choices[]={"Fullscreen","Workbench window",NULL};
+static const char *scaling_choices[]={"Sharp pixels","Smooth scrolling",NULL};
 static const char *scanline_choices[]={"Off","Classic","Soft","Gradient","Thin (640x480)",NULL};
 static const char *filters[]={"All ROMs","Recently played","Favourites",NULL};
 static const char *monitors[]={"4:3 monitor","16:9 widescreen monitor",NULL};
@@ -118,7 +119,7 @@ static Object *multiline(const char*s,unsigned lines){return NewObject(multiline
 static Object *textline(const char *s){return TextObject,MUIA_Font,ui_font(),MUIA_Text_Contents,(ULONG)s,End;}
 static Object *cycle(const char **items){return CycleObject,MUIA_Font,ui_font(),MUIA_Cycle_Entries,(ULONG)items,End;}
 static void message(const char *s){snprintf(status,sizeof(status),"%s",s);set(status_text,MUIA_Text_Contents,(ULONG)status);}
-static void collect(void){if(selected>=0)model.last=selected+1;model.monitor=value(monitor,MUIA_Cycle_Active);model.theme=value(theme,MUIA_Cycle_Active);model.mask=value(mask,MUIA_Cycle_Active);model.vmask=value(vmask,MUIA_Cycle_Active);model.slot=value(slot,MUIA_Cycle_Active);model.mute=!!value(mute,MUIA_Selected);model.fire=value(fire,MUIA_Cycle_Active);model.windowed=value(display_mode,MUIA_Cycle_Active);model.scanlines=value(scanline_mode,MUIA_Cycle_Active);model.fps=!!value(fps_option,MUIA_Selected);model.optimise=!!value(optimise_option,MUIA_Selected);model.autoscan=0;}
+static void collect(void){if(selected>=0)model.last=selected+1;model.monitor=value(monitor,MUIA_Cycle_Active);model.theme=value(theme,MUIA_Cycle_Active);model.mask=value(mask,MUIA_Cycle_Active);model.vmask=value(vmask,MUIA_Cycle_Active);model.slot=value(slot,MUIA_Cycle_Active);model.mute=!!value(mute,MUIA_Selected);model.fire=value(fire,MUIA_Cycle_Active);model.windowed=value(display_mode,MUIA_Cycle_Active);model.scanlines=value(scanline_mode,MUIA_Cycle_Active);model.fps=!!value(fps_option,MUIA_Selected);model.optimise=!!value(optimise_option,MUIA_Selected);model.smooth=value(scaling_mode,MUIA_Cycle_Active);model.autoscan=0;}
 static int preserve_legacy(void){FILE*src,*dst;char buf[1024];size_t n;int ok=1;BPTR lock;
  if(!legacy_config)return 1;lock=Lock("PROGDIR:Library.pre-browser",ACCESS_READ);if(lock){UnLock(lock);legacy_config=0;return 1;}
  src=fopen("PROGDIR:Library.cfg","rb");if(!src)return 0;dst=fopen("PROGDIR:Library.pre-browser","wb");if(!dst){fclose(src);return 0;}
@@ -299,7 +300,7 @@ static void browse(int drawer){struct FileRequester *r;char p[UI_PATH];unsigned 
 }
 static int session_write(int resume){FILE *f;char p[UI_PATH];int ok;
  f=fopen("PROGDIR:Session.cfg","w");if(!f)return 0;
- fprintf(f,LIB_SESSION "\n%u %u %u %u\n",model.monitor|(model.theme<<1)|(model.mask<<4)|(model.vmask<<6),model.mute,model.fire,resume);
+ fprintf(f,LIB_SESSION "\n%u %u %u %u\n",model.monitor|(model.theme<<1)|(model.mask<<4)|(model.vmask<<6)|(model.smooth<<9),model.mute,model.fire,resume);
  ui_hex(f,model.entry[selected].path);fputc('\n',f);slotpath(p,model.slot);ui_hex(f,p);fputc('\n',f);snapshotpath(p);ui_hex(f,p);fputc('\n',f);fprintf(f,"DISPLAY %u %u %u %u\n",model.windowed,model.scanlines,model.fps,model.optimise);ok=!ferror(f);if(fclose(f))ok=0;return ok;}
 #include "library_launch.h"
 static void play(int resume){char path[UI_PATH],session[UI_PATH],qplayer[UI_PATH*2+4],qsession[UI_PATH*2+4],command[UI_PATH*4+40];BPTR dir;
@@ -382,6 +383,7 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
    Child,VGroup,MUIA_Group_Spacing,8,
     Child,ColGroup(2),GroupFrameT("Presentation"),
      Child,TextObject,MUIA_Font,ui_font(),MUIA_FixWidth,180,MUIA_Text_Contents,(ULONG)"Display",End,Child,display_mode=cycle(display_choices),
+     Child,textline("Pixel scaling"),Child,scaling_mode=cycle(scaling_choices),
      Child,textline("Software scanlines"),Child,scanline_mode=cycle(scanline_choices),
      Child,textline("On-screen FPS"),Child,HGroup,Child,fps_option=CheckMark(FALSE),Child,HSpace(0),End,
      Child,textline("Optimised presenter"),Child,HGroup,Child,optimise_option=CheckMark(TRUE),Child,HSpace(0),End,End,
@@ -471,6 +473,8 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
  notify(latest,MUIA_Pressed,FALSE,ID_LATEST);notify(saves,MUIA_Pressed,FALSE,ID_SAVES);
  notify(rename_button,MUIA_Pressed,FALSE,ID_RENAME);notify(art_button,MUIA_Pressed,FALSE,ID_ART);notify(clear_art,MUIA_Pressed,FALSE,ID_CLEAR_ART);
  for(unsigned i=0;i<5;i++){notify(card_resume[i],MUIA_Pressed,FALSE,ID_SLOT_RESUME+i);notify(card_delete[i],MUIA_Pressed,FALSE,ID_SLOT_DELETE+i);}
+ set(scaling_mode,MUIA_Cycle_Active,model.smooth);
+ set(scaling_mode,MUIA_ShortHelp,(ULONG)"Sharp: nearest-neighbour pixels.\nSmooth: horizontal interpolation for scaled scrolling.\nUses more ARM presentation time; no emulated game changes.");
  set(scanline_mode,MUIA_ShortHelp,(ULONG)"ARM software effect from ZZDosBox.\nNo ZZScanlines utility required.\nTurn global Workbench scanlines off to avoid double filtering.");
  set(display_mode,MUIA_Cycle_Active,model.windowed);set(scanline_mode,MUIA_Cycle_Active,model.scanlines);set(fps_option,MUIA_Selected,model.fps);set(optimise_option,MUIA_Selected,model.optimise);
  set(monitor,MUIA_Cycle_Active,model.monitor);set(theme,MUIA_Cycle_Active,model.theme);set(mask,MUIA_Cycle_Active,model.mask);set(vmask,MUIA_Cycle_Active,model.vmask);set(slot,MUIA_Cycle_Active,model.slot);set(mute,MUIA_Selected,model.mute);set(fire,MUIA_Cycle_Active,model.fire);

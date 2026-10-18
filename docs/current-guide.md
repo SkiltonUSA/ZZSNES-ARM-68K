@@ -103,3 +103,20 @@ Subdirectories are included; existing library entries are skipped. **Stop scan**
 ends a scan while retaining games already found. No automatic or background
 drive discovery runs on startup or when a USB drive is inserted.
 The red **Launch** button stays in the bottom bar on every page.
+
+### Development defaults
+
+The optimisation candidate starts new libraries in fullscreen with Soft
+software scanlines. Existing saved choices
+still take priority. Display settings remain selectable. **Alt+Return** switches
+window/fullscreen; **F9** captures a screenshot for the library, as shown on the
+loading panel.
+
+**Display → Pixel scaling:** Sharp pixels keeps nearest-neighbour output.
+Smooth scrolling blends adjacent horizontal pixels to reduce uneven scaled
+columns; it softens edges and adds presentation work. It does not change the
+emulated game or its region. Sharp remains the default.
+
+The new launcher reads older library files and saves `ZZSNESUI4` preferences.
+Restore the previous preferences together with the previous launcher when
+rolling back. Game save-state formats are unchanged.

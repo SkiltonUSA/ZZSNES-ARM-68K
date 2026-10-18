@@ -1,0 +1,36 @@
+{
+  "candidate": "0.6.2-dev",
+  "source_sha256": {
+    "development/optimisation-20261018/README.md": "717fcd513f3b674526c48628912673c17bc5c310ac9c25b70b59965e45a8bd37",
+    "development/optimisation-20261018/host/host.c": "f8e76a5cc2abdb3978243217fa1fb2e382f8cf56e9a1bc2eb5fd702cc1778707",
+    "development/optimisation-20261018/host/session.h": "8b75fa6f5a5f3bfd57ed084bf96a671d833d28be99c617f8cf307165a87b5080",
+    "development/optimisation-20261018/player/copy_neon.S": "b3b1aea547d6865041411bd7da0c6829bc7584f4bef3fde5bd5d60b1b9b916f5",
+    "development/optimisation-20261018/player/direct.cpp": "d4374467aebabc83a170816affbf6752f74976332b070c5d9bd16ea152767288",
+    "development/optimisation-20261018/player/view.h": "257402beedb25a2ef9a83315d55bfd687e6960f59858b6a05e1462f22e45f550",
+    "development/optimisation-20261018/player/view_fast.h": "ff1ae3b83011d0270cdde3f7fadc7b9002b34dd8744162c0d3e3fabd7702805e",
+    "development/optimisation-20261018/source/library_launch.h": "98997a868b1205e6abe9b03e502ff095576f5e5f2aa176b63ceb14a85342c188",
+    "development/optimisation-20261018/source/library_mui.h": "474f935e15232739c5ddf8ffff5cd4da9686507e6b5bb1b1d7bea528064aed31",
+    "development/optimisation-20261018/source/ui_model.h": "5d9b2d404460b5467a8b19d33c26c0e86bd14c7609817c431311008a72e3a6dc"
+  },
+  "release_assets_changed": false,
+  "installed": {
+    "ZZSNES": {
+      "sha256": "03c6cd707641ed1e8eb4454b402925d5eab2d0be0840fa1ab69c31f7332fff8e",
+      "md5": "bddbd6cac5de32de471f4f9b0e660dad",
+      "previous_md5": "0d630d8143ada72d6c5a6f1a13cc4e8a",
+      "bytes": 217724
+    },
+    "ZZSnes-ui": {
+      "sha256": "cb70a6f8e8003cc31e365cea5692caa6f3cd474a91ae80efedfa0a36ed166492",
+      "md5": "fa95748a3b4d9f62bdcd6180a92563ad",
+      "previous_md5": "17f01b67ee37399d21165643a7ec7577",
+      "bytes": 1003296
+    },
+    "ZZSnes-FX": {
+      "sha256": "8d35ef25be6162bc77919e8644845675242a5cd9bf1eae52c7d7d18c98e8ea64",
+      "md5": "061f9beeab4fcddaa00fab6a6ab4aa97",
+      "previous_md5": "b4aadb767a64da87a5bca499b1479e67",
+      "bytes": 1034456
+    }
+  }
+}

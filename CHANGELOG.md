@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — display defaults
+
+- Fullscreen with software scanlines for new libraries.
+- Loading panel labels F9 as Screenshot.
+- Sharp pixels / Smooth scrolling selector matches ZZNES; horizontal NEON
+  interpolation supports NTSC/PAL, borders and all software scanline modes.
+
+
 ## 0.6.2-dev — optimisation candidate (not a tagged release)
 
 - Remove per-pixel region tests from ARM presentation by processing contiguous spans.

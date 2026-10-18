@@ -8,6 +8,11 @@ Run `make test-optimisation-native`; see `docs/optimisation-20261018.md` for
 relocated ARM checks, physical evidence and limits. Builds never deploy.
 
 - Split presentation rows into left border / game / right border spans.
+- Optional horizontal NEON interpolation, matching ZZNES's Sharp / Smooth
+  selector. Session bit 9 selects Smooth; bit 8 retains runtime PAL height.
+  Preferences migrate to v4; restore the previous config when rolling back.
+- New-library defaults: fullscreen, Soft software scanlines and Sharp pixels.
+  The loading panel explicitly labels F9 Screenshot.
 - Build with GCC `-O2` instead of `-Os` when `--core-o2` is selected. The
   soft-float ABI and numerical rules remain unchanged; no fast-math.
 - Includes the existing Thin scanline overlay. Add `--superfx` to build the

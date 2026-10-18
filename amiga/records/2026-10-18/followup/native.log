@@ -1,0 +1,11 @@
+mkdir -p .context
+c++ -std=c++14 -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/player -Idevelopment/borders-20261016/player -Idevelopment/beta-20261015/build-inputs/player tests/amiga/emulator/optimisation.cpp -o .context/test-optimisation-pixels
+.context/test-optimisation-pixels
+PASS 3317760 SNES output pixels: all options, both formats, PAL height, masks, borders and guards
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/source -Idevelopment/borders-20261016/source tests/amiga/emulator/optimisation_library.c -o .context/test-optimisation-library
+.context/test-optimisation-library
+PASS 20000 ROMs: growth, duplicate index, sort/search/filter, rename, persistence, deletion and allocation-failure recovery (0.132s)
+PASS strict numeric/hex fields, missing/extra tokens, whitespace and allocation fallback
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/source -Idevelopment/borders-20261016/source tests/amiga/emulator/legacy_model.c -o .context/test-optimisation-legacy
+.context/test-optimisation-legacy
+PASS v1 migration/v2 round-trip, dynamic library growth, titles, artwork links, search/filter/order, history overflow, hostile paths, malformed preferences

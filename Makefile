@@ -102,3 +102,7 @@ test-optimisation-native:
 .PHONY: test-optimisation-arm
 test-optimisation-arm:
 	CURRENT_ARM_DIR=.context/optimisation-o2-build/player TEST_THIN_SCANLINES=1 $(MODEL_PYTHON) tests/amiga/emulator/check_current_arm.py
+
+.PHONY: test-smooth-arm
+test-smooth-arm:
+	CURRENT_ARM_DIR=.context/optimisation-o2-build/player $(MODEL_PYTHON) tests/amiga/emulator/check_smooth_arm.py

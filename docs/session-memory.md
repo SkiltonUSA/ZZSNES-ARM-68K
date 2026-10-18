@@ -1,3 +1,22 @@
+## Display defaults and stability follow-up — 18 October 2026 UTC
+
+Installed fullscreen/Soft defaults and the F9 Screenshot loading reminder.
+Sharp remains the default pixel scaling; saved choices still take priority.
+ZZSNES now offers Sharp pixels / Smooth scrolling, matching ZZNES. The
+standard and supplemental players were rebuilt and installed together. Library
+preferences migrate to ZZSNESUI4 (restore the previous config on rollback).
+Four physical readback cases, interleaved Sharp/Smooth timing and the Smooth
+save/load/capture/display-switch/exit checks passed. An earlier state resumed,
+ but a newly captured state timed out before frame one in BOTH new and prior
+ players; this unresolved failure is documented and retained.
+
+See [follow-up report](stability-20261018.md) and
+[build hashes](../amiga/records/2026-10-18/followup/tested-build.json).
+Audio gap counts are retained; completion is not a claim of uninterrupted audio.
+The earlier isolated SNES startup failure was not reproduced, not proven fixed.
+Tagged releases are unchanged. Core1 is free and the library is closed after
+checks; no firmware, global AHI or saved Workbench mode changes.
+
 ## Optimisation candidate — 18 October 2026 (UTC)
 
 Installed and checksum-verified **0.6.2-dev**, with rollback copies of executables
