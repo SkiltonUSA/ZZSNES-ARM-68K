@@ -7,6 +7,11 @@ test-native: verify
 	$(PYTHON) scripts/build_pocketsnes.py
 	$(PYTHON) scripts/build_mesen_snes.py
 	$(PYTHON) scripts/build_mesen_snes_system.py --integer-clock
+	$(PYTHON) scripts/test_state_sprites.py
+
+.PHONY: test-state-sprites
+test-state-sprites:
+	$(PYTHON) scripts/test_state_sprites.py
 test-model: verify
 	$(MODEL_PYTHON) tests/amiga/pocketsnes/check_arm.py artifacts/pocketsnes/pocket.elf --profile-clock
 	$(MODEL_PYTHON) tests/amiga/mesen_snes/check_arm.py artifacts/mesen-snes/snes.elf

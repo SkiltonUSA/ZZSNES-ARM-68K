@@ -44,11 +44,13 @@ def main():
   p=lib/'library_mui.h';s=p.read_text();s=s.replace('"Header supported: NTSC, mapper %d\\nGameplay compatibility varies by title.",mapper','"Header supported: %s, mapper %d\\nGameplay compatibility varies by title.",fc_rom_pal(p,n,model.entry[selected].path)?"PAL":"NTSC",mapper').replace('NTSC mapper 0 or 90, without trainer or battery.','mapper 0/1/2/4/5/90; no trainer or battery.');p.write_text(s)
  snes=m['console']=='ZZSNES';rel=lambda p:str(p.relative_to(ROOT));inside=lambda p:os.environ.get('ARM_CONTAINER_ROOT','/work')+'/'+rel(p)
  if a.arm:
-  core=source/'core';objects=[]
+  core=out/'core';objects=[]
+  shutil.copytree(source/'core',core,dirs_exist_ok=True)
   if compatibility:
-   core=out/'core'
-   shutil.copytree(source/'core',core,dirs_exist_ok=True)
    shutil.copytree(ROOT/'development/compatibility-20261016/core',core,dirs_exist_ok=True)
+  # Derived sprite lists must be rebuilt for normal players too. This single
+  # restore fix does not enable the experimental cartridge compatibility path.
+  if snes:shutil.copy2(ROOT/'development/compatibility-20261016/core/src/snapshot.c',core/'src/snapshot.c')
   if a.fx3:
    shutil.copytree(ROOT/'development/fx3-20261016/core',core,dirs_exist_ok=True)
    for dest in [stage,core]:shutil.copy2(ROOT/'development/fx3-20261016/cartridge.h',dest/'cartridge.h')

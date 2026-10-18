@@ -1,0 +1,4 @@
+archived: FAIL: restored state did not rebuild its sprite list
+normal: PASS: fresh/stale sprite data rebuilt; exact 30-frame video and PCM replay
+superfx: PASS: fresh/stale sprite data rebuilt; exact 30-frame video and PCM replay
+PASS: archived failure reproduced; normal and Super FX builds restore sprites

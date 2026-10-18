@@ -17,9 +17,11 @@ loading into a fresh native process. Previously Imperium differed for one frame
 and Stunt Race FX for 18 frames. Longer tests still expose other failures.
 
 The ROM timing correction described below is also included. Both changes are
-isolated in `development/compatibility-20261016/`, with a patch
-against the archived core. `make current` and `make current-arm` retain the
-released source/payload. The diagnostic build uses the explicit flags below.
+stored in `development/compatibility-20261016/`, with a patch
+against the archived core. Since 18 October, **all fresh ARM builds** include
+the sprite-list restore fix; cartridge/timing changes still require the explicit
+compatibility flags. `make current` without `--arm` retains the archived payload.
+See [the standard-player restore regression](state-restore-20261018.md).
 
 ## Earlier sprite-only candidate results
 

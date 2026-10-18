@@ -1075,8 +1075,8 @@
   "amiga/records/2026-10-16/cartridges/survey.json": "9e2932b6d657d140572138a36e884e631cea0882775f5c980ab0292699b3992a",
   "development/borders-20261016/source/cartridge_warning.h": "d821432ea39263f3b8b4be8a068668babc9d6046e0bbc4ba287a0f4a092cc4e8",
   "development/fx3-20261016/cartridge.h": "891d65aac2fefc8e0450f6fa4381c61baf45dcb7836344221f831aaede10bab0",
-  "scripts/build_current.py": "1dad6b6f6a64fd1072b48c814a25a2e795d5ec3d86bb4413ef0d36696e8370bc",
-  "scripts/compatibility_native.py": "13d043d604abf535d0eec7b0c79eba645fc6e612f42fbbfce090ce5dc9c79876",
+  "scripts/build_current.py": "22a27a7bfc775f80b753b447797182bade3395f2299bb1e3532871f793a1a239",
+  "scripts/compatibility_native.py": "9fcd054cd567eceeb1bd9c57ddda1a4169ee5140828876da6256f62e4e186054",
   "tests/amiga/emulator/check_current_arm.py": "1ce948bdfdd10f659f706a593e75f84c6a7e9c6ebdbebb78e505bd3cd7069a01",
   "scripts/test_fx3.py": "a2819267cba067eb9d35b14730a6ac51c31e6b68427f747c5e3317643bb7f0ee",
   "scripts/make_fx3_fixture.py": "82a130467b4d1cc2bdf753c1840a77c1807302fc44c1d0ba7fe166311bc1e820",
@@ -1103,5 +1103,11 @@
   "development/fx3-20261016/README.md": "7447b0bccec808341982dc2a68cb0b4c20cbe406219fb2b3b6bfa31b4f82e827",
   "artifacts/development/scanline-label-20261017/README.md": "ef78db9507138f173e37e4bc7bd2e56de2e1ec9aee94cd0cbcb7214867fc1acb",
   "artifacts/development/scanline-label-20261017/SHA256SUMS": "93047e707c2ffc54c87517fa43f1bfa4d02d7fe3f3412faf22f1d719d181f1a6",
-  "artifacts/development/scanline-label-20261017/ZZSNES": "d9fe1cb04308ba48fd6e703511189c9319c87c30ee4e8481db4e9738254ed6b9"
+  "artifacts/development/scanline-label-20261017/ZZSNES": "d9fe1cb04308ba48fd6e703511189c9319c87c30ee4e8481db4e9738254ed6b9",
+  "scripts/test_state_sprites.py": "19f8f03ac8791e14b44243a0889d7ea37c09d23a5260447261bd809fa33e1ead",
+  "tests/amiga/pocketsnes/state_sprites.c": "b25a3a68315c87978c793b9427cd2ca69177f80a6d9d016a6ac4165f154d8a0e",
+  "tests/amiga/pocketsnes/check_current_state.py": "a0b6aa10df92824ee9e411b38175a1328b66349a3d4b7cb80ab0b9d5b4a57253",
+  "artifacts/development/state-restore-20261018/README.md": "061876860726ca7bae9155070414b2915f60391393bf223d75b1d18df84581cc",
+  "artifacts/development/state-restore-20261018/ZZSnes-ui": "9dd6e23ae4d42f84e128c314fde085e0e91ae03e62c491fb67b34211042504c7",
+  "artifacts/development/state-restore-20261018/SHA256SUMS": "52449fe45cafc7e29f4911da2a249c6ef82d44a15465886d603d3aac7844ac18"
 }

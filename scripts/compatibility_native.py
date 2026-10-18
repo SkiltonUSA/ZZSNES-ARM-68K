@@ -2,11 +2,12 @@
 from pathlib import Path
 import shutil,subprocess,hashlib
 
-def build(source,O,*,experimental=False,baseline=False,fx3=False):
+def build(source,O,*,experimental=False,baseline=False,fx3=False,snapshot_fix=False):
  r=Path(__file__).resolve().parents[1];snap=r/'development/beta-20261015';core=O/'native-core';O.mkdir(parents=True,exist_ok=True)
  shutil.copytree(snap/'source/core',core,dirs_exist_ok=True)
  if not baseline:
   shutil.copytree(r/'development/compatibility-20261016/core',core,dirs_exist_ok=True)
+ if snapshot_fix:shutil.copy2(r/'development/compatibility-20261016/core/src/snapshot.c',core/'src/snapshot.c')
  if fx3:shutil.copytree(r/'development/fx3-20261016/core',core,dirs_exist_ok=True)
  inc=O/'include';shutil.copytree(snap/'build-inputs/player',inc,dirs_exist_ok=True)
  p=inc/'cartridge.h';s=p.read_text()

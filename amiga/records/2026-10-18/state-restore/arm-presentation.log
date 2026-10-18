@@ -1,0 +1,38 @@
+CURRENT_ARM_DIR=.context/optimisation-o2-build/player TEST_THIN_SCANLINES=1 ../amiga/mesen-bench/venv/bin/python tests/amiga/emulator/check_current_arm.py
+PASS ZZSNES 0x12000040 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS Thin: every logical row preserved, black separators, row guards, three-section mapping revoked, cancellation
+PASS ZZSNES 0x12000040 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS Thin: every logical row preserved, black separators, row guards, three-section mapping revoked, cancellation
+PASS ZZSNES 0x12000040 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS Thin: every logical row preserved, black separators, row guards, three-section mapping revoked, cancellation
+PASS ZZSNES 0x12000040 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS Thin: every logical row preserved, black separators, row guards, three-section mapping revoked, cancellation
+NEON row calls: 720
+PASS ZZSNES 0x150020c0 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS Thin: every logical row preserved, black separators, row guards, three-section mapping revoked, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS Thin: every logical row preserved, black separators, row guards, three-section mapping revoked, cancellation
+PASS ZZSNES 0x150020c0 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS Thin: every logical row preserved, black separators, row guards, three-section mapping revoked, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS Thin: every logical row preserved, black separators, row guards, three-section mapping revoked, cancellation
+NEON row calls: 720
+CURRENT_ARM_DIR=.context/optimisation-o2-build/player ../amiga/mesen-bench/venv/bin/python tests/amiga/emulator/check_smooth_arm.py
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 3 0
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 3 16
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 4 17
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 3 80
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 4 91
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 4 161
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 3 256
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x12000040 4 417
+PASS NEON all weights, short/tail lengths, guards and AAPCS callee-saved D8-D15 0x12000040
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 3 0
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 3 16
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 4 17
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 3 80
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 4 91
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 4 161
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 3 256
+PASS smooth A9 pixels, guard bytes, revoked mappings and all five scanline modes / PAL-height-safe interpolation 0x150020c0 4 417
+PASS NEON all weights, short/tail lengths, guards and AAPCS callee-saved D8-D15 0x150020c0

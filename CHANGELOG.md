@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — save-state restoration
+
+- Rebuild derived sprite lists after loading standard-player states, fixing a
+  fresh-process resume failure. Existing save files keep the same format.
+- Add original-ROM regression and relocated ARM checkpoint replay checks.
+
 ## Unreleased — display defaults
 
 - Fullscreen with software scanlines for new libraries.

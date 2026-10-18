@@ -29,8 +29,9 @@ Current ARM presentation overlays and packed image are in the snapshot player/
 directory. Run make test-border and make test-current after border changes.
 
 Compatibility candidate overlays live in development/compatibility-20261016/.
-They require an explicit build_current.py --arm --compatibility or
---experimental-chips flag. The normal release is deliberately unchanged. Read
+Cartridge/timing changes require an explicit build_current.py --arm --compatibility
+or --experimental-chips flag. All fresh ARM builds include the snapshot sprite-list
+restore fix from that overlay; archived release payloads remain unchanged. Read
 docs/compatibility-development.md before enabling a chip or claiming game support.
 
 Run `make test-superfx-timing` after mapper changes. The isolated Super FX

@@ -1,3 +1,22 @@
+## Standard-player state restore fix — 18 October 2026 UTC
+
+Installed 0.6.2-dev standard player with the existing compatibility-overlay
+snapshot sprite-list rebuild. Fresh ARM builds now include it for standard
+cartridges too; no cartridge gate or state format changes. Archived payloads
+are unchanged. Super FX rebuilt byte-identically and was not replaced.
+
+Previously failing and earlier-good SMW states each resumed for 300 physical
+frames, zero gaps, exit zero and register/cache witness restoration. A new
+interactive save passed three save/load cycles, F9, four display switches and
+F10 (950 frames, three gaps), then fresh-process resume for 300 frames with
+zero gaps. Native negative-control regression and both relocated ARM players
+pass exact 30-frame video/PCM replay. Special-chip states remain incomplete.
+
+See [restore report](state-restore-20261018.md) and
+[build hashes](../amiga/records/2026-10-18/state-restore/tested-build.json).
+Only the standard player changed; launcher/preferences/user saves remain.
+Tagged releases unchanged; previous executable retained for rollback.
+
 ## Display defaults and stability follow-up — 18 October 2026 UTC
 
 Installed fullscreen/Soft defaults and the F9 Screenshot loading reminder.
@@ -7,8 +26,9 @@ standard and supplemental players were rebuilt and installed together. Library
 preferences migrate to ZZSNESUI4 (restore the previous config on rollback).
 Four physical readback cases, interleaved Sharp/Smooth timing and the Smooth
 save/load/capture/display-switch/exit checks passed. An earlier state resumed,
- but a newly captured state timed out before frame one in BOTH new and prior
- players; this unresolved failure is documented and retained.
+but a newly captured state timed out before frame one in BOTH new and prior
+players. The later restore fix above resolves that reproduced failure; the
+original failed logs are retained.
 
 See [follow-up report](stability-20261018.md) and
 [build hashes](../amiga/records/2026-10-18/followup/tested-build.json).

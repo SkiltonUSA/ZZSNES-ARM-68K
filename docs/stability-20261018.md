@@ -59,8 +59,9 @@ witness checks. They are retained as failed tests, not successful resumes.
 The new player successfully resumed the earlier `snes-repeat-state` for 300
 frames with normal restoration. Same-process load is therefore insufficient to
 establish fresh-process compatibility for every saved state. The newly exposed
-state-dependent failure remains unresolved; no save-state fix is claimed by
-this presentation change. See `snes-smooth-resume-failed.log`,
+state-dependent failure was subsequently traced to an unbuilt sprite list and
+fixed in the standard player; see the [restore fix and target tests](state-restore-20261018.md).
+The presentation change itself did not repair save-state loading. See `snes-smooth-resume-failed.log`,
 `resume-baseline-newstate.log` and `resume-smooth-oldstate.log` in the evidence.
 
 Build the candidate using `scripts/build_current.py --arm --optimisation --core-o2`

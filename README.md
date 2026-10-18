@@ -83,7 +83,7 @@ Only one Core1 application can run at a time.
 ## Performance
 
 An opt-in **0.6.2-dev optimisation candidate** adds faster ARM presentation, an O2 core build, faster large libraries and optional NEON smooth scrolling.
-[Measurements and validation](docs/optimisation-20261018.md) · [Follow-up testing](docs/stability-20261018.md).
+[Measurements and validation](docs/optimisation-20261018.md) · [Follow-up testing](docs/stability-20261018.md) · [Save-state restore fix](docs/state-restore-20261018.md).
 New libraries default to fullscreen with Soft software scanlines; the loading panel lists **F9: Screenshot**. Existing release downloads are unchanged.
 
 The established steady emulation measurements remain:

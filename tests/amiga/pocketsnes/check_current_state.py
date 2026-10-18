@@ -5,11 +5,12 @@ import sys,struct,subprocess,importlib.util,argparse,os
 from unicorn import Uc,UC_ARCH_ARM,UC_MODE_ARM
 from unicorn.arm_const import *
 ROOT=Path(__file__).resolve().parents[3]
-p=argparse.ArgumentParser();p.add_argument('elf',type=Path);p.add_argument('rom',type=Path);p.add_argument('--frames',type=int,default=6);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('elf',type=Path);p.add_argument('rom',type=Path);p.add_argument('--frames',type=int,default=6);p.add_argument('--state',type=Path,help='Resume an existing private checkpoint instead of creating one');a=p.parse_args()
 out=a.elf.parent;checkpoint=a.frames
 
 spec=importlib.util.spec_from_file_location('pack',ROOT/'development/beta-20261015/source/core/elf.py');pack=importlib.util.module_from_spec(spec);spec.loader.exec_module(pack)
-rom=a.rom.read_bytes();saved=None;reference=None
+rom=a.rom.read_bytes();saved=a.state.read_bytes() if a.state else None;reference=None
+if saved is not None:checkpoint=struct.unpack_from('>I',saved,48)[0]
 for base in [0x12000040,0x150020c0]:
  image,rel,_=pack.unpack((a.elf).read_bytes())
  for off in rel:struct.pack_into('<I',image,off,struct.unpack_from('<I',image,off)[0]+base)
@@ -30,6 +31,10 @@ for base in [0x12000040,0x150020c0]:
   assert any(saved[128:128+128*112*2]);reference=[frame(i) for i in range(checkpoint,checkpoint+30)]
  else:
   u.mem_write(base+0x600000,saved);n=len(saved)
+  if reference is None:
+   assert call('fc_state_load',base+0x600000,n)==1
+   assert call('nes_frames')==checkpoint
+   reference=[frame(i) for i in range(checkpoint,checkpoint+30)]
  assert call('fc_state_load',base+0x600000,n)==1;assert call('nes_frames')==checkpoint
  actual=[frame(i) for i in range(checkpoint,checkpoint+30)];assert actual==reference,'Video/audio replay diverged'
  print(f'PASS base={base:08x} state={n} bytes; exact 30-frame video/stereo replay at restored frame{checkpoint}',flush=True)

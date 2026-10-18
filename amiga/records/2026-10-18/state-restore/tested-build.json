@@ -1,0 +1,22 @@
+{
+  "version": "0.6.2-dev",
+  "files": {
+    "ZZSnes-ui": {
+      "bytes": 1003304,
+      "sha256": "9dd6e23ae4d42f84e128c314fde085e0e91ae03e62c491fb67b34211042504c7"
+    },
+    "ZZSnes-FX": {
+      "bytes": 1034456,
+      "sha256": "8d35ef25be6162bc77919e8644845675242a5cd9bf1eae52c7d7d18c98e8ea64"
+    },
+    "normal-ARM": {
+      "bytes": 2259920,
+      "sha256": "8cf54bb661be8f810c952c415507a397d096de18fa5b64f7e1092ced0f292700"
+    },
+    "fx-ARM": {
+      "bytes": 2315244,
+      "sha256": "483bd8cc5e7561558b8542037cff22d1d715fcb74acbe6bc62ea4d780873981b"
+    }
+  },
+  "notes": "Normal player includes snapshot sprite restoration. Super FX executable is byte-identical to the previously installed Smooth build. ROMs and states are private."
+}
