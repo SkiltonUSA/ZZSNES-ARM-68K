@@ -4,8 +4,9 @@
 static unsigned em_scanline_next(unsigned mode){
  switch(mode){case 0:return 2;case 2:return 3;case 3:return 1;default:return 0;}
 }
-static void em_scanline_key(unsigned code,unsigned repeat,unsigned current,int *pending){
+static void em_scanline_key(unsigned code,unsigned repeat,unsigned current,unsigned windowed,int *pending){
  if(code!=0x56||repeat)return;
- *pending=(int)em_scanline_next(*pending<0?current:(unsigned)*pending);
+ unsigned mode=*pending<0?current:(unsigned)*pending;
+ *pending=(int)(windowed?(mode?0:2):em_scanline_next(mode));
 }
 #endif

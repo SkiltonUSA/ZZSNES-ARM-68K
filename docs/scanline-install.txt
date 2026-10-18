@@ -1,0 +1,32 @@
+SCANLINE DEVELOPMENT BUILD
+
+Copy this entire drawer to a writable Amiga disk. Keep the launcher and player
+executables together. Your ROMs, states and library preferences are not included.
+AmigaOS, MUI 3.8 or compatible, Picasso96, AHI and ZZ9000 XACP firmware are required.
+
+Double-click Install-Scanlines once. It installs missing Xanxi ZZScanlines and
+ZZScanlinesGUI controls into SYS:Utilities/ZZScanlines. Existing tools there or
+in C: are preserved. No firmware or startup files are changed. The Scanlines
+subdrawer must remain next to the installer. Both emulator packages include it;
+running either installer again is harmless.
+
+Fullscreen uses Xanxi's FPGA scanline register interface. Compatible scanline
+firmware is required; installing these control tools does not add FPGA support.
+The emulator controls the registers directly, so no separate tool must be running.
+Windowed output uses Soft software scanlines on the ARM. Hardware scanlines are
+disabled in a window and on normal exit; a previous global setting is not restored.
+
+F7: fullscreen Off / Soft / Gradient / Classic; windowed Off / Soft.
+Alt+Return: switch fullscreen/window. F9: screenshot. F10: exit.
+Legacy Thin settings become Soft. Fullscreen defaults to the low-resolution RTG
+mode supported by Xanxi's scanline formatter. Hardware filtering occurs after
+framebuffer readback and is therefore not captured by F9.
+
+Xanxi: https://github.com/Xanxi-Amiga/zz9000-scanlines
+Pinned revision: 1707c356056a3a5c3aeb9d46d38b461e62526035
+Bundled control sources and GPL-3.0-or-later license: Scanlines/Source/vendor/.
+Installer source: Scanlines/Source/install.c.
+To rebuild controls with an Amiga GCC toolchain:
+  m68k-amigaos-gcc -std=gnu99 -noixemul -m68020 -O2 vendor/ZZScanlines.c -lamiga -o ZZScanlines
+  m68k-amigaos-gcc -std=gnu99 -noixemul -m68020 -O2 vendor/ZZScanlinesGUI.c -lamiga -o ZZScanlinesGUI
+  m68k-amigaos-gcc -std=gnu99 -noixemul -m68020 -O2 install.c -lamiga -o Install-Scanlines

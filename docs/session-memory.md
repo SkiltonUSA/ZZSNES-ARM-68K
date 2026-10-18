@@ -1,3 +1,21 @@
+## FPGA fullscreen / Soft window scanlines — 18 October 2026 UTC
+
+Current installed development players use Xanxi FPGA controls in fullscreen,
+Soft software filtering in a window. F7 cycles fullscreen modes / toggles window
+Off/Soft. Alt+Return switches; normal exit disables global hardware scanlines.
+No prior global mode is restored; no firmware capability readback exists.
+Legacy Thin migrates to Soft. Controls/installer/source are bundled; the installer
+adds missing tools and preserves existing SYS:Utilities/ZZScanlines or C: tools.
+No firmware, startup or saved Workbench mode changes.
+
+All three player host paths passed physical F7/pause/display-switch/readback/exit
+checks with register/cache restoration. Optical acceptance of the FPGA effect
+still requires the owner or an HDMI capture. ARM payloads are unchanged. Installer
+fresh/repeat/partial/existing-tool/error checks passed. Preferences and games are
+untouched. Backups: Rollback-fpga-1018. Tagged releases remain unchanged.
+[Report](fpga-scanlines-20261018.md) and
+[installed hashes](../amiga/records/2026-10-18/fpga-scanlines/installed-build.json).
+
 ## F7 software scanlines — 18 October 2026 UTC
 
 Installed the host/launcher update with F7 Off → Soft → Gradient → Classic → Off.

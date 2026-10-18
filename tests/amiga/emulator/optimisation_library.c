@@ -42,7 +42,7 @@ int main(void){char path[UI_PATH];const unsigned total=20000;clock_t begin=clock
  printf("PASS %u ROMs: growth, duplicate index, sort/search/filter, rename, persistence, deletion and allocation-failure recovery (%.3fs)\n",total,(double)(clock()-begin)/CLOCKS_PER_SEC);
  /* v3 remains readable and never inherits the new interpolation setting. */
  {FILE*f=tmpfile();struct ui_model old={0};assert(f);fputs(UI_CONFIG_PREFIX "3\n0 0 2 0 0 0 0 0 0 0 0 4 0 1 0\n",f);rewind(f);
-  assert(ui_read(f,&old)&&old.smooth==0&&old.scanlines==4);fclose(f);ui_dispose(&old);}
+  assert(ui_read(f,&old)&&old.smooth==0&&old.scanlines==2);fclose(f);ui_dispose(&old);}
  /* Token parser rejects overflow, malformed hex and extra fields. */
  const char *bad_rows[]={"4294967296 0 41 - -\n","0 4294967296 41 - -\n","-1 0 41 - -\n","0 0 4100 - -\n","0 0 4g - -\n","0 0 41 - - extra\n","0 0 41 -\n"};
  for(unsigned i=0;i<sizeof(bad_rows)/sizeof(bad_rows[0]);i++){struct ui_model empty={0},read={0};ui_defaults(&empty);FILE*f=tmpfile();assert(f&&ui_write(f,&empty));fputs(bad_rows[i],f);rewind(f);assert(!ui_read(f,&read));fclose(f);ui_dispose(&read);ui_dispose(&empty);}

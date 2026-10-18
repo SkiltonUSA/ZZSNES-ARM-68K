@@ -1,5 +1,15 @@
 # Changelog
 
+## Scanline backend development update
+
+- Fullscreen: Xanxi FPGA Classic/Soft/Gradient; window: Soft software filtering.
+- F7 cycles fullscreen modes or toggles windowed Off/Soft; no double filtering.
+- Hardware effect disabled when entering a window and on normal exit.
+- Legacy Thin setting migrates to Soft; fullscreen uses the low-resolution mode.
+- Both packages bundle Xanxi controls, source/license and an install-missing helper.
+- Existing control tools, firmware and startup files are preserved.
+
+
 ## Unreleased — F7 scanline control
 
 - F7 cycles Off, Soft, Gradient (smooth), Classic (hard) during play or pause.

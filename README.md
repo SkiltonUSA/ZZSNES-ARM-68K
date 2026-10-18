@@ -24,34 +24,39 @@ files, controls, display coordination and batched AHI audio.
 - Red Launch button available on every launcher page.
 - No fixed ROM-count limit; tested with 20,000 entries per library.
 - Fullscreen or Workbench window; **Alt+Return** switches during play.
-- Optional FPS overlay and **Classic, Soft or Gradient** software scanlines.
+- Optional FPS overlay; fullscreen FPGA scanlines and windowed Soft scanlines in the development package.
 - Monitor aspect correction, borders including EmuELEC, overscan masks and joystick testing.
 - Five save slots per game; save, load, resume and delete.
 - Guarded NEON stores and scanline dimming, with an integer fallback.
 
 Save-state previews include miniature screenshots.
 
-## Software scanlines
+## Scanlines
 
-The scanline effect is built into the emulator and rendered by the ZZ9000
-Cortex-A9. **Xanxi’s separate ZZScanlines utility is not required**, and the
-effect does not require additional FPGA scanline support. XACP remains required
-for the emulator itself.
+[Download the development package](artifacts/development/fpga-scanlines-20261018/ZZSNES-0.6.2-dev-fpga.zip).
 
-- **Off:** unfiltered output.
-- **Classic:** alternating black rows.
-- **Soft:** alternating dimmed rows, retaining more fine detail.
-- **Gradient:** a repeating four-row brightness pattern.
+The current development package uses **Xanxi’s FPGA scanlines in fullscreen**
+and **Soft software scanlines in a Workbench window**. The two effects do not
+run together. Choose **Display → Scanlines**; **F7** cycles
+Off → Soft → Gradient → Classic in fullscreen and toggles Off/Soft in a window.
+**Alt+Return** switches display modes. Hardware scanlines are disabled on normal
+exit, rather than restoring a previous global setting.
 
-Select **Display → Software scanlines** (labelled **Scanlines** in older builds).
-The routine is shared with ZZDosBox and works in **fullscreen and Workbench
-windows**, including with the **FPS overlay** enabled.
+Double-click the bundled **Install-Scanlines** to add missing `ZZScanlines` and
+`ZZScanlinesGUI` controls. It preserves existing tools in `SYS:Utilities/ZZScanlines`
+or `C:`. Both packages include the controls, installer, source and GPL license.
+**Compatible FPGA scanline firmware is required for the fullscreen effect**;
+the installer does not update firmware or startup files. The emulator uses the
+register interface directly; the separate utility need not be running.
 
-The separate development build also offers **Thin (640×480)**, preserving each
-logical image row with a one-pixel black separator. [Thin mode details](docs/thin-scanlines.md).
+Thanks to [Xanxi’s zz9000-scanlines](https://github.com/Xanxi-Amiga/zz9000-scanlines)
+for the hardware interface and bundled tools. Windowed Soft filtering remains
+our ARM software routine shared with ZZDosBox. Previous tagged beta downloads
+use software scanlines in both modes; those archives have not been replaced.
+[Installation and controls](docs/scanline-install.txt) · [Integration report](docs/fpga-scanlines-20261018.md).
 
-If Workbench’s global scanline effect is enabled, turn it off to avoid applying
-both effects together. Software scanlines affect this emulator’s image only.
+Hardware filtering occurs after framebuffer readback, so F9 screenshots do not
+capture the FPGA effect. The following images show the earlier software effect.
 
 ### Games with Soft scanlines
 
@@ -84,7 +89,7 @@ Only one Core1 application can run at a time.
 
 An opt-in **0.6.2-dev optimisation candidate** adds faster ARM presentation, an O2 core build, faster large libraries and optional NEON smooth scrolling.
 [Measurements and validation](docs/optimisation-20261018.md) · [Follow-up testing](docs/stability-20261018.md) · [Save-state restore fix](docs/state-restore-20261018.md).
-New libraries default to fullscreen with Soft software scanlines; the loading panel lists **F9: Screenshot**. Existing release downloads are unchanged.
+New libraries default to fullscreen with Soft scanlines; the loading panel lists **F9: Screenshot**. Existing release downloads are unchanged.
 
 The established steady emulation measurements remain:
 
@@ -116,10 +121,10 @@ Audio: 32,040 Hz stereo through AHI.
 
 Development: **Codex assisted, Amiga-Bridge MCP**. Interface: **MUI**.
 Thanks to **Xanxi** for XACP, and the **PocketSNES / Snes9x2002** contributors for the core.
-The software scanline effects and NEON presentation work are shared with ZZDosBox;
-they do not require the separate ZZ9000 scanline application or an FPGA change.
+Software filtering and NEON presentation work are shared with ZZDosBox.
+The current fullscreen scanline backend uses Xanxi’s FPGA interface as described above.
 
-[Thin scanlines candidate](docs/thin-scanlines.md): 640×480 output preserves every
+[Historical Thin scanlines candidate](docs/thin-scanlines.md): 640×480 output preserves every
 image row and inserts narrow black separators. Separate from the published beta.
 
 ZIP decompression uses Mark Adler’s **puff** from zlib; its notice is included.

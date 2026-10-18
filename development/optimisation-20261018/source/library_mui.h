@@ -86,7 +86,7 @@ static const char version[]="$VER: " LIB_TITLE " Library " LIB_VERSION " (16.10.
 static const char *tabs[]={"Games","Display","Controllers","Save states","Disks","About",NULL};
 static const char *display_choices[]={"Fullscreen","Workbench window",NULL};
 static const char *scaling_choices[]={"Sharp pixels","Smooth scrolling",NULL};
-static const char *scanline_choices[]={"Off","Classic","Soft","Gradient","Thin (640x480)",NULL};
+static const char *scanline_choices[]={"Off","Classic","Soft","Gradient",NULL};
 static const char *filters[]={"All ROMs","Recently played","Favourites",NULL};
 static const char *monitors[]={"4:3 monitor","16:9 widescreen monitor",NULL};
 #ifdef LIBRARY_SNES
@@ -384,10 +384,10 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
     Child,ColGroup(2),GroupFrameT("Presentation"),
      Child,TextObject,MUIA_Font,ui_font(),MUIA_FixWidth,180,MUIA_Text_Contents,(ULONG)"Display",End,Child,display_mode=cycle(display_choices),
      Child,textline("Pixel scaling"),Child,scaling_mode=cycle(scaling_choices),
-     Child,textline("Software scanlines"),Child,scanline_mode=cycle(scanline_choices),
+     Child,textline("Scanlines"),Child,scanline_mode=cycle(scanline_choices),
      Child,textline("On-screen FPS"),Child,HGroup,Child,fps_option=CheckMark(FALSE),Child,HSpace(0),End,
      Child,textline("Optimised presenter"),Child,HGroup,Child,optimise_option=CheckMark(TRUE),Child,HSpace(0),End,End,
-    Child,textline("Alt + Return switches display during play. F10 returns to the library."),
+    Child,textline("Fullscreen: Xanxi FPGA. Window: Soft software scanlines. F7 changes scanlines."),
     Child,textline("Monitor shape (set the monitor itself to fill the screen):"),Child,monitor=cycle(monitors),
     Child,textline("Border / wallpaper:"),Child,theme=cycle(themes),
     Child,textline("Left / right edge mask (hide flashing pixels):"),Child,mask=cycle(masks),
@@ -455,7 +455,7 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
    "Libraries grow with available memory",
    "Fast path lookup and sorting for large ROM collections",
  "Sidebar navigation; startup and loading screens; original logos.",
- "Fullscreen / window switching; optional FPS and software scanlines.",
+ "Fullscreen Xanxi FPGA scanlines; windowed Soft scanlines; optional FPS.",
  "Guarded NEON presentation with integer fallback; baseline comparison.",
  "Disks: user-selected, one-time ROM scan; no automatic drive scanning.",
  "Previous beta - regional cadence, batched audio and save states.",NULL};
@@ -475,7 +475,7 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
  for(unsigned i=0;i<5;i++){notify(card_resume[i],MUIA_Pressed,FALSE,ID_SLOT_RESUME+i);notify(card_delete[i],MUIA_Pressed,FALSE,ID_SLOT_DELETE+i);}
  set(scaling_mode,MUIA_Cycle_Active,model.smooth);
  set(scaling_mode,MUIA_ShortHelp,(ULONG)"Sharp: nearest-neighbour pixels.\nSmooth: horizontal interpolation for scaled scrolling.\nUses more ARM presentation time; no emulated game changes.");
- set(scanline_mode,MUIA_ShortHelp,(ULONG)"ARM software effect from ZZDosBox.\nNo ZZScanlines utility required.\nTurn global Workbench scanlines off to avoid double filtering.");
+ set(scanline_mode,MUIA_ShortHelp,(ULONG)"Fullscreen: Xanxi FPGA (compatible firmware required).\nWindow: Soft software scanlines. Off disables both.\nF7 changes the effect during play; hardware is disabled on exit.");
  set(display_mode,MUIA_Cycle_Active,model.windowed);set(scanline_mode,MUIA_Cycle_Active,model.scanlines);set(fps_option,MUIA_Selected,model.fps);set(optimise_option,MUIA_Selected,model.optimise);
  set(monitor,MUIA_Cycle_Active,model.monitor);set(theme,MUIA_Cycle_Active,model.theme);set(mask,MUIA_Cycle_Active,model.mask);set(vmask,MUIA_Cycle_Active,model.vmask);set(slot,MUIA_Cycle_Active,model.slot);set(mute,MUIA_Selected,model.mute);set(fire,MUIA_Cycle_Active,model.fire);
  return 1;

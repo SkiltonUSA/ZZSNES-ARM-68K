@@ -77,6 +77,8 @@ static unsigned fc_windowed,fc_scanlines,fc_fps,fc_optimise=1;
 static int em_switch_pending,em_ready;
 static int em_scanline_pending=-1;
 #include "scanline_key.h"
+#include "scanline_backend.h"
+static unsigned em_soft_mode(void){return em_scan_software(fc_windowed,fc_scanlines);}
 static ULONG em_fps_start,em_fps_count,em_fps_value,em_neon_frames;
 #include "display_math.h"
 static ULONG next_frame_us;
@@ -146,7 +148,7 @@ static void events(void){
    else if(key==0x59||key==0x45||key==0x10){if(!(code&128))quit=1;}
 #ifdef NES_PLAYER
    else if(key==0x19){if(!(code&128)){player_paused=!player_paused;buttons=0;}}
-   else if(key==0x56){em_scanline_key(code,qualifier&IEQUALIFIER_REPEAT,fc_scanlines,&em_scanline_pending);}
+   else if(key==0x56){em_scanline_key(code,qualifier&IEQUALIFIER_REPEAT,fc_scanlines,fc_windowed,&em_scanline_pending);}
    else if(key==0x58){if(!(code&128))fc_snapshot_action=1;}
    else if(key==0x54||key==0x57){if(!(code&128))fc_state_action=key==0x54?1:2;}
    else if(key==0x37){if(!(code&128))player_muted=!player_muted;}
@@ -265,7 +267,7 @@ static int present(ULONG raw_hash,ULONG frame){
  syncio->push(ri.Memory,4,NULL);syncio->push((uint8_t *)ri.Memory+span-4,4,NULL);
  ad_put(shared+MB_HOST,32,view_opt);
  ad_put(shared+MB_HOST,16,ri.BytesPerRow);ad_put(shared+MB_HOST,20,direct_format);ad_put(shared+MB_HOST,24,nonce);
- ad_put(shared+MB_HOST,36,fc_scanlines|((fc_fps?em_fps_value+1:0)<<8));ad_put(shared+MB_HOST,40,fc_optimise);
+ ad_put(shared+MB_HOST,36,em_soft_mode()|((fc_fps?em_fps_value+1:0)<<8));ad_put(shared+MB_HOST,40,fc_optimise);
  profile_request=us();present_pre_us+=profile_request-profile_start;
  if(!request(NES_PRESENT,addr))return 0; /* Keep locked on error until Core1 reset. */
  profile_after=us();present_request_us+=profile_after-profile_request;
@@ -303,7 +305,7 @@ static int present(ULONG raw_hash,ULONG frame){
    if(indices[y*256+x]>=64){bad++;continue;}
    c=nes_palette[indices[y*256+x]];
 #endif
-   c=em_effect(c,x,y,fc_scanlines,fc_scanlines==4?0:(fc_fps?em_fps_value+1:0));
+   c=em_effect(c,x,y,em_soft_mode(),fc_scanlines==4?0:(fc_fps?em_fps_value+1:0));
    if(fc_scanlines==4&&fc_fps){int ink=em_fps_ink(vx,vy,em_fps_value);if(ink>=0)c=ink?0xffffffffu:0xff000000u;}
    if(direct_format==ND_RGB24){want[0]=c>>16;want[1]=c>>8;want[2]=c;}
    else if(direct_format==ND_BGR24){want[0]=c;want[1]=c>>8;want[2]=c>>16;}
@@ -437,14 +439,9 @@ int ff_window(volatile uint8_t *base,const struct ad_io *io,int connected){
   if(em_switch_pending){if(!em_switch())goto done;player_audio_flush();if(player_paused){if(!present(ad_get(shared+MB_REPLY,24),frames)||!full_drain())goto done;paint();}}
   if(em_scanline_pending>=0){
    unsigned mode=(unsigned)em_scanline_pending;em_scanline_pending=-1;
-   /* Apply only after the outstanding flip releases its bitmap. Thin SNES
-    * scanlines own a larger surface, so leaving that mode must reopen it. */
+   /* PRESENT has released the bitmap before changing the FPGA effect. */
    if(!full_drain())goto done;
-   if((fc_scanlines==4)!=(mode==4)){
-    em_display_close();fc_scanlines=mode;
-    if(!full_open())goto done;
-    player_audio_flush();next_frame_us=0;fc_last_flip=0;
-   }else fc_scanlines=mode;
+   fc_scanlines=em_scan_normalize(mode);em_scanline_apply();
    printf("SCANLINES mode=%u window=%u\n",fc_scanlines,fc_windowed);fflush(stdout);
    if(player_paused){if(!present(ad_get(shared+MB_REPLY,24),frames)||!full_drain())goto done;paint();}
   }

@@ -78,6 +78,7 @@ static int ui_read(FILE *f,struct ui_model *m){char line[2400],path[UI_PATH],dec
  v4=!strcmp(line,UI_CONFIG_PREFIX "4\n");v3=v4||!strcmp(line,UI_CONFIG_PREFIX "3\n");v2=v3||!strcmp(line,UI_CONFIG_PREFIX "2\n");if(!v2&&strcmp(line,UI_CONFIG_PREFIX "1\n"))return 0;
  if(!fgets(line,sizeof(line),f)||sscanf(line,"%u %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u",&m->clock,&m->monitor,&m->theme,&m->mask,&m->vmask,&m->slot,&m->mute,&m->fire,&m->last,&m->filter,&m->windowed,&m->scanlines,&m->fps,&m->optimise,&m->autoscan,&m->smooth)!=(v4?16:v3?15:v2?10:8)||m->filter>2||
  m->smooth>1||m->windowed>1||m->scanlines>4||m->fps>1||m->optimise>1||m->autoscan>1||m->monitor>1||m->theme>7||m->mask>2||m->vmask>2||m->slot>4||m->mute>1||m->fire>1)return 0;
+ if(m->scanlines==4)m->scanlines=2; /* Legacy Thin preference becomes FPGA Soft. */
  while(fgets(line,sizeof(line),f)){
   pos=0;
   if(v2){char *cursor=line;
