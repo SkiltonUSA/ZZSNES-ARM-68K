@@ -1,0 +1,14 @@
+--- a/libretro/libretro.c
++++ b/libretro/libretro.c
+@@ -308,8 +308,9 @@
+    frameskip_counter    = 0;
+ }
+ 
+-#define VIDEO_REFRESH_RATE_PAL  (SNES_CLOCK_SPEED * 6.0 / (SNES_CYCLES_PER_SCANLINE * SNES_MAX_PAL_VCOUNTER))
+-#define VIDEO_REFRESH_RATE_NTSC (SNES_CLOCK_SPEED * 6.0 / (SNES_CYCLES_PER_SCANLINE * SNES_MAX_NTSC_VCOUNTER))
++#include "region.h"
++#define VIDEO_REFRESH_RATE_PAL  (1000000.0 / PS_PAL_PERIOD_US)
++#define VIDEO_REFRESH_RATE_NTSC (1000000.0 / PS_NTSC_PERIOD_US)
+ #define AUDIO_SAMPLE_RATE       32040
+ 
+ static int16_t *audio_out_buffer       = NULL;

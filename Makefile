@@ -127,3 +127,9 @@ test-rom-manager:
 	.context/test-rom-manager
 	$(CC) -O2 -g -fsanitize=address,undefined -Itests/amiga/emulator/mock -Idevelopment/borders-20261016/source tests/amiga/emulator/scan.c -o .context/test-rom-scan
 	.context/test-rom-scan
+
+.PHONY: test-region-pacing
+test-region-pacing:
+	mkdir -p .context
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/source -Idevelopment/optimisation-20261018/player -Idevelopment/optimisation-20261018/host -Idevelopment/borders-20261016/source -Idevelopment/borders-20261016/build-inputs tests/amiga/emulator/region_pacing.c -o .context/test-region-pacing
+	.context/test-region-pacing

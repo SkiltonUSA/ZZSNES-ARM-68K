@@ -58,6 +58,9 @@ def main():
    header=(stage/'cartridge.h').read_text()
    header=header.replace('(map==0x20+i||map==0x30+i||contra)&&type<=2','(((map==0x20+i||map==0x30+i||contra)&&type<=2)||(!i&&map==0x20&&(type==0x13||type==0x14||type==0x15||type==0x1a))||(!i&&map==0x23&&(type==0x34||type==0x35)))')
    (stage/'cartridge.h').write_text(header);(core/'cartridge.h').write_text(header)
+  if a.optimisation and snes:
+   shutil.copy2(stage/'region.h',core/'region.h')
+   run(['patch','-p1','-d',core,'-i',ROOT/'development/optimisation-20261018/region-clock.patch'])
   if snes:
    prefix=json.loads(os.environ.get('ARM_BUILD_COMMAND','[]'))
    flags=[('-O2' if f=='-Os' and a.core_o2 else f) for f in m['arm_flags']];flags=[f for f in flags if not f.startswith('-I')];flags=[inside(source/'amiga/pocketsnes/libc_config.h')if f=='/work/amiga/pocketsnes/libc_config.h'else f for f in flags]

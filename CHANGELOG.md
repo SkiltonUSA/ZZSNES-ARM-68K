@@ -1,5 +1,13 @@
 # Changelog
 
+## Development — SNES region and pacing
+
+- Show destination code, region and frame-rate target beside the game preview.
+- Cap PAL at 50 fps and NTSC at 59.92 fps in both standard and Super FX players.
+- Share output timing with PCM generation; retain 32,040 Hz stereo AHI output.
+- Remove the two-frame pacing lead; compensate small timer jitter and rebase long stalls.
+- Preserve ROM bytes, existing state format and display/scanline controls.
+
 ## Development — ROM Manager and temperature
 
 - Bulk import from a selected directory or mounted SD/USB drive, including subfolders.

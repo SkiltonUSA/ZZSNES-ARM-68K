@@ -1,0 +1,4 @@
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/source -Idevelopment/optimisation-20261018/player -Idevelopment/optimisation-20261018/host -Idevelopment/borders-20261016/source -Idevelopment/borders-20261016/build-inputs tests/amiga/emulator/region_pacing.c -o .context/test-region-pacing
+.context/test-region-pacing
+PASS LoROM/HiROM/copier/FX region labels, PAL/NTSC caps, stalls, reset and timer wrap

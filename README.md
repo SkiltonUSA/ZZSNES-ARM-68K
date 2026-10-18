@@ -22,6 +22,7 @@ files, controls, display coordination and batched AHI audio.
 - Rename titles and delete games with confirmation.
 - [ROM Manager](docs/rom-manager.md): bulk folder import, duplicate-entry cleanup and verified save-state backups to disk or USB.
 - Live ZZ9000 temperature beside the launcher version.
+- ROM header region beside the preview; automatic PAL **50 fps** / NTSC **59.92 fps** pacing in the development build ([details](docs/region-pacing.md)).
 - Red Launch button available on every launcher page.
 - No fixed ROM-count limit; tested with 20,000 entries per library.
 - Fullscreen or Workbench window; **Alt+Return** switches during play.
@@ -34,7 +35,7 @@ Save-state previews include miniature screenshots.
 
 ## Scanlines
 
-[Download the development package](artifacts/development/rom-manager-20261018/ZZSNES-0.6.2-dev-fpga.zip).
+[Download the development package](artifacts/development/region-20261018/ZZSNES-0.6.2-dev-region.zip).
 
 The current development package uses **Xanxi’s FPGA scanlines in fullscreen**
 and **Soft software scanlines in a Workbench window**. The two effects do not

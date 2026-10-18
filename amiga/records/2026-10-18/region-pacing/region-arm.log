@@ -1,0 +1,4 @@
+PASS 0x12000040 NTSC period 16689 100-frame PCM 53471 state video/PCM replay
+PASS 0x12000040 PAL period 20000 100-frame PCM 64079 state video/PCM replay
+PASS 0x150020c0 NTSC period 16689 100-frame PCM 53471 state video/PCM replay
+PASS 0x150020c0 PAL period 20000 100-frame PCM 64079 state video/PCM replay

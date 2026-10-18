@@ -469,3 +469,34 @@ The amipkg package builder bundles Xanxi tools and automatically runs the
 install-missing helper. Physical isolated amipkg pilot passed with the local
 0.7.11-zztest1 recipe-origin fix; stock 0.7.11 fails custom-repo recipes. See
 docs/package-manager.md. No public feed or new tagged release was created.
+
+
+## SNES regional pacing — 18 October 2026
+
+Installed the 0.6.2-dev region update: header destination/code and target beside
+the game preview; PAL 20,000 us (50 fps), NTSC 16,689 us (59.92 fps). The standard
+and supplemental FX players share that output period with audio generation.
+Removed two-frame host lookahead; small jitter is corrected on the timeline,
+stalls over one frame rebase. ROM/state formats and firmware unchanged.
+
+Chaos Engine header 0x02 is PAL; previous build already detected it correctly
+at about 50.32 fps. No 60-fps PAL misclassification was reproduced. Original
+strict-per-frame experiment was rejected because it accumulated timer jitter.
+Final physical checks: Chaos Engine 600 frames fullscreen and windowed; SMW
+NTSC 600 fullscreen; supplemental FX player 300 PAL standard-cartridge frames.
+All completed audio/display delivery, cache/register restoration and release.
+Gap counters 5/1/1/0; do not claim gap-free playback or infer steady FPS from
+startup-inclusive timings. Both relocated ARM players pass regional PCM/state
+checks, and standard presentation NEON/fallback checks pass.
+
+Production Library.cfg remained byte-identical; previous launcher and players
+are in Rollback-region-1018. ROMs and saves were not replaced. UI physically
+verified PAL/Europe/0x02/50 and NTSC/USA-Canada/0x01/59.92 beside preview.
+Development package: artifacts/development/region-20261018/ZZSNES-0.6.2-dev-region.zip.
+Tagged beta unchanged. See docs/region-pacing.md and recorded checks.
+
+- ZZSNES: 248,636 bytes, SHA256 `e64154aac5c1b9fa968ecb25940b36d27c75f3a3d5bcf68530d3863d23cfe246`.
+
+- ZZSnes-ui: 1,007,836 bytes, SHA256 `24b01d66e0c4e891f360d52ad3d950da6188fae239750c4e84f007d1b96234ef`.
+
+- ZZSnes-FX: 1,038,980 bytes, SHA256 `200520e995c74e11991a5f54a739fef3b0193336186a797d146769df82e12451`.

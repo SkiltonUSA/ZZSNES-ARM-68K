@@ -502,7 +502,7 @@ int ff_window(volatile uint8_t *base,const struct ad_io *io,int connected){
    (ULONG)ad_get(base+MB_REPLY,20),(ULONG)ad_get(base+MB_REPLY,24),output_hash,frame_core_us);fflush(stdout);}
   /* Bound the emulation rate without busy spinning. Reset a late deadline
    * to avoid a burst of catch-up frames after a window drag or task switch. */
-  { ULONG elapsed=us()-frame_start,target=ps_pace_target(frame_start,next_frame_us,fc_frame_us);
+  { ULONG elapsed=us()-frame_start,target=ps_pace_target(frame_start,cadence.deadline,fc_frame_us);
     while(elapsed<target){
      if(!full_poll())goto done;
      if(!direct_locked){events();if(quit)break;}
@@ -515,6 +515,7 @@ int ff_window(volatile uint8_t *base,const struct ad_io *io,int connected){
   if((ULONG)(us()-start)>300000000u)quit=1; // bounded preview session
   #endif
  }
+ printf("REGION_PACING frames=%u play_us=%u period_us=%u late_rebases=%u\n",frames,(ULONG)(us()-start),fc_frame_us,cadence.rebases);
  rc=0;
 done:
 #ifdef NES_FULLSCREEN

@@ -1,0 +1,25 @@
+{
+  "version": "0.6.2-dev",
+  "binaries": {
+    "ZZSNES": {
+      "sha256": "e64154aac5c1b9fa968ecb25940b36d27c75f3a3d5bcf68530d3863d23cfe246",
+      "bytes": 248636
+    },
+    "ZZSnes-ui": {
+      "sha256": "24b01d66e0c4e891f360d52ad3d950da6188fae239750c4e84f007d1b96234ef",
+      "bytes": 1007836
+    },
+    "ZZSnes-FX": {
+      "sha256": "200520e995c74e11991a5f54a739fef3b0193336186a797d146769df82e12451",
+      "bytes": 1038980
+    }
+  },
+  "commands": [
+    "python3 scripts/build_current.py --arm --optimisation --core-o2",
+    "python3 scripts/build_current.py --arm --optimisation --core-o2 --superfx"
+  ],
+  "timing_us": {
+    "PAL": 20000,
+    "NTSC": 16689
+  }
+}

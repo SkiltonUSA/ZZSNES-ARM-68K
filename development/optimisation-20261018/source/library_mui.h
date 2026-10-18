@@ -25,6 +25,7 @@
 #include "cartridge.h"
 #ifdef LIBRARY_SNES
 #include "cartridge_warning.h"
+#include "library_region.h"
 #endif
 #include "library_preview.h"
 #include "library_saves.h"
@@ -70,6 +71,8 @@ struct Library *MUIMasterBase,*AslBase,*LowLevelBase;
 static Object *app,*win,*list,*pages,*search,*title_edit,*selected_text,*status_text,*monitor,*theme,*mask,*vmask,*slot,*mute,*fire,*joytext;
 static Object *start,*resume,*latest,*fav,*remove_button,*rename_button,*art_button,*clear_art,*hero,*summary,*count_text,*save_title;
 static Object *scan_drives,*change_list,*navigation,*heading,*display_mode,*scanline_mode,*fps_option,*optimise_option,*scan_path,*scaling_mode;
+static Object *region_text;
+static char region_line[128];
 static Object *cards[5],*card_text[5],*card_resume[5],*card_delete[5];
 static char card_labels[5][180],details[400],summary_line[180],count_line[80];
 static char save_heading[UI_TITLE+24],selected_path[UI_PATH];
@@ -139,12 +142,14 @@ static int library_candidate(const char*p){
 }
 static char cartridge_name[512];
 static void identify(void){unsigned n;UBYTE*p;rom_valid=rom_fx=0;rom_id=rom_id2=rom_bytes=0;
+ strcpy(region_line,"Region: unavailable");
  strcpy(details,"Select a game to see its details.");if(selected<0)return;
  p=AllocVec(LIB_LIMIT,MEMF_PUBLIC);if(!p){strcpy(details,"Not enough memory to inspect this cartridge.");return;}
  int error=em_rom_load(model.entry[selected].path,p,LIB_LIMIT,&n,LIB_SNES,cartridge_name,sizeof(cartridge_name));
  if(error){snprintf(details,sizeof(details),"%s",em_rom_message(error));FreeVec(p);return;}
 #ifdef LIBRARY_SNES
  {unsigned skip=snes_skip(n);int h=snes_header(p+skip,n-skip);rom_fx=snes_fx_kind(p+skip,n-skip);if(h>=0||rom_fx){rom_id=snes_hash(p+skip,n-skip);rom_id2=snes_hash2(p+skip,n-skip);rom_bytes=n-skip;rom_valid=1;
+  snes_region_label(region_line,sizeof(region_line),p[skip+(h>=0?(unsigned)h:0x7fc0u)+25]);
   if(rom_fx)strcpy(details,rom_fx==3?SNES_FX3_WARNING:SNES_FX_WARNING);else snprintf(details,sizeof(details),"Header supported: %s %s\nGameplay compatibility varies by title.",snes_pal(p+skip,n-skip)?"PAL":"NTSC",h==0x7fc0?"LoROM":"HiROM");}
  else strcpy(details,"Unsupported cartridge: requires NTSC/PAL LoROM/HiROM\nup to 4 MiB, without enhancement chips.");}
 #else
@@ -176,7 +181,7 @@ static int read_state(unsigned slotnum,Object*preview){char path[UI_PATH];FILE*f
 }
 static int newer(const struct DateStamp*a,const struct DateStamp*b){int32_t aa[3]={a->ds_Days,a->ds_Minute,a->ds_Tick},bb[3]={b->ds_Days,b->ds_Minute,b->ds_Tick};return library_newer(aa,bb);}
 static void update_slots(void){unsigned i;char path[UI_PATH],backup[UI_PATH+8];struct FileInfoBlock*fib=AllocDosObject(DOS_FIB,NULL);struct DateStamp best={0};
- latest_slot=-1;set(selected_text,MUIA_Text_Contents,(ULONG)details);
+ latest_slot=-1;if(region_text)set(region_text,MUIA_Text_Contents,(ULONG)region_line);set(selected_text,MUIA_Text_Contents,(ULONG)details);
  for(i=0;i<5;i++){BPTR lock=0;present_slots[i]=valid_slots[i]=0;preview_set(cards[i],NULL,"Empty slot");snprintf(card_labels[i],sizeof(card_labels[i]),"Slot %u%s\nEmpty",i+1,value(slot,MUIA_Cycle_Active)==i?" *":"");
   if(selected>=0&&rom_valid&&fib){slotpath(path,i);lock=Lock(path,ACCESS_READ);
    if(lock&&Examine(lock,fib)&&fib->fib_DirEntryType<0){present_slots[i]=1;valid_slots[i]=read_state(i,cards[i]);
@@ -375,6 +380,9 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
       Child,HGroup,Child,title_edit=StringObject,MUIA_Font,ui_font(),StringFrame,MUIA_String_MaxLen,UI_TITLE,End,Child,rename_button=ui_button("Rename"),End,
       Child,selected_text=multiline("Select a game.",2),
       Child,HGroup,Child,hero=preview_new(),Child,VGroup,
+#ifdef LIBRARY_SNES
+       Child,region_text=multiline("Region: unavailable\n",2),
+#endif
        Child,summary=multiline("No saves yet.",2),
        Child,art_button=ui_button("Artwork..."),Child,clear_art=ui_button("Clear artwork"),End,End,
       Child,textline("F9 in game: capture library picture."),

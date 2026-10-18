@@ -133,3 +133,21 @@ alternate rows, while Gradient repeats its brightness pattern over four rows.
 They do not insert a separate gap after each original console picture line.
 Thin doubles each logical row before darkening the second row, preserving the
 original picture rows. A typical SNES picture contains 224 active lines.
+
+
+## ROM region (development build)
+
+The Games page reads the SNES cartridge header and shows its destination code,
+PAL/NTSC region and target rate beside the captured picture. This works for raw
+ROMs and supported single-ROM ZIPs, including copier-header files and the
+experimental Super FX player. Filenames do not determine the region.
+
+PAL uses a **50 fps** emulation target; NTSC uses **59.92 fps**, close to 60.
+The same limit applies in fullscreen and a Workbench window. Audio generation
+follows that timing while AHI stays at 32,040 Hz stereo. Games that exceed the
+machine's frame budget can run slower; the FPS overlay counts displayed frames,
+which may be fewer than emulated frames. A 60 Hz monitor can still show uneven
+motion from 50 Hz PAL material.
+
+The original ROM and its header are never changed. Unreadable/unsupported
+cartridges retain the existing compatibility warning.

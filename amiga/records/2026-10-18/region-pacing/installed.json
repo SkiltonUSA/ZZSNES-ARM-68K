@@ -1,0 +1,20 @@
+{
+  "ZZSNES": {
+    "md5": "c6f98322fc7d5f12ff6f391c9bc70d71",
+    "sha256": "e64154aac5c1b9fa968ecb25940b36d27c75f3a3d5bcf68530d3863d23cfe246",
+    "previous_md5": "6de9e753871eeb9c13ce93e74ab9f6ee",
+    "bytes": 248636
+  },
+  "ZZSnes-ui": {
+    "md5": "59ad23feaba1c111cccebfca22213328",
+    "sha256": "24b01d66e0c4e891f360d52ad3d950da6188fae239750c4e84f007d1b96234ef",
+    "previous_md5": "46f1a59a1ad44122b61e91277e665a6a",
+    "bytes": 1007836
+  },
+  "ZZSnes-FX": {
+    "md5": "f1c80acb78167f8ae30ea26224546acd",
+    "sha256": "200520e995c74e11991a5f54a739fef3b0193336186a797d146769df82e12451",
+    "previous_md5": "daf6039cf0f9e2bee1c031d8ff12cf08",
+    "bytes": 1038980
+  }
+}
