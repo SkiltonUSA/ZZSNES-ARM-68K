@@ -53,6 +53,14 @@ logical image row with a one-pixel black separator. [Thin mode details](docs/thi
 If Workbench’s global scanline effect is enabled, turn it off to avoid applying
 both effects together. Software scanlines affect this emulator’s image only.
 
+### Games with Soft scanlines
+
+Captured on real Amiga/ZZ9000 hardware using **0.6.2-dev**, fullscreen and Sharp pixels.
+
+| Super Mario World | F-Zero |
+| --- | --- |
+| ![Super Mario World with Soft software scanlines](docs/screenshots/scanlines/snes-smw.png) | ![F-Zero with Soft software scanlines](docs/screenshots/scanlines/snes-fzero.png) |
+
 ## Requirements
 
 - **ZZ9000** with compatible **XACP firmware**; tested on **XX19c / XACP 1.7**.
