@@ -32,6 +32,8 @@ def package(build, output, fx=None):
   (drawer/'Version.txt').write_text(version+' — FPGA fullscreen / Soft window scanlines\n')
   (drawer/'ReadMe.txt').write_text((ROOT/'docs/scanline-install.txt').read_text())
   for name in ['ROMs','States','Snapshots']:(drawer/name).mkdir()
+  for name in [app,m['player'],'Install-Scanlines','Scanlines/ZZScanlines','Scanlines/ZZScanlinesGUI']+(['ZZSnes-FX']if app=='ZZSNES'else[]):
+   (drawer/name).chmod(0o755)
   files=sorted(p for p in drawer.rglob('*') if p.is_file())
   (drawer/'SHA256SUMS').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+str(p.relative_to(drawer))+'\n' for p in files))
   with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
