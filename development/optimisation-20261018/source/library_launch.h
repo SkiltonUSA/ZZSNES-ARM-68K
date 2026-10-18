@@ -12,7 +12,7 @@ static Object*splash_create(int loading){Object*w;
   Child,library_logo(128),Child,VGroup,MUIA_Group_Spacing,10,
    Child,TextObject,MUIA_Font,MUIV_Font_Title,MUIA_Text_Contents,(ULONG)(loading?"LOADING":LIB_TITLE),End,
    Child,textline(LIB_VERSION " / AmigaOS / ZZ9000"),
-   Child,textline(loading?"Alt + Return   Fullscreen / window\nF10 or Esc      Return to library\nP                   Pause\nF5 / F8          Save / load state\nF9                 Screenshot":"Cortex-A9 emulation\nNative Amiga interface"),
+   Child,textline(loading?"Alt + Return   Fullscreen / window\nF10 or Esc      Return to library\nP                   Pause\nF5 / F8          Save / load state\nF7                 Scanlines\nF9                 Screenshot":"Cortex-A9 emulation\nNative Amiga interface"),
   End,End,End;
  if(w){DoMethod(app,OM_ADDMEMBER,(ULONG)w);set(w,MUIA_Window_Open,TRUE);}return w;
 }

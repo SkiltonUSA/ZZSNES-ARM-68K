@@ -1109,5 +1109,10 @@
   "tests/amiga/pocketsnes/check_current_state.py": "a0b6aa10df92824ee9e411b38175a1328b66349a3d4b7cb80ab0b9d5b4a57253",
   "artifacts/development/state-restore-20261018/README.md": "061876860726ca7bae9155070414b2915f60391393bf223d75b1d18df84581cc",
   "artifacts/development/state-restore-20261018/ZZSnes-ui": "9dd6e23ae4d42f84e128c314fde085e0e91ae03e62c491fb67b34211042504c7",
-  "artifacts/development/state-restore-20261018/SHA256SUMS": "52449fe45cafc7e29f4911da2a249c6ef82d44a15465886d603d3aac7844ac18"
+  "artifacts/development/state-restore-20261018/SHA256SUMS": "52449fe45cafc7e29f4911da2a249c6ef82d44a15465886d603d3aac7844ac18",
+  "development/optimisation-20261018/host/host.c": "e501707034a901097b3487f063737b95e54f26d200cd0a1fd14ec24b0241d57f",
+  "development/optimisation-20261018/host/scanline_key.h": "ab955f42a0557fa2ab1c12dbbf2911041d5d4665832df95bb5d1f4e76d99d165",
+  "development/optimisation-20261018/source/library_launch.h": "d44226286452b080f6073113f7ef82d33bedfe8a3f7b30f1e05216e32fd91f3e",
+  "development/optimisation-20261018/source/library_mui.h": "b5a18db19ae2b46b73f14634ac8c81e438a936a2ccccdac2a7f506208d2d642e",
+  "tests/amiga/emulator/scanline_key.c": "145f6500e404b227e225a74bf4503c76624d7d59b9687df4f6420821971ac082"
 }

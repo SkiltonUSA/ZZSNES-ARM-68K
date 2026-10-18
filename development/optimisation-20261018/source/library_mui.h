@@ -399,7 +399,7 @@ static int build(void){Object *add,*scan_browse,*save,*exit,*listview,*all,*rece
     Child,controller=controller_new(),
     Child,HGroup,Child,textline("Primary fire button:"),Child,fire=cycle(fires),End,
     Child,textline("Button2 needs a second physical button; Green/Play need a gamepad.\nKeyboard labels show in-game controls; this panel tests the joystick."),
-    Child,textline("P=pause; M=mute; Q/Escape=return; F9=capture game picture."),Child,VSpace(0),End,
+    Child,textline("P=pause; M=mute; Q/Escape=return; F7=scanlines; F9=screenshot."),Child,VSpace(0),End,
    Child,VGroup,
     Child,save_title=textline("Save states: Select a game first"),
     Child,HGroup,Child,save_card(0),Child,save_card(1),Child,save_card(2),Child,save_card(3),Child,save_card(4),End,

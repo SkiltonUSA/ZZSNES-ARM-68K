@@ -1,3 +1,19 @@
+## F7 software scanlines — 18 October 2026 UTC
+
+Installed the host/launcher update with F7 Off → Soft → Gradient → Classic → Off.
+F7 is listed on the loading panel and controls page. Tested during play/pause,
+window/fullscreen; SNES Thin exits with a surface resize. Key repeats ignored.
+ARM payloads unchanged; session-only effect selection preserves saved defaults.
+All physical tests returned exit0 with zero display faults and normal register/
+cache witness restoration. Readback/interactive runs recorded audio gaps, so
+these are functional checks, not speed or uninterrupted-audio claims.
+
+Previous executables retained in Rollback-f7-1018 in each installed drawer.
+ROMs, saves and library settings untouched; executable checksums verified.
+See [report](scanline-key-20261018.md) and
+[installed hashes](../amiga/records/2026-10-18/scanline-key/installed-build.json).
+Versions remain 0.7.2-dev (NES) / 0.6.2-dev (SNES); tagged downloads unchanged.
+
 ## Standard-player state restore fix — 18 October 2026 UTC
 
 Installed 0.6.2-dev standard player with the existing compatibility-overlay

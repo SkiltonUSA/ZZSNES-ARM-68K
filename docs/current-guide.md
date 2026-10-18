@@ -89,6 +89,7 @@ its 4:3 viewport fills the screen.
 | M | Mute / unmute |
 | F5 | Save selected slot |
 | F8 | Load selected slot |
+| F7 | Cycle software scanlines: Off → Soft → Gradient → Classic → Off |
 | F9 | Capture library artwork |
 
 Five slots are maintained per game. The Save states page supports resume and
@@ -120,3 +121,15 @@ emulated game or its region. Sharp remains the default.
 The new launcher reads older library files and saves `ZZSNESUI4` preferences.
 Restore the previous preferences together with the previous launcher when
 rolling back. Game save-state formats are unchanged.
+
+F7 works while playing or paused, in a window or fullscreen. Gradient is the
+smooth effect; Classic is the hard, black-line effect. Changes apply to the
+current game session; the launcher retains your saved default.
+From Thin (640×480), F7 first turns scanlines off and returns to the normal
+320×240 game surface; later presses cycle the standard effects.
+
+The standard effects shade rows of the 320×240 output: Classic and Soft affect
+alternate rows, while Gradient repeats its brightness pattern over four rows.
+They do not insert a separate gap after each original console picture line.
+Thin doubles each logical row before darkening the second row, preserving the
+original picture rows. A typical SNES picture contains 224 active lines.

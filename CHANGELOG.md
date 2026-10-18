@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — F7 scanline control
+
+- F7 cycles Off, Soft, Gradient (smooth), Classic (hard) during play or pause.
+- Show F7 Scanlines on the loading panel and in the controls guide.
+- Retain saved defaults; ignore key-repeat and apply changes after pending flips.
+
+
 ## Unreleased — save-state restoration
 
 - Rebuild derived sprite lists after loading standard-player states, fixing a

@@ -111,3 +111,9 @@ test-optimisation-arm:
 .PHONY: test-smooth-arm
 test-smooth-arm:
 	CURRENT_ARM_DIR=.context/optimisation-o2-build/player $(MODEL_PYTHON) tests/amiga/emulator/check_smooth_arm.py
+
+.PHONY: test-scanline-key
+test-scanline-key:
+	mkdir -p .context
+	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/host tests/amiga/emulator/scanline_key.c -o .context/test-scanline-key
+	.context/test-scanline-key

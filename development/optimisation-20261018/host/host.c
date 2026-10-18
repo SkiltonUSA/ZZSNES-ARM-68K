@@ -75,6 +75,8 @@ static int truecolor;
 static int core_only;
 static unsigned fc_windowed,fc_scanlines,fc_fps,fc_optimise=1;
 static int em_switch_pending,em_ready;
+static int em_scanline_pending=-1;
+#include "scanline_key.h"
 static ULONG em_fps_start,em_fps_count,em_fps_value,em_neon_frames;
 #include "display_math.h"
 static ULONG next_frame_us;
@@ -144,6 +146,7 @@ static void events(void){
    else if(key==0x59||key==0x45||key==0x10){if(!(code&128))quit=1;}
 #ifdef NES_PLAYER
    else if(key==0x19){if(!(code&128)){player_paused=!player_paused;buttons=0;}}
+   else if(key==0x56){em_scanline_key(code,qualifier&IEQUALIFIER_REPEAT,fc_scanlines,&em_scanline_pending);}
    else if(key==0x58){if(!(code&128))fc_snapshot_action=1;}
    else if(key==0x54||key==0x57){if(!(code&128))fc_state_action=key==0x54?1:2;}
    else if(key==0x37){if(!(code&128))player_muted=!player_muted;}
@@ -432,6 +435,19 @@ int ff_window(volatile uint8_t *base,const struct ad_io *io,int connected){
   if(!full_poll())goto done;
   if(!direct_locked)events();
   if(em_switch_pending){if(!em_switch())goto done;player_audio_flush();if(player_paused){if(!present(ad_get(shared+MB_REPLY,24),frames)||!full_drain())goto done;paint();}}
+  if(em_scanline_pending>=0){
+   unsigned mode=(unsigned)em_scanline_pending;em_scanline_pending=-1;
+   /* Apply only after the outstanding flip releases its bitmap. Thin SNES
+    * scanlines own a larger surface, so leaving that mode must reopen it. */
+   if(!full_drain())goto done;
+   if((fc_scanlines==4)!=(mode==4)){
+    em_display_close();fc_scanlines=mode;
+    if(!full_open())goto done;
+    player_audio_flush();next_frame_us=0;fc_last_flip=0;
+   }else fc_scanlines=mode;
+   printf("SCANLINES mode=%u window=%u\n",fc_scanlines,fc_windowed);fflush(stdout);
+   if(player_paused){if(!present(ad_get(shared+MB_REPLY,24),frames)||!full_drain())goto done;paint();}
+  }
   if(fc_state_action){int action=fc_state_action;fc_state_action=0;
    if(!full_drain()||fc_state_transaction(action==2)<0)goto done;}
   if(player_paused){
