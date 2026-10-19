@@ -13,9 +13,12 @@ files, controls, display coordination and batched AHI audio.
 
 ![ZZSNES interface](docs/screenshots/interface.png)
 
+Development launcher: **0.6.3-dev**, with [compact layouts and downloads](docs/scalable-launcher.md).
+
 ## Features
 
-- ZZDosBox-style sidebar: Games, Display, Controllers, Save states and About.
+- ZZDosBox-style sidebar: Games, Display, Controllers, Save states, Disks, ROM Manager and About.
+- [Scalable development launcher](docs/scalable-launcher.md): compact layout for smaller screens, scrollable pages and resizable windows.
 - Colour logo, Workbench icon, startup panel and loading panel with controls.
 - Single-ROM ZIP loading (stored/deflate); no external unpacker required.
 - Add ROMs or folders; search, favourites, recent games and captured artwork.
@@ -35,7 +38,7 @@ Save-state previews include miniature screenshots.
 
 ## Scanlines
 
-[Download the development package](artifacts/development/region-20261018/ZZSNES-0.6.2-dev-region.zip).
+[Download the development package](artifacts/development/scalable-launcher-20261019/ZZSNES-0.6.3-dev-layout.zip).
 
 The current development package uses **Xanxi’s FPGA scanlines in fullscreen**
 and **Soft software scanlines in a Workbench window**. The two effects do not

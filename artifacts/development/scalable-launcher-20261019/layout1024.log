@@ -1,0 +1,21 @@
+LIMITS 375 272 / 1920 800
+LAYOUT screen budget 1024 x 768 compact 0 window 940 x 500
+PAGE 0 Games viewport 734 x 367 content 734 x 367
+SCROLL 0 0
+PAGE 1 Display viewport 734 x 367 content 734 x 374
+SCROLL 0 7
+PAGE 2 Controllers viewport 734 x 367 content 734 x 367
+SCROLL 0 0
+PAGE 3 Save states viewport 734 x 367 content 734 x 367
+SCROLL 0 0
+PAGE 4 Disks viewport 734 x 367 content 734 x 367
+SCROLL 0 0
+PAGE 5 ROM Manager viewport 734 x 367 content 734 x 367
+SCROLL 0 0
+PAGE 6 About viewport 734 x 367 content 734 x 367
+SCROLL 0 0
+RESIZE requested 480 x 360 actual 480 x 360
+RESIZE requested 608 x 360 actual 608 x 360
+RESIZE requested 768 x 360 actual 768 x 360
+LOADING 395 x 178
+LAYOUT PASS errors=0 pages=7

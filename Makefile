@@ -133,3 +133,9 @@ test-region-pacing:
 	mkdir -p .context
 	$(CC) -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/source -Idevelopment/optimisation-20261018/player -Idevelopment/optimisation-20261018/host -Idevelopment/borders-20261016/source -Idevelopment/borders-20261016/build-inputs tests/amiga/emulator/region_pacing.c -o .context/test-region-pacing
 	.context/test-region-pacing
+
+.PHONY: test-launcher-layout
+test-launcher-layout:
+	mkdir -p .context/tests
+	cc -std=c99 -Wall -Wextra -Werror -Wno-unused-variable tests/launcher_layout.c -o .context/tests/launcher-layout
+	.context/tests/launcher-layout

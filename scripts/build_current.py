@@ -37,6 +37,7 @@ def main():
   shutil.copytree(overlay/'player',stage,dirs_exist_ok=True)
   if (overlay/'source').exists():shutil.copytree(overlay/'source',lib,dirs_exist_ok=True)
   if (overlay/'host').exists():shutil.copytree(overlay/'host',stage,dirs_exist_ok=True)
+  shutil.copytree(ROOT/'development/scalable-launcher-20261019/source',lib,dirs_exist_ok=True)
   header=lib/'library_mui.h';header.write_text(header.read_text().replace('0.6.1 Beta','0.6.2-dev'))
  shutil.copy2(library_snap/'source/icon.c',lib/'icon.c')
  (lib/'icon.c').write_text((lib/'icon.c').read_text().replace('DOSBox icon',m['console']+' icon'))

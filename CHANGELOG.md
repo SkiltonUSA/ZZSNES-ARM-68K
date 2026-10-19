@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.3-dev — scalable launcher
+
+- Compact layout for smaller Workbench screens, with independently scrollable pages.
+- Smaller previews/loading cards, two-column save cards and a compact controller diagram.
+- Keep navigation, Launch and settings controls visible during page scrolling.
+- Preserve current player binaries, settings format, ROM Manager and scanline integration.
+
 ## Development — SNES region and pacing
 
 - Show destination code, region and frame-rate target beside the game preview.

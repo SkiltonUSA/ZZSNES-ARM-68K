@@ -500,3 +500,20 @@ Tagged beta unchanged. See docs/region-pacing.md and recorded checks.
 - ZZSnes-ui: 1,007,836 bytes, SHA256 `24b01d66e0c4e891f360d52ad3d950da6188fae239750c4e84f007d1b96234ef`.
 
 - ZZSnes-FX: 1,038,980 bytes, SHA256 `200520e995c74e11991a5f54a739fef3b0193336186a797d146769df82e12451`.
+
+
+## Scalable launcher — 19 October 2026
+
+Installed ZZSNES 0.6.3-dev, 256396 bytes, SHA256
+`12e2160971ccf1ab3bc4d621daf1985c88247632da969009182d872315a104c2`. Previous launcher and Library.cfg retained in
+Rollback-layout-1019 inside the existing emulator drawer. Config checksums match
+before/after replacement and startup. Players, ROMs, saves and firmware unchanged.
+Launcher reopened; no Core1 player active.
+
+All seven pages, scroll bounds, loading cards and actual window resizes passed
+with 640×480 / 800×600 / 1024×768 budgets on the existing physical desktop.
+No actual Workbench resolution change. Initial remembered-size regression fixed
+by first-open clamp and retested larger-to-smaller on both launchers.
+Sources: development/scalable-launcher-20261019. Artifacts, screenshots,
+layout logs and complete development ZIP: artifacts/development/scalable-launcher-20261019.
+Published beta tags unchanged. See docs/scalable-launcher.md.

@@ -49,3 +49,7 @@ Thin scanlines are a separate 640x480 presentation candidate; see
 docs/thin-scanlines.md and development/thin-scanlines-20261016. Use
 current-thin/current-thin-superfx, test-thin-geometry and the opt-in relocated
 pixel tests. Preserve the original modes and every logical image row.
+
+Latest development launcher overlay: `development/scalable-launcher-20261019/source`.
+Use `make launcher` and `make test-launcher-layout`; `--probe` builds an isolated
+read-only MUI check without deployment. Keep historical beta snapshots unchanged.
