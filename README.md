@@ -93,6 +93,14 @@ These earlier gameplay captures show the **software** effect:
 | --- | --- |
 | ![Super Mario World with Soft software scanlines](docs/screenshots/scanlines/snes-smw.png) | ![F-Zero with Soft software scanlines](docs/screenshots/scanlines/snes-fzero.png) |
 
+## More games
+
+Title and intro captures from the A4000TX/ZZ9000 special-chip tests.
+
+| Kirby Super Star — Spring Breeze | Pilotwings | Star Fox 2 |
+| --- | --- | --- |
+| ![Kirby Super Star: Spring Breeze title screen](docs/screenshots/games/kirby-super-star.png) | ![Pilotwings title screen](docs/screenshots/games/pilotwings.png) | ![Star Fox 2 intro](docs/screenshots/games/star-fox-2.png) |
+
 ## Performance
 
 | Game / emulator | Measured steady emulation FPS |
