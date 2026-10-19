@@ -1,3 +1,6 @@
+#ifdef ZZ_UI_OPTIONS_PROBE
+#include "expanded_options_ui_probe.h"
+#endif
 /* Included only by the diagnostic build. Never changes a screen mode or saves. */
 #ifndef ZZ_UI_CAPTURE_TICKS
 #define ZZ_UI_CAPTURE_TICKS 3000
@@ -41,6 +44,9 @@ static int layout_probe(void){
   }
   ChangeWindowBox(native,native->LeftEdge,native->TopEdge,ui_layout.width,ui_layout.height);layout_pump();
  }
+#ifdef ZZ_UI_OPTIONS_PROBE
+ errors+=expanded_options_ui_probe();
+#endif
  /* Keep a real small window available for a screenshot, without mouse drags. */
  layout_page(0);layout_pump();layout_stage("library");Delay(ZZ_UI_CAPTURE_TICKS);
  layout_page(1);layout_pump();layout_stage("display");Delay(ZZ_UI_CAPTURE_TICKS);

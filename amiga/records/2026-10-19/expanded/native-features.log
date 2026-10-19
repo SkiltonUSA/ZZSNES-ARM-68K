@@ -1,0 +1,20 @@
+PASS family=00 map=20 bytes=65536 highres/interlace/state
+PASS family=35 map=23 bytes=65536 highres/interlace/state
+PASS family=03 map=20 bytes=65536 highres/interlace/state
+PASS family=f3 map=20 bytes=65536 highres/interlace/state
+PASS family=43 map=32 bytes=6291456 highres/interlace/state
+PASS family=00 map=25 bytes=6291456 highres/interlace/state
+PASS Super FX SCBR swap refreshes cached column pointers
+PASS family=13 map=20 bytes=65536 highres/interlace/state
+PASS FX3 in-flight GSU pipeline, register and second RAM-bank restore into fresh core
+PASS family=17 map=20 bytes=4194304 highres/interlace/state
+PASS FX3 in-flight GSU pipeline, register and second RAM-bank restore into fresh core
+PASS family=18 map=20 bytes=4194304 highres/interlace/state
+PASS expanded cartridge gates, 6 MiB mapping, chip state and video geometry
+PASS FX3 CPU mappings, MMIO mirrors/holes, VCR, ROM preservation and two RAM banks
+PASS FX3 MERGE 0..6, clear regions/stride/planes, low-ROM mirror, extended-ROM/RAM execution, STOP R15/no IRQ
+PASS FX3 bounded execution, CPU polling/cancellation, clock counts 467/933, ROM data banks
+PASS FX3 CPU mappings, MMIO mirrors/holes, VCR, ROM preservation and two RAM banks
+PASS FX3 MERGE 0..6, clear regions/stride/planes, low-ROM mirror, extended-ROM/RAM execution, STOP R15/no IRQ
+PASS FX3 bounded execution, CPU polling/cancellation, clock counts 467/933, ROM data banks
+PASS core-option round trips and v4 preference migration

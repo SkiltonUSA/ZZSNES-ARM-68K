@@ -1,5 +1,8 @@
 # FX3 compatibility work
 
+**0.6.4-dev update:** [Expanded cartridge integration and save-state fixes](expanded-cartridges.md).
+The results below describe the earlier candidates.
+
 The supplemental `ZZSnes-FX` player now has an experimental FX3 implementation
 inside the existing PocketSNES/Snes9x2002 C core. It does not replace that core
 with MesenCE. FX3 cartridge notices remain advisory and Play remains available.

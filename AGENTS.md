@@ -53,3 +53,18 @@ pixel tests. Preserve the original modes and every logical image row.
 Latest development launcher overlay: `development/scalable-launcher-20261019/source`.
 Use `make launcher` and `make test-launcher-layout`; `--probe` builds an isolated
 read-only MUI check without deployment. Keep historical beta snapshots unchanged.
+
+Expanded cartridge/settings overlay: `development/expanded-20261019/`.
+Read `docs/expanded-cartridges.md`. Use `make current-expanded`,
+`make test-expanded`, `make test-expanded-arm` and `make test-native`.
+This path uses a bounded 48 MiB allocation and version-3 states; version-2
+standard states remain readable. Keep the matching launcher and both players
+together. High-resolution/interlace and commercial FX3 compatibility remain
+experimental. Build/test targets never deploy automatically.
+
+Additional options are part of the expanded overlay (0.6.5-dev). Read
+`docs/additional-options.md`. Run `scripts/test_snes_battery.py`,
+`make test-expanded`, and relocated `check_snes_options_arm.py` after changing
+SRAM, input, cheat or audio-feedback paths. The physical UI probe uses
+`build_launcher.py --expanded --probe 640x480 --options-probe` only in an
+isolated writable drawer; it deliberately writes test profiles there.

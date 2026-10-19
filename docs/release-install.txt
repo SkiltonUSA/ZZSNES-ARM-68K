@@ -1,0 +1,29 @@
+ZZSNES 0.6.5 Beta (tested 0.6.5-dev executables)
+
+INSTALLER: extract the -beta-amipkg.lha archive, open its drawer and double-click
+Install. Choose a parent drawer; ZZSNES is created inside it. To specify an exact
+path from the extracted installer drawer: Execute Install DEST "Work:Emulators/ZZSNES"
+Requires C:lha and C:IconX. No network connection is needed.
+
+MANUAL ZIP: copy the whole ZZSNES drawer to a writable disk and run
+Install-Scanlines once. Keep the launcher and player executables together.
+
+MUI 3.8+, Picasso96 API v2+, AHI v4+ with an output driver and configured unit 0,
+and ZZ9000 graphics/Fast RAM are checked by the installer. Compatible XACP and
+FPGA scanline firmware are required separately. No system libraries, firmware,
+ROMs or startup changes are included. Close this launcher and all Core1 apps
+before installing. Existing libraries, saves and ROMs are preserved.
+
+The installer adds missing Xanxi scanline controls, preserving tools already in
+SYS:Utilities/ZZScanlines or C:. Fullscreen uses FPGA scanlines; windows use Soft
+software filtering. The separate scanline utility need not be running.
+
+Alt+Return: fullscreen/window. F7: scanlines. F9: screenshot. F10: exit.
+F5: save state. F8: load state. See Changes.md and Scanlines.txt for details.
+
+The private amipkg 0.7.11-zzinstall1 client uses signed offline catalogues and
+SHA256-checked archives. PackageManager holds its receipts/cache. Installation
+is not fully transactional; keep a backup before upgrading. Use Install again
+for updates, not the offline placeholder repository URL. No online feed exists.
+
+Release and source: https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.6.5-beta

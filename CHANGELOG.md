@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.6.5 Beta — packaged release
+
+- Publish the matched, physically tested 0.6.5-dev launcher and players.
+- Include compact layouts, ROM Manager, temperature and fullscreen FPGA/windowed software scanlines.
+- Add a complete offline amipkg installer with MUI/Picasso96/AHI/ZZ9000 checks and automatic install-missing scanline tools.
+- Include a manual ZIP alternative, checksums and current feature/specification documentation.
+- Incorporate the development changes below; no additional FPS gain is claimed by packaging.
+
+## 0.6.5-dev — Additional options
+
+- Automatic cartridge SRAM persistence on clean exit, with verified writes and previous-file backup.
+- Per-game display/emulation/control/cheat profiles, separate from global defaults.
+- AHI-buffer-driven automatic frameskip and configurable threshold.
+- Adjustable 5–95% low-pass strength and transparency toggle.
+- Two-player keyboard/gamepad mapping; second physical port remains opt-in.
+- Bounded Game Genie / Pro Action Replay entry and enable control.
+- Profiles and controller settings included in ROM Manager backups.
+- Retains existing state compatibility; see [details and validation](docs/additional-options.md).
+
+## 0.6.4-dev — expanded cartridges
+
+- Enable SA-1, DSP-1, C4 and S-DD1 cartridge families.
+- Add 6 MiB S-DD1/ExHiROM loading and correct non-power-of-two ROM mirroring.
+- Extend special-chip save states; fix Super FX drawing-buffer cache invalidation.
+- Add experimental high-resolution output, frameskip, audio filtering and emulated CPU timing controls.
+- Increase the owned ARM allocation to 48 MiB; retain version-2 standard save loading.
+- Preserve existing compact navigation, controls and scanline integration.
+
+[Implementation, validation and limits](docs/expanded-cartridges.md).
+
 ## 0.6.3-dev — scalable launcher
 
 - Compact layout for smaller Workbench screens, with independently scrollable pages.

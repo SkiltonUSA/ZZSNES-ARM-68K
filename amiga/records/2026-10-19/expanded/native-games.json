@@ -1,0 +1,56 @@
+{
+  "smw": {
+    "checkpoint": 2400,
+    "replay_frames": 30,
+    "same_process": "exact video and PCM",
+    "fresh_process": "exact video and PCM"
+  },
+  "pilotwings": {
+    "checkpoint": 2400,
+    "replay_frames": 30,
+    "same_process": "exact video and PCM",
+    "fresh_process": "exact video and PCM"
+  },
+  "kirby": {
+    "checkpoint": 2400,
+    "replay_frames": 30,
+    "same_process": "exact video and PCM",
+    "fresh_process": "exact video and PCM"
+  },
+  "starfox": {
+    "checkpoint": 2400,
+    "replay_frames": 30,
+    "same_process": "exact video and PCM",
+    "fresh_process": "exact video and PCM"
+  },
+  "starfox2": {
+    "checkpoint": 2400,
+    "replay_frames": 30,
+    "same_process": "exact video and PCM",
+    "fresh_process": "exact video and PCM"
+  },
+  "doom": {
+    "checkpoint": 2400,
+    "replay_frames": 30,
+    "same_process": "exact video and PCM",
+    "fresh_process": "exact video and PCM"
+  },
+  "stuntrace": {
+    "checkpoint": 2400,
+    "replay_frames": 30,
+    "same_process": "exact video and PCM",
+    "fresh_process": "exact video and PCM"
+  },
+  "weekend": {
+    "checkpoint": 2400,
+    "replay_frames": 30,
+    "same_process": "exact video and PCM",
+    "fresh_process": "exact video and PCM"
+  },
+  "ff3": {
+    "checkpoint": 2400,
+    "replay_frames": 30,
+    "same_process": "exact video and PCM",
+    "fresh_process": "exact video and PCM"
+  }
+}

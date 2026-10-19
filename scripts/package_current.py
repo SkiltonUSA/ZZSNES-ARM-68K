@@ -3,11 +3,13 @@
 import argparse, hashlib, json, shutil, zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-def package(build, output, fx=None):
+def package(build, output, fx=None, version=None):
  m=json.loads((ROOT/'docs/current-build.json').read_text());app=m['console']
- version='0.7.2-dev' if app=='ZZNES' else '0.6.2-dev'
+ if version is None:raise ValueError('An explicit build version is required')
+ import re
+ if not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+-dev',version):raise ValueError('Expected a development build version')
  build=build.resolve();output=output.resolve();output.mkdir(parents=True,exist_ok=True)
- archive=output/(app+'-'+version+'-fpga.zip')
+ archive=output/(app+'-'+version+'-beta.zip')
  # A fresh staging drawer prevents obsolete/user files entering the archive.
  import tempfile
  with tempfile.TemporaryDirectory(prefix='scanline-package-') as temp:
@@ -17,6 +19,8 @@ def package(build, output, fx=None):
   for name in [app,m['player'],'Install-Scanlines']:
    data=(build/name).read_bytes()
    if data[:4]!=bytes.fromhex('000003f3'):raise ValueError('Not an Amiga executable: '+name)
+   if name==app or name==m['player']:
+    if version.encode() not in data:raise ValueError('Executable version mismatch: '+name)
    (drawer/name).write_bytes(data)
   if app=='ZZSNES':
    if fx is None:raise ValueError('--fx-build is required for ZZSNES')
@@ -30,7 +34,9 @@ def package(build, output, fx=None):
   shutil.copytree(ROOT/'amiga/scanlines',drawer/'Scanlines/Source')
   shutil.copy2(ROOT/'scripts/build_scanlines.py',drawer/'Scanlines/Source/build_scanlines.py')
   (drawer/'Version.txt').write_text(version+' — FPGA fullscreen / Soft window scanlines\n')
-  (drawer/'ReadMe.txt').write_text((ROOT/'docs/scanline-install.txt').read_text())
+  (drawer/'ReadMe.txt').write_text((ROOT/'docs/release-install.txt').read_text())
+  shutil.copy2(ROOT/'CHANGELOG.md',drawer/'Changes.md')
+  shutil.copy2(ROOT/'docs/scanline-install.txt',drawer/'Scanlines.txt')
   for name in ['ROMs','States','Snapshots']:(drawer/name).mkdir()
   for name in [app,m['player'],'Install-Scanlines','Scanlines/ZZScanlines','Scanlines/ZZScanlinesGUI']+(['ZZSnes-FX']if app=='ZZSNES'else[]):
    (drawer/name).chmod(0o755)
@@ -44,4 +50,4 @@ def package(build, output, fx=None):
  print('PASS complete package',archive,hashlib.sha256(archive.read_bytes()).hexdigest())
  return archive
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--build',type=Path,required=True);p.add_argument('--fx-build',type=Path);p.add_argument('--output',type=Path,default=ROOT/'.context/packages');a=p.parse_args();package(a.build,a.output,a.fx_build)
+ p=argparse.ArgumentParser();p.add_argument('--version',required=True);p.add_argument('--build',type=Path,required=True);p.add_argument('--fx-build',type=Path);p.add_argument('--output',type=Path,default=ROOT/'.context/packages');a=p.parse_args();package(a.build,a.output,a.fx_build,a.version)

@@ -1,0 +1,56 @@
+{
+  "cases": {
+    "battery-cheat": {
+      "clean_exit": true,
+      "register_mismatches": 0,
+      "witness_bad": 0,
+      "audio_gaps": 4,
+      "frame_counters": {
+        "rendered": 42,
+        "skipped": 78,
+        "options": 3384196
+      }
+    },
+    "battery-final-reload": {
+      "clean_exit": true,
+      "register_mismatches": 0,
+      "witness_bad": 0,
+      "audio_gaps": 4,
+      "frame_counters": {
+        "rendered": 120,
+        "skipped": 0,
+        "options": 0
+      }
+    },
+    "state-options": {
+      "clean_exit": true,
+      "register_mismatches": 0,
+      "witness_bad": 0,
+      "audio_gaps": 5,
+      "frame_counters": {
+        "rendered": 280,
+        "skipped": 707,
+        "options": 3383940
+      }
+    },
+    "state-options-resume": {
+      "clean_exit": true,
+      "register_mismatches": 0,
+      "witness_bad": 0,
+      "audio_gaps": 0,
+      "frame_counters": {
+        "rendered": 99,
+        "skipped": 21,
+        "options": 3383940
+      }
+    }
+  },
+  "battery": {
+    "cheat_write": 90,
+    "fresh_launch_without_cheat": 91
+  },
+  "limitations": [
+    "Bounded functional tests, not a steady-FPS or gap-free-audio benchmark.",
+    "A second physical controller has not been tested."
+  ]
+}

@@ -1,0 +1,4 @@
+CORE cpu=00:caeb rom_speed=8 apu=06ba out=00,00 gsu=0000
+RUN frames=2400 changed=1658 last=2d59c898
+STATE bytes=1680145 frame=2400
+REPLAY mismatches=0

@@ -1,5 +1,8 @@
 # SNES compatibility development
 
+**0.6.4-dev update:** [Expanded cartridge integration and save-state fixes](expanded-cartridges.md).
+The results below describe the earlier candidates.
+
 The normal 0.6.1 Beta still supports standard cartridges. Super FX and SA-1
 remain experimental; the following work does **not** enable them in the release.
 

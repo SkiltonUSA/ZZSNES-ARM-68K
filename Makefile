@@ -139,3 +139,15 @@ test-launcher-layout:
 	mkdir -p .context/tests
 	cc -std=c99 -Wall -Wextra -Werror -Wno-unused-variable tests/launcher_layout.c -o .context/tests/launcher-layout
 	.context/tests/launcher-layout
+
+.PHONY: current-expanded test-expanded test-expanded-arm
+current-expanded:
+	$(PYTHON) scripts/build_current.py --expanded
+test-expanded:
+	$(PYTHON) scripts/test_expanded.py
+	$(PYTHON) scripts/test_snes_battery.py
+test-expanded-arm:
+	$(MODEL_PYTHON) tests/amiga/emulator/check_snes_options_arm.py
+	$(PYTHON) scripts/make_expanded_fixture.py
+	$(MODEL_PYTHON) tests/amiga/emulator/check_expanded_arm.py
+	$(MODEL_PYTHON) tests/amiga/pocketsnes/check_current_state.py .context/expanded-build/player/pocket.elf .context/expanded-fixtures/HighRes-Test.sfc --expanded --options 32

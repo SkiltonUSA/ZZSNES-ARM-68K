@@ -7,7 +7,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ if a.expanded:a.arm=a.optimisation=a.core_o2=a.fx3=True
  if a.optimisation:a.thin_scanlines=True
  if (a.experimental_chips or a.compatibility or a.fx3) and not a.arm:p.error('compatibility experiments require --arm')
  compatibility=a.experimental_chips or a.compatibility or a.fx3
@@ -21,6 +22,8 @@ def main():
   out=ROOT/('.context/optimisation-fx-build' if a.fx3 else '.context/optimisation-build');stage=out/'player';lib=out/'library'
  if a.core_o2:out=ROOT/('.context/optimisation-o2-fx-build' if a.fx3 else '.context/optimisation-o2-build');stage=out/'player';lib=out/'library'
  if a.optimisation:m['version']='0.6.2-dev'
+ if a.expanded:
+  out=ROOT/'.context/expanded-build';stage=out/'player';lib=out/'library';m['version']='0.6.5-dev'
  shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
  shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
@@ -39,6 +42,10 @@ def main():
   if (overlay/'host').exists():shutil.copytree(overlay/'host',stage,dirs_exist_ok=True)
   shutil.copytree(ROOT/'development/scalable-launcher-20261019/source',lib,dirs_exist_ok=True)
   header=lib/'library_mui.h';header.write_text(header.read_text().replace('0.6.1 Beta','0.6.2-dev'))
+ if a.expanded:
+  expanded=ROOT/'development/expanded-20261019'
+  for name,dest in [('player',stage),('host',stage),('source',lib)]:shutil.copytree(expanded/name,dest,dirs_exist_ok=True)
+  for dest in (stage,lib):shutil.copytree(expanded/'common',dest,dirs_exist_ok=True)
  shutil.copy2(library_snap/'source/icon.c',lib/'icon.c')
  (lib/'icon.c').write_text((lib/'icon.c').read_text().replace('DOSBox icon',m['console']+' icon'))
  if m['console']=='ZZNES':
@@ -59,25 +66,36 @@ def main():
    header=(stage/'cartridge.h').read_text()
    header=header.replace('(map==0x20+i||map==0x30+i||contra)&&type<=2','(((map==0x20+i||map==0x30+i||contra)&&type<=2)||(!i&&map==0x20&&(type==0x13||type==0x14||type==0x15||type==0x1a))||(!i&&map==0x23&&(type==0x34||type==0x35)))')
    (stage/'cartridge.h').write_text(header);(core/'cartridge.h').write_text(header)
+  if a.expanded:
+   shutil.copytree(expanded/'core',core,dirs_exist_ok=True)
+   for dest in (core,stage):shutil.copytree(expanded/'common',dest,dirs_exist_ok=True)
   if a.optimisation and snes:
    shutil.copy2(stage/'region.h',core/'region.h')
    run(['patch','-p1','-d',core,'-i',ROOT/'development/optimisation-20261018/region-clock.patch'])
   if snes:
    prefix=json.loads(os.environ.get('ARM_BUILD_COMMAND','[]'))
    flags=[('-O2' if f=='-Os' and a.core_o2 else f) for f in m['arm_flags']];flags=[f for f in flags if not f.startswith('-I')];flags=[inside(source/'amiga/pocketsnes/libc_config.h')if f=='/work/amiga/pocketsnes/libc_config.h'else f for f in flags]
+   if a.expanded:flags=[f.replace('0x2000000','0x3000000') for f in flags]
    includes=[stage,core,*[source/'amiga'/d for d in ['mesen_nes','mesen_bench','arm_debug','arm_debug/zz9000']],core/'src',core/'libretro',core/'libretro/libretro-common/include']
    flags+=['-DEM_SNES']+['-I'+(inside(d)if prefix else str(d))for d in includes]
    if not prefix:flags=[str(source/'amiga/pocketsnes/libc_config.h')if f==inside(source/'amiga/pocketsnes/libc_config.h')else f for f in flags]
   else:
    prefix=[];flags=['--target=arm-none-eabi','-mcpu=cortex-a9','-marm','-mfloat-abi=soft','-mno-unaligned-access','-ffreestanding','-fno-builtin','-fPIC','-fvisibility=hidden','-fno-stack-protector','-O3','-g','-fwrapv','-DFC_ARM','-DDINGUX','-DFC_STATES','-DNES_PLAYER','-DNES_DIRECT','-DZZ_BLOCK_SIZE=0x400000','-DZZ_CONTROL=0x80000','-DMB_MMU','-DMB_DCACHE','-DMB_ALLOCATION=0x400000u','-Wno-deprecated-register','-Wno-writable-strings','-Wno-non-c-typedef-for-linkage']
    flags+=['-I'+str(d)for d in [stage,core,*[source/'amiga'/d for d in ['fceux_bench','mesen_nes','mesen_bench','arm_debug','arm_debug/zz9000']]]]
+  build_headers=hashlib.sha256(b''.join(p.read_bytes() for d in [stage,core] for p in sorted(d.rglob('*.h')) if p.name!='zz_payload.h')).digest() if a.expanded else b''
   for i,relpath in enumerate(m['arm_sources']):
    src=ROOT/relpath
    if src.is_relative_to(source/'core'):src=core/src.relative_to(source/'core')
    if src.parent==snap/'build-inputs/player':src=stage/src.name
+   if a.expanded and src.name=='runtime.c' and 'pocketsnes' in str(src):src=core/'runtime.c'
    obj=stage/f'{i}.o';objects.append(obj);cpp=src.suffix=='.cpp';cc=('arm-none-eabi-g++'if cpp else'arm-none-eabi-gcc')if snes else os.environ.get('CLANG','clang')
    args=flags+(['-std=c++14','-fno-exceptions','-fno-rtti']+([]if snes else['-nostdinc++'])if cpp else[])
-   run(prefix+[cc,*args,'-c',inside(src)if prefix else src,'-o',inside(obj)if prefix else obj])
+   command=prefix+[cc,*args,'-c',inside(src)if prefix else src,'-o',inside(obj)if prefix else obj]
+   fingerprint=hashlib.sha256(build_headers+src.read_bytes()+repr(command).encode()+b''.join(p.read_bytes() for p in sorted((core/'src').glob('*emu.c')))+(core/'src/cpuops.c').read_bytes()).hexdigest() if a.expanded else ''
+   stamp=obj.with_suffix('.build-sha256')
+   if not a.expanded or not obj.exists() or not stamp.exists() or stamp.read_text()!=fingerprint:
+    run(command)
+    if a.expanded:stamp.write_text(fingerprint)
   elf=stage/('pocket.elf'if snes else'fceux.elf');path=inside if prefix else str
   if snes:
    gcc=prefix+['arm-none-eabi-gcc','-mcpu=cortex-a9','-marm','-mfloat-abi=soft','-print-libgcc-file-name'];libgcc=subprocess.check_output(gcc,cwd=ROOT,text=True).strip()
@@ -89,9 +107,11 @@ def main():
  runtime=json.loads(os.environ.get('BETA_CONTAINER_COMMAND','["podman","--connection","nuflix-converter-root","run","--rm","--platform","linux/amd64"]'))
  cc=runtime+['-v',str(ROOT)+':/work','-w','/work',m['image'],'m68k-amigaos-gcc','-std=c99','-noixemul','-m68020','-O2','-g','-Wall','-Wextra','-Werror','-Wno-unused-function','-Wno-misleading-indentation']
  block,control=('0x2000000','0x180000')if snes else('0x400000','0x80000')
+ if a.expanded:block='0x3000000'
  defs=['ZZ_HEADLESS_BENCH','ZZ_RELEASE','ZZ_NES','ZZ_BLOCK_SIZE='+block,'ZZ_CONTROL='+control,'ZZ_APP_NAME="'+m['console']+'"','ZZ_APP_VERSION="'+m['version']+'"','ZZ_MIN_STACK=65536','MB_ALLOCATION='+block+'u','MB_MMU','MB_DCACHE','ZZ_HEADLESS_MMU','ZZ_HEADLESS_ICACHE','NES_PLAYER','NES_DIRECT','NES_FULLSCREEN']
  run(cc+['-D'+d for d in defs]+['-I'+rel(stage)]+['-I'+rel(source/'amiga'/d)for d in ['mesen_nes','mesen_bench','arm_debug','arm_debug/zz9000']]+[rel(source/'amiga/arm_debug/zz9000/launcher.c'),rel(stage/'host.c'),rel(stage/'zip/puff.c'),'-lamiga','-o',rel(out/('ZZSnes-FX'if a.fx3 else m['player']))])
  for src,dst in [('launcher.c',m['console']),('icon.c','MakeIcon')]:run(cc+[rel(lib/src)]+([rel(lib/'zip/puff.c')]if src=='launcher.c'else[])+['-lamiga','-o',rel(out/dst)])
+ if a.expanded:shutil.copy2(out/'ZZSnes-FX',out/m['player'])
  if a.optimisation:
   from build_scanlines import build
   build(out)

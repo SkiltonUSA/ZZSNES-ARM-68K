@@ -1,0 +1,25 @@
+#pragma once
+#include "protocol.h"
+#include "layout.h"
+#define MB_HOST (ZZ_CONTROL+0x800)
+#define MB_REPLY (ZZ_CONTROL+0x900)
+#ifdef NES_PLAYER
+#define NES_OUTPUT 0x130000u
+#define NES_OUTPUT_BYTES (NES_PIXELS*2u)
+#define NES_ROM 0x200000u
+#define NES_ROM_LIMIT 0x600000u
+#define PS_OUTPUT_FULL 0x800000u
+#define PS_OUTPUT_FULL_BYTES (512u*480u*2u)
+#define NES_AUDIO 0x170000u
+#define NES_SAVE 0x880000u
+#define NES_SAVE_LIMIT 0x200000u
+#else
+#define NES_OUTPUT 0x50000u
+#define NES_OUTPUT_BYTES NES_PIXELS
+#define NES_ROM 0x70000u
+#define NES_ROM_LIMIT 40976u
+#endif
+#define NES_BUFFER_A 0x90000u
+#define NES_BUFFER_B 0xb0000u
+#define NES_PIXELS 61440u
+enum { NES_CLOCK=1,NES_INIT=5,NES_FRAME=6,NES_PRESENT=7,NES_SAVE_LOAD=8,NES_SAVE_STORE=9 };

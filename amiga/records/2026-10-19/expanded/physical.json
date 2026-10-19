@@ -1,0 +1,114 @@
+[
+  {
+    "case": "c4",
+    "frames": 120,
+    "audio_gaps": 7,
+    "save": false,
+    "load": false,
+    "clean_teardown": true
+  },
+  {
+    "case": "sdd1",
+    "frames": 120,
+    "audio_gaps": 2,
+    "save": false,
+    "load": false,
+    "clean_teardown": true
+  },
+  {
+    "case": "exhirom",
+    "frames": 120,
+    "audio_gaps": 4,
+    "save": false,
+    "load": false,
+    "clean_teardown": true
+  },
+  {
+    "case": "fx3",
+    "frames": 120,
+    "audio_gaps": 4,
+    "save": false,
+    "load": false,
+    "clean_teardown": true
+  },
+  {
+    "case": "state-sf2",
+    "frames": 744,
+    "audio_gaps": 125,
+    "save": true,
+    "load": true,
+    "clean_teardown": true
+  },
+  {
+    "case": "state-sf2-resume",
+    "frames": 120,
+    "audio_gaps": 35,
+    "save": false,
+    "load": true,
+    "clean_teardown": true
+  },
+  {
+    "case": "state-dsp1",
+    "frames": 988,
+    "audio_gaps": 5,
+    "save": true,
+    "load": true,
+    "clean_teardown": true
+  },
+  {
+    "case": "state-dsp1-resume",
+    "frames": 120,
+    "audio_gaps": 0,
+    "save": false,
+    "load": true,
+    "clean_teardown": true
+  },
+  {
+    "case": "state-sa1",
+    "frames": 978,
+    "audio_gaps": 24,
+    "save": true,
+    "load": true,
+    "clean_teardown": true
+  },
+  {
+    "case": "state-sa1-resume",
+    "frames": 120,
+    "audio_gaps": 0,
+    "save": false,
+    "load": true,
+    "clean_teardown": true
+  },
+  {
+    "case": "state-options",
+    "frames": 950,
+    "audio_gaps": 9,
+    "save": true,
+    "load": true,
+    "clean_teardown": true
+  },
+  {
+    "case": "state-options-resume",
+    "frames": 120,
+    "audio_gaps": 5,
+    "save": false,
+    "load": true,
+    "clean_teardown": true
+  },
+  {
+    "case": "installed-smw",
+    "frames": 120,
+    "audio_gaps": 4,
+    "save": false,
+    "load": false,
+    "clean_teardown": true
+  },
+  {
+    "case": "installed-hires",
+    "frames": 120,
+    "audio_gaps": 1,
+    "save": false,
+    "load": false,
+    "clean_teardown": true
+  }
+]

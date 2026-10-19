@@ -1,3 +1,53 @@
+## Additional options installed — 19 October 2026
+
+Installed matched **0.6.5-dev** launcher, ZZSnes-ui and ZZSnes-FX in
+SD032G:Emulator/ZZSNES. Previous executables/config are in Rollback-options-1019.
+Library.cfg is byte-identical before installation and after new launcher startup.
+ROMs and existing user saves were not changed. Core1 is free; new launcher open.
+No firmware, startup, global AHI or saved Workbench display changes.
+
+Adds SRAM .sav persistence on clean exit, per-game profiles, AHI-driven automatic
+frameskip/threshold, low-pass strength, transparency, two-player input mapping
+and per-game Game Genie/PAR cheats. A second physical controller is untested.
+The original mapped-SRAM cheat call had reversed arguments; fixed and covered
+by native, relocated ARM and physical SRAM persistence/reload checks.
+
+SMW passed pause/save/load/F9/display switches/exit and fresh-process resume.
+All final physical runs restored registers/cache witnesses and released memory;
+audio gaps are recorded, so no new steady-FPS or gap-free-audio claim. Physical
+compact MUI/profile/mapping tests passed. See docs/additional-options.md and
+amiga/records/2026-10-19/options for checksums and results.
+Private receipts: workspace .context/amiga/snes-options-1019.
+Local changes only; no GitHub push or tagged release in this task.
+
+## Expanded cartridges installed — 19 October 2026
+
+Installed matched **0.6.4-dev** launcher, ZZSnes-ui and ZZSnes-FX in
+SD032G:Emulator/ZZSNES. Previous executables and Library.cfg are in
+Rollback-expanded-1019. The library was byte-identical before/after copying;
+ROMs, existing saves, firmware, startup and saved Workbench mode were untouched.
+
+SA-1/DSP-1/C4/S-DD1 gates, 6 MiB S-DD1/ExHiROM, version-3 chip saves and
+Display emulation controls are enabled. The allocation is now 48 MiB.
+High-resolution output is experimental; interlace is bob/line doubling.
+C4/S-DD1 commercial games and commercial FX3 remain unverified.
+
+Native fixtures, nine supplied-game 2400-frame replay checkpoints, relocated
+ARM presentation/state checks and an old version-2 SMW state pass. Physical
+Star Fox 2, Pilotwings and Kirby runs pass pause/save/load/F9/display switches,
+exit and fresh-process resume. Original C4, 6 MiB S-DD1/ExHiROM and FX3 fixtures
+pass physical transfer/render/teardown checks. Combined settings (skip 1 of 2,
+low-pass, compatible emulated overclock, 640x480) pass the same lifecycle.
+Audio gaps are recorded; these are functionality tests, not full-speed claims.
+Post-install SMW/window and 640x480/fullscreen readback pass. Core1 is free,
+the new launcher is open, and final Library.cfg remains byte-identical.
+
+See [report](expanded-cartridges.md) and
+[build/input hashes](../amiga/records/2026-10-19/expanded/build.json).
+Private deployment receipts: workspace .context/amiga/snes-expanded-1019.
+No GitHub push or tagged release update in this task. Rebuild explicitly with
+make current-expanded; older default release targets remain unchanged.
+
 ## FPGA fullscreen / Soft window scanlines — 18 October 2026 UTC
 
 Current installed development players use Xanxi FPGA controls in fullscreen,
@@ -517,3 +567,26 @@ by first-open clamp and retested larger-to-smaller on both launchers.
 Sources: development/scalable-launcher-20261019. Artifacts, screenshots,
 layout logs and complete development ZIP: artifacts/development/scalable-launcher-20261019.
 Published beta tags unchanged. See docs/scalable-launcher.md.
+
+
+## Duplicate-scan progress — 19 October 2026
+
+Installed launcher-only follow-up in SD032G:Emulator/ZZSNES; same development
+version. Source overlay now includes library_manager.h. Rollback-scan1019 holds
+previous executable/settings. Live Library.cfg preserved; launchers reopened.
+Progress panel 310x122 passed a compact 640x480 budget test on the current
+Workbench, filename-before-read, cancellation/restart and cleanup. SNES ZIPs
+read successfully; NES probe exercised unreadable handling. No actual mode change
+or game execution. See artifacts/development/duplicate-splash-20261019.
+SHA256 21bae9d7b25675763808f306764bb4bfc105d2c50497b56387fc257c4e78b952; 259152 bytes. Published packages unchanged.
+
+
+## 0.6.5 Beta distribution — 19 October 2026
+
+Packaged the recorded 0.6.5-dev executables without changes, with the full offline
+amipkg installer and manual ZIP. README/features/specifications and user guide
+now describe the current build. Dependency helper checks MUI/P96/AHI/ZZ9000 and
+closed launcher/Core1 ownership; no automatic system-library or firmware changes.
+Signed archive/member/executable checks passed; see docs/release-validation.md.
+No hardware install or launch was performed during this packaging task. Existing
+installed state is unchanged. Source and release assets are prepared for GitHub.

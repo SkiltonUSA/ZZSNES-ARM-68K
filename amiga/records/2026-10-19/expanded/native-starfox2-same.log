@@ -1,0 +1,4 @@
+CORE cpu=7f:0a6d rom_speed=8 apu=0656 out=02,00 gsu=8930
+RUN frames=2400 changed=712 last=693d9d35
+STATE bytes=1679099 frame=2400
+REPLAY mismatches=0

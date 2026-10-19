@@ -1,6 +1,6 @@
-# ZZSNES 0.6.1 Beta
+# ZZSNES 0.6.5 Beta
 
-Extract the package into a writable drawer and open **ZZSNES**. Keep the player
+Use the [offline installer](package-manager.md), or extract the manual ZIP into a writable drawer and open **ZZSNES**. Keep the player
 executable beside it. When upgrading, retain your ROMs, States, Snapshots and
 Library.cfg; older library settings are read automatically.
 
@@ -48,30 +48,25 @@ member inside the archive.
 
 ## Display
 
-Choose **Fullscreen** or **Workbench window**. **Alt+Return** switches at a completed
-frame boundary. The window currently displays a fixed 320×240 image. Fullscreen
-retains the existing deferred framebuffer handoff; windowed output uses a private
-ZZ9000 bitmap and an AmigaOS blit.
+Choose **Fullscreen** or **Workbench window**. **Alt+Return** switches during
+play at a completed frame boundary. The gameplay surface is 320×240 by default;
+the launcher itself is resizable and uses scrollable pages on smaller screens.
+Experimental high-resolution output uses a 640×480 surface. See
+[expanded graphics and cartridge limits](expanded-cartridges.md).
 
-Software scanlines: **Off**, **Classic** (alternating black rows), **Soft** (5/8 brightness
-on alternating rows), or **Gradient** (8/8, 6/8, 4/8, 6/8). They work with either
-display mode and the optional FPS overlay. They change this emulator's output only.
+**Scanlines** uses Xanxi's FPGA interface in fullscreen and Soft ARM software
+filtering in a window. **F7** cycles Off → Soft → Gradient → Classic in fullscreen,
+and toggles Off/Soft in a window. Compatible FPGA firmware is required for the
+fullscreen effect. The bundled tools are installed automatically by the offline
+installer, or manually with **Install-Scanlines**. The separate utility need
+not run. Hardware filtering is disabled in a window and on normal exit.
+F9 captures the framebuffer before the hardware effect is applied.
 
-The development build also offers **Thin (640x480)**. It keeps each image row and
-inserts a black line below it, avoiding Classic's loss of alternate rows of small
-text. Thin uses a larger window or an existing 640×480 fullscreen RTG mode and
-requires more rendering work. The published 0.6.1 package does not include it.
-
-The **Software scanlines** setting uses the ZZDosBox-derived ARM pixel routine;
-Xanxi's separate **ZZScanlines** Workbench utility is not required. The emulator
-does not call that utility or write its scanline-control registers. If global
-Workbench scanlines are enabled, turn them off for an undoubled software effect.
-Classic can hide fine text at 320×240; Soft retains detail in the dimmed rows.
-
-**On-screen FPS** counts presented frames over roughly one-second intervals.
-**Optimised presenter** enables guarded NEON row stores/dimming when firmware has
-already enabled NEON. Disable it for a scalar baseline comparison. It does not
-change CPU emulation, game timing or firmware policy.
+**On-screen FPS** counts emulated frames over roughly one-second intervals.
+Frameskip can reduce the number of distinct pictures displayed.
+**Optimised presenter** enables guarded NEON row stores/dimming when firmware
+has enabled NEON. An integer fallback remains available; this does not change
+the ARM clock or firmware policy.
 
 **EmuELEC bezel** adds the supplied dark speaker panels. Both supplied PNGs
 have the same frame, so they share one border choice. Their centre scanline
@@ -89,7 +84,7 @@ its 4:3 viewport fills the screen.
 | M | Mute / unmute |
 | F5 | Save selected slot |
 | F8 | Load selected slot |
-| F7 | Cycle software scanlines: Off → Soft → Gradient → Classic → Off |
+| F7 | Fullscreen scanline modes; windowed Off/Soft |
 | F9 | Capture library artwork |
 
 Five slots are maintained per game. The Save states page supports resume and
@@ -105,49 +100,38 @@ ends a scan while retaining games already found. No automatic or background
 drive discovery runs on startup or when a USB drive is inserted.
 The red **Launch** button stays in the bottom bar on every page.
 
-### Development defaults
+## Defaults and scaling
 
-The optimisation candidate starts new libraries in fullscreen with Soft
-software scanlines. Existing saved choices
-still take priority. Display settings remain selectable. **Alt+Return** switches
-window/fullscreen; **F9** captures a screenshot for the library, as shown on the
-loading panel.
+New libraries default to fullscreen with Soft scanlines. Existing saved choices
+remain in effect. F7 changes the running session; the launcher retains your
+saved default. Sharp pixels uses nearest-neighbour scaling. Smooth scrolling
+blends adjacent horizontal pixels, softening edges at additional presentation
+cost. It does not change game timing or region.
 
-**Display → Pixel scaling:** Sharp pixels keeps nearest-neighbour output.
-Smooth scrolling blends adjacent horizontal pixels to reduce uneven scaled
-columns; it softens edges and adds presentation work. It does not change the
-emulated game or its region. Sharp remains the default.
+## ROM Manager
 
-The new launcher reads older library files and saves `ZZSNESUI4` preferences.
-Restore the previous preferences together with the previous launcher when
-rolling back. Game save-state formats are unchanged.
+Bulk import scans the selected folder and its subfolders once. Duplicate cleanup
+shows the file being scanned and permits cancellation; ZIP decoding takes longer.
+It removes duplicate library entries, not ROM files or saves. Backup copies
+saves, snapshots and library settings to a new verified folder on a mounted disk
+or USB drive. [Details](rom-manager.md).
 
-F7 works while playing or paused, in a window or fullscreen. Gradient is the
-smooth effect; Classic is the hard, black-line effect. Changes apply to the
-current game session; the launcher retains your saved default.
-From Thin (640×480), F7 first turns scanlines off and returns to the normal
-320×240 game surface; later presses cycle the standard effects.
+## Region, profiles and emulation options
 
-The standard effects shade rows of the 320×240 output: Classic and Soft affect
-alternate rows, while Gradient repeats its brightness pattern over four rows.
-They do not insert a separate gap after each original console picture line.
-Thin doubles each logical row before darkening the second row, preserving the
-original picture rows. A typical SNES picture contains 224 active lines.
+The ROM header supplies the region and target beside the preview: PAL 50 fps or
+NTSC 59.92 fps. Games that exceed the processing budget can run slower; a 60 Hz
+monitor can show uneven motion for PAL material.
 
+Display includes fixed/automatic frameskip, filter strength, transparency,
+emulated CPU timing and experimental high-resolution output. Save for game stores
+those choices with that ROM's controller and cheat settings. Edit defaults changes
+the global defaults; Use defaults removes the selected game's active profile.
+Save edits before selecting another ROM.
 
-## ROM region (development build)
+SRAM loads on startup and saves on clean exit. Save states include SRAM and chip
+continuation state. Version-2 standard states remain readable; new option-bearing
+states need the current player. Keep old settings/states when rolling back.
 
-The Games page reads the SNES cartridge header and shows its destination code,
-PAL/NTSC region and target rate beside the captured picture. This works for raw
-ROMs and supported single-ROM ZIPs, including copier-header files and the
-experimental Super FX player. Filenames do not determine the region.
-
-PAL uses a **50 fps** emulation target; NTSC uses **59.92 fps**, close to 60.
-The same limit applies in fullscreen and a Workbench window. Audio generation
-follows that timing while AHI stays at 32,040 Hz stereo. Games that exceed the
-machine's frame budget can run slower; the FPS overlay counts displayed frames,
-which may be fewer than emulated frames. A 60 Hz monitor can still show uneven
-motion from 50 Hz PAL material.
-
-The original ROM and its header are never changed. Unreadable/unsupported
-cartridges retain the existing compatibility warning.
+Controllers supports two-player mapping. Player 2 is disabled by default and its
+keys must be assigned. Save states also contains the Game Genie / Action Replay
+entry controls. [Complete settings guide](additional-options.md).

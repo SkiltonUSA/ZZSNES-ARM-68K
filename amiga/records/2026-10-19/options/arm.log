@@ -1,0 +1,34 @@
+../../.tools/dosbox-model-venv/bin/python tests/amiga/emulator/check_snes_options_arm.py
+PASS relocated 12000040: SRAM execution, independent pads, automatic skip/recovery and cheat bounds
+PASS relocated 150020c0: SRAM execution, independent pads, automatic skip/recovery and cheat bounds
+python3 scripts/make_expanded_fixture.py
+SOURCE/.context/expanded-fixtures/HighRes-Test.sfc
+SOURCE/.context/expanded-fixtures/C4-Test.sfc
+SOURCE/.context/expanded-fixtures/SDD1-6M-Test.sfc
+SOURCE/.context/expanded-fixtures/ExHiROM-6M-Test.sfc
+../../.tools/dosbox-model-venv/bin/python tests/amiga/emulator/check_expanded_arm.py
+PASS ZZSNES 0x12000040 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+NEON row calls: 720
+PASS ZZSNES 0x150020c0 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+NEON row calls: 720
+PASS expanded 640x480, 512 source columns, format 3 scanlines 0 at 0x12000040
+PASS expanded 640x480, 512 source columns, format 3 scanlines 2 at 0x12000040
+PASS expanded 640x480, 512 source columns, format 4 scanlines 0 at 0x12000040
+PASS expanded 640x480, 512 source columns, format 4 scanlines 2 at 0x12000040
+PASS expanded 640x480, 512 source columns, format 3 scanlines 0 at 0x150020c0
+PASS expanded 640x480, 512 source columns, format 3 scanlines 2 at 0x150020c0
+PASS expanded 640x480, 512 source columns, format 4 scanlines 0 at 0x150020c0
+PASS expanded 640x480, 512 source columns, format 4 scanlines 2 at 0x150020c0
+PASS expanded relocated ARM presentation
+../../.tools/dosbox-model-venv/bin/python tests/amiga/pocketsnes/check_current_state.py .context/expanded-build/player/pocket.elf .context/expanded-fixtures/HighRes-Test.sfc --expanded --options 32
+PASS base=12000040 state=1677587 bytes; exact 30-frame video/stereo replay at restored frame6
+PASS corrupted thumbnail and different-ROM header rejected without frame advance
+PASS base=150020c0 state=1677587 bytes; exact 30-frame video/stereo replay at restored frame6
+PASS corrupted thumbnail and different-ROM header rejected without frame advance
+PASS relocated state survives a fresh Core1 address

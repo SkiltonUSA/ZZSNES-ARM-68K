@@ -38,3 +38,11 @@ scan tests also pass. Hardware results are recorded in the development handoff.
 No ARM player or emulation-core changes are required for these features.
 
 Temperature register/units follow MNT Research's [ZZTop reference](https://mntre.com/media/ZZ9000_info_md/zz9000-firmware-archive/zztop-1.1b.lha), through the existing ZZTemperature implementation. It does not control cooling or change firmware.
+
+Duplicate scanning shows a progress window: “Scanning for duplicates, zipped
+files take longer”, the current filename, and its position in the library.
+Cancel stops the scan without removing entries. The window closes before the
+removal confirmation. It checks listed ROMs wherever they are stored; it does
+not search the whole drive. ZIP files are decompressed to compare ROM contents.
+
+Cancel is processed between ROM reads; an in-progress ZIP decode finishes first.
