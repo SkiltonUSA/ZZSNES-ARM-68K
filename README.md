@@ -75,6 +75,8 @@ adds missing Xanxi scanline tools. Existing settings, ROMs and saves are preserv
 
 ## Scanlines
 
+**Soft scanlines and fullscreen are enabled by default.**
+
 Fullscreen uses **[Xanxi’s FPGA scanline interface and tools](https://github.com/Xanxi-Amiga/zz9000-scanlines)**;
 a Workbench window uses **our ARM Soft software routine**, shared with ZZDosBox.
 The effects do not run together. **F7** cycles Off → Soft → Gradient → Classic
@@ -95,11 +97,11 @@ These earlier gameplay captures show the **software** effect:
 
 ## More games
 
-Title and intro captures from the A4000TX/ZZ9000 special-chip tests.
+Full-size 320×240 captures from ZZSNES 0.6.5-dev on the A4000TX/ZZ9000.
 
-| Kirby Super Star — Spring Breeze | Pilotwings | Star Fox 2 |
+| Kirby Super Star | Star Fox — training | Axelay |
 | --- | --- | --- |
-| ![Kirby Super Star: Spring Breeze title screen](docs/screenshots/games/kirby-super-star.png) | ![Pilotwings title screen](docs/screenshots/games/pilotwings.png) | ![Star Fox 2 intro](docs/screenshots/games/star-fox-2.png) |
+| ![Kirby Super Star gameplay](docs/screenshots/games/kirby-super-star.png) | ![Star Fox training](docs/screenshots/games/star-fox.png) | ![Axelay first-stage gameplay](docs/screenshots/games/axelay.png) |
 
 ## Performance
 
