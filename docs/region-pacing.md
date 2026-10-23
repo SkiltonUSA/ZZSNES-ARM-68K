@@ -21,7 +21,7 @@ The existing supported-region and mapper gates are unchanged.
 
 ## Why this change
 
-The owner's Chaos Engine cartridge has a HiROM header with destination **0x02**,
+The user's Chaos Engine cartridge has a HiROM header with destination **0x02**,
 Europe/PAL. The previous installed player correctly reported PAL, with a
 19,873-microsecond period (about 50.32 fps). The report of noticeably fast play
 was **not reproduced as a PAL ROM running at NTSC speed**. The rate correction

@@ -8,7 +8,7 @@ ZZNes/ZZFceux application, ROMs, settings and states remain independent.
 
 Upstream: [SourMesen/Mesen2](https://github.com/SourMesen/Mesen2), pinned to
 `b9fa69ddc6d0a331fb103fdb5eef6904305703c2`, GPL-3.0-or-later. This is the
-archived Mesen2 tree requested by the owner; it is different from the older
+archived Mesen2 tree requested by the user; it is different from the older
 NES-only Mesen extraction. The current maintained successor is Mesen CE.
 
 The source provides distinct SNES components:
@@ -128,7 +128,7 @@ The physical A4000TX result matches the reference:
 | Check | Six-frame result |
 | --- | ---: |
 | CPU cycles | 277,071 |
-| Master clocks | 2,093,734 |
+| System clocks | 2,093,734 |
 | SPC cycles | 199,650 |
 | Final video hash | `1e1e29c5` |
 | Stereo sample pairs | 3,119 |
@@ -273,7 +273,7 @@ all byte fill values, guards, unchanged source and null zero-length calls.
 A9 memory checks validate 3,096 calls with exact data read/write boundaries,
 alignment and return values. Both complete-core builds pass two relocated
 A9-model runs, deliberately corrupted palette rejection and cancellation.
-All physical runs match pixel/master/CPU/SPC/PCM signatures and pass active
+All physical runs match pixel/system/CPU/SPC/PCM signatures and pass active
 cancel, RET1, 14 restored registers, MMU/cache witness and owned-memory release.
 The Workbench result was captured and visually checked; original CPU and NES
 executables remain unchanged. Common ARM/MCP suites pass.
@@ -294,7 +294,7 @@ The original is `ZZSnes-Mesen-System.before-words`; original metadata/readme
 have corresponding before-words backups. The existing MUI System button works.
 Evidence: [word-memory records](../records/2026-10-10/mesen-snes-words/).
 
-The owner's three ARM references are reviewed in
+The user's three ARM references are reviewed in
 [ARM-CORE-REFERENCES.md](ARM-CORE-REFERENCES.md). They suggest testing a separate
 PocketSNES-family core for a larger performance opportunity, just as FCEUX was
 compared against Mesen for NES; none has yet been run on this Amiga.

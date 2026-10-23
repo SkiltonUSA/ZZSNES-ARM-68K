@@ -6,7 +6,7 @@ and ownership lifecycle. No firmware or OS library change is required.
 
 ## Regional cadence update — 12 October 2026
 
-After the owner reported the ZZSNES interactive scheduler was “so much better”,
+After the user reported the ZZSNES interactive scheduler was “so much better”,
 the same policy was adapted to ZZNES's existing FCEUX host. Each CPU/PPU/APU
 frame still runs and all 32 kHz mono PCM is retained. The host follows the NES
 regional deadline and may omit a late completed picture, at most twice in a
@@ -72,7 +72,7 @@ resume. Tests used unique private state/snapshot paths. Installed player MD5:
 `1d71b0627bce977fe1703db69dd9cc8a`. Previous executable retained as
 `ZZFceux-ui.pre-cadence-20261012` (MD5 `3b3e008483c21c6b0bb6704bd4bc3207`).
 The matching MUI library and Library.cfg were verified unchanged. The existing
-normal icon uses the update. Owner visual feedback on ZZNES remains pending.
+normal icon uses the update. User visual feedback on ZZNES remains pending.
 
 ## Implementation
 
@@ -143,7 +143,7 @@ bytes with 498 relocations, within the unchanged layout limits.
 All eight supplied ROMs completed 600-frame runs on the A4000TX. Each run
 acknowledged 600 framebuffer flips, verified the first framebuffer readback,
 completed every queued audio sample, restored the checked ARM/MMU registers
-and returned through RET1 before releasing its allocation and owner port.
+and returned through RET1 before releasing its allocation and coordination port.
 The scripted Start input was held for ten frames. The native test's Start
 sequence is one frame later, so its final gameplay hash is not a physical
 oracle for this script.

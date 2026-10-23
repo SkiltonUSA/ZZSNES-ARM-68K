@@ -1,6 +1,6 @@
 # ARM SNES core references — 10 October 2026
 
-The owner supplied these references during the NES-style optimisation pass.
+The user supplied these references during the NES-style optimisation pass.
 They were reviewed from pinned source checkouts, not run on the Amiga. No code
 from these cores has been merged into the Mesen2 GPL integration.
 

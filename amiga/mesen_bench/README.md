@@ -50,7 +50,7 @@ No global/shared L2 maintenance is performed. Read the
 All three final launches also passed cancellation during repeated CPU work,
 nonce/sequence mailbox echoes, a 1 KiB private-data RAM readback with boundary
 canaries, original/restored MMU/control register comparisons, RET1 and exit 0.
-The named owner port and temporary Amiga test files were removed. The default
+The named coordination port and temporary Amiga test files were removed. The default
 debugger/fractal cache contract remains unchanged; this is an explicit opt-in
 for this bounded CPU benchmark, not general cache support for other apps.
 
@@ -101,7 +101,7 @@ RAM/register signature `f86dd990`. The read-only ARM global timer is calibrated
 against Amiga timer.device over roughly two seconds; its rate is an estimate.
 
 Both successful physical runs reached `RET1`, reset Core1 to idle before freeing
-memory, exited 0 and removed the owner port. The I-cache run verified original
+memory, exited 0 and removed the coordination port. The I-cache run verified original
 SCTLR `08c50878`, running `08c51878`, restored `08c50878`. No display buffer is
 used by the CPU test; the launcher's short mapping probe uses a P96-owned bitmap.
 
@@ -159,7 +159,7 @@ data accesses, detect a corrupted reference, and cancel after 512 checked
 instructions. Model checks do not establish hardware/cache behavior.
 
 Before physical use, follow `docs/amiga-arm-debugging.md`: re-enumerate tasks,
-screens, clients and owner ports, ensure Core1 is free, verify the transferred
+screens, clients and coordination ports, ensure Core1 is free, verify the transferred
 executable, use a fresh nonzero nonce and a 65536-byte Amiga stack. CLI syntax:
 `ZZMesenBench <nonce> RUN`. Ctrl-C requests shutdown; each host request has a
 10-second deadline, followed by the existing bounded return/reset teardown.

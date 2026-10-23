@@ -20,4 +20,4 @@ completed normally. No presentation-speed improvement is claimed.
 
 ![EmuELEC border in a Workbench window](screenshots/emuelec-window.png)
 
-Source masters and converter: [snapshot](../development/borders-20261016/borders/).
+Source files and converter: [snapshot](../development/borders-20261016/borders/).

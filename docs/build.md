@@ -96,7 +96,7 @@ A full build omits `--host-only` and requires the configured
 `POCKET_TOOLCHAIN_COMMAND` container mounted on this checkout, as above. The
 standalone builder reads the hash-checked vendored core and archived libc.
 
-The save-state replay tests require the owner's SMW input at the ignored path
+The save-state replay tests require the user's SMW input at the ignored path
 `.context/amiga/pocketsnes-game/input.sfc`. Supply your own authorised copy;
 no build or test downloads it. With that file present:
 

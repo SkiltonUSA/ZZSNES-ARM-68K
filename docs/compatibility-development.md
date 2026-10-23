@@ -74,7 +74,7 @@ showed the same initial upload bytes, but different ordering afterward: the old
 core sent command `$0F` before the SPC driver cleared its input ports with `$F1=$F0`.
 The corrected timing lets initialization finish before that command arrives.
 The original regression fixture verifies the bank table from both zero and
-stale values, then checks mapped CMP/DEX/BNE costs of 30/14/22 master clocks.
+stale values, then checks mapped CMP/DEX/BNE costs of 30/14/22 system clocks.
 It fails against the old mapper and passes with the candidate under ASan/UBSan.
 
 The repeated 11-cartridge native survey completed 600 and 2,400 frames per ROM

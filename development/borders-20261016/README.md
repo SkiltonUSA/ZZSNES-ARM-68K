@@ -17,6 +17,6 @@ table fits without relocating anything. Linker allocation assertions remain.
 The new theme occupies existing theme ID 7; older IDs/defaults remain unchanged.
 Existing players reject theme 7, so keep the updated launcher and player together.
 
-Artwork supplied by the project owner; original authorship/licence was not
+Artwork supplied by the user; original authorship/licence was not
 provided. This artwork is not claimed as original GPL artwork by this project.
 See docs/emuelec-border.md for tests, screenshots and limitations.

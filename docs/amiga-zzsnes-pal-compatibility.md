@@ -77,7 +77,7 @@ error 0, no flip fault, stopped worker, checked MMU/register/witness restoration
 and clean exit with memory released. Candidate: one initial deadline rebase,
 maximum measured lateness 18,524 us, at most two consecutive omitted pictures.
 There is one long pair, not repeated statistical coverage across games.
-The owner subsequently played the interactive candidate and reported “so much
+The user subsequently played the interactive candidate and reported “so much
 better!”. This supports retaining the policy; it does not separately establish
 that every previously observed horizontal split has disappeared.
 
@@ -101,7 +101,7 @@ Q/Esc exits, P pauses. The run is capped at 18,000 emulated frames (about five
 minutes NTSC) and has a separate 385-second loop limit. It writes no SRAM,
 save states or thumbnails; its log is `Visual-manual-Interactive-18000.log`
 in the same drawer. This is a diagnostic candidate, not the normal app or a
-release. Owner feedback: “so much better!” after the interactive test.
+release. User feedback: “so much better!” after the interactive test.
 
 Build and run only one hardware stream at a time:
 
@@ -121,7 +121,7 @@ Evidence: `amiga/records/2026-10-12/zzsnes-cadence/`.
 
 ## Audio scheduling isolation — 12 October 2026
 
-Following the owner's smooth Core / slightly jittery Audio observation, built
+Following the user's smooth Core / slightly jittery Audio observation, built
 bounded C0-derived comparisons with unchanged ARM payload and fullscreen
 handoff. Four immutable patterns isolate audio load from framebuffer writes.
 All use 1,200 emulated frames, identical scripted input and a 45-second loop
@@ -327,9 +327,9 @@ Variant D also passed paused save/load, snapshot capture, resume/quit and
 fresh-process state resume, using an isolated slot and ROM copy. Original
 Borders player/library checksums were rechecked unchanged afterward.
 
-After these automated runs, the owner reported that C was the best of the
+After these automated runs, the user reported that C was the best of the
 variants. C is therefore the preferred visual candidate, retaining the existing
-vertical scaling with four-slot delayed retirement. The owner subsequently
+vertical scaling with four-slot delayed retirement. The user subsequently
 clarified that horizontal tearing is less noticeable, but still present.
 This subjective improvement does not establish the root cause; C provides
 the preferred baseline for further presentation-timing comparisons.
@@ -342,7 +342,7 @@ are excluded from those records.
 
 ## Buffer release timing — 12 October 2026
 
-The owner clarified that C is only slightly better and horizontal tearing
+The user clarified that C is only slightly better and horizontal tearing
 remains noticeable. The next comparison holds its four-slot plan, scaling,
 audio and ARM payload constant while changing when the bitmap lock is released
 after a deferred-PAN acknowledgement. It does not alter the firmware or write
@@ -361,7 +361,7 @@ proves that the DMA address has latched for a particular scanned frame.
 | F | Observe a further active/blank/active cycle | Withdrawn: timeout after 547 frames |
 
 E delayed 1,708 of 1,800 releases, averaging about 1.36 ms for those waits.
-It costs about 0.6 FPS in this sample. The owner subsequently reports that
+It costs about 0.6 FPS in this sample. The user subsequently reports that
 the issue persists and identifies a horizontal split/offset, not simply
 whole-picture jerking: E did not resolve the reported tearing.
 Its audio gap indicators remain present (120 versus 90 in the first C0 run).
@@ -372,7 +372,7 @@ release. Like-for-like emulated frame hashes matched.
 
 Original C and E also passed paused save/load, F9 snapshot capture, resume/Q,
 and fresh-process state resume using private files. E-specific PAL was not
-physically tested. Final checks found only Workbench, no Core1 owner, Roadie
+physically tested. Final checks found only Workbench, no Core1 task, Roadie
 and bridge running, and unchanged normal player/library checksums.
 
 F completed its initial 600-frame check but was much slower. In its longer
@@ -459,13 +459,13 @@ Installed separately at `SD032G:Dev/ZZSnes-Pattern`. Run
 `Execute SD032G:Dev/ZZSnes-Pattern/Start-Pattern` with no other Core1 app active.
 The normal emulator is unchanged. Logs and build records are retained under
 `amiga/records/2026-10-12/zzsnes-pattern/`. Physical results are recorded there;
-visual acceptance requires the owner's observation of the monitor.
+visual acceptance requires the user's observation of the monitor.
 
 The first bounded physical run completed 1,129 moving flips (1,130 ACKs
 including initial selection), with unchanged `ba3ce5c5` checksums and no
 flip fault. Checked registers/MMU and witnesses restored; exit 0 released
 owned memory and returned to Workbench. After initially missing the automatic
-test, the owner reports the moving diagonal patterns looked good, with no
+test, the user reports the moving diagonal patterns looked good, with no
 horizontal split. The fault was not reproduced in this workload; this does
 not prove that buffer switching remains correct under normal game load.
 `FULLSCREEN_END queued=0` counts ARM presentation challenges, which this
@@ -524,11 +524,11 @@ moving flips respectively.
 The Audio worker queued, submitted and completed all 641,626 stereo sample
 pairs and stopped with error 0. Twenty audio-gap indicators remain; completion
 is not proof of uninterrupted playback. Neither loaded test entered a full
-queue wait. The final state was Workbench, no Core1 owner, and unchanged normal
+queue wait. The final state was Workbench, no Core1 task, and unchanged normal
 Borders player/library checksums.
 
-The owner subsequently ran both tests manually: **Core was “super smooth”;
-Audio had slight jitter twice in about twenty seconds.** The owner clarified
+The user subsequently ran both tests manually: **Core was “super smooth”;
+Audio had slight jitter twice in about twenty seconds.** The user clarified
 that the whole pattern hesitated/jumped, with no horizontal split. The loaded
 patterns therefore reproduce a small whole-frame stutter when audio is enabled,
 but do not reproduce the earlier game-image splitting.

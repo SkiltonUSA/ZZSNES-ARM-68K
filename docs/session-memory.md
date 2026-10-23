@@ -60,7 +60,7 @@ No firmware, startup or saved Workbench mode changes.
 
 All three player host paths passed physical F7/pause/display-switch/readback/exit
 checks with register/cache restoration. Optical acceptance of the FPGA effect
-still requires the owner or an HDMI capture. ARM payloads are unchanged. Installer
+still requires the user or an HDMI capture. ARM payloads are unchanged. Installer
 fresh/repeat/partial/existing-tool/error checks passed. Preferences and games are
 untouched. Backups: Rollback-fpga-1018. Tagged releases remain unchanged.
 [Report](fpga-scanlines-20261018.md) and
@@ -198,7 +198,7 @@ The bridge truncated a large direct Library.cfg write; verification caught it
 before launcher restart. Recovered the entire file via HTTP and byte-compared
 it with the intended single-field edit. Launcher restart requires Stack65536;
 the first lower-stack attempt exited without opening, corrected restart passed.
-Only launcher is open; no Core1 owner/test player. No firmware changes.
+Only launcher is open; no Core1 task/test player. No firmware changes.
 
 ---
 
@@ -224,7 +224,7 @@ Doom, Star Fox 2 and original FX3-header fixture each launched via Play and
 exited via F10 with clean register/cache witnesses and memory release. No full
 FX3 instruction or special-chip state compatibility claim. First automated
 Star Fox 2 click was too early during ROM inspection; corrected test passed.
-No Core1 owner or test library left running; DOSBox launcher left untouched.
+No Core1 task or test library left running; DOSBox launcher left untouched.
 Evidence: amiga/records/2026-10-16/superfx-launcher/.
 
 ## FX3 launcher warning — 16 October 2026
@@ -255,7 +255,7 @@ Candidate tested separately at SD032G:Dev/FXTimingZZSNES/ZZSnes-ui: Star Fox 2,
 Star Fox and Doom each completed 1200 no-input windowed frames with clean
 register/cache witnesses and owned-memory release. Main 0.6.1 beta, library,
 ROMs and states unchanged. Star Fox 2 intro captured in a second clean run.
-No Core1 owner remains; DOSBox launcher/idle ports were left as found.
+No Core1 task remains; DOSBox launcher/idle ports were left as found.
 No release and no firmware changes. See
 compatibility-development.md and records/2026-10-16/superfx-timing/.
 
@@ -372,7 +372,7 @@ optimisations and rejected alternatives. Native/model tests are not hardware pro
 
 The shared sidebar, mounted-drive discovery, asynchronous startup/loading panels,
 window/fullscreen switching, FPS and software scanlines are enabled. Preserve
-existing ROM paths and library/save files when upgrading. Only one Core1 owner;
+existing ROM paths and library/save files when upgrading. Only one Core1 task;
 retain runtime mapping, cache witnesses and reset-before-free on every path.
 
 Installed and checksum-verified on the A4000TX. Previous executables, icon and
@@ -394,7 +394,7 @@ and audio scheduling results. The installed Beta includes accepted cadence,
 PAL handling, current MUI tabs, simplified About credits and per-game saves.
 Both libraries were visually checked and closed cleanly after migration.
 Old Dev folders are recovery copies; final observed machine state was Workbench,
-with no library/player/Core1 owner. During backup review, three NES ROM filenames were corrected to retain `(E)`
+with no library/player/Core1 task. During backup review, three NES ROM filenames were corrected to retain `(E)`
 PAL tags; current settings and ROM bytes were preserved. No emulator was
 launched and no new FPS measurement was performed. See the PAL path-fix record.
 
@@ -441,11 +441,11 @@ Earlier plainpreview54.933FPS/2.272ms; newscale/bezel adds work. All hardware
 runsRET1/registermismatch0/witness0 and releaseownedRAM. Source/buildguide
 `amiga/pocketsnes/library/README.md`; builder`scripts/build_pocketsnes_library.py`.
 Evidence `amiga/records/2026-10-10/pocketsnes-library/`. Do not commit ROMs or
-save-state files. New app's owner portZZSNES_LIBRARY; child uses existing single
+save-state files. New app's coordination port `ZZSNES_LIBRARY`; child uses existing single
 Core1 guard. Use MCP HTTP only; never a second raw bridge connection.
 Final optimized binary also passes fresh-processresume, F5overwrite (previous
 686196-byte .bak present), F8reload and exit0. UI left open on SMW Save slots;
-Workbench only, no Core1 owner, Roadie/bridge alive. Documentation and build
+Workbench only, no Core1 task, Roadie/bridge alive. Documentation and build
 manifest installed in drawer. Local deployment HTTP55031 stopped after checks.
 
 ## Earlier milestones
@@ -488,7 +488,7 @@ Uses 24 MiB Exec-owned runtime-probed ZZ9000 allocation, including bounded
 18 MiB heap. Generated MMU copies change image/table/mailbox offsets only;
 private inner WB/WA, outer/mailbox NC, data XN and single-Core1 rules persist.
 No observed address becomes a static allocation. Layout passes all16,384
-64-byte alignments. Final Workbench only, no ARM owner; Roadie, bridge,
+64-byte alignments. Final Workbench only, no ARM task; Roadie, bridge,
 ZZTemperature, NES/Mesen MUI still live. No firmware/AHI/startup changes.
 Temporary HTTP55031 stopped after transfer; GitHub backup is this standalone ZZSNES-ARM-68K repository.
 

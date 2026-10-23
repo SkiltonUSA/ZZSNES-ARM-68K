@@ -32,7 +32,7 @@ with the documented model environment passed. This was a test setup issue.
 
 The NES GUI harness initially expected a window although fullscreen was selected.
 The player was running normally; the corrected check completed the lifecycle.
-ZIP tests used the owner's Mario Bros. (NES) and Super Mario World (SNES) files.
+ZIP tests used the user's Mario Bros. (NES) and Super Mario World (SNES) files.
 These were private test inputs and are not distributed. One tested cartridge
 per console does not establish compatibility for every supported mapper.
 

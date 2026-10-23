@@ -53,7 +53,7 @@ existing AHI unit 0 setting (Paula on this machine); no driver settings change.
 
 The 32 MiB allocation remains Exec-owned with runtime mapping verification,
 bounded mailbox/ROM/state areas, temporary framebuffer mappings, cache/MMU
-restore and the single-Core1 owner guard. The MUI launcher owns no ARM resources.
+restore and the single-Core1 exclusive-access guard. The MUI launcher owns no ARM resources.
 
 Core: [libretro/snes9x2002](https://github.com/libretro/snes9x2002), pinned in the
 parent build, under its retained non-commercial Snes9x terms. UI structure:

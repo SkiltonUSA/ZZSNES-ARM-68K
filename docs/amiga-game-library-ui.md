@@ -237,11 +237,11 @@ Both new artwork themes passed 120-frame hardware runs in each emulator, with
 first-frame pixel readback, complete flip counts and clean ARM/Workbench return.
 The SNES MUI launcher opens successfully. Records are under
 `amiga/records/2026-10-11/game-borders/`. Appearance and tearing acceptance still
-need owner review; these checks do not establish a speed gain or tear-free output.
+need user review; these checks do not establish a speed gain or tear-free output.
 
 ## Visual joystick tester (11 October 2026)
 
-The Controllers tab now follows the owner's controller-configuration reference:
+The Controllers tab now follows the user's controller-configuration reference:
 D-pad inside an outline on the left, Select/Start in the centre, NES B/A or the
 SNES four-button diamond with L/R on the right. Held joystick controls highlight
 green. The physical port, detected device type and raw flags remain visible.
