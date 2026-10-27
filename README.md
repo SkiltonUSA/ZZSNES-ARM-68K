@@ -11,7 +11,7 @@ files, controls, display coordination and batched AHI audio.
 [Installation](docs/package-manager.md) · [User guide](docs/current-guide.md) ·
 [Changes](CHANGELOG.md) · [Interface gallery](docs/current-interface.md)
 
-This beta packages the tested **0.6.5-dev** build; that version remains visible in the app.
+App version: **0.6.5-dev**.
 
 ![ZZSNES interface](docs/screenshots/interface.png)
 
@@ -21,7 +21,7 @@ This beta packages the tested **0.6.5-dev** build; that version remains visible 
 - Colour logo, Workbench icon, startup and loading panels with keyboard controls.
 - Raw ROMs and single-ROM ZIP archives (stored/deflate), without an external unpacker.
 - Search, favourites, history, captured artwork, Add, Rename and confirmed Delete.
-- One-shot folder/SD/USB import; scan only the directory you select.
+- Scan a selected folder, SD card or USB drive once to import ROMs.
 - No fixed library-entry cap; tested with 20,000 entries.
 - ROM Manager: bulk import, duplicate-entry cleanup with progress/cancel, and verified backups to disk or USB. Duplicate cleanup keeps ROM files and saves.
 - Fullscreen or Workbench window, with **Alt+Return** switching during play.
