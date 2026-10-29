@@ -1,0 +1,10 @@
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/borders-20261016/source -Idevelopment/beta-20261015/source/amiga/emulator tests/amiga/emulator/model.c -o .context/test-current
+.context/test-current
+PASS settings v2/v3 migration, bounded scanline arithmetic and FPS glyph bounds
+cc -O2 -g -fsanitize=address,undefined -Itests/amiga/emulator/mock -Idevelopment/borders-20261016/source tests/amiga/emulator/scan.c -o .context/test-scan
+.context/test-scan
+PASS explicit directory scans, idle inactivity, recursion, dedup, ZIP filtering, invalid roots, cancellation and DOS resource release
+.context/venv/bin/python tests/amiga/emulator/check_current_arm.py
+make: .context/venv/bin/python: No such file or directory
+make: *** [test-current] Error 1

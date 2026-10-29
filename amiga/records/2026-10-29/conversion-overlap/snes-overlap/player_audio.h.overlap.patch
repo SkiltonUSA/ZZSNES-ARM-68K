@@ -1,0 +1,13 @@
+--- original/player_audio.h
++++ overlap/player_audio.h
+@@ -171,6 +171,10 @@
+ }
+ static void player_audio_flush(void){audio_force=1;audio_wake();}
+ static int player_audio_submit(void){audio_wake();return !audio_error;}
++static int player_audio_room(void){
++ ULONG available;Forbid();available=audio_write-audio_read;Permit();
++ return available<AUDIO_SLOTS;
++}
+ static int player_audio_frame(void){
+  ULONG n=ad_get(shared+MB_REPLY,40),start,index,available;
+  if(n>1024||audio_error)return 0;

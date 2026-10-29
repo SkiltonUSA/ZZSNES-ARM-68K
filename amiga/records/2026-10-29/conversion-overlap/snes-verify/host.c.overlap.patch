@@ -1,0 +1,51 @@
+--- original/host.c
++++ overlap/host.c
+@@ -243,15 +243,15 @@
+  int verify=verify_frame(frame),capture=fc_snapshot_due(frame);
+  if(!card||!direct_bitmap)return 0;
+ #ifdef NES_FULLSCREEN
+- if(!full_drain())return 0;
++ if(fc_windowed&&!full_drain())return 0;
+  if(!full_front()){quit=1;return 0;}
+ #endif
+  if(!p96GetBitMapAttr(direct_bitmap,P96BMA_ISONBOARD))return 0;
+- memset(&ri,0,sizeof(ri));
+-#ifdef NES_FULLSCREEN
+- full_origin_known=0;
+-#endif
+- direct_lock=p96LockBitMap(direct_bitmap,(UBYTE *)&ri,sizeof(ri));direct_locked=1;
++ if(!fc_windowed){if(!full_render_begin(&ri))return 0;}
++ else {
++  memset(&ri,0,sizeof(ri));full_origin_known=0;
++  direct_lock=p96LockBitMap(direct_bitmap,(UBYTE *)&ri,sizeof(ri));direct_locked=1;
++ }
+  if(!ri.Memory||((ULONG)ri.Memory&3u)||ri.BytesPerRow<(LONG)(256*bpp)||ri.BytesPerRow>4096||
+     (ULONG)ri.RGBFormat!=direct_native_format)return 0;
+  pitch=ri.BytesPerRow;
+@@ -288,6 +288,12 @@
+   CopyMem(ri.Memory,direct_readback,span);
+  }
+ #ifdef NES_FULLSCREEN
++ if(!fc_windowed){
++  if(!full_render_finish())return 0;
++  events();fc_read_buttons();
++  if(quit)return 1;
++  if(!full_relock())return 0;
++ }
+  if(!full_queue())return 0;
+  /* Usual frames stay locked through ACK; the next CPU/PPU request overlaps
+   * the vblank wait. Diagnostic frames drain before comparing the snapshot. */
+@@ -476,8 +482,11 @@
+   if(!request(NES_FRAME,input | (verify_frame(frames+1)?65536u:0u))){goto done;}request_us+=us()-before;fc_sample(0,us()-before);}
+ #ifdef NES_PLAYER
+   if(quit){rc=0;goto done;}
+-  /* AHI may process input while waiting: release any outstanding bitmap lock first. */
+-  before=us();if(!full_drain())goto done;flip_drain_us+=us()-before;fc_sample(1,us()-before);fc_read_buttons();
++  /* Sole producer: a free PCM slot cannot fill underneath us. Only the full
++   * ring path can process input/yield; drain before allowing that path. PCM is
++   * copied before PRESENT overwrites the reply metadata. */
++  before=us();if((fc_windowed||core_only||!player_audio_room())&&!full_drain())goto done;flip_drain_us+=us()-before;fc_sample(1,us()-before);
++  if(fc_windowed||core_only)fc_read_buttons();
+   before=us();if(!core_only&&!player_audio_frame())goto done;audio_us+=us()-before;fc_sample(2,us()-before);
+   if(quit){rc=0;goto done;}
+ #endif

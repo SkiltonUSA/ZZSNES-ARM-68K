@@ -611,3 +611,20 @@ then repeated). Native actual-host mocks pass retirement and cancellation cases.
 See ack-polling.md for phase/blocking details and the next conversion-overlap
 investigation. Private SD test drawer removed; bridge up, Core1 idle, saved
 screenmode CRC 9C80FBC5 unchanged. Installed players and user data untouched.
+
+## Pixel conversion overlap — 29 October 2026
+
+Added isolated --presentation-test serial/overlap builds. Old PAN ACKs retain a
+render pin; after conversion the host drains, unlocks for input, then relocks and
+rejects relocation before queuing the next flip. PCM stays before PRESENT, with
+full-ring waits still unlocked. Original ARM image/MMU/audio/ACK contracts remain.
+
+Native fault/lock/audio and existing pixel/SIMD checks pass; both fresh full builds
+pass. Two 120-frame hardware readback runs, eight 660-frame ABBA timing runs and
+two readiness-gated UI lifecycle checks pass. Two earlier NES UI attempts sent
+input too soon but exited cleanly; logs retained. 14 physical runs total.
+Mean 600-frame time is 2.64% longer NES / 1.46% longer SNES. No promotion.
+See conversion-overlap.md and its raw records; late audio links remain nonzero.
+Installed players/releases unchanged. Private test drawer removed; Core1 idle,
+bridge alive, saved screenmode CRC 9C80FBC5 unchanged. Earlier NES freeze remains
+unexplained. Local MCP remains running.

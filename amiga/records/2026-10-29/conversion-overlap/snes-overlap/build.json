@@ -1,0 +1,19 @@
+{
+  "version": "0.7.2-dev",
+  "variant": "overlap",
+  "ack_profile": false,
+  "fixed_presentation": true,
+  "audit": false,
+  "capture": false,
+  "warmup": 60,
+  "hashes": {
+    ".context/amiga/conversion-1029/snes-overlap/Player": "d7dac364c31b89b4d12d5bc9f2ac8d2346733b24cc7f35e69adf769351e5bf98",
+    ".context/amiga/conversion-1029/snes-overlap/host.c": "d749545e209ebc0aefbc60df561835972e55208c28a8d9f3b10ff2db8a9b2ade",
+    ".context/ZZSNES-ARM-68K/.context/jit-dispatch32-build/player/mmu.h": "954a4038c78e1a67fa696592b80bf1fb61aa72eaf7a0f1830d3ba75453382ef7",
+    ".context/ZZSNES-ARM-68K/.context/jit-dispatch32-build/player/mmu_plan.h": "04f11b5f7d456fe3a110329708c81fa67254eb24c201d2f6e1340f2d6287c741",
+    ".context/ZZSNES-ARM-68K/.context/jit-dispatch32-build/player/zz_payload.h": "d10f30e75186bd95c211c6be15a3f35b9ada748259e2d2376b98541d4b0a8f90",
+    ".context/amiga/conversion-1029/snes-overlap/player_audio.h": "30d4b481eac1c3b8df459f27d3b75f67d83b8858c6ee65d3901b195b1f04f924",
+    ".context/amiga/conversion-1029/snes-overlap/fullscreen.h": "192b25f5ea59c7d6a045a4d509b43575ce432896bc8d2856d53a275a0dfbc1c0"
+  },
+  "conversion_profile": false
+}

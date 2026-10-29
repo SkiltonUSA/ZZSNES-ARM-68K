@@ -1,0 +1,13 @@
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/borders-20261016/source -Idevelopment/beta-20261015/source/amiga/emulator tests/amiga/emulator/model.c -o .context/test-current
+.context/test-current
+PASS settings v2/v3 migration, bounded scanline arithmetic and FPS glyph bounds
+cc -O2 -g -fsanitize=address,undefined -Itests/amiga/emulator/mock -Idevelopment/borders-20261016/source tests/amiga/emulator/scan.c -o .context/test-scan
+.context/test-scan
+PASS explicit directory scans, idle inactivity, recursion, dedup, ZIP filtering, invalid roots, cancellation and DOS resource release
+python3 tests/amiga/emulator/check_current_arm.py
+Traceback (most recent call last):
+  File "<workspace>/.context/ZZSNES-ARM-68K/tests/amiga/emulator/check_current_arm.py", line 4, in <module>
+    from unicorn import Uc,UC_ARCH_ARM,UC_MODE_ARM,UC_HOOK_CODE
+ModuleNotFoundError: No module named 'unicorn'
+make: *** [test-current] Error 1

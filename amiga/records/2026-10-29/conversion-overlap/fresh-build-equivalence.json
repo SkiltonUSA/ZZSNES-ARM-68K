@@ -1,0 +1,14 @@
+[
+  {
+    "console": "nes",
+    "host_and_fullscreen_identical": true,
+    "arm_payload_and_mmu_identical": true,
+    "audio_tokens_identical_without_EM_AUDIO_EARLY": true
+  },
+  {
+    "console": "snes",
+    "host_and_fullscreen_identical": true,
+    "arm_payload_and_mmu_identical": true,
+    "audio_tokens_identical_without_EM_AUDIO_EARLY": true
+  }
+]

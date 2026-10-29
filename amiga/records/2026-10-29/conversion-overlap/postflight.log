@@ -1,0 +1,26 @@
+amiga_ping Amiga alive - clients: 0, chip: 2022784 bytes, fast: 617406608 bytes
+amiga_list_ports Public Message Ports (21):
+  TSPORT
+  WORKBENCH
+  DEFICONS
+  ToolsDaemon 2.1a © Nico François
+  REXX
+  AREXX
+  MagicMenu
+  SIXIES.BRIDGE.NETWATCH
+  AssignWedge.port
+  ZZScanlines.Menu.1
+  ZZTemperature.1
+  TuringStats.1
+  NewMeter
+  ROADIE
+  POPO.1
+  TCP/IP Control
+  QDock
+  AMIGABRIDGE
+  ConClip.rendezvous
+  lowlevel.library
+  deficons
+amiga_checksum File: ENVARC:Sys/screenmode.prefs
+CRC32: 9C80FBC5
+Size: 62 bytes

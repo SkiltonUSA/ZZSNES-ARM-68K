@@ -1,0 +1,4 @@
+CONVERSION bitmap relocated; stopping before PAN
+FULLSCREEN flip ACK failed; pending cancelled
+FULLSCREEN flip ACK failed; pending cancelled
+PASS render lifetime: ACK during conversion, reuse, relocation, timeout, cancellation, window fallback

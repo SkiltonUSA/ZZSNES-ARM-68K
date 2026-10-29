@@ -1,0 +1,17 @@
+{
+  "fixed_presentation_only": true,
+  "files": {
+    "host.c": {
+      "original": "5304d7f634cac495c7508ca023f80dda5ead6c1df6df845d6905e36a02715995",
+      "candidate": "d532526f5c27f4266790acf78bf19ee1f1569c4ea0a1768d341095f0e38c75c9"
+    },
+    "fullscreen.h": {
+      "original": "904907bf7d5557308f88458d2c9be8fac7f55b1dba3a67504b47d1f0bf7e3ec0",
+      "candidate": "b082633f0cd3ca350a90afae7dc08937f2bea1ec6aad4966ded63f7a549b0fe4"
+    },
+    "player_audio.h": {
+      "original": "bf0c9a86fbc3030b2e6dffe257f337d65e7f7a207fc04a03d560be84413eab5a",
+      "candidate": "9e572ad1cc551462fcdee74c52bc78c8e7befc388dee389e82e36d83037fb864"
+    }
+  }
+}

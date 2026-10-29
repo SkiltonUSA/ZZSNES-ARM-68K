@@ -1,0 +1,61 @@
+--- original/fullscreen.h
++++ overlap/fullscreen.h
+@@ -8,6 +8,9 @@
+ static struct nf_slots full_slots={0,1,-1,0,0}; /* Core init precedes screen open. */
+ static ULONG full_pitch,full_origin,full_pending_us,full_wait_us;
+ static UWORD *full_pointer;
++/* A PAN completion cannot release P96 while ARM writes another free slot. */
++static int full_rendering;
++static struct RenderInfo full_render_info;
+ static int full_fault,full_attached,full_usedpan,full_origin_known;
+ static void full_write(unsigned reg,UWORD v){*(volatile UWORD *)(full_board+reg)=v;}
+ static UWORD full_ack_count(void){return *(volatile UWORD *)(full_board+0x46);}
+@@ -23,6 +26,7 @@
+  Permit();
+ }
+ static void full_unlock(void){
++ if(full_rendering)return;
+  if(direct_locked){p96UnlockBitMap(direct_bitmap,direct_lock);direct_locked=0;}
+ }
+ static int full_poll(void){
+@@ -42,6 +46,31 @@
+ static int full_drain(void){
+  while(full_slots.pending>=0){if(!full_poll())return 0;/* Bounded full_poll deadline; do not sleep under bitmap lock. */}
+  return !full_fault;
++}
++/* The cached geometry is valid only while this exact P96 lock is retained. */
++static int full_render_begin(struct RenderInfo *ri){
++ full_rendering=1;
++ if(!direct_locked){
++  full_origin_known=0;memset(&full_render_info,0,sizeof(full_render_info));
++  direct_lock=p96LockBitMap(direct_bitmap,(UBYTE *)&full_render_info,sizeof(full_render_info));direct_locked=1;
++ }
++ *ri=full_render_info;return 1;
++}
++static int full_render_finish(void){
++ /* Call only after the PRESENT token/hash checks and optional readback. */
++ if(!full_drain())return 0;
++ full_rendering=0;full_unlock();return 1;
++}
++static int full_relock(void){
++ struct RenderInfo ri;
++ if(!full_front())return 0;
++ /* Input needs an unlocked interval. Reject relocation during that interval:
++  * no new ARM write or PAN may use a stale address. Cleanup retains this lock. */
++ full_origin_known=0;memset(&ri,0,sizeof(ri));
++ direct_lock=p96LockBitMap(direct_bitmap,(UBYTE *)&ri,sizeof(ri));direct_locked=1;
++ if(ri.Memory!=full_render_info.Memory || ri.BytesPerRow!=full_render_info.BytesPerRow ||
++    ri.RGBFormat!=full_render_info.RGBFormat){puts("CONVERSION bitmap relocated; stopping before PAN");return 0;}
++ full_origin_known=1;return 1;
+ }
+ static int full_queue(void){
+  if(fc_windowed){full_slots.front=full_slots.render;full_slots.flips++;full_unlock();return 1;}
+@@ -123,7 +152,7 @@
+     full_origin=(ULONG)ri.Memory-(ULONG)full_board-0x10000u;full_pitch=ri.BytesPerRow;full_origin_known=1;}}
+   if(full_front() && full_origin_known)full_pan(full_origin,0);
+  }
+- full_slots.pending=-1;full_unlock();
++ full_slots.pending=-1;full_rendering=0;full_unlock();
+  if(window){if(full_pointer)ClearPointer(window);CloseWindow(window);window=NULL;}
+  if(full_pointer){FreeMem(full_pointer,12);full_pointer=NULL;}
+  if(full_screen){CloseScreen(full_screen);full_screen=NULL;}

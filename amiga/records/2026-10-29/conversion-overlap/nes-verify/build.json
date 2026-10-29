@@ -1,0 +1,19 @@
+{
+  "version": "0.8.2-dev",
+  "variant": "verify",
+  "ack_profile": false,
+  "fixed_presentation": true,
+  "audit": true,
+  "capture": false,
+  "warmup": 60,
+  "hashes": {
+    ".context/amiga/conversion-1029/nes-verify/Player": "be8f6e894a36f7fa2113dec329e369d77d9fa4a3e5a4eee4c7e981329cc25ad0",
+    ".context/amiga/conversion-1029/nes-verify/host.c": "09ea1743f1ffc91fff781ce40f299fe4b2600644cdd87d5cb2b74f05451f46f5",
+    ".context/ZZNes-ARM-68K/.context/jit-switch32-build/player/mmu.h": "954a4038c78e1a67fa696592b80bf1fb61aa72eaf7a0f1830d3ba75453382ef7",
+    ".context/ZZNes-ARM-68K/.context/jit-switch32-build/player/mmu_plan.h": "c382cb9f9161a6f698b646f8480c7b6a2ff1d7f4a9f47885262760051c1283b4",
+    ".context/ZZNes-ARM-68K/.context/jit-switch32-build/player/zz_payload.h": "37fd0e82bf748c05ee3a0f44a5558caaafdd67c1b73904b16603ac664f042f05",
+    ".context/amiga/conversion-1029/nes-verify/player_audio.h": "9e572ad1cc551462fcdee74c52bc78c8e7befc388dee389e82e36d83037fb864",
+    ".context/amiga/conversion-1029/nes-verify/fullscreen.h": "8c8083466ce9f78e090b97ff056b1b43fbc4083d82c23eaf70f65d369d1e6451"
+  },
+  "conversion_profile": true
+}
