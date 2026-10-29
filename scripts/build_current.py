@@ -26,7 +26,7 @@ def main():
   out=ROOT/'.context/expanded-build';stage=out/'player';lib=out/'library';m['version']='0.6.5-dev'
  if a.jit_registers:
   if not a.arm or not a.optimisation or not a.expanded:p.error('JIT requires current ARM optimisation expanded build')
-  out=ROOT/'.context/jit-registers32-build';stage=out/'player';lib=out/'library';m['version']='0.7.1-dev'
+  out=ROOT/'.context/jit-dispatch32-build';stage=out/'player';lib=out/'library';m['version']='0.7.2-dev'
  shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
  shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
@@ -79,7 +79,7 @@ def main():
    run(['patch','-p1','-d',core,'-i',ROOT/'development/optimisation-20261018/region-clock.patch'])
   if a.jit_registers:
    from prepare_console_jit import prepare
-   jit_begin=prepare(core,stage,snes)
+   jit_begin=prepare(core,stage,snes,dispatch=True)
   if snes:
    prefix=json.loads(os.environ.get('ARM_BUILD_COMMAND','[]'))
    flags=[('-O2' if f=='-Os' and a.core_o2 else f) for f in m['arm_flags']];flags=[f for f in flags if not f.startswith('-I')];flags=[inside(source/'amiga/pocketsnes/libc_config.h')if f=='/work/amiga/pocketsnes/libc_config.h'else f for f in flags]

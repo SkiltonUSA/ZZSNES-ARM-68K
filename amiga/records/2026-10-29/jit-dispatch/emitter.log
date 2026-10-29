@@ -1,0 +1,1 @@
+PASS 25536 direct-handler cases: relocation, wrap, cached flags, live cycle setting, wait reset, preserved registers

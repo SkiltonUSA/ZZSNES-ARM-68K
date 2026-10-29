@@ -1,0 +1,48 @@
+{
+  "runs": [
+    {
+      "run": "snes-new-1",
+      "core_us": 1461432,
+      "elapsed_us": 10262264,
+      "gaps": 6
+    },
+    {
+      "run": "snes-new-2",
+      "core_us": 1458203,
+      "elapsed_us": 11318846,
+      "gaps": 9
+    },
+    {
+      "run": "snes-old-1",
+      "core_us": 1653185,
+      "elapsed_us": 11498390,
+      "gaps": 10
+    },
+    {
+      "run": "snes-old-2",
+      "core_us": 1651624,
+      "elapsed_us": 11752095,
+      "gaps": 31
+    },
+    {
+      "run": "snes-ref-1",
+      "core_us": 1476629,
+      "elapsed_us": 11503347,
+      "gaps": 31
+    },
+    {
+      "run": "snes-ref-2",
+      "core_us": 1478707,
+      "elapsed_us": 11546052,
+      "gaps": 32
+    }
+  ],
+  "mean_core_us": {
+    "ref": 1477668,
+    "old": 1652404.5,
+    "new": 1459817.5
+  },
+  "old_slowdown_pct": 11.825152876018151,
+  "new_time_reduction_vs_old_pct": 11.654954945959052,
+  "new_time_reduction_vs_ref_pct": 1.208018309931591
+}

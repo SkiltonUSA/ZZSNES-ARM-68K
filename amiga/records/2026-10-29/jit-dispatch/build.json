@@ -1,0 +1,32 @@
+{
+  "version": "0.7.2-dev",
+  "experimental": true,
+  "normal_player_changed": false,
+  "register_jit_default": "opcode-table-dispatch",
+  "owned_bytes": 100663296,
+  "reserved_jit_bytes": 33554432,
+  "generated_handlers": 8,
+  "handler_slot_bytes": 256,
+  "address_tag_table": false,
+  "build_command": "make jit-registers",
+  "sources": {
+    "scripts/build_current.py": "be752f7b8fde656a1b61789319845bc97711cca4c184b99d295d23f59eaf51de",
+    "scripts/prepare_console_jit.py": "1cfd799fc9ca17cc5f49d02deca1813fec366ccf8c4e49a35b053fa64d2a0231",
+    "scripts/test_console_jit_core.py": "ba49fdd207fe1baa37183f5441eb39094b65dda31be7840b814e5917353aa877",
+    "scripts/test_snes_dispatch_core.py": "73430546900fc121cbc3c63c68ad7ca74cfd46c2482da6a01cbbbdfdbc790211",
+    "tests/amiga/test_snes_dispatch.py": "ccc372f920684997e254df5423c5f36eaecb7e5ed1b60b999656d1299d6af897",
+    "amiga/common/arm_jit/snes_adapter.h": "4d2b3c9821ed8dc1c14b47ebe509a5a370355b7baa00efbc93ba6c1f26cd09e1",
+    "amiga/common/arm_jit/cache.h": "8d41459c631fcd45b9cde35a3e0b525fc5a5af3e71b142db20c81de2e363f5a1",
+    "amiga/common/arm_jit/register_op.h": "78f07779754d20250e0600332b458029d7262771d8a0c93b0314c5a249e93a50",
+    "amiga/common/arm_jit/cache_size.h": "6097ae1b4644fd03944e01e7f6c4ec71af860847ff894d0686e4fd0460d95bcc",
+    "amiga/common/arm_jit/snes_dispatch.h": "8cf900bb5314a6e6e1c151dee3b6e6806ac056d124bd8b1353093f67b4e5c582",
+    "amiga/common/arm_jit/snes_dispatch_emit.h": "8fd1f851ca254680a5a687db159520dad7057c64755abe40c49f8ec390d2e636",
+    "amiga/common/arm_jit/nes_adapter.h": "399cd87dffc41827ccd1fce5a675ef26c4dff7a100dc305141d5b8c4f13e60a6"
+  },
+  "outputs": {
+    "ZZSNES": "4e4d606a75d90b2af0dd8800dc727658df07fc2deb8b9da6c92bdfc04055e617",
+    "ZZSnes-ui": "495f8e7dba07fc3a86c799485e7f2e09ed12ae53559a18952a109bd7f1a3de58",
+    "ZZSnes-FX": "495f8e7dba07fc3a86c799485e7f2e09ed12ae53559a18952a109bd7f1a3de58",
+    "player/pocket.elf": "0157e1e4e93b9eb7a7b2a113b3e8b611b4706c7ea64a141839a8ae9063bd1c33"
+  }
+}

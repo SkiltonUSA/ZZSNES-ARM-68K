@@ -1,77 +1,77 @@
-# Experimental register translation — 0.7.1-dev
+# Register translation — 0.7.2-dev
 
-The released interpreter remains the default. This candidate reserves a **32 MiB
-executable cache** in a **96 MiB Exec-owned allocation** on ZZ9000 Core1.
-It is a small A32 register translator, not a complete CPU JIT. There are 262,144
-128-byte code slots plus 2 MiB of tag metadata. Cache bounds are shared by the
-emitter and MMU; page-table storage is enlarged and the witness is relocated.
+The measured register-translator slowdown is resolved in the Super Mario World
+startup workload. The normal interpreter and existing releases remain unchanged.
+`make jit-registers` now selects the improved experimental path.
 
-The previous 8 MiB build and its evidence remain available. The measurements
-below describe that older build, not the new 32 MiB candidate.
+## Physical comparison
 
-## Earlier 8 MiB measurements
+Two 300-frame runs per build on the A4000TX, ordered interpreter → old translator
+→ new translator → new translator → old translator → interpreter. Same ROM,
+window, audio and verification settings. These are ARM core times, excluding
+presentation and frontend work; they are not gameplay FPS.
 
-A physical 300-frame comparison completed with matching output and clean
-MMU/register/cache restoration. Core time was 1,480,360 us for the interpreter
-and 1,646,231 us for the candidate: **11.20% slower**. This is not a speed
-improvement, so the candidate has not replaced the installed player or release.
-Wall time includes presentation and verification work and is not a CPU benchmark.
+| Build | Mean core time, 300 frames | Mean core time per frame |
+|---|---:|---:|
+| Interpreter | 1.477668 s | 4.926 ms |
+| Earlier address-lookup translator | 1.652405 s | 5.508 ms |
+| Opcode-table translator | **1.459818 s** | **4.866 ms** |
 
-The translator handles X/Y increment and decrement in 8- and 16-bit modes.
-Everything else falls back to the interpreter. Each instruction returns to the
-original scheduler, preserving opcode reads, cycles, audio and interrupt/event
-boundaries. Auxiliary cartridge processors are unchanged. Multi-instruction
-traces are future work and require event-timing comparisons before use.
+The old path was 11.83% slower than the interpreter in this repeat of the earlier
+11.20% regression. The new path uses **11.65% less core time than the old path**,
+and **1.21% less than the interpreter**. Two runs establish this result for this
+workload, not a universal speed increase across all games.
 
-Cache lookup validates the current opcode and CPU width. Register values are
-loaded at execution time; no guest memory values are cached. Generated code uses
-ARMv7 UBFX for wrapping. There are no arbitrary 32-bit constants in these small
-fragments, so adding MOVW/MOVT would add no benefit. The existing core cycle table
-already provides precomputed timing; variable event costs must remain intact.
+All six runs match the video endpoint and complete 160,414 queued/submitted/
+completed PCM frames. Register/MMU/cache witnesses restore, exit is zero and
+owned memory is released. Audio-gap observations remain (new path: 6 and 9);
+this does not establish uninterrupted audio. Wall-time variation is retained
+in the raw logs and is not used for the core-time result.
 
-Code publication cleans local L1 data lines, invalidates local instruction lines
-and synchronizes execution. It never changes shared L2. A rewritten-code witness
-runs before guest execution. Only fully owned code-cache pages are executable;
-stack/shared regions remain non-executable. The allocated cache capacity exceeds
-the tiny amount of code used by this initial experiment.
+## What changed
 
-## Earlier verification
+The old path classified every opcode, then looked up a guest-address cache for
+simple INX/INY/DEX/DEY operations. The lookup, mode checks, counters and extra
+function call cost more than the tiny operations they replaced.
 
-- 9,576 Cortex-A9 instruction-model cases: 8/16-bit arithmetic, flag representation
-  and unchanged surrounding state.
-- 16,384 allocation alignments: cache bounds, executable pages and table capacity.
-- 600 linked interpreter/JIT frames: matching Super Mario World video and PCM output.
-- Physical 300-frame run: matching output, exit 0 and owned-memory release.
-- Audio: 160,414 frames queued, submitted and completed; no reported error.
+The new path emits eight handlers once: four operations in 8- and 16-bit modes.
+It installs them in the core's existing four opcode tables. The original opcode
+fetch, CPU-mode table selection, interrupts, audio and event checks stay intact.
+Other instructions and auxiliary processors keep their original implementations.
+There is no per-instruction JIT eligibility check or address-tag lookup.
 
-Build separately with `make jit-registers` using the existing cross-toolchain
-setup. Outputs go to `.context/jit-registers32-build`; normal artifacts are retained.
-Launcher/player versions both read 0.7.1-dev for this candidate. It is not a
-release package. The shared emitter test is `tests/amiga/test_console_jit.py`;
-full-core comparisons use `scripts/test_console_jit_core.py` with explicit
-`--baseline`, `--candidate`, `--baseline-packer` and `--snes`, plus a local ROM.
-ROM data is not included in the evidence.
+MOVW/MOVT binds each handler to the runtime-owned register/flag structures,
+without literal pools. ARMv7 bitfields preserve register wraparound. The handler
+reads live overclock controls, applies the original cycle increment and clears
+the CPU wait address when the core requires it. State loads and CPU mode changes
+continue to select the appropriate original table.
 
-[Build hashes and physical logs](../amiga/records/2026-10-28/jit-registers/).
+The **32 MiB executable reservation** and **96 MiB Exec-owned allocation** remain.
+Eight handlers occupy slots within the first 2 KiB; an address-tag table is no
+longer needed. The improvement comes from removing dispatch overhead, not cache
+size. This remains single-instruction translation, not a complete CPU JIT or
+multi-instruction trace compiler. Local cache publication, rewritten-code witness
+and the corrected non-overlapping memory layout are retained; shared L2 is untouched.
 
-## 32 MiB revision — 29 October 2026
+## Validation and build
 
-Native regressions, 9,576 emitter cases, 16,384 page-map alignment cases and
-600 linked interpreter-comparison frames pass. The layout test now also checks
-witness separation from actual video/audio, ROM, save, control and table ranges.
+- 25,536 instruction-model emitter cases across three addresses.
+- 32,768 comparisons against the actual original opcode handlers across two
+  addresses: CPU modes, exact register/flag state, live cycle settings and wait reset.
+- 600 Super Mario World and 300 PAL Chaos Engine frames match the interpreter;
+  model hooks confirm generated handlers execute, without runtime profiling overhead.
+- All 16,384 MMU allocation-alignment cases and native core regressions pass.
+- Six physical runs pass the lifecycle checks described above.
 
-An initial physical run completed rendering but failed its witness check: the
-relocated witness overlapped the video output buffer. The launcher returned
-exit 20 and released memory. A new native overlap test reproduced the fault;
-the corrected witness is at allocation offset 0x12c000, between the page tables
-and video output. The failed run and build hashes are retained in the records.
+Use the existing cross-toolchain setup and `make jit-registers`. Output is
+`.context/jit-dispatch32-build`; launcher, normal candidate player and FX player
+all identify **0.7.2-dev**. Installed programs and release packages are unchanged.
 
-The corrected physical run completed 300 frames using a 100,663,296-byte owned
-allocation. Output hash ca7174c7 matches the reference; all 160,414 PCM frames
-were queued, submitted and completed. Registers and the witness restored with
-zero mismatches; launcher exit 0 and owned memory released. Twelve audio-gap
-observations remain, so this is not an uninterrupted-audio claim. Core time
-was 1,647,549 us; no speed improvement is established from this single run.
+`make test-jit-layout` checks the built layout. Emitter tests are in
+`tests/amiga/test_snes_dispatch.py`; `scripts/test_snes_dispatch_core.py` compares
+built interpreter/candidate handlers. Full-core comparisons use
+`scripts/test_console_jit_core.py --snes --table-dispatch` with a local ROM.
+ROMs are not included in the records.
 
-Build and test evidence is recorded separately from the earlier measurements.
-[32 MiB records](../amiga/records/2026-10-29/jit-registers32/).
+[Build hashes, measurements and test logs](../amiga/records/2026-10-29/jit-dispatch/).
+[Earlier lookup-cache experiments and failures](jit-register-lookup-history.md).

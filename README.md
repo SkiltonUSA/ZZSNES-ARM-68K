@@ -148,7 +148,6 @@ The Snes9x core is non-commercial. Component licences, source pins and notices a
 
 ## Translation research
 
-[Experimental 32 MiB register-JIT cache](docs/jit-register-experiment.md):
-The earlier 8 MiB prototype was slower than the interpreter.
-More cache is not a speed claim.
-It remains separate from the released player.
+[32 MiB register-JIT experiment](docs/jit-register-experiment.md): the dispatch
+regression is fixed in the tested Super Mario World workload—11.65% less ARM
+core time than the earlier translator. Interpreter releases remain unchanged.
