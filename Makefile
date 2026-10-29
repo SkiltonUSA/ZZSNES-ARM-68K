@@ -144,6 +144,7 @@ test-launcher-layout:
 current-expanded:
 	$(PYTHON) scripts/build_current.py --expanded
 test-expanded:
+	$(PYTHON) scripts/test_fx_colour.py
 	$(PYTHON) scripts/test_expanded.py
 	$(PYTHON) scripts/test_snes_battery.py
 test-expanded-arm:

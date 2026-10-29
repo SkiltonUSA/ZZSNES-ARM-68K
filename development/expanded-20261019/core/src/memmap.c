@@ -211,7 +211,7 @@ bool8_32 MemoryInit ()
     RegRAM = Memory.FillRAM;
 
     SuperFX.pvRegisters = &Memory.FillRAM [0x3000];
-    SuperFX.nRamBanks = 1;
+    SuperFX.nRamBanks = 2; /* Match the CPU bank $70/$71 map and allocated SRAM. */
     SuperFX.pvRam = SRAM;
     SuperFX.nRomBanks = (2 * 1024 * 1024) / (32 * 1024);
     SuperFX.pvRom = (uint8 *) Memory.ROM;
@@ -679,7 +679,7 @@ void InitROM (bool8_32 Interleaved)
    Settings.DSP1Master = Settings.ForceDSP1;
    Settings.SuperFX = FALSE;
    Fx3Active = 0;
-   SuperFX.nRamBanks = 1;
+   SuperFX.nRamBanks = 2; /* Match the CPU bank $70/$71 map and allocated SRAM. */
    Settings.SA1 = FALSE;
    Settings.C4 = FALSE;
    Settings.SDD1 = FALSE;

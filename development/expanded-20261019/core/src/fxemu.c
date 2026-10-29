@@ -594,8 +594,8 @@ static uint8 fx_checkStartAddress()
       return TRUE;
 
    /*  Check if we're in an unused area */
-   if (GSU.vPrgBankReg < 0x40 && R15 < 0x8000)
-      return FALSE;
+   /* Low ROM banks mirror both 32 KiB halves. Do not reject a resumed
+      GSU slice just because its PC is below $8000 (Stunt Race FX). */
    if (GSU.vPrgBankReg >= 0x60 && GSU.vPrgBankReg <= 0x6f)
       return FALSE;
    if (GSU.vPrgBankReg >= 0x74)

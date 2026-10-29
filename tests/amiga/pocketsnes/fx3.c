@@ -103,6 +103,6 @@ int main(void){
   pocket_player_close();
  }
  /* No FX3 mode leakage when the next cartridge is ordinary Super FX. */
- rom[0x7fd6]=0x13;assert(!nes_init(rom,n,0,0));assert(!Fx3Active);assert(GSU.nRamBanks==1);pocket_player_close();
+ rom[0x7fd6]=0x13;assert(!nes_init(rom,n,0,0));assert(!Fx3Active);assert(GSU.nRomBanks==32);pocket_player_close();
  free(rom);return 0;
 }

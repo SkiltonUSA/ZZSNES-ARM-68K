@@ -806,11 +806,17 @@ static INLINE void fx_plot_8bit()
    if (y >= GSU.vScreenHeight) return;
 #endif
    c = (uint8)GSU.vColorReg;
-   if (!(GSU.vPlotOptionReg & 0x10))
+   /* 8bpp transparency uses the full colour, except when CMODE freezes
+      the high nibble. OBJ layout (bit 4) does not select transparency.
+      Matches Snes9x fx_plot_8bit / PLOT_FREEZEHIGH semantics. */
+   if (!(GSU.vPlotOptionReg & 0x01))
    {
-      if (!(GSU.vPlotOptionReg & 0x01) && !(c & 0xf)) return;
+      if (GSU.vPlotOptionReg & 0x08)
+      {
+         if (!(c & 0x0f)) return;
+      }
+      else if (!c) return;
    }
-   else if (!(GSU.vPlotOptionReg & 0x01) && !c) return;
 
    a = GSU.apvScreen[y >> 3] + GSU.x[x >> 3] + ((y & 7) << 1);
    v = 128 >> (x & 7);
