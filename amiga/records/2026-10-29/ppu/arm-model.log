@@ -1,0 +1,12 @@
+GAME stunt
+PASS ARM video/stereo PCM ppu-baseline-build 0x12000040 30
+PASS ARM video/stereo PCM ppu-all-build 0x150020c0 30
+PASS ARM video/stereo PCM ppu-all-build 0x12000040 30
+GAME smw
+PASS ARM video/stereo PCM ppu-baseline-build 0x12000040 30
+PASS ARM video/stereo PCM ppu-all-build 0x150020c0 30
+PASS ARM video/stereo PCM ppu-all-build 0x12000040 30
+GAME starfox2
+PASS ARM video/stereo PCM ppu-baseline-build 0x12000040 30
+PASS ARM video/stereo PCM ppu-all-build 0x150020c0 30
+PASS ARM video/stereo PCM ppu-all-build 0x12000040 30

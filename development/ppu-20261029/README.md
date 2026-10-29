@@ -29,6 +29,13 @@ Neither contains game assets. Build variants remain separate from release output
    the existing runtime mapping, cache/MMU and audio teardown checks. Corrected
    an initial log-parser expectation (`STATE load OK`); the completed run itself
    had passed. No installed player, firmware or system preference was changed.
+7. Completed 25 physical runs. Combined core time was unchanged/slower; the
+   PPU-only Star Fox 2 saving repeated at about 0.54%. Kept all variants opt-in
+   because the result is small and workload-specific. Recorded raw timings,
+   binary/input digests, profile counts and test summaries for review.
+8. Removed the private hardware test drawer, checked idle Core1 and the bridge,
+   and verified unchanged AHI/screenmode preferences and installed 0.7.4 versions.
+   Preserved the default Makefile verification target when adding `test-ppu`.
 
 The optional UB complexity/duplication/mutation tools were unavailable. Actual
 renderer output comparisons and sanitizer/model/hardware checks provide the

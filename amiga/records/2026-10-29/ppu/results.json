@@ -1,0 +1,678 @@
+{
+  "frames_per_run": 660,
+  "rows": [
+    {
+      "name": "stunt-baseline-1",
+      "elapsed_us": 19186108,
+      "core_us": 15313793,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "a36c309e"
+        ],
+        [
+          "600",
+          "f3c437df"
+        ]
+      ],
+      "game": "stunt",
+      "mode": "baseline",
+      "repeat": 1,
+      "flips": 235,
+      "silence_queued": 345,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "stunt-all-1",
+      "elapsed_us": 18579689,
+      "core_us": 15319520,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "a36c309e"
+        ],
+        [
+          "600",
+          "f3c437df"
+        ]
+      ],
+      "game": "stunt",
+      "mode": "all",
+      "repeat": 1,
+      "flips": 228,
+      "silence_queued": 315,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "stunt-all-2",
+      "elapsed_us": 18620162,
+      "core_us": 15318540,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "a36c309e"
+        ],
+        [
+          "600",
+          "f3c437df"
+        ]
+      ],
+      "game": "stunt",
+      "mode": "all",
+      "repeat": 2,
+      "flips": 234,
+      "silence_queued": 316,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "stunt-baseline-2",
+      "elapsed_us": 18549448,
+      "core_us": 15312725,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "a36c309e"
+        ],
+        [
+          "600",
+          "f3c437df"
+        ]
+      ],
+      "game": "stunt",
+      "mode": "baseline",
+      "repeat": 2,
+      "flips": 233,
+      "silence_queued": 309,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "stunt-fixed-1",
+      "elapsed_us": 18688044,
+      "core_us": 15348096,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "a36c309e"
+        ],
+        [
+          "600",
+          "f3c437df"
+        ]
+      ],
+      "game": "stunt",
+      "mode": "fixed",
+      "repeat": 1,
+      "flips": 235,
+      "silence_queued": 313,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "stunt-sprite-1",
+      "elapsed_us": 18621897,
+      "core_us": 15317247,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "a36c309e"
+        ],
+        [
+          "600",
+          "f3c437df"
+        ]
+      ],
+      "game": "stunt",
+      "mode": "sprite",
+      "repeat": 1,
+      "flips": 231,
+      "silence_queued": 313,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "stunt-ppu-1",
+      "elapsed_us": 18591582,
+      "core_us": 15307211,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "a36c309e"
+        ],
+        [
+          "600",
+          "f3c437df"
+        ]
+      ],
+      "game": "stunt",
+      "mode": "ppu",
+      "repeat": 1,
+      "flips": 234,
+      "silence_queued": 305,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "smw-baseline-1",
+      "elapsed_us": 12432999,
+      "core_us": 5469235,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "e9d4156f"
+        ],
+        [
+          "600",
+          "6c2eeae4"
+        ]
+      ],
+      "game": "smw",
+      "mode": "baseline",
+      "repeat": 1,
+      "flips": 591,
+      "silence_queued": 11,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "smw-all-1",
+      "elapsed_us": 12321660,
+      "core_us": 5519043,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "e9d4156f"
+        ],
+        [
+          "600",
+          "6c2eeae4"
+        ]
+      ],
+      "game": "smw",
+      "mode": "all",
+      "repeat": 1,
+      "flips": 587,
+      "silence_queued": 2,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "smw-all-2",
+      "elapsed_us": 12230940,
+      "core_us": 5520432,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "e9d4156f"
+        ],
+        [
+          "600",
+          "6c2eeae4"
+        ]
+      ],
+      "game": "smw",
+      "mode": "all",
+      "repeat": 2,
+      "flips": 583,
+      "silence_queued": 3,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "smw-baseline-2",
+      "elapsed_us": 12310795,
+      "core_us": 5467630,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "e9d4156f"
+        ],
+        [
+          "600",
+          "6c2eeae4"
+        ]
+      ],
+      "game": "smw",
+      "mode": "baseline",
+      "repeat": 2,
+      "flips": 579,
+      "silence_queued": 2,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "starfox2-baseline-1",
+      "elapsed_us": 13633677,
+      "core_us": 9691756,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "b1619f0e"
+        ],
+        [
+          "600",
+          "d4d82792"
+        ]
+      ],
+      "game": "starfox2",
+      "mode": "baseline",
+      "repeat": 1,
+      "flips": 220,
+      "silence_queued": 70,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "starfox2-all-1",
+      "elapsed_us": 12877082,
+      "core_us": 9707755,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "b1619f0e"
+        ],
+        [
+          "600",
+          "d4d82792"
+        ]
+      ],
+      "game": "starfox2",
+      "mode": "all",
+      "repeat": 1,
+      "flips": 220,
+      "silence_queued": 34,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "starfox2-all-2",
+      "elapsed_us": 12886261,
+      "core_us": 9708043,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "b1619f0e"
+        ],
+        [
+          "600",
+          "d4d82792"
+        ]
+      ],
+      "game": "starfox2",
+      "mode": "all",
+      "repeat": 2,
+      "flips": 220,
+      "silence_queued": 35,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "starfox2-baseline-2",
+      "elapsed_us": 12939961,
+      "core_us": 9690449,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "b1619f0e"
+        ],
+        [
+          "600",
+          "d4d82792"
+        ]
+      ],
+      "game": "starfox2",
+      "mode": "baseline",
+      "repeat": 2,
+      "flips": 220,
+      "silence_queued": 35,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "smw-fixed-1",
+      "elapsed_us": 12489856,
+      "core_us": 5556744,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "e9d4156f"
+        ],
+        [
+          "600",
+          "6c2eeae4"
+        ]
+      ],
+      "game": "smw",
+      "mode": "fixed",
+      "repeat": 1,
+      "flips": 578,
+      "silence_queued": 13,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "smw-sprite-1",
+      "elapsed_us": 12293983,
+      "core_us": 5491430,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "e9d4156f"
+        ],
+        [
+          "600",
+          "6c2eeae4"
+        ]
+      ],
+      "game": "smw",
+      "mode": "sprite",
+      "repeat": 1,
+      "flips": 588,
+      "silence_queued": 4,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "smw-ppu-1",
+      "elapsed_us": 12314399,
+      "core_us": 5470923,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "e9d4156f"
+        ],
+        [
+          "600",
+          "6c2eeae4"
+        ]
+      ],
+      "game": "smw",
+      "mode": "ppu",
+      "repeat": 1,
+      "flips": 582,
+      "silence_queued": 2,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "smw-baseline-3",
+      "elapsed_us": 12274811,
+      "core_us": 5468805,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "e9d4156f"
+        ],
+        [
+          "600",
+          "6c2eeae4"
+        ]
+      ],
+      "game": "smw",
+      "mode": "baseline",
+      "repeat": 3,
+      "flips": 594,
+      "silence_queued": 3,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "starfox2-fixed-1",
+      "elapsed_us": 13277028,
+      "core_us": 9792302,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "b1619f0e"
+        ],
+        [
+          "600",
+          "d4d82792"
+        ]
+      ],
+      "game": "starfox2",
+      "mode": "fixed",
+      "repeat": 1,
+      "flips": 220,
+      "silence_queued": 49,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "starfox2-sprite-1",
+      "elapsed_us": 12874116,
+      "core_us": 9660518,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "b1619f0e"
+        ],
+        [
+          "600",
+          "d4d82792"
+        ]
+      ],
+      "game": "starfox2",
+      "mode": "sprite",
+      "repeat": 1,
+      "flips": 220,
+      "silence_queued": 31,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "starfox2-ppu-1",
+      "elapsed_us": 12790566,
+      "core_us": 9638681,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "b1619f0e"
+        ],
+        [
+          "600",
+          "d4d82792"
+        ]
+      ],
+      "game": "starfox2",
+      "mode": "ppu",
+      "repeat": 1,
+      "flips": 220,
+      "silence_queued": 30,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "starfox2-baseline-3",
+      "elapsed_us": 12848069,
+      "core_us": 9692097,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "b1619f0e"
+        ],
+        [
+          "600",
+          "d4d82792"
+        ]
+      ],
+      "game": "starfox2",
+      "mode": "baseline",
+      "repeat": 3,
+      "flips": 220,
+      "silence_queued": 33,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "starfox2-ppu-2",
+      "elapsed_us": 12912856,
+      "core_us": 9639471,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "b1619f0e"
+        ],
+        [
+          "600",
+          "d4d82792"
+        ]
+      ],
+      "game": "starfox2",
+      "mode": "ppu",
+      "repeat": 2,
+      "flips": 220,
+      "silence_queued": 30,
+      "pcm_frames": 352913,
+      "frames": 660
+    },
+    {
+      "name": "starfox2-baseline-4",
+      "elapsed_us": 12889753,
+      "core_us": 9691609,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "b1619f0e"
+        ],
+        [
+          "600",
+          "d4d82792"
+        ]
+      ],
+      "game": "starfox2",
+      "mode": "baseline",
+      "repeat": 4,
+      "flips": 220,
+      "silence_queued": 34,
+      "pcm_frames": 352913,
+      "frames": 660
+    }
+  ],
+  "summary": {
+    "stunt": {
+      "baseline": {
+        "runs": 2,
+        "mean_core_us": 15313259,
+        "mean_elapsed_us": 18867778,
+        "core_time_change_percent": 0.0
+      },
+      "all": {
+        "runs": 2,
+        "mean_core_us": 15319030,
+        "mean_elapsed_us": 18599925.5,
+        "core_time_change_percent": 0.03768629525562339
+      },
+      "fixed": {
+        "runs": 1,
+        "mean_core_us": 15348096,
+        "mean_elapsed_us": 18688044,
+        "core_time_change_percent": 0.22749566241908603
+      },
+      "sprite": {
+        "runs": 1,
+        "mean_core_us": 15317247,
+        "mean_elapsed_us": 18621897,
+        "core_time_change_percent": 0.02604279076061644
+      },
+      "ppu": {
+        "runs": 1,
+        "mean_core_us": 15307211,
+        "mean_elapsed_us": 18591582,
+        "core_time_change_percent": -0.03949518518560069
+      }
+    },
+    "smw": {
+      "baseline": {
+        "runs": 3,
+        "mean_core_us": 5468556.666666667,
+        "mean_elapsed_us": 12339535,
+        "core_time_change_percent": 0.0
+      },
+      "all": {
+        "runs": 2,
+        "mean_core_us": 5519737.5,
+        "mean_elapsed_us": 12276300,
+        "core_time_change_percent": 0.9359111819267296
+      },
+      "fixed": {
+        "runs": 1,
+        "mean_core_us": 5556744,
+        "mean_elapsed_us": 12489856,
+        "core_time_change_percent": 1.6126253910995425
+      },
+      "sprite": {
+        "runs": 1,
+        "mean_core_us": 5491430,
+        "mean_elapsed_us": 12293983,
+        "core_time_change_percent": 0.4182700249364846
+      },
+      "ppu": {
+        "runs": 1,
+        "mean_core_us": 5470923,
+        "mean_elapsed_us": 12314399,
+        "core_time_change_percent": 0.04327162499306869
+      }
+    },
+    "starfox2": {
+      "baseline": {
+        "runs": 4,
+        "mean_core_us": 9691477.75,
+        "mean_elapsed_us": 13077865,
+        "core_time_change_percent": 0.0
+      },
+      "all": {
+        "runs": 2,
+        "mean_core_us": 9707899,
+        "mean_elapsed_us": 12881671.5,
+        "core_time_change_percent": 0.16944010421939826
+      },
+      "fixed": {
+        "runs": 1,
+        "mean_core_us": 9792302,
+        "mean_elapsed_us": 13277028,
+        "core_time_change_percent": 1.0403392815920176
+      },
+      "sprite": {
+        "runs": 1,
+        "mean_core_us": 9660518,
+        "mean_elapsed_us": 12874116,
+        "core_time_change_percent": -0.31945334652395685
+      },
+      "ppu": {
+        "runs": 2,
+        "mean_core_us": 9639076,
+        "mean_elapsed_us": 12851711,
+        "core_time_change_percent": -0.5406992757115869
+      }
+    }
+  }
+}

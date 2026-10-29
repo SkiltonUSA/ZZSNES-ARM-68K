@@ -1,0 +1,19 @@
+PASS family=00 map=20 bytes=65536 highres/interlace/state
+PASS family=35 map=23 bytes=65536 highres/interlace/state
+PASS family=03 map=20 bytes=65536 highres/interlace/state
+PASS family=f3 map=20 bytes=65536 highres/interlace/state
+PASS family=43 map=32 bytes=6291456 highres/interlace/state
+PASS family=00 map=25 bytes=6291456 highres/interlace/state
+PASS Super FX SCBR swap refreshes cached column pointers
+PASS family=13 map=20 bytes=65536 highres/interlace/state
+PASS FX3 in-flight GSU pipeline, register and second RAM-bank restore into fresh core
+PASS family=17 map=20 bytes=4194304 highres/interlace/state
+PASS FX3 in-flight GSU pipeline, register and second RAM-bank restore into fresh core
+PASS family=18 map=20 bytes=4194304 highres/interlace/state
+PASS expanded cartridge gates, 6 MiB mapping, chip state and video geometry
+PASS cartridge SRAM, fresh-core reload, 2 independent pads and bounded PAR/Game Genie cheats
+PASS automatic frameskip feedback/recovery/render limit, uninterrupted PCM generation, transparency and option state restore
+PASS live PPU colour-window and main/sub BG mask register changes
+PASS Super FX two-bank RAM map and SCBR=$25 second-bank drawing
+PASS Super FX lower-half ROM execution across instruction slices
+PASS 8192 Super FX 8bpp colour/transparency cases, adjacent pixels and X advance

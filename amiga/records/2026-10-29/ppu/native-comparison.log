@@ -1,0 +1,25 @@
+PASS synthetic sprite, blend and PPU window comparison: baseline
+PASS 3600 video/PCM frames: ROM 0, baseline
+PASS 3600 video/PCM frames: ROM 1, baseline
+PASS 3600 video/PCM frames: ROM 2, baseline
+PASS 3600 video/PCM frames: ROM 3, baseline
+PASS synthetic sprite, blend and PPU window comparison: fixed
+PASS 3600 video/PCM frames: ROM 0, fixed
+PASS 3600 video/PCM frames: ROM 1, fixed
+PASS 3600 video/PCM frames: ROM 2, fixed
+PASS 3600 video/PCM frames: ROM 3, fixed
+PASS synthetic sprite, blend and PPU window comparison: sprite
+PASS 3600 video/PCM frames: ROM 0, sprite
+PASS 3600 video/PCM frames: ROM 1, sprite
+PASS 3600 video/PCM frames: ROM 2, sprite
+PASS 3600 video/PCM frames: ROM 3, sprite
+PASS synthetic sprite, blend and PPU window comparison: ppu
+PASS 3600 video/PCM frames: ROM 0, ppu
+PASS 3600 video/PCM frames: ROM 1, ppu
+PASS 3600 video/PCM frames: ROM 2, ppu
+PASS 3600 video/PCM frames: ROM 3, ppu
+PASS synthetic sprite, blend and PPU window comparison: all
+PASS 3600 video/PCM frames: ROM 0, all
+PASS 3600 video/PCM frames: ROM 1, all
+PASS 3600 video/PCM frames: ROM 2, all
+PASS 3600 video/PCM frames: ROM 3, all

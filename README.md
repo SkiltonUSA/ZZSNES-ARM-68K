@@ -180,3 +180,8 @@ Experimental audio handoff results are included in the same report.
 [AHI and bitmap-lock profiling](docs/host-service-profiling.md) led to the per-app AX backend below. Four-frame batching showed no FPS gain; the three-frame default stays.
 
 [Per-app ZZ9000AX audio tests](docs/ax-audio.md) measured **3.2% higher FPS for NES / 4.6% for SNES** in matched short runs. This beta includes the AX backend; the figures are game-specific test results.
+
+[Single-core raster experiments](docs/ppu-profiling.md) found **0.54% less ARM
+core time in Star Fox 2** from reusing PPU work. Combining sprite batching,
+fixed-colour blending and PPU changes gave no core-time gain in the three tested
+workloads. These variants remain experimental; 0.7.4 keeps its existing renderer.

@@ -1,0 +1,7 @@
+PASS: saved artifacts, pinned core sources, measured mean and hardware completion markers
+PASS: MUI release identities, displayed FPS, teardown and artifact ROM/state exclusions
+CHECK pixels=PASS dma=PASS spc_boot_ports=PASS wram_mirrors=PASS serial_pad=PASS cancellation=PASS reject_chip_and_truncation=PASS
+archived: FAIL: restored state did not rebuild its sprite list
+normal: PASS: fresh/stale sprite data rebuilt; exact 30-frame video and PCM replay
+superfx: PASS: fresh/stale sprite data rebuilt; exact 30-frame video and PCM replay
+PASS: archived failure reproduced; normal and Super FX builds restore sprites

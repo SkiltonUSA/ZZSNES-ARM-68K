@@ -1,0 +1,79 @@
+{
+  "release": "0.7.4-dev",
+  "baseline_payload_matches_release": true,
+  "runtime_mib": 96,
+  "executable_reserve_mib": 32,
+  "builds": {
+    "baseline": {
+      "ZZSnes-ui": {
+        "bytes": 1091252,
+        "sha256": "54d7d4c8d34d19b51810ba8493df5f72298a4da28c4a9ca5a8b14e9204eb8fab"
+      },
+      "player/pocket.elf": {
+        "bytes": 2413396,
+        "sha256": "0c8a54a6e68ca925458001cf4f8295bb6ac8558d2961f198ab7063875cbb930f"
+      },
+      "player/zz_payload.h": {
+        "bytes": 2448357,
+        "sha256": "c19edbeffae0fe70d547afbf20c9e68b35a3e886f42f3c041fb7f1900d660cc3"
+      }
+    },
+    "fixed": {
+      "ZZSnes-ui": {
+        "bytes": 1096592,
+        "sha256": "80e959639fe48fa6f703e36d8e9ca715c6ef4ea752bbf5c6b311f0034c6f677e"
+      },
+      "player/pocket.elf": {
+        "bytes": 2439104,
+        "sha256": "3f55782efd8594b4cd8af2aac8cb1d0a588b4d6de7105abbf7dc7dc666b80626"
+      },
+      "player/zz_payload.h": {
+        "bytes": 2467058,
+        "sha256": "6cb1c17f1d35fa7d11e683abd09e5a37c0b32bf225917469f81dbf08d968ec2e"
+      }
+    },
+    "sprite": {
+      "ZZSnes-ui": {
+        "bytes": 1091216,
+        "sha256": "27b545de79fa79087a390d545656adf6022cd25e5fb0122f974caf2dcfec7fba"
+      },
+      "player/pocket.elf": {
+        "bytes": 2413016,
+        "sha256": "312dd1ecd36f95e739761a804506131e8c0618f0cb93c779309de72ba84058ff"
+      },
+      "player/zz_payload.h": {
+        "bytes": 2448149,
+        "sha256": "387bb7c1778cb7397511d515567a60881520477ca672de34f6fec75a4a33c228"
+      }
+    },
+    "ppu": {
+      "ZZSnes-ui": {
+        "bytes": 1091380,
+        "sha256": "18d3f5d8baf0da9f58a580b34a4de615569fef7530fddbdd1d14dc8310376398"
+      },
+      "player/pocket.elf": {
+        "bytes": 2413488,
+        "sha256": "8b52f57abfacc747c0f2040ede03e4b2feccd7cc521a5982fd1f1f2f68295411"
+      },
+      "player/zz_payload.h": {
+        "bytes": 2448915,
+        "sha256": "710f12ef70b7b5b465c25d774f78de4fe6677f776ba025b10816eab1d70143f9"
+      }
+    },
+    "all": {
+      "ZZSnes-ui": {
+        "bytes": 1096716,
+        "sha256": "c4ff83dc8ae45140f2d59882e9a6722c60c0f3d5df0fc0bfbcf2d26b7e44c113"
+      },
+      "player/pocket.elf": {
+        "bytes": 2439204,
+        "sha256": "cfa261c71a788d7861ecd16b7d07cfc83be8564f234677a8bcd06db565dc9ba1"
+      },
+      "player/zz_payload.h": {
+        "bytes": 2467493,
+        "sha256": "e852182a4403f6693aebd4cc75b3f3f093da61dc509ebe249eca2d5881a6cb7d"
+      }
+    }
+  },
+  "source_commit": "49be0287e73658d80c6cec770324c725e69171f8"
+}

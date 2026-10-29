@@ -1,0 +1,32 @@
+{
+  "baseline": {
+    "DrawOBJS": 1832,
+    "S9xSetPPU": 7744,
+    "S9xUpdateScreen": 5872,
+    "fx_run": 260
+  },
+  "fixed": {
+    "DrawOBJS": 1920,
+    "S9xSetPPU": 7744,
+    "S9xUpdateScreen": 5872,
+    "fx_run": 260
+  },
+  "sprite": {
+    "DrawOBJS": 1808,
+    "S9xSetPPU": 7744,
+    "S9xUpdateScreen": 5872,
+    "fx_run": 260
+  },
+  "ppu": {
+    "DrawOBJS": 1884,
+    "S9xSetPPU": 7856,
+    "S9xUpdateScreen": 5872,
+    "fx_run": 260
+  },
+  "all": {
+    "DrawOBJS": 1948,
+    "S9xSetPPU": 7856,
+    "S9xUpdateScreen": 5872,
+    "fx_run": 260
+  }
+}

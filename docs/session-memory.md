@@ -723,3 +723,31 @@ records. Private SD032G:Dev/ZZAX1029 removed; Core1 idle, bridge alive, live AHI
 CRC725CE7DB and saved screenmodeCRC9C80FBC5 unchanged. Firmware, startup, installed
 players, libraries/saves and global preferences untouched. Local MCP left running.
 Next gate: listened longer sessions and comparison against unit0 already set toAX.
+
+## Single-core raster profiling — 29 October 2026
+
+Added isolated `--release-ax --ppu-test baseline/profile/fixed/sprite/ppu/all`
+builds and `make test-ppu`. Corrected 0.7.4 is the baseline; its ARM payload
+matches the baseline experiment byte-for-byte. Normal release builds stay unchanged.
+Sprite changes reuse horizontal setup; fixed-colour changes specialise full
+addition/subtraction; PPU changes reuse sprite renderer selection and avoid
+ineffective clip invalidations while retaining register-write rendering flushes.
+
+Sanitizer comparisons pass 8,192 PPU writes and 2,048 sprite cases per variant,
+plus 3,600 video/stereo-PCM frames each for Stunt Race FX, Super Mario World,
+Star Fox 2 and Doom. Native core, expanded cartridge/options and Super FX
+colour/state regressions pass. Combined ARM output matches 30 resumed frames at
+two model bases for three games; individual variants also match the race state.
+
+25 physical 660-frame runs complete with matching sampled core hashes, full PCM
+retirement, zero flip faults and successful register/MMU/cache-witness restoration.
+Combined ARM core time changes: Stunt Race FX +0.04%, SMW +0.94%, Star Fox 2 +0.17%
+(positive is slower). PPU-only Star Fox 2 repeats about 0.54% less core time;
+no general or displayed-FPS gain is established. AX scheduled silence remains;
+these were not listening tests. Keep candidates opt-in, no release promotion.
+See docs/ppu-profiling.md and amiga/records/2026-10-29/ppu.
+
+Removed SD032G:Dev/ZZPPU1029. Core1 idle, bridge alive. Installed launcher/player
+remain 0.7.4-dev; live AHI CRC725CE7DB and saved screenmode CRC9C80FBC5 unchanged.
+Libraries, saves, firmware and startup untouched. Model Star Fox 2 checkpoint
+creation needed a larger bounded instruction budget; this was not a hardware fault.

@@ -1,0 +1,12 @@
+CANDIDATE fixed
+PASS ARM video/stereo PCM ppu-baseline-build 0x12000040 30
+PASS ARM video/stereo PCM ppu-fixed-build 0x150020c0 30
+PASS ARM video/stereo PCM ppu-fixed-build 0x12000040 30
+CANDIDATE sprite
+PASS ARM video/stereo PCM ppu-baseline-build 0x12000040 30
+PASS ARM video/stereo PCM ppu-sprite-build 0x150020c0 30
+PASS ARM video/stereo PCM ppu-sprite-build 0x12000040 30
+CANDIDATE ppu
+PASS ARM video/stereo PCM ppu-baseline-build 0x12000040 30
+PASS ARM video/stereo PCM ppu-ppu-build 0x150020c0 30
+PASS ARM video/stereo PCM ppu-ppu-build 0x12000040 30
