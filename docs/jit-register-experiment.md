@@ -1,8 +1,15 @@
-# Experimental register translation — 0.7.0-dev
+# Experimental register translation — 0.7.1-dev
 
-The released interpreter remains the default. This experiment reserves an **8 MiB
-executable cache** in a **64 MiB Exec-owned allocation** on ZZ9000 Core1.
-It is a small A32 register translator, not a complete CPU JIT.
+The released interpreter remains the default. This candidate reserves a **32 MiB
+executable cache** in a **96 MiB Exec-owned allocation** on ZZ9000 Core1.
+It is a small A32 register translator, not a complete CPU JIT. There are 262,144
+128-byte code slots plus 2 MiB of tag metadata. Cache bounds are shared by the
+emitter and MMU; page-table storage is enlarged and the witness is relocated.
+
+The previous 8 MiB build and its evidence remain available. The measurements
+below describe that older build, not the new 32 MiB candidate.
+
+## Earlier 8 MiB measurements
 
 A physical 300-frame comparison completed with matching output and clean
 MMU/register/cache restoration. Core time was 1,480,360 us for the interpreter
@@ -28,7 +35,7 @@ runs before guest execution. Only fully owned code-cache pages are executable;
 stack/shared regions remain non-executable. The allocated cache capacity exceeds
 the tiny amount of code used by this initial experiment.
 
-## Verification
+## Earlier verification
 
 - 9,576 Cortex-A9 instruction-model cases: 8/16-bit arithmetic, flag representation
   and unchanged surrounding state.
@@ -38,11 +45,33 @@ the tiny amount of code used by this initial experiment.
 - Audio: 160,414 frames queued, submitted and completed; no reported error.
 
 Build separately with `make jit-registers` using the existing cross-toolchain
-setup. Outputs go to `.context/jit-registers-build`; normal artifacts are retained.
-Launcher/player versions both read 0.7.0-dev for this candidate. It is not a
+setup. Outputs go to `.context/jit-registers32-build`; normal artifacts are retained.
+Launcher/player versions both read 0.7.1-dev for this candidate. It is not a
 release package. The shared emitter test is `tests/amiga/test_console_jit.py`;
 full-core comparisons use `scripts/test_console_jit_core.py` with explicit
 `--baseline`, `--candidate`, `--baseline-packer` and `--snes`, plus a local ROM.
 ROM data is not included in the evidence.
 
 [Build hashes and physical logs](../amiga/records/2026-10-28/jit-registers/).
+
+## 32 MiB revision — 29 October 2026
+
+Native regressions, 9,576 emitter cases, 16,384 page-map alignment cases and
+600 linked interpreter-comparison frames pass. The layout test now also checks
+witness separation from actual video/audio, ROM, save, control and table ranges.
+
+An initial physical run completed rendering but failed its witness check: the
+relocated witness overlapped the video output buffer. The launcher returned
+exit 20 and released memory. A new native overlap test reproduced the fault;
+the corrected witness is at allocation offset 0x12c000, between the page tables
+and video output. The failed run and build hashes are retained in the records.
+
+The corrected physical run completed 300 frames using a 100,663,296-byte owned
+allocation. Output hash ca7174c7 matches the reference; all 160,414 PCM frames
+were queued, submitted and completed. Registers and the witness restored with
+zero mismatches; launcher exit 0 and owned memory released. Twelve audio-gap
+observations remain, so this is not an uninterrupted-audio claim. Core time
+was 1,647,549 us; no speed improvement is established from this single run.
+
+Build and test evidence is recorded separately from the earlier measurements.
+[32 MiB records](../amiga/records/2026-10-29/jit-registers32/).

@@ -3,11 +3,14 @@ import shutil,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def prepare(core,stage,snes):
- for p in (ROOT/'amiga/common/arm_jit').glob('*.h'):shutil.copy2(p,stage/p.name)
+ for p in (ROOT/'amiga/common/arm_jit').glob('*.h'):
+  shutil.copy2(p,stage/p.name)
+  if p.name=='cache_size.h':shutil.copy2(p,core/p.name)
  begin=0x3400000 if snes else 0x600000
  for p in (core/'mmu_plan.h',stage/'mmu_plan.h'):
   if not p.exists():continue
-  s=p.read_text();s=s.replace('if(page>=base+MB_TABLE_BEGIN)attr|=1u;', 'if(page>=base+MB_TABLE_BEGIN && !(page>=((base+CJ_BEGIN+4095u)&~4095u) && page<((base+CJ_BEGIN+4095u)&~4095u)+0x800000u))attr|=1u;')
+  s=p.read_text();s='#include "cache_size.h"\n'+s;s=s.replace('if(page>=base+MB_TABLE_BEGIN)attr|=1u;', 'if(page>=base+MB_TABLE_BEGIN && !(page>=((base+CJ_BEGIN+4095u)&~4095u) && page<((base+CJ_BEGIN+4095u)&~4095u)+CJ_BYTES))attr|=1u;')
+  s=s.replace('#define MB_TABLE_END 0x11c000u','#define MB_TABLE_END 0x128000u').replace('#define MB_WITNESS 0x120000u','#define MB_WITNESS 0x12c000u')
   p.write_text(s)
  p=core/'worker.cpp';s=p.read_text();s=s.replace('extern "C" void zz_worker', 'extern "C" int console_jit_init(uintptr_t);\nextern "C" void zz_worker');s=s.replace(' for(unsigned i=0;i<256;i++)', ' if(!console_jit_init((uintptr_t)base))return;\n for(unsigned i=0;i<256;i++)');p.write_text(s)
  p=core/('src/cpuexec.c' if snes else 'x6502.cpp');s=p.read_text()

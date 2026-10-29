@@ -5,7 +5,7 @@
 #pragma once
 #include <stdint.h>
 #include "register_op.h"
-#define CJ_BYTES (8u*1024u*1024u)
+#include "cache_size.h"
 #define CJ_SLOTS (CJ_BYTES/128u)
 struct cj_tag {uint32_t key;uint16_t signature,valid;};
 static struct cj_tag cj_tags[CJ_SLOTS];

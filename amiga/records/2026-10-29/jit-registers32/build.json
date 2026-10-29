@@ -1,0 +1,25 @@
+{
+  "version": "0.7.1-dev",
+  "experimental": true,
+  "default_enabled": false,
+  "jit_bytes": 33554432,
+  "owned_bytes": 100663296,
+  "tag_bytes": 2097152,
+  "slots": 262144,
+  "scope": "single-instruction register translation; original event boundaries retained",
+  "sources": {
+    "scripts/build_current.py": "4bf44d0195dc5112419ee945194a187a70043c8c892bc04e2807036f9c08f9f9",
+    "scripts/prepare_console_jit.py": "9ba7186c69ea30005487c774056dea7822120ed1e55862aefc18ffafff572456",
+    "amiga/common/arm_jit/snes_adapter.h": "4d2b3c9821ed8dc1c14b47ebe509a5a370355b7baa00efbc93ba6c1f26cd09e1",
+    "amiga/common/arm_jit/cache.h": "8d41459c631fcd45b9cde35a3e0b525fc5a5af3e71b142db20c81de2e363f5a1",
+    "amiga/common/arm_jit/register_op.h": "78f07779754d20250e0600332b458029d7262771d8a0c93b0314c5a249e93a50",
+    "amiga/common/arm_jit/cache_size.h": "6097ae1b4644fd03944e01e7f6c4ec71af860847ff894d0686e4fd0460d95bcc",
+    "amiga/common/arm_jit/nes_adapter.h": "399cd87dffc41827ccd1fce5a675ef26c4dff7a100dc305141d5b8c4f13e60a6"
+  },
+  "outputs": {
+    "ZZSnes-ui": "d0470243fddfc2e44648343b7f694a4f2f959613b70cd79bc8bef8bb7fec4a88",
+    "ZZSNES": "d93587dcaad4fbc14705033fab836d102f4170583929ef72ebbe9b91adeb32e9",
+    "ZZSnes-FX": "d0470243fddfc2e44648343b7f694a4f2f959613b70cd79bc8bef8bb7fec4a88",
+    "player/pocket.elf": "786217284ef4c11f362ab6d20ccdd95c6ba5bd2de72d3c02a600218bb3dd47e4"
+  }
+}

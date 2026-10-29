@@ -23,13 +23,13 @@ class Machine:
   assert u.reg_read(UC_ARM_REG_PC)==self.stop,(symbol,hex(u.reg_read(UC_ARM_REG_PC)))
   return u.reg_read(UC_ARM_REG_R0)
 def main():
- p=argparse.ArgumentParser();p.add_argument('rom',type=Path);p.add_argument('--baseline',type=Path);p.add_argument('--candidate',type=Path);p.add_argument('--baseline-packer',type=Path);p.add_argument('--snes',action='store_true');p.add_argument('--frames',type=int,default=8);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('rom',type=Path);p.add_argument('--baseline',type=Path);p.add_argument('--candidate',type=Path);p.add_argument('--baseline-packer',type=Path);p.add_argument('--candidate-mib',type=int);p.add_argument('--snes',action='store_true');p.add_argument('--frames',type=int,default=8);a=p.parse_args()
  repo=Path('.context')/('ZZSNES-ARM-68K' if a.snes else 'ZZNes-ARM-68K')
  ref=a.baseline or repo/'.context'/('expanded-build' if a.snes else 'optimisation-build')
- jit=a.candidate or repo/'.context/jit-registers-build'
+ jit=a.candidate or repo/'.context/jit-registers32-build'
  packer=a.baseline_packer or (ref/'core/elf.py' if a.snes else repo/'development/beta-20261015/source/core/elf.py')
  elf='pocket.elf' if a.snes else 'fceux.elf'
- machines=[Machine(ref/'player'/elf,packer,0x3000000 if a.snes else 0x400000,0x12000040),Machine(jit/'player'/elf,jit/'core/elf.py',0x4000000 if a.snes else 0x1000000,0x150020c0)]
+ machines=[Machine(ref/'player'/elf,packer,0x3000000 if a.snes else 0x400000,0x12000040),Machine(jit/'player'/elf,jit/'core/elf.py',(a.candidate_mib or (96 if a.snes else 48))*1024*1024,0x150020c0)]
  rom=a.rom.read_bytes()
  for m in machines:
   offset=0x200000 if a.snes else 0x100000
