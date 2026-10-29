@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.3 Beta — ZZ9000AX audio and register dispatch
+
+- Select ZZ9000AX 16-bit stereo through per-app AHI; use configured unit 0 if AX is unavailable. Global preferences remain unchanged.
+- Include the tested limited ARM register dispatch with a 32 MiB executable reserve (96 MiB total runtime allocation).
+- Keep normal regional pacing, ROM input, save/load, screenshots and fullscreen/window switching.
+- Package matching launcher/player versions and the offline amipkg installer with bundled scanline tools.
+- Matched short audio tests measured NES +3.2% / SNES +4.6% FPS; these are not all-title or long-session audio-quality claims.
+
 ## 0.7.2-dev — experimental register dispatch and audio
 
 - Add opt-in per-app ZZ9000AX AHI output with unit-0 fallback, immutable buffers and hardware timing/lifecycle evidence; global audio preferences unchanged.

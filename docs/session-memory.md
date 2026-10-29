@@ -1,3 +1,24 @@
+## 0.7.3 Beta installed — 29 October 2026
+
+Installed matching 0.7.3-dev launcher/player package in SD032G:Emulator/ZZSNES
+using the signed offline installer. Normal regional cadence, controls, snapshots,
+save/load and window/fullscreen switching are retained. Automatic per-app AX AHI
+output uses three immutable buffers and falls back to configured unit 0.
+Includes limited register dispatch and a 32 MiB executable reserve; total owned
+ZZ9000 allocation is 96 MiB, plus display and OS memory.
+
+Builds, native audio tests, archive/signature checks and four physical player runs
+across both emulators passed. Both installed launcher versions were visually
+checked. Existing configurations remained byte-identical; ROMs and saves were
+not changed. No global AHI, firmware or saved Workbench screenmode changes.
+Core1 is idle, the bridge responds, and the private test drawer was removed.
+The prior unexplained NES freeze and listening/long-session validation remain
+open. Release functional checks are not new FPS measurements.
+
+See [release validation](release-validation.md) and
+[actions/evidence](../amiga/records/2026-10-29/ax-release/actions.md).
+Private rollback files: workspace `.context/amiga/ax-release-1029/backup`.
+
 ## Additional options installed — 19 October 2026
 
 Installed matched **0.6.5-dev** launcher, ZZSnes-ui and ZZSnes-FX in

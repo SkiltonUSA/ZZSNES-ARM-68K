@@ -1,4 +1,4 @@
-# ZZSNES 0.6.5 Beta
+# ZZSNES 0.7.3 Beta
 
 Use the [offline installer](package-manager.md), or extract the manual ZIP into a writable drawer and open **ZZSNES**. Keep the player
 executable beside it. When upgrading, retain your ROMs, States, Snapshots and
@@ -135,3 +135,13 @@ states need the current player. Keep old settings/states when rolling back.
 Controllers supports two-player mapping. Player 2 is disabled by default and its
 keys must be assigned. Save states also contains the Game Genie / Action Replay
 entry controls. [Complete settings guide](additional-options.md).
+
+## Audio output
+
+This beta automatically uses the registered ZZ9000AX 16-bit stereo AHI mode.
+If it is unavailable or busy, playback falls back to configured AHI unit 0.
+System audio preferences are not changed. Use the output connected to the selected
+audio device; installing the AX driver does not configure your external speakers.
+
+The register-dispatch runtime requires 96 MiB of allocatable ZZ9000 memory,
+including its 32 MiB executable reserve, plus display and AmigaOS memory.

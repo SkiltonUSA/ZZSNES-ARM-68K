@@ -1,4 +1,4 @@
-ZZSNES 0.6.5 Beta (tested 0.6.5-dev executables)
+ZZSNES 0.7.3 Beta (tested 0.7.3-dev executables)
 
 INSTALLER: extract the -beta-amipkg.lha archive, open its drawer and double-click
 Install. Choose a parent drawer; ZZSNES is created inside it. To specify an exact
@@ -7,6 +7,9 @@ Requires C:lha and C:IconX. No network connection is needed.
 
 MANUAL ZIP: copy the whole ZZSNES drawer to a writable disk and run
 Install-Scanlines once. Keep the launcher and player executables together.
+
+This build requires 96 MiB allocatable ZZ9000 RAM plus display/OS memory.
+Automatic per-app ZZ9000AX audio falls back to configured AHI unit 0.
 
 MUI 3.8+, Picasso96 API v2+, AHI v4+ with an output driver and configured unit 0,
 and ZZ9000 graphics/Fast RAM are checked by the installer. Compatible XACP and
@@ -26,4 +29,4 @@ SHA256-checked archives. PackageManager holds its receipts/cache. Installation
 is not fully transactional; keep a backup before upgrading. Use Install again
 for updates, not the offline placeholder repository URL. No online feed exists.
 
-Release and source: https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.6.5-beta
+Release and source: https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.3-beta

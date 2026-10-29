@@ -1,4 +1,4 @@
-# ZZSNES — 0.6.5 Beta
+# ZZSNES — 0.7.3 Beta
 
 <img src="docs/screenshots/logo.png" width="160" alt="ZZSNES logo">
 
@@ -7,11 +7,13 @@ and **[Xanxi’s XACP platform](https://github.com/Xanxi-Amiga/XACP-ZZ9000)**.
 The Cortex-A9 runs emulation and fullscreen rendering; the 68k handles AmigaOS,
 files, controls, display coordination and batched AHI audio.
 
-**[Download 0.6.5 Beta — installer or ZIP](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.6.5-beta)** ·
+This beta needs **96 MiB of allocatable ZZ9000 RAM**, plus display and AmigaOS memory.
+
+**[Download 0.7.3 Beta — installer or ZIP](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.3-beta)** ·
 [Installation](docs/package-manager.md) · [User guide](docs/current-guide.md) ·
 [Changes](CHANGELOG.md) · [Interface gallery](docs/current-interface.md)
 
-App version: **0.6.5-dev**.
+App version: **0.7.3-dev**.
 
 ![ZZSNES interface](docs/screenshots/interface.png)
 
@@ -27,6 +29,7 @@ App version: **0.6.5-dev**.
 - Fullscreen or Workbench window, with **Alt+Return** switching during play.
 - **F7** scanline control: Xanxi FPGA effects in fullscreen; Soft software filtering in a window.
 - Optional FPS overlay, aspect correction, border artwork, overscan masks and **F9** screenshots.
+- Automatic per-app ZZ9000AX audio with AHI unit 0 fallback; system preferences stay unchanged.
 - Five save-state slots per game, with save, load, resume and delete.
 - Joystick testing and live ZZ9000 temperature beside the version.
 - ROM region and target beside the preview: PAL **50 fps**, NTSC **59.92 fps** pacing.
@@ -43,9 +46,9 @@ App version: **0.6.5-dev**.
 | Core | PocketSNES / Snes9x2002 |
 | Emulation processor | ZZ9000 Cortex-A9 / ARMv7-A, application-owned Core1 via XACP |
 | Host processor | 68020 instruction set; AmigaOS, files, input, display coordination and AHI |
-| Owned ZZ9000 RAM | 48 MiB, plus display and AmigaOS allocations |
+| Owned ZZ9000 RAM | 96 MiB, including 32 MiB executable reserve; plus display/OS allocations |
 | ROM formats | .sfc / .smc; single-ROM .zip |
-| Audio | 32,040 Hz stereo, batched AHI output |
+| Audio | 32,040 Hz stereo, automatic ZZ9000AX AHI output, unit 0 fallback |
 | Display | Picasso96 fullscreen or Workbench window; optional scaling, borders and FPS |
 | Scanlines | Fullscreen FPGA Classic / Soft / Gradient; windowed ARM Soft |
 | ROM size | Up to 6 MiB; above 4 MiB requires supported S-DD1 or ExHiROM mapping |
@@ -97,7 +100,7 @@ These earlier gameplay captures show the **software** effect:
 
 ## More games
 
-Full-size 320×240 captures from ZZSNES 0.6.5-dev on the A4000TX/ZZ9000.
+Full-size 320×240 captures from ZZSNES 0.7.3-dev on the A4000TX/ZZ9000.
 
 | Kirby Super Star | Star Fox — training | Axelay |
 | --- | --- | --- |
@@ -146,11 +149,11 @@ with the documented local fixes originally used by ZZDosBox.
 The Snes9x core is non-commercial. Component licences, source pins and notices are included.
 [Release build inputs](docs/release-build.json) · [Third-party notices](THIRD_PARTY.md).
 
-## Translation research
+## Translation and audio
 
 [32 MiB register-JIT experiment](docs/jit-register-experiment.md): the dispatch
 regression is fixed in the tested Super Mario World workload—11.65% less ARM
-core time than the earlier translator. Interpreter releases remain unchanged.
+core time than the earlier translator. This beta includes the limited register dispatch; it is not a full guest JIT.
 
 Experimental audio handoff results are included in the same report.
 
@@ -160,6 +163,6 @@ Experimental audio handoff results are included in the same report.
 
 [Pixel-conversion overlap tests](docs/conversion-overlap.md) passed correctness checks but ran slower overall. Existing release scheduling remains the default.
 
-[AHI and bitmap-lock profiling](docs/host-service-profiling.md) identifies host audio servicing as the next investigation target. Four-frame batching showed no FPS gain; the three-frame default stays.
+[AHI and bitmap-lock profiling](docs/host-service-profiling.md) led to the per-app AX backend below. Four-frame batching showed no FPS gain; the three-frame default stays.
 
-[Per-app ZZ9000AX audio tests](docs/ax-audio.md) measured **3.2% higher FPS for NES / 4.6% for SNES** in matched short runs. Experimental; release audio defaults stay unchanged.
+[Per-app ZZ9000AX audio tests](docs/ax-audio.md) measured **3.2% higher FPS for NES / 4.6% for SNES** in matched short runs. This beta includes the AX backend; the figures are game-specific test results.

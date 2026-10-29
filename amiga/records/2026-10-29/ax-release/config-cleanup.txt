@@ -1,0 +1,8 @@
+PASS unchanged ZZNES Session.cfg
+PASS unchanged ZZNES Library.cfg
+PASS unchanged ZZSNES Session.cfg
+PASS unchanged ZZSNES Library.cfg
+PASS unchanged ZZSNES Controls.cfg
+[OK]
+CLEANUP_OK
+Amiga alive - clients: 0, chip: 2021632 bytes, fast: 616941608 bytes

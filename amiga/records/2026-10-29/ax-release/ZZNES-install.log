@@ -1,0 +1,43 @@
+OK: muimaster.library 19.35
+OK: graphics.library 47.10
+OK: asl.library 47.9
+OK: keymap.library 47.1
+OK: Picasso96API.library 2.455
+OK: datatypes.library 47.3
+OK: lowlevel.library 47.1
+OK: ZZ9000 graphics and Fast RAM boards
+AHI: device 4.180
+OK: 28 AHI modes; unit 0 opens (no sound played)
+Dependencies passed. Firmware, display modes and available RAM are checked at runtime.
+Catalogue signature verified.
+Added 'zzdist' (signed), lowest priority.
+Run 'amipkg update' to fetch its catalog.
+'official' is now disabled.
+   ZZNES-0.8.3-dev.lha..Cached zznes (sha256 verified).
+Unpacking + installing zznes...
+copied.
+OK: muimaster.library 19.35
+OK: graphics.library 47.10
+OK: asl.library 47.9
+OK: keymap.library 47.1
+OK: Picasso96API.library 2.455
+OK: datatypes.library 47.3
+OK: lowlevel.library 47.1
+OK: ZZ9000 graphics and Fast RAM boards
+AHI: device 4.180
+OK: 28 AHI modes; unit 0 opens (no sound played)
+Dependencies passed. Firmware, display modes and available RAM are checked at runtime.
+Kept existing SYS:Utilities/ZZScanlines/ZZScanlines
+Kept existing SYS:Utilities/ZZScanlines/ZZScanlinesGUI
+Xanxi scanline tools ready.
+0 added; existing tools preserved.
+Compatible FPGA firmware is required.
+Firmware and startup files were not changed.
+Installed zznes 0.8.3-dev: 25 file(s).
+Kept existing SYS:Utilities/ZZScanlines/ZZScanlines
+Kept existing SYS:Utilities/ZZScanlines/ZZScanlinesGUI
+Xanxi scanline tools ready.
+0 added; existing tools preserved.
+Compatible FPGA firmware is required.
+Firmware and startup files were not changed.
+Installation complete. Open ZZNES in the selected drawer.

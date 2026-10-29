@@ -1,7 +1,7 @@
 # ZZSNES offline installer
 
-[Download 0.6.5 Beta](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.6.5-beta). Choose `ZZSNES-0.6.5-dev-beta-amipkg.lha`
-for the installer or `ZZSNES-0.6.5-dev-beta.zip` for manual copying. They contain
+[Download 0.7.3 Beta](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.3-beta). Choose `ZZSNES-0.7.3-dev-beta-amipkg.lha`
+for the installer or `ZZSNES-0.7.3-dev-beta.zip` for manual copying. They contain
 the same tested executable bytes. No ROMs, firmware or system libraries are included.
 
 ## Install
@@ -75,10 +75,10 @@ and validation results are recorded in `docs/release-validation.md`.
 
 ```sh
 python3 scripts/build_installer.py
-python3 scripts/package_current.py --build .context/expanded-build \
-  --fx-build .context/expanded-build --version 0.6.5-dev --output .context/release
+python3 scripts/package_current.py --build .context/ax-release-build \
+  --fx-build .context/ax-release-build --version 0.7.3-dev --output .context/release
 python3 .context/amipkg-installer/client-src/tools/amipkg-repo-sign keygen /private/path/zzemu
-python3 scripts/package_installer.py .context/release/ZZSNES-0.6.5-dev-beta.zip \
+python3 scripts/package_installer.py .context/release/ZZSNES-0.7.3-dev-beta.zip \
   --key /private/path/zzemu.secret --output .context/release
 ```
 
