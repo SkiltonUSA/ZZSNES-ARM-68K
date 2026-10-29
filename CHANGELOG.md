@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.6-dev — configured audio output
+
+- Restore configured AHI unit 0 for normal playback; an installed ZZ9000AX driver no longer redirects audio away from Paula.
+- Keep the current ARM payload and core fixes unchanged. AX remains an explicit development experiment.
+
 ## 0.7.5-exp — isolated timed Super FX experiment
 
 - Add Legacy / Timed (experimental) selection, with Legacy still the default.

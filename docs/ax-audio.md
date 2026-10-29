@@ -1,5 +1,10 @@
 # Per-application ZZ9000AX audio experiment
 
+**Routing correction:** normal development builds again use configured AHI unit 0.
+Promoting automatic AX selection caused silence for speakers connected to Paula.
+The following AX measurements remain experimental; use `--ax-audio-test` explicitly.
+
+
 **Release update:** included in [ZZSNES 0.7.3 Beta](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.3-beta). Normal-play
 release validation is recorded in [release-validation.md](release-validation.md).
 The measurements below describe the earlier controlled experiment.

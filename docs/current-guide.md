@@ -138,10 +138,10 @@ entry controls. [Complete settings guide](additional-options.md).
 
 ## Audio output
 
-This beta automatically uses the registered ZZ9000AX 16-bit stereo AHI mode.
-If it is unavailable or busy, playback falls back to configured AHI unit 0.
-System audio preferences are not changed. Use the output connected to the selected
-audio device; installing the AX driver does not configure your external speakers.
+Current development builds use configured **AHI unit 0**. Select Paula there for
+the Amiga RCA sockets, or the corresponding driver for another connected output.
+The application does not change system audio preferences. Per-app AX output is
+reserved for the explicit `--ax-audio-test` development build.
 
 The register-dispatch runtime requires 96 MiB of allocatable ZZ9000 memory,
 including its 32 MiB executable reserve, plus display and AmigaOS memory.

@@ -778,3 +778,13 @@ approximate, not exact bus arbitration. No clock multiplier yet. Installed and
 published beta stays 0.7.4; temporary SD032G:Dev/ZZTimedFX1029 removed. Core1 idle,
 bridge alive, live AHI and saved screenmode checksums unchanged. Retain private
 local ROM/checkpoint inputs for reproduction; no commercial data committed.
+
+## Paula audio routing fix — 29 October 2026
+
+ZZSNES 0.7.6-dev restores configured AHI unit 0 (Paula on this machine).
+Automatic AX routing caused silence at the connected RCA output. ARM payload
+unchanged; native generated-worker tests and 180-frame physical routing/cleanup
+check pass. Installed in SD032G:Emulator/ZZSNES. ROMs/saves/settings and global
+AHI unchanged. Listening confirmation pending. Source build flag remains
+`--release-ax` for compatibility; only `--ax-audio-test` selects AX directly.
+See amiga/records/2026-10-29/paula-routing. Published release unchanged.
