@@ -1,0 +1,5 @@
+[OK]
+AX_OPEN mode=cafe0001 rate=32040 mix=32040 capacity=3840 silence=3840 stereo=1
+AX_DONE submitted=96000 completed=96000 callbacks=91 silence=31
+AX_CLOSED
+0

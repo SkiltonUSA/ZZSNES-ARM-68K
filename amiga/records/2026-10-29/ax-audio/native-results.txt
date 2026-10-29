@@ -1,0 +1,6 @@
+Commands: python3 scripts/test_ax_audio.py in both standalone repositories
+PASS FIFO ownership, delayed retirement, silence underrun, exact counts, wrap/reuse
+PASS actual AX worker: ordered PCM, three-buffer reuse, partial stop, state drain/resume, open fallback, start failure, cancel/join (mono and stereo)
+PASS actual AX API adapter: allocation/load failures, mode capabilities, query/start failure, free-before-storage cleanup
+PASS isolated build flag rejects incomplete/conflicting experiments (three cases per repository)
+Existing native current tests pass; model checks pass after correcting LLVM PATH (see model logs).

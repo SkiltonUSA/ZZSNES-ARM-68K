@@ -161,3 +161,5 @@ Experimental audio handoff results are included in the same report.
 [Pixel-conversion overlap tests](docs/conversion-overlap.md) passed correctness checks but ran slower overall. Existing release scheduling remains the default.
 
 [AHI and bitmap-lock profiling](docs/host-service-profiling.md) identifies host audio servicing as the next investigation target. Four-frame batching showed no FPS gain; the three-frame default stays.
+
+[Per-app ZZ9000AX audio tests](docs/ax-audio.md) measured **3.2% higher FPS for NES / 4.6% for SNES** in matched short runs. Experimental; release audio defaults stay unchanged.

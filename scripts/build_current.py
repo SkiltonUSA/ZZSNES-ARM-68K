@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--ax-audio-test',action='store_true',help='Isolated per-app ZZ9000AX AHI backend; unit 0 fallback');p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
  if a.expanded:a.arm=a.optimisation=a.core_o2=a.fx3=True
  if a.optimisation:a.thin_scanlines=True
  if (a.experimental_chips or a.compatibility or a.fx3) and not a.arm:p.error('compatibility experiments require --arm')
@@ -36,6 +36,9 @@ def main():
  if a.presentation_test:
   if not a.jit_registers or a.audio_early or a.ack_poll_us:p.error('--presentation-test requires the isolated register build with original audio and ACK polling')
   out=out.with_name(out.name+'-present-'+a.presentation_test);stage=out/'player';lib=out/'library'
+ if a.ax_audio_test:
+  if a.presentation_test!='serial' or a.host_service_test:p.error('--ax-audio-test requires --presentation-test serial without host service profiling/batch4')
+  out=out.with_name(out.name+'-ax-audio');stage=out/'player';lib=out/'library'
  if a.host_service_test:
   if a.presentation_test!='serial':p.error('--host-service-test requires --presentation-test serial')
   out=out.with_name(out.name+'-service-'+a.host_service_test);stage=out/'player';lib=out/'library'
@@ -133,6 +136,9 @@ def main():
  if a.presentation_test:
   from prepare_conversion_overlap import prepare_test
   prepare_test(stage,overlap=a.presentation_test=='overlap')
+ if a.ax_audio_test:
+  from prepare_ax_audio import prepare
+  prepare(stage)
  if a.host_service_test:
   from prepare_host_service import prepare
   prepare(stage,a.host_service_test)

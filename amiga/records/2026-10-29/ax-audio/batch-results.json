@@ -1,0 +1,190 @@
+{
+  "runs": [
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "nes-ax-1",
+      "steady_seconds": 10.146756,
+      "gaps": 0,
+      "silence_queued": 14,
+      "pcm": 351395
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "nes-ax-2",
+      "steady_seconds": 10.178331,
+      "gaps": 0,
+      "silence_queued": 16,
+      "pcm": 351395
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "nes-ref-1",
+      "steady_seconds": 10.545886,
+      "gaps": 132,
+      "silence_queued": null,
+      "pcm": 351395
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "nes-ref-2",
+      "steady_seconds": 10.438776,
+      "gaps": 103,
+      "silence_queued": null,
+      "pcm": 351395
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "snes-ax-1",
+      "steady_seconds": 10.133212,
+      "gaps": 0,
+      "silence_queued": 8,
+      "pcm": 352912
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "snes-ax-2",
+      "steady_seconds": 10.205111,
+      "gaps": 0,
+      "silence_queued": 13,
+      "pcm": 352912
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "snes-ref-1",
+      "steady_seconds": 10.777753,
+      "gaps": 71,
+      "silence_queued": null,
+      "pcm": 352912
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "snes-ref-2",
+      "steady_seconds": 10.487374,
+      "gaps": 43,
+      "silence_queued": null,
+      "pcm": 352912
+    }
+  ],
+  "summary": [
+    {
+      "mode": "fullscreen",
+      "console": "nes",
+      "mean_seconds": {
+        "ref": 10.492331,
+        "ax": 10.1625435
+      },
+      "reduction_percent": 3.143129014896695,
+      "fps": {
+        "ref": 57.18462370277872,
+        "ax": 59.04033768711543
+      },
+      "fps_gain_percent": 3.2451275608315955,
+      "runs": {
+        "ref": [
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "nes-ref-1",
+            "steady_seconds": 10.545886,
+            "gaps": 132,
+            "silence_queued": null,
+            "pcm": 351395
+          },
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "nes-ref-2",
+            "steady_seconds": 10.438776,
+            "gaps": 103,
+            "silence_queued": null,
+            "pcm": 351395
+          }
+        ],
+        "ax": [
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "nes-ax-1",
+            "steady_seconds": 10.146756,
+            "gaps": 0,
+            "silence_queued": 14,
+            "pcm": 351395
+          },
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "nes-ax-2",
+            "steady_seconds": 10.178331,
+            "gaps": 0,
+            "silence_queued": 16,
+            "pcm": 351395
+          }
+        ]
+      }
+    },
+    {
+      "mode": "fullscreen",
+      "console": "snes",
+      "mean_seconds": {
+        "ref": 10.6325635,
+        "ax": 10.169161500000001
+      },
+      "reduction_percent": 4.35832807394001,
+      "fps": {
+        "ref": 56.43041774450724,
+        "ax": 59.00191475963873
+      },
+      "fps_gain_percent": 4.556934217240993,
+      "runs": {
+        "ref": [
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "snes-ref-1",
+            "steady_seconds": 10.777753,
+            "gaps": 71,
+            "silence_queued": null,
+            "pcm": 352912
+          },
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "snes-ref-2",
+            "steady_seconds": 10.487374,
+            "gaps": 43,
+            "silence_queued": null,
+            "pcm": 352912
+          }
+        ],
+        "ax": [
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "snes-ax-1",
+            "steady_seconds": 10.133212,
+            "gaps": 0,
+            "silence_queued": 8,
+            "pcm": 352912
+          },
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "snes-ax-2",
+            "steady_seconds": 10.205111,
+            "gaps": 0,
+            "silence_queued": 13,
+            "pcm": 352912
+          }
+        ]
+      }
+    }
+  ]
+}

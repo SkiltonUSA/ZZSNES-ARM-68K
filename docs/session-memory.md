@@ -654,3 +654,35 @@ checks pass. See host-service-profiling.md and raw records.
 Removed SD032G:Dev/ZZCost1029; Core1 idle, bridge alive, MCP left running. Saved
 screenmode CRC 9C80FBC5 and live AHI preferences CRC 725CE7DB unchanged. Installed
 players/releases and ROM/save libraries untouched. Earlier NES freeze unresolved.
+
+## Per-application AX audio — 29 October 2026
+
+Added isolated --ax-audio-test, requiring --presentation-test serial and the
+register experiment, incompatible with host-service/batch4/earlier-audio/ACK
+variants. Low-level AHI mode discovery selects registered ZZ9000AX16-bit stereo;
+allocation failure uses original unit0. No global prefs changes. Same source PCM
+and 3-frame batches, but three immutable dynamic buffers plus silence; IRQ hook
+only retires/schedules/signals. Bounded indices, worker-only copies and synchronous
+controller teardown before memory/signal release. SNES feedback adjusts to active
+backend capacity. Release players and installed applications stay unchanged.
+
+Native queue/actual-worker/API-adapter sanitizer tests pass, including fault and
+state/short-drain cases. Four silent physical probes (initial two-buffer then
+improved three-buffer, mono/stereo) complete96000frames each. Two exploratory
+120-frame runs pass; final code is tested in eight matched660-frame ABBA runs
+and two save/load/pause/window/fullscreen/quit lifecycles. All12 player runs complete
+PCM and restore/release owned ARM resources. Earlier NES freeze remains unresolved.
+
+Mean600-frame time: NES10.492331->10.1625435s, FPS57.1846->59.0403 (+3.245%);
+SNES10.6325635->10.1691615s, FPS56.4304->59.0019 (+4.557%). This changes output
+configuration AND scheduling; do not attribute all gain to one component or sum
+with previous results. Short tests, no listening/latency or long-run-quality claim.
+AX silence schedules NES14/16 and SNES8/13 include startup/end; incomparable to
+unit0 late-link counts. Normal release defaults unchanged, no package promotion.
+
+Fresh full builds pass and match host/backend and recorded ARM/MMU inputs; current
+native/model checks pass after restoring LLVM PATH. See docs/ax-audio.md and raw
+records. Private SD032G:Dev/ZZAX1029 removed; Core1 idle, bridge alive, live AHI
+CRC725CE7DB and saved screenmodeCRC9C80FBC5 unchanged. Firmware, startup, installed
+players, libraries/saves and global preferences untouched. Local MCP left running.
+Next gate: listened longer sessions and comparison against unit0 already set toAX.

@@ -1,0 +1,94 @@
+from pathlib import Path
+import subprocess
+w=Path(__file__).parent;o=w.parents[1]/'.context/ax-audio-native';o.mkdir(parents=True,exist_ok=True)
+s=(w/'ax_stream.h').read_text()
+s='\n'.join(l for l in s.splitlines() if not l.startswith('#include <'))
+for reg in ('a0','a1','a2'):s=s.replace(f' __asm("{reg}")','')
+(o/'stream-under-test.h').write_text(s)
+c=r'''
+#include <assert.h>
+#include <stdint.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+typedef uintptr_t ULONG;typedef unsigned char UBYTE;
+struct Library {int unused;};struct Task {int unused;};struct MsgPort {int unused;};
+struct IORequest {void *io_Device;};struct AHIRequest {struct IORequest ahir_Std;unsigned ahir_Version;};
+struct AHIAudioCtrl {int unused;};struct AHISoundMessage {unsigned ahism_Channel;};
+struct Hook {ULONG (*h_Entry)();void*h_Data;};struct AHISampleInfo {ULONG ahisi_Type,ahisi_Length;void*ahisi_Address;};
+#define AHINAME "ahi.device"
+#define AHI_NO_UNIT 255
+#define AHI_INVALID_ID (~(ULONG)0)
+#define MEMF_PUBLIC 1
+#define MEMF_CLEAR 2
+#define TAG_DONE 0UL
+#define AHIDB_BufferLen 1UL
+#define AHIDB_Name 2UL
+#define AHIDB_Stereo 3UL
+#define AHIDB_Bits 4UL
+#define AHIDB_Realtime 5UL
+#define AHIDB_MaxPlaySamples 6UL
+#define AHIA_AudioID 1UL
+#define AHIA_MixFreq 2UL
+#define AHIA_Channels 3UL
+#define AHIA_Sounds 4UL
+#define AHIA_SoundFunc 5UL
+#define AHIC_Play 6UL
+#define AHIC_MixFreq_Query 7UL
+#define AHIST_DYNAMICSAMPLE 1
+#define AHISF_IMM 1
+#define TRUE 1
+#define FALSE 0
+static unsigned allocs,calls,fail_at,device,control,loaded,open_error,missing,bad_caps,query_error,start_error;
+static void *allocate(size_t n){if(++calls==fail_at)return NULL;void*p=calloc(1,n);assert(p);allocs++;return p;}
+static void release(void*p){assert(p&&allocs);free(p);allocs--;}
+static struct Task*FindTask(void*p){(void)p;return (struct Task*)1;}
+static struct MsgPort*CreateMsgPort(void){return allocate(sizeof(struct MsgPort));}
+static void*CreateIORequest(struct MsgPort*p,size_t n){assert(p);return allocate(n);}
+static void DeleteIORequest(struct IORequest*p){assert(!device&&!control);release(p);}
+static void DeleteMsgPort(struct MsgPort*p){assert(!device&&!control);release(p);}
+static void*AllocVec(size_t n,int flags){assert(flags==(MEMF_PUBLIC|MEMF_CLEAR));return allocate(n);}
+static void FreeVec(void*p){assert(!control);release(p);}
+static int OpenDevice(const char*name,int unit,struct IORequest*r,int flags){assert(!strcmp(name,AHINAME)&&unit==255&&!flags);if(open_error)return 1;r->io_Device=r;device=1;return 0;}
+static void CloseDevice(struct IORequest*r){assert(r&&device&&!control);device=0;}
+static ULONG AHI_NextAudioID(ULONG id){return id==AHI_INVALID_ID&&!missing?123:AHI_INVALID_ID;}
+static int AHI_GetAudioAttrs(ULONG id,struct AHIAudioCtrl*c,...){
+ (void)id;va_list a;va_start(a,c);ULONG tag;
+ while((tag=va_arg(a,ULONG))!=TAG_DONE){ULONG v=va_arg(a,ULONG);
+  if(tag==AHIDB_Name)strcpy((char*)v,"ZZ9000AX:16 bit Stereo");
+  else if(tag==AHIDB_Stereo||tag==AHIDB_Realtime)*(ULONG*)v=bad_caps?0:1;
+  else if(tag==AHIDB_Bits)*(ULONG*)v=16;
+  else if(tag==AHIDB_MaxPlaySamples)*(ULONG*)v=3840;
+ }
+ va_end(a);return 1;
+}
+static struct AHIAudioCtrl*AHI_AllocAudio(ULONG first,...){assert(first==AHIA_AudioID);struct AHIAudioCtrl*c=allocate(sizeof(*c));if(c)control=1;return c;}
+static void AHI_FreeAudio(struct AHIAudioCtrl*c){assert(control);control=loaded=0;release(c);}
+static ULONG AHI_ControlAudio(struct AHIAudioCtrl*c,ULONG tag,...){assert(c&&control);
+ va_list a;va_start(a,tag);if(tag==AHIC_MixFreq_Query){ULONG ptr=va_arg(a,ULONG);*(ULONG*)ptr=32000;}va_end(a);
+ return (tag==AHIC_MixFreq_Query&&query_error)||(tag==AHIC_Play&&start_error);
+}
+static ULONG AHI_LoadSound(ULONG i,ULONG type,struct AHISampleInfo*s,struct AHIAudioCtrl*c){
+ assert(i==loaded&&type==AHIST_DYNAMICSAMPLE&&s->ahisi_Address&&s->ahisi_Length>=3840&&c);
+ if(++calls==fail_at)return 1;loaded++;return 0;
+}
+static void AHI_SetSound(unsigned ch,unsigned sound,unsigned off,unsigned len,struct AHIAudioCtrl*c,unsigned flags){assert(!ch&&sound==3&&!off&&len==640&&c&&flags==1);}
+static void AHI_SetVol(unsigned ch,unsigned vol,unsigned pan,struct AHIAudioCtrl*c,unsigned flags){assert(!ch&&vol==65536&&pan==32768&&c&&flags==1);}
+static void AHI_SetFreq(unsigned ch,unsigned rate,struct AHIAudioCtrl*c,unsigned flags){assert(!ch&&rate==32000&&c&&flags==1);}
+static void Signal(struct Task*t,ULONG mask){assert(t&&mask);}
+#include "stream-under-test.h"
+static void run(unsigned failure,unsigned openfail,unsigned nomode,unsigned caps,unsigned query,unsigned start){
+ struct ax_stream s;calls=0;fail_at=failure;open_error=openfail;missing=nomode;bad_caps=caps;query_error=query;start_error=start;
+ int ok=ax_open(&s,32000,1,2,4);
+ if(ok){assert(!failure&&!openfail&&!nomode&&!caps&&!query);assert(s.capacity==3840&&s.silent_frames==640&&loaded==4);assert(ax_start(&s)==!start);ax_close(&s);}
+ else assert(failure||openfail||nomode||caps||query);
+ assert(!allocs&&!device&&!control&&!AHIBase);
+}
+int main(void){run(0,0,0,0,0,0);unsigned count=calls;for(unsigned i=1;i<=count;i++)run(i,0,0,0,0,0);
+ run(0,1,0,0,0,0);run(0,0,1,0,0,0);run(0,0,0,1,0,0);run(0,0,0,0,1,0);run(0,0,0,0,0,1);
+ puts("PASS actual AX API adapter: allocation/load failures, mode capabilities, query/start failure, free-before-storage cleanup");}
+'''
+(o/'stream.c').write_text(c)
+subprocess.run(['clang','-std=c99','-O2','-g','-fsanitize=address,undefined','-Wall','-Wextra','-Werror','-Wno-misleading-indentation','-Wno-unused-function','-I'+str(w),str(o/'stream.c'),'-o',str(o/'stream')],check=True)
+subprocess.run([str(o/'stream')],check=True)
