@@ -1,0 +1,10 @@
+10.0.0.40 - - [29/Oct/2026 14:41:02] "GET /candidate HTTP/1.0" 200 -
+Start press 1
+Start press 2
+Start press 3
+Start press 4
+Start press 5
+Start press 6
+Start press 7
+Captured windowed race; testing save/load and fullscreen
+PASS colour hardware state, captures, window/fullscreen, clean shutdown

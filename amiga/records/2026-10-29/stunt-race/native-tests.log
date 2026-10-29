@@ -1,0 +1,42 @@
+python3 scripts/test_fx_colour.py
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS live PPU colour-window register changes
+PASS Super FX two-bank RAM map and SCBR=$25 second-bank drawing
+PASS Super FX lower-half ROM execution across instruction slices
+PASS 8192 Super FX 8bpp colour/transparency cases, adjacent pixels and X advance
+python3 scripts/test_expanded.py
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS family=00 map=20 bytes=65536 highres/interlace/state
+PASS family=35 map=23 bytes=65536 highres/interlace/state
+PASS family=03 map=20 bytes=65536 highres/interlace/state
+PASS family=f3 map=20 bytes=65536 highres/interlace/state
+PASS family=43 map=32 bytes=6291456 highres/interlace/state
+PASS family=00 map=25 bytes=6291456 highres/interlace/state
+PASS Super FX SCBR swap refreshes cached column pointers
+PASS family=13 map=20 bytes=65536 highres/interlace/state
+PASS FX3 in-flight GSU pipeline, register and second RAM-bank restore into fresh core
+PASS family=17 map=20 bytes=4194304 highres/interlace/state
+PASS FX3 in-flight GSU pipeline, register and second RAM-bank restore into fresh core
+PASS family=18 map=20 bytes=4194304 highres/interlace/state
+PASS expanded cartridge gates, 6 MiB mapping, chip state and video geometry
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS cartridge SRAM, fresh-core reload, 2 independent pads and bounded PAR/Game Genie cheats
+PASS automatic frameskip feedback/recovery/render limit, uninterrupted PCM generation, transparency and option state restore
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS FX3 CPU mappings, MMIO mirrors/holes, VCR, ROM preservation and two RAM banks
+PASS FX3 MERGE 0..6, clear regions/stride/planes, low-ROM mirror, extended-ROM/RAM execution, STOP R15/no IRQ
+PASS FX3 bounded execution, CPU polling/cancellation, clock counts 467/933, ROM data banks
+PASS FX3 CPU mappings, MMIO mirrors/holes, VCR, ROM preservation and two RAM banks
+PASS FX3 MERGE 0..6, clear regions/stride/planes, low-ROM mirror, extended-ROM/RAM execution, STOP R15/no IRQ
+PASS FX3 bounded execution, CPU polling/cancellation, clock counts 467/933, ROM data banks
+PASS core-option round trips and v4 preference migration
+PASS profile/options/control roundtrip, key mapping, bounded numbers and cheat syntax
+python3 scripts/test_snes_battery.py
+SAVE wrote 32 bytes to Test.sfc.sav; hash=fe859bc5
+SAVE wrote 32 bytes to Test.sfc.sav; hash=3d98fcc5
+Save file has wrong size/read error; refusing to overwrite it
+PASS battery startup defaults, persist/reload, backup rotation, rename rollback and malformed-file refusal

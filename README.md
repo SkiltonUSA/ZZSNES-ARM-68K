@@ -1,4 +1,4 @@
-# ZZSNES — 0.7.3 Beta
+# ZZSNES — 0.7.4 Beta
 
 <img src="docs/screenshots/logo.png" width="160" alt="ZZSNES logo">
 
@@ -9,13 +9,16 @@ files, controls, display coordination and batched AHI audio.
 
 This beta needs **96 MiB of allocatable ZZ9000 RAM**, plus display and AmigaOS memory.
 
-**[Download 0.7.3 Beta — installer or ZIP](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.3-beta)** ·
+**[Download 0.7.4 Beta — installer or ZIP](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.4-beta)** ·
 [Installation](docs/package-manager.md) · [User guide](docs/current-guide.md) ·
 [Changes](CHANGELOG.md) · [Interface gallery](docs/current-interface.md)
 
-App version: **0.7.3-dev**.
+App version: **0.7.4-dev**.
 
 ![ZZSNES interface](docs/screenshots/interface.png)
+
+**Race graphics fix:** corrected Super FX RAM/execution, 8-bit transparency and
+PPU colour-window handling in Stunt Race FX. [Details and checks](docs/stunt-race-fx.md).
 
 ## Features
 
@@ -100,7 +103,7 @@ These earlier gameplay captures show the **software** effect:
 
 ## More games
 
-Full-size 320×240 captures from ZZSNES 0.7.3-dev on the A4000TX/ZZ9000.
+Full-size 320×240 captures from ZZSNES 0.7.4-dev on the A4000TX/ZZ9000.
 
 | Kirby Super Star | Star Fox — training | Axelay |
 | --- | --- | --- |

@@ -1,0 +1,146 @@
+LhA Freeware Version 2.15 68040+ 
+Copyright (c) 1991-94 by Stefan Boberg.
+Copyright (c) 1998,1999 by Jim Cooper and David Tritscher.
+Copyright (c) 2004-2011 by Sven Ottemann.
+
+0 pExtracting from archive 'SD032G:Dev/ZZFX1029/ZZSNES.lha':
+
+ Extracting: (       0/    3566)  ZZSNES-Install.info
+    3566
+    3566
+
+ Extracting: (       0/    3566)  ZZSNES-Install/Drawer.info
+    3566
+    3566
+
+ Extracting: (       0/    1812)  ZZSNES-Install/Install
+    1812
+    1812
+
+ Extracting: (       0/    3578)  ZZSNES-Install/Install.info
+    3578
+    3578
+
+ Extracting: (       0/    4598)  ZZSNES-Install/Installer-guide.md
+    4598
+    4598
+
+ Extracting: (       0/   35149)  ZZSNES-Install/Licenses/ZZEmuInstall-GPL
+   35149
+   35149
+
+ Extracting: (       0/    5264)  ZZSNES-Install/Licenses/ZZEmuInstall-source.c
+    5264
+    5264
+
+ Extracting: (       0/   11358)  ZZSNES-Install/Licenses/amipkg-LICENSE
+   11358
+   11358
+
+ Extracting: (       0/     271)  ZZSNES-Install/Licenses/amipkg-NOTICE
+     271
+     271
+
+ Extracting: (       0/    8944)  ZZSNES-Install/Licenses/amipkg-zzinstall.patch
+    8944
+    8944
+
+ Extracting: (       0/    1832)  ZZSNES-Install/ReadMe.txt
+    1832
+    1832
+
+ Extracting: (       0/ 2697588)  ZZSNES-Install/Repository/ZZSNES-0.7.4-dev.lha
+  131072
+  262144
+  393216
+  524288
+  655360
+  786432
+  917504
+ 1048576
+ 1179648
+ 1310720
+ 1441792
+ 1572864
+ 1703936
+ 1835008
+ 1966080
+ 2097152
+ 2228224
+ 2359296
+ 2490368
+ 2621440
+ 2697588
+ 2697588
+
+ Extracting: (       0/    1339)  ZZSNES-Install/Repository/packages.json
+    1339
+    1339
+
+ Extracting: (       0/      89)  ZZSNES-Install/Repository/packages.json.sig
+      89
+      89
+
+ Extracting: (       0/      45)  ZZSNES-Install/Repository/public.key
+      45
+      45
+
+ Extracting: (       0/   32288)  ZZSNES-Install/Tools/ZZEmuInstall
+   32288
+   32288
+
+ Extracting: (       0/  212164)  ZZSNES-Install/Tools/amipkg
+  131072
+  212164
+  212164
+
+17 files extracted, all files OK.
+
+Operation successful.
+ p
+OK: muimaster.library 19.35
+OK: graphics.library 47.10
+OK: asl.library 47.9
+OK: keymap.library 47.1
+OK: Picasso96API.library 2.455
+OK: datatypes.library 47.3
+OK: lowlevel.library 47.1
+OK: ZZ9000 graphics and Fast RAM boards
+AHI: device 4.180
+OK: 28 AHI modes; unit 0 opens (no sound played)
+Dependencies passed. Firmware, display modes and available RAM are checked at runtime.
+Catalogue signature verified.
+Added 'zzdist' (signed), lowest priority.
+Run 'amipkg update' to fetch its catalog.
+'official' is now disabled.
+   ZZSNES-0.7.4-dev.lha..Cached zzsnes (sha256 verified).
+Unpacking + installing zzsnes...
+  (cleared 30 stale object(s) from the extract cache)
+copied.
+OK: muimaster.library 19.35
+OK: graphics.library 47.10
+OK: asl.library 47.9
+OK: keymap.library 47.1
+OK: Picasso96API.library 2.455
+OK: datatypes.library 47.3
+OK: lowlevel.library 47.1
+OK: ZZ9000 graphics and Fast RAM boards
+AHI: device 4.180
+OK: 28 AHI modes; unit 0 opens (no sound played)
+Dependencies passed. Firmware, display modes and available RAM are checked at runtime.
+Updating zzsnes - removing the previous version...
+Removed zzsnes: 26 file(s) deleted, 0 shared kept.
+Kept existing SYS:Utilities/ZZScanlines/ZZScanlines
+Kept existing SYS:Utilities/ZZScanlines/ZZScanlinesGUI
+Xanxi scanline tools ready.
+0 added; existing tools preserved.
+Compatible FPGA firmware is required.
+Firmware and startup files were not changed.
+Installed zzsnes 0.7.4-dev: 26 file(s).
+Kept existing SYS:Utilities/ZZScanlines/ZZScanlines
+Kept existing SYS:Utilities/ZZScanlines/ZZScanlinesGUI
+Xanxi scanline tools ready.
+0 added; existing tools preserved.
+Compatible FPGA firmware is required.
+Firmware and startup files were not changed.
+Installation complete. Open ZZSNES in the selected drawer.

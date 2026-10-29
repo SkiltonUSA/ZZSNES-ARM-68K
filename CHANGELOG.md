@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.4 Beta — Super FX race graphics
+
+- Correct stale PPU colour-window registers that caused cyan-tinted race graphics.
+- Expose both Super FX RAM banks and accept mirrored low-half ROM execution.
+- Correct 8-bit pixel transparency selection. Game ROMs are unchanged.
+- Add synthetic regressions and save/load replay checks; retain regional pacing, AX audio and register dispatch.
+- [Investigation and validation](docs/stunt-race-fx.md).
+
 ## 0.7.3 Beta — ZZ9000AX audio and register dispatch
 
 - Select ZZ9000AX 16-bit stereo through per-app AHI; use configured unit 0 if AX is unavailable. Global preferences remain unchanged.

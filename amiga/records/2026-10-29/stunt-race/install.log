@@ -1,0 +1,3 @@
+10.0.0.40 - - [29/Oct/2026 14:47:18] "GET /ZZSNES.lha HTTP/1.0" 200 -
+PASS installed ZZSNES 0.7.4 executables match and existing settings preserved
+Amiga alive - clients: 0, chip: 2021632 bytes, fast: 616922888 bytes

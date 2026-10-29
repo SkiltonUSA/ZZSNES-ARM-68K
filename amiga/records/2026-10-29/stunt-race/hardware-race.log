@@ -1,0 +1,82 @@
+OWNED amiga=50000040 arm_candidate=101f0040 size=100663296 nonce=0983bc65
+BOOTSTRAP amiga=40c78400 arm=00e68400 (P96 allocated/locked)
+MAP status=4d415031 SCTLR=08c50878 MIDR=413fc090 MPIDR=80000001
+MAPPING PASS (eight nonce-derived words)
+ARM ready=41524d31 SCTLR=08c5187d MIDR=413fc090 MPIDR=80000001
+CARTRIDGE SNES region=NTSC period_us=16689 bytes=1048576
+STAGE ROM published; initializing core
+STAGE core initialized; calibrating clock
+STAGE opening display
+SCANLINE_BACKEND window=1 hardware=0 software=0 parity=0
+BUFFERS pixels=00000000 indices=095ee16c legacy_host=0
+JOYSTICK available=1 port=1; red=B blue=Y green=Select play=Start
+AUDIO task: per-app AX mode=cafe0001 mix=32040; three immutable buffers
+PLAYER SCHEDULING paced + ARM LUT PocketSNES CPU/PPU/SPC/DSP, auto-region 32040Hz stereo; P pause, M mute, Q/Esc quit; bounded picture omission; every core/APU frame retained
+ZZSNES_POCKET START ROM=SD032G:Dev/ZZFX1029/stunt.sfc bytes=1048576 timer_hz=333332422 core_only=0
+FRAME n=1 cycles=1 core_hash=b87d5dc5 output_hash=3fde1dc5 cpu_ppu_us=3748
+SNAPSHOT saved SD032G:Dev/ZZFX1029/colour.ppm
+FRAME n=600 cycles=600 core_hash=fd150367 output_hash=811c9dc5 cpu_ppu_us=7102
+FRAME n=1200 cycles=1200 core_hash=1016a01a output_hash=811c9dc5 cpu_ppu_us=8100
+FRAME n=1800 cycles=1800 core_hash=f6351d79 output_hash=811c9dc5 cpu_ppu_us=8064
+FRAME n=2400 cycles=2400 core_hash=70cf1ff2 output_hash=811c9dc5 cpu_ppu_us=14575
+FRAME n=3000 cycles=3000 core_hash=b87d5dc5 output_hash=811c9dc5 cpu_ppu_us=9455
+SNAPSHOT saved SD032G:Dev/ZZFX1029/colour.ppm
+STATE save OK bytes=1678267 path=SD032G:Dev/ZZFX1029/race.state
+STATE load OK path=SD032G:Dev/ZZFX1029/race.state
+SCANLINE_BACKEND released: hardware=0
+FULLSCREEN_BITMAP allocated=0885c64c screen=0907a1b0 width=320 height=240 allocated_height=960 screen_height=960 on_board=1/1 memory=098a69fc/40c78400 pitch=1280/1280
+FULLSCREEN mode=50031303 native_format=9 depth=32 slots=4 geometry=320x240
+SCANLINE_BACKEND window=0 hardware=0 software=0 parity=0
+SNAPSHOT saved SD032G:Dev/ZZFX1029/colour.ppm
+FRAME n=3600 cycles=3600 core_hash=bd4d915b output_hash=811c9dc5 cpu_ppu_us=23749
+REGION_PACING frames=3940 play_us=101588552 period_us=16689 late_rebases=634
+FULLSCREEN_END queued=2169 flips=2169 pending=-1 ack_wait_us=1491526 fault=0
+SAVE wrote 131072 bytes to SD032G:Dev/ZZFX1029/stunt.sfc.sav; hash=ce07cfd5
+AUDIO_AX mode=cafe0001 mix=32040 callbacks=3066 silence_queued=1752
+AUDIO_TASK queued=2106779 submitted=2106779 completed=2106779 highwater=6 error=0 stopped=1
+FRAME_RENDER rendered=3940 skipped=0 options=0
+AUDIO_END samples=2106779 gaps=0
+PRESENT_OPTIONS window=0 scanlines=0 fps=0 optimised=1 neon_frames=0
+STAGE closing frontend; requesting ARM return next
+ZZSNES_POCKET END exit=0 frames=3940 elapsed_us=102162239 core_total_us=55878076 output_hash=811c9dc5
+DIRECT_END challenges=2169 verified_frames=1 copy_us=3994634
+PLAYER_PROFILE audio_prepare_us=2773073 flip_drain_us=120219 audio_wait_us=659746 audio_copy_us=1789515 audio_send_us=0
+ARM_REQUEST_PROFILE frame_us=55988011 present_us=4005067
+PRESENT_PROFILE pre_us=461027 request_us=4579177 post_us=2015151
+TEARING_TRIAL variant=C0 native=0 slots=4 ack_blank=166 ack_active=3
+SCANOUT_GATE variant=C0 mode=0 delayed=0 total_us=0 max_us=0 timeouts=0 phase=0
+FRAME_TIMING stage=0 count=3880 mean_us=14852 max_us=39120 bins=0,693,1855,561,735,36
+FRAME_TIMING stage=1 count=3880 mean_us=39 max_us=5411 bins=3868,12,0,0,0,0
+FRAME_TIMING stage=2 count=3880 mean_us=722 max_us=18340 bins=3437,435,6,2,0,0
+FRAME_TIMING stage=3 count=2106 mean_us=2655 max_us=187486 bins=0,2098,6,1,0,1
+FRAME_TIMING stage=4 count=3880 mean_us=20336 max_us=199702 bins=0,3,1784,614,1254,225
+FRAME_TIMING stage=5 count=166 mean_us=73171 max_us=102294 bins=0,0,9,0,8,149
+INPUT_PROFILE changes=14
+JOYSTICK_END polls=3940 active=0 last_type=40000000
+AUDIO_IO_PROFILE send_us=0 waitio_us=0
+WAIT_PROFILE kind=0 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=1 calls=128 requested_us=128000 actual_us=163756 max_us=9303
+WAIT_PROFILE kind=2 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=3 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=4 calls=921 requested_us=921000 actual_us=1469167 max_us=13406
+WAIT_PROFILE kind=5 calls=0 requested_us=0 actual_us=0 max_us=0
+PROFILE frames=3940 request_us=57859647 copy_us=0 colour_us=0 draw_us=12431157 waits=1907
+EXIT epilogue=52455431 cache_echoes=0 rounds=0
+CACHE original=08c50878 running=08c5187d restored=08c50878
+MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=102f4000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=6116
+REGISTER n=0 original=08c50878 restored=08c50878
+REGISTER n=1 original=00000000 restored=00000000
+REGISTER n=2 original=02000000 restored=02000000
+REGISTER n=3 original=00000000 restored=00000000
+REGISTER n=4 original=00000000 restored=00000000
+REGISTER n=5 original=00000001 restored=00000001
+REGISTER n=6 original=600101d3 restored=680101d3
+REGISTER n=7 original=00000006 restored=00000006
+REGISTER n=8 original=00001000 restored=00001000
+REGISTER n=9 original=00098aa4 restored=00098aa4
+REGISTER n=10 original=44e048e0 restored=44e048e0
+REGISTER n=11 original=00000000 restored=00000000
+REGISTER n=12 original=00000001 restored=00000001
+REGISTER n=13 original=72360000 restored=72360000
+SCANLINE_BACKEND released: hardware=0
+LAUNCHER exit=0; owned memory released

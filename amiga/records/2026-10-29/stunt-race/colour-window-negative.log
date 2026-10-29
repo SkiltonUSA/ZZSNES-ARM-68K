@@ -1,0 +1,20 @@
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+Assertion failed: (IPPU.Clip[1].Count[5]==1), function main, file fx_colour.c, line 30.
+Traceback (most recent call last):
+  File "<workspace>/.context/ZZSNES-ARM-68K/scripts/test_fx_colour.py", line 23, in <module>
+    main()
+    ~~~~^^
+  File "<workspace>/.context/ZZSNES-ARM-68K/scripts/test_fx_colour.py", line 16, in main
+    subprocess.run(
+    ~~~~~~~~~~~~~~^
+        [executable], check=True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+        env=dict(os.environ, ASAN_OPTIONS='detect_leaks=0'),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 692, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '[PosixPath('<workspace>/.context/ZZSNES-ARM-68K/.context/fx-colour/native')]' died with <Signals.SIGABRT: 6>.

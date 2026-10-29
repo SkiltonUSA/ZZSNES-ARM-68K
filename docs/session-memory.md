@@ -1,5 +1,21 @@
 ## 0.7.3 Beta installed — 29 October 2026
 
+## Super FX race correction — 29 October 2026
+
+Installed ZZSNES0.7.4-dev in SD032G:Emulator/ZZSNES through the signed offline
+installer. Fixed live PPU colour-window registers, two-bank Super FX RAM,
+mirrored low-half execution and 8bpp transparency. ROM unchanged. Expanded/native
+regressions and four-game save/reload replay pass; physical race checkpoint
+matches at two ARM relocation addresses. A fresh3940-frame hardware race run
+shows corrected colours and passes window/fullscreen, pause/save/load/resume/quit,
+completePCM accounting, register/MMU/cache witnesses and owned-memory release.
+No FPS or full-game/listening claim. Exact installed hashes match build; existing
+Library/Controls/Session settings preserved. Private rollback and diagnostics:
+workspace .context/amiga/stuntrace-1029. Removed private SD032G:Dev/ZZFX1029;
+Core1 idle, bridge alive, AHI CRC725CE7DB and saved screenmode CRC9C80FBC5 unchanged.
+See docs/stunt-race-fx.md and amiga/records/2026-10-29/stunt-race in the standalone
+ZZSNES repository. ZZNES/ZZDosBox installations unchanged.
+
 Installed matching 0.7.3-dev launcher/player package in SD032G:Emulator/ZZSNES
 using the signed offline installer. Normal regional cadence, controls, snapshots,
 save/load and window/fullscreen switching are retained. Automatic per-app AX AHI

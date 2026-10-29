@@ -1,57 +1,45 @@
-# ZZSNES 0.7.3 Beta validation
+# ZZSNES 0.7.4 Beta validation
 
-This release installs matching **0.7.3-dev** launcher/player executables. Normal
-regional cadence, input, state saves and screenshots are enabled. The AX backend
-is automatic, with configured AHI unit 0 as fallback. No global AHI edits.
+Matching **0.7.4-dev** launcher, normal player and FX player. This release fixes
+Super FX race geometry and legacy PPU colour-window handling. Normal regional
+pacing, register dispatch and automatic per-app AX audio are retained.
 
-[Build command and tested executable hashes](release-build.json).
+[Build command and executable hashes](release-build.json) ·
+[Investigation and limits](stunt-race-fx.md).
 
 | Asset | Bytes | SHA256 |
 | --- | ---: | --- |
-| `ZZSNES-0.7.3-dev-beta.zip` | 1117730 | `653770c299e23509a34574558a6992820271ab4eee6aeb4c95c45b65d9336555` |
-| `ZZSNES-0.7.3-dev-beta-amipkg.lha` | 3024206 | `5d0acb14d2f77c06ece037bdebc59199d110dfe252289ab6702748b55a538222` |
-| `ZZSNES-release.json` | 1116 | `498eaecedd3f7d8a79c0996afe018d460c5f145377b5ac4e35e933df3dedfa82` |
+| `ZZSNES-0.7.4-dev-beta.zip` | 1117808 | `658c88afc4d0627c05cffb75cd138b9fda489dd4090c6d266c66578a9ef41750` |
+| `ZZSNES-0.7.4-dev-beta-amipkg.lha` | 3024442 | `7f15624087664eb68fa6cc26117e324280948fd10683fcf2ba15c5d10c8b2496` |
+| `ZZSNES-release.json` | 1116 | `624ed5aaf4ebca56257f1decc81f5e09f52b4ce9e11f4cde29f7a309e9d89eb9` |
 
 ## Checks
 
-- Current-source hash verification passed after refreshing four stale manifest
-  entries for reviewed documentation/audio changes and the build selector.
+- Original synthetic cartridge: 8,192 pixel-transparency cases, adjacent pixels,
+  two-bank drawing, mirrored execution and live PPU main/sub colour/window masks.
+  Failing cases were reproduced before the fixes; native sanitizers pass.
+- Expanded-cartridge, FX3, preference and battery tests pass.
+- Stunt Race FX, Star Fox 2, Doom and Super Mario World each replay 30 frames with
+  exact video and stereo-PCM results after save/load, including a fresh process.
+- The built ARM core resumes a physical race checkpoint at two runtime relocation
+  addresses with identical corrected video/PCM output.
+- A fresh A4000TX race run completes 3,940 frames and passes window/fullscreen
+  captures, pause/save/load/resume/quit. All 2,106,779 PCM frames complete;
+  the log reports zero audio gaps/errors, register/MMU/cache-witness restoration
+  and owned-memory release.
+- ZIP and signed LHA contain identical tested binaries. Payload/member hashes,
+  catalogue authentication, signature-corruption rejection, prerequisites, icons
+  and ROM/save/config/private-key exclusions pass.
+- The exact offline installer is installed on the A4000TX. Executable hashes
+  match the tested build; Library/Controls/Session settings remain byte-identical.
+  Original executables and settings are backed up privately.
 
-- Both full release builds pass, with ARM image/MMU headers identical to the
-  previously tested register-dispatch builds. Version strings match across each
-  launcher/player and the additional SNES FX player.
-- Native AX ownership, worker and API-failure sanitizer checks pass. Release
-  selection rejects benchmark-only scheduling/polling/batching flags.
-- Two 180-frame physical VERIFY runs pass four exact framebuffer checks each,
-  complete PCM accounting, register/MMU/cache witnesses and owned-memory release.
-- Both normal players pass F9 capture, paused save/load, window/fullscreen
-  switching, resume and quit. User input and snapshots are active in this build.
-- ZIP and nested LHA payloads match byte-for-byte; executable/member hashes,
-  signed catalogue verification, corrupted-signature rejection, prerequisites,
-  icons and ROM/save/config/private-key exclusions pass.
+Core1 is idle and the bridge responds. The private test drawer was removed;
+live AHI and saved Workbench screenmode checksums are unchanged. A final rebuild
+after trimming inherited comment whitespace matches all tested executable hashes.
 
-Both exact offline installer packages were installed successfully on the A4000TX.
-Dependency checks and catalogue signatures passed; installed executable hashes
-matched the tested release builds. Existing library/session/controller settings
-were byte-identical before installation and after opening/closing both launchers.
-The launchers displayed the new versions and existing libraries on Workbench.
-Both icons specify a 64 KiB stack. A first CLI attempt without that stack was
-safely rejected; retrying with `Stack 65536` passed.
+These are bounded correctness/lifecycle checks. No new FPS improvement,
+full-game completion or listening/long-session audio-quality result is claimed.
+The earlier unexplained NES freeze is outside this SNES fix.
 
-The private test drawer was removed. Core1 is idle, the bridge responds, and
-global AHI / saved screenmode preference checksums are unchanged. Existing
-scanline tools were preserved. Original application files and settings were
-backed up locally before installation. ROMs and existing saves were not changed.
-
-
-The initial NES test harness looked for a version string in the runtime log,
-which the host does not print. The executable version and transfer checksum were
-already verified; the log assertion was removed, and its successful run retained.
-
-The earlier +3.2% NES / +4.6% SNES FPS figures describe controlled short audio
-comparisons, not a new release-wide performance guarantee. These functional runs
-include deliberate readbacks, file writes and pauses and are not FPS benchmarks.
-Listening/long-session validation remains pending. The earlier unexplained NES
-freeze remains unresolved. This is a beta release.
-
-[Hardware logs and checks](../amiga/records/2026-10-29/ax-release/).
+[Evidence and action log](../amiga/records/2026-10-29/stunt-race/).

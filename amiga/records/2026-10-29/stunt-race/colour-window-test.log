@@ -1,0 +1,6 @@
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS live PPU colour-window and main/sub BG mask register changes
+PASS Super FX two-bank RAM map and SCBR=$25 second-bank drawing
+PASS Super FX lower-half ROM execution across instruction slices
+PASS 8192 Super FX 8bpp colour/transparency cases, adjacent pixels and X advance

@@ -1,0 +1,2 @@
+PASS ARM register-dispatch Stunt Race FX race checkpoint +30 frames, relocation 0x12000040 [3185304245, 'bb92710d13a42700c465b009980aa4abb71163326049af8d485f29a62ebd9cb2']
+PASS ARM register-dispatch Stunt Race FX race checkpoint +30 frames, relocation 0x150020c0 [3185304245, 'bb92710d13a42700c465b009980aa4abb71163326049af8d485f29a62ebd9cb2']

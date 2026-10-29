@@ -1,0 +1,7 @@
+CORE cpu=7e:abd6 rom_speed=8 apu=0886 out=00,00 gsu=907a
+RUN frames=2700 changed=1681 last=98da2a16
+STATE bytes=1679099 frame=2700
+REPLAY mismatches=0
+CORE cpu=00:fe88 rom_speed=8 apu=ffc0 out=00,00 gsu=0000
+RUN frames=2700 changed=0 last=00000000
+REPLAY mismatches=0
