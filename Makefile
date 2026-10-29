@@ -166,3 +166,7 @@ test-jit-layout:
 .PHONY: test-audio-early
 test-audio-early:
 	$(PYTHON) scripts/test_audio_early.py
+
+.PHONY: test-ppu
+test-ppu:
+	$(PYTHON) scripts/test_ppu_experiment.py

@@ -14,12 +14,12 @@ class Machine:
   self.syms={p[2]:int(p[0],16)+base for line in subprocess.check_output(['/opt/homebrew/opt/llvm/bin/llvm-nm',elf],text=True).splitlines() if len(p:=line.split())==3}
   self.u=Uc(UC_ARCH_ARM,UC_MODE_ARM);self.u.ctl_set_cpu_model(UC_CPU_ARM_CORTEX_A9);self.u.mem_map(base&~4095,block+8192);self.u.mem_write(base,bytes(image));self.stop=base+block-0x10000
   if 'console_jit_init' in self.syms:assert self.call('console_jit_init',base)==1
- def call(self,symbol,*args):
+ def call(self,symbol,*args,limit=None):
   u=self.u;sp=self.base+self.block-0x2000
   u.reg_write(UC_ARM_REG_SP,sp);u.reg_write(UC_ARM_REG_LR,self.stop)
   for r,v in zip([UC_ARM_REG_R0,UC_ARM_REG_R1,UC_ARM_REG_R2,UC_ARM_REG_R3],args):u.reg_write(r,v)
   for i,v in enumerate(args[4:]):u.mem_write(sp+4*i,struct.pack('<I',v))
-  u.emu_start(self.syms[symbol],self.stop,count=(200000000 if symbol=='nes_init' else 50000000))
+  u.emu_start(self.syms[symbol],self.stop,count=limit or (200000000 if symbol=='nes_init' else 50000000))
   assert u.reg_read(UC_ARM_REG_PC)==self.stop,(symbol,hex(u.reg_read(UC_ARM_REG_PC)))
   return u.reg_read(UC_ARM_REG_R0)
 def main():

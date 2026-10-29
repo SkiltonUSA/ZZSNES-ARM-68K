@@ -1075,8 +1075,8 @@
   "amiga/records/2026-10-16/cartridges/survey.json": "9e2932b6d657d140572138a36e884e631cea0882775f5c980ab0292699b3992a",
   "development/borders-20261016/source/cartridge_warning.h": "d821432ea39263f3b8b4be8a068668babc9d6046e0bbc4ba287a0f4a092cc4e8",
   "development/fx3-20261016/cartridge.h": "891d65aac2fefc8e0450f6fa4381c61baf45dcb7836344221f831aaede10bab0",
-  "scripts/build_current.py": "2ac179d1d48113ba70e1c5ade2728ea3a5f6e926feb4f9dc76c9921dd9eb997e",
-  "scripts/compatibility_native.py": "8165f81b4462b4aa88129425ab43b4f45ebc4e85a43223528035103e41b6b10c",
+  "scripts/build_current.py": "bf8cbff97e14e26d96c8e5e42815eeb5bacfb9efece3c0713614a965bb3b7da8",
+  "scripts/compatibility_native.py": "5bfe586eb5d795979ff38ae88b0d68acd852bac3bab0af2621b65a2f766c348e",
   "tests/amiga/emulator/check_current_arm.py": "1ce948bdfdd10f659f706a593e75f84c6a7e9c6ebdbebb78e505bd3cd7069a01",
   "scripts/test_fx3.py": "a2819267cba067eb9d35b14730a6ac51c31e6b68427f747c5e3317643bb7f0ee",
   "scripts/make_fx3_fixture.py": "82a130467b4d1cc2bdf753c1840a77c1807302fc44c1d0ba7fe166311bc1e820",
@@ -1231,5 +1231,11 @@
   "sources/amipkg-66cfb988.tar.gz": "fa96676e8fbb4f63a82dbb36f3aa41796bca9cb1587e2f91c038c49e04006178",
   "development/expanded-20261019/core/src/clip.c": "d19409fd982ce14ec06dfb251f26c30fb6aa0da33c0dd52f372ac397785db0d2",
   "development/expanded-20261019/tests/fx_colour.c": "aebdcf4ab00482c2ce779f801d795dd1ffc3d8e4d9e612178c3d66c8b088f2fc",
-  "scripts/test_fx_colour.py": "b00e09f3b6ee7b0c48f9931b0a023e75d7086d843ccd2e393d57d8d18a7ee700"
+  "scripts/test_fx_colour.py": "b00e09f3b6ee7b0c48f9931b0a023e75d7086d843ccd2e393d57d8d18a7ee700",
+  "scripts/test_console_jit_core.py": "be4f0b0b0ccaad99b05d1cdca9d99f49f3c4c0444a114696bff16fead4cb4a5a",
+  "scripts/prepare_ppu_experiment.py": "eb3fba85b6c49676f77c9e8808e28ea851444131e3a3a7cb5dc517f442bf4fce",
+  "scripts/test_ppu_experiment.py": "e77fd2159dc2af25708699c905eba71effbb2689f43fca5e9bc8ac5ad94f4f3c",
+  "scripts/test_ppu_arm.py": "c9dc671e2ac993ecddfe6b42555584bce2fdedc34b9ca3059dd21911139a3eaf",
+  "development/ppu-20261029/tests/raster_fixture.c": "b9f27bd38580ada13de6e95361411cc43ef047b21528db9eeffc0837774223f2",
+  "development/ppu-20261029/tests/game_trace.c": "679c5cbd4e70e1fbdf4cab3d13f80f7dc197404439f33cbe0619a40fb699e5ef"
 }

@@ -4,10 +4,12 @@ Default rebuilds 68k/MUI around the verified ARM image; --arm recompiles it.
 """
 import argparse,hashlib,importlib.util,json,os,re,shutil,subprocess
 from pathlib import Path
+from prepare_ppu_experiment import MODES as PPU_MODES
 ROOT=Path(__file__).resolve().parents[1]
 def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--release-ax',action='store_true',help='Build the normal-play AX audio beta with matching launcher');p.add_argument('--ax-audio-test',action='store_true',help='Isolated per-app ZZ9000AX AHI backend; unit 0 fallback');p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--ppu-test',choices=PPU_MODES,help='Isolated raster experiment; requires --release-ax');p.add_argument('--release-ax',action='store_true',help='Build the normal-play AX audio beta with matching launcher');p.add_argument('--ax-audio-test',action='store_true',help='Isolated per-app ZZ9000AX AHI backend; unit 0 fallback');p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ if a.ppu_test and not a.release_ax:p.error('--ppu-test requires --release-ax')
  if a.release_ax:
   if a.ax_audio_test or a.presentation_test or a.host_service_test or a.audio_early or a.ack_poll_us:p.error('release build cannot include diagnostic options')
   a.arm=a.optimisation=a.jit_registers=True
@@ -49,6 +51,8 @@ def main():
  if a.release_ax:
   m['version']=json.loads((ROOT/'development/ax-audio-20261029/release.json').read_text())['version']
   out=ROOT/'.context/ax-release-build';stage=out/'player';lib=out/'library'
+ if a.ppu_test:
+  out=ROOT/('.context/ppu-'+a.ppu_test+'-build');stage=out/'player';lib=out/'library'
  shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
  shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
@@ -99,6 +103,9 @@ def main():
   if a.optimisation and snes:
    shutil.copy2(stage/'region.h',core/'region.h')
    run(['patch','-p1','-d',core,'-i',ROOT/'development/optimisation-20261018/region-clock.patch'])
+  if a.ppu_test:
+   from prepare_ppu_experiment import prepare
+   prepare(core,a.ppu_test)
   if a.jit_registers:
    from prepare_console_jit import prepare
    jit_begin=prepare(core,stage,snes,dispatch=True)
