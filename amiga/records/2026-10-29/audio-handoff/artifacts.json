@@ -1,0 +1,12 @@
+{
+  "reference": {
+    "ZZSnes-ui": "495f8e7dba07fc3a86c799485e7f2e09ed12ae53559a18952a109bd7f1a3de58",
+    "player/pocket.elf": "0157e1e4e93b9eb7a7b2a113b3e8b611b4706c7ea64a141839a8ae9063bd1c33",
+    "player/zz_payload.h": "d10f30e75186bd95c211c6be15a3f35b9ada748259e2d2376b98541d4b0a8f90"
+  },
+  "early-audio": {
+    "ZZSnes-ui": "cc3923c80a80bf716a46bb0d5a5f858484034a5c1127a50693db983a2789587e",
+    "player/pocket.elf": "30785934c930b983c7f4dad568412ed4284fa1d71fa0b4128e086fd8541453fc",
+    "player/zz_payload.h": "d10f30e75186bd95c211c6be15a3f35b9ada748259e2d2376b98541d4b0a8f90"
+  }
+}

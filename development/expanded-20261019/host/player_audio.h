@@ -170,7 +170,12 @@ fail:
  player_audio_close();puts("AHI unavailable: running muted; APU timing remains enabled");return 0;
 }
 static void player_audio_flush(void){audio_force=1;audio_wake();}
-static int player_audio_submit(void){audio_wake();return !audio_error;}
+static int player_audio_submit(void){
+#ifndef EM_AUDIO_EARLY
+ audio_wake();
+#endif
+ return !audio_error;
+}
 static int player_audio_frame(void){
  ULONG n=ad_get(shared+MB_REPLY,40),start,index,available;
  if(n>1024||audio_error)return 0;
@@ -190,5 +195,11 @@ static int player_audio_frame(void){
  audio_queue[index].count=n;audio_copy_us+=us()-start;
  Forbid();audio_write++;available=audio_write-audio_read;
  if(available>audio_highwater)audio_highwater=available;
- Permit();audio_samples+=n;return 1;
+ Permit();audio_samples+=n;
+#ifdef EM_AUDIO_EARLY
+ /* Complete PCM is public before the task can run. AHI completion wakes it
+  * too; pause/state/stop retain their explicit short-batch flush. */
+ if(available>=3)audio_wake();
+#endif
+ return 1;
 }

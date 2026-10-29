@@ -151,3 +151,5 @@ The Snes9x core is non-commercial. Component licences, source pins and notices a
 [32 MiB register-JIT experiment](docs/jit-register-experiment.md): the dispatch
 regression is fixed in the tested Super Mario World workload—11.65% less ARM
 core time than the earlier translator. Interpreter releases remain unchanged.
+
+Experimental audio handoff results are included in the same report.

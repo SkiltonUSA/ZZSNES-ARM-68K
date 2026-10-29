@@ -1,0 +1,38 @@
+[
+  {
+    "run": "snes-audio-1",
+    "frames": 600,
+    "elapsed_us": 16472912,
+    "core_us": 3279895,
+    "presented": 540,
+    "audio_samples": 320829,
+    "audio_gaps": 13
+  },
+  {
+    "run": "snes-audio-2",
+    "frames": 600,
+    "elapsed_us": 17475680,
+    "core_us": 3278540,
+    "presented": 523,
+    "audio_samples": 320829,
+    "audio_gaps": 19
+  },
+  {
+    "run": "snes-ref-1",
+    "frames": 600,
+    "elapsed_us": 21722389,
+    "core_us": 3277669,
+    "presented": 561,
+    "audio_samples": 320829,
+    "audio_gaps": 44
+  },
+  {
+    "run": "snes-ref-2",
+    "frames": 600,
+    "elapsed_us": 22215889,
+    "core_us": 3278711,
+    "presented": 564,
+    "audio_samples": 320829,
+    "audio_gaps": 72
+  }
+]

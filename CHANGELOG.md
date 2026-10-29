@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.2-dev — experimental register dispatch and audio
+
+- Use eight generated register handlers through the core's existing opcode tables, resolving the measured lookup-path regression.
+- Retain the requested 32 MiB executable reservation and 96 MiB owned runtime.
+- Add opt-in batch-ready audio notification; retain original release scheduling.
+- [Matched results and limitations](docs/jit-register-experiment.md).
+
 ## 0.6.5 Beta — packaged release
 
 - Publish the matched, physically tested 0.6.5-dev launcher and players.

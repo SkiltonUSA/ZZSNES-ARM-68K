@@ -75,3 +75,49 @@ ROMs are not included in the records.
 
 [Build hashes, measurements and test logs](../amiga/records/2026-10-29/jit-dispatch/).
 [Earlier lookup-cache experiments and failures](jit-register-lookup-history.md).
+
+## Earlier AHI notification (experimental)
+
+`--audio-early` wakes the existing AHI worker once a three-frame batch is ready,
+before presentation. Request size, eight host slots, six-frame prebuffer and
+pause/state/stop flushes stay unchanged. The original and candidate ARM payloads
+are byte-identical; only the 68k host is rebuilt.
+
+Two 600-frame Super Mario World startup runs per variant, in reference/candidate/
+candidate/reference order, same window and verification settings:
+
+| Scheduling | Mean elapsed | Audio gaps per run | Presented frames per run |
+| --- | ---: | --- | --- |
+| Original | 21.973 s | 74 / 37 | 565 / 567 |
+| Batch ready, before presentation | 18.976 s | 10 / 20 | 558 / 544 |
+
+Mean elapsed time falls 13.64%, with fewer recorded gaps but also fewer
+presentations. Core time stays around 3.30 s. This is a host scheduling tradeoff,
+not an ARM-core speed gain. Window drawing has large timing outliers; these two
+pairs are insufficient for a broad improvement claim. All runs deliver all
+320,829 PCM samples, restore register/MMU/cache witnesses, exit zero and release
+owned memory. A temporary log-read failure on the first reference was recovered;
+its saved log and exit marker confirm completion.
+
+The actual producer copy/mute/wrap/notification test passes 1,088 cases; the
+native core suite also passes. Keep this option separate from the release until
+broader title and audible quality checks establish its value; fullscreen results
+below retain the presentation tradeoff.
+[Audio comparison evidence](../amiga/records/2026-10-29/audio-handoff/).
+
+### Fullscreen follow-up
+
+Two 600-frame runs per variant, reference/candidate/candidate/reference order,
+same fullscreen mode with scanlines and the FPS overlay off:
+
+| Scheduling | Mean elapsed | Audio gaps per run | Presented frames per run |
+| --- | ---: | --- | --- |
+| Original | 21.969 s | 44 / 72 | 561 / 564 |
+| Batch ready, before presentation | 16.974 s | 13 / 19 | 540 / 523 |
+
+Mean elapsed time falls 22.74%, with mean presentations falling from 562.5 to
+531.5. Core time remains about 3.279 s. Earlier AHI servicing changes the host's
+scheduling and automatic frame-skipping behavior; this is not a 23% faster ARM
+core. All 320,829 PCM samples complete per run, output endpoints match, and all
+four runs pass register/MMU/cache restoration, exit zero and free owned memory.
+The option remains experimental pending listening and broader gameplay checks.

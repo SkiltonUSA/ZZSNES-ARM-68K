@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
  if a.expanded:a.arm=a.optimisation=a.core_o2=a.fx3=True
  if a.optimisation:a.thin_scanlines=True
  if (a.experimental_chips or a.compatibility or a.fx3) and not a.arm:p.error('compatibility experiments require --arm')
@@ -27,6 +27,9 @@ def main():
  if a.jit_registers:
   if not a.arm or not a.optimisation or not a.expanded:p.error('JIT requires current ARM optimisation expanded build')
   out=ROOT/'.context/jit-dispatch32-build';stage=out/'player';lib=out/'library';m['version']='0.7.2-dev'
+ if a.audio_early:
+  if not a.jit_registers:p.error('--audio-early requires the isolated register build')
+  out=out.with_name(out.name+'-audio');stage=out/'player';lib=out/'library'
  shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
  shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
@@ -122,6 +125,7 @@ def main():
  if a.jit_registers:block='0x6000000' if snes else '0x3000000'
  defs=['ZZ_HEADLESS_BENCH','ZZ_RELEASE','ZZ_NES','ZZ_BLOCK_SIZE='+block,'ZZ_CONTROL='+control,'ZZ_APP_NAME="'+m['console']+'"','ZZ_APP_VERSION="'+m['version']+'"','ZZ_MIN_STACK=65536','MB_ALLOCATION='+block+'u','MB_MMU','MB_DCACHE','ZZ_HEADLESS_MMU','ZZ_HEADLESS_ICACHE','NES_PLAYER','NES_DIRECT','NES_FULLSCREEN']
  if a.jit_registers:defs+=['CJ_BEGIN='+hex(jit_begin)]
+ if a.audio_early:defs+=['EM_AUDIO_EARLY']
  run(cc+['-D'+d for d in defs]+['-I'+rel(stage)]+['-I'+rel(source/'amiga'/d)for d in ['mesen_nes','mesen_bench','arm_debug','arm_debug/zz9000']]+[rel(source/'amiga/arm_debug/zz9000/launcher.c'),rel(stage/'host.c'),rel(stage/'zip/puff.c'),'-lamiga','-o',rel(out/('ZZSnes-FX'if a.fx3 else m['player']))])
  for src,dst in [('launcher.c',m['console']),('icon.c','MakeIcon')]:run(cc+[rel(lib/src)]+([rel(lib/'zip/puff.c')]if src=='launcher.c'else[])+['-lamiga','-o',rel(out/dst)])
  if a.expanded:shutil.copy2(out/'ZZSnes-FX',out/m['player'])
