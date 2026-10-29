@@ -751,3 +751,30 @@ Removed SD032G:Dev/ZZPPU1029. Core1 idle, bridge alive. Installed launcher/playe
 remain 0.7.4-dev; live AHI CRC725CE7DB and saved screenmode CRC9C80FBC5 unchanged.
 Libraries, saves, firmware and startup untouched. Model Star Fox 2 checkpoint
 creation needed a larger bounded instruction budget; this was not a hardware fault.
+
+## Isolated timed Super FX — 29 October 2026
+
+Added `--release-ax --timed-superfx-experiment`, matching 0.7.5-exp launcher and
+players in `.context/timed-superfx-build`. Display → Emulation → Super FX selects
+Legacy (default) / Timed (experimental); persists globally/per game. Separate
+opcode tables keep per-instruction timing accounting out of Legacy. Timed uses
+nominal 1364 master clocks per scanline, instruction/cache costs and overrun debt;
+GO/R15 writes no longer grant extra slices. FX3 keeps its old bounded path.
+Option bit23 and reserved v3 header bytes72–83 save timing mode/debt/cache tags.
+Older players can resume Legacy candidate states but reject Timed states.
+
+Native sanitizer fixtures pass. Four games ×3600 video/PCM frames match baseline
+in Legacy; all four also complete Timed runs and 60-frame save/load replay.
+A9 model checks at two bases pass for Stunt, Star Fox2 and SMW, including Legacy
+state compatibility with the prior player and fresh-instance Timed replay.
+Physical tests: Stunt Legacy + Timed, SF2 Timed and SMW control, 660 frames each;
+all PCM delivered, no flip faults, full register/MMU/cache/memory teardown.
+Physical/model first timed frame hashes match. Real compact MUI probe passes
+seven pages, resizing, per-game Timed save/reload/reset and Legacy defaults.
+See docs/timed-superfx.md and amiga/records/2026-10-29/timed-superfx.
+
+No visual/listening acceptance or FPS improvement claimed. Timing is scanline
+approximate, not exact bus arbitration. No clock multiplier yet. Installed and
+published beta stays 0.7.4; temporary SD032G:Dev/ZZTimedFX1029 removed. Core1 idle,
+bridge alive, live AHI and saved screenmode checksums unchanged. Retain private
+local ROM/checkpoint inputs for reproduction; no commercial data committed.

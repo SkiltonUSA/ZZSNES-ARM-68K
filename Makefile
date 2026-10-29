@@ -170,3 +170,9 @@ test-audio-early:
 .PHONY: test-ppu
 test-ppu:
 	$(PYTHON) scripts/test_ppu_experiment.py
+
+.PHONY: test-timed-superfx current-timed-superfx
+test-timed-superfx:
+	$(PYTHON) scripts/test_timed_superfx.py
+current-timed-superfx:
+	$(PYTHON) scripts/build_current.py --release-ax --timed-superfx-experiment

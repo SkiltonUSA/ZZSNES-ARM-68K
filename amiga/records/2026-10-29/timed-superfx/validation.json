@@ -1,0 +1,106 @@
+{
+  "version": "0.7.5-exp",
+  "default": "Legacy",
+  "released_version_unchanged": "0.7.4-dev",
+  "upstream_snes9x": "1bcc369e89f08243e0a462882fb1f3e42e51de3a",
+  "executables": {
+    ".context/timed-superfx-build/ZZSNES": "4f537f0e0a87c4fae351e65546dbd9e7babb54f10a4d6012a1e38fdcc9f7bf1f",
+    ".context/timed-superfx-build/ZZSnes-ui": "95bfad8d3df0d68736946bcbe5dab831da55a0cc23b01d884c7760e92d624add",
+    ".context/timed-superfx-build/ZZSnes-FX": "95bfad8d3df0d68736946bcbe5dab831da55a0cc23b01d884c7760e92d624add",
+    ".context/timed-superfx-build/player/pocket.elf": "259708cced83488abef8b57db7d0b6082a010099d5cc34af1e6faa03a8834d0e",
+    ".context/timed-superfx-launcher-build/ZZSNES-Layout640": "43ec643aaf9678e38ba6a7f85c4de18399a75e867cdb716c5cf498f5219eba0d"
+  },
+  "native_traces": {
+    "0-baseline.trace": "0a1310dfefe1c78e4adc9e5a6e600033d31727f2f2a5e1cf24b19d8726803333",
+    "0-legacy.trace": "0a1310dfefe1c78e4adc9e5a6e600033d31727f2f2a5e1cf24b19d8726803333",
+    "0-timed.trace": "7636530a52dea28721bc2af4510b52085d232008525ac26b4f0275f25738071d",
+    "1-baseline.trace": "75dfc89faf874ef4fd4d17393cf175cd7bffb7b21e1473b386aa4d91a85141de",
+    "1-legacy.trace": "75dfc89faf874ef4fd4d17393cf175cd7bffb7b21e1473b386aa4d91a85141de",
+    "1-timed.trace": "75dfc89faf874ef4fd4d17393cf175cd7bffb7b21e1473b386aa4d91a85141de",
+    "2-baseline.trace": "f5ae8009cf59cc1ac258b92beef30dde4fc547050c08ddae9228e84d3afb7ba1",
+    "2-legacy.trace": "f5ae8009cf59cc1ac258b92beef30dde4fc547050c08ddae9228e84d3afb7ba1",
+    "2-timed.trace": "17731e2b2d992cd69e43108a228a3823f339f0eeff90bee3759888c2e7590328",
+    "3-baseline.trace": "14303e68d7b06c1fec18d247f4b2075d1fdfc398947b76db71587de9cbd721b9",
+    "3-legacy.trace": "14303e68d7b06c1fec18d247f4b2075d1fdfc398947b76db71587de9cbd721b9",
+    "3-timed.trace": "8fcf08f7a61bbeb876e2dd09c8fda348b877b5fcfc9efe6c1b0b1a97b36d4e16"
+  },
+  "private_rom_hashes": {
+    "smw.sfc": "0838e531fe22c077528febe14cb3ff7c492f1f5fa8de354192bdff7137c27f5b",
+    "starfox2.sfc": "b86c6113be950337b5cf43c5105f8a442ba897da6fca1cf3af47420d33f76f54",
+    "stunt.sfc": "c04d80b84514202ff319384ca20641eb0189e975eed5612915bd9c224b2ab30a"
+  },
+  "private_checkpoint_hashes": {
+    "starfox2-legacy.state": "3f04219c9cec5d787cc46bddb9c0a84711ef56f8c96ba96fe6c5522d8f319fe0",
+    "smw.state": "5540914349340b05cdea2f2588128fef1b94a45048bcac7d6089449f2afdc0a6",
+    "starfox2.state": "450930699423293128f101b04f50035ee89d33e0e23c363cb63580f51be8d03b",
+    "smw-legacy.state": "964187d81261bed133f67ff56f4ab5358a3ff4523eddc75cee9aeb7b9dc18243",
+    "stunt.state": "c2bd0a0927c0cc81e1f00ff51d6282320bb9fe05d7d1f49fb2306ef3aca643f6",
+    "stunt-legacy.state": "47b4829228bc5b0e53cb172e6a0355c2873c89e2321f99a8b42c6e37494aaf9f"
+  },
+  "physical_runs": [
+    {
+      "name": "stunt-timed-1",
+      "elapsed_us": 18156822,
+      "core_us": 14428841,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "850bd0cc"
+        ],
+        [
+          "600",
+          "a092c639"
+        ]
+      ]
+    },
+    {
+      "name": "stunt-legacy-1",
+      "elapsed_us": 19196136,
+      "core_us": 15455678,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "a36c309e"
+        ],
+        [
+          "600",
+          "f3c437df"
+        ]
+      ]
+    },
+    {
+      "name": "starfox2-timed-1",
+      "elapsed_us": 13833801,
+      "core_us": 10114179,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "03f65b0b"
+        ],
+        [
+          "600",
+          "628b6c50"
+        ]
+      ]
+    },
+    {
+      "name": "smw-timed-1",
+      "elapsed_us": 12495857,
+      "core_us": 5464220,
+      "hash": "811c9dc5",
+      "frame_hashes": [
+        [
+          "1",
+          "a81690cc"
+        ],
+        [
+          "600",
+          "a205a640"
+        ]
+      ]
+    }
+  ]
+}

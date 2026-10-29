@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.5-exp — isolated timed Super FX experiment
+
+- Add Legacy / Timed (experimental) selection, with Legacy still the default.
+- Bound GSU work per scanline; model fetch/cache and instruction costs, carrying excess cycles forward.
+- Preserve timing state and per-game settings; retain existing FX3 behavior.
+- Validate native output, relocated ARM replay, physical A4000TX completion and compact MUI controls.
+- [Results and limitations](docs/timed-superfx.md). The published 0.7.4 Beta is unchanged.
+
 ## 0.7.4 Beta — Super FX race graphics
 
 - Correct stale PPU colour-window registers that caused cyan-tinted race graphics.

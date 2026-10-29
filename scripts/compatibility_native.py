@@ -2,7 +2,7 @@
 from pathlib import Path
 import shutil,subprocess,hashlib
 
-def build(source,O,*,experimental=False,baseline=False,fx3=False,snapshot_fix=False,expanded=False,ppu=None):
+def build(source,O,*,experimental=False,baseline=False,fx3=False,snapshot_fix=False,expanded=False,ppu=None,timed_fx=False):
  r=Path(__file__).resolve().parents[1];snap=r/'development/beta-20261015';core=O/'native-core';O.mkdir(parents=True,exist_ok=True)
  shutil.copytree(snap/'source/core',core,dirs_exist_ok=True)
  if not baseline:
@@ -20,10 +20,14 @@ def build(source,O,*,experimental=False,baseline=False,fx3=False,snapshot_fix=Fa
   for dest in (core,inc):shutil.copytree(overlay/'common',dest,dirs_exist_ok=True)
   shutil.copy2(r/'development/optimisation-20261018/player/region.h',core/'region.h')
   subprocess.run(['patch','-p1','-d',str(core),'-i',str(r/'development/optimisation-20261018/region-clock.patch')],check=True)
+ if timed_fx:
+  from prepare_timed_superfx import prepare,options
+  prepare(core);options(inc)
  if ppu is not None:
   from prepare_ppu_experiment import prepare
   prepare(core,ppu)
  names='apu apuaux c4 c4emu cheats cheats2 clip data dsp1 fxemu fxinst globals dma memmap cpu cpuexec cpuops sa1 sa1cpu sdd1 sdd1emu snapshot soundux spc700 srtc ppu_ gfx tile'.split()
+ if timed_fx:names+=['timed_fx','fxinst_timed']
  sources=[core/'src'/f'{n}.c'for n in names]+[core/'libretro/libretro.c',core/'libretro/libretro-common/streams/memory_stream.c',core/'player.c',source]
  flags=['clang','-std=gnu99','-O2','-g','-fno-strict-aliasing','-fwrapv','-DHAVE_STRINGS_H','-DHAVE_STDINT_H','-DHAVE_INTTYPES_H','-D__LIBRETRO__','-DUSE_SA1','-D__OLD_RASTER_FX__','-DPOCKET_NATIVE','-Wno-incompatible-pointer-types','-Wno-pointer-sign','-fsanitize=address,undefined','-fno-sanitize-recover=all']
  flags+=['-I'+str(p)for p in [inc,core,core/'src',core/'libretro',core/'libretro/libretro-common/include',snap/'source/amiga/mesen_bench']]

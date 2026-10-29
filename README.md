@@ -29,6 +29,9 @@ Star Fox 2 and Doom also passed native save/load replay checks. Compatibility
 varies by title; **FX3 remains experimental**.
 [Fix details and validation](docs/stunt-race-fx.md).
 
+An opt-in [Timed Super FX experiment](docs/timed-superfx.md) adds scanline
+cycle budgets. Legacy remains the default; the published beta is unchanged.
+
 ![Stunt Race FX — corrected race graphics captured on the A4000TX](docs/screenshots/stunt-race-fixed.png)
 
 ## Features

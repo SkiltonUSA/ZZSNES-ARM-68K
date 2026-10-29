@@ -1,0 +1,51 @@
+Commands: make test-timed-superfx; scripts/test_timed_superfx_games.py (four private ROMs, 3600 frames); make test-native test-expanded
+
+PASS legacy default, CLSR timing and slice overshoot carry
+PASS cache fill cost, hit cost and flush
+PASS RAM load/store, multiply, ROM buffer and plot cycle costs
+PASS STOP/IRQ and no extra budget from GO/R15 writes
+PASS FX3 retains legacy instruction budgeting; settings persist
+PASS timed state debt/mode, malformed metadata rejection and legacy restore
+PASS baseline stunt.sfc 3600 frames + 60-frame state/PCM replay
+PASS baseline smw.sfc 3600 frames + 60-frame state/PCM replay
+PASS baseline starfox2.sfc 3600 frames + 60-frame state/PCM replay
+PASS baseline doom.sfc 3600 frames + 60-frame state/PCM replay
+PASS legacy stunt.sfc 3600 frames + 60-frame state/PCM replay
+PASS legacy smw.sfc 3600 frames + 60-frame state/PCM replay
+PASS legacy starfox2.sfc 3600 frames + 60-frame state/PCM replay
+PASS legacy doom.sfc 3600 frames + 60-frame state/PCM replay
+PASS timed stunt.sfc 3600 frames + 60-frame state/PCM replay
+PASS timed smw.sfc 3600 frames + 60-frame state/PCM replay
+PASS timed starfox2.sfc 3600 frames + 60-frame state/PCM replay
+PASS timed doom.sfc 3600 frames + 60-frame state/PCM replay
+PASS: saved artifacts, pinned core sources, measured mean and hardware completion markers
+PASS: MUI release identities, displayed FPS, teardown and artifact ROM/state exclusions
+PASS: archived failure reproduced; normal and Super FX builds restore sprites
+PASS live PPU colour-window and main/sub BG mask register changes
+PASS Super FX two-bank RAM map and SCBR=$25 second-bank drawing
+PASS Super FX lower-half ROM execution across instruction slices
+PASS 8192 Super FX 8bpp colour/transparency cases, adjacent pixels and X advance
+PASS family=00 map=20 bytes=65536 highres/interlace/state
+PASS family=35 map=23 bytes=65536 highres/interlace/state
+PASS family=03 map=20 bytes=65536 highres/interlace/state
+PASS family=f3 map=20 bytes=65536 highres/interlace/state
+PASS family=43 map=32 bytes=6291456 highres/interlace/state
+PASS family=00 map=25 bytes=6291456 highres/interlace/state
+PASS Super FX SCBR swap refreshes cached column pointers
+PASS family=13 map=20 bytes=65536 highres/interlace/state
+PASS FX3 in-flight GSU pipeline, register and second RAM-bank restore into fresh core
+PASS family=17 map=20 bytes=4194304 highres/interlace/state
+PASS FX3 in-flight GSU pipeline, register and second RAM-bank restore into fresh core
+PASS family=18 map=20 bytes=4194304 highres/interlace/state
+PASS expanded cartridge gates, 6 MiB mapping, chip state and video geometry
+PASS cartridge SRAM, fresh-core reload, 2 independent pads and bounded PAR/Game Genie cheats
+PASS automatic frameskip feedback/recovery/render limit, uninterrupted PCM generation, transparency and option state restore
+PASS FX3 CPU mappings, MMIO mirrors/holes, VCR, ROM preservation and two RAM banks
+PASS FX3 MERGE 0..6, clear regions/stride/planes, low-ROM mirror, extended-ROM/RAM execution, STOP R15/no IRQ
+PASS FX3 bounded execution, CPU polling/cancellation, clock counts 467/933, ROM data banks
+PASS FX3 CPU mappings, MMIO mirrors/holes, VCR, ROM preservation and two RAM banks
+PASS FX3 MERGE 0..6, clear regions/stride/planes, low-ROM mirror, extended-ROM/RAM execution, STOP R15/no IRQ
+PASS FX3 bounded execution, CPU polling/cancellation, clock counts 467/933, ROM data banks
+PASS core-option round trips and v4 preference migration
+PASS profile/options/control roundtrip, key mapping, bounded numbers and cheat syntax
+PASS battery startup defaults, persist/reload, backup rotation, rename rollback and malformed-file refusal

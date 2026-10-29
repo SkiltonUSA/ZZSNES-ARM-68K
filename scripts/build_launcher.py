@@ -5,14 +5,17 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def main():
  parser=argparse.ArgumentParser(description=__doc__)
+ parser.add_argument('--timed-superfx-experiment',action='store_true')
  parser.add_argument('--expanded',action='store_true')
  parser.add_argument('--options-probe',action='store_true')
  parser.add_argument('--probe',choices=['640x480','800x600','1024x768'])
  parser.add_argument('--capture-seconds',type=int,default=0,choices=range(61))
  args=parser.parse_args()
+ if args.timed_superfx_experiment and not args.expanded:parser.error('--timed-superfx-experiment needs --expanded')
  if args.options_probe and not(args.expanded and args.probe):parser.error('--options-probe needs --expanded --probe')
  m=json.loads((ROOT/'docs/current-build.json').read_text());out=ROOT/'.context/launcher-build';lib=out/'library';snapshot=ROOT/m['library_snapshot_dir']
  if args.expanded:out=ROOT/'.context/expanded-launcher-build';lib=out/'library'
+ if args.timed_superfx_experiment:out=ROOT/'.context/timed-superfx-launcher-build';lib=out/'library'
  if lib.exists():shutil.rmtree(lib)
  shutil.copytree(snapshot/'build-inputs',lib)
  for header in (snapshot/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
@@ -24,6 +27,9 @@ def main():
   overlay=ROOT/'development/expanded-20261019'
   for name in ('source','common'):shutil.copytree(overlay/name,lib,dirs_exist_ok=True)
  p=lib/'library_mui.h';p.write_text(p.read_text().replace('0.7.1 Beta','0.7.2-dev').replace('0.6.1 Beta','0.6.2-dev'))
+ if args.timed_superfx_experiment:
+  from prepare_timed_superfx import prepare_launcher
+  prepare_launcher(lib)
  runtime=json.loads(os.environ.get('BETA_CONTAINER_COMMAND','["podman","--connection","nuflix-converter-root","run","--rm","--platform","linux/amd64"]'))
  flags=[];target=out/m['console']
  if args.probe:

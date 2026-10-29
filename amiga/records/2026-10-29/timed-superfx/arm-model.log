@@ -1,0 +1,18 @@
+PASS ARM Legacy video/PCM stunt.sfc 0x150020c0 30
+PASS candidate Legacy state resumes in previous player stunt.sfc 0x150020c0
+PASS ARM timed mode, relocated state and PCM replay stunt.sfc 0x150020c0 30
+PASS ARM Legacy video/PCM stunt.sfc 0x12000040 30
+PASS candidate Legacy state resumes in previous player stunt.sfc 0x12000040
+PASS ARM timed mode, relocated state and PCM replay stunt.sfc 0x12000040 30
+PASS ARM Legacy video/PCM starfox2.sfc 0x150020c0 30
+PASS candidate Legacy state resumes in previous player starfox2.sfc 0x150020c0
+PASS ARM timed mode, relocated state and PCM replay starfox2.sfc 0x150020c0 30
+PASS ARM Legacy video/PCM starfox2.sfc 0x12000040 30
+PASS candidate Legacy state resumes in previous player starfox2.sfc 0x12000040
+PASS ARM timed mode, relocated state and PCM replay starfox2.sfc 0x12000040 30
+PASS ARM Legacy video/PCM smw.sfc 0x150020c0 30
+PASS candidate Legacy state resumes in previous player smw.sfc 0x150020c0
+PASS ARM timed mode, relocated state and PCM replay smw.sfc 0x150020c0 30
+PASS ARM Legacy video/PCM smw.sfc 0x12000040 30
+PASS candidate Legacy state resumes in previous player smw.sfc 0x12000040
+PASS ARM timed mode, relocated state and PCM replay smw.sfc 0x12000040 30

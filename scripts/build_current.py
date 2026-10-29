@@ -8,7 +8,8 @@ from prepare_ppu_experiment import MODES as PPU_MODES
 ROOT=Path(__file__).resolve().parents[1]
 def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--ppu-test',choices=PPU_MODES,help='Isolated raster experiment; requires --release-ax');p.add_argument('--release-ax',action='store_true',help='Build the normal-play AX audio beta with matching launcher');p.add_argument('--ax-audio-test',action='store_true',help='Isolated per-app ZZ9000AX AHI backend; unit 0 fallback');p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--timed-superfx-experiment',action='store_true',help='Isolated Legacy/Timed Super FX candidate; requires --release-ax');p.add_argument('--ppu-test',choices=PPU_MODES,help='Isolated raster experiment; requires --release-ax');p.add_argument('--release-ax',action='store_true',help='Build the normal-play AX audio beta with matching launcher');p.add_argument('--ax-audio-test',action='store_true',help='Isolated per-app ZZ9000AX AHI backend; unit 0 fallback');p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ if a.timed_superfx_experiment and (not a.release_ax or a.ppu_test):p.error('--timed-superfx-experiment requires --release-ax without --ppu-test')
  if a.ppu_test and not a.release_ax:p.error('--ppu-test requires --release-ax')
  if a.release_ax:
   if a.ax_audio_test or a.presentation_test or a.host_service_test or a.audio_early or a.ack_poll_us:p.error('release build cannot include diagnostic options')
@@ -53,6 +54,9 @@ def main():
   out=ROOT/'.context/ax-release-build';stage=out/'player';lib=out/'library'
  if a.ppu_test:
   out=ROOT/('.context/ppu-'+a.ppu_test+'-build');stage=out/'player';lib=out/'library'
+ if a.timed_superfx_experiment:
+  from prepare_timed_superfx import VERSION
+  out=ROOT/'.context/timed-superfx-build';stage=out/'player';lib=out/'library';m['version']=VERSION
  shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
  shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
@@ -81,6 +85,9 @@ def main():
   p=lib/'library_mui.h';s=p.read_text();s=s.replace('"Header supported: NTSC, mapper %d\\nGameplay compatibility varies by title.",mapper','"Header supported: %s, mapper %d\\nGameplay compatibility varies by title.",fc_rom_pal(p,n,model.entry[selected].path)?"PAL":"NTSC",mapper').replace('NTSC mapper 0 or 90, without trainer or battery.','mapper 0/1/2/4/5/90; no trainer or battery.');p.write_text(s)
  if a.jit_registers:
   h=lib/'library_mui.h';h.write_text(re.sub(r'#define LIB_VERSION "[^"]+"','#define LIB_VERSION "'+m['version']+'"',h.read_text()))
+ if a.timed_superfx_experiment:
+  from prepare_timed_superfx import prepare_launcher
+  prepare_launcher(lib)
  snes=m['console']=='ZZSNES';rel=lambda p:str(p.relative_to(ROOT));inside=lambda p:os.environ.get('ARM_CONTAINER_ROOT','/work')+'/'+rel(p)
  if a.arm:
   core=out/'core';objects=[]
@@ -103,6 +110,10 @@ def main():
   if a.optimisation and snes:
    shutil.copy2(stage/'region.h',core/'region.h')
    run(['patch','-p1','-d',core,'-i',ROOT/'development/optimisation-20261018/region-clock.patch'])
+  if a.timed_superfx_experiment:
+   from prepare_timed_superfx import prepare,options
+   prepare(core);options(stage)
+   m['arm_sources'] += [str((core/'src'/name).relative_to(ROOT)) for name in ('timed_fx.c','fxinst_timed.c')]
   if a.ppu_test:
    from prepare_ppu_experiment import prepare
    prepare(core,a.ppu_test)
