@@ -17,8 +17,19 @@ App version: **0.7.4-dev**.
 
 ![ZZSNES interface](docs/screenshots/interface.png)
 
-**Race graphics fix:** corrected Super FX RAM/execution, 8-bit transparency and
-PPU colour-window handling in Stunt Race FX. [Details and checks](docs/stunt-race-fx.md).
+## Super FX compatibility
+
+Super FX cartridge emulation runs on the ZZ9000 Cortex-A9. **0.7.4 Beta** fixes
+Super FX RAM mapping, instruction execution, pixel transparency and colour-window
+handling, correcting the missing geometry and distorted race colours in
+**Stunt Race FX** without modifying the ROM.
+
+The race, save/load and window/fullscreen switching were checked on the A4000TX.
+Star Fox 2 and Doom also passed native save/load replay checks. Compatibility
+varies by title; **FX3 remains experimental**.
+[Fix details and validation](docs/stunt-race-fx.md).
+
+![Stunt Race FX — corrected race graphics captured on the A4000TX](docs/screenshots/stunt-race-fixed.png)
 
 ## Features
 
@@ -103,7 +114,7 @@ These earlier gameplay captures show the **software** effect:
 
 ## More games
 
-Full-size 320×240 captures from ZZSNES 0.7.4-dev on the A4000TX/ZZ9000.
+320×240 gameplay captures from ZZSNES on the A4000TX/ZZ9000.
 
 | Kirby Super Star | Star Fox — training | Axelay |
 | --- | --- | --- |
