@@ -1,0 +1,19 @@
+{
+  "version": "0.8.2-dev",
+  "ack_interval_us": 250,
+  "ack_profile": false,
+  "fixed_presentation": true,
+  "audit": false,
+  "capture": false,
+  "warmup": 60,
+  "hashes": {
+    ".context/amiga/ack-poll-1029/nes-plain-poll/Player": "2a26eba5f7eed796e86c739114697ef160e79869aded581ad4903404510d3457",
+    ".context/amiga/ack-poll-1029/nes-plain-poll/host.c": "5304d7f634cac495c7508ca023f80dda5ead6c1df6df845d6905e36a02715995",
+    ".context/ZZNes-ARM-68K/.context/jit-switch32-build/player/mmu.h": "954a4038c78e1a67fa696592b80bf1fb61aa72eaf7a0f1830d3ba75453382ef7",
+    ".context/ZZNes-ARM-68K/.context/jit-switch32-build/player/mmu_plan.h": "c382cb9f9161a6f698b646f8480c7b6a2ff1d7f4a9f47885262760051c1283b4",
+    ".context/ZZNes-ARM-68K/.context/jit-switch32-build/player/zz_payload.h": "37fd0e82bf748c05ee3a0f44a5558caaafdd67c1b73904b16603ac664f042f05",
+    ".context/ZZNes-ARM-68K/.context/jit-switch32-build/player/player_audio.h": "bf0c9a86fbc3030b2e6dffe257f337d65e7f7a207fc04a03d560be84413eab5a",
+    ".context/amiga/ack-poll-1029/nes-plain-poll/fullscreen.h": "d99ef28f2e38a9379a40daaef9d9f2361ab6513f0d3f01ce207db3f970fbb4ba",
+    ".context/amiga/ack-poll-1029/nes-plain-poll/poll_interval.h": "17fd59bc27fecd4be67c1276167911702d4d5eadad41cb469b24884bd1cf0712"
+  }
+}

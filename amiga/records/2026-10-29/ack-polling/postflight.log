@@ -1,0 +1,6 @@
+amiga_run_script [OK]
+CLEANUP_OK
+amiga_ping Amiga alive - clients: 0, chip: 2022784 bytes, fast: 617415032 bytes
+amiga_checksum File: ENVARC:Sys/screenmode.prefs
+CRC32: 9C80FBC5
+Size: 62 bytes

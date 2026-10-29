@@ -1,0 +1,52 @@
+--- original/fullscreen.h
++++ diagnostic/fullscreen.h
+@@ -7,6 +7,14 @@
+ static volatile UBYTE *full_board;
+ static struct nf_slots full_slots={0,1,-1,0,0}; /* Core init precedes screen open. */
+ static ULONG full_pitch,full_origin,full_pending_us,full_wait_us;
++#include "poll_interval.h"
++static uint32_t ap_last;
++static int ap_measured;
++static ULONG ap_phase,ap_calls[4],ap_reads[4],ap_acks[4],ap_age[4],ap_max[4];
++static void ap_ack(void){
++ if(ap_measured){ULONG age=us()-full_pending_us;
++  ap_acks[ap_phase]++;ap_age[ap_phase]+=age;if(age>ap_max[ap_phase])ap_max[ap_phase]=age;}
++}
+ static UWORD *full_pointer;
+ static int full_fault,full_attached,full_usedpan,full_origin_known;
+ static void full_write(unsigned reg,UWORD v){*(volatile UWORD *)(full_board+reg)=v;}
+@@ -27,10 +35,16 @@
+ }
+ static int full_poll(void){
+  if(fc_windowed)return !full_fault;
++ if(full_slots.pending>=0){
++  if(ap_measured)ap_calls[ap_phase]++;
++  if(EM_ACK_INTERVAL && !ack_poll_due(us(),&ap_last,EM_ACK_INTERVAL))return !full_fault;
++  if(ap_measured)ap_reads[ap_phase]++;
++ }
++
+  int status;
+  if(full_slots.pending<0)return !full_fault;
+  status=nf_ack(&full_slots,full_ack_count());
+- if(status==1){fc_flip_sample();full_wait_us+=us()-full_pending_us;full_unlock();return 1;}
++ if(status==1){ap_ack();fc_flip_sample();full_wait_us+=us()-full_pending_us;full_unlock();return 1;}
+  if(status<0 || (ULONG)(us()-full_pending_us)>100000u){
+   /* Cancellation clears pending before restoring slot zero. Lock is still
+    * held: the screen and origin cannot change underneath this transaction. */
+@@ -39,14 +53,14 @@
+  }
+  return 1;
+ }
+-static int full_drain(void){
++static int full_drain(void){ap_phase=2;
+  while(full_slots.pending>=0){if(!full_poll())return 0;/* Bounded full_poll deadline; do not sleep under bitmap lock. */}
+  return !full_fault;
+ }
+ static int full_queue(void){
+  if(fc_windowed){full_slots.front=full_slots.render;full_slots.flips++;full_unlock();return 1;}
+  if(!direct_locked || !full_attached || !nf_queue(&full_slots,full_ack_count()))return 0;
+- full_pending_us=us();
++ full_pending_us=us();ap_last=full_pending_us-EM_ACK_INTERVAL;ap_measured=fc_profile_frame>=60;
+  full_usedpan=1;
+  full_pan(full_origin+(ULONG)full_slots.pending*240*full_pitch,1);
+  return 1;

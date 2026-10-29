@@ -1,0 +1,18 @@
+{
+  "version": "0.7.2-dev",
+  "ack_interval_us": 0,
+  "fixed_presentation": true,
+  "audit": false,
+  "capture": false,
+  "warmup": 60,
+  "hashes": {
+    ".context/amiga/ack-poll-1029/snes-ref/Player": "d0b5f11dc12c646b08d7d78f9317b4f34662ce87e237fcc0bc99dd09536d1134",
+    ".context/amiga/ack-poll-1029/snes-ref/host.c": "4d2a9567e376b8919dcfd5ba5cc1660441ca28854609e7fcece30b344d8c44e5",
+    ".context/ZZSNES-ARM-68K/.context/jit-dispatch32-build/player/mmu.h": "954a4038c78e1a67fa696592b80bf1fb61aa72eaf7a0f1830d3ba75453382ef7",
+    ".context/ZZSNES-ARM-68K/.context/jit-dispatch32-build/player/mmu_plan.h": "04f11b5f7d456fe3a110329708c81fa67254eb24c201d2f6e1340f2d6287c741",
+    ".context/ZZSNES-ARM-68K/.context/jit-dispatch32-build/player/zz_payload.h": "d10f30e75186bd95c211c6be15a3f35b9ada748259e2d2376b98541d4b0a8f90",
+    ".context/ZZSNES-ARM-68K/.context/jit-dispatch32-build/player/player_audio.h": "6c14f2d1d620ef7041489eb61628161dc50ed40757ae7f7e31e8a4434d04b571",
+    ".context/amiga/ack-poll-1029/snes-ref/fullscreen.h": "7ea122c68ba3c75278aa765fb1fb336de49ee2dd239464f314d34356d3ee506b",
+    ".context/amiga/ack-poll-1029/snes-ref/poll_interval.h": "17fd59bc27fecd4be67c1276167911702d4d5eadad41cb469b24884bd1cf0712"
+  }
+}

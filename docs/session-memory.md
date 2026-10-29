@@ -599,3 +599,15 @@ keep original defaults. Earlier VERIFY/snapshot-heavy elapsed times were not
 normal-play performance. See fixed-presentation.md and its raw records.
 No installed player, ROM, save, firmware or saved display preference changed.
 The previously reported NES freeze remains unexplained.
+
+## Fullscreen ACK polling — 29 October 2026
+
+Optional --ack-poll-us 250 reduces pending ACK reads by about 90%, but the
+counter-free NES/SNES pairs show no useful frame-rate or audio gain. Release
+defaults stay unchanged. Existing lock/ACK/timeout/reset rules remain intact.
+Twenty physical runs complete cleanly; 16 accepted comparison logs are archived
+(the first four NES profiling logs were overwritten by a harness naming error,
+then repeated). Native actual-host mocks pass retirement and cancellation cases.
+See ack-polling.md for phase/blocking details and the next conversion-overlap
+investigation. Private SD test drawer removed; bridge up, Core1 idle, saved
+screenmode CRC 9C80FBC5 unchanged. Installed players and user data untouched.

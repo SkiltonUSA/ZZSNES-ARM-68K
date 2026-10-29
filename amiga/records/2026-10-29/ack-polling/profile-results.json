@@ -1,0 +1,756 @@
+{
+  "runs": [
+    {
+      "ack": [
+        {
+          "phase": 0,
+          "interval": 250,
+          "calls": 43694,
+          "reads": 9460,
+          "acks": 99,
+          "age_us": 1200312,
+          "max_us": 21964
+        },
+        {
+          "phase": 1,
+          "interval": 250,
+          "calls": 0,
+          "reads": 0,
+          "acks": 0,
+          "age_us": 0,
+          "max_us": 0
+        },
+        {
+          "phase": 2,
+          "interval": 250,
+          "calls": 151419,
+          "reads": 9448,
+          "acks": 497,
+          "age_us": 6003503,
+          "max_us": 23797
+        },
+        {
+          "phase": 3,
+          "interval": 250,
+          "calls": 599,
+          "reads": 599,
+          "acks": 4,
+          "age_us": 80925,
+          "max_us": 21376
+        }
+      ],
+      "mode": "fullscreen",
+      "run": "nes-poll-1",
+      "steady_seconds": 10.563714,
+      "gaps": 136,
+      "pcm": 351395
+    },
+    {
+      "ack": [
+        {
+          "phase": 0,
+          "interval": 250,
+          "calls": 42780,
+          "reads": 10525,
+          "acks": 91,
+          "age_us": 1088390,
+          "max_us": 22503
+        },
+        {
+          "phase": 1,
+          "interval": 250,
+          "calls": 0,
+          "reads": 0,
+          "acks": 0,
+          "age_us": 0,
+          "max_us": 0
+        },
+        {
+          "phase": 2,
+          "interval": 250,
+          "calls": 157622,
+          "reads": 9836,
+          "acks": 499,
+          "age_us": 6075383,
+          "max_us": 22076
+        },
+        {
+          "phase": 3,
+          "interval": 250,
+          "calls": 599,
+          "reads": 599,
+          "acks": 10,
+          "age_us": 214405,
+          "max_us": 23446
+        }
+      ],
+      "mode": "fullscreen",
+      "run": "nes-poll-2",
+      "steady_seconds": 10.452282,
+      "gaps": 99,
+      "pcm": 351395
+    },
+    {
+      "ack": [
+        {
+          "phase": 0,
+          "interval": 0,
+          "calls": 43034,
+          "reads": 43034,
+          "acks": 101,
+          "age_us": 1258624,
+          "max_us": 24310
+        },
+        {
+          "phase": 1,
+          "interval": 0,
+          "calls": 0,
+          "reads": 0,
+          "acks": 0,
+          "age_us": 0,
+          "max_us": 0
+        },
+        {
+          "phase": 2,
+          "interval": 0,
+          "calls": 153361,
+          "reads": 153361,
+          "acks": 491,
+          "age_us": 6014772,
+          "max_us": 29916
+        },
+        {
+          "phase": 3,
+          "interval": 0,
+          "calls": 599,
+          "reads": 599,
+          "acks": 8,
+          "age_us": 172229,
+          "max_us": 25882
+        }
+      ],
+      "mode": "fullscreen",
+      "run": "nes-ref-1",
+      "steady_seconds": 10.552719,
+      "gaps": 111,
+      "pcm": 351395
+    },
+    {
+      "ack": [
+        {
+          "phase": 0,
+          "interval": 0,
+          "calls": 42464,
+          "reads": 42464,
+          "acks": 90,
+          "age_us": 1223100,
+          "max_us": 24969
+        },
+        {
+          "phase": 1,
+          "interval": 0,
+          "calls": 0,
+          "reads": 0,
+          "acks": 0,
+          "age_us": 0,
+          "max_us": 0
+        },
+        {
+          "phase": 2,
+          "interval": 0,
+          "calls": 151723,
+          "reads": 151723,
+          "acks": 503,
+          "age_us": 6099857,
+          "max_us": 32100
+        },
+        {
+          "phase": 3,
+          "interval": 0,
+          "calls": 599,
+          "reads": 599,
+          "acks": 7,
+          "age_us": 123830,
+          "max_us": 21734
+        }
+      ],
+      "mode": "fullscreen",
+      "run": "nes-ref-2",
+      "steady_seconds": 10.602516,
+      "gaps": 130,
+      "pcm": 351395
+    },
+    {
+      "ack": [
+        {
+          "phase": 0,
+          "interval": 250,
+          "calls": 34279,
+          "reads": 9065,
+          "acks": 121,
+          "age_us": 1412105,
+          "max_us": 40557
+        },
+        {
+          "phase": 1,
+          "interval": 250,
+          "calls": 0,
+          "reads": 0,
+          "acks": 0,
+          "age_us": 0,
+          "max_us": 0
+        },
+        {
+          "phase": 2,
+          "interval": 250,
+          "calls": 142469,
+          "reads": 8887,
+          "acks": 428,
+          "age_us": 5492317,
+          "max_us": 16720
+        },
+        {
+          "phase": 3,
+          "interval": 250,
+          "calls": 44944,
+          "reads": 5516,
+          "acks": 51,
+          "age_us": 684110,
+          "max_us": 28198
+        }
+      ],
+      "mode": "fullscreen",
+      "run": "snes-poll-1",
+      "steady_seconds": 10.614847,
+      "gaps": 58,
+      "pcm": 352912
+    },
+    {
+      "ack": [
+        {
+          "phase": 0,
+          "interval": 250,
+          "calls": 26296,
+          "reads": 7011,
+          "acks": 163,
+          "age_us": 1792027,
+          "max_us": 30609
+        },
+        {
+          "phase": 1,
+          "interval": 250,
+          "calls": 0,
+          "reads": 0,
+          "acks": 0,
+          "age_us": 0,
+          "max_us": 0
+        },
+        {
+          "phase": 2,
+          "interval": 250,
+          "calls": 103018,
+          "reads": 6423,
+          "acks": 311,
+          "age_us": 3973394,
+          "max_us": 17138
+        },
+        {
+          "phase": 3,
+          "interval": 250,
+          "calls": 57730,
+          "reads": 6982,
+          "acks": 126,
+          "age_us": 1477935,
+          "max_us": 31168
+        }
+      ],
+      "mode": "fullscreen",
+      "run": "snes-poll-2",
+      "steady_seconds": 11.206829,
+      "gaps": 118,
+      "pcm": 352912
+    },
+    {
+      "ack": [
+        {
+          "phase": 0,
+          "interval": 0,
+          "calls": 37505,
+          "reads": 37505,
+          "acks": 66,
+          "age_us": 887517,
+          "max_us": 59761
+        },
+        {
+          "phase": 1,
+          "interval": 0,
+          "calls": 0,
+          "reads": 0,
+          "acks": 0,
+          "age_us": 0,
+          "max_us": 0
+        },
+        {
+          "phase": 2,
+          "interval": 0,
+          "calls": 162611,
+          "reads": 162611,
+          "acks": 483,
+          "age_us": 6123576,
+          "max_us": 21849
+        },
+        {
+          "phase": 3,
+          "interval": 0,
+          "calls": 26361,
+          "reads": 26361,
+          "acks": 51,
+          "age_us": 489447,
+          "max_us": 29282
+        }
+      ],
+      "mode": "fullscreen",
+      "run": "snes-ref-1",
+      "steady_seconds": 10.703954,
+      "gaps": 62,
+      "pcm": 352912
+    },
+    {
+      "ack": [
+        {
+          "phase": 0,
+          "interval": 0,
+          "calls": 33484,
+          "reads": 33484,
+          "acks": 94,
+          "age_us": 1092538,
+          "max_us": 30334
+        },
+        {
+          "phase": 1,
+          "interval": 0,
+          "calls": 0,
+          "reads": 0,
+          "acks": 0,
+          "age_us": 0,
+          "max_us": 0
+        },
+        {
+          "phase": 2,
+          "interval": 0,
+          "calls": 117949,
+          "reads": 117949,
+          "acks": 424,
+          "age_us": 5418757,
+          "max_us": 16537
+        },
+        {
+          "phase": 3,
+          "interval": 0,
+          "calls": 52966,
+          "reads": 52966,
+          "acks": 82,
+          "age_us": 1009194,
+          "max_us": 29952
+        }
+      ],
+      "mode": "fullscreen",
+      "run": "snes-ref-2",
+      "steady_seconds": 10.899475,
+      "gaps": 86,
+      "pcm": 352912
+    }
+  ],
+  "summary": [
+    {
+      "mode": "fullscreen",
+      "console": "nes",
+      "mean_seconds": {
+        "ref": 10.577617499999999,
+        "poll": 10.507998
+      },
+      "reduction_percent": 0.6581775149271385,
+      "runs": {
+        "ref": [
+          {
+            "ack": [
+              {
+                "phase": 0,
+                "interval": 0,
+                "calls": 43034,
+                "reads": 43034,
+                "acks": 101,
+                "age_us": 1258624,
+                "max_us": 24310
+              },
+              {
+                "phase": 1,
+                "interval": 0,
+                "calls": 0,
+                "reads": 0,
+                "acks": 0,
+                "age_us": 0,
+                "max_us": 0
+              },
+              {
+                "phase": 2,
+                "interval": 0,
+                "calls": 153361,
+                "reads": 153361,
+                "acks": 491,
+                "age_us": 6014772,
+                "max_us": 29916
+              },
+              {
+                "phase": 3,
+                "interval": 0,
+                "calls": 599,
+                "reads": 599,
+                "acks": 8,
+                "age_us": 172229,
+                "max_us": 25882
+              }
+            ],
+            "mode": "fullscreen",
+            "run": "nes-ref-1",
+            "steady_seconds": 10.552719,
+            "gaps": 111,
+            "pcm": 351395
+          },
+          {
+            "ack": [
+              {
+                "phase": 0,
+                "interval": 0,
+                "calls": 42464,
+                "reads": 42464,
+                "acks": 90,
+                "age_us": 1223100,
+                "max_us": 24969
+              },
+              {
+                "phase": 1,
+                "interval": 0,
+                "calls": 0,
+                "reads": 0,
+                "acks": 0,
+                "age_us": 0,
+                "max_us": 0
+              },
+              {
+                "phase": 2,
+                "interval": 0,
+                "calls": 151723,
+                "reads": 151723,
+                "acks": 503,
+                "age_us": 6099857,
+                "max_us": 32100
+              },
+              {
+                "phase": 3,
+                "interval": 0,
+                "calls": 599,
+                "reads": 599,
+                "acks": 7,
+                "age_us": 123830,
+                "max_us": 21734
+              }
+            ],
+            "mode": "fullscreen",
+            "run": "nes-ref-2",
+            "steady_seconds": 10.602516,
+            "gaps": 130,
+            "pcm": 351395
+          }
+        ],
+        "poll": [
+          {
+            "ack": [
+              {
+                "phase": 0,
+                "interval": 250,
+                "calls": 43694,
+                "reads": 9460,
+                "acks": 99,
+                "age_us": 1200312,
+                "max_us": 21964
+              },
+              {
+                "phase": 1,
+                "interval": 250,
+                "calls": 0,
+                "reads": 0,
+                "acks": 0,
+                "age_us": 0,
+                "max_us": 0
+              },
+              {
+                "phase": 2,
+                "interval": 250,
+                "calls": 151419,
+                "reads": 9448,
+                "acks": 497,
+                "age_us": 6003503,
+                "max_us": 23797
+              },
+              {
+                "phase": 3,
+                "interval": 250,
+                "calls": 599,
+                "reads": 599,
+                "acks": 4,
+                "age_us": 80925,
+                "max_us": 21376
+              }
+            ],
+            "mode": "fullscreen",
+            "run": "nes-poll-1",
+            "steady_seconds": 10.563714,
+            "gaps": 136,
+            "pcm": 351395
+          },
+          {
+            "ack": [
+              {
+                "phase": 0,
+                "interval": 250,
+                "calls": 42780,
+                "reads": 10525,
+                "acks": 91,
+                "age_us": 1088390,
+                "max_us": 22503
+              },
+              {
+                "phase": 1,
+                "interval": 250,
+                "calls": 0,
+                "reads": 0,
+                "acks": 0,
+                "age_us": 0,
+                "max_us": 0
+              },
+              {
+                "phase": 2,
+                "interval": 250,
+                "calls": 157622,
+                "reads": 9836,
+                "acks": 499,
+                "age_us": 6075383,
+                "max_us": 22076
+              },
+              {
+                "phase": 3,
+                "interval": 250,
+                "calls": 599,
+                "reads": 599,
+                "acks": 10,
+                "age_us": 214405,
+                "max_us": 23446
+              }
+            ],
+            "mode": "fullscreen",
+            "run": "nes-poll-2",
+            "steady_seconds": 10.452282,
+            "gaps": 99,
+            "pcm": 351395
+          }
+        ]
+      }
+    },
+    {
+      "mode": "fullscreen",
+      "console": "snes",
+      "mean_seconds": {
+        "ref": 10.8017145,
+        "poll": 10.910838
+      },
+      "reduction_percent": -1.0102424017965017,
+      "runs": {
+        "ref": [
+          {
+            "ack": [
+              {
+                "phase": 0,
+                "interval": 0,
+                "calls": 37505,
+                "reads": 37505,
+                "acks": 66,
+                "age_us": 887517,
+                "max_us": 59761
+              },
+              {
+                "phase": 1,
+                "interval": 0,
+                "calls": 0,
+                "reads": 0,
+                "acks": 0,
+                "age_us": 0,
+                "max_us": 0
+              },
+              {
+                "phase": 2,
+                "interval": 0,
+                "calls": 162611,
+                "reads": 162611,
+                "acks": 483,
+                "age_us": 6123576,
+                "max_us": 21849
+              },
+              {
+                "phase": 3,
+                "interval": 0,
+                "calls": 26361,
+                "reads": 26361,
+                "acks": 51,
+                "age_us": 489447,
+                "max_us": 29282
+              }
+            ],
+            "mode": "fullscreen",
+            "run": "snes-ref-1",
+            "steady_seconds": 10.703954,
+            "gaps": 62,
+            "pcm": 352912
+          },
+          {
+            "ack": [
+              {
+                "phase": 0,
+                "interval": 0,
+                "calls": 33484,
+                "reads": 33484,
+                "acks": 94,
+                "age_us": 1092538,
+                "max_us": 30334
+              },
+              {
+                "phase": 1,
+                "interval": 0,
+                "calls": 0,
+                "reads": 0,
+                "acks": 0,
+                "age_us": 0,
+                "max_us": 0
+              },
+              {
+                "phase": 2,
+                "interval": 0,
+                "calls": 117949,
+                "reads": 117949,
+                "acks": 424,
+                "age_us": 5418757,
+                "max_us": 16537
+              },
+              {
+                "phase": 3,
+                "interval": 0,
+                "calls": 52966,
+                "reads": 52966,
+                "acks": 82,
+                "age_us": 1009194,
+                "max_us": 29952
+              }
+            ],
+            "mode": "fullscreen",
+            "run": "snes-ref-2",
+            "steady_seconds": 10.899475,
+            "gaps": 86,
+            "pcm": 352912
+          }
+        ],
+        "poll": [
+          {
+            "ack": [
+              {
+                "phase": 0,
+                "interval": 250,
+                "calls": 34279,
+                "reads": 9065,
+                "acks": 121,
+                "age_us": 1412105,
+                "max_us": 40557
+              },
+              {
+                "phase": 1,
+                "interval": 250,
+                "calls": 0,
+                "reads": 0,
+                "acks": 0,
+                "age_us": 0,
+                "max_us": 0
+              },
+              {
+                "phase": 2,
+                "interval": 250,
+                "calls": 142469,
+                "reads": 8887,
+                "acks": 428,
+                "age_us": 5492317,
+                "max_us": 16720
+              },
+              {
+                "phase": 3,
+                "interval": 250,
+                "calls": 44944,
+                "reads": 5516,
+                "acks": 51,
+                "age_us": 684110,
+                "max_us": 28198
+              }
+            ],
+            "mode": "fullscreen",
+            "run": "snes-poll-1",
+            "steady_seconds": 10.614847,
+            "gaps": 58,
+            "pcm": 352912
+          },
+          {
+            "ack": [
+              {
+                "phase": 0,
+                "interval": 250,
+                "calls": 26296,
+                "reads": 7011,
+                "acks": 163,
+                "age_us": 1792027,
+                "max_us": 30609
+              },
+              {
+                "phase": 1,
+                "interval": 250,
+                "calls": 0,
+                "reads": 0,
+                "acks": 0,
+                "age_us": 0,
+                "max_us": 0
+              },
+              {
+                "phase": 2,
+                "interval": 250,
+                "calls": 103018,
+                "reads": 6423,
+                "acks": 311,
+                "age_us": 3973394,
+                "max_us": 17138
+              },
+              {
+                "phase": 3,
+                "interval": 250,
+                "calls": 57730,
+                "reads": 6982,
+                "acks": 126,
+                "age_us": 1477935,
+                "max_us": 31168
+              }
+            ],
+            "mode": "fullscreen",
+            "run": "snes-poll-2",
+            "steady_seconds": 11.206829,
+            "gaps": 118,
+            "pcm": 352912
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "runs": [
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "nes-poll-1",
+      "steady_seconds": 10.57085,
+      "gaps": 132,
+      "pcm": 351395
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "nes-poll-2",
+      "steady_seconds": 10.539296,
+      "gaps": 125,
+      "pcm": 351395
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "nes-ref-1",
+      "steady_seconds": 10.634766,
+      "gaps": 137,
+      "pcm": 351395
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "nes-ref-2",
+      "steady_seconds": 10.579434,
+      "gaps": 118,
+      "pcm": 351395
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "snes-poll-1",
+      "steady_seconds": 11.020456,
+      "gaps": 93,
+      "pcm": 352912
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "snes-poll-2",
+      "steady_seconds": 10.950062,
+      "gaps": 95,
+      "pcm": 352912
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "snes-ref-1",
+      "steady_seconds": 11.141054,
+      "gaps": 113,
+      "pcm": 352912
+    },
+    {
+      "ack": [],
+      "mode": "fullscreen",
+      "run": "snes-ref-2",
+      "steady_seconds": 10.732057,
+      "gaps": 69,
+      "pcm": 352912
+    }
+  ],
+  "summary": [
+    {
+      "mode": "fullscreen",
+      "console": "nes",
+      "mean_seconds": {
+        "ref": 10.607099999999999,
+        "poll": 10.555073
+      },
+      "reduction_percent": 0.4904922174769677,
+      "runs": {
+        "ref": [
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "nes-ref-1",
+            "steady_seconds": 10.634766,
+            "gaps": 137,
+            "pcm": 351395
+          },
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "nes-ref-2",
+            "steady_seconds": 10.579434,
+            "gaps": 118,
+            "pcm": 351395
+          }
+        ],
+        "poll": [
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "nes-poll-1",
+            "steady_seconds": 10.57085,
+            "gaps": 132,
+            "pcm": 351395
+          },
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "nes-poll-2",
+            "steady_seconds": 10.539296,
+            "gaps": 125,
+            "pcm": 351395
+          }
+        ]
+      }
+    },
+    {
+      "mode": "fullscreen",
+      "console": "snes",
+      "mean_seconds": {
+        "ref": 10.9365555,
+        "poll": 10.985259
+      },
+      "reduction_percent": -0.4453275988038241,
+      "runs": {
+        "ref": [
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "snes-ref-1",
+            "steady_seconds": 11.141054,
+            "gaps": 113,
+            "pcm": 352912
+          },
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "snes-ref-2",
+            "steady_seconds": 10.732057,
+            "gaps": 69,
+            "pcm": 352912
+          }
+        ],
+        "poll": [
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "snes-poll-1",
+            "steady_seconds": 11.020456,
+            "gaps": 93,
+            "pcm": 352912
+          },
+          {
+            "ack": [],
+            "mode": "fullscreen",
+            "run": "snes-poll-2",
+            "steady_seconds": 10.950062,
+            "gaps": 95,
+            "pcm": 352912
+          }
+        ]
+      }
+    }
+  ]
+}

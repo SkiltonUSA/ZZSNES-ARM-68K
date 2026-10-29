@@ -1,0 +1,28 @@
+--- original/fullscreen.h
++++ candidate/fullscreen.h
+@@ -7,6 +7,8 @@
+ static volatile UBYTE *full_board;
+ static struct nf_slots full_slots={0,1,-1,0,0}; /* Core init precedes screen open. */
+ static ULONG full_pitch,full_origin,full_pending_us,full_wait_us;
++#include "poll_interval.h"
++static uint32_t ap_last;
+ static UWORD *full_pointer;
+ static int full_fault,full_attached,full_usedpan,full_origin_known;
+ static void full_write(unsigned reg,UWORD v){*(volatile UWORD *)(full_board+reg)=v;}
+@@ -27,6 +29,7 @@
+ }
+ static int full_poll(void){
+  if(fc_windowed)return !full_fault;
++ if(full_slots.pending>=0 && !ack_poll_due(us(),&ap_last,250))return !full_fault;
+  int status;
+  if(full_slots.pending<0)return !full_fault;
+  status=nf_ack(&full_slots,full_ack_count());
+@@ -46,7 +49,7 @@
+ static int full_queue(void){
+  if(fc_windowed){full_slots.front=full_slots.render;full_slots.flips++;full_unlock();return 1;}
+  if(!direct_locked || !full_attached || !nf_queue(&full_slots,full_ack_count()))return 0;
+- full_pending_us=us();
++ full_pending_us=us();ap_last=full_pending_us-250u;
+  full_usedpan=1;
+  full_pan(full_origin+(ULONG)full_slots.pending*240*full_pitch,1);
+  return 1;

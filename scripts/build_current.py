@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
  if a.expanded:a.arm=a.optimisation=a.core_o2=a.fx3=True
  if a.optimisation:a.thin_scanlines=True
  if (a.experimental_chips or a.compatibility or a.fx3) and not a.arm:p.error('compatibility experiments require --arm')
@@ -30,6 +30,9 @@ def main():
  if a.audio_early:
   if not a.jit_registers:p.error('--audio-early requires the isolated register build')
   out=out.with_name(out.name+'-audio');stage=out/'player';lib=out/'library'
+ if a.ack_poll_us:
+  if not a.jit_registers:p.error('--ack-poll-us requires the isolated register build')
+  out=out.with_name(out.name+'-ack250');stage=out/'player';lib=out/'library'
  shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
  shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
@@ -118,6 +121,9 @@ def main():
   spec=importlib.util.spec_from_file_location('pack',core/'elf.py');pack=importlib.util.module_from_spec(spec);spec.loader.exec_module(pack);image,relocs,entry=pack.unpack(elf.read_bytes())
   previous=(stage/'zz_payload.h').read_text();mapping=re.search(r'static const unsigned char zz_mapping_probe\[\]=\{[^}]+\};',previous).group()
   (stage/'zz_payload.h').write_text(f'#define ZZ_ENTRY {entry}u\nstatic const unsigned char zz_image[]={{'+','.join(map(str,image))+'};\n'+mapping+'\nstatic const unsigned long zz_relocations[]={'+','.join(map(str,relocs))+'};\n')
+ if a.ack_poll_us:
+  from prepare_ack_poll import prepare
+  prepare(stage)
  runtime=json.loads(os.environ.get('BETA_CONTAINER_COMMAND','["podman","--connection","nuflix-converter-root","run","--rm","--platform","linux/amd64"]'))
  cc=runtime+['-v',str(ROOT)+':/work','-w','/work',m['image'],'m68k-amigaos-gcc','-std=c99','-noixemul','-m68020','-O2','-g','-Wall','-Wextra','-Werror','-Wno-unused-function','-Wno-misleading-indentation']
  block,control=('0x2000000','0x180000')if snes else('0x400000','0x80000')

@@ -1,0 +1,12 @@
+FULLSCREEN flip ACK failed; pending cancelled
+FULLSCREEN flip ACK failed; pending cancelled
+PASS actual host polling: ACK wrap, delayed retirement, lock lifetime, foreign ACK and timeout cancellation
+FULLSCREEN flip ACK failed; pending cancelled
+FULLSCREEN flip ACK failed; pending cancelled
+PASS actual host polling: ACK wrap, delayed retirement, lock lifetime, foreign ACK and timeout cancellation
+SCANOUT gate/ACK failed; pending cancelled
+SCANOUT gate/ACK failed; pending cancelled
+PASS actual host polling: ACK wrap, delayed retirement, lock lifetime, foreign ACK and timeout cancellation
+SCANOUT gate/ACK failed; pending cancelled
+SCANOUT gate/ACK failed; pending cancelled
+PASS actual host polling: ACK wrap, delayed retirement, lock lifetime, foreign ACK and timeout cancellation

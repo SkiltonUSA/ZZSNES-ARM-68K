@@ -1,0 +1,55 @@
+--- original/host.c
++++ diagnostic/host.c
+@@ -188,6 +188,7 @@
+  if(op==NES_FRAME && !player_audio_submit())return 0;
+ #endif
+  do{
++  ap_phase=op==NES_FRAME?0:1;
+ #ifdef NES_FULLSCREEN
+   if(!full_poll())return 0;
+ #endif
+@@ -323,7 +324,7 @@
+  ULONG audio_us=0,flip_drain_us=0;
+ #endif
+  uint64_t c0,c1;int opened=0,rc=20;UBYTE *rom=NULL;
+- (void)connected;shared=base;syncio=io;for(i=0;i<64;i++)pens[i]=-1;
++ player_audit=0;fc_snapshot_path[0]=0;(void)connected;shared=base;syncio=io;for(i=0;i<64;i++)pens[i]=-1;
+  port=CreateMsgPort();if(!port)goto done;timer=(struct timerequest *)CreateIORequest(port,sizeof(*timer));if(!timer)goto done;
+  if(OpenDevice(TIMERNAME,UNIT_MICROHZ,(struct IORequest *)timer,0))goto done;
+  opened=1;TimerBase=timer->tr_node.io_Device;waitio=timer;
+@@ -415,7 +416,7 @@
+ #ifdef NES_PLAYER
+   /* The previous flip can finish while Core1 emulates the next frame.
+    * Poll ACK before touching Intuition; never process events under bitmap lock. */
+-  if(!full_poll())goto done;
++  ap_phase=3;if(!full_poll())goto done;
+   if(!direct_locked)events();
+   if(em_switch_pending){if(!em_switch())goto done;player_audio_flush();if(player_paused){if(!present(ad_get(shared+MB_REPLY,24),frames)||!full_drain())goto done;paint();}}
+   if(em_scanline_pending>=0){
+@@ -454,7 +455,7 @@
+   frame_core_us=(ULONG)((uint64_t)ad_get(base+MB_REPLY,28)*1000000u/rate);
+ #ifdef NES_DIRECT
+   output_hash=ad_get(base+MB_REPLY,32);
+-  if(!core_only && ps_cadence_show(&cadence,us(),fc_frame_us)){
++  if(!core_only) /* Diagnostic: present every completed frame. */{
+    before=us();if(!present(ad_get(base+MB_REPLY,24),frames+1))goto done;draw_us+=us()-before;fc_sample(3,us()-before);
+   }
+ #else
+@@ -484,7 +485,7 @@
+   /* Regional clock, two-frame lead, bounded catch-up; reset on pause/state/snapshot. */
+   { ULONG elapsed=us()-frame_start,target=ps_pace_target(frame_start,next_frame_us,fc_frame_us);
+     while(elapsed<target){
+-     if(!full_poll())goto done;
++     ap_phase=3;if(!full_poll())goto done;
+      if(!direct_locked){events();if(quit)break;}
+      if(!direct_locked && target-elapsed>4000u && !profile_pause(4,1000))goto done;
+      elapsed=us()-frame_start;
+@@ -526,6 +527,8 @@
+  printf("ARM_REQUEST_PROFILE frame_us=%u present_us=%u\n",rate?(ULONG)(frame_reply_ticks*1000000u/rate):0,rate?(ULONG)(present_reply_ticks*1000000u/rate):0);
+  printf("PRESENT_PROFILE pre_us=%u request_us=%u post_us=%u\n",present_pre_us,present_request_us,present_post_us);
+  fc_profile_print();fc_joy_close();
++ printf("SCHEDULE fixed=1 audit=0 capture=0 warmup=60 frames=%u total_us=%u\n",fc_stages[4].n,(ULONG)fc_stages[4].sum);
++ for(unsigned ap=0;ap<4;ap++)printf("ACK_POLL phase=%u interval=%u calls=%u reads=%u acks=%u age_us=%u max_us=%u\n",ap,(ULONG)EM_ACK_INTERVAL,ap_calls[ap],ap_reads[ap],ap_acks[ap],ap_age[ap],ap_max[ap]);
+  print_wait_profile();
+  printf("PROFILE frames=%u request_us=%u copy_us=%u colour_us=%u draw_us=%u waits=%u\n",frames,request_us,copy_us,colour_us,draw_us,waits);
+  if(indices){FreeVec(indices);indices=NULL;}
