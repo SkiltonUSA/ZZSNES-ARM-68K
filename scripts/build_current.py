@@ -89,6 +89,9 @@ def main():
   from prepare_timed_superfx import prepare_launcher
   prepare_launcher(lib)
  snes=m['console']=='ZZSNES';rel=lambda p:str(p.relative_to(ROOT));inside=lambda p:os.environ.get('ARM_CONTAINER_ROOT','/work')+'/'+rel(p)
+ if a.release_ax:
+  from prepare_audio_window import prepare
+  prepare(stage,lib,snes)
  if a.arm:
   core=out/'core';objects=[]
   shutil.copytree(source/'core',core,dirs_exist_ok=True)

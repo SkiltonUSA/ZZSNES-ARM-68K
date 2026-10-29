@@ -13,7 +13,7 @@ This beta needs **96 MiB of allocatable ZZ9000 RAM**, plus display and AmigaOS m
 [Installation](docs/package-manager.md) · [User guide](docs/current-guide.md) ·
 [Changes](CHANGELOG.md) · [Interface gallery](docs/current-interface.md)
 
-Development audio fix: **0.7.6-dev** restores configured AHI output; the download above remains the previous published beta.
+Development build: **0.7.7-dev** adds 2×/3× windows and improves audio scheduling. [Measurements and limits](docs/audio-window.md). The download above remains the previous published beta.
 
 Published app version: **0.7.4-dev**.
 
@@ -45,7 +45,7 @@ cycle budgets. Legacy remains the default; the published beta is unchanged.
 - Scan a selected folder, SD card or USB drive once to import ROMs.
 - No fixed library-entry cap; tested with 20,000 entries.
 - ROM Manager: bulk import, duplicate-entry cleanup with progress/cancel, and verified backups to disk or USB. Duplicate cleanup keeps ROM files and saves.
-- Fullscreen or Workbench window, with **Alt+Return** switching during play.
+- Fullscreen or 1×/2×/3× Workbench windows, with **Alt+Return** switching during play (current development build).
 - **F7** scanline control: Xanxi FPGA effects in fullscreen; Soft software filtering in a window.
 - Optional FPS overlay, aspect correction, border artwork, overscan masks and **F9** screenshots.
 - Configured AHI unit 0 audio: Paula or your chosen AHI driver; system preferences stay unchanged.

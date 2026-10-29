@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.7.7-dev — audio scheduling and window sizes
+
+- Add 1× (320×240), 2× (640×480) and 3× (960×720) Workbench windows; fit smaller screens automatically and remember the window size across fullscreen switches.
+- Scale on the ARM into an allocated, locked Picasso96 bitmap; retain 320×240 library snapshots.
+- Remove repeated Workbench copies of unchanged pictures. Allow up to three omitted display updates at 2× and five at 3×; emulation and audio frames are retained.
+- Notify the AHI worker as soon as a complete batch is ready; keep configured unit 0 output.
+- Recover short cadence stalls before rebasing the clock; retain normal regional timing.
+- Keep complete enlarged pixel readbacks in explicit verification mode; ownership and mapping checks remain active during play.
+- [Hardware measurements and remaining listening check](docs/audio-window.md).
+
 ## 0.7.6-dev — configured audio output
 
 - Restore configured AHI unit 0 for normal playback; an installed ZZ9000AX driver no longer redirects audio away from Paula.

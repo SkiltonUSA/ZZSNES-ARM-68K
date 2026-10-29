@@ -1,0 +1,9 @@
+PASS installed ZZNES 0.8.5-dev and preserved settings
+PASS installed ZZSNES 0.7.7-dev and preserved settings
+File: ENV:Sys/ahi.prefs
+CRC32: 725CE7DB
+Size: 248 bytes
+File: ENVARC:Sys/screenmode.prefs
+CRC32: 9C80FBC5
+Size: 62 bytes
+Amiga alive - clients: 0, chip: 2010096 bytes, fast: 613130368 bytes

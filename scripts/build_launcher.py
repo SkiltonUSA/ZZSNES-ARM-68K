@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Rebuild the current development MUI launcher only. No ARM build or deployment."""
-import argparse,json,os,shutil,subprocess
+import argparse,json,os,re,shutil,subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def main():
@@ -26,10 +26,13 @@ def main():
  if args.expanded:
   overlay=ROOT/'development/expanded-20261019'
   for name in ('source','common'):shutil.copytree(overlay/name,lib,dirs_exist_ok=True)
- p=lib/'library_mui.h';p.write_text(p.read_text().replace('0.7.1 Beta','0.7.2-dev').replace('0.6.1 Beta','0.6.2-dev'))
+ version=json.loads((ROOT/'development/ax-audio-20261029/release.json').read_text())['version']
+ p=lib/'library_mui.h';p.write_text(re.sub(r'#define LIB_VERSION "[^"]+"', '#define LIB_VERSION "'+version+'"',p.read_text()))
  if args.timed_superfx_experiment:
   from prepare_timed_superfx import prepare_launcher
   prepare_launcher(lib)
+ from prepare_audio_window import prepare_launcher as prepare_window
+ prepare_window(lib)
  runtime=json.loads(os.environ.get('BETA_CONTAINER_COMMAND','["podman","--connection","nuflix-converter-root","run","--rm","--platform","linux/amd64"]'))
  flags=[];target=out/m['console']
  if args.probe:

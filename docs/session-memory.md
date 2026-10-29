@@ -788,3 +788,36 @@ check pass. Installed in SD032G:Emulator/ZZSNES. ROMs/saves/settings and global
 AHI unchanged. Listening confirmation pending. Source build flag remains
 `--release-ax` for compatibility; only `--ax-audio-test` selects AX directly.
 See amiga/records/2026-10-29/paula-routing. Published release unchanged.
+
+## Audio scheduling and integer windows — 29 October 2026
+
+Installed ZZSNES 0.7.7-dev in SD032G:Emulator/ZZSNES, matching launcher/player hashes
+in docs/release-build.json. Older executable siblings retained as .pre-window;
+prior .before-paula backups retained too. Library/Controls/Session checksums
+unchanged. Live AHI CRC725CE7DB, saved screenmode CRC9C80FBC5 unchanged. Existing
+open launchers still need reopening to use the new display choices.
+
+Configured AHI unit 0 remains the output (Paula here). Batch-ready notification,
+NES six-frame startup prebuffer and SNES short-stall recovery reduce late links
+in matched 1x runs (NES14->7, SNES94->16 over two1800-frame runs per variant).
+Listening confirmation remains pending. New 2x/3x windows render on ARM into
+owned P96 bitmaps; no repeated blit when a picture is omitted. Larger windows
+use bounded presentation omission (2x up to3,3x up to5), never skip CPU/APU work.
+Final600-frame normal-detail 2x/3x runs on both emulators have zero late links.
+No general FPS/audio-quality guarantee. Pause/snapshot/save/load/3x-fullscreen-3x
+and clean teardown pass. Native sanitizers, relocated pixel/guard/cancellation
+checks, four physical VERIFY frames per size and compact MUI checks pass.
+
+SNES hires3 initially exceeded50ms PRESENT deadline. Coordinate caching outside
+the pixel loop now passes all relocated pixel checks and360physical frames with
+capture/cleanup, but still81late audio links: not audio-qualified. Keep normal
+detail for smooth3x audio. Normalize hires/window captures once; saved pixels
+match native snapshot tests. See docs/audio-window.md and raw records/actions.
+
+Chrono Trigger horizontal tear is reported in fullscreen with core options0;
+new window scaling is not active. On/off FPGA scanline1800-frame comparisons
+finish with zero late links, clean first-frame verification and restoration.
+No visible tear-free confirmation. Firmware PAN ACK is not a physical scanout
+fence. Earlier blanking-gate variants timed out and remain withdrawn; no firmware
+or Workbench mode change. See ZZSNES docs/chrono-trigger-display.md. Published
+release assets remain unchanged; these are installed development builds.

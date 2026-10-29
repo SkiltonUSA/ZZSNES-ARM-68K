@@ -1,20 +1,20 @@
 {
-  "version": "0.7.6-dev",
-  "release": "v0.7.6-beta",
+  "version": "0.7.7-dev",
+  "release": "v0.7.7-beta",
   "build_directory": ".context/ax-release-build",
   "build_command": "python3 scripts/build_current.py --release-ax",
   "executables": {
     "ZZSNES": {
-      "sha256": "9bc1799979035992f57eeb962b30f2ab1c9935d68ae148fd5865e2abda083b49",
-      "bytes": 289260
+      "sha256": "046e10448c53391a540629d3655d6c687634efe7174a763d5cf391c0d4d9c131",
+      "bytes": 289332
     },
     "ZZSnes-ui": {
-      "sha256": "b4da8fe6ce937de491e57e4d2b00e0d8c2d2b63fb02abee122dd767105dccc20",
-      "bytes": 1079344
+      "sha256": "3bac8bc95b804f8a106195a8c65ec729733000bfff5e08ae3100ab457cf497a7",
+      "bytes": 1083172
     },
     "ZZSnes-FX": {
-      "sha256": "b4da8fe6ce937de491e57e4d2b00e0d8c2d2b63fb02abee122dd767105dccc20",
-      "bytes": 1079344
+      "sha256": "3bac8bc95b804f8a106195a8c65ec729733000bfff5e08ae3100ab457cf497a7",
+      "bytes": 1083172
     }
   },
   "published": false
