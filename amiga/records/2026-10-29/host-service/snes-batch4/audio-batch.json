@@ -1,0 +1,7 @@
+{
+  "batch_frames": 4,
+  "prebuffer_frames": 6,
+  "buffer_bytes": 16384,
+  "original_sha256": "6c14f2d1d620ef7041489eb61628161dc50ed40757ae7f7e31e8a4434d04b571",
+  "candidate_sha256": "2b2b153195db1d6e46af19759b5cd03a858f4db6d40b9e971992d0c2025f16ce"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "unit": 255,
+    "channels": 0,
+    "mode": "0xcafe0001",
+    "frequency": 32000
+  },
+  {
+    "unit": 0,
+    "channels": 1,
+    "mode": "0x2000c",
+    "frequency": 8000
+  },
+  {
+    "unit": 1,
+    "channels": 1,
+    "mode": "0x2000c",
+    "frequency": 8000
+  },
+  {
+    "unit": 2,
+    "channels": 1,
+    "mode": "0x2000c",
+    "frequency": 8000
+  },
+  {
+    "unit": 3,
+    "channels": 1,
+    "mode": "0x2000c",
+    "frequency": 8000
+  }
+]

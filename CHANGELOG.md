@@ -3,6 +3,7 @@
 ## 0.7.2-dev — experimental register dispatch and audio
 
 - Use eight generated register handlers through the core's existing opcode tables, resolving the measured lookup-path regression.
+- Add isolated AHI/bitmap-call profiling and four-frame batch tests; preserve original audio defaults after matched hardware comparisons.
 - Add isolated serial/overlap presentation tests with pinned render locks; hardware checks pass, but no performance gain. Defaults unchanged.
 - Add opt-in 250 µs fullscreen ACK polling and phase profiling; roughly 90% fewer register reads, no useful counter-free FPS gain.
 - Separate timing from recurring pixel verification; complete 16 fixed-presentation hardware comparisons without a repeatable earlier-audio gain.

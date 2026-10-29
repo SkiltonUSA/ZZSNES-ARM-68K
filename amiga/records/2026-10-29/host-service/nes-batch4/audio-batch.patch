@@ -1,0 +1,49 @@
+--- original/player_audio.h
++++ batch4/player_audio.h
+@@ -7,7 +7,7 @@
+  * CPU, short Forbid/Permit sections publish indices and guard task lifetime. */
+ #include <dos/dostags.h>
+ #define AUDIO_SLOTS 8u
+-#define AUDIO_PREBUFFER 4u /* One frame of margin beyond a three-frame AHI batch. */
++#define AUDIO_PREBUFFER 6u /* Two frames beyond one four-frame batch. */
+ struct audio_block { ULONG count; UBYTE data[2048]; };
+ static struct audio_block *audio_queue;
+ static struct Task *audio_task,*audio_parent;
+@@ -34,7 +34,7 @@
+  port=CreateMsgPort();if(!port)goto finish;
+  for(i=0;i<2;i++){
+   req[i]=(struct AHIRequest *)CreateIORequest(port,sizeof(struct AHIRequest));
+-  data[i]=AllocVec(6144,MEMF_PUBLIC);
++  data[i]=AllocVec(8192,MEMF_PUBLIC);
+   if(!req[i]||!data[i])goto finish;
+  }
+  req[0]->ahir_Version=4;
+@@ -50,15 +50,15 @@
+   if(!primed&&(available>=AUDIO_PREBUFFER||audio_stop==2||audio_force))primed=1;
+   /* Keep the previous request intact until its linked successor has been
+    * submitted. Reap a slot only when it is about to be reused. */
+-  if(primed&&available&&(available>=3||audio_stop==2||audio_force)&&(!active[slot]||CheckIO((struct IORequest *)req[slot]))){
++  if(primed&&available&&(available>=4||audio_stop==2||audio_force)&&(!active[slot]||CheckIO((struct IORequest *)req[slot]))){
+    if(active[slot]){
+     profile_wait_io((struct IORequest *)req[slot]);active[slot]=0;
+     if(req[slot]->ahir_Std.io_Error){audio_error=1;break;}
+     audio_completed+=submitted_count[slot];
+    }
+-   /* Coalesce three immutable NES blocks without dropping/resampling PCM.
+-    * A short final block is flushed by stop/pause. Never exceed 6144 bytes. */
+-   blocks=available>=3?3:available;n=0;
++   /* Coalesce four immutable console blocks without dropping/resampling PCM.
++    * A short final block is flushed by stop/pause. Never exceed 8192 bytes. */
++   blocks=available>=4?4:available;n=0;
+    for(k=0;k<blocks;k++){
+     ULONG count;
+     index=(audio_read+k)%AUDIO_SLOTS;count=audio_queue[index].count;
+@@ -150,7 +150,7 @@
+  if(!audio_task)goto fail;
+  while(!audio_started)Wait(1UL<<audio_parent_signal);
+  if(!audio_opened)goto fail;
+- puts("AUDIO task: AHI unit 0, 32000 Hz mono; 8 queue slots, 4-frame prebuffer");return 1;
++ puts("AUDIO task: AHI unit 0, 32000 Hz mono; 8 queue slots, 6-frame prebuffer");return 1;
+ fail:
+  player_audio_close();puts("AHI unavailable: running muted; APU timing remains enabled");return 0;
+ }

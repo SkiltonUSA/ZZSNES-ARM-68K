@@ -1,0 +1,22 @@
+{
+  "version": "0.8.2-dev",
+  "variant": "profile",
+  "ack_profile": false,
+  "fixed_presentation": true,
+  "audit": false,
+  "conversion_profile": false,
+  "capture": false,
+  "warmup": 60,
+  "hashes": {
+    ".context/amiga/ahi-lock-1029/nes-profile/Player": "55fd449e11940425ee0f30b8464f6be7a06f7bb633adf1f6dcc8d1736c5b3e0d",
+    ".context/amiga/ahi-lock-1029/nes-profile/host.c": "e4412fb53c4b071803471c9a4e2da5f253dd16b557126949f720e00ebbb43b94",
+    ".context/ZZNes-ARM-68K/.context/jit-switch32-build/player/mmu.h": "954a4038c78e1a67fa696592b80bf1fb61aa72eaf7a0f1830d3ba75453382ef7",
+    ".context/ZZNes-ARM-68K/.context/jit-switch32-build/player/mmu_plan.h": "c382cb9f9161a6f698b646f8480c7b6a2ff1d7f4a9f47885262760051c1283b4",
+    ".context/ZZNes-ARM-68K/.context/jit-switch32-build/player/zz_payload.h": "37fd0e82bf748c05ee3a0f44a5558caaafdd67c1b73904b16603ac664f042f05",
+    ".context/amiga/ahi-lock-1029/nes-profile/player_audio.h": "2bb10f578e671f87b7e851218958fe50be8df17fa62e1a601d7c4b5d57ca7d02",
+    ".context/amiga/ahi-lock-1029/nes-profile/fullscreen.h": "904907bf7d5557308f88458d2c9be8fac7f55b1dba3a67504b47d1f0bf7e3ec0",
+    ".context/amiga/ahi-lock-1029/nes-profile/profile.h": "8056c2177191272cbdf49ac56acc8536eb0bc66f758752bb1f1eb26161e97541",
+    ".context/amiga/ahi-lock-1029/nes-profile/cost.h": "71948bc56d684f5a03ee3be88685b38117aaf8fb2706d17cbd1107b2203ab02f",
+    ".context/amiga/ahi-lock-1029/nes-profile/wait_profile.h": "8fd69f35a770743f48fcc523afe6f7ea3d94b15aef51b0039d07f2663a188ae0"
+  }
+}

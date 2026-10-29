@@ -159,3 +159,5 @@ Experimental audio handoff results are included in the same report.
 [Fullscreen polling experiment](docs/ack-polling.md) reduces reads of the flip acknowledgement register by about 90%, without a proven FPS gain. Original release polling remains unchanged.
 
 [Pixel-conversion overlap tests](docs/conversion-overlap.md) passed correctness checks but ran slower overall. Existing release scheduling remains the default.
+
+[AHI and bitmap-lock profiling](docs/host-service-profiling.md) identifies host audio servicing as the next investigation target. Four-frame batching showed no FPS gain; the three-frame default stays.

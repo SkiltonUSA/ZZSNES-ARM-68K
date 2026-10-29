@@ -1,0 +1,29 @@
+AHI version=4.180 prefs_size=32 unit_offset=0 mode_offset=4 frequency_offset=8
+MODE id=00020001 name=Paula:14 bit stereo++
+MODE id=00020002 name=Paula:Fast 14 bit stereo++ calibrated
+MODE id=00020003 name=Paula:14 bit stereo
+MODE id=00020004 name=Paula:Fast 14 bit stereo calibrated
+MODE id=00020005 name=Paula:14 bit mono
+MODE id=00020006 name=Paula:Fast 14 bit mono calibrated
+MODE id=00020007 name=Paula:8 bit stereo++
+MODE id=00020008 name=Paula:Fast 8 bit stereo++
+MODE id=00020009 name=Paula:8 bit stereo
+MODE id=0002000a name=Paula:Fast 8 bit stereo
+MODE id=0002000b name=Paula:8 bit mono
+MODE id=0002000c name=Paula:Fast 8 bit mono
+MODE id=0002000d name=Paula:HiFi 14 bit stereo++ calibrated
+MODE id=0002000e name=Paula:HiFi 14 bit stereo calibrated
+MODE id=0002000f name=Paula:HiFi 14 bit mono calibrated
+MODE id=00020010 name=Paula:HiFi 8 bit stereo++
+MODE id=00020011 name=Paula:HiFi 8 bit stereo
+MODE id=00020012 name=Paula:HiFi 8 bit mono
+MODE id=00020018 name=Paula:DMA 8 bit stereo
+MODE id=00010001 name=Filesave:HiFi 8 bit mono, 8SVX
+MODE id=00010002 name=Filesave:HiFi 16 bit stereo++, AIFF
+MODE id=00010003 name=Filesave:HiFi 16 bit mono, AIFF
+MODE id=00010004 name=Filesave:HiFi 16 bit stereo++, AIFC
+MODE id=00010005 name=Filesave:HiFi 16 bit mono, AIFC
+MODE id=00010006 name=Filesave:HiFi 16 bit stereo++, Studio 16
+MODE id=00010007 name=Filesave:HiFi 16 bit mono, Studio 16
+MODE id=cafe0000 name=ZZ9000AX:16 bit Stereo++
+MODE id=cafe0001 name=ZZ9000AX:16 bit Stereo

@@ -1,0 +1,16 @@
+[
+  {
+    "console": "nes",
+    "host": true,
+    "arm_payload_mmu": true,
+    "audio_preprocessed": true,
+    "profile_generator": true
+  },
+  {
+    "console": "snes",
+    "host": true,
+    "arm_payload_mmu": true,
+    "audio_preprocessed": true,
+    "profile_generator": true
+  }
+]

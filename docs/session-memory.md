@@ -628,3 +628,29 @@ See conversion-overlap.md and its raw records; late audio links remain nonzero.
 Installed players/releases unchanged. Private test drawer removed; Core1 idle,
 bridge alive, saved screenmode CRC 9C80FBC5 unchanged. Earlier NES freeze remains
 unexplained. Local MCP remains running.
+
+## AHI servicing and bitmap locks — 29 October 2026
+
+Added --host-service-test profile/batch4, requiring --presentation-test serial
+and the register-experiment build. Histogram costs are elapsed calls, not task
+CPU usage; do not add overlapping worker/main-task intervals. Mean per 600
+frames: NES SendIO 1896 ms, lock/unlock 643 ms, worker copy 51 ms; SNES 1652/465/81.
+Six profiling runs, four accepted (initial SNES copy instrumentation missed the
+stereo expression, then was corrected and repeated).
+
+Read-only AHI discovery: ENV unit 0 mode 0002000c = Paula Fast 8-bit mono at
+8000 Hz. Music unit 255 mode cafe0001 = ZZ9000AX 16-bit stereo at 32000 Hz. Both
+players open device unit 0; their input PCM remains NES 32000 mono/SNES 32040 stereo.
+No global preferences changed. Next candidate: per-app AX output backend, with
+unit 0 fallback; not implemented or benchmarked in this round.
+
+Four-frame batching (six-frame prebuffer, NES 8 KiB / SNES 16 KiB AHI buffers) passes
+actual-worker sanitizer tests including state/short flushes. Eight ABBA runs
+show mean frame time +1.07% NES/+0.57% SNES; no default promotion. Both candidates
+pass readiness-gated pause/window/fullscreen/quit checks. All 16 runs finish PCM,
+restore state and release owned memory. Fresh full builds and input equivalence
+checks pass. See host-service-profiling.md and raw records.
+
+Removed SD032G:Dev/ZZCost1029; Core1 idle, bridge alive, MCP left running. Saved
+screenmode CRC 9C80FBC5 and live AHI preferences CRC 725CE7DB unchanged. Installed
+players/releases and ROM/save libraries untouched. Earlier NES freeze unresolved.

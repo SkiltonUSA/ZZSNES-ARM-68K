@@ -1,0 +1,12 @@
+PASS save-state AHI drain reaps both requests, resumes without stale link, preserves every PCM sample
+PASS actual audio worker: short flush, ordered PCM and forced partial flush, ring wrap, allocation/open failures, cancellation, device error, resource cleanup
+PASS nes ref
+PASS save-state AHI drain reaps both requests, resumes without stale link, preserves every PCM sample
+PASS actual audio worker: short flush, ordered PCM and forced partial flush, ring wrap, allocation/open failures, cancellation, device error, resource cleanup
+PASS nes batch4
+PASS save-state AHI drain reaps both requests, resumes without stale link, preserves every PCM sample
+PASS actual audio worker: short flush, ordered PCM and forced partial flush, ring wrap, allocation/open failures, cancellation, device error, resource cleanup
+PASS snes ref
+PASS save-state AHI drain reaps both requests, resumes without stale link, preserves every PCM sample
+PASS actual audio worker: short flush, ordered PCM and forced partial flush, ring wrap, allocation/open failures, cancellation, device error, resource cleanup
+PASS snes batch4
