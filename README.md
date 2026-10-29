@@ -145,3 +145,9 @@ with the documented local fixes originally used by ZZDosBox.
 
 The Snes9x core is non-commercial. Component licences, source pins and notices are included.
 [Release build inputs](docs/release-build.json) · [Third-party notices](THIRD_PARTY.md).
+
+## Translation research
+
+[Experimental 8 MiB register-JIT cache](docs/jit-register-experiment.md):
+correctness checks pass, but this initial path is slower than the interpreter.
+It remains separate from the released player.

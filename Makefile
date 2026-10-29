@@ -151,3 +151,7 @@ test-expanded-arm:
 	$(PYTHON) scripts/make_expanded_fixture.py
 	$(MODEL_PYTHON) tests/amiga/emulator/check_expanded_arm.py
 	$(MODEL_PYTHON) tests/amiga/pocketsnes/check_current_state.py .context/expanded-build/player/pocket.elf .context/expanded-fixtures/HighRes-Test.sfc --expanded --options 32
+
+.PHONY: jit-registers
+jit-registers:
+	$(PYTHON) scripts/build_current.py --expanded --jit-registers

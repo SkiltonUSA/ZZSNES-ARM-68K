@@ -1,0 +1,21 @@
+{
+  "version": "0.7.0-dev",
+  "experimental": true,
+  "default_enabled": false,
+  "jit_bytes": 8388608,
+  "owned_bytes": 67108864,
+  "scope": "register-only single-instruction translation; all core event boundaries retained",
+  "sources": {
+    "scripts/build_current.py": "511b4cef1f48b62cf1628e5819c9456b78289b2de3b4c90c0eb4c6a98104e787",
+    "scripts/prepare_console_jit.py": "61b3168d6bdb36604ff54ccf6f3ca99b5da3c89a89eb8014e5a1554d8f07b47a",
+    "amiga/common/arm_jit/snes_adapter.h": "4d2b3c9821ed8dc1c14b47ebe509a5a370355b7baa00efbc93ba6c1f26cd09e1",
+    "amiga/common/arm_jit/cache.h": "67b2c93d1c0018c3ee1fe4f107688f660bdc47e79005aa88f5c4bd2241b7ca60",
+    "amiga/common/arm_jit/register_op.h": "78f07779754d20250e0600332b458029d7262771d8a0c93b0314c5a249e93a50",
+    "amiga/common/arm_jit/nes_adapter.h": "399cd87dffc41827ccd1fce5a675ef26c4dff7a100dc305141d5b8c4f13e60a6"
+  },
+  "outputs": {
+    "ZZSnes-ui": "f4f7b940e567155cb8a05bcc05c83c681f4a84a47079338a30abcaf2d2d3d672",
+    "ZZSNES": "dbe058c3adaa4e15317b65ba1cb23e64cf386917894cd60efcf2b8965b207f0d",
+    "player/pocket.elf": "7e29569382e777af89c9da32b4fb5e38b1b2a181e4551ee72af035e52b5a6751"
+  }
+}
