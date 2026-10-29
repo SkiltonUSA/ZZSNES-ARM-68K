@@ -76,6 +76,11 @@ ROMs are not included in the records.
 [Build hashes, measurements and test logs](../amiga/records/2026-10-29/jit-dispatch/).
 [Earlier lookup-cache experiments and failures](jit-register-lookup-history.md).
 
+> Measurement correction: these historical audio runs included recurring
+> pixel verification and automatic snapshot work. Their elapsed-time reductions
+> are not normal-play speed gains. The [fixed-presentation follow-up](fixed-presentation.md)
+> found no repeatable advantage from earlier notification.
+
 ## Earlier AHI notification (experimental)
 
 `--audio-early` wakes the existing AHI worker once a three-frame batch is ready,

@@ -3,6 +3,7 @@
 ## 0.7.2-dev — experimental register dispatch and audio
 
 - Use eight generated register handlers through the core's existing opcode tables, resolving the measured lookup-path regression.
+- Separate timing from recurring pixel verification; complete 16 fixed-presentation hardware comparisons without a repeatable earlier-audio gain.
 - Retain the requested 32 MiB executable reservation and 96 MiB owned runtime.
 - Add opt-in batch-ready audio notification; retain original release scheduling.
 - [Matched results and limitations](docs/jit-register-experiment.md).

@@ -1,0 +1,290 @@
+{
+  "runs": [
+    {
+      "mode": "fullscreen",
+      "run": "nes-audio-1",
+      "steady_seconds": 10.538042,
+      "gaps": 135,
+      "pcm": 351395
+    },
+    {
+      "mode": "fullscreen",
+      "run": "nes-audio-2",
+      "steady_seconds": 10.619304,
+      "gaps": 131,
+      "pcm": 351395
+    },
+    {
+      "mode": "fullscreen",
+      "run": "nes-ref-1",
+      "steady_seconds": 10.548033,
+      "gaps": 132,
+      "pcm": 351395
+    },
+    {
+      "mode": "fullscreen",
+      "run": "nes-ref-2",
+      "steady_seconds": 10.60206,
+      "gaps": 130,
+      "pcm": 351395
+    },
+    {
+      "mode": "fullscreen",
+      "run": "snes-audio-1",
+      "steady_seconds": 10.985603,
+      "gaps": 106,
+      "pcm": 352912
+    },
+    {
+      "mode": "fullscreen",
+      "run": "snes-audio-2",
+      "steady_seconds": 11.165379,
+      "gaps": 114,
+      "pcm": 352912
+    },
+    {
+      "mode": "fullscreen",
+      "run": "snes-ref-1",
+      "steady_seconds": 11.581159,
+      "gaps": 157,
+      "pcm": 352912
+    },
+    {
+      "mode": "fullscreen",
+      "run": "snes-ref-2",
+      "steady_seconds": 10.807134,
+      "gaps": 76,
+      "pcm": 352912
+    },
+    {
+      "mode": "window",
+      "run": "nes-audio-1",
+      "steady_seconds": 9.961715,
+      "gaps": 0,
+      "pcm": 351395
+    },
+    {
+      "mode": "window",
+      "run": "nes-audio-2",
+      "steady_seconds": 9.962657,
+      "gaps": 0,
+      "pcm": 351395
+    },
+    {
+      "mode": "window",
+      "run": "nes-ref-1",
+      "steady_seconds": 9.961859,
+      "gaps": 0,
+      "pcm": 351395
+    },
+    {
+      "mode": "window",
+      "run": "nes-ref-2",
+      "steady_seconds": 9.961552,
+      "gaps": 0,
+      "pcm": 351395
+    },
+    {
+      "mode": "window",
+      "run": "snes-audio-1",
+      "steady_seconds": 10.020266,
+      "gaps": 0,
+      "pcm": 352912
+    },
+    {
+      "mode": "window",
+      "run": "snes-audio-2",
+      "steady_seconds": 10.022277,
+      "gaps": 0,
+      "pcm": 352912
+    },
+    {
+      "mode": "window",
+      "run": "snes-ref-1",
+      "steady_seconds": 9.991645,
+      "gaps": 0,
+      "pcm": 352912
+    },
+    {
+      "mode": "window",
+      "run": "snes-ref-2",
+      "steady_seconds": 10.033142,
+      "gaps": 0,
+      "pcm": 352912
+    }
+  ],
+  "summary": [
+    {
+      "mode": "fullscreen",
+      "console": "nes",
+      "mean_seconds": {
+        "ref": 10.5750465,
+        "audio": 10.578673
+      },
+      "reduction_percent": -0.034292993416151774,
+      "runs": {
+        "ref": [
+          {
+            "mode": "fullscreen",
+            "run": "nes-ref-1",
+            "steady_seconds": 10.548033,
+            "gaps": 132,
+            "pcm": 351395
+          },
+          {
+            "mode": "fullscreen",
+            "run": "nes-ref-2",
+            "steady_seconds": 10.60206,
+            "gaps": 130,
+            "pcm": 351395
+          }
+        ],
+        "audio": [
+          {
+            "mode": "fullscreen",
+            "run": "nes-audio-1",
+            "steady_seconds": 10.538042,
+            "gaps": 135,
+            "pcm": 351395
+          },
+          {
+            "mode": "fullscreen",
+            "run": "nes-audio-2",
+            "steady_seconds": 10.619304,
+            "gaps": 131,
+            "pcm": 351395
+          }
+        ]
+      }
+    },
+    {
+      "mode": "fullscreen",
+      "console": "snes",
+      "mean_seconds": {
+        "ref": 11.194146499999999,
+        "audio": 11.075491
+      },
+      "reduction_percent": 1.0599780876550002,
+      "runs": {
+        "ref": [
+          {
+            "mode": "fullscreen",
+            "run": "snes-ref-1",
+            "steady_seconds": 11.581159,
+            "gaps": 157,
+            "pcm": 352912
+          },
+          {
+            "mode": "fullscreen",
+            "run": "snes-ref-2",
+            "steady_seconds": 10.807134,
+            "gaps": 76,
+            "pcm": 352912
+          }
+        ],
+        "audio": [
+          {
+            "mode": "fullscreen",
+            "run": "snes-audio-1",
+            "steady_seconds": 10.985603,
+            "gaps": 106,
+            "pcm": 352912
+          },
+          {
+            "mode": "fullscreen",
+            "run": "snes-audio-2",
+            "steady_seconds": 11.165379,
+            "gaps": 114,
+            "pcm": 352912
+          }
+        ]
+      }
+    },
+    {
+      "mode": "window",
+      "console": "nes",
+      "mean_seconds": {
+        "ref": 9.9617055,
+        "audio": 9.962185999999999
+      },
+      "reduction_percent": -0.004823471241932609,
+      "runs": {
+        "ref": [
+          {
+            "mode": "window",
+            "run": "nes-ref-1",
+            "steady_seconds": 9.961859,
+            "gaps": 0,
+            "pcm": 351395
+          },
+          {
+            "mode": "window",
+            "run": "nes-ref-2",
+            "steady_seconds": 9.961552,
+            "gaps": 0,
+            "pcm": 351395
+          }
+        ],
+        "audio": [
+          {
+            "mode": "window",
+            "run": "nes-audio-1",
+            "steady_seconds": 9.961715,
+            "gaps": 0,
+            "pcm": 351395
+          },
+          {
+            "mode": "window",
+            "run": "nes-audio-2",
+            "steady_seconds": 9.962657,
+            "gaps": 0,
+            "pcm": 351395
+          }
+        ]
+      }
+    },
+    {
+      "mode": "window",
+      "console": "snes",
+      "mean_seconds": {
+        "ref": 10.0123935,
+        "audio": 10.021271500000001
+      },
+      "reduction_percent": -0.08867010670325914,
+      "runs": {
+        "ref": [
+          {
+            "mode": "window",
+            "run": "snes-ref-1",
+            "steady_seconds": 9.991645,
+            "gaps": 0,
+            "pcm": 352912
+          },
+          {
+            "mode": "window",
+            "run": "snes-ref-2",
+            "steady_seconds": 10.033142,
+            "gaps": 0,
+            "pcm": 352912
+          }
+        ],
+        "audio": [
+          {
+            "mode": "window",
+            "run": "snes-audio-1",
+            "steady_seconds": 10.020266,
+            "gaps": 0,
+            "pcm": 352912
+          },
+          {
+            "mode": "window",
+            "run": "snes-audio-2",
+            "steady_seconds": 10.022277,
+            "gaps": 0,
+            "pcm": 352912
+          }
+        ]
+      }
+    }
+  ]
+}

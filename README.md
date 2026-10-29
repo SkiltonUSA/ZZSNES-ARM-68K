@@ -153,3 +153,5 @@ regression is fixed in the tested Super Mario World workload—11.65% less ARM
 core time than the earlier translator. Interpreter releases remain unchanged.
 
 Experimental audio handoff results are included in the same report.
+
+[Controlled audio scheduling tests](docs/fixed-presentation.md) found no repeatable gain; release scheduling stays unchanged.

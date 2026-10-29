@@ -590,3 +590,12 @@ closed launcher/Core1 ownership; no automatic system-library or firmware changes
 Signed archive/member/executable checks passed; see docs/release-validation.md.
 No hardware install or launch was performed during this packaging task. Existing
 installed state is unchanged. Source and release assets are prepared for GitHub.
+
+## Controlled scheduling follow-up — 29 October 2026
+
+All 16 fixed-presentation console tests pass (660 frames each, 60 warmup/600
+measured, ABBA order per console/mode). No repeatable earlier-audio advantage;
+keep original defaults. Earlier VERIFY/snapshot-heavy elapsed times were not
+normal-play performance. See fixed-presentation.md and its raw records.
+No installed player, ROM, save, firmware or saved display preference changed.
+The previously reported NES freeze remains unexplained.
