@@ -17,6 +17,9 @@ This beta needs **96 MiB of allocatable ZZ9000 RAM**, plus display and AmigaOS m
 
 Published app version: **0.7.8-dev**.
 
+Development: [SN30 Pro USB and Mega Drive six-button controller support](docs/controllers.md).
+Connected-controller testing is pending; the published package remains 0.7.8.
+
 ![ZZSNES interface](docs/screenshots/interface.png)
 
 ## Super FX compatibility

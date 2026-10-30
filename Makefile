@@ -46,6 +46,10 @@ test-current:
 	.context/test-scan
 	$(MODEL_PYTHON) tests/amiga/emulator/check_current_arm.py
 
+.PHONY: test-controllers
+test-controllers:
+	$(PYTHON) scripts/test_controllers.py
+
 .PHONY: test-library-large
 test-library-large:
 	mkdir -p .context

@@ -858,3 +858,24 @@ ROM/state contents. No firmware or startup changes.
 ZZSNES 0.7.8 Beta packages refreshed with ZIP, signed offline amipkg installer,
 build receipt and SHA256SUMS. See docs/release-validation.md. No additional
 hardware changes during packaging. Documentation-only refresh; all executables remain byte-identical.
+
+## Controller candidate — 30 October 2026
+
+Installed matching 0.7.9-dev launcher, ZZSnes-ui and ZZSnes-FX in
+SD032G:Emulator/ZZSNES. Original 0.7.8 executables remain as .pre-controller
+rollback copies. Library.cfg, Session.cfg, Controls.cfg and Audio.cfg checksums
+are unchanged. An absent Controller.cfg selects the existing Amiga/CD32 path;
+select Auto on Controllers to enable SN30 USB / Mega Drive fallback.
+
+The ARM image, mapping probe and relocation table are byte-identical to 0.7.8.
+Build hashes and native/physical evidence are under
+amiga/records/2026-10-30/controllers. Published 0.7.8 packages are unchanged.
+Read docs/controllers.md for mappings and the experimental validation status.
+
+The Bluetooth-model SN30 Pro is not attached. Poseidon is present; a USB-only
+absence probe returned no input and released its resources. Seven-page MUI
+layout and source selectors pass at a 640×480 budget. Actual USB reports,
+hotplug and the passive 5/7-adapter Mega Drive pad remain untested on hardware.
+ZZUAE remains open; no gameport polling, Core1 session, global configuration,
+firmware or startup change was performed. Bridge responds. Private test drawer
+SD032G:Dev/ZZPads1030 contains only diagnostic/candidate executables and logs.

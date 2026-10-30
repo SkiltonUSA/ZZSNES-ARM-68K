@@ -10,6 +10,9 @@ helps OS, I/O and audio servicing. Performance on a 68030 is not yet verified.
 
 ## Games
 
+The 0.7.9 development build adds [SN30 Pro USB and Mega Drive controller options](controllers.md).
+They are not included in the published 0.7.8 package.
+
 Select a game, then use **Launch** in the bottom bar. It stays visible on every
 page, so you can adjust settings and launch without returning to Games.
 **Continue latest save** and the save-slot controls resume saved progress.

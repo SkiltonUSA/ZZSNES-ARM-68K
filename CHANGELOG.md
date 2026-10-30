@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.9-dev — controller candidate
+
+- Add player-1 SN30 Pro wired USB D-input and passive-adapter Mega Drive six-button sources, with automatic USB/fallback selection.
+- Share decoding between the controller tester and player; retain existing Amiga/CD32 and keyboard mappings.
+- Preserve the tested 0.7.8 ARM payload. Native tests, physical USB-absence and MUI layout checks pass; connected-controller testing remains pending.
+- [Setup, mappings and validation limits](docs/controllers.md).
+
 ## 0.7.8 Beta
 
 - Package documentation clarifies the heavily modified ARMv7 Cortex-A9, 32-bit, single-core implementation; executables are unchanged.

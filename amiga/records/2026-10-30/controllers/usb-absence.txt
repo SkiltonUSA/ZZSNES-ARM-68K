@@ -1,0 +1,4 @@
+[OK]
+STACK poseidon=1
+ABSENT bits=0 status=Connect SN30 Pro USB in D-input mode
+PASS USB absence and cleanup; no gameport/ARM access

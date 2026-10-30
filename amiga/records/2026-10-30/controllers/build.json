@@ -1,0 +1,21 @@
+{
+  "version": "0.7.9-dev",
+  "arm_reused_from": "v0.7.8-beta",
+  "reference_player_sha256": "4fd4cbf9e800f3f2db3baaff2adcc29e9b8bfdf05ef61a68b6111c328fb53664",
+  "arm_image_sha256": "f1d836c6478b274bb8438bdf90f3068a74d4e05587313a967885d8ab0cb08952",
+  "physical_controller_tests": "pending",
+  "executables": {
+    "ZZSNES": {
+      "sha256": "e9b1ef71ed3ed2c67e7e75f2f7974f8ade17371bd83420627d5fe578c68fc3ac",
+      "bytes": 315540
+    },
+    "ZZSnes-ui": {
+      "sha256": "e18fb15019b10f6172f78573f05d5d241a299733382f0ec5a20f317a239a27c7",
+      "bytes": 1120784
+    },
+    "ZZSnes-FX": {
+      "sha256": "e18fb15019b10f6172f78573f05d5d241a299733382f0ec5a20f317a239a27c7",
+      "bytes": 1120784
+    }
+  }
+}

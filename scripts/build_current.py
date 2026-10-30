@@ -8,7 +8,8 @@ from prepare_ppu_experiment import MODES as PPU_MODES
 ROOT=Path(__file__).resolve().parents[1]
 def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--timed-superfx-experiment',action='store_true',help='Isolated Legacy/Timed Super FX candidate; requires --release-ax');p.add_argument('--ppu-test',choices=PPU_MODES,help='Isolated raster experiment; requires --release-ax');p.add_argument('--release-ax',action='store_true',help='Build the current beta with configured AHI output and matching launcher');p.add_argument('--ax-audio-test',action='store_true',help='Isolated per-app ZZ9000AX AHI backend; unit 0 fallback');p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--timed-superfx-experiment',action='store_true',help='Isolated Legacy/Timed Super FX candidate; requires --release-ax');p.add_argument('--ppu-test',choices=PPU_MODES,help='Isolated raster experiment; requires --release-ax');p.add_argument('--release-ax',action='store_true',help='Build the current beta with configured AHI output and matching launcher');p.add_argument('--ax-audio-test',action='store_true',help='Isolated per-app ZZ9000AX AHI backend; unit 0 fallback');p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');p.add_argument('--reuse-arm-from',type=Path,help='Preserve the recorded 0.7.8 ARM payload for a controller-only host rebuild');a=p.parse_args()
+ if a.reuse_arm_from and (not a.release_ax or any(v for k,v in vars(a).items() if k not in ('release_ax','reuse_arm_from'))):p.error('--reuse-arm-from requires an unmodified release ARM core')
  if a.timed_superfx_experiment and (not a.release_ax or a.ppu_test):p.error('--timed-superfx-experiment requires --release-ax without --ppu-test')
  if a.ppu_test and not a.release_ax:p.error('--ppu-test requires --release-ax')
  if a.release_ax:
@@ -139,8 +140,8 @@ def main():
   if a.jit_registers:
    flags=[f.replace('0x3000000','0x6000000') if snes else f.replace('0x400000','0x3000000') for f in flags]
    flags+=['-DCJ_BEGIN='+hex(jit_begin)]
-  build_headers=hashlib.sha256(b''.join(p.read_bytes() for d in [stage,core] for p in sorted(d.rglob('*.h')) if p.name!='zz_payload.h')).digest() if a.expanded else b''
-  for i,relpath in enumerate(m['arm_sources']):
+  build_headers=hashlib.sha256(b''.join(p.read_bytes() for d in [stage,core] for p in sorted(d.rglob('*.h')) if p.name!='zz_payload.h')).digest() if a.expanded and not a.reuse_arm_from else b''
+  for i,relpath in enumerate([] if a.reuse_arm_from else m['arm_sources']):
    src=ROOT/relpath
    if src.is_relative_to(source/'core'):src=core/src.relative_to(source/'core')
    if src.parent==snap/'build-inputs/player':src=stage/src.name
@@ -154,13 +155,19 @@ def main():
     run(command)
     if a.expanded:stamp.write_text(fingerprint)
   elf=stage/('pocket.elf'if snes else'fceux.elf');path=inside if prefix else str
-  if snes:
-   gcc=prefix+['arm-none-eabi-gcc','-mcpu=cortex-a9','-marm','-mfloat-abi=soft','-print-libgcc-file-name'];libgcc=subprocess.check_output(gcc,cwd=ROOT,text=True).strip()
-   run(prefix+['arm-none-eabi-ld','-shared','-Bsymbolic','--gc-sections','--exclude-libs=ALL','--no-undefined','-T',path(core/'payload.ld'),*map(path,objects),'--start-group',path(core/'libc.a'),libgcc,'--end-group','-o',path(elf)])
-  else:run([os.environ.get('LD_LLD','ld.lld'),'-shared','-Bsymbolic','--no-undefined','-T',core/'payload.ld',*objects,'-o',elf])
-  spec=importlib.util.spec_from_file_location('pack',core/'elf.py');pack=importlib.util.module_from_spec(spec);spec.loader.exec_module(pack);image,relocs,entry=pack.unpack(elf.read_bytes())
-  previous=(stage/'zz_payload.h').read_text();mapping=re.search(r'static const unsigned char zz_mapping_probe\[\]=\{[^}]+\};',previous).group()
-  (stage/'zz_payload.h').write_text(f'#define ZZ_ENTRY {entry}u\nstatic const unsigned char zz_image[]={{'+','.join(map(str,image))+'};\n'+mapping+'\nstatic const unsigned long zz_relocations[]={'+','.join(map(str,relocs))+'};\n')
+  if a.reuse_arm_from:
+   from reuse_release_arm import header
+   (stage/'zz_payload.h').write_text(header(a.reuse_arm_from.read_bytes()))
+   print('PASS preserved recorded 0.7.8 ARM payload')
+  else:
+   if snes:
+    gcc=prefix+['arm-none-eabi-gcc','-mcpu=cortex-a9','-marm','-mfloat-abi=soft','-print-libgcc-file-name'];libgcc=subprocess.check_output(gcc,cwd=ROOT,text=True).strip()
+    run(prefix+['arm-none-eabi-ld','-shared','-Bsymbolic','--gc-sections','--exclude-libs=ALL','--no-undefined','-T',path(core/'payload.ld'),*map(path,objects),'--start-group',path(core/'libc.a'),libgcc,'--end-group','-o',path(elf)])
+   else:run([os.environ.get('LD_LLD','ld.lld'),'-shared','-Bsymbolic','--no-undefined','-T',core/'payload.ld',*objects,'-o',elf])
+   spec=importlib.util.spec_from_file_location('pack',core/'elf.py');pack=importlib.util.module_from_spec(spec);spec.loader.exec_module(pack);image,relocs,entry=pack.unpack(elf.read_bytes())
+   previous=(stage/'zz_payload.h').read_text();mapping=re.search(r'static const unsigned char zz_mapping_probe\[\]=\{[^}]+\};',previous).group()
+   (stage/'zz_payload.h').write_text(f'#define ZZ_ENTRY {entry}u\nstatic const unsigned char zz_image[]={{'+','.join(map(str,image))+'};\n'+mapping+'\nstatic const unsigned long zz_relocations[]={'+','.join(map(str,relocs))+'};\n')
+
  if a.ack_poll_us:
   from prepare_ack_poll import prepare
   prepare(stage)
@@ -170,6 +177,8 @@ def main():
  if a.release_ax:
   from prepare_output_quality import prepare_audio
   prepare_audio(stage)
+  from prepare_controllers import prepare_player
+  prepare_player(stage)
  # Historical isolated AX experiment; release output is selected per app above.
  if a.ax_audio_test:
   from prepare_ax_audio import prepare
@@ -191,5 +200,5 @@ def main():
  if a.optimisation:
   from build_scanlines import build
   build(out)
- print('PASS: rebuilt',m['console'],'ARM recompiled'if a.arm else'with verified ARM payload','at',out)
+ print('PASS: rebuilt',m['console'],'with preserved release ARM payload'if a.reuse_arm_from else'ARM recompiled'if a.arm else'with verified ARM payload','at',out)
 if __name__=='__main__':main()
