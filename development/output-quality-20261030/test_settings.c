@@ -11,5 +11,8 @@ int main(void){
  p[19]=33;assert(!em_audio_unit0_mode(p,52,&mode));p[19]=32;p[7]=255;assert(!em_audio_unit0_mode(p,52,&mode));
  assert(em_audio_mode(2,"Paula:14 bit stereo",1,14,1));assert(em_audio_mode(3,"Paula:14 bit stereo",1,14,1));assert(em_audio_mode(4,"ZZ9000AX:16 bit Stereo",1,16,1));
  assert(!em_audio_mode(2,"ZZ9000AX:16 bit Stereo",1,16,1));assert(!em_audio_mode(4,"Paula:14 bit stereo",1,14,1));assert(!em_audio_mode(2,"Paula:14 bit stereo",0,14,1));
+ assert(em_audio_mode(2,"Paula:HiFi 14 bit stereo calibrated",1,14,1)>em_audio_mode(2,"Paula:14 bit stereo",1,14,1));
+ assert(!em_audio_mode(2,"Paula:HiFi 14 bit stereo calibrated",1,8,1));
+ assert(!em_audio_mode(2,"Paula:HiFi 14 bit stereo calibrated",1,14,0));
  puts("PASS output selection persistence, malformed/truncated preferences, routing capabilities");
 }

@@ -1,0 +1,18 @@
+{
+  "previous": {
+    "bytes": 1121516,
+    "sha256": "c02abcc06ad7d7f8fda27b12d75c82bc2b35467e95d501bbe53d97fe11e59842"
+  },
+  "previous_capture": {
+    "bytes": 1122348,
+    "sha256": "f2a31557871588600a5de0e0fa3af457d4cf942234764118d26da28843ff550e"
+  },
+  "corrected_capture": {
+    "bytes": 1122440,
+    "sha256": "d6ddf9c561f8aaeb48da0e04d3da00871a7be2cf4cb14ccfcb725f3bddfbeb43"
+  },
+  "release": {
+    "bytes": 1121596,
+    "sha256": "86c38fd75ce8582f09085af9d5b043b16254551a2ea229e89229642fe6996ac5"
+  }
+}

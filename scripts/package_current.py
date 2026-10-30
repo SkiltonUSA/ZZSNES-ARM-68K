@@ -26,6 +26,8 @@ def package(build, output, fx=None, version=None):
    if fx is None:raise ValueError('--fx-build is required for ZZSNES')
    data=(fx.resolve()/'ZZSnes-FX').read_bytes()
    if data[:4]!=bytes.fromhex('000003f3'):raise ValueError('Missing Super FX executable')
+   if version.encode() not in data:raise ValueError('Executable version mismatch: ZZSnes-FX')
+   if data!=(drawer/m['player']).read_bytes():raise ValueError('Current standard and FX players must match')
    (drawer/'ZZSnes-FX').write_bytes(data)
   shutil.copytree(build/'Scanlines',drawer/'Scanlines')
   for name in ['ZZScanlines','ZZScanlinesGUI']:

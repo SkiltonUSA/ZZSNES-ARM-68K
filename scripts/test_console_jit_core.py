@@ -2,7 +2,7 @@
 """Compare isolated linked interpreter/register-JIT payloads in an A9 model.
 No physical cache coherency or performance claim. ROM remains local.
 """
-import argparse,importlib.util,struct,subprocess,hashlib,json
+import argparse,importlib.util,struct,subprocess,hashlib,json,os
 from pathlib import Path
 from unicorn import Uc,UC_ARCH_ARM,UC_MODE_ARM,UC_HOOK_BLOCK
 from unicorn.arm_const import *
@@ -11,7 +11,7 @@ class Machine:
   s=importlib.util.spec_from_file_location('pack',packer);m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
   image,rel,_=m.unpack(elf.read_bytes());self.base=base;self.block=block
   for at in rel:struct.pack_into('<I',image,at,struct.unpack_from('<I',image,at)[0]+base)
-  self.syms={p[2]:int(p[0],16)+base for line in subprocess.check_output(['/opt/homebrew/opt/llvm/bin/llvm-nm',elf],text=True).splitlines() if len(p:=line.split())==3}
+  self.syms={p[2]:int(p[0],16)+base for line in subprocess.check_output([os.environ.get('LLVM_NM','llvm-nm'),elf],text=True).splitlines() if len(p:=line.split())==3}
   self.u=Uc(UC_ARCH_ARM,UC_MODE_ARM);self.u.ctl_set_cpu_model(UC_CPU_ARM_CORTEX_A9);self.u.mem_map(base&~4095,block+8192);self.u.mem_write(base,bytes(image));self.stop=base+block-0x10000
   if 'console_jit_init' in self.syms:assert self.call('console_jit_init',base)==1
  def call(self,symbol,*args,limit=None):

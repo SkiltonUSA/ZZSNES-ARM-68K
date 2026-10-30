@@ -11,7 +11,7 @@ struct Library *AHIBase;
 struct ax_stream {
  struct MsgPort *port;struct AHIRequest *request;struct AHIAudioCtrl *control;
  struct Hook hook;struct ax_queue q;struct Task *task;
- UBYTE *data[4];ULONG mask,rate,type,bytes,capacity,silent_frames,mode,mixrate;
+ UBYTE *data[4];ULONG mask,rate,type,bytes,capacity,silent_frames,mode,mixrate,choice;
  int opened,playing;
 };
 static ULONG ax_hook(struct Hook *hook __asm("a0"),
@@ -33,7 +33,7 @@ static void ax_close(struct ax_stream *s){
  AHIBase=NULL;s->playing=0;
 }
 static int ax_open(struct ax_stream *s,ULONG rate,ULONG type,ULONG bytes,ULONG mask){
- ULONG id=AHI_INVALID_ID,i,minframes=0,choice=em_audio_load(),mix;char name[128];
+ ULONG id=AHI_INVALID_ID,selected=AHI_INVALID_ID,i,minframes=0,choice=em_audio_load(),mix;unsigned best=0;char name[128];
  if(choice==1)return 0;
  memset(s,0,sizeof(*s));ax_init(&s->q);s->rate=rate;s->type=type;s->bytes=bytes;
  s->task=FindTask(NULL);s->mask=mask;s->capacity=3072;s->silent_frames=(rate+49)/50;
@@ -43,17 +43,20 @@ static int ax_open(struct ax_stream *s,ULONG rate,ULONG type,ULONG bytes,ULONG m
  if(OpenDevice(AHINAME,AHI_NO_UNIT,(struct IORequest *)s->request,0))goto fail;
  s->opened=1;AHIBase=(struct Library *)s->request->ahir_Std.io_Device;
  if(choice==0)choice=em_audio_unit0_paula()?2:1;
- if(choice==1)goto fail;mix=choice==2?22050:choice==3?28000:rate;
+ if(choice==1)goto fail;s->choice=choice;/* Source and device clocks are separate. AX supports 32000, not SNES 32040. */
+ mix=choice==2?22050:choice==3?28000:32000;
  /* Resolve a registered mode; never assume a firmware or preference ID. */
  while((id=AHI_NextAudioID(id))!=AHI_INVALID_ID){ULONG stereo=0,bits=0,realtime=0;
   name[0]=0;
   if(AHI_GetAudioAttrs(id,NULL,AHIDB_BufferLen,sizeof(name),AHIDB_Name,(ULONG)name,
-     AHIDB_Stereo,(ULONG)&stereo,AHIDB_Bits,(ULONG)&bits,AHIDB_Realtime,(ULONG)&realtime,TAG_DONE)
-     && em_audio_mode(choice,name,(unsigned)stereo,(unsigned)bits,(unsigned)realtime))break;
+     AHIDB_Stereo,(ULONG)&stereo,AHIDB_Bits,(ULONG)&bits,AHIDB_Realtime,(ULONG)&realtime,TAG_DONE)){
+   unsigned score=em_audio_mode(choice,name,(unsigned)stereo,(unsigned)bits,(unsigned)realtime);
+   if(score>best){best=score;selected=id;}
+  }
  }
- if(id==AHI_INVALID_ID)goto fail;s->mode=id;
+ if(selected==AHI_INVALID_ID)goto fail;s->mode=selected;
  s->hook.h_Entry=(ULONG (*)())ax_hook;s->hook.h_Data=s;
- s->control=AHI_AllocAudio(AHIA_AudioID,id,AHIA_MixFreq,mix,AHIA_Channels,1,
+ s->control=AHI_AllocAudio(AHIA_AudioID,selected,AHIA_MixFreq,mix,AHIA_Channels,1,
   AHIA_Sounds,4,AHIA_SoundFunc,(ULONG)&s->hook,TAG_DONE);
  if(!s->control)goto fail;
  if(!AHI_GetAudioAttrs(AHI_INVALID_ID,s->control,AHIDB_MaxPlaySamples,(ULONG)&minframes,TAG_DONE))goto fail;
@@ -77,4 +80,12 @@ static int ax_start(struct ax_stream *s){
  s->playing=1;AHI_SetVol(0,0x10000,0x8000,s->control,AHISF_IMM);
  AHI_SetFreq(0,s->rate,s->control,AHISF_IMM);
  AHI_SetSound(0,3,0,s->silent_frames,s->control,AHISF_IMM);return 1;
+}
+
+/* A successful AllocAudio/Play does not prove that the device advances.
+ * Probe AX using silence before accepting game PCM. No register/firmware reset. */
+static int ax_ready(struct ax_stream *s){
+ if(!ax_start(s))return 0;
+ for(unsigned ticks=0;ticks<25&&!s->q.callbacks;ticks++)Delay(1);
+ return s->q.callbacks!=0;
 }

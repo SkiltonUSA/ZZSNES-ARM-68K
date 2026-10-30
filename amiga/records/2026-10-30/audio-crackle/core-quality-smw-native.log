@@ -1,0 +1,1 @@
+PASS 120 frames: identical CPU/video endpoints; q0/q1 samples=[63889, 63887], peaks=[4200, 9248], audio differences=120

@@ -9,6 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'development/output-quality-20261030'
 
 def prepare_audio(stage):
+ edit(stage/"host.c","static int player_demo,player_paused,player_muted;","static int player_demo,player_muted;\nstatic volatile int player_paused;")
  from prepare_ax_audio import prepare
  edit(stage/'player_audio.h','#define AUDIO_SLOTS 8u','#define AUDIO_SLOTS 12u')
  prepare(stage,DATA)
@@ -16,6 +17,7 @@ def prepare_audio(stage):
  p=stage/'player_audio.h';s=p.read_text().replace('AUDIO_AX mode=','AUDIO_OUTPUT mode=').replace('per-app AX mode=','per-app AHI mode=')
  s=s.replace('silence_queued=%u\\n','silence_queued=%u starvations=%u\\n').replace('audio_ax_callbacks,audio_ax_silence);','audio_ax_callbacks,audio_ax_silence,audio_ax_starvations);')
  s=s.replace('8 queue slots','12 queue slots')
+ s=s.replace('if(!audio_opened)goto fail;', 'if(audio_ax_unresponsive)puts("AUDIO: ZZ9000AX did not start; using configured AHI unit 0");\n if(!audio_opened)goto fail;')
  p.write_text(s)
  shutil.copy2(DATA/'capture_audio.h',stage/'capture_audio.h')
  edit(stage/'state_host.h','static int fc_state_transaction(int load){','#include "capture_audio.h"\nstatic int fc_state_transaction(int load){')

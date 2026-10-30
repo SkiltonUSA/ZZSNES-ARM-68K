@@ -21,12 +21,12 @@ struct audio_block {unsigned count;unsigned char data[4096];};
 static struct audio_block blocks[12],*audio_queue=blocks;
 static unsigned audio_write,audio_read,audio_stop,audio_force,audio_started,audio_done,audio_opened;
 static unsigned audio_worker_mask,audio_parent_signal=1,audio_submitted,audio_completed,audio_error;
-static unsigned audio_ax_mode;
+static unsigned audio_ax_mode,player_paused,pause_ticks,pause_starvations;
 static unsigned audio_pending_samples,audio_feedback_ready,audio_state_drain,audio_state_drained;
 static struct Task *audio_parent;
-struct ax_stream {struct ax_queue q;unsigned mode,mixrate,playing;unsigned char buffers[3][12288],*data[3];};
+struct ax_stream {struct ax_queue q;unsigned mode,mixrate,playing,choice;unsigned char buffers[3][12288],*data[3];};
 static struct ax_stream *active;
-static unsigned sent,total,burst,tick,limit,consumed,part,allocs,depth,disabled,fail_open,fail_start,cancel,state_test,drained,fallback;
+static unsigned sent,total,burst,tick,limit,consumed,part,allocs,depth,disabled,fail_open,fail_start,fail_ready,cancel,state_test,drained,fallback;
 static LONG AllocSignal(int n){(void)n;allocs++;return 2;}
 static void FreeSignal(LONG s){assert(s==2&&allocs==1);allocs--;}
 static void Signal(struct Task*t,ULONG m){(void)t;assert(m);}
@@ -36,10 +36,11 @@ static void CopyMem(const void*s,void*d,unsigned n){memcpy(d,s,n);}
 static int ax_open(struct ax_stream*s,unsigned rate,unsigned type,unsigned bytes,unsigned mask){
  assert(rate==AX_RATE&&type==AX_TYPE&&bytes==AX_BYTES&&mask==4);if(fail_open)return 0;
  memset(s,0,sizeof(*s));ax_init(&s->q);for(unsigned i=0;i<3;i++)s->data[i]=s->buffers[i];
- s->mode=123;s->mixrate=rate;active=s;return 1;
+ s->mode=123;s->mixrate=rate;s->choice=fail_ready?4:2;active=s;return 1;
 }
 static void ax_close(struct ax_stream*s){assert(s==active);active=NULL;}
 static int ax_start(struct ax_stream*s){if(fail_start)return 0;s->playing=1;return 1;}
+static int ax_ready(struct ax_stream*s){(void)s;return !fail_ready;}
 static void Wait(unsigned mask);
 static void audio_worker(void){fallback++;}
 #include "worker.h"
@@ -55,7 +56,15 @@ static void Wait(unsigned mask){
   }
  }
  if(cancel&&tick>=cancel){audio_stop=1;return;}
- if(state_test&&!drained&&sent>=9){
+ if(state_test==2&&!drained&&sent>=30){
+  if(!pause_ticks)pause_starvations=active->q.starvations;
+  player_paused=audio_force=1;
+  if(++pause_ticks<30)return;
+  assert(ax_idle(&active->q)&&consumed==sent);
+  assert(active->q.starvations==pause_starvations);
+  player_paused=0;drained=1;
+ }
+ if(state_test==1&&!drained&&sent>=9){
   if(!audio_state_drained){audio_state_drain=audio_force=1;return;}
   assert(ax_idle(&active->q)&&audio_completed==audio_submitted&&consumed==sent);
   audio_state_drain=audio_state_drained=0;drained=1;
@@ -67,12 +76,13 @@ static void Wait(unsigned mask){
  if(sent==total)audio_stop=2;
 }
 static void run(unsigned n,unsigned b,unsigned failure,unsigned cancellation,unsigned state){
- total=n;burst=b;fail_open=failure==1;fail_start=failure==2;cancel=cancellation;state_test=state;
+ total=n;burst=b;fail_open=failure==1;fail_start=failure==2;fail_ready=failure==3;cancel=cancellation;state_test=state;
+ player_paused=pause_ticks=pause_starvations=0;
  sent=tick=consumed=part=allocs=depth=disabled=drained=fallback=0;
  audio_write=audio_read=audio_stop=audio_force=audio_started=audio_done=audio_opened=0;
  audio_submitted=audio_completed=audio_error=audio_state_drain=audio_state_drained=0;
  audio_dispatch();assert(!active&&!allocs&&!disabled);
- if(fail_open){assert(fallback==1&&!audio_opened&&!depth);return;}
+ if(fail_open||fail_ready){assert(fallback==1&&!audio_opened&&!depth);return;}
  assert(!fallback&&audio_done&&depth==1);
  if(!failure&&!cancel){unsigned sum=0;for(unsigned i=0;i<n;i++)sum+=1+(i*131)%1024;
   assert(consumed==n&&!part&&audio_completed==sum&&audio_submitted==sum&&!audio_error);
@@ -82,9 +92,9 @@ static void run(unsigned n,unsigned b,unsigned failure,unsigned cancellation,uns
 }
 int main(void){
  for(unsigned n=1;n<10;n++)run(n,1,0,0,0);
- run(600,8,0,0,0);run(600,1,0,0,0);run(61,1,0,0,1);
- run(30,8,1,0,0);run(30,8,2,0,0);run(100,8,0,5,0);
- puts("PASS actual AX worker: ordered PCM, three-buffer reuse, partial stop, state drain/resume, open fallback, start failure, cancel/join");
+ run(600,8,0,0,0);run(600,1,0,0,0);run(61,1,0,0,1);run(100,3,0,0,2);
+ run(30,8,3,0,0);run(30,8,1,0,0);run(30,8,2,0,0);run(100,8,0,5,0);
+ puts("PASS actual AX worker: ordered PCM, three-buffer reuse, partial stop, state drain/resume, pause/re-prime, open/unresponsive fallback, start failure, cancel/join");
 }
 '''
 (out/'worker.c').write_text(source)

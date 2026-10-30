@@ -1,76 +1,79 @@
-# ZZSNES 0.7.8 Beta validation
+# ZZSNES 0.7.11 Beta validation
 
-Matching 0.7.8-dev executables; [build command and hashes](release-build.json).
-These are functional and scheduling tests, not a general FPS or audio-quality guarantee.
+Matching launcher, standard player and FX player; [build hashes](release-build.json).
+The two player executables are identical. This update changes shared PCM mapping
+and audio delivery, without changing the SNES mixer or save-state format.
 
-| Asset | Bytes | SHA256 |
+## Shared PCM
+
+Chrono Trigger, 600 frames: **641,658 individual samples match the exact ARM
+reference**, after byte-order conversion. Previous cached publication produced
+46,129 differences; 46,101 matched the preceding frame. Both runs reported zero
+starvation, showing why delivery counters were insufficient.
+[Technical explanation and reproducible comparison](arm-audio-publication.md).
+
+## Release-build hardware tests
+
+Results are listed in the [audio-publication records](../amiga/records/2026-10-30/audio-publication/).
+The Chrono Trigger pause/save/load run and fresh-process resume use Paula HiFi
+22,030 Hz. Super Mario World uses AX 32,000 Hz in a 2× Workbench window. An
+older version-3 Super Mario World state is tested separately. These runs use
+the release executable, without diagnostic PCM capture.
+
+## Local checks
+
+- All 64 allocation alignments: shared PCM pages, adjacent private pages,
+  mailbox/ROM policy and bounds.
+- Actual audio worker/API adapter: ordered stereo buffers, pause/re-prime,
+  drains, device startup fallback, cancellation and teardown.
+- Fresh relocated ARM instances: exact 30-frame stereo/video replay and corrupt
+  state rejection, including a previously saved version-3 state.
+- Native core and expanded-cartridge/state regressions, controller tests,
+  compact launcher layout and the existing current-model suite.
+- ZIP/LHA equality, executable versions/hashes, signed offline catalogue,
+  dependency-first installation and private-data exclusions.
+
+The first test staging attempt hit the bridge's checksum timeout on an
+uncompressed 4 MiB ROM. The bridge remained responsive; retrying with the
+original ZIP passed transfer verification. This was not counted as a game test.
+A stale ELF from a previous host-only build was rejected by the model packer;
+the accepted reference uses the newly rebuilt release ELF.
+
+## Limits
+
+These results prove the tested digital PCM transfer and lifecycle. They do not
+measure the physical DAC or establish clean sound for every cartridge. Listening
+to the new build remains to be confirmed. No FPS improvement is claimed, no
+firmware/global AHI changes are required, and the NES-specific HQ synthesis
+optimisations are not part of this SNES update.
+
+[Previous 0.7.8 validation](release-validation-0.7.8.md).
+
+## Release lifecycle results
+
+| Test | Frames | Completed stereo sample frames | Starvation |
+| --- | ---: | ---: | ---: |
+| Chrono Trigger: fresh-process resume | 120 | 64,166 | 0 |
+| Chrono Trigger: Paula fullscreen, pause/save/load | 1,800 | 962,488 | 0 |
+| Super Mario World: older v3 state, Paula | 120 | 64,166 | 0 |
+| Super Mario World: AX, 2× window | 1,800 | 962,488 | 0 |
+
+All runs completed queued PCM and passed register/MMU/cache restoration and
+owned-memory release. Silence during deliberate pauses is not an underrun.
+
+## Release assets
+
+| File | Bytes | SHA256 |
 | --- | ---: | --- |
-| `ZZSNES-0.7.8-dev-beta-amipkg.lha` | 3045349 | `97fc9063c6c1e15a1dcc98a09068368c14ff568094c0bde0f82456a8889d070e` |
-| `ZZSNES-0.7.8-dev-beta.zip` | 1128278 | `55d846f0a8ae03d3b2ce2ca709eff95a759a919763bc05f375f1641dadc54216` |
-| `ZZSNES-release.json` | 1116 | `7874d8ae108ab7f1568d1ac153cdb1559c9ec37b682703a3bd1ae76daa0e5a0c` |
+| `ZZSNES-0.7.11-dev-beta-amipkg.lha` | 3116973 | `845112366fcf29d685a696c816f64938cd9e382b7a6ed925d0497fba1f2ed7a2` |
+| `ZZSNES-0.7.11-dev-beta.zip` | 1165460 | `db7130d7c8dd0f71b3da357a95c15e31013d98da4e308c43c64e0156680bb36a` |
+| `ZZSNES-release.json` | 1117 | `191f332f651e6fd7d865b0bf08dfa7a4a19f1a0be7237663d488f50de2ce1500` |
 
-Documentation-only package refresh: corrected core description and updated
-change log. All three executable hashes are unchanged. Refreshed ZIP/LHA,
-signatures, dependency recipe and private-data checks pass locally; the
-previous hardware installation below applies to the original package.
+## Installed verification
 
-## Hardware comparisons
-
-| Test | Frames per emulator | Result |
-| --- | ---: | --- |
-| Nine-frame prime, NTSC fullscreen, Paula 22.05 kHz | 6,000 | Zero starvation transitions; before capture-drain addition. |
-| Nine-frame prime, NTSC fullscreen, Paula 28 kHz | 1,800 | Zero starvation transitions; before capture-drain addition. |
-| Nine-frame prime, NTSC 2x and 3x, Paula 22.05 kHz | 1,200 per size | Zero starvation transitions; before capture-drain addition. |
-| Warm-preview PAL fullscreen | 3,000 | Zero starvation transitions. |
-| Final build, cold-preview PAL fullscreen | 3,000 | Zero starvation transitions; capture deliberately pauses playback. |
-| Final build, cold-preview PAL 3x | 600 | Zero starvation transitions; capture deliberately pauses playback. |
-| Final Auto / configured AHI / explicit AX | 180 per route | Correct route, all PCM completed, clean teardown. |
-
-The earlier six-frame per-app prime still recorded shortages. Nine-frame priming
-was retained with twelve producer slots. The original configured-unit-0 path
-uses a different linked-request counter, so it is not compared numerically with
-the callback starvation counter. Cold-capture silence totals are not zero:
-queued PCM is drained before capture and playback re-primes afterwards.
-
-Final interactive tests cover pause, screenshot, state save/load, 3x-window to
-fullscreen and back, resume and F10 exit. Both complete all PCM and restore
-register/cache/MMU witnesses before freeing owned memory. The interactive
-sequence records five starvation transitions on NES and one on SNES; it does
-not prove uninterrupted sound while switching or pausing.
-
-## Native, model and interface checks
-
-- Sanitizers cover the actual audio worker/API adapter, FIFO order and reuse,
-  partial drains, mode capabilities, settings corruption, device failure,
-  cancellation and teardown ordering.
-- Capture drain is bounded and tested for worker failure, disabled audio and timeout.
-- Relocated ARM tests check scalar-reference pixels, formats, NEON/fallback,
-  enlarged windows, guards and register/MMU/SIMD restoration.
-- Legacy settings, scanning, large libraries, borders and layout tests pass.
-- Physical compact MUI checks exercise all seven pages, five audio choices,
-  fullscreen/1x/2x/3x selection, resizing and the loading panel.
-- ZIP and nested LHA payloads match; signed catalogues, corruption rejection,
-  dependency checks, icons and private-data exclusions pass.
-
-## Installation and limits
-
-The exact offline installer completed on the A4000TX. Installed executable
-hashes match the release build. Existing library/session settings, ROMs and
-saves were preserved. First launcher exit creates Audio.cfg with Auto selected;
-other absent settings stay absent. Workbench icon
-positions were retained. Original executables have same-disk rollback copies
-and a local backup. Global AHI and saved screenmode checksums remain unchanged.
-
-An early standalone AHI probe queried the API before opening its device and
-raised a software failure. It was suspended; the ordering was corrected and
-regression-tested. It was never installed as an emulator. Reboot the test
-machine once to clear that suspended diagnostic before normal use.
-
-Listening remains pending. No eight-hour soak or tear-free physical scanout
-claim is made. The exact Chrono Trigger scrolling scene still needs visual
-confirmation. SNES now preserves every active source row; that regression is
-covered by moving-pattern and relocated ARM pixel tests. Heavy Stunt Race FX
-race execution remains below real-time audio speed even with tested frameskip.
-
-[Investigation and upstream comparisons](output-quality.md) ·
-[Raw evidence and run/binary mapping](../amiga/records/2026-10-30/output-quality/)
+The offline installer completed on the A4000TX. All three installed executable
+checksums match the release build. Existing Library.cfg, Library.bak,
+Session.cfg, Audio.cfg, Controls.cfg and Controller.cfg checksums were preserved.
+Previous executables, icon, documentation and settings were backed up and
+verified first. Global AHI preferences, firmware, ROMs and save files were not
+modified by installation.

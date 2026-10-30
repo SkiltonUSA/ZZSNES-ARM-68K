@@ -1,0 +1,5 @@
+[OK]
+OPEN mode=00020003 source=32000 mix=22030
+RESULT rc=0 sent=80 completed=128000 callbacks=90 starvation=9 captured=373120 type=3 calls=212
+CONTINUITY frames=93280 max_step=5120 jumps_over_512=16
+0

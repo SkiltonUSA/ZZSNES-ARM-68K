@@ -1,4 +1,4 @@
-# ZZSNES — 0.7.8 Beta
+# ZZSNES — 0.7.11 Beta
 
 <img src="docs/screenshots/logo.png" width="160" alt="ZZSNES logo">
 
@@ -9,16 +9,17 @@ files, controls, display coordination and batched AHI audio.
 
 This beta needs **96 MiB of allocatable ZZ9000 RAM**, plus display and AmigaOS memory.
 
-**[Download 0.7.8 Beta — installer or ZIP](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.8-beta)** ·
+**[Download 0.7.11 Beta — installer or ZIP](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.11-beta)** ·
 [Installation](docs/package-manager.md) · [User guide](docs/current-guide.md) ·
 [Changes](CHANGELOG.md) · [Interface gallery](docs/current-interface.md)
 
-**New:** selectable higher-quality Paula audio and 2×/3× windows. SNES vertical scaling now preserves source rows. [Changes and tests](docs/output-quality.md).
+**New:** corrected shared audio-buffer caching, pause/resume priming and AX startup fallback. [ARM fix and validation](docs/arm-audio-publication.md).
+Chrono Trigger capture: **641,658 samples matched the ARM reference, zero differences**.
 
-Published app version: **0.7.8-dev**.
+Published app version: **0.7.11-dev**.
 
-Development: [USB/CD32, SN30 Pro and Mega Drive controller support](docs/controllers.md).
-Connected-controller testing is pending; the published package remains 0.7.8.
+Includes [USB/CD32, SN30 Pro and Mega Drive controller options](docs/controllers.md).
+Connected-controller validation remains limited; see the setup guide.
 
 ![ZZSNES interface](docs/screenshots/interface.png)
 

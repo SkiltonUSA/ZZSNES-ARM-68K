@@ -1,21 +1,23 @@
 {
-  "version": "0.7.8-dev",
-  "release": "v0.7.8-beta",
+  "version": "0.7.11-dev",
+  "release": "v0.7.11-beta",
   "build_directory": ".context/ax-release-build",
   "build_command": "python3 scripts/build_current.py --release-ax",
   "executables": {
     "ZZSNES": {
-      "sha256": "e2adefe68de8819adcdd49320b54d6b63f7e9f3e292a3540c2ece17443845a25",
-      "bytes": 290764
+      "sha256": "9e12e7638345d913646d82790cf527544e72bd0f1d31379dd86772ac6c8cc957",
+      "bytes": 315844
     },
     "ZZSnes-ui": {
-      "sha256": "4fd4cbf9e800f3f2db3baaff2adcc29e9b8bfdf05ef61a68b6111c328fb53664",
-      "bytes": 1099224
+      "sha256": "86c38fd75ce8582f09085af9d5b043b16254551a2ea229e89229642fe6996ac5",
+      "bytes": 1121596
     },
     "ZZSnes-FX": {
-      "sha256": "4fd4cbf9e800f3f2db3baaff2adcc29e9b8bfdf05ef61a68b6111c328fb53664",
-      "bytes": 1099224
+      "sha256": "86c38fd75ce8582f09085af9d5b043b16254551a2ea229e89229642fe6996ac5",
+      "bytes": 1121596
     }
   },
-  "published": true
+  "published": true,
+  "arm_toolchain": "GNU Arm Embedded GCC 15.3.1 20260627; Cortex-A9 ARM mode, soft-float, -O2",
+  "audio_publication": "Shared 4096-byte stereo PCM window: normal inner/outer noncacheable, shareable"
 }

@@ -1,0 +1,38 @@
+[
+  {
+    "test": "chrono-resume-hardware",
+    "frames": 120,
+    "sample_frames": 64166,
+    "output_mode": "0002000e",
+    "device_rate": 22030,
+    "starvations": 0,
+    "clean_shutdown": true
+  },
+  {
+    "test": "chrono-save-hardware",
+    "frames": 1800,
+    "sample_frames": 962488,
+    "output_mode": "0002000e",
+    "device_rate": 22030,
+    "starvations": 0,
+    "clean_shutdown": true
+  },
+  {
+    "test": "smw-legacy-hardware",
+    "frames": 120,
+    "sample_frames": 64166,
+    "output_mode": "0002000e",
+    "device_rate": 22030,
+    "starvations": 0,
+    "clean_shutdown": true
+  },
+  {
+    "test": "smw-window-hardware",
+    "frames": 1800,
+    "sample_frames": 962488,
+    "output_mode": "cafe0001",
+    "device_rate": 32000,
+    "starvations": 0,
+    "clean_shutdown": true
+  }
+]

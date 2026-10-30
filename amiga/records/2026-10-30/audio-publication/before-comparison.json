@@ -1,0 +1,7 @@
+{
+  "samples": 641658,
+  "reference_samples": 641658,
+  "different": 46129,
+  "hardware_sha256": "644fcd828a096214f9adbba3d51ec6b8c3259fde60a06b7098adca067e9ff5b8",
+  "previous_frame_matches": 46101
+}

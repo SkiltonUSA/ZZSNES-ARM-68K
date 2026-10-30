@@ -1,0 +1,34 @@
+[
+  {
+    "run": "rb-s-a4-w0-n3000-0",
+    "AUDIO_OUTPUT": "AUDIO_OUTPUT mode=cafe0001 mix=32000 callbacks=1086 silence_queued=86 starvations=0",
+    "AUDIO_TASK": "AUDIO_TASK queued=1604146 submitted=1604146 completed=1604146 highwater=9 error=0 stopped=1",
+    "END exit=": "ZZSNES_POCKET END exit=0 frames=3000 elapsed_us=52396045 core_total_us=24310377 output_hash=811c9dc5",
+    "MMU_RESTORE": "MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=102f4000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=5356",
+    "LAUNCHER exit=": "LAUNCHER exit=0; owned memory released"
+  },
+  {
+    "run": "rb-s-a2-w0-n3000-1",
+    "AUDIO_OUTPUT": "AUDIO_OUTPUT mode=00020003 mix=22030 callbacks=1002 silence_queued=2 starvations=0",
+    "AUDIO_TASK": "AUDIO_TASK queued=1604146 submitted=1604146 completed=1604146 highwater=9 error=0 stopped=1",
+    "END exit=": "ZZSNES_POCKET END exit=0 frames=3000 elapsed_us=52270406 core_total_us=24306795 output_hash=811c9dc5",
+    "MMU_RESTORE": "MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=102f4000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=5416",
+    "LAUNCHER exit=": "LAUNCHER exit=0; owned memory released"
+  },
+  {
+    "run": "rb-n-a4-w0-n3000-2",
+    "AUDIO_OUTPUT": "AUDIO_OUTPUT mode=cafe0001 mix=32000 callbacks=1066 silence_queued=66 starvations=0",
+    "AUDIO_TASK": "AUDIO_TASK queued=1597247 submitted=1597247 completed=1597247 highwater=9 error=0 stopped=1",
+    "END exit=": "ZZFCEUX END exit=0 frames=3000 elapsed_us=51552482 core_total_us=22073582 output_hash=811c9dc5",
+    "MMU_RESTORE": "MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=10244000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=5846",
+    "LAUNCHER exit=": "LAUNCHER exit=0; owned memory released"
+  },
+  {
+    "run": "rb-n-a2-w0-n3000-3",
+    "AUDIO_OUTPUT": "AUDIO_OUTPUT mode=00020003 mix=22030 callbacks=1002 silence_queued=2 starvations=0",
+    "AUDIO_TASK": "AUDIO_TASK queued=1597247 submitted=1597247 completed=1597247 highwater=9 error=0 stopped=1",
+    "END exit=": "ZZFCEUX END exit=0 frames=3000 elapsed_us=51101840 core_total_us=22060362 output_hash=811c9dc5",
+    "MMU_RESTORE": "MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=10244000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=5860",
+    "LAUNCHER exit=": "LAUNCHER exit=0; owned memory released"
+  }
+]

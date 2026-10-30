@@ -1,0 +1,5 @@
+amiga_run_script [OK]
+OPEN mode=cafe0001 source=32040 mix=32000
+RESULT rc=0 sent=80 completed=128160 callbacks=84 starvation=2 captured=535040 type=3 calls=209
+CONTINUITY frames=133760 max_step=2815 jumps_over_512=2
+0

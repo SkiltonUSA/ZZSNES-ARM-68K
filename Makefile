@@ -180,3 +180,11 @@ test-timed-superfx:
 	$(PYTHON) scripts/test_timed_superfx.py
 current-timed-superfx:
 	$(PYTHON) scripts/build_current.py --release-ax --timed-superfx-experiment
+
+.PHONY: test-audio-publication
+test-audio-publication:
+	mkdir -p .context/audio011-tests
+	$(CXX) -std=c++14 -O2 -Wall -Wextra -Werror -DMB_ALLOCATION=0x6000000u -DCJ_BEGIN=0x3400000u -I.context/ax-release-build/core development/audio-publication-20261030/test_audio_pages.cpp -o .context/audio011-tests/pages
+	.context/audio011-tests/pages
+	$(PYTHON) development/output-quality-20261030/test_worker.py
+	$(PYTHON) development/output-quality-20261030/test_stream.py

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.7.11 Beta — shared audio publication
+
+- Request 32 kHz AX output separately from the SNES source clock.
+- Detect missing AX startup callbacks and fall back to configured AHI instead of filling the queue and exiting.
+- Prefer Paula HiFi mixing when available, with regular 14-bit fallback.
+- Rebuild ARM with noncacheable shared stereo PCM pages; keep synthesis buffers cached. Chrono Trigger: 46,129 differing samples reduced to zero across 641,658 samples.
+- Re-prime audio after intentional pauses and save-state operations.
+- Preserve the existing SNES mixer, sample rate and save-state format.
+- Include the 0.7.9/0.7.10 controller options in the distribution.
+- [Technical explanation and code](docs/arm-audio-publication.md).
+- [Measurements and limitations](docs/audio-crackle.md).
+
 ## 0.7.10-dev — USB/CD32 controller selection
 
 - Add an explicit Poseidon USB/CD32 source using the same lowlevel.library input route as ZZNES.

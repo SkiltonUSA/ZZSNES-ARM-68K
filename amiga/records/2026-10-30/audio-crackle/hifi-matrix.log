@@ -1,0 +1,10 @@
+10.0.0.40 - - [30/Oct/2026 12:22:07] "GET /NES HTTP/1.0" 200 -
+10.0.0.40 - - [30/Oct/2026 12:22:11] "GET /SNES HTTP/1.0" 200 -
+10.0.0.40 - - [30/Oct/2026 12:22:17] "GET /mario.nes HTTP/1.0" 200 -
+10.0.0.40 - - [30/Oct/2026 12:22:20] "GET /chrono.zip HTTP/1.0" 200 -
+START hifi28-s-a3-w0-n3000-0
+PASS hifi28-s-a3-w0-n3000-0 AUDIO_OUTPUT mode=0002000e mix=27928 callbacks=1002 silence_queued=2 starvations=0 AUDIO_END samples=1604146 gaps=0 END exit=0 frames=3000 elapsed_us=52196723
+START hifi28-n-a2-w0-n3000-1
+PASS hifi28-n-a2-w0-n3000-1 AUDIO_OUTPUT mode=0002000e mix=22030 callbacks=1002 silence_queued=2 starvations=0 AUDIO_END samples=1597247 gaps=0 END exit=0 frames=3000 elapsed_us=51107746
+START hifi28-n-a3-w0-n3000-2
+PASS hifi28-n-a3-w0-n3000-2 AUDIO_OUTPUT mode=0002000e mix=27928 callbacks=1002 silence_queued=2 starvations=0 AUDIO_END samples=1597247 gaps=0 END exit=0 frames=3000 elapsed_us=51086292

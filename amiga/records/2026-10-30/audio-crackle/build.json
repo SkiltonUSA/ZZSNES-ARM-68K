@@ -1,0 +1,21 @@
+{
+  "version": "0.7.11-dev",
+  "installed": false,
+  "published": false,
+  "executables": {
+    "ZZSNES": {
+      "bytes": 315844,
+      "sha256": "9e12e7638345d913646d82790cf527544e72bd0f1d31379dd86772ac6c8cc957"
+    },
+    "ZZSnes-ui": {
+      "bytes": 1121516,
+      "sha256": "c02abcc06ad7d7f8fda27b12d75c82bc2b35467e95d501bbe53d97fe11e59842"
+    },
+    "ZZSnes-FX": {
+      "bytes": 1121516,
+      "sha256": "c02abcc06ad7d7f8fda27b12d75c82bc2b35467e95d501bbe53d97fe11e59842"
+    }
+  },
+  "arm": "byte-identical recorded image, mapping and relocations",
+  "hardware_final_matrix": "HiFi selection build pending final smoke; matched private HiFi runs recorded separately"
+}

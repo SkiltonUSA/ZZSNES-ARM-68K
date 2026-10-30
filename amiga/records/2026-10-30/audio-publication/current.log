@@ -1,0 +1,18 @@
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/borders-20261016/source -Idevelopment/beta-20261015/source/amiga/emulator tests/amiga/emulator/model.c -o .context/test-current
+.context/test-current
+PASS settings v2/v3 migration, bounded scanline arithmetic and FPS glyph bounds
+cc -O2 -g -fsanitize=address,undefined -Itests/amiga/emulator/mock -Idevelopment/borders-20261016/source tests/amiga/emulator/scan.c -o .context/test-scan
+.context/test-scan
+PASS explicit directory scans, idle inactivity, recursion, dedup, ZIP filtering, invalid roots, cancellation and DOS resource release
+<model-python> tests/amiga/emulator/check_current_arm.py
+PASS ZZSNES 0x12000040 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x12000040 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+NEON row calls: 720
+PASS ZZSNES 0x150020c0 format 3 view 16 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 17 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 3 view 0 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+PASS ZZSNES 0x150020c0 format 4 view 256 baseline pixels, all scanlines, NEON/fallback, SIMD restoration, cancellation
+NEON row calls: 720

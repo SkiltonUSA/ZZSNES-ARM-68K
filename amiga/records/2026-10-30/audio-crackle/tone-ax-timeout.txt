@@ -1,0 +1,5 @@
+[OK]
+OPEN mode=cafe0001 source=32000 mix=32000
+TIMEOUT
+RESULT rc=20 sent=3 completed=0 callbacks=0 starvation=0 captured=0 type=0 calls=0
+20

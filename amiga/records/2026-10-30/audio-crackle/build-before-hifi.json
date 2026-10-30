@@ -1,0 +1,21 @@
+{
+  "version": "0.7.11-dev",
+  "installed": false,
+  "published": false,
+  "executables": {
+    "ZZSNES": {
+      "bytes": 315844,
+      "sha256": "9e12e7638345d913646d82790cf527544e72bd0f1d31379dd86772ac6c8cc957"
+    },
+    "ZZSnes-ui": {
+      "bytes": 1121236,
+      "sha256": "0a3e55549aa3b34d3e44f73790a483e89b07cf9ba25a23c9f4ae517edbc631b8"
+    },
+    "ZZSnes-FX": {
+      "bytes": 1121236,
+      "sha256": "0a3e55549aa3b34d3e44f73790a483e89b07cf9ba25a23c9f4ae517edbc631b8"
+    }
+  },
+  "arm": "byte-identical recorded image, mapping and relocations",
+  "hardware_final_matrix": "post-reboot: 3000 frames per emulator on AX and Paula, all PCM completed, zero reported starvation, clean restore/free"
+}

@@ -1,4 +1,4 @@
-ZZSNES 0.7.8 Beta (tested 0.7.8-dev executables)
+ZZSNES 0.7.11 Beta (tested 0.7.11-dev executables)
 
 INSTALLER: extract the -beta-amipkg.lha archive, open its drawer and double-click
 Install. Choose a parent drawer; ZZSNES is created inside it. To specify an exact
@@ -33,7 +33,7 @@ SHA256-checked archives. PackageManager holds its receipts/cache. Installation
 is not fully transactional; keep a backup before upgrading. Use Install again
 for updates, not the offline placeholder repository URL. No online feed exists.
 
-Release and source: https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.8-beta
+Release and source: https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.11-beta
 
 Core: PocketSNES / Snes9x2002 — heavily modified for ARMv7 Cortex-A9,
 32-bit, single core.

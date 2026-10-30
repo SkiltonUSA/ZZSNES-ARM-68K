@@ -1,0 +1,3 @@
+PASS fresh relocated stereo/video replay 0x12000040 state_version 3 state_bytes 1677587 corrupt-state rejection
+PASS fresh relocated stereo/video replay 0x150020c0 state_version 3 state_bytes 1677587 corrupt-state rejection
+PASS rom 06d1c2b06b716052c5596aaa0c2e5632a027fee1a9a28439e509f813c30829a9

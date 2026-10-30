@@ -1,0 +1,10 @@
+10.0.0.40 - - [30/Oct/2026 11:35:09] "GET /Tone HTTP/1.0" 200 -
+[OK]
+OPEN mode=0002000e source=32000 mix=22030
+RESULT rc=0 sent=80 completed=128000 callbacks=84 starvation=3 captured=725120 type=10 calls=206
+0
+[OK]
+OPEN mode=0002000e source=32040 mix=22030
+RESULT rc=0 sent=80 completed=128160 callbacks=87 starvation=5 captured=735680 type=10 calls=209
+0
+Amiga alive - clients: 0, chip: 1972688 bytes, fast: 612262816 bytes

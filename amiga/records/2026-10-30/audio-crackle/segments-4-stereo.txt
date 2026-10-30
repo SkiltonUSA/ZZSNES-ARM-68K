@@ -1,0 +1,5 @@
+[OK]
+OPEN mode=cafe0001 source=32040 mix=32000
+RESULT rc=0 frames=128160 block=1602 boundaries=82 captured=547840 type=3 calls=214
+CONTINUITY frames=136960 max_step=128 jumps_over_512=0
+0

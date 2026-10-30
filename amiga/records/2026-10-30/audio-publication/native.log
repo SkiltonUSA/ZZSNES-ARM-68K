@@ -1,0 +1,35 @@
+python3 scripts/verify_backup.py
+PASS: saved artifacts, pinned core sources, measured mean and hardware completion markers
+PASS: MUI release identities, displayed FPS, teardown and artifact ROM/state exclusions
+python3 scripts/build_pocketsnes.py
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+POCKET rc=0 checked=6 mismatches=0 frames=6 video=67711dc5 errors=0 width=256 height=224 audio=77d82d05 samples=3208
+POCKET rc=0 checked=6 mismatches=0 frames=6 video=67711dc5 errors=0 width=256 height=224 audio=77d82d05 samples=3208
+POCKET rc=0 checked=6 mismatches=0 frames=6 video=67711dc5 errors=0 width=256 height=224 audio=77d82d05 samples=3208
+
+python3 scripts/build_mesen_snes.py
+MESEN_SNES_CPU status=0/0 checked=5144 mismatch=0 cycles=15436 hash=e4b09881 errors=0 unsupported=0 pc=803c expected_pc=803c a=995a expected_a=995a cancel=2/128
+python3 scripts/build_mesen_snes_system.py --integer-clock
+<repository>/.context/amiga/mesen-snes-system/SNES/DSP/DspVoice.cpp:91:11: warning: enumeration value 'Release' not handled in switch [-Wswitch]
+   91 |                         switch(_envMode) {
+      |                                ^~~~~~~~
+<repository>/.context/amiga/mesen-snes-system/SNES/DSP/DspVoice.cpp:91:11: note: add missing switch cases
+   91 |                         switch(_envMode) {
+      |                                ^
+   92 |                                 case EnvelopeMode::Attack:
+1 warning generated.
+FRAME n=1 rc=0 master=306920 cpu=40560 spc=29266 video=345dd865 size=256x239 samples=457 pcm=ed494b0d nonzero=0
+FRAME n=2 rc=0 master=664274 cpu=87861 spc=63342 video=1e1e29c5 size=256x239 samples=989 pcm=b5de2a2d nonzero=0
+FRAME n=3 rc=0 master=1021650 cpu=135165 spc=97420 video=1e1e29c5 size=256x239 samples=1522 pcm=c2407695 nonzero=0
+FRAME n=4 rc=0 master=1379004 cpu=182466 spc=131496 video=1e1e29c5 size=256x239 samples=2054 pcm=5baba2b5 nonzero=0
+FRAME n=5 rc=0 master=1736380 cpu=229770 spc=165574 video=1e1e29c5 size=256x239 samples=2587 pcm=656b6b5d nonzero=0
+FRAME n=6 rc=0 master=2093734 cpu=277071 spc=199650 video=1e1e29c5 size=256x239 samples=3119 pcm=2cfa6c7d nonzero=0
+CHECK pixels=PASS dma=PASS spc_boot_ports=PASS wram_mirrors=PASS serial_pad=PASS cancellation=PASS reject_chip_and_truncation=PASS
+python3 scripts/test_state_sprites.py
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+archived: FAIL: restored state did not rebuild its sprite list
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+normal: PASS: fresh/stale sprite data rebuilt; exact 30-frame video and PCM replay
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+superfx: PASS: fresh/stale sprite data rebuilt; exact 30-frame video and PCM replay
+PASS: archived failure reproduced; normal and Super FX builds restore sprites

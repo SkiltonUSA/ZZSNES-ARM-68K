@@ -38,7 +38,12 @@ static int em_audio_unit0_paula(void){
  char name[128]={0};return AHI_GetAudioAttrs(id,NULL,AHIDB_BufferLen,sizeof(name),AHIDB_Name,(ULONG)name,TAG_DONE)&&!strncmp(name,"Paula:",6);
 }
 #endif
+/* Prefer interpolated HiFi mixing; retain regular 14-bit on older drivers.
+ * Return a preference score, not a hard-coded audio ID. */
 static int em_audio_mode(unsigned choice,const char*name,unsigned stereo,unsigned bits,unsigned realtime){
- return stereo&&realtime&&((choice==4&&bits==16&&!strcmp(name,"ZZ9000AX:16 bit Stereo"))||
-  ((choice==2||choice==3)&&bits>=14&&!strcmp(name,"Paula:14 bit stereo")));
+ if(!stereo||!realtime)return 0;
+ if(choice==4)return bits==16&&!strcmp(name,"ZZ9000AX:16 bit Stereo");
+ if((choice!=2&&choice!=3)||bits<14)return 0;
+ if(!strcmp(name,"Paula:HiFi 14 bit stereo calibrated"))return 2;
+ return !strcmp(name,"Paula:14 bit stereo");
 }

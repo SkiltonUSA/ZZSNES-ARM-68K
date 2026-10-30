@@ -1,0 +1,6 @@
+PASS stream API tests: both source rates, device clock, callback timeout, failures and cleanup
+PASS worker tests: mono/stereo ordering, drain/resume, fallback and cleanup
+PASS preserved ARM image, mapping probe and relocation bytes in final player
+PASS truncated reference rejected
+PASS git diff --check
+Hardware matrix interrupted; no final matrix pass claimed.

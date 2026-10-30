@@ -1,0 +1,5 @@
+[OK]
+OPEN mode=0002000e source=32040 mix=22030
+RESULT rc=0 frames=128160 block=1602 boundaries=81 captured=714560 type=10 calls=203
+CONTINUITY frames=89320 max_step=148 jumps_over_512=0
+0

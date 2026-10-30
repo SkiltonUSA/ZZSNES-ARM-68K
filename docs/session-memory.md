@@ -896,3 +896,66 @@ ZZNES USB CD32 and Sega success is user-reported; ZZSNES button testing pending.
 Rollback binaries: .pre-usb-cd32. Evidence/hashes: amiga/records/2026-10-30/usb-cd32
 in the standalone repository. ZZUAE left open; no Core1 test or global settings
 change. Published v0.7.8-beta package remains unchanged.
+
+## Audio investigation — 30 October 2026
+
+0.7.11-dev built, not installed/released. AX source/device clock separated; startup
+callback check falls back to configured AHI. Isolated Chrono 600-frame fallback
+passes; standalone AX produces no callbacks in this session. Paula 1200-frame
+run passes counters; remaining crackling is not resolved. Bridge disconnected
+during the final 3000-frame run; do not count it as a pass. Cold-boot AX and
+listening checks pending. No global audio/firmware changes. Exact ARM payload
+preserved. See docs/audio-crackle.md and amiga/records/2026-10-30/audio-crackle.
+Private work: parent .context/amiga/audio-crackle-1030; SD032G:Dev/ZZCrackle.
+Installed application versions unchanged.
+
+
+Audio follow-up: reboot restored AX. Both emulators completed 3000 frames on
+AX and Paula with clean teardown. HiFi 22 kHz substantially improved Chrono
+but did not eliminate NES Super Mario World/Contra title noise. User approved
+Paula 4.33 comparison: installed with verified 4.23 backup and rollback script;
+reboot completed and resident 4.33 confirmed. AHI/AX versions and ENV/ENVARC
+preferences unchanged. Chrono popping then reported absent, some tones off;
+NES popping persists and is audible in raw pre-AHI PCM played on the Mac.
+Isolated NES quality 0/1 core tests are underway; HQ save-state integration
+is still required before promotion. App candidates
+0.8.8/0.7.11 remain private, not installed or released. See audio-crackle.md.
+
+NES quality-1 test: cleaner by listening, but 3000 frames/60.567 s and
+474 audio starvations. Clean restoration/free; not accepted for release.
+Core1 returned; next profile HQ filter and integrate state history.
+
+
+## ZZSNES 0.7.11 audio publication — 30 October 2026
+
+Installed matching ZZSNES, ZZSnes-ui and ZZSnes-FX in SD032G:Emulator/ZZSNES
+using the signed offline installer. Backup verified at SD032G:Dev/SnesPre0711.
+Library.cfg, Library.bak, Session.cfg, Audio.cfg, Controls.cfg and Controller.cfg
+CRCs preserved. No global AHI/firmware/ROM/state changes.
+
+Generated core/mmu_plan.h now maps all pages intersecting PCM +0x170000..+0x171000
+as normal inner/outer noncacheable, shareable, XN. Core buffers remain cached.
+This is the actual compiled core header, not the unused player copy. Release
+build rejects historical ARM reuse. Standard/FX players are identical;
+all products 0.7.11-dev. SNES synthesis/state format unchanged.
+
+Chrono600 stereo capture: 641658 individual samples. Before mapping fix46129
+samples differ from the exact ARM reference;46101 match the preceding frame.
+After fix every sample matches. Both runs zero starvation and clean lifecycle.
+The earlier source-core diagnosis was based on a post-transfer recording.
+No specific silicon erratum or FPS improvement is claimed.
+
+Release player: Chrono1800 Paula fullscreen paused save/load +120fresh resume;
+SMW1800 AX32k 2x window +120older v3 state Paula. All PCM completed,zero starvation,
+clean registers/MMU/cache witnesses and memory release. Fresh relocated ARM
+state replay and native/core/worker/controller/layout/installer checks pass.
+Listening confirmation on the new SNES build remains pending.
+
+Private captures/hardware staging: parent .context/amiga/snes-audio-1030 and
+SD032G:Dev/SnesAudio011. First uncompressed4MiB staging checksum timed out;
+bridge remained responsive, ZIP retry verified. Rebuilt reference ELF used;
+stale ELF left from historical host-only builds was correctly rejected.
+Source/report: scripts/prepare_audio_publication.py, docs/arm-audio-publication.md,
+development/audio-publication-20261030, amiga/records/2026-10-30/audio-publication.
+Player SHA25686c38fd75ce8582f09085af9d5b043b16254551a2ea229e89229642fe6996ac5;
+launcher SHA2569e12e7638345d913646d82790cf527544e72bd0f1d31379dd86772ac6c8cc957.

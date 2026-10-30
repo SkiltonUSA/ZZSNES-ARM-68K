@@ -1,0 +1,4 @@
+[OK]
+OPEN mode=0002000e source=32040 mix=22030
+RESULT rc=0 sent=80 completed=128160 callbacks=87 starvation=5 captured=735680 type=10 calls=209
+0

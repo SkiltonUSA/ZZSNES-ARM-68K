@@ -1,0 +1,6 @@
+amiga_write_file Write command sent: SD032G:Dev/ZZCrackle/Audio.cfg at offset 0, 11 bytes
+amiga_run_script [OK]
+OPEN mode=cafe0001 source=32000 mix=32000
+RESULT rc=0 sent=80 completed=128000 callbacks=85 starvation=3 captured=535040 type=3 calls=209
+CONTINUITY frames=133760 max_step=5120 jumps_over_512=2
+0

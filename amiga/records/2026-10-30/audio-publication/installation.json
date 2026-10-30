@@ -1,0 +1,34 @@
+{
+  "version": "0.7.11-dev",
+  "before_crc32": {
+    "ZZSNES": "BF4E6865",
+    "ZZSnes-ui": "FA94C0F8",
+    "ZZSnes-FX": "FA94C0F8",
+    "ZZSNES.info": "05CDC677",
+    "Library.cfg": "0AE321ED",
+    "Library.bak": "0AE321ED",
+    "Session.cfg": "BAE000A3",
+    "Audio.cfg": "6FCB4B0D",
+    "Controls.cfg": "4D055CB9",
+    "Controller.cfg": "EB55ABB5",
+    "Version.txt": "F630C104",
+    "ReadMe.txt": "CB08186D",
+    "Changes.md": "949418A0",
+    "SHA256SUMS": "2AC56CAC"
+  },
+  "executables": {
+    "ZZSNES": {
+      "sha256": "9e12e7638345d913646d82790cf527544e72bd0f1d31379dd86772ac6c8cc957",
+      "bytes": 315844
+    },
+    "ZZSnes-ui": {
+      "sha256": "86c38fd75ce8582f09085af9d5b043b16254551a2ea229e89229642fe6996ac5",
+      "bytes": 1121596
+    },
+    "ZZSnes-FX": {
+      "sha256": "86c38fd75ce8582f09085af9d5b043b16254551a2ea229e89229642fe6996ac5",
+      "bytes": 1121596
+    }
+  },
+  "settings_preserved": true
+}

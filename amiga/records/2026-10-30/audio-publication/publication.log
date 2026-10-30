@@ -1,0 +1,9 @@
+mkdir -p .context/audio011-tests
+c++ -std=c++14 -O2 -Wall -Wextra -Werror -DMB_ALLOCATION=0x6000000u -DCJ_BEGIN=0x3400000u -I.context/ax-release-build/core development/audio-publication-20261030/test_audio_pages.cpp -o .context/audio011-tests/pages
+.context/audio011-tests/pages
+PASS 255 audio/adjacent page attributes; ROM, mailbox and bounds preserved
+python3 development/output-quality-20261030/test_worker.py
+PASS actual AX worker: ordered PCM, three-buffer reuse, partial stop, state drain/resume, pause/re-prime, open/unresponsive fallback, start failure, cancel/join
+PASS actual AX worker: ordered PCM, three-buffer reuse, partial stop, state drain/resume, pause/re-prime, open/unresponsive fallback, start failure, cancel/join
+python3 development/output-quality-20261030/test_stream.py
+PASS actual per-app API adapter: allocation/load failures, mode capabilities, HiFi preference in either order and legacy fallback, 32k device clock for both sources, callback liveness timeout, query/start failure, free-before-storage cleanup

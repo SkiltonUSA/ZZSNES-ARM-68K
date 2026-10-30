@@ -1,0 +1,10 @@
+PASS complete package <repository>/.context/release-0.7.11/ZZSNES-0.7.11-dev-beta.zip db7130d7c8dd0f71b3da357a95c15e31013d98da4e308c43c64e0156680bb36a
+Signed <repository>/.context/release-0.7.11/ZZSNES-Install/Repository/packages.json (1 packages, 1341 bytes)
+Wrote  <repository>/.context/release-0.7.11/ZZSNES-Install/Repository/packages.json.sig
+
+Upload BOTH files. Re-sign every time the catalog changes -
+a stale signature makes the catalog fail to verify on the Amiga.
+OK: <repository>/.context/release-0.7.11/ZZSNES-Install/Repository/packages.json verifies against that public key.
+PASS offline installer: <repository>/.context/release-0.7.11/ZZSNES-0.7.11-dev-beta-amipkg.lha 3116973 bytes
+OK: /var/folders/fg/qnn7bqhd78vfz3cxbqjd5wxr0000gn/T/tmpm4ttc05m/outer/ZZSNES-Install/Repository/packages.json is readable by the Amiga client (1 packages).
+PASS: ZZSNES installer/ZIP byte equivalence; recorded executables; all member hashes; dependency-first recipe; corruption rejection; icons; private-data exclusions
