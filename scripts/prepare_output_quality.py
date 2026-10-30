@@ -17,6 +17,11 @@ def prepare_audio(stage):
  s=s.replace('silence_queued=%u\\n','silence_queued=%u starvations=%u\\n').replace('audio_ax_callbacks,audio_ax_silence);','audio_ax_callbacks,audio_ax_silence,audio_ax_starvations);')
  s=s.replace('8 queue slots','12 queue slots')
  p.write_text(s)
+ shutil.copy2(DATA/'capture_audio.h',stage/'capture_audio.h')
+ edit(stage/'state_host.h','static int fc_state_transaction(int load){','#include "capture_audio.h"\nstatic int fc_state_transaction(int load){')
+ edit(stage/'state_host.h',' audio_state_drained=0;audio_state_drain=1;player_audio_flush();\n if(audio_opened){ULONG start=us();\n  while(!audio_state_drained){if(audio_error||audio_done||(ULONG)(us()-start)>1000000u){puts("STATE audio drain failed");return -1;}if(!pause_us(1000))return -1;}\n }\n audio_state_drain=0;',' if(!fc_audio_drain())return -1;')
+ edit(stage/'host.c',' if(!p96GetBitMapAttr(direct_bitmap,P96BMA_ISONBOARD))return 0;',' if(capture&&!fc_audio_drain())return 0;\n if(!p96GetBitMapAttr(direct_bitmap,P96BMA_ISONBOARD))return 0;')
+ edit(stage/"snapshot_host.h","y=12;height=216;","height=fc_picture_height==239?239:224;y=(240-height)/2;")
 
 def prepare_launcher(lib):
  shutil.copy2(DATA/'audio_output.h',lib/'audio_output.h')

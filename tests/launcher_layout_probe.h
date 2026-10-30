@@ -59,6 +59,9 @@ static int layout_probe(void){
  /* Keep a real small window available for a screenshot, without mouse drags. */
  layout_page(0);layout_pump();layout_stage("library");Delay(ZZ_UI_CAPTURE_TICKS);
  layout_page(1);layout_pump();layout_stage("display");Delay(ZZ_UI_CAPTURE_TICKS);
+ get(pages,MUIA_Group_ChildList,&children);state=children->lh_Head;
+ NextObject(&state);scroll=NextObject(&state);virt=(Object*)value(scroll,MUIA_Scrollgroup_Contents);
+ set(virt,MUIA_Virtgroup_Top,10000);layout_pump();layout_stage("audio");Delay(ZZ_UI_CAPTURE_TICKS);
  layout_page(2);layout_pump();layout_stage("controllers");Delay(ZZ_UI_CAPTURE_TICKS);
  {Object *splash=splash_create(1);struct Window *w=splash?(struct Window*)value(splash,MUIA_Window_Window):NULL;
   if(!w||w->Width>ZZ_UI_TEST_WIDTH||w->Height>ZZ_UI_TEST_HEIGHT-20)errors++;

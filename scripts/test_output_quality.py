@@ -12,3 +12,6 @@ subprocess.run(['clang','-std=c99','-Wall','-Wextra','-Werror','-Wno-unused-func
 subprocess.run([str(o/'settings')],cwd=o,check=True)
 subprocess.run(['clang++','-std=c++14','-O2','-fsanitize=address,undefined','-I'+str(r/'.context/ax-release-build/player'),str(d/'test_rows.cpp'),'-o',str(o/'rows')],check=True)
 subprocess.run([str(o/'rows')],check=True)
+
+subprocess.run(['clang','-std=c99','-Wall','-Wextra','-Werror','-fsanitize=address,undefined',str(d/'test_capture_audio.c'),'-o',str(o/'capture-audio')],check=True)
+subprocess.run([str(o/'capture-audio')],check=True)
