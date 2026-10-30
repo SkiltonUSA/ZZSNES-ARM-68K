@@ -62,7 +62,7 @@ cycle budgets. Legacy remains the default; the timed variant is separate from th
 
 | Component | Specification |
 | --- | --- |
-| Core | PocketSNES / Snes9x2002 |
+| Core | PocketSNES / Snes9x2002 — heavily modified for ARMv7 Cortex-A9, 32-bit, single core |
 | Emulation processor | ZZ9000 Cortex-A9 / ARMv7-A, application-owned Core1 via XACP |
 | Host processor | 68020 instruction set; AmigaOS, files, input, display coordination and AHI |
 | Owned ZZ9000 RAM | 96 MiB, including 32 MiB executable reserve; plus display/OS allocations |
