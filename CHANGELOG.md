@@ -2,6 +2,8 @@
 
 ## 0.7.8 Beta
 
+- Package documentation clarifies the heavily modified ARMv7 Cortex-A9, 32-bit, single-core implementation; executables are unchanged.
+
 - Per-app Paula 14-bit output at 22.05 or 28 kHz; explicit configured AHI and ZZ9000AX choices. Auto preserves the configured output device.
 - Three-buffer callback audio, nine-frame priming, twelve producer slots and starvation diagnostics; no global audio preference changes.
 - Drain queued audio before automatic/manual screenshots and re-prime afterwards; capture deliberately pauses playback.

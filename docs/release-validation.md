@@ -5,9 +5,14 @@ These are functional and scheduling tests, not a general FPS or audio-quality gu
 
 | Asset | Bytes | SHA256 |
 | --- | ---: | --- |
-| `ZZSNES-0.7.8-dev-beta-amipkg.lha` | 3045025 | `917e625dfd9eb34b8ae90071760fb5d1faa504d303e475d634c9cbde3450313c` |
-| `ZZSNES-0.7.8-dev-beta.zip` | 1128159 | `83df478b03deb0a2203a5ac278f84dbe0631a75408bc1efeb865189616fb22d7` |
-| `ZZSNES-release.json` | 1116 | `125b44dcc75f67bdc891258fb352774cddfe3e351e3f75ac4c043717d598e17c` |
+| `ZZSNES-0.7.8-dev-beta-amipkg.lha` | 3045349 | `97fc9063c6c1e15a1dcc98a09068368c14ff568094c0bde0f82456a8889d070e` |
+| `ZZSNES-0.7.8-dev-beta.zip` | 1128278 | `55d846f0a8ae03d3b2ce2ca709eff95a759a919763bc05f375f1641dadc54216` |
+| `ZZSNES-release.json` | 1116 | `7874d8ae108ab7f1568d1ac153cdb1559c9ec37b682703a3bd1ae76daa0e5a0c` |
+
+Documentation-only package refresh: corrected core description and updated
+change log. All three executable hashes are unchanged. Refreshed ZIP/LHA,
+signatures, dependency recipe and private-data checks pass locally; the
+previous hardware installation below applies to the original package.
 
 ## Hardware comparisons
 

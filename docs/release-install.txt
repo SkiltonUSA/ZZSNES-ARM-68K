@@ -34,3 +34,6 @@ is not fully transactional; keep a backup before upgrading. Use Install again
 for updates, not the offline placeholder repository URL. No online feed exists.
 
 Release and source: https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.8-beta
+
+Core: PocketSNES / Snes9x2002 — heavily modified for ARMv7 Cortex-A9,
+32-bit, single core.

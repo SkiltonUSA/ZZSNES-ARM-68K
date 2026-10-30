@@ -852,3 +852,9 @@ open and was suspended; corrected query ordering is tested. Reboot once before
 normal use to clear the suspended Probe. Private SD032G:Dev/ZZQuality1030 staging
 is retained until that reboot; do not treat it as an installed app or publish its
 ROM/state contents. No firmware or startup changes.
+
+## Release packaging — 30 October 2026
+
+ZZSNES 0.7.8 Beta packages refreshed with ZIP, signed offline amipkg installer,
+build receipt and SHA256SUMS. See docs/release-validation.md. No additional
+hardware changes during packaging. Documentation-only refresh; all executables remain byte-identical.
