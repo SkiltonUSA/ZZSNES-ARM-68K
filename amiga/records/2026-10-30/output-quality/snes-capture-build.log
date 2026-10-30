@@ -1,0 +1,36 @@
+patching file 'libretro/libretro.c'
+/usr/bin/arm-none-eabi-ld: warning: /work/.context/ZZSNES-ARM-68K/.context/ax-release-build/player/pocket.elf has a LOAD segment with RWX permissions
+amiga/scanlines/vendor/ZZScanlines.c: In function 'main':
+amiga/scanlines/vendor/ZZScanlines.c:72:35: warning: format '%lx' expects argument of type 'long unsigned int', but argument 2 has type 'ULONG {aka unsigned int}' [-Wformat=]
+     printf("ZZ9000 found at 0x%08lx\n", board_addr);
+                                   ^
+amiga/scanlines/vendor/ZZScanlinesGUI.c:69:27: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     {1,0,JAM1, 6,2, NULL, "Off",      NULL},
+                           ^~~~~
+amiga/scanlines/vendor/ZZScanlinesGUI.c:69:27: note: (near initialization for 'mode_texts[0].IText')
+amiga/scanlines/vendor/ZZScanlinesGUI.c:70:27: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     {1,0,JAM1, 6,2, NULL, "Classic",  NULL},
+                           ^~~~~~~~~
+amiga/scanlines/vendor/ZZScanlinesGUI.c:70:27: note: (near initialization for 'mode_texts[1].IText')
+amiga/scanlines/vendor/ZZScanlinesGUI.c:71:27: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     {1,0,JAM1, 6,2, NULL, "Soft",     NULL},
+                           ^~~~~~
+amiga/scanlines/vendor/ZZScanlinesGUI.c:71:27: note: (near initialization for 'mode_texts[2].IText')
+amiga/scanlines/vendor/ZZScanlinesGUI.c:72:27: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     {1,0,JAM1, 6,2, NULL, "Gradient", NULL},
+                           ^~~~~~~~~~
+amiga/scanlines/vendor/ZZScanlinesGUI.c:72:27: note: (near initialization for 'mode_texts[3].IText')
+amiga/scanlines/vendor/ZZScanlinesGUI.c:76:27: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     {1,0,JAM1, 6,2, NULL, "Odd",  NULL},
+                           ^~~~~
+amiga/scanlines/vendor/ZZScanlinesGUI.c:76:27: note: (near initialization for 'par_texts[0].IText')
+amiga/scanlines/vendor/ZZScanlinesGUI.c:77:27: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     {1,0,JAM1, 6,2, NULL, "Even", NULL},
+                           ^~~~~~
+amiga/scanlines/vendor/ZZScanlinesGUI.c:77:27: note: (near initialization for 'par_texts[1].IText')
+amiga/scanlines/vendor/ZZScanlinesGUI.c:80:61: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+ static struct IntuiText apply_text = {1,0,JAM1, 15,3, NULL, "Apply", NULL};
+                                                             ^~~~~~~
+amiga/scanlines/vendor/ZZScanlinesGUI.c:80:61: note: (near initialization for 'apply_text.IText')
+PASS bundled scanline controls and installer <workspace>/.context/ZZSNES-ARM-68K/.context/ax-release-build
+PASS: rebuilt ZZSNES ARM recompiled at <workspace>/.context/ZZSNES-ARM-68K/.context/ax-release-build

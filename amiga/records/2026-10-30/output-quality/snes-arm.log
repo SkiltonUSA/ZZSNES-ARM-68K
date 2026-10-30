@@ -1,0 +1,8 @@
+PASS ZZSNES-ARM-68K 0x12000040 format 3 scan 0 scaled pixels, guards, cancellation and mapping restoration
+PASS ZZSNES-ARM-68K 0x12000040 format 3 scan 2 scaled pixels, guards, cancellation and mapping restoration
+PASS ZZSNES-ARM-68K 0x12000040 format 4 scan 0 scaled pixels, guards, cancellation and mapping restoration
+PASS ZZSNES-ARM-68K 0x12000040 format 4 scan 2 scaled pixels, guards, cancellation and mapping restoration
+PASS ZZSNES-ARM-68K 0x150020c0 format 3 scan 0 scaled pixels, guards, cancellation and mapping restoration
+PASS ZZSNES-ARM-68K 0x150020c0 format 3 scan 2 scaled pixels, guards, cancellation and mapping restoration
+PASS ZZSNES-ARM-68K 0x150020c0 format 4 scan 0 scaled pixels, guards, cancellation and mapping restoration
+PASS ZZSNES-ARM-68K 0x150020c0 format 4 scan 2 scaled pixels, guards, cancellation and mapping restoration

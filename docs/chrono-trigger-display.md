@@ -1,5 +1,10 @@
 # Chrono Trigger fullscreen tearing review
 
+**Follow-up:** the symptom is specific to vertical scrolling. A reproducible
+224-to-216-row reduction was found and corrected in 0.7.8. See
+[output-quality.md](output-quality.md). This older scanout investigation remains
+valid as a separate hypothesis; the new fix is not a tear-free claim.
+
 The reported symptom is a brief horizontal tear in **fullscreen**. The saved
 session uses normal-resolution output, FPGA Soft scanlines, left/right and
 vertical edge masks, and core options 0. The new 2×/3× Workbench scaling path

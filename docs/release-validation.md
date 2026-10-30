@@ -1,45 +1,71 @@
-# ZZSNES 0.7.4 Beta validation
+# ZZSNES 0.7.8 Beta validation
 
-Matching **0.7.4-dev** launcher, normal player and FX player. This release fixes
-Super FX race geometry and legacy PPU colour-window handling. Normal regional
-pacing, register dispatch and automatic per-app AX audio are retained.
-
-[Build command and executable hashes](release-build.json) ·
-[Investigation and limits](stunt-race-fx.md).
+Matching 0.7.8-dev executables; [build command and hashes](release-build.json).
+These are functional and scheduling tests, not a general FPS or audio-quality guarantee.
 
 | Asset | Bytes | SHA256 |
 | --- | ---: | --- |
-| `ZZSNES-0.7.4-dev-beta.zip` | 1117808 | `658c88afc4d0627c05cffb75cd138b9fda489dd4090c6d266c66578a9ef41750` |
-| `ZZSNES-0.7.4-dev-beta-amipkg.lha` | 3024442 | `7f15624087664eb68fa6cc26117e324280948fd10683fcf2ba15c5d10c8b2496` |
-| `ZZSNES-release.json` | 1116 | `624ed5aaf4ebca56257f1decc81f5e09f52b4ce9e11f4cde29f7a309e9d89eb9` |
+| `ZZSNES-0.7.8-dev-beta-amipkg.lha` | 3045025 | `917e625dfd9eb34b8ae90071760fb5d1faa504d303e475d634c9cbde3450313c` |
+| `ZZSNES-0.7.8-dev-beta.zip` | 1128159 | `83df478b03deb0a2203a5ac278f84dbe0631a75408bc1efeb865189616fb22d7` |
+| `ZZSNES-release.json` | 1116 | `125b44dcc75f67bdc891258fb352774cddfe3e351e3f75ac4c043717d598e17c` |
 
-## Checks
+## Hardware comparisons
 
-- Original synthetic cartridge: 8,192 pixel-transparency cases, adjacent pixels,
-  two-bank drawing, mirrored execution and live PPU main/sub colour/window masks.
-  Failing cases were reproduced before the fixes; native sanitizers pass.
-- Expanded-cartridge, FX3, preference and battery tests pass.
-- Stunt Race FX, Star Fox 2, Doom and Super Mario World each replay 30 frames with
-  exact video and stereo-PCM results after save/load, including a fresh process.
-- The built ARM core resumes a physical race checkpoint at two runtime relocation
-  addresses with identical corrected video/PCM output.
-- A fresh A4000TX race run completes 3,940 frames and passes window/fullscreen
-  captures, pause/save/load/resume/quit. All 2,106,779 PCM frames complete;
-  the log reports zero audio gaps/errors, register/MMU/cache-witness restoration
-  and owned-memory release.
-- ZIP and signed LHA contain identical tested binaries. Payload/member hashes,
-  catalogue authentication, signature-corruption rejection, prerequisites, icons
-  and ROM/save/config/private-key exclusions pass.
-- The exact offline installer is installed on the A4000TX. Executable hashes
-  match the tested build; Library/Controls/Session settings remain byte-identical.
-  Original executables and settings are backed up privately.
+| Test | Frames per emulator | Result |
+| --- | ---: | --- |
+| Nine-frame prime, NTSC fullscreen, Paula 22.05 kHz | 6,000 | Zero starvation transitions; before capture-drain addition. |
+| Nine-frame prime, NTSC fullscreen, Paula 28 kHz | 1,800 | Zero starvation transitions; before capture-drain addition. |
+| Nine-frame prime, NTSC 2x and 3x, Paula 22.05 kHz | 1,200 per size | Zero starvation transitions; before capture-drain addition. |
+| Warm-preview PAL fullscreen | 3,000 | Zero starvation transitions. |
+| Final build, cold-preview PAL fullscreen | 3,000 | Zero starvation transitions; capture deliberately pauses playback. |
+| Final build, cold-preview PAL 3x | 600 | Zero starvation transitions; capture deliberately pauses playback. |
+| Final Auto / configured AHI / explicit AX | 180 per route | Correct route, all PCM completed, clean teardown. |
 
-Core1 is idle and the bridge responds. The private test drawer was removed;
-live AHI and saved Workbench screenmode checksums are unchanged. A final rebuild
-after trimming inherited comment whitespace matches all tested executable hashes.
+The earlier six-frame per-app prime still recorded shortages. Nine-frame priming
+was retained with twelve producer slots. The original configured-unit-0 path
+uses a different linked-request counter, so it is not compared numerically with
+the callback starvation counter. Cold-capture silence totals are not zero:
+queued PCM is drained before capture and playback re-primes afterwards.
 
-These are bounded correctness/lifecycle checks. No new FPS improvement,
-full-game completion or listening/long-session audio-quality result is claimed.
-The earlier unexplained NES freeze is outside this SNES fix.
+Final interactive tests cover pause, screenshot, state save/load, 3x-window to
+fullscreen and back, resume and F10 exit. Both complete all PCM and restore
+register/cache/MMU witnesses before freeing owned memory. The interactive
+sequence records five starvation transitions on NES and one on SNES; it does
+not prove uninterrupted sound while switching or pausing.
 
-[Evidence and action log](../amiga/records/2026-10-29/stunt-race/).
+## Native, model and interface checks
+
+- Sanitizers cover the actual audio worker/API adapter, FIFO order and reuse,
+  partial drains, mode capabilities, settings corruption, device failure,
+  cancellation and teardown ordering.
+- Capture drain is bounded and tested for worker failure, disabled audio and timeout.
+- Relocated ARM tests check scalar-reference pixels, formats, NEON/fallback,
+  enlarged windows, guards and register/MMU/SIMD restoration.
+- Legacy settings, scanning, large libraries, borders and layout tests pass.
+- Physical compact MUI checks exercise all seven pages, five audio choices,
+  fullscreen/1x/2x/3x selection, resizing and the loading panel.
+- ZIP and nested LHA payloads match; signed catalogues, corruption rejection,
+  dependency checks, icons and private-data exclusions pass.
+
+## Installation and limits
+
+The exact offline installer completed on the A4000TX. Installed executable
+hashes match the release build. Existing library/session settings, ROMs and
+saves were preserved. First launcher exit creates Audio.cfg with Auto selected;
+other absent settings stay absent. Workbench icon
+positions were retained. Original executables have same-disk rollback copies
+and a local backup. Global AHI and saved screenmode checksums remain unchanged.
+
+An early standalone AHI probe queried the API before opening its device and
+raised a software failure. It was suspended; the ordering was corrected and
+regression-tested. It was never installed as an emulator. Reboot the test
+machine once to clear that suspended diagnostic before normal use.
+
+Listening remains pending. No eight-hour soak or tear-free physical scanout
+claim is made. The exact Chrono Trigger scrolling scene still needs visual
+confirmation. SNES now preserves every active source row; that regression is
+covered by moving-pattern and relocated ARM pixel tests. Heavy Stunt Race FX
+race execution remains below real-time audio speed even with tested frameskip.
+
+[Investigation and upstream comparisons](output-quality.md) ·
+[Raw evidence and run/binary mapping](../amiga/records/2026-10-30/output-quality/)

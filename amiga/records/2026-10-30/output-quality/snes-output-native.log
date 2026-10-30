@@ -1,0 +1,6 @@
+PASS FIFO ownership, delayed retirement, silence underrun, exact counts, wrap/reuse
+PASS actual AX worker: ordered PCM, three-buffer reuse, partial stop, state drain/resume, open fallback, start failure, cancel/join
+PASS actual AX worker: ordered PCM, three-buffer reuse, partial stop, state drain/resume, open fallback, start failure, cancel/join
+PASS actual per-app API adapter: allocation/load failures, mode capabilities, query/start failure, free-before-storage cleanup
+PASS output selection persistence, malformed/truncated preferences, routing capabilities
+PASS intact NTSC/overscan rows, edge masks, hires row alignment and 32 scrolling offsets in scalar/optimized paths

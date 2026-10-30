@@ -1,0 +1,5 @@
+PASS installed launcher ZZNES 0.8.6-dev opens and quits with settings preserved
+PASS installed launcher ZZSNES 0.7.8-dev opens and quits with settings preserved
+PASS unchanged ENV:Sys/ahi.prefs 725CE7DB
+PASS unchanged ENVARC:Sys/screenmode.prefs 9C80FBC5
+Amiga alive - clients: 0, chip: 2018792 bytes, fast: 613203672 bytes

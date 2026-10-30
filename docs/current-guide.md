@@ -139,10 +139,12 @@ entry controls. [Complete settings guide](additional-options.md).
 
 ## Audio output
 
-Current development builds use configured **AHI unit 0**. Select Paula there for
-the Amiga RCA sockets, or the corresponding driver for another connected output.
-The application does not change system audio preferences. Per-app AX output is
-reserved for the explicit `--ax-audio-test` development build.
+In Display, choose **Audio output (all games)** and save settings. Auto upgrades
+an existing Paula unit-0 configuration to per-app 14-bit stereo at 22.05 kHz;
+other configured output devices stay unchanged. Choose Paula 28 kHz for higher
+rate, Configured AHI for system-managed output, or ZZ9000AX for AX-connected
+speakers. Unavailable low-level hardware falls back to unit 0. The application
+never changes global AHI preferences. [Details and tests](output-quality.md).
 
-The register-dispatch runtime requires 96 MiB of allocatable ZZ9000 memory,
-including its 32 MiB executable reserve, plus display and AmigaOS memory.
+Automatic and manual screenshots briefly pause playback. Queued audio finishes
+before capture; playback starts again with a fresh prebuffer.

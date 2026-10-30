@@ -1,0 +1,23 @@
+LIMITS 315 136 / 1920 800
+LAYOUT screen budget 640 x 480 compact 1 window 608 x 420
+PAGE 0 Games viewport 462 x 318 content 462 x 449
+SCROLL 0 131
+PAGE 1 Display viewport 462 x 318 content 462 x 505
+SCROLL 0 187
+PAGE 2 Controllers viewport 462 x 318 content 462 x 744
+SCROLL 0 426
+PAGE 3 Save states viewport 462 x 318 content 462 x 734
+SCROLL 0 416
+PAGE 4 Disks viewport 462 x 318 content 462 x 318
+SCROLL 0 0
+PAGE 5 ROM Manager viewport 462 x 318 content 462 x 318
+SCROLL 0 0
+PAGE 6 About viewport 462 x 318 content 462 x 318
+SCROLL 0 0
+CHOICES five audio outputs, fullscreen/1x/2x/3x
+RESIZE requested 480 x 360 actual 480 x 360
+RESIZE requested 608 x 360 actual 608 x 360
+RESIZE requested 768 x 360 actual 768 x 360
+AUDIO_VISIBLE top=314 bottom=325 viewport=36..354 scroll=187
+LOADING 267 x 123
+LAYOUT PASS errors=0 pages=7

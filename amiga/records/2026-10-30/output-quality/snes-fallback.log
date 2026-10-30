@@ -1,0 +1,3 @@
+PASS save-state AHI drain reaps both requests, resumes without stale link, preserves every PCM sample
+PASS actual audio worker: short flush, 1838 ordered blocks and forced partial flush, ring wrap, allocation/open failures, cancellation, device error, resource cleanup
+ZZSNES-ARM-68K configured AHI unit 0 verified

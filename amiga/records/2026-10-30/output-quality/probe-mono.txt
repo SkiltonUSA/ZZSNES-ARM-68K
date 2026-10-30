@@ -1,0 +1,6 @@
+[OK]
+PROBE begin
+AX_OPEN mode=00020003 rate=32000 mix=22030 capacity=3072 silence=640 stereo=0
+AX_DONE submitted=96000 completed=96000 callbacks=62 silence=2
+AX_CLOSED
+0

@@ -8,6 +8,12 @@
 
 ![Display](screenshots/display.png)
 
+## Audio output
+
+640×480 layout test, scrolled to the per-app audio selector.
+
+![Audio output](screenshots/display-audio.png)
+
 ## Controllers
 
 ![Controllers](screenshots/controllers.png)

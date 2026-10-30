@@ -1,0 +1,10 @@
+PASS 1x/2x/3x pixels, padding, screenshots, screen fit and four-section mapping bounds
+PASS short-stall recovery, long-stall rebase, timer wrap and bounded picture omission
+PASS fullscreen/1x/2x/3x settings persist; invalid mode rejected
+SNAPSHOT saved snapshot-test.zzp
+SNAPSHOT saved snapshot-test.zzp
+SNAPSHOT saved snapshot-test.zzp
+SNAPSHOT saved snapshot-test.zzp
+SNAPSHOT saved snapshot-test.zzp
+SNAPSHOT saved snapshot-test.zzp
+PASS actual SNES capture: 1x/2x/3x and both pixel formats normalize once

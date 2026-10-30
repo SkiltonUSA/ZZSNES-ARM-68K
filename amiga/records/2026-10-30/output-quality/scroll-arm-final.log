@@ -1,0 +1,12 @@
+PASS 0x12000040 view 0 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x12000040 view 80 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x12000040 view 256 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x12000040 view 512 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x12000040 view 592 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x12000040 view 768 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x150020c0 view 0 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x150020c0 view 80 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x150020c0 view 256 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x150020c0 view 512 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x150020c0 view 592 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration
+PASS 0x150020c0 view 768 scalar pixels, formats, NEON/fallback and SIMD/MMU restoration

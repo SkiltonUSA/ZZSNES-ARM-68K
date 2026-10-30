@@ -61,7 +61,11 @@ static int layout_probe(void){
  layout_page(1);layout_pump();layout_stage("display");Delay(ZZ_UI_CAPTURE_TICKS);
  get(pages,MUIA_Group_ChildList,&children);state=children->lh_Head;
  NextObject(&state);scroll=NextObject(&state);virt=(Object*)value(scroll,MUIA_Scrollgroup_Contents);
- set(virt,MUIA_Virtgroup_Top,10000);layout_pump();layout_stage("audio");Delay(ZZ_UI_CAPTURE_TICKS);
+ for(unsigned i=0;i<3;i++){set(virt,MUIA_Virtgroup_Top,10000);layout_pump();}
+ printf("AUDIO_VISIBLE top=%ld bottom=%ld viewport=%ld..%ld scroll=%lu\n",(long)_mtop(audio_output),(long)(_mtop(audio_output)+_mheight(audio_output)),(long)_mtop(virt),(long)(_mtop(virt)+_mheight(virt)),(unsigned long)value(virt,MUIA_Virtgroup_Top));
+ if(_mtop(audio_output)<_mtop(virt)||_mtop(audio_output)+_mheight(audio_output)>_mtop(virt)+_mheight(virt))errors++;
+ MUI_Redraw(virt,MADF_DRAWOBJECT);layout_pump();
+ fflush(stdout);layout_stage("audio");Delay(ZZ_UI_CAPTURE_TICKS);
  layout_page(2);layout_pump();layout_stage("controllers");Delay(ZZ_UI_CAPTURE_TICKS);
  {Object *splash=splash_create(1);struct Window *w=splash?(struct Window*)value(splash,MUIA_Window_Window):NULL;
   if(!w||w->Width>ZZ_UI_TEST_WIDTH||w->Height>ZZ_UI_TEST_HEIGHT-20)errors++;

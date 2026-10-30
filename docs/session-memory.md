@@ -821,3 +821,34 @@ No visible tear-free confirmation. Firmware PAN ACK is not a physical scanout
 fence. Earlier blanking-gate variants timed out and remain withdrawn; no firmware
 or Workbench mode change. See ZZSNES docs/chrono-trigger-display.md. Published
 release assets remain unchanged; these are installed development builds.
+
+## Output quality release — 30 October 2026
+
+Installed ZZSNES 0.7.8-dev through the signed offline installer in
+SD032G:Emulator/ZZSNES. Release tag v0.7.8-beta; source/build hashes and asset
+checksums are in docs/release-build.json and docs/release-validation.md.
+Same-disk executable/icon rollback copies use .pre-quality; previous backups
+remain. Original library/session data and ROMs/saves are unchanged. Launcher
+open/quit creates Audio.cfg with Auto (0); other absent optional settings stay
+absent. Both installed launchers were closed normally after checking them.
+
+Auto detects configured Paula unit 0 and requests per-app uncalibrated 14-bit
+stereo at 22.05 kHz (actual 22030 here). Configured AHI, Paula 28 kHz and explicit
+AX are selectable in Display. Nine-frame prime, twelve producer slots, three
+immutable callback buffers; source PCM unchanged. Capture drains at an idle,
+unlocked frame boundary and re-primes: a deliberate pause, not continuous sound.
+
+Native/relocated pixel tests and physical PAL/NTSC/output/window/lifecycle runs
+are recorded in amiga/records/2026-10-30/output-quality. Zero starvation in
+steady comparison runs does not establish listening acceptance; pause/switch
+stress includes shortages. See docs/output-quality.md for upstream comparisons.
+SNES preserves all 224/239 rows and corrects high-detail row alignment; the exact
+Chrono Trigger scrolling scene still needs a visual check. Heavy Stunt Race FX
+race audio remains below real time with the tested frameskip choices.
+
+Global AHI CRC725CE7DB and saved screenmode CRC9C80FBC5 are unchanged. Core1 is
+idle and the bridge responds. An early standalone AHI Probe failed before device
+open and was suspended; corrected query ordering is tested. Reboot once before
+normal use to clear the suspended Probe. Private SD032G:Dev/ZZQuality1030 staging
+is retained until that reboot; do not treat it as an installed app or publish its
+ROM/state contents. No firmware or startup changes.
