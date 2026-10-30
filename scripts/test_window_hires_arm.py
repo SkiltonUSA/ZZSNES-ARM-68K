@@ -18,9 +18,9 @@ for base in [0x12000040,0x150020c0]:
     row=bytearray();hy=y*2//scale
     for x in range(320*scale):
      hx=x*2//scale
-     if hx<32 or hx>=608 or hy<24 or hy>=456:c=0xff000000
+     if hx<22 or hx>=618 or hy<16 or hy>=464:c=0xff000000
      else:
-      sx=(hx-32)*512//576;sy=(hy-24)*448//432+16;v=pixels[sy*512+sx];red=(v>>11)&31;green=(v>>5)&63;blue=v&31
+      sx=(hx-22)*512//596;sy=hy;v=pixels[sy*512+sx];red=(v>>11)&31;green=(v>>5)&63;blue=v&31
       c=0xff000000|((red<<3|red>>2)<<16)|((green<<2|green>>4)<<8)|(blue<<3|blue>>2)
      b=c.to_bytes(4,'little'if fmt==3 else'big');level=5 if (y//scale)%2 else 8;row.extend(v*level//8 for v in b)
     assert actual[y*pitch:y*pitch+1280*scale]==row,(hex(base),scale,fmt,y)

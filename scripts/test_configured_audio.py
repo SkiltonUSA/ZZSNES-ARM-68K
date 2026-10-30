@@ -7,6 +7,7 @@ root=Path(__file__).resolve().parents[1]
 name, stereo = root.name, True
 r=root;o=root/'.context/configured-audio-test';o.mkdir(parents=True,exist_ok=True)
 audio=(r/'.context/ax-release-build/player/player_audio.h').read_text().split('static void player_audio_close')[0]
+audio=audio.replace('#include \"ax_worker.h\"','')
 audio=audio.replace('#include <dos/dostags.h>','').replace('profile_send_io(','SendIO(').replace('profile_wait_io(','WaitIO(')
 (o/'audio-worker-under-test.h').write_text('static unsigned fc_frame_us=16689;\n'+audio)
 test=(r/'tests/amiga/fceux_player/audio_worker.c').read_text()

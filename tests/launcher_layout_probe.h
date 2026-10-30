@@ -35,6 +35,15 @@ static int layout_probe(void){
   fflush(stdout);page++;
  }
  if(page!=LIB_PAGE_COUNT)errors++;
+ /* Read-only coverage of every display/output selector on the real MUI. */
+ {unsigned saved=value(audio_output,MUIA_Cycle_Active);
+  for(unsigned i=0;i<5;i++){set(audio_output,MUIA_Cycle_Active,i);if(value(audio_output,MUIA_Cycle_Active)!=i)errors++;}
+  set(audio_output,MUIA_Cycle_Active,saved);
+  saved=value(display_mode,MUIA_Cycle_Active);
+  for(unsigned i=0;i<4;i++){set(display_mode,MUIA_Cycle_Active,i);if(value(display_mode,MUIA_Cycle_Active)!=i)errors++;}
+  set(display_mode,MUIA_Cycle_Active,saved);
+  puts("CHOICES five audio outputs, fullscreen/1x/2x/3x");
+ }
  /* Exercise real MUI resizing, without injecting a held mouse gesture. */
  {const unsigned widths[]={480,608,768};unsigned i;
   for(i=0;i<3;i++){

@@ -8,6 +8,8 @@ def edit(path, before, after):
  path.write_text(s.replace(before,after))
 
 def prepare_launcher(lib):
+ from prepare_output_quality import prepare_launcher as audio_launcher
+ audio_launcher(lib)
  edit(lib/'library_mui.h','"Fullscreen","Workbench window",NULL','"Fullscreen","Window 1x (320x240)","Window 2x (640x480)","Window 3x (960x720)",NULL')
  edit(lib/'ui_model.h','m->windowed>1','m->windowed>3')
  p=lib/'preferences.h'

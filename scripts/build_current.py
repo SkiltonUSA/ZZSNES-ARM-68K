@@ -123,6 +123,9 @@ def main():
   if a.jit_registers:
    from prepare_console_jit import prepare
    jit_begin=prepare(core,stage,snes,dispatch=True)
+  if a.release_ax:
+   from prepare_output_quality import prepare_rows
+   prepare_rows(stage)
   if snes:
    prefix=json.loads(os.environ.get('ARM_BUILD_COMMAND','[]'))
    flags=[('-O2' if f=='-Os' and a.core_o2 else f) for f in m['arm_flags']];flags=[f for f in flags if not f.startswith('-I')];flags=[inside(source/'amiga/pocketsnes/libc_config.h')if f=='/work/amiga/pocketsnes/libc_config.h'else f for f in flags]
@@ -164,7 +167,10 @@ def main():
  if a.presentation_test:
   from prepare_conversion_overlap import prepare_test
   prepare_test(stage,overlap=a.presentation_test=='overlap')
- # Normal play follows AHI unit 0; detecting AX does not identify connected speakers.
+ if a.release_ax:
+  from prepare_output_quality import prepare_audio
+  prepare_audio(stage)
+ # Historical isolated AX experiment; release output is selected per app above.
  if a.ax_audio_test:
   from prepare_ax_audio import prepare
   prepare(stage)
