@@ -879,3 +879,20 @@ hotplug and the passive 5/7-adapter Mega Drive pad remain untested on hardware.
 ZZUAE remains open; no gameport polling, Core1 session, global configuration,
 firmware or startup change was performed. Bridge responds. Private test drawer
 SD032G:Dev/ZZPads1030 contains only diagnostic/candidate executables and logs.
+
+## USB/CD32 source — 30 October 2026
+
+Installed matching 0.7.10-dev launcher and both players in SD032G:Emulator/ZZSNES.
+New source 4, USB / CD32 (Poseidon), shares the ZZNES lowlevel.library input route;
+source 3 remains native Amiga/CD32, sources 0–2 retain their meanings. Mapping
+controls and library navigation work in both lowlevel modes. No device claims
+or direct Sega polling in USB/CD32 mode. Existing settings/checksums unchanged.
+Choose Controllers → USB / CD32 (Poseidon), then Save settings.
+
+Player/decoder/transport sanitizer and 20,000-entry library tests pass. Physical
+640x480 MUI probe passes five source choices, seven pages and resizing without
+input polling. Both players retain the exact recorded 0.7.8 ARM payload.
+ZZNES USB CD32 and Sega success is user-reported; ZZSNES button testing pending.
+Rollback binaries: .pre-usb-cd32. Evidence/hashes: amiga/records/2026-10-30/usb-cd32
+in the standalone repository. ZZUAE left open; no Core1 test or global settings
+change. Published v0.7.8-beta package remains unchanged.

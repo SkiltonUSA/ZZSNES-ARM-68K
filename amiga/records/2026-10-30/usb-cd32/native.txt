@@ -1,0 +1,5 @@
+python3 scripts/test_controllers.py
+PASS SN30 HID buttons/hat/axis, short reports, malformed descriptors; Sega phases and all SNES controls
+PASS USB transport: reports, missing stack/device, busy binding, failures, disconnect/reconnect, balanced cleanup
+PASS Sega transport: resource contention, TH phases, pin 9 sense pull-up, port 1 untouched, interrupt/resource release
+PASS player: USB/CD32 and native CD32 mappings, directions, two-button pads, keyboard, no mouse-port reads or USB claims

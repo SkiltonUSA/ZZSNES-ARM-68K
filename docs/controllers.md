@@ -1,4 +1,4 @@
-# Controllers — 0.7.9 development build
+# Controllers — 0.7.10 development build
 
 **Physical SN30 Pro and Mega Drive button tests are pending.** Decoder and
 transport-model tests pass; the A4000TX passes USB-absence cleanup and the
@@ -11,13 +11,35 @@ In **Controllers**, select the player-1 source and use **Save settings**:
 | Auto: USB / Mega Drive | Prefer a supported SN30 Pro over USB; otherwise use the Mega Drive pad. |
 | USB: SN30 Pro | Wired D-input, through Poseidon 4 or later. |
 | Mega Drive 6 | Gameport 2 through a passive adapter swapping pins 5 and 7. |
-| Amiga / CD32 | Existing lowlevel.library mappings, including configured Poseidon mappings. |
+| Amiga / CD32 | Native CD32, Amiga joystick or Sega-to-CD32 converter, with editable mappings. |
+| USB / CD32 (Poseidon) | USB controllers mapped by Poseidon to joystick port 2, using the same lowlevel.library route as ZZNES. |
 
 Existing installations retain **Amiga / CD32** until a source is selected.
 Auto falls back to the Mega Drive input if Poseidon or the SN30 is absent.
 The controller diagram uses the same decoder as the player. Testing is suspended
 while another emulator holds the hardware. Existing keyboard mappings and
 player-2 options remain available.
+
+## USB CD32 and other Poseidon controllers
+
+Select **USB / CD32 (Poseidon)** and **Save settings**. Keep the Poseidon HID
+joystick mapping that works with ZZNES; the launcher tester and player both read
+port 2 through `lowlevel.library`. This mode retains editable button mappings,
+keyboard controls and library navigation. It does not claim USB devices or
+replace their HID bindings. A USB Sega adapter can use this mode too.
+
+Native CD32 and Sega-to-CD32 adapters use **Amiga / CD32**. The **Mega Drive 6**
+option is specifically for the passive pin-swap adapter described below.
+**Auto** is SN30-to-Mega-Drive fallback, not generic USB detection.
+
+CD32/lowlevel exposes seven buttons; SNES has eight. Map the available buttons
+for the game and use a keyboard binding for the remaining action. The direct
+SN30 path exposes all eight.
+
+You reported the USB CD32 and Sega controllers working with ZZNES. ZZSNES uses
+the same OS input route, but physical button acceptance in ZZSNES is still pending.
+Native tests exercise the generated player with all seven button flags, four
+directions, remapping, two-button pads, keyboard fallback and absent lowlevel.
 
 ## SN30 Pro
 
@@ -62,7 +84,7 @@ are untouched. Physical timing and adapter compatibility still need testing.
 - Sega model: signature and all buttons, actual polling phases, partial resource
   allocation, register masks, interrupt restoration and cleanup.
 - Physical A4000TX: Poseidon present, SN30 absent, zero input and clean exit.
-- Physical MUI: four source choices, seven pages, scrolling and resizing pass
+- Physical MUI: five source choices, seven pages, scrolling and resizing pass
   within a 640×480 budget. No gameport or ARM execution during these checks.
 
 Controller changes are confined to the 68k launcher/player. The candidate uses

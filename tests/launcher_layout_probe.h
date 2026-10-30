@@ -44,7 +44,7 @@ static int layout_probe(void){
   set(display_mode,MUIA_Cycle_Active,saved);
   puts("CHOICES five audio outputs, fullscreen/1x/2x/3x");
   saved=value(pad_source,MUIA_Cycle_Active);
-  for(unsigned i=0;i<4;i++){set(pad_source,MUIA_Cycle_Active,i);if(value(pad_source,MUIA_Cycle_Active)!=i)errors++;}
+  for(unsigned i=0;i<5;i++){set(pad_source,MUIA_Cycle_Active,i);if(value(pad_source,MUIA_Cycle_Active)!=i)errors++;}
   set(pad_source,MUIA_Cycle_Active,saved);
   puts("CHOICES Auto USB/Mega Drive, SN30 USB, Mega Drive 6, Amiga/CD32; no input polling");
  }

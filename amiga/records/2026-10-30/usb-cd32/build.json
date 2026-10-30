@@ -1,0 +1,14 @@
+{
+  "ZZSNES": {
+    "sha256": "4487d8d3c2ce5ec1c8e09758e44db4ff45c7c0dac9854926e1a34c1136f68099",
+    "bytes": 315844
+  },
+  "ZZSnes-ui": {
+    "sha256": "3793ea3bee2c4d948d3825891f5320254e53b4aeea3da87e9222d4b28e50eb99",
+    "bytes": 1120908
+  },
+  "ZZSnes-FX": {
+    "sha256": "3793ea3bee2c4d948d3825891f5320254e53b4aeea3da87e9222d4b28e50eb99",
+    "bytes": 1120908
+  }
+}

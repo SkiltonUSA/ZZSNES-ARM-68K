@@ -112,9 +112,16 @@ static void packet(unsigned char buttons,unsigned length){
 }
 int main(void){
  unsigned mode=99;assert(pad_read_config(&mode)&&mode==3);
- for(unsigned i=0;i<4;i++){assert(pad_write_config(i));assert(pad_read_config(&mode)&&mode==i);}
+ for(unsigned i=0;i<5;i++){assert(pad_write_config(i));assert(pad_read_config(&mode)&&mode==i);}
  FILE*f=fopen("PROGDIR:Controller.cfg","w");assert(f);fputs("ZZPAD1 99\n",f);fclose(f);
  mode=2;assert(!pad_read_config(&mode)&&mode==2);DeleteFile("PROGDIR:Controller.cfg");
+ /* Both lowlevel sources leave USB class bindings and gameport pins alone. */
+ for(unsigned m=3;m<=4;m++){
+  assert(pad_uses_lowlevel(m));assert(pad_open(m));
+  assert(!PsdBase&&!pad_owner&&!pad_binding&&!pad_pot&&claims==0);
+  pad_close();
+ }
+ assert(!pad_uses_lowlevel(0)&&!pad_uses_lowlevel(1)&&!pad_uses_lowlevel(2));
  assert(pad_open(1));assert(pad_usb_attach());assert(pad_binding&&pad_pending);
  packet(2,6);assert(pad_usb_poll()&&pad_bits==1); /* B */
  packet(0,2);assert(pad_usb_poll()&&pad_bits==0); /* truncated */
@@ -147,4 +154,5 @@ int main(void){
  pad_close();assert(pot_values[9]==0&&!pot_reserved);
  puts("PASS USB transport: reports, missing stack/device, busy binding, failures, disconnect/reconnect, balanced cleanup");
  puts("PASS Sega transport: resource contention, TH phases, pin 9 sense pull-up, port 1 untouched, interrupt/resource release");
+ return 0;
 }

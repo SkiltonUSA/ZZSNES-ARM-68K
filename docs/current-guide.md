@@ -151,3 +151,5 @@ never changes global AHI preferences. [Details and tests](output-quality.md).
 
 Automatic and manual screenshots briefly pause playback. Queued audio finishes
 before capture; playback starts again with a fresh prebuffer.
+
+USB/CD32 controllers mapped in Poseidon: choose **Controllers → USB / CD32 (Poseidon)** and **Save settings**. Native CD32 and Sega-to-CD32 adapters use **Amiga / CD32**; direct Sega six-button pads use **Mega Drive 6** with a passive 5/7 adapter. [Controller setup](controllers.md).

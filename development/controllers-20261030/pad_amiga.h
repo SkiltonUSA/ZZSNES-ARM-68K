@@ -20,9 +20,10 @@ static UBYTE pad_packet[64];
 static unsigned pad_pending,pad_bits,pad_mode,pad_pot,pad_failed;
 static ULONG pad_retry;
 static char pad_status[96]="Not active";
+static int pad_uses_lowlevel(unsigned mode){return mode==3||mode==4;}
 static int pad_read_config(unsigned*mode){
  FILE*f=fopen("PROGDIR:Controller.cfg","r");unsigned n;char extra;
- if(!f){*mode=3;return 1;}int ok=fscanf(f,"ZZPAD1 %u %c",&n,&extra)==1&&n<4;fclose(f);
+ if(!f){*mode=3;return 1;}int ok=fscanf(f,"ZZPAD1 %u %c",&n,&extra)==1&&n<5;fclose(f);
  if(ok)*mode=n;return ok;
 }
 static int pad_write_config(unsigned mode){
@@ -66,7 +67,7 @@ static void pad_close(void){
 }
 static int pad_open(unsigned mode){
  pad_close();pad_mode=mode;pad_retry=0;
- if(mode==3)return 1;
+ if(pad_uses_lowlevel(mode))return 1;
  pad_owner=CreateMsgPort();if(!pad_owner)return 0;
  Forbid();int busy=FindPort("ZZSNES.Controller")!=NULL;
  if(!busy){pad_owner->mp_Node.ln_Name="ZZSNES.Controller";AddPort(pad_owner);}Permit();

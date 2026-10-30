@@ -14,12 +14,12 @@ def prepare_launcher(lib):
 #include "pad_amiga.h"
 static Object *pad_source;
 static unsigned pad_choice,pad_preview,pad_testing,pad_usb_available;
-static const char *pad_choices[]={"Auto: USB / Mega Drive","USB: SN30 Pro","Mega Drive 6","Amiga / CD32",NULL};''')
+static const char *pad_choices[]={"Auto: USB / Mega Drive","USB: SN30 Pro","Mega Drive 6","Amiga / CD32","USB / CD32 (Poseidon)",NULL};''')
  edit(p,'if(!em_audio_save(value(audio_output,MUIA_Cycle_Active)))return 0;',
       'if(!pad_write_config(value(pad_source,MUIA_Cycle_Active)))return 0;if(!em_audio_save(value(audio_output,MUIA_Cycle_Active)))return 0;')
- edit(p,'static unsigned controller_mapped_bits(ULONG s){','static unsigned controller_mapped_bits(ULONG s){\n if(value(pad_source,MUIA_Cycle_Active)!=3)return pad_preview;')
+ edit(p,'static unsigned controller_mapped_bits(ULONG s){','static unsigned controller_mapped_bits(ULONG s){\n if(!pad_uses_lowlevel(value(pad_source,MUIA_Cycle_Active)))return pad_preview;')
  edit(p,'static const char *controller_binding(unsigned button){','''static const char *controller_binding(unsigned button){
- if(value(pad_source,MUIA_Cycle_Active)!=3){
+ if(!pad_uses_lowlevel(value(pad_source,MUIA_Cycle_Active))){
   static const char *usb[]={"B","Y","Select","Start","D-pad","D-pad","D-pad","D-pad","A","X","L","R"};
   static const char *md[]={"B","A","Mode","Start","D-pad","D-pad","D-pad","D-pad","C","X","Y","Z"};
   return (pad_binding||value(pad_source,MUIA_Cycle_Active)==1)?usb[button]:md[button];
@@ -31,19 +31,19 @@ static const char *pad_choices[]={"Auto: USB / Mega Drive","USB: SN30 Pro","Mega
  unsigned source=value(pad_source,MUIA_Cycle_Active),visible=value(pages,MUIA_Group_ActivePage)==2;
  ULONG s=0;int blocked=0;
  Forbid();blocked=FindPort("ZZUAE.1")||FindPort("ZZNES.1")||FindPort("ZZDOSBOX.1")||FindPort("Sixies.ARM.Debug.Owner");Permit();
- for(unsigned i=0;i<7;i++)set(joymap[0][i],MUIA_Disabled,source!=3);
- if(!visible||blocked||source==3){if(pad_testing){pad_close();pad_testing=0;}pad_preview=0;}
- if(visible&&!blocked&&source!=3){
+ for(unsigned i=0;i<7;i++)set(joymap[0][i],MUIA_Disabled,!pad_uses_lowlevel(source));
+ if(!visible||blocked||pad_uses_lowlevel(source)){if(pad_testing){pad_close();pad_testing=0;}pad_preview=0;}
+ if(visible&&!blocked&&!pad_uses_lowlevel(source)){
   if(!pad_testing||pad_mode!=source){pad_open(source);pad_testing=1;}
   ULONG sec,micro;CurrentTime(&sec,&micro);pad_preview=pad_poll(sec*1000000u+micro);
   snprintf(joy,sizeof(joy),"%s",pad_status);
  }else if(blocked)snprintf(joy,sizeof(joy),"Close the other emulator to test controllers");
- else if(source==3){s=LowLevelBase?ReadJoyPort(1):0;
-  snprintf(joy,sizeof(joy),"Amiga / CD32 port 2: %s",!LowLevelBase?"lowlevel.library unavailable":(s&JP_TYPE_MASK)==JP_TYPE_GAMECTLR?"gamepad":(s&JP_TYPE_MASK)==JP_TYPE_JOYSTK?"joystick":"waiting for input");
+ else if(pad_uses_lowlevel(source)){s=LowLevelBase?ReadJoyPort(1):0;
+  snprintf(joy,sizeof(joy),"%s: %s",source==4?"USB / CD32 (Poseidon)":"Amiga / CD32 port 2",!LowLevelBase?"lowlevel.library unavailable":(s&JP_TYPE_MASK)==JP_TYPE_GAMECTLR?"gamepad":(s&JP_TYPE_MASK)==JP_TYPE_JOYSTK?"joystick":"waiting for input");
  }else snprintf(joy,sizeof(joy),"%s",pad_usb_available?"USB ready; Mega Drive fallback":"USB unavailable; Mega Drive fallback");
  set(joytext,MUIA_Text_Contents,(ULONG)joy);
  controller_update(s,0,visible);
- if(source==3&&!blocked&&value(win,MUIA_Window_Activate)&&value(pages,MUIA_Group_ActivePage)==0){
+ if(pad_uses_lowlevel(source)&&!blocked&&value(win,MUIA_Window_Activate)&&value(pages,MUIA_Group_ActivePage)==0){
   ULONG type=s&JP_TYPE_MASK,edge=s&~previous_joy;LONG active=(LONG)value(list,MUIA_List_Active);
   if(type==JP_TYPE_JOYSTK||type==JP_TYPE_GAMECTLR){
    if((edge&JPF_JOY_UP)&&active>0)set(list,MUIA_List_Active,active-1);
@@ -54,12 +54,12 @@ static const char *pad_choices[]={"Auto: USB / Mega Drive","USB: SN30 Pro","Mega
 }'''+s[end:];p.write_text(s)
  edit(p,'Child,joytext=textline("Move the joystick or press Fire on physical port 2"),', '''Child,HGroup,Child,textline("Player 1"),Child,pad_source=cycle(pad_choices),End,
     Child,joytext=textline("Detecting controller support..."),''')
- edit(p,'Child,mapping_grid(),','''Child,textline("SN30 USB: B+Start, then connect cable. Mega Drive: 5/7 adapter."),
+ edit(p,'Child,mapping_grid(),','''Child,textline("USB/CD32 uses Poseidon mappings; Mega Drive 6 needs a 5/7 adapter."),
     Child,mapping_grid(),''')
  edit(p,'set(audio_output,MUIA_Cycle_Active,em_audio_load());','''if(!pad_read_config(&pad_choice)){puts("Invalid Controller.cfg; no settings changed");return 0;}
  set(pad_source,MUIA_Cycle_Active,pad_choice);
  {struct Library*usb=OpenLibrary("poseidon.library",4);pad_usb_available=usb!=NULL;if(usb)CloseLibrary(usb);}
- set(pad_source,MUIA_ShortHelp,(ULONG)"Auto prefers SN30 Pro USB (D-input), then a Mega Drive six-button pad with a passive 5/7 adapter.\\nCD32 converters use Amiga/CD32 mapping. Start/Mode map to Start/Select.\\nUSB requires Poseidon 4+. No Bluetooth dongle or X-input support.");
+ set(pad_source,MUIA_ShortHelp,(ULONG)"Auto prefers SN30 Pro USB (D-input), then a Mega Drive six-button pad with a passive 5/7 adapter.\\nUSB/CD32 uses Poseidon joystick mapping on port 2, as in ZZNES.\\nNative CD32 and CD32 converters use Amiga/CD32 mapping. Start/Mode map to Start/Select.\\nUSB requires Poseidon 4+. No Bluetooth dongle or X-input support.");
  set(audio_output,MUIA_Cycle_Active,em_audio_load());''')
  edit(p,'splash_close();scan_stop();','pad_close();splash_close();scan_stop();')
  p=lib/'library_launch.h'
@@ -69,12 +69,12 @@ static const char *pad_choices[]={"Auto: USB / Mega Drive","USB: SN30 Pro","Mega
 def prepare_player(stage):
  headers(stage);p=stage/'joystick.h'
  edit(p,'struct Library *LowLevelBase;','struct Library *LowLevelBase;\n#include "pad_amiga.h"')
- edit(p,'b=fc_joy_decode(state,0);','b=pad_mode==3?fc_joy_decode(state,0):pad_poll(us());')
+ edit(p,'b=fc_joy_decode(state,0);','b=pad_uses_lowlevel(pad_mode)?fc_joy_decode(state,0):pad_poll(us());')
  # Only the legacy route may clock lowlevel port 2 while we own the Sega pins.
- edit(p,'ULONG state=ReadJoyPort(1);','ULONG state=pad_mode==3?ReadJoyPort(1):0;')
- edit(p,'if(LowLevelBase){ULONG state=', 'if(LowLevelBase||pad_mode!=3){ULONG state=')
+ edit(p,'ULONG state=ReadJoyPort(1);','ULONG state=pad_uses_lowlevel(pad_mode)?ReadJoyPort(1):0;')
+ edit(p,'if(LowLevelBase){ULONG state=', 'if(LowLevelBase||!pad_uses_lowlevel(pad_mode)){ULONG state=')
  edit(p,'if(fc_controls.second==2)', 'if(LowLevelBase&&fc_controls.second==2)')
- edit(p,'if(fc_fire){','if(pad_mode==3&&fc_fire){')
+ edit(p,'if(fc_fire){','if(pad_uses_lowlevel(pad_mode)&&fc_fire){')
  edit(p,'static void fc_joy_open(void){', '''static void fc_joy_open(void){unsigned mode=0;
  if(!pad_read_config(&mode)){puts("Invalid Controller.cfg; using Amiga/CD32");mode=3;}
  pad_open(mode);printf("CONTROLLER mode=%u USB=%u\\n",mode,(unsigned)!!PsdBase);''')

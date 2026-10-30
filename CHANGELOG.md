@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.10-dev — USB/CD32 controller selection
+
+- Add an explicit Poseidon USB/CD32 source using the same lowlevel.library input route as ZZNES.
+- Keep button remapping, controller testing, keyboard controls and library navigation available for USB/CD32.
+- Retain native CD32, direct SN30 USB and passive-adapter Mega Drive modes without changing existing saved source values.
+- Add generated-player regression coverage for button flags, directions, remapping and missing lowlevel.library.
+
 ## 0.7.9-dev — controller candidate
 
 - Add player-1 SN30 Pro wired USB D-input and passive-adapter Mega Drive six-button sources, with automatic USB/fallback selection.
