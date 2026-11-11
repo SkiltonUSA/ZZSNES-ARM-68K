@@ -1,0 +1,3 @@
+PASS: saved artifacts, pinned core sources, measured mean and hardware completion markers
+PASS: MUI release identities, displayed FPS, teardown and artifact ROM/state exclusions
+PASS: archived failure reproduced; normal and Super FX builds restore sprites

@@ -1,0 +1,24 @@
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS synthetic sprite, blend and PPU window comparison: baseline
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS 1200 video/PCM frames: ROM 0, baseline
+PASS 1200 video/PCM frames: ROM 1, baseline
+PASS 1200 video/PCM frames: ROM 2, baseline
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS synthetic sprite, blend and PPU window comparison: row
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS 1200 video/PCM frames: ROM 0, row
+PASS 1200 video/PCM frames: ROM 1, row
+PASS 1200 video/PCM frames: ROM 2, row
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS synthetic sprite, blend and PPU window comparison: clip
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS 1200 video/PCM frames: ROM 0, clip
+PASS 1200 video/PCM frames: ROM 1, clip
+PASS 1200 video/PCM frames: ROM 2, clip

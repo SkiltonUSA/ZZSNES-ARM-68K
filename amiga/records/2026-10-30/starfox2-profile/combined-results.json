@@ -1,0 +1,42 @@
+{
+  "cold_runs": [
+    {
+      "log": "sfbases-a2-w2-n1200-0.log",
+      "frames": 1200,
+      "elapsed_us": 35247009,
+      "core_us": 26346503,
+      "silence": 754,
+      "starvations": 347
+    },
+    {
+      "log": "sfcombs-a2-w2-n1200-0.log",
+      "frames": 1200,
+      "elapsed_us": 34217008,
+      "core_us": 25482074,
+      "silence": 702,
+      "starvations": 347
+    },
+    {
+      "log": "sfcm2s-a2-w2-n1200-0.log",
+      "frames": 1200,
+      "elapsed_us": 34334284,
+      "core_us": 25481647,
+      "silence": 708,
+      "starvations": 348
+    }
+  ],
+  "candidate_core_mean_us": 25481860.5,
+  "core_time_reduction_percent": 3.2818112521422638,
+  "sampled_video_hashes_match": true,
+  "checkpoint_run": {
+    "log": "sfcmsts-a2-w2-n660-0.log",
+    "frames": 660,
+    "elapsed_us": 14079442,
+    "core_us": 9202805,
+    "baseline_mean_core_us": 9759962,
+    "core_time_reduction_percent": 5.708598045771085,
+    "starvations": 122,
+    "silence": 143,
+    "repetitions": 1
+  }
+}

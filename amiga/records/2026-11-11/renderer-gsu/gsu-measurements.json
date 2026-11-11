@@ -1,0 +1,31 @@
+{
+  "runs": [
+    {
+      "log": "g11gsua0s-a2-w2-n660-0.log",
+      "variant": "rows",
+      "core_us": 9202610,
+      "starvations": 106
+    },
+    {
+      "log": "g11gsua3s-a2-w2-n660-0.log",
+      "variant": "rows",
+      "core_us": 9203969,
+      "starvations": 106
+    },
+    {
+      "log": "g11gsub1s-a2-w2-n660-0.log",
+      "variant": "counter",
+      "core_us": 9184374,
+      "starvations": 105
+    },
+    {
+      "log": "g11gsub2s-a2-w2-n660-0.log",
+      "variant": "counter",
+      "core_us": 9183732,
+      "starvations": 104
+    }
+  ],
+  "rows_mean_core_us": 9203289.5,
+  "counter_mean_core_us": 9184053,
+  "core_time_reduction_percent": 0.20901765613262518
+}

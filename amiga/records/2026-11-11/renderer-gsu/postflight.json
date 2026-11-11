@@ -1,0 +1,11 @@
+{
+  "core1_free": true,
+  "SNES": {
+    "installed_crc32": "31E21B33",
+    "matches_release_build": true
+  },
+  "NES": {
+    "installed_crc32": "EFE915E0",
+    "matches_release_build": true
+  }
+}

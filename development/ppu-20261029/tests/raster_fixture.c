@@ -12,6 +12,8 @@ void pocket_player_close(void);
 void pocket_heap_init(void) {}
 void DrawOBJS(bool8_32, uint8);
 void S9xSetupOBJ(void);
+void DrawTile16(uint32, int32, uint32, uint32);
+void DrawClippedTile16(uint32,int32,uint32,uint32,uint32,uint32);
 static uint32_t rng = 0x5afef00d;
 static uint32_t random_word(void) { rng ^= rng << 13; rng ^= rng >> 17; rng ^= rng << 5; return rng; }
 static uint32_t hash(const void *data, unsigned n) {
@@ -83,6 +85,24 @@ int main(int argc, char **argv) {
             GFX.SubZBuffer[i] = random_word() & (GFX.r2130 & 2 ? 7 : 1);
         }
         S9xSetupOBJ(); DrawOBJS(1, 0);
+        /* Ordinary palette tiles: flips, partial rows and mixed priorities.
+           DrawOBJS established the 4-bit tile cache/palette geometry. */
+        for (unsigned tile = 0; tile < 8; tile++) {
+            unsigned first = random_word() & 7;
+            GFX.Z1 = random_word() & 7; GFX.Z2 = random_word() & 7;
+            unsigned flags = (test & 3) << 14;
+            DrawTile16((random_word() & 0x3fff) | flags,
+                       (random_word() % 220) * GFX_PPL + random_word() % 248,
+                       first * 8, 1 + random_word() % (8 - first));
+        }
+        for (unsigned span = 0; span < 8; span++) {
+            unsigned width = random_word() % (9 - span);
+            unsigned row = random_word() & 7;
+            GFX.Z1 = random_word() & 7; GFX.Z2 = random_word() & 7;
+            DrawClippedTile16((random_word() & 0x3fff) | ((test & 3) << 14),
+                             (random_word() % 220) * GFX_PPL + random_word() % 248,
+                             span, width, row * 8, 1 + random_word() % (8 - row));
+        }
         fprintf(f, "%u %08x %08x\n", test, hash(GFX.Screen, GFX_PITCH * 240), hash(GFX.ZBuffer, GFX_ZPITCH * 240));
     }
     assert(!fclose(f)); pocket_player_close(); free(rom); return 0;

@@ -1,7 +1,7 @@
 """Isolated single-core raster experiments; never modify archived core sources."""
 from pathlib import Path
 
-MODES = ('baseline', 'profile', 'fixed', 'sprite', 'ppu', 'all')
+MODES = ('baseline', 'profile', 'fixed', 'sprite', 'ppu', 'all', 'row', 'clip', 'rows')
 COUNTERS = ('updates', 'empty_updates', 'clip_rebuilds', 'sprite_rebuilds',
             'sprite_passes', 'sprites_visited', 'sprite_tile_rows', 'sprite_lines',
             'renderer_selections', 'normal_selections', 'fixed_full_selections',
@@ -100,6 +100,74 @@ def renderer_selection(gfx, profile=False):
     return gfx[:start] + body + gfx[end:]
 
 
+def tile_rows(tile):
+    """Snapshot stable renderer state once per ordinary RGB565 tile."""
+    start = tile.index('void DrawTile16(')
+    end = tile.index('void DrawClippedTile16(', start)
+    body = """void DrawTile16(uint32 Tile, int32 Offset, uint32 StartLine, uint32 LineCount)
+{
+   TILE_PREAMBLE
+   const uint32 *colors = GFX.ScreenColors;
+   uint16 *screen = (uint16 *)GFX.S + Offset;
+   uint8 *depth = GFX.DB + Offset;
+   const uint32 z1 = GFX.Z1, z2 = GFX.Z2, stride = GFX_PPL;
+   const int step = (Tile & V_FLIP) ? -8 : 8;
+   const uint8 *pixels = pCache + ((Tile & V_FLIP) ? 56 - StartLine : StartLine);
+#define ROW_PIXEL(N, P) \\
+   if (z1 > depth[N] && pixels[P]) { screen[N] = colors[pixels[P]]; depth[N] = z2; }
+   if (Tile & H_FLIP) {
+      for (l = 0; l < LineCount; l++, pixels += step, screen += stride, depth += stride) {
+         ROW_PIXEL(0,7) ROW_PIXEL(1,6) ROW_PIXEL(2,5) ROW_PIXEL(3,4)
+         ROW_PIXEL(4,3) ROW_PIXEL(5,2) ROW_PIXEL(6,1) ROW_PIXEL(7,0)
+      }
+   } else {
+      for (l = 0; l < LineCount; l++, pixels += step, screen += stride, depth += stride) {
+         ROW_PIXEL(0,0) ROW_PIXEL(1,1) ROW_PIXEL(2,2) ROW_PIXEL(3,3)
+         ROW_PIXEL(4,4) ROW_PIXEL(5,5) ROW_PIXEL(6,6) ROW_PIXEL(7,7)
+      }
+   }
+#undef ROW_PIXEL
+}
+
+"""
+    return tile[:start] + body + tile[end:]
+
+
+def clipped_rows(tile):
+    """Render only the visible span; avoid masked temporary four-pixel words."""
+    start = tile.index('void DrawClippedTile16(')
+    end = tile.index('void DrawTile16x2(', start)
+    body = """void DrawClippedTile16(uint32 Tile, int32 Offset,
+                       uint32 StartPixel, uint32 Width,
+                       uint32 StartLine, uint32 LineCount)
+{
+   TILE_PREAMBLE
+   /* Preserve the legacy flipped mask path; this experiment changes cost only. */
+   if (Tile & H_FLIP) {
+      uint8 *bp; uint32 dd, d1, d2;
+      TILE_CLIP_PREAMBLE
+      RENDER_CLIPPED_TILE(WRITE_4PIXELS16, WRITE_4PIXELS16_FLIPPED, 4)
+      return;
+   }
+   const uint32 *colors = GFX.ScreenColors;
+   uint16 *screen = (uint16 *)GFX.S + Offset;
+   uint8 *depth = GFX.DB + Offset;
+   const uint32 z1 = GFX.Z1, z2 = GFX.Z2;
+   const uint32 end = StartPixel + Width;
+   const int step = (Tile & V_FLIP) ? -8 : 8;
+   const uint8 *pixels = pCache + ((Tile & V_FLIP) ? 56 - StartLine : StartLine);
+   for (l = 0; l < LineCount; l++, pixels += step, screen += GFX_PPL, depth += GFX_PPL) {
+      for (uint32 x = StartPixel; x < end; x++) {
+         uint32 pixel = pixels[x];
+         if (z1 > depth[x] && pixel) { screen[x] = colors[pixel]; depth[x] = z2; }
+      }
+   }
+}
+
+"""
+    return tile[:start] + body + tile[end:]
+
+
 def prepare(core, mode):
     if mode not in MODES:
         raise ValueError('Unknown PPU experiment: ' + mode)
@@ -126,6 +194,14 @@ def prepare(core, mode):
             index = 13 if 'Clipped' in name else 12
             return match.group(0) + '\n   zz_ppu_profile[%d] += LineCount;' % index
         tile = re.sub(r'void (Draw(?:Clipped)?Tile16\w*)\([^)]*\)\n\{', count_rows, tile)
+    if mode in ('clip', 'rows'):
+        tile = clipped_rows(tile)
+    if mode in ('row', 'rows'):
+        tile = tile_rows(tile)
+    if mode == 'rows':
+        marker = 'uint32 StartLine, uint32 LineCount)\n{\n   TILE_PREAMBLE\n   /* Preserve'
+        replacement = 'uint32 StartLine, uint32 LineCount)\n{\n   if (StartPixel == 0 && Width == 8) {\n      DrawTile16(Tile, Offset, StartLine, LineCount);\n      return;\n   }\n   TILE_PREAMBLE\n   /* Preserve'
+        tile = replace_once(tile, marker, replacement)
     if mode in ('fixed', 'all'):
         gfx, tile = fixed_colour(gfx, tile)
     if mode in ('sprite', 'all'):

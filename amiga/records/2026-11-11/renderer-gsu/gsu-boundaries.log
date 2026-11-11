@@ -1,0 +1,1 @@
+PASS 33280 actual-loop cases: zero/exhausted budget, unsigned wrap, STOP, inactive GSU, return value and ROM read

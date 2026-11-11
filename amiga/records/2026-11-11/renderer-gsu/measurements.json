@@ -1,0 +1,39 @@
+{
+  "runs": [
+    {
+      "log": "r11sf2a0s-a2-w2-n660-0.log",
+      "variant": "reference",
+      "core_us": 9759496,
+      "frame_request_us": 9777644,
+      "starvations": 130,
+      "samples": 352913
+    },
+    {
+      "log": "r11sf2a3s-a2-w2-n660-0.log",
+      "variant": "reference",
+      "core_us": 9759891,
+      "frame_request_us": 9778041,
+      "starvations": 129,
+      "samples": 352913
+    },
+    {
+      "log": "r11sf2b1s-a2-w2-n660-0.log",
+      "variant": "rows",
+      "core_us": 9202681,
+      "frame_request_us": 9220914,
+      "starvations": 108,
+      "samples": 352913
+    },
+    {
+      "log": "r11sf2b2s-a2-w2-n660-0.log",
+      "variant": "rows",
+      "core_us": 9202347,
+      "frame_request_us": 9220574,
+      "starvations": 106,
+      "samples": 352913
+    }
+  ],
+  "reference_mean_core_us": 9759693.5,
+  "rows_mean_core_us": 9202514,
+  "core_time_reduction_percent": 5.7089856356657105
+}

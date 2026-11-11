@@ -155,3 +155,19 @@ dispatch, RAM access and pixel plotting. The Super FX executes integer/fixed-poi
 operations; enabling the A9's VFP does not directly accelerate its guest code.
 For example, [Snes9x's `FMULT` implementation](https://github.com/snes9xgit/snes9x/blob/master/fxinst.cpp#L2578-L2592)
 uses a signed integer multiplication and extracts the upper 16 bits.
+
+## Star Fox 2 audio follow-up
+
+The isolated `row` and `clip` variants target the ordinary and clipped RGB565
+paths found in [stage and audio profiling](starfox2-audio.md#stage-profiling-and-rendering-candidates).
+Both retain legacy rendering output and leave the release default unchanged.
+`test_ppu_experiment.py --mode row --mode clip` selects these candidates without
+re-running the older variants. Synthetic coverage includes partial rows,
+transparent pixels, all flips, partial/empty spans, palette and depth handling.
+The clipping candidate intentionally retains the inherited flipped-mask path.
+
+`--ppu-test rows` combines the two paths and directs unclipped eight-pixel spans
+to `DrawTile16`. It is an isolated candidate, not a release default.
+
+Further repeated renderer measurements and the isolated GSU budget experiment
+are recorded in [the renderer/GSU review](renderer-gsu-review.md).

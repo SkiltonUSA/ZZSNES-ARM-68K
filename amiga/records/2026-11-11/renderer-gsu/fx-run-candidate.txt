@@ -1,0 +1,67 @@
+
+.context/ZZSNES-ARM-68K/.context/ppu-rows-build-gsu-counter/player/pocket.elf:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+000272ec <fx_run>:
+   272ec: e92d47f0     	push	{r4, r5, r6, r7, r8, r9, r10, lr}
+   272f0: e1a06000     	mov	r6, r0
+   272f4: e59f80e4     	ldr	r8, [pc, #0xe4]         @ 0x273e0 <fx_run+0xf4>
+   272f8: e59f30e4     	ldr	r3, [pc, #0xe4]         @ 0x273e4 <fx_run+0xf8>
+   272fc: e08f8008     	add	r8, pc, r8
+   27300: e59f20e0     	ldr	r2, [pc, #0xe0]         @ 0x273e8 <fx_run+0xfc>
+   27304: e7984003     	ldr	r4, [r8, r3]
+   27308: e58407f4     	str	r0, [r4, #0x7f4]
+   2730c: e7985002     	ldr	r5, [r8, r2]
+   27310: e59411d4     	ldr	r1, [r4, #0x1d4]
+   27314: e5943038     	ldr	r3, [r4, #0x38]
+   27318: e5d52000     	ldrb	r2, [r5]
+   2731c: e3520000     	cmp	r2, #0
+   27320: 030f2fff     	movweq	r2, #0xffff
+   27324: 0a000004     	beq	0x2733c <fx_run+0x50>   @ imm = #0x10
+   27328: e594c050     	ldr	r12, [r4, #0x50]
+   2732c: e30f0fff     	movw	r0, #0xffff
+   27330: e3072fff     	movw	r2, #0x7fff
+   27334: e35c003f     	cmp	r12, #63
+   27338: 81a02000     	movhi	r2, r0
+   2733c: e0033002     	and	r3, r3, r2
+   27340: e7d13003     	ldrb	r3, [r1, r3]
+   27344: e5c4306c     	strb	r3, [r4, #0x6c]
+   27348: e5943048     	ldr	r3, [r4, #0x48]
+   2734c: e3130020     	tst	r3, #32
+   27350: 11a09006     	movne	r9, r6
+   27354: 130f7fff     	movwne	r7, #0xffff
+   27358: 1a000017     	bne	0x273bc <fx_run+0xd0>   @ imm = #0x5c
+   2735c: ea00001c     	b	0x273d4 <fx_run+0xe8>   @ imm = #0x70
+   27360: e5d5e000     	ldrb	lr, [r5]
+   27364: e5d4006d     	ldrb	r0, [r4, #0x6d]
+   27368: e594c1d8     	ldr	r12, [r4, #0x1d8]
+   2736c: e35e0000     	cmp	lr, #0
+   27370: e594103c     	ldr	r1, [r4, #0x3c]
+   27374: 0a000003     	beq	0x27388 <fx_run+0x9c>   @ imm = #0xc
+   27378: e594e04c     	ldr	lr, [r4, #0x4c]
+   2737c: e3072fff     	movw	r2, #0x7fff
+   27380: e35e003f     	cmp	lr, #63
+   27384: 81a02007     	movhi	r2, r7
+   27388: e0011002     	and	r1, r1, r2
+   2738c: e59f2058     	ldr	r2, [pc, #0x58]         @ 0x273ec <fx_run+0x100>
+   27390: e7dc1001     	ldrb	r1, [r12, r1]
+   27394: e2033c03     	and	r3, r3, #768
+   27398: e1833000     	orr	r3, r3, r0
+   2739c: e5c4106d     	strb	r1, [r4, #0x6d]
+   273a0: e7982002     	ldr	r2, [r8, r2]
+   273a4: e5922000     	ldr	r2, [r2]
+   273a8: e7923103     	ldr	r3, [r2, r3, lsl #2]
+   273ac: e12fff33     	blx	r3
+   273b0: e5943048     	ldr	r3, [r4, #0x48]
+   273b4: e3130020     	tst	r3, #32
+   273b8: 0a000005     	beq	0x273d4 <fx_run+0xe8>   @ imm = #0x14
+   273bc: e3590000     	cmp	r9, #0
+   273c0: e30f2fff     	movw	r2, #0xffff
+   273c4: e2499001     	sub	r9, r9, #1
+   273c8: 1affffe4     	bne	0x27360 <fx_run+0x74>   @ imm = #-0x70
+   273cc: e3e03000     	mvn	r3, #0
+   273d0: e58437f4     	str	r3, [r4, #0x7f4]
+   273d4: e59437f8     	ldr	r3, [r4, #0x7f8]
+   273d8: e0460003     	sub	r0, r6, r3
+   273dc: e8bd87f0     	pop	{r4, r5, r6, r7, r8, r9, r10, pc}

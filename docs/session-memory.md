@@ -959,3 +959,148 @@ Source/report: scripts/prepare_audio_publication.py, docs/arm-audio-publication.
 development/audio-publication-20261030, amiga/records/2026-10-30/audio-publication.
 Player SHA25686c38fd75ce8582f09085af9d5b043b16254551a2ea229e89229642fe6996ac5;
 launcher SHA2569e12e7638345d913646d82790cf527544e72bd0f1d31379dd86772ac6c8cc957.
+
+## Star Fox 2 audio follow-up — 30 October 2026
+
+User confirmed 0.7.11 works well generally, but Star Fox 2 stutters at Normal;
+Maximum was tried afterward and is not the original cause. Private tests under
+SD032G:Dev/ZZCrackle reproduce deadline misses at Normal. Standard and explicit
+Paula backends both starve; automatic frameskip helps elapsed time but does not
+eliminate gaps. Timed Super FX rebuilt with current audio mapping passes native
+and relocated model/state checks but is slower in this physical boot sequence;
+it is not promoted. Installed executables and all saved settings remain unchanged.
+
+Star Fox 2 Normal600 pre-AHI PCM matches the exact ARM model:641658 individual
+samples,zero mismatches. Delivery starvation remains. This is not an original
+SNES accuracy comparison. See standalone docs/starfox2-audio.md and
+amiga/records/2026-10-30/starfox2-audio. Private harness/results in parent
+.context/amiga/starfox-audio-1030; no commercial ROM/audio capture committed.
+
+Star Fox 2 threshold50 test:1200frames/24.549s,194starvations,1013pictures skipped;
+not accepted as a fix/default. All seven physical runs including PCM capture
+completed cleanly; postflight bridge responsive and Core1 idle. No install or
+settings changes, no new release. Report/raw logs retained locally.
+
+## Star Fox 2 stage profiling and tile rendering — 30 October 2026
+
+Opt-in --release-ax --core-profile measures read-only A9 timer boundaries:
+1200 cold Normal/Paula frames: GSU31.78%, PPU39.22%, PCM mixer1.73%, rest27.27%.
+Profiling source/scripts, native fixtures and opt-in --ppu-test row/clip/rows
+added in standalone ZZSNES. Default release and installed0.7.11 unchanged.
+
+Row ordinary-tile snapshots: checkpoint660 ABAB mean core9.759962s ->9.266535s,
+5.06% reduction. Clip span candidate: cold1200 core25.759/25.761s,2.22% saving.
+Combined rows bypasses clipping for full tiles (96.94% of sampled opening calls):
+cold1200 repeat core25.482074/25.481647s vs26.346503s release,3.28% less.
+Checkpoint660 combined core9.202805s vsbaseline mean9.759962s,5.71% less (one run).
+All candidates still audio-starve; no sound-fix or general FPS claim. Normal
+opening combined core21.23ms/frame remains over16.69ms NTSC before host costs.
+
+Combined passes ASan/UBSan raster/depth fixtures,3600 video/stereo-PCM frames each
+StarFox2/StuntRaceFX/SMW, and60 checkpoint frames each at two ARM relocations.
+Physical PCM retirement, registers/MMU/cache witnesses and memory release clean.
+Postflight bridge responsive,Core1 idle; saved settings and firmware unchanged.
+No production promotion, new release or push. See standalone docs/starfox2-audio.md,
+amiga/records/2026-10-30/starfox2-profile. Private hardware harness SD032G:Dev/ZZCrackle;
+local logs parent .context/amiga/starfox-profile-1030. PinnedGCC15.3.1 used.
+
+Separate graphics follow-up: portable C SWAP_DWORD returns value but clipped HFlip
+call sites discard it. Preserve inherited flipped partial-span output in these
+cost-only experiments; do not silently change graphics. Next profiling targets:
+DrawBackgroundOffset and GSU fx_run dispatch/register/memory helpers.
+
+## Super FX audio upstream review — 30 October 2026
+
+Read-only review of pinned current Snes9x, Snes9x GX, Snes9x-Z and MesenCE.
+See docs/superfx-audio-upstream-review.md and source-hash manifests under
+amiga/records/2026-10-30/fx-audio-review. Local source snapshots in parent
+.context/amiga/fx-audio-review-1030. No physical tests or deployment this review.
+Modern cores bound GSU work and synchronize SPC/DSP to guest clocks; GX uses
+prefilled DMA ring plus hysteretic +/-0.5% resampling. Existing Timed GSU already
+derives from the reviewed Snes9x revision and was slower physically. MesenCE
+still submits collected PCM at frame end; frame-end submission alone is not a bug.
+Potential next isolated experiment: inexpensive bounded GSU instruction budget,
+with guest timing/IRQ/handshake/state checks. Queue drift correction follows
+throughput improvements; incremental PCM needs synthesis chronology changes.
+
+## 2026-10-30 — compact launcher installed
+
+Launcher-only update at `SD032G:Emulator/ZZSNES/ZZSNES`; 329008 bytes,
+MD5 `93a3e0166923b854873605854c84b0d1`. Rollback `SD032G:Dev/UI1030SNES/Before-compact/ZZSNES`.
+Current player/version unchanged. `prepare_compact_ui.py` is called by
+prepare_audio_window, so launcher/full builds include this UI.
+Sound replaces Disks; ROM Manager owns import. Remove header logo, filters,
+sidebar scrollbar and duplicate resume buttons. Smaller MUI fonts match ZZUAE,
+1100px screen-bounded default, live settings summary and RAM-only activity log.
+[Details](compact-interface.md); [checks](../amiga/records/2026-10-30/compact-ui/README.md).
+No release, commit or push performed for this interface update.
+
+### Narrower launcher follow-up
+
+Default width reduced from1100 to900 pixels (height500), as requested.
+640×480 screen fitting unchanged; users can still resize the window.
+Both launcher builds and native layout checks pass.
+Installed and reopened at900×500; MD5 `60d272dcda077499c8139e836ddcda4e`.
+Backup `SD032G:Dev/UI1030SNES/Before-narrow/ZZSNES`; settings/player checksums preserved.
+
+## 2026-11-11 — renderer/GSU optimisation investigation
+
+Installed release players and user settings unchanged; physical tests used private
+SD032G:Dev/ZZCrackle and SD032G:Dev/R11Chrono drawers. Postflight checks confirm
+both NES/SNES player CRCs match release builds, bridge responds and Core1 is free.
+No firmware, global AHI or startup changes; no release or GitHub push.
+
+Rows renderer: repeated Star Fox 2 checkpoint ABBA comparison, 660 frames/run,
+Paula, window scale2, scanlines2, core0. Mean ARM core time 9.7596935s ->
+9.202514s (5.709% less). Starvation 129–130 ->106–108, still present.
+Chrono Trigger 1200-frame opening: 9.207992s ->9.207110s, no material gain;
+zero starvation and clean teardown in both builds.
+
+New --gsu-counter-test is opt-in and requires --release-ax. Keeps legacy GSU
+budget in a local ARM register, preserving STOP and exhausted-budget state.
+Rows/counter/counter/rows hardware: 9.2032895s ->9.184053s mean core time
+(0.209% less than rows). Small result, not an audible fix or general FPS claim.
+All four runs complete 352913 PCM frames and clean display/register/MMU/cache
+restoration and memory release. Do not promote by default yet.
+
+Native renderer comparisons cover six additional games for1200 frames; GSU
+video/PCM/state comparisons cover Star Fox2, Stunt RaceFX and Doom for3600frames.
+33280 budget/STOP boundary cases pass. Relocated ARM video/PCM/GSU state matches
+30frames for StarFox2 and Stunt at two addresses. Native suite/verify pass.
+
+Chrono monitoring suffered intermittent PORTS timeouts; fresh read-only checks
+recovered completed logs and proved cleanup before another launch. No forced
+stop or reboot. Earlier malformed ZIP/tag/save-path setup attempts excluded.
+Builds: .context/ppu-rows-build and .context/ppu-rows-build-gsu-counter.
+
+See [report](renderer-gsu-review.md) and [records](../amiga/records/2026-11-11/renderer-gsu/README.md).
+
+## 2026-11-11 — ZZ8-Bit launcher styling
+
+Both console launchers now use six top tabs, the supplied ZZ8-Bit [i] About
+icon, light grey panels, narrow selectors, blue active tabs and a red Launch
+button. Search stays over the library; preview/settings sit at the right.
+Details expands/collapses the bounded activity history. Full and launcher-only
+builds use prepare_console_style.py after the compact UI overlay. ImageMagick
+packs the About icon at build time; the bitmap is embedded in the launcher.
+
+Native layout checks and both physical seven-page MUI probes pass. Includes
+640x480 layout budget and 480/608/768x360 resizing, selectors and Details.
+Workbench mode unchanged. MUI ShowMe getter remained 1 while hidden; the probe
+instead checks that expanding reduces page height and collapsing restores it.
+
+Installed launcher-only builds under SD032G:Emulator/ZZNES and ZZSNES; rollback
+copies in SD032G:Dev/UI1111NES/Before-ZZ8-style and UI1111SNES/Before-ZZ8-style.
+Player/config checksums unchanged. Release player optimisations remain separate.
+No new GitHub publication or release. See docs/compact-interface.md and
+amiga/records/2026-11-11/zz8-interface for source/build/hardware evidence.
+
+### Narrower Games panel
+
+Follow-up: reduce the normal window width from 900 to 780 pixels, preserving
+compact-screen font selection. Games now uses a virtual group directly rather
+than an outer Scrollgroup; the ROM list and settings list retain their own
+scrollbars. Longer configuration pages still scroll. The [i] icon remains.
+Native layout tests and both seven-page hardware probes pass, including the
+640x480 budget and 480/608/768x360 resizing. Launcher-only deployment; no player,
+ROM or saved-settings changes.

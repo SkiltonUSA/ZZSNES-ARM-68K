@@ -10,8 +10,7 @@ static void layout_pump(void){
  for(i=0;i<12;i++){DoMethod(app,MUIM_Application_NewInput,(ULONG)&signals);Delay(1);}
 }
 static void layout_page(unsigned page){
- set(pages,MUIA_Group_ActivePage,page);set(navigation,MUIA_List_Active,page);
- set(heading,MUIA_Text_Contents,(ULONG)tabs[page]);
+ select_page(page);
 }
 static void layout_stage(const char *name){FILE*f=fopen("PROGDIR:layout-stage.txt","w");if(f){fputs(name,f);fclose(f);}}
 static int layout_probe(void){
@@ -26,7 +25,7 @@ static int layout_probe(void){
  if(native->Width>ZZ_UI_TEST_WIDTH||native->Height>ZZ_UI_TEST_HEIGHT-20)errors++;
  get(pages,MUIA_Group_ChildList,&children);state=children->lh_Head;
  while((scroll=NextObject(&state))){
-  layout_page(page);layout_pump();virt=(Object*)value(scroll,MUIA_Scrollgroup_Contents);
+  layout_page(page);layout_pump();virt=page?(Object*)value(scroll,MUIA_Scrollgroup_Contents):scroll;
   printf("PAGE %u %s viewport %ld x %ld content %lu x %lu\n",page,tabs[page],(long)_mwidth(virt),(long)_mheight(virt),(unsigned long)value(virt,MUIA_Virtgroup_Width),(unsigned long)value(virt,MUIA_Virtgroup_Height));
   if(_mwidth(virt)<180||_mheight(virt)<100)errors++;
   SetAttrs(virt,MUIA_Virtgroup_Left,10000,MUIA_Virtgroup_Top,10000,TAG_DONE);layout_pump();
@@ -35,6 +34,20 @@ static int layout_probe(void){
   fflush(stdout);page++;
  }
  if(page!=LIB_PAGE_COUNT)errors++;
+ if(strcmp(tabs[4],"Sound")||strcmp(tabs[5],"ROM Manager"))errors++;
+ for(unsigned i=0;i<220;i++)message("Activity capacity check");
+ if(value(status_text,MUIA_List_Entries)!=ACTIVITY_LIMIT)errors++;
+ DoMethod(status_text,MUIM_List_Clear);message(LIB_TITLE " compact interface ready");
+ {LONG full=_mheight(pages);show_details(1);layout_pump();LONG expanded=_mheight(pages);
+ printf("DETAILS open pages=%ld original=%ld show=%lu\n",(long)expanded,(long)full,(unsigned long)value(details_panel,MUIA_ShowMe));
+ show_details(0);layout_pump();LONG collapsed=_mheight(pages);
+ printf("DETAILS closed pages=%ld show=%lu\n",(long)collapsed,(unsigned long)value(details_panel,MUIA_ShowMe));
+ if(expanded>=full||collapsed!=full)errors++;
+ }
+ settings_refresh();
+ if(value(settings_list,MUIA_List_Entries)!=activity_watch_count)errors++;
+ printf("SETTINGS summary %u rows\n",activity_watch_count);
+ printf("ACTIVITY bounded history %u, Sound and ROM Manager navigation\n",ACTIVITY_LIMIT);
  /* Read-only coverage of every display/output selector on the real MUI. */
  {unsigned saved=value(audio_output,MUIA_Cycle_Active);
   for(unsigned i=0;i<5;i++){set(audio_output,MUIA_Cycle_Active,i);if(value(audio_output,MUIA_Cycle_Active)!=i)errors++;}
@@ -64,7 +77,8 @@ static int layout_probe(void){
  layout_page(0);layout_pump();layout_stage("library");Delay(ZZ_UI_CAPTURE_TICKS);
  layout_page(1);layout_pump();layout_stage("display");Delay(ZZ_UI_CAPTURE_TICKS);
  get(pages,MUIA_Group_ChildList,&children);state=children->lh_Head;
- NextObject(&state);scroll=NextObject(&state);virt=(Object*)value(scroll,MUIA_Scrollgroup_Contents);
+ layout_page(4);layout_pump();
+ for(unsigned i=0;i<4;i++)NextObject(&state);scroll=NextObject(&state);virt=(Object*)value(scroll,MUIA_Scrollgroup_Contents);
  for(unsigned i=0;i<3;i++){set(virt,MUIA_Virtgroup_Top,10000);layout_pump();}
  printf("AUDIO_VISIBLE top=%ld bottom=%ld viewport=%ld..%ld scroll=%lu\n",(long)_mtop(audio_output),(long)(_mtop(audio_output)+_mheight(audio_output)),(long)_mtop(virt),(long)(_mtop(virt)+_mheight(virt)),(unsigned long)value(virt,MUIA_Virtgroup_Top));
  if(_mtop(audio_output)<_mtop(virt)||_mtop(audio_output)+_mheight(audio_output)>_mtop(virt)+_mheight(virt))errors++;

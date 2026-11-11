@@ -1,0 +1,23 @@
+{
+  "ax-release-build": {
+    "ZZSnes-ui": "86c38fd75ce8582f09085af9d5b043b16254551a2ea229e89229642fe6996ac5",
+    "player/pocket.elf": "dab3cd0a12b6c7ac20d6c756ea261d40fef78aeefe1d407b8475fbd9e099c032",
+    "core/src/fxinst.c": "b8f8bff2e93f0b7957bd7031e10751afdb1374f89a9fc9eb679c98d6295d4be3",
+    "core/src/tile.c": "d897358b4ff2b971323c7277e6b0a947fd0a210ebf2531d995486ae81f552326",
+    "core/src/gfx.c": "f1a2a356b78d2ff2755722fb352d62240cd2b59c254e9b837226d8b25e6b338d"
+  },
+  "ppu-rows-build": {
+    "ZZSnes-ui": "4f527d866f2c18d2d08d8b67e3d0b27e4c8056a2f87033a96147952b717e9d08",
+    "player/pocket.elf": "c5b1eb642dfdcc9904fe8de9f648f1a9ea8398254322b3569b0de1703050a7ba",
+    "core/src/fxinst.c": "b8f8bff2e93f0b7957bd7031e10751afdb1374f89a9fc9eb679c98d6295d4be3",
+    "core/src/tile.c": "8cff390d6e6d3746a8d02eaa39b7ceb8b865df9017202ecfa86a49c636a83443",
+    "core/src/gfx.c": "1fe0bdb705ca67344b5537758e06a73faba8d4f2744d387888a09406a7bc9324"
+  },
+  "ppu-rows-build-gsu-counter": {
+    "ZZSnes-ui": "08c747b17a0a796d36948853aa58992da5050a08853004676823c4d29bcfc223",
+    "player/pocket.elf": "66d4db7e71c79484282a6dda37a9b45e689c190c2f81c63216cbb41ec5f6ebba",
+    "core/src/fxinst.c": "c8985c5c4e587bce5df493fa48ece423f587b0a5058947754505550709070975",
+    "core/src/tile.c": "8cff390d6e6d3746a8d02eaa39b7ceb8b865df9017202ecfa86a49c636a83443",
+    "core/src/gfx.c": "1fe0bdb705ca67344b5537758e06a73faba8d4f2744d387888a09406a7bc9324"
+  }
+}

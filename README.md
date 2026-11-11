@@ -42,10 +42,11 @@ cycle budgets. Legacy remains the default; the timed variant is separate from th
 
 ## Features
 
-- Resizable MUI sidebar with Games, Display, Controllers, Save states, Disks, ROM Manager and About; compact, scrollable layout for 640×480 screens.
-- Colour logo, Workbench icon, startup and loading panels with keyboard controls.
+- Resizable MUI launcher with ZZ8-Bit-style top tabs: Games, ROM Manager, Display, Sound, Controllers and Save states, with an **[i] About** icon; compact layout for 640×480 screens.
+- Workbench icon, startup and loading panels with keyboard controls.
+- Compact controls, game preview and Current settings panel, plus expandable Details history; [launcher update](docs/compact-interface.md).
 - Raw ROMs and single-ROM ZIP archives (stored/deflate), without an external unpacker.
-- Search, favourites, history, captured artwork, Add, Rename and confirmed Delete.
+- Search above the game list, captured artwork, Add, Rename and confirmed Delete.
 - Scan a selected folder, SD card or USB drive once to import ROMs.
 - No fixed library-entry cap; tested with 20,000 entries.
 - ROM Manager: bulk import, duplicate-entry cleanup with progress/cancel, and verified backups to disk or USB. Duplicate cleanup keeps ROM files and saves.

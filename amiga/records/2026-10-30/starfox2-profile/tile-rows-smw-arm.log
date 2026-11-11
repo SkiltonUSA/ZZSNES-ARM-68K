@@ -1,0 +1,3 @@
+PASS ARM video/stereo PCM ax-release-build 0x12000040 60
+PASS ARM video/stereo PCM ppu-rows-build 0x150020c0 60
+PASS ARM video/stereo PCM ppu-rows-build 0x12000040 60

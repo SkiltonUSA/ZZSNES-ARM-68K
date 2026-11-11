@@ -1,0 +1,2574 @@
+{
+  "metric": "modeled ARM block instruction slots; not A9 cycles or FPS",
+  "frames": 30,
+  "elf_sha256": "66d4db7e71c79484282a6dda37a9b45e689c190c2f81c63216cbb41ec5f6ebba",
+  "output_trace_sha256": "010a73ac27965690e821e0f609807064fa2ccc643f14c2b466f8d2d809fa3d57",
+  "total": 186205991,
+  "functions": [
+    {
+      "name": "DrawTile16",
+      "instructions": 48199929,
+      "entries": 437952
+    },
+    {
+      "name": "DrawBackground_8",
+      "instructions": 33089500,
+      "entries": 33312
+    },
+    {
+      "name": "S9xMainLoop_NoSA1_APU",
+      "instructions": 15743693,
+      "entries": 30
+    },
+    {
+      "name": "S9xUpdateScreen",
+      "instructions": 11585158,
+      "entries": 5552
+    },
+    {
+      "name": "nes_frame",
+      "instructions": 9217200,
+      "entries": 30
+    },
+    {
+      "name": "fx_run",
+      "instructions": 7519287,
+      "entries": 4
+    },
+    {
+      "name": "DrawOBJS",
+      "instructions": 4661520,
+      "entries": 5552
+    },
+    {
+      "name": "MixStereo",
+      "instructions": 4557617,
+      "entries": 30
+    },
+    {
+      "name": "S9xGetWord",
+      "instructions": 3821590,
+      "entries": 100394
+    },
+    {
+      "name": "OpF0",
+      "instructions": 3200652,
+      "entries": 80745
+    },
+    {
+      "name": "DrawBackground",
+      "instructions": 3131328,
+      "entries": 33312
+    },
+    {
+      "name": "memcpy",
+      "instructions": 2592200,
+      "entries": 6750
+    },
+    {
+      "name": "OpADM0",
+      "instructions": 2388330,
+      "entries": 79611
+    },
+    {
+      "name": "S9xDoDMA",
+      "instructions": 2285812,
+      "entries": 270
+    },
+    {
+      "name": "memset",
+      "instructions": 1969080,
+      "entries": 13500
+    },
+    {
+      "name": "fx_plot_4bit",
+      "instructions": 1846468,
+      "entries": 30648
+    },
+    {
+      "name": "Op89M0",
+      "instructions": 1843588,
+      "entries": 80156
+    },
+    {
+      "name": "RenderScreen",
+      "instructions": 1815504,
+      "entries": 11104
+    },
+    {
+      "name": "S9xMixSamplesO",
+      "instructions": 1638654,
+      "entries": 30
+    },
+    {
+      "name": "S9xDoHBlankProcessing",
+      "instructions": 1405310,
+      "entries": 15750
+    },
+    {
+      "name": "DrawClippedTile16",
+      "instructions": 1346908,
+      "entries": 22800
+    },
+    {
+      "name": "S9xDoHDMA",
+      "instructions": 1213770,
+      "entries": 6750
+    },
+    {
+      "name": "fx_inc_r1",
+      "instructions": 1179648,
+      "entries": 65536
+    },
+    {
+      "name": "ComputeClipWindow.part.0",
+      "instructions": 1088192,
+      "entries": 55520
+    },
+    {
+      "name": "SelectPalette",
+      "instructions": 932736,
+      "entries": 38864
+    },
+    {
+      "name": "fx_stw_r1",
+      "instructions": 884736,
+      "entries": 32768
+    },
+    {
+      "name": "fx_bne",
+      "instructions": 861400,
+      "entries": 34456
+    },
+    {
+      "name": "ComputeClipWindows",
+      "instructions": 755072,
+      "entries": 5552
+    },
+    {
+      "name": "fx_loop",
+      "instructions": 693336,
+      "entries": 33016
+    },
+    {
+      "name": "S9xSetWord",
+      "instructions": 682210,
+      "entries": 16136
+    },
+    {
+      "name": "S9xSetPPU",
+      "instructions": 661846,
+      "entries": 15688
+    },
+    {
+      "name": "fx_dec_r2",
+      "instructions": 590040,
+      "entries": 32780
+    },
+    {
+      "name": "CPUShutdown",
+      "instructions": 582785,
+      "entries": 83255
+    },
+    {
+      "name": "S9xSetByte",
+      "instructions": 439438,
+      "entries": 12188
+    },
+    {
+      "name": "ConvertTile",
+      "instructions": 430746,
+      "entries": 1066
+    },
+    {
+      "name": "S9xGetByte",
+      "instructions": 368628,
+      "entries": 13127
+    },
+    {
+      "name": "WRITE_4PIXELS16_ADD",
+      "instructions": 324420,
+      "entries": 2250
+    },
+    {
+      "name": "RenderLine",
+      "instructions": 322560,
+      "entries": 6720
+    },
+    {
+      "name": "DecodeBlock",
+      "instructions": 310386,
+      "entries": 1708
+    },
+    {
+      "name": "OpC2",
+      "instructions": 272911,
+      "entries": 5147
+    },
+    {
+      "name": "S9xSetPCBase",
+      "instructions": 253488,
+      "entries": 10562
+    },
+    {
+      "name": "unknown",
+      "instructions": 248912,
+      "entries": 0
+    },
+    {
+      "name": "DrawTile16Add",
+      "instructions": 243544,
+      "entries": 6310
+    },
+    {
+      "name": "OpE2",
+      "instructions": 220210,
+      "entries": 4397
+    },
+    {
+      "name": "fx_inc_r14",
+      "instructions": 198912,
+      "entries": 7104
+    },
+    {
+      "name": "S9xAPUSetByte",
+      "instructions": 191851,
+      "entries": 11505
+    },
+    {
+      "name": "S9xAPUSetByteZ",
+      "instructions": 187924,
+      "entries": 17084
+    },
+    {
+      "name": "WRITE_4PIXELS16_FLIPPED_ADD",
+      "instructions": 185635,
+      "entries": 1380
+    },
+    {
+      "name": "Apu2B",
+      "instructions": 176208,
+      "entries": 7342
+    },
+    {
+      "name": "Op20",
+      "instructions": 163372,
+      "entries": 3476
+    },
+    {
+      "name": "ApuD0",
+      "instructions": 158422,
+      "entries": 8656
+    },
+    {
+      "name": "OpD0",
+      "instructions": 149748,
+      "entries": 4386
+    },
+    {
+      "name": "fx_rol",
+      "instructions": 147552,
+      "entries": 5088
+    },
+    {
+      "name": "Apu3F",
+      "instructions": 147392,
+      "entries": 4606
+    },
+    {
+      "name": "ApuF0",
+      "instructions": 144551,
+      "entries": 8250
+    },
+    {
+      "name": "ApuD6",
+      "instructions": 132048,
+      "entries": 7336
+    },
+    {
+      "name": "ApuE4",
+      "instructions": 128850,
+      "entries": 8590
+    },
+    {
+      "name": "fx_getc",
+      "instructions": 128000,
+      "entries": 5120
+    },
+    {
+      "name": "OpBDM0",
+      "instructions": 122912,
+      "entries": 3841
+    },
+    {
+      "name": "S9xSetCPU",
+      "instructions": 115050,
+      "entries": 3150
+    },
+    {
+      "name": "fx_beq",
+      "instructions": 112400,
+      "entries": 4496
+    },
+    {
+      "name": "S9xAPUGetByteZ",
+      "instructions": 107660,
+      "entries": 10766
+    },
+    {
+      "name": "Op60",
+      "instructions": 104496,
+      "entries": 3732
+    },
+    {
+      "name": "ApuFC",
+      "instructions": 101244,
+      "entries": 8437
+    },
+    {
+      "name": "ApuF4",
+      "instructions": 99036,
+      "entries": 5502
+    },
+    {
+      "name": "Apu8A",
+      "instructions": 97204,
+      "entries": 3668
+    },
+    {
+      "name": "S9xSetAPUDSP",
+      "instructions": 96609,
+      "entries": 1667
+    },
+    {
+      "name": "Apu08",
+      "instructions": 95446,
+      "entries": 7342
+    },
+    {
+      "name": "ApuAA",
+      "instructions": 95368,
+      "entries": 3668
+    },
+    {
+      "name": "ADC16",
+      "instructions": 93320,
+      "entries": 2333
+    },
+    {
+      "name": "fx_color",
+      "instructions": 91800,
+      "entries": 3400
+    },
+    {
+      "name": "Apu25",
+      "instructions": 88032,
+      "entries": 3668
+    },
+    {
+      "name": "ApuF5",
+      "instructions": 78185,
+      "entries": 3509
+    },
+    {
+      "name": "ApuF6",
+      "instructions": 73920,
+      "entries": 3360
+    },
+    {
+      "name": "Apu6F",
+      "instructions": 73712,
+      "entries": 4607
+    },
+    {
+      "name": "S9xSetupOBJ",
+      "instructions": 73279,
+      "entries": 19
+    },
+    {
+      "name": "S9xSuperFXExec.part.0",
+      "instructions": 70928,
+      "entries": 7864
+    },
+    {
+      "name": "OpBFM0",
+      "instructions": 67550,
+      "entries": 1930
+    },
+    {
+      "name": "Op54X0",
+      "instructions": 67014,
+      "entries": 1314
+    },
+    {
+      "name": "fx_bcs",
+      "instructions": 65100,
+      "entries": 2604
+    },
+    {
+      "name": "OpAAX0",
+      "instructions": 64147,
+      "entries": 2789
+    },
+    {
+      "name": "S9xSuperFXExec",
+      "instructions": 62880,
+      "entries": 7860
+    },
+    {
+      "name": "fx_nop",
+      "instructions": 62660,
+      "entries": 4820
+    },
+    {
+      "name": "video",
+      "instructions": 61950,
+      "entries": 30
+    },
+    {
+      "name": "Op28",
+      "instructions": 61470,
+      "entries": 1366
+    },
+    {
+      "name": "retro_run",
+      "instructions": 60209,
+      "entries": 30
+    },
+    {
+      "name": "ADC8",
+      "instructions": 55611,
+      "entries": 1503
+    },
+    {
+      "name": "ApuC5",
+      "instructions": 54512,
+      "entries": 3407
+    },
+    {
+      "name": "Op18",
+      "instructions": 54468,
+      "entries": 3026
+    },
+    {
+      "name": "Op4AM0",
+      "instructions": 53648,
+      "entries": 1916
+    },
+    {
+      "name": "fx_to_r13",
+      "instructions": 52592,
+      "entries": 2768
+    },
+    {
+      "name": "fx_alt1",
+      "instructions": 51984,
+      "entries": 4332
+    },
+    {
+      "name": "fx_lms_r0",
+      "instructions": 51696,
+      "entries": 1436
+    },
+    {
+      "name": "Op80",
+      "instructions": 51212,
+      "entries": 1652
+    },
+    {
+      "name": "fx_sub_r6",
+      "instructions": 50832,
+      "entries": 1344
+    },
+    {
+      "name": "Op85M0",
+      "instructions": 49918,
+      "entries": 2269
+    },
+    {
+      "name": "Op08",
+      "instructions": 49176,
+      "entries": 1366
+    },
+    {
+      "name": "fx_add_r9",
+      "instructions": 48956,
+      "entries": 1052
+    },
+    {
+      "name": "Op8DM1",
+      "instructions": 48829,
+      "entries": 2123
+    },
+    {
+      "name": "Op29M0",
+      "instructions": 47138,
+      "entries": 1813
+    },
+    {
+      "name": "Op1AM0",
+      "instructions": 45252,
+      "entries": 1676
+    },
+    {
+      "name": "S9xGetCPU",
+      "instructions": 44865,
+      "entries": 1831
+    },
+    {
+      "name": "S9xAPUGetByte",
+      "instructions": 44847,
+      "entries": 4077
+    },
+    {
+      "name": "fx_dec_r5",
+      "instructions": 44064,
+      "entries": 2448
+    },
+    {
+      "name": "Apu1D",
+      "instructions": 44016,
+      "entries": 3668
+    },
+    {
+      "name": "fx_lms_r14",
+      "instructions": 43952,
+      "entries": 1072
+    },
+    {
+      "name": "Op22",
+      "instructions": 42864,
+      "entries": 912
+    },
+    {
+      "name": "Op10",
+      "instructions": 41320,
+      "entries": 1228
+    },
+    {
+      "name": "ApuFE",
+      "instructions": 40939,
+      "entries": 1631
+    },
+    {
+      "name": "OpA9M1",
+      "instructions": 40679,
+      "entries": 2141
+    },
+    {
+      "name": "Op85M1",
+      "instructions": 40106,
+      "entries": 1823
+    },
+    {
+      "name": "fx_to_r12",
+      "instructions": 39216,
+      "entries": 2064
+    },
+    {
+      "name": "fx_with_r15",
+      "instructions": 38752,
+      "entries": 2768
+    },
+    {
+      "name": "OpA9M0",
+      "instructions": 38328,
+      "entries": 1597
+    },
+    {
+      "name": "Op8DM0",
+      "instructions": 38272,
+      "entries": 1664
+    },
+    {
+      "name": "Apu3D",
+      "instructions": 38088,
+      "entries": 3174
+    },
+    {
+      "name": "OpFAX0",
+      "instructions": 37439,
+      "entries": 1291
+    },
+    {
+      "name": "ApuE3",
+      "instructions": 37026,
+      "entries": 1683
+    },
+    {
+      "name": "OpA5M1",
+      "instructions": 36868,
+      "entries": 1418
+    },
+    {
+      "name": "fx_from_r4",
+      "instructions": 36348,
+      "entries": 2796
+    },
+    {
+      "name": "Op99M1",
+      "instructions": 36000,
+      "entries": 1440
+    },
+    {
+      "name": "OpB0",
+      "instructions": 35884,
+      "entries": 1174
+    },
+    {
+      "name": "Op82",
+      "instructions": 35700,
+      "entries": 1020
+    },
+    {
+      "name": "Apu0B",
+      "instructions": 34672,
+      "entries": 1576
+    },
+    {
+      "name": "OpADM1",
+      "instructions": 34506,
+      "entries": 1278
+    },
+    {
+      "name": "fx_sub_r8",
+      "instructions": 33408,
+      "entries": 928
+    },
+    {
+      "name": "Op6B",
+      "instructions": 32043,
+      "entries": 971
+    },
+    {
+      "name": "fx_from_r3",
+      "instructions": 31824,
+      "entries": 2448
+    },
+    {
+      "name": "input",
+      "instructions": 31080,
+      "entries": 2400
+    },
+    {
+      "name": "Apu6E",
+      "instructions": 30916,
+      "entries": 917
+    },
+    {
+      "name": "fx_ibt_r5",
+      "instructions": 30624,
+      "entries": 1056
+    },
+    {
+      "name": "Op99M0",
+      "instructions": 29400,
+      "entries": 1176
+    },
+    {
+      "name": "ApuE6",
+      "instructions": 29376,
+      "entries": 1632
+    },
+    {
+      "name": "fx_sub_r7",
+      "instructions": 29376,
+      "entries": 816
+    },
+    {
+      "name": "Op0AM0",
+      "instructions": 29047,
+      "entries": 937
+    },
+    {
+      "name": "fx_getbh",
+      "instructions": 28992,
+      "entries": 1208
+    },
+    {
+      "name": "OpBFM1",
+      "instructions": 28896,
+      "entries": 903
+    },
+    {
+      "name": "OpDAX0",
+      "instructions": 28424,
+      "entries": 1292
+    },
+    {
+      "name": "fx_inc_r2",
+      "instructions": 28152,
+      "entries": 1564
+    },
+    {
+      "name": "fx_with_r14",
+      "instructions": 27944,
+      "entries": 1996
+    },
+    {
+      "name": "ApuC4",
+      "instructions": 27924,
+      "entries": 2148
+    },
+    {
+      "name": "fx_with_r1",
+      "instructions": 27832,
+      "entries": 1988
+    },
+    {
+      "name": "fx_from_r6",
+      "instructions": 27436,
+      "entries": 988
+    },
+    {
+      "name": "OpA5M0",
+      "instructions": 26477,
+      "entries": 913
+    },
+    {
+      "name": "Op6EM0",
+      "instructions": 25920,
+      "entries": 540
+    },
+    {
+      "name": "fx_from_r7",
+      "instructions": 25796,
+      "entries": 980
+    },
+    {
+      "name": "OpAFM0",
+      "instructions": 25728,
+      "entries": 804
+    },
+    {
+      "name": "fx_getb",
+      "instructions": 25452,
+      "entries": 1212
+    },
+    {
+      "name": "ApuB0",
+      "instructions": 25388,
+      "entries": 1487
+    },
+    {
+      "name": "fx_sbk",
+      "instructions": 25200,
+      "entries": 1008
+    },
+    {
+      "name": "Op69M0",
+      "instructions": 25007,
+      "entries": 1471
+    },
+    {
+      "name": "ApuC8",
+      "instructions": 24990,
+      "entries": 1666
+    },
+    {
+      "name": "ApuF2",
+      "instructions": 24939,
+      "entries": 1467
+    },
+    {
+      "name": "ApuAD",
+      "instructions": 24660,
+      "entries": 1644
+    },
+    {
+      "name": "fx_lsr",
+      "instructions": 23632,
+      "entries": 844
+    },
+    {
+      "name": "OpC6M1",
+      "instructions": 22704,
+      "entries": 528
+    },
+    {
+      "name": "OpBDM1",
+      "instructions": 22620,
+      "entries": 780
+    },
+    {
+      "name": "OpAEX0",
+      "instructions": 22440,
+      "entries": 748
+    },
+    {
+      "name": "OpEA",
+      "instructions": 22316,
+      "entries": 1594
+    },
+    {
+      "name": "OpA6X0",
+      "instructions": 21866,
+      "entries": 754
+    },
+    {
+      "name": "SBC8",
+      "instructions": 20672,
+      "entries": 544
+    },
+    {
+      "name": "ApuF3",
+      "instructions": 20646,
+      "entries": 666
+    },
+    {
+      "name": "fx_bmi",
+      "instructions": 20500,
+      "entries": 820
+    },
+    {
+      "name": "Op8AM0",
+      "instructions": 19182,
+      "entries": 834
+    },
+    {
+      "name": "fx_with_r5",
+      "instructions": 18984,
+      "entries": 1356
+    },
+    {
+      "name": "ApuCF",
+      "instructions": 18832,
+      "entries": 1177
+    },
+    {
+      "name": "OpAB",
+      "instructions": 18792,
+      "entries": 696
+    },
+    {
+      "name": "Apu5D",
+      "instructions": 18612,
+      "entries": 1692
+    },
+    {
+      "name": "fx_ibt_r0",
+      "instructions": 18444,
+      "entries": 636
+    },
+    {
+      "name": "OpA0X0",
+      "instructions": 18312,
+      "entries": 763
+    },
+    {
+      "name": "S9xSetEchoDelay",
+      "instructions": 18256,
+      "entries": 163
+    },
+    {
+      "name": "fx_dec_r0",
+      "instructions": 17784,
+      "entries": 988
+    },
+    {
+      "name": "fx_inc_r10",
+      "instructions": 17424,
+      "entries": 968
+    },
+    {
+      "name": "fx_to_r9",
+      "instructions": 17328,
+      "entries": 912
+    },
+    {
+      "name": "fx_dec_r10",
+      "instructions": 17280,
+      "entries": 960
+    },
+    {
+      "name": "Op30",
+      "instructions": 17260,
+      "entries": 589
+    },
+    {
+      "name": "fx_add_r14",
+      "instructions": 16636,
+      "entries": 364
+    },
+    {
+      "name": "fx_to_r14",
+      "instructions": 16424,
+      "entries": 840
+    },
+    {
+      "name": "OpCDM1",
+      "instructions": 16275,
+      "entries": 525
+    },
+    {
+      "name": "Op7FM1",
+      "instructions": 16200,
+      "entries": 600
+    },
+    {
+      "name": "OpA2X0",
+      "instructions": 15936,
+      "entries": 664
+    },
+    {
+      "name": "Op86X0",
+      "instructions": 15928,
+      "entries": 724
+    },
+    {
+      "name": "Op89M1",
+      "instructions": 15827,
+      "entries": 833
+    },
+    {
+      "name": "fx_alt3",
+      "instructions": 15408,
+      "entries": 1284
+    },
+    {
+      "name": "fx_with_r8",
+      "instructions": 15400,
+      "entries": 1100
+    },
+    {
+      "name": "Apu69",
+      "instructions": 14826,
+      "entries": 706
+    },
+    {
+      "name": "fx_sms_r0",
+      "instructions": 14820,
+      "entries": 380
+    },
+    {
+      "name": "Op98M0",
+      "instructions": 14812,
+      "entries": 644
+    },
+    {
+      "name": "Op65M1",
+      "instructions": 14805,
+      "entries": 705
+    },
+    {
+      "name": "ApuCD",
+      "instructions": 14454,
+      "entries": 1314
+    },
+    {
+      "name": "fx_with_r0",
+      "instructions": 14248,
+      "entries": 1096
+    },
+    {
+      "name": "fx_with_r12",
+      "instructions": 14000,
+      "entries": 1000
+    },
+    {
+      "name": "fx_ldw_r10",
+      "instructions": 13920,
+      "entries": 480
+    },
+    {
+      "name": "Op8FM1",
+      "instructions": 13900,
+      "entries": 556
+    },
+    {
+      "name": "Op8EX0",
+      "instructions": 13892,
+      "entries": 604
+    },
+    {
+      "name": "OpC9M0",
+      "instructions": 13728,
+      "entries": 429
+    },
+    {
+      "name": "Op8CX0",
+      "instructions": 13501,
+      "entries": 587
+    },
+    {
+      "name": "Op6DM0",
+      "instructions": 13392,
+      "entries": 558
+    },
+    {
+      "name": "ApuDA",
+      "instructions": 13357,
+      "entries": 703
+    },
+    {
+      "name": "fx_stw_r10",
+      "instructions": 13068,
+      "entries": 484
+    },
+    {
+      "name": "ApuFD",
+      "instructions": 12947,
+      "entries": 1177
+    },
+    {
+      "name": "Op9DM0",
+      "instructions": 12350,
+      "entries": 494
+    },
+    {
+      "name": "Apu84",
+      "instructions": 12284,
+      "entries": 332
+    },
+    {
+      "name": "Op38",
+      "instructions": 11556,
+      "entries": 642
+    },
+    {
+      "name": "OpEB",
+      "instructions": 11454,
+      "entries": 498
+    },
+    {
+      "name": "Op9FM1",
+      "instructions": 11424,
+      "entries": 408
+    },
+    {
+      "name": "fx_with_r6",
+      "instructions": 11424,
+      "entries": 816
+    },
+    {
+      "name": "fx_bcc",
+      "instructions": 11100,
+      "entries": 444
+    },
+    {
+      "name": "Op49M0",
+      "instructions": 10608,
+      "entries": 408
+    },
+    {
+      "name": "fx_romb",
+      "instructions": 10400,
+      "entries": 520
+    },
+    {
+      "name": "OpA8X0",
+      "instructions": 10350,
+      "entries": 450
+    },
+    {
+      "name": "fx_alt2",
+      "instructions": 10176,
+      "entries": 848
+    },
+    {
+      "name": "Op7C",
+      "instructions": 9760,
+      "entries": 244
+    },
+    {
+      "name": "Op1CM0",
+      "instructions": 9389,
+      "entries": 229
+    },
+    {
+      "name": "Op7AX0",
+      "instructions": 9077,
+      "entries": 313
+    },
+    {
+      "name": "Apu9B",
+      "instructions": 9044,
+      "entries": 323
+    },
+    {
+      "name": "Op48M1",
+      "instructions": 9000,
+      "entries": 450
+    },
+    {
+      "name": "Op90",
+      "instructions": 8620,
+      "entries": 244
+    },
+    {
+      "name": "Op8FM0",
+      "instructions": 8600,
+      "entries": 344
+    },
+    {
+      "name": "ApuE5",
+      "instructions": 8565,
+      "entries": 411
+    },
+    {
+      "name": "fx_add_r8",
+      "instructions": 8436,
+      "entries": 228
+    },
+    {
+      "name": "SBC16",
+      "instructions": 8284,
+      "entries": 218
+    },
+    {
+      "name": "fx_add_r0",
+      "instructions": 8272,
+      "entries": 220
+    },
+    {
+      "name": "fx_from_r0",
+      "instructions": 8120,
+      "entries": 280
+    },
+    {
+      "name": "fx_iwt_r14",
+      "instructions": 8064,
+      "entries": 224
+    },
+    {
+      "name": "fx_iwt_r15",
+      "instructions": 7812,
+      "entries": 252
+    },
+    {
+      "name": "OpC6M0",
+      "instructions": 7728,
+      "entries": 168
+    },
+    {
+      "name": "OpACX0",
+      "instructions": 7710,
+      "entries": 257
+    },
+    {
+      "name": "fx_add_r10",
+      "instructions": 7680,
+      "entries": 160
+    },
+    {
+      "name": "fx_add_r7",
+      "instructions": 7548,
+      "entries": 204
+    },
+    {
+      "name": "OpFC",
+      "instructions": 7228,
+      "entries": 139
+    },
+    {
+      "name": "OpE9M1",
+      "instructions": 7208,
+      "entries": 424
+    },
+    {
+      "name": "Apu90",
+      "instructions": 6985,
+      "entries": 361
+    },
+    {
+      "name": "Op3AM0",
+      "instructions": 6966,
+      "entries": 258
+    },
+    {
+      "name": "fx_bra",
+      "instructions": 6952,
+      "entries": 316
+    },
+    {
+      "name": "Op5AX0",
+      "instructions": 6908,
+      "entries": 314
+    },
+    {
+      "name": "Apu6B",
+      "instructions": 6846,
+      "entries": 326
+    },
+    {
+      "name": "fx_to_r1",
+      "instructions": 6840,
+      "entries": 360
+    },
+    {
+      "name": "fx_with_r13",
+      "instructions": 6832,
+      "entries": 488
+    },
+    {
+      "name": "Apu28",
+      "instructions": 6825,
+      "entries": 525
+    },
+    {
+      "name": "Op8B",
+      "instructions": 6440,
+      "entries": 322
+    },
+    {
+      "name": "ApuD5",
+      "instructions": 6246,
+      "entries": 347
+    },
+    {
+      "name": "fx_cmp_r7",
+      "instructions": 5916,
+      "entries": 204
+    },
+    {
+      "name": "fx_cmp_r14",
+      "instructions": 5916,
+      "entries": 204
+    },
+    {
+      "name": "fx_dec_r1",
+      "instructions": 5904,
+      "entries": 328
+    },
+    {
+      "name": "ApuCB",
+      "instructions": 5720,
+      "entries": 440
+    },
+    {
+      "name": "Op66M0",
+      "instructions": 5640,
+      "entries": 120
+    },
+    {
+      "name": "fx_add_r4",
+      "instructions": 5624,
+      "entries": 152
+    },
+    {
+      "name": "Op62",
+      "instructions": 5550,
+      "entries": 150
+    },
+    {
+      "name": "ApuE8",
+      "instructions": 5544,
+      "entries": 504
+    },
+    {
+      "name": "Op8CX1",
+      "instructions": 5520,
+      "entries": 240
+    },
+    {
+      "name": "Op46M0",
+      "instructions": 5520,
+      "entries": 120
+    },
+    {
+      "name": "ApuD3",
+      "instructions": 5425,
+      "entries": 175
+    },
+    {
+      "name": "fx_lm_r0",
+      "instructions": 5412,
+      "entries": 132
+    },
+    {
+      "name": "fx_cmp_r5",
+      "instructions": 5336,
+      "entries": 184
+    },
+    {
+      "name": "OpEEM1",
+      "instructions": 5280,
+      "entries": 120
+    },
+    {
+      "name": "ApuDE",
+      "instructions": 5275,
+      "entries": 152
+    },
+    {
+      "name": "Op68M1",
+      "instructions": 5225,
+      "entries": 209
+    },
+    {
+      "name": "Apu5F",
+      "instructions": 5135,
+      "entries": 395
+    },
+    {
+      "name": "Op65M0",
+      "instructions": 5124,
+      "entries": 244
+    },
+    {
+      "name": "Apu75",
+      "instructions": 5076,
+      "entries": 141
+    },
+    {
+      "name": "fx_sub_r0",
+      "instructions": 5076,
+      "entries": 141
+    },
+    {
+      "name": "ApuDD",
+      "instructions": 5049,
+      "entries": 459
+    },
+    {
+      "name": "Apu8D",
+      "instructions": 5005,
+      "entries": 455
+    },
+    {
+      "name": "Apu5C",
+      "instructions": 4816,
+      "entries": 344
+    },
+    {
+      "name": "Op6DM1",
+      "instructions": 4752,
+      "entries": 198
+    },
+    {
+      "name": "fx_rpix_4bit",
+      "instructions": 4704,
+      "entries": 84
+    },
+    {
+      "name": "OpA4X1",
+      "instructions": 4680,
+      "entries": 180
+    },
+    {
+      "name": "ApuE7",
+      "instructions": 4654,
+      "entries": 179
+    },
+    {
+      "name": "fx_with_r9",
+      "instructions": 4592,
+      "entries": 328
+    },
+    {
+      "name": "fx_to_r6",
+      "instructions": 4484,
+      "entries": 236
+    },
+    {
+      "name": "fx_to_r7",
+      "instructions": 4484,
+      "entries": 236
+    },
+    {
+      "name": "ApuEB",
+      "instructions": 4455,
+      "entries": 297
+    },
+    {
+      "name": "fx_cmp_r13",
+      "instructions": 4408,
+      "entries": 152
+    },
+    {
+      "name": "OpB9M1",
+      "instructions": 4350,
+      "entries": 150
+    },
+    {
+      "name": "S9xGetPPU",
+      "instructions": 4314,
+      "entries": 102
+    },
+    {
+      "name": "Apu8F",
+      "instructions": 4251,
+      "entries": 327
+    },
+    {
+      "name": "Apu24",
+      "instructions": 4240,
+      "entries": 212
+    },
+    {
+      "name": "ApuEC",
+      "instructions": 4238,
+      "entries": 163
+    },
+    {
+      "name": "Op68M0",
+      "instructions": 4234,
+      "entries": 146
+    },
+    {
+      "name": "fx_to_r2",
+      "instructions": 4104,
+      "entries": 216
+    },
+    {
+      "name": "Apu8C",
+      "instructions": 3912,
+      "entries": 163
+    },
+    {
+      "name": "ApuD8",
+      "instructions": 3861,
+      "entries": 297
+    },
+    {
+      "name": "OpF4",
+      "instructions": 3840,
+      "entries": 128
+    },
+    {
+      "name": "OpE0X0",
+      "instructions": 3840,
+      "entries": 120
+    },
+    {
+      "name": "Op9DM1",
+      "instructions": 3750,
+      "entries": 150
+    },
+    {
+      "name": "OpDDM0",
+      "instructions": 3600,
+      "entries": 90
+    },
+    {
+      "name": "OpA4X0",
+      "instructions": 3596,
+      "entries": 124
+    },
+    {
+      "name": "Apu65",
+      "instructions": 3564,
+      "entries": 108
+    },
+    {
+      "name": "Op1AM1",
+      "instructions": 3519,
+      "entries": 153
+    },
+    {
+      "name": "Apu60",
+      "instructions": 3500,
+      "entries": 350
+    },
+    {
+      "name": "fx_lm_r14",
+      "instructions": 3496,
+      "entries": 76
+    },
+    {
+      "name": "S9xUpdateJoypads",
+      "instructions": 3420,
+      "entries": 30
+    },
+    {
+      "name": "fx_to_r8",
+      "instructions": 3344,
+      "entries": 176
+    },
+    {
+      "name": "fx_inc_r12",
+      "instructions": 3312,
+      "entries": 184
+    },
+    {
+      "name": "Op64M1",
+      "instructions": 3300,
+      "entries": 150
+    },
+    {
+      "name": "fx_iwt_r0",
+      "instructions": 3300,
+      "entries": 100
+    },
+    {
+      "name": "ApuAB",
+      "instructions": 3289,
+      "entries": 143
+    },
+    {
+      "name": "fx_sm_r14",
+      "instructions": 3268,
+      "entries": 76
+    },
+    {
+      "name": "Apu44",
+      "instructions": 3260,
+      "entries": 163
+    },
+    {
+      "name": "ApuCC",
+      "instructions": 3168,
+      "entries": 198
+    },
+    {
+      "name": "ApuFB",
+      "instructions": 3168,
+      "entries": 176
+    },
+    {
+      "name": "fx_lms_r2",
+      "instructions": 3168,
+      "entries": 88
+    },
+    {
+      "name": "S9xStartHDMA",
+      "instructions": 3150,
+      "entries": 30
+    },
+    {
+      "name": "Op48M0",
+      "instructions": 3124,
+      "entries": 142
+    },
+    {
+      "name": "Apu68",
+      "instructions": 3060,
+      "entries": 204
+    },
+    {
+      "name": "Op9CM0",
+      "instructions": 3036,
+      "entries": 132
+    },
+    {
+      "name": "Op98M1",
+      "instructions": 3000,
+      "entries": 150
+    },
+    {
+      "name": "fx_from_r5",
+      "instructions": 2964,
+      "entries": 228
+    },
+    {
+      "name": "fx_to_r4",
+      "instructions": 2964,
+      "entries": 156
+    },
+    {
+      "name": "fx_sms_r2",
+      "instructions": 2964,
+      "entries": 76
+    },
+    {
+      "name": "Op29M1",
+      "instructions": 2920,
+      "entries": 146
+    },
+    {
+      "name": "OpEEM0",
+      "instructions": 2914,
+      "entries": 62
+    },
+    {
+      "name": "fx_iwt_r10",
+      "instructions": 2904,
+      "entries": 88
+    },
+    {
+      "name": "__aeabi_fadd",
+      "instructions": 2894,
+      "entries": 30
+    },
+    {
+      "name": "fx_dec_r3",
+      "instructions": 2880,
+      "entries": 160
+    },
+    {
+      "name": "fx_dec_r11",
+      "instructions": 2880,
+      "entries": 160
+    },
+    {
+      "name": "fx_add_r5",
+      "instructions": 2812,
+      "entries": 76
+    },
+    {
+      "name": "fx_add_r6",
+      "instructions": 2812,
+      "entries": 76
+    },
+    {
+      "name": "ApuDB",
+      "instructions": 2784,
+      "entries": 174
+    },
+    {
+      "name": "Op3AM1",
+      "instructions": 2760,
+      "entries": 120
+    },
+    {
+      "name": "fx_to_r5",
+      "instructions": 2736,
+      "entries": 144
+    },
+    {
+      "name": "fx_sub_r9",
+      "instructions": 2736,
+      "entries": 76
+    },
+    {
+      "name": "Op84X0",
+      "instructions": 2728,
+      "entries": 124
+    },
+    {
+      "name": "Apu6D",
+      "instructions": 2704,
+      "entries": 169
+    },
+    {
+      "name": "ApuEE",
+      "instructions": 2704,
+      "entries": 169
+    },
+    {
+      "name": "OpCEM1",
+      "instructions": 2640,
+      "entries": 60
+    },
+    {
+      "name": "fx_cache",
+      "instructions": 2636,
+      "entries": 104
+    },
+    {
+      "name": "fx_ramb",
+      "instructions": 2600,
+      "entries": 100
+    },
+    {
+      "name": "Apu1F",
+      "instructions": 2592,
+      "entries": 108
+    },
+    {
+      "name": "OpE5M1",
+      "instructions": 2520,
+      "entries": 120
+    },
+    {
+      "name": "fx_with_r4",
+      "instructions": 2520,
+      "entries": 180
+    },
+    {
+      "name": "S9xOpcode_IRQ",
+      "instructions": 2482,
+      "entries": 34
+    },
+    {
+      "name": "OpAEX1",
+      "instructions": 2430,
+      "entries": 90
+    },
+    {
+      "name": "fx_sm_r0",
+      "instructions": 2408,
+      "entries": 56
+    },
+    {
+      "name": "Op40",
+      "instructions": 2380,
+      "entries": 34
+    },
+    {
+      "name": "Op9CM1",
+      "instructions": 2254,
+      "entries": 98
+    },
+    {
+      "name": "OpC5M0",
+      "instructions": 2220,
+      "entries": 60
+    },
+    {
+      "name": "Op0CM0",
+      "instructions": 2214,
+      "entries": 54
+    },
+    {
+      "name": "fx_ibt_r9",
+      "instructions": 2204,
+      "entries": 76
+    },
+    {
+      "name": "OpE9M0",
+      "instructions": 2159,
+      "entries": 127
+    },
+    {
+      "name": "Op19M0",
+      "instructions": 2100,
+      "entries": 60
+    },
+    {
+      "name": "Op1DM0",
+      "instructions": 2100,
+      "entries": 60
+    },
+    {
+      "name": "fx_computeScreenPointers",
+      "instructions": 2100,
+      "entries": 96
+    },
+    {
+      "name": "fx_lob",
+      "instructions": 2100,
+      "entries": 84
+    },
+    {
+      "name": "Op2DM0",
+      "instructions": 2048,
+      "entries": 64
+    },
+    {
+      "name": "fx_cmode",
+      "instructions": 2024,
+      "entries": 92
+    },
+    {
+      "name": "Apu2E",
+      "instructions": 2001,
+      "entries": 87
+    },
+    {
+      "name": "Apu13",
+      "instructions": 1992,
+      "entries": 66
+    },
+    {
+      "name": "Op0DM0",
+      "instructions": 1980,
+      "entries": 60
+    },
+    {
+      "name": "Apu1C",
+      "instructions": 1960,
+      "entries": 140
+    },
+    {
+      "name": "fx_with_r7",
+      "instructions": 1960,
+      "entries": 140
+    },
+    {
+      "name": "Op4DM0",
+      "instructions": 1920,
+      "entries": 60
+    },
+    {
+      "name": "Apu78",
+      "instructions": 1914,
+      "entries": 87
+    },
+    {
+      "name": "S9xMainLoop",
+      "instructions": 1910,
+      "entries": 30
+    },
+    {
+      "name": "OpE5M0",
+      "instructions": 1890,
+      "entries": 90
+    },
+    {
+      "name": "Op09M1",
+      "instructions": 1880,
+      "entries": 94
+    },
+    {
+      "name": "fx_hib",
+      "instructions": 1872,
+      "entries": 72
+    },
+    {
+      "name": "OpECX1",
+      "instructions": 1860,
+      "entries": 60
+    },
+    {
+      "name": "OpAAX1",
+      "instructions": 1800,
+      "entries": 90
+    },
+    {
+      "name": "ApuED",
+      "instructions": 1793,
+      "entries": 163
+    },
+    {
+      "name": "fx_and_r7",
+      "instructions": 1768,
+      "entries": 68
+    },
+    {
+      "name": "DirectIndirectIndexedLong",
+      "instructions": 1740,
+      "entries": 60
+    },
+    {
+      "name": "Op64M0",
+      "instructions": 1716,
+      "entries": 78
+    },
+    {
+      "name": "fx_and_i7",
+      "instructions": 1700,
+      "entries": 68
+    },
+    {
+      "name": "Op9FM0",
+      "instructions": 1680,
+      "entries": 60
+    },
+    {
+      "name": "Apu93",
+      "instructions": 1674,
+      "entries": 54
+    },
+    {
+      "name": "fx_inc_r7",
+      "instructions": 1656,
+      "entries": 92
+    },
+    {
+      "name": "S9xStartScreenRefresh",
+      "instructions": 1650,
+      "entries": 30
+    },
+    {
+      "name": "fx_to_r10",
+      "instructions": 1520,
+      "entries": 80
+    },
+    {
+      "name": "OpBBX0",
+      "instructions": 1472,
+      "entries": 64
+    },
+    {
+      "name": "Op8EX1",
+      "instructions": 1380,
+      "entries": 60
+    },
+    {
+      "name": "fx_to_r0",
+      "instructions": 1368,
+      "entries": 76
+    },
+    {
+      "name": "Apu74",
+      "instructions": 1350,
+      "entries": 54
+    },
+    {
+      "name": "fx_jmp_r11",
+      "instructions": 1296,
+      "entries": 108
+    },
+    {
+      "name": "fx_with_r10",
+      "instructions": 1232,
+      "entries": 88
+    },
+    {
+      "name": "OpC9M1",
+      "instructions": 1224,
+      "entries": 51
+    },
+    {
+      "name": "fx_sm_r11",
+      "instructions": 1204,
+      "entries": 28
+    },
+    {
+      "name": "Apu7E",
+      "instructions": 1188,
+      "entries": 54
+    },
+    {
+      "name": "fx_lm_r15",
+      "instructions": 1148,
+      "entries": 28
+    },
+    {
+      "name": "OpB7M0",
+      "instructions": 1140,
+      "entries": 60
+    },
+    {
+      "name": "OpECX0",
+      "instructions": 1140,
+      "entries": 30
+    },
+    {
+      "name": "OpB5M0",
+      "instructions": 1140,
+      "entries": 30
+    },
+    {
+      "name": "fx_link_i3",
+      "instructions": 1140,
+      "entries": 76
+    },
+    {
+      "name": "Apu30",
+      "instructions": 1056,
+      "entries": 91
+    },
+    {
+      "name": "fx_from_r8",
+      "instructions": 1040,
+      "entries": 80
+    },
+    {
+      "name": "ApuD4",
+      "instructions": 1008,
+      "entries": 63
+    },
+    {
+      "name": "fx_from_r9",
+      "instructions": 988,
+      "entries": 76
+    },
+    {
+      "name": "OpAFM1",
+      "instructions": 986,
+      "entries": 34
+    },
+    {
+      "name": "OpC0X0",
+      "instructions": 960,
+      "entries": 30
+    },
+    {
+      "name": "fx_link_i4",
+      "instructions": 960,
+      "entries": 64
+    },
+    {
+      "name": "FxEmulate",
+      "instructions": 940,
+      "entries": 4
+    },
+    {
+      "name": "Op45M0",
+      "instructions": 930,
+      "entries": 30
+    },
+    {
+      "name": "Apu12",
+      "instructions": 918,
+      "entries": 54
+    },
+    {
+      "name": "fx_readRegisterSpace",
+      "instructions": 908,
+      "entries": 4
+    },
+    {
+      "name": "S9xReadJoypad",
+      "instructions": 900,
+      "entries": 150
+    },
+    {
+      "name": "Apu7A",
+      "instructions": 900,
+      "entries": 20
+    },
+    {
+      "name": "fx_add_r1",
+      "instructions": 872,
+      "entries": 20
+    },
+    {
+      "name": "ApuC9",
+      "instructions": 864,
+      "entries": 54
+    },
+    {
+      "name": "Apu2F",
+      "instructions": 858,
+      "entries": 66
+    },
+    {
+      "name": "S9xPlaySample",
+      "instructions": 852,
+      "entries": 6
+    },
+    {
+      "name": "Op7FM0",
+      "instructions": 810,
+      "entries": 30
+    },
+    {
+      "name": "ApuF8",
+      "instructions": 810,
+      "entries": 54
+    },
+    {
+      "name": "S9xDeinitUpdate",
+      "instructions": 810,
+      "entries": 30
+    },
+    {
+      "name": "Apu2D",
+      "instructions": 800,
+      "entries": 50
+    },
+    {
+      "name": "ApuAE",
+      "instructions": 800,
+      "entries": 50
+    },
+    {
+      "name": "Apu9A",
+      "instructions": 792,
+      "entries": 18
+    },
+    {
+      "name": "__aeabi_idivmod",
+      "instructions": 780,
+      "entries": 156
+    },
+    {
+      "name": "Op09M0",
+      "instructions": 780,
+      "entries": 30
+    },
+    {
+      "name": "S9xEndScreenRefresh",
+      "instructions": 780,
+      "entries": 30
+    },
+    {
+      "name": "OpA6X1",
+      "instructions": 780,
+      "entries": 30
+    },
+    {
+      "name": "Apu38",
+      "instructions": 759,
+      "entries": 33
+    },
+    {
+      "name": "Apu14",
+      "instructions": 759,
+      "entries": 33
+    },
+    {
+      "name": "Apu7D",
+      "instructions": 726,
+      "entries": 66
+    },
+    {
+      "name": "Op6FM0",
+      "instructions": 720,
+      "entries": 30
+    },
+    {
+      "name": "fx_lms_r1",
+      "instructions": 720,
+      "entries": 20
+    },
+    {
+      "name": "Apu48",
+      "instructions": 702,
+      "entries": 54
+    },
+    {
+      "name": "audio",
+      "instructions": 690,
+      "entries": 30
+    },
+    {
+      "name": "S9xFixEnvelope",
+      "instructions": 690,
+      "entries": 12
+    },
+    {
+      "name": "fx_ljmp_r8",
+      "instructions": 672,
+      "entries": 24
+    },
+    {
+      "name": "fx_lm_r8",
+      "instructions": 656,
+      "entries": 16
+    },
+    {
+      "name": "ApuF7",
+      "instructions": 650,
+      "entries": 26
+    },
+    {
+      "name": "fx_sms_r12",
+      "instructions": 624,
+      "entries": 16
+    },
+    {
+      "name": "fx_inc_r0",
+      "instructions": 576,
+      "entries": 32
+    },
+    {
+      "name": "fx_lms_r12",
+      "instructions": 576,
+      "entries": 16
+    },
+    {
+      "name": "fx_dec_r12",
+      "instructions": 576,
+      "entries": 32
+    },
+    {
+      "name": "fx_lms_r13",
+      "instructions": 576,
+      "entries": 16
+    },
+    {
+      "name": "fx_sub_r13",
+      "instructions": 576,
+      "entries": 16
+    },
+    {
+      "name": "Op4AM1",
+      "instructions": 552,
+      "entries": 24
+    },
+    {
+      "name": "Op78",
+      "instructions": 510,
+      "entries": 30
+    },
+    {
+      "name": "Apu96",
+      "instructions": 504,
+      "entries": 12
+    },
+    {
+      "name": "fx_lm_r1",
+      "instructions": 492,
+      "entries": 12
+    },
+    {
+      "name": "ApuB6",
+      "instructions": 492,
+      "entries": 12
+    },
+    {
+      "name": "__nesf2",
+      "instructions": 480,
+      "entries": 30
+    },
+    {
+      "name": "fx_ibt_r8",
+      "instructions": 464,
+      "entries": 16
+    },
+    {
+      "name": "fx_ibt_r13",
+      "instructions": 464,
+      "entries": 16
+    },
+    {
+      "name": "Apu4B",
+      "instructions": 462,
+      "entries": 22
+    },
+    {
+      "name": "environment",
+      "instructions": 456,
+      "entries": 31
+    },
+    {
+      "name": "fx_from_r15",
+      "instructions": 448,
+      "entries": 16
+    },
+    {
+      "name": "Apu7C",
+      "instructions": 448,
+      "entries": 28
+    },
+    {
+      "name": "fx_from_r1",
+      "instructions": 416,
+      "entries": 32
+    },
+    {
+      "name": "ApuA8",
+      "instructions": 408,
+      "entries": 12
+    },
+    {
+      "name": "ApuBB",
+      "instructions": 392,
+      "entries": 14
+    },
+    {
+      "name": "S9xApplyCheats",
+      "instructions": 390,
+      "entries": 30
+    },
+    {
+      "name": "fx_from_r2",
+      "instructions": 376,
+      "entries": 24
+    },
+    {
+      "name": "__floatdisf",
+      "instructions": 360,
+      "entries": 0
+    },
+    {
+      "name": "fx_ibt_r1",
+      "instructions": 348,
+      "entries": 12
+    },
+    {
+      "name": "fx_sm_r1",
+      "instructions": 344,
+      "entries": 8
+    },
+    {
+      "name": "fx_add_r2",
+      "instructions": 340,
+      "entries": 8
+    },
+    {
+      "name": "Apu33",
+      "instructions": 318,
+      "entries": 12
+    },
+    {
+      "name": "__subsf3",
+      "instructions": 312,
+      "entries": 52
+    },
+    {
+      "name": "fx_flushCache",
+      "instructions": 312,
+      "entries": 52
+    },
+    {
+      "name": "Apu09",
+      "instructions": 312,
+      "entries": 12
+    },
+    {
+      "name": "fx_to_r3",
+      "instructions": 304,
+      "entries": 16
+    },
+    {
+      "name": "fx_add_i1",
+      "instructions": 280,
+      "entries": 8
+    },
+    {
+      "name": "fx_iwt_r1",
+      "instructions": 264,
+      "entries": 8
+    },
+    {
+      "name": "fx_iwt_r3",
+      "instructions": 264,
+      "entries": 8
+    },
+    {
+      "name": "fx_iwt_r4",
+      "instructions": 264,
+      "entries": 8
+    },
+    {
+      "name": "fx_iwt_r2",
+      "instructions": 264,
+      "entries": 8
+    },
+    {
+      "name": "fx_sub_i1",
+      "instructions": 256,
+      "entries": 8
+    },
+    {
+      "name": "Apu95",
+      "instructions": 252,
+      "entries": 6
+    },
+    {
+      "name": "Apu80",
+      "instructions": 240,
+      "entries": 24
+    },
+    {
+      "name": "fx_cmp_r1",
+      "instructions": 232,
+      "entries": 8
+    },
+    {
+      "name": "fx_ibt_r6",
+      "instructions": 232,
+      "entries": 8
+    },
+    {
+      "name": "Apu10",
+      "instructions": 231,
+      "entries": 15
+    },
+    {
+      "name": "__fixunssfsi",
+      "instructions": 210,
+      "entries": 30
+    },
+    {
+      "name": "nes_audio",
+      "instructions": 210,
+      "entries": 30
+    },
+    {
+      "name": "fx_from_r12",
+      "instructions": 208,
+      "entries": 16
+    },
+    {
+      "name": "fx_bpl",
+      "instructions": 200,
+      "entries": 8
+    },
+    {
+      "name": "Apu9F",
+      "instructions": 195,
+      "entries": 15
+    },
+    {
+      "name": "fx_sm_r3",
+      "instructions": 172,
+      "entries": 4
+    },
+    {
+      "name": "fx_sm_r4",
+      "instructions": 172,
+      "entries": 4
+    },
+    {
+      "name": "fx_with_r2",
+      "instructions": 168,
+      "entries": 12
+    },
+    {
+      "name": "fx_lm_r2",
+      "instructions": 164,
+      "entries": 4
+    },
+    {
+      "name": "fx_lm_r9",
+      "instructions": 164,
+      "entries": 4
+    },
+    {
+      "name": "fx_lm_r6",
+      "instructions": 164,
+      "entries": 4
+    },
+    {
+      "name": "fx_sms_r14",
+      "instructions": 156,
+      "entries": 4
+    },
+    {
+      "name": "__floatsisf",
+      "instructions": 150,
+      "entries": 0
+    },
+    {
+      "name": "fx_add_r3",
+      "instructions": 148,
+      "entries": 4
+    },
+    {
+      "name": "fx_sub_r1",
+      "instructions": 144,
+      "entries": 4
+    },
+    {
+      "name": "fx_add_i2",
+      "instructions": 144,
+      "entries": 4
+    },
+    {
+      "name": "Apu9E",
+      "instructions": 144,
+      "entries": 6
+    },
+    {
+      "name": "fx_iwt_r5",
+      "instructions": 132,
+      "entries": 4
+    },
+    {
+      "name": "fx_iwt_r11",
+      "instructions": 132,
+      "entries": 4
+    },
+    {
+      "name": "fx_iwt_r7",
+      "instructions": 132,
+      "entries": 4
+    },
+    {
+      "name": "fx_stop",
+      "instructions": 132,
+      "entries": 4
+    },
+    {
+      "name": "__aeabi_fcmpgt",
+      "instructions": 120,
+      "entries": 30
+    },
+    {
+      "name": "fx_add_i0",
+      "instructions": 120,
+      "entries": 4
+    },
+    {
+      "name": "fx_ibt_r2",
+      "instructions": 116,
+      "entries": 4
+    },
+    {
+      "name": "fx_cmp_r6",
+      "instructions": 116,
+      "entries": 4
+    },
+    {
+      "name": "fx_cmp_r2",
+      "instructions": 116,
+      "entries": 4
+    },
+    {
+      "name": "fx_and_r2",
+      "instructions": 104,
+      "entries": 4
+    },
+    {
+      "name": "fx_not",
+      "instructions": 100,
+      "entries": 4
+    },
+    {
+      "name": "fx_mult_i3",
+      "instructions": 100,
+      "entries": 4
+    },
+    {
+      "name": "fx_umult_i3",
+      "instructions": 100,
+      "entries": 4
+    },
+    {
+      "name": "S9xSetSoundKeyOff",
+      "instructions": 100,
+      "entries": 4
+    },
+    {
+      "name": "Apu4D",
+      "instructions": 96,
+      "entries": 6
+    },
+    {
+      "name": "ApuCE",
+      "instructions": 96,
+      "entries": 6
+    },
+    {
+      "name": "Op9BX0",
+      "instructions": 92,
+      "entries": 4
+    },
+    {
+      "name": "__aeabi_cfcmple",
+      "instructions": 90,
+      "entries": 30
+    },
+    {
+      "name": "nes_hash",
+      "instructions": 90,
+      "entries": 30
+    },
+    {
+      "name": "fx_to_r15",
+      "instructions": 72,
+      "entries": 4
+    },
+    {
+      "name": "__aeabi_cfrcmple",
+      "instructions": 60,
+      "entries": 30
+    },
+    {
+      "name": "S9xMixSamples",
+      "instructions": 60,
+      "entries": 30
+    },
+    {
+      "name": "S9xSetIRQ",
+      "instructions": 60,
+      "entries": 4
+    },
+    {
+      "name": "fx_with_r3",
+      "instructions": 56,
+      "entries": 4
+    },
+    {
+      "name": "fx_from_r14",
+      "instructions": 52,
+      "entries": 4
+    },
+    {
+      "name": "fx_from_r11",
+      "instructions": 52,
+      "entries": 4
+    },
+    {
+      "name": "poll",
+      "instructions": 30,
+      "entries": 30
+    },
+    {
+      "name": "__floatunsisf",
+      "instructions": 30,
+      "entries": 30
+    },
+    {
+      "name": "ApuDC",
+      "instructions": 24,
+      "entries": 2
+    },
+    {
+      "name": "OpFDM0",
+      "instructions": 24,
+      "entries": 1
+    },
+    {
+      "name": "fx_dirtySCBR",
+      "instructions": 20,
+      "entries": 4
+    }
+  ]
+}

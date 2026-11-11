@@ -1,0 +1,3 @@
+PASS ARM video/stereo PCM/GSU state ppu-rows-build 0x12000040 30
+PASS ARM video/stereo PCM/GSU state ppu-rows-build-gsu-counter 0x150020c0 30
+PASS ARM video/stereo PCM/GSU state ppu-rows-build-gsu-counter 0x12000040 30

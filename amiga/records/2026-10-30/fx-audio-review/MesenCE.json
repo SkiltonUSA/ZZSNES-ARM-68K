@@ -1,0 +1,175 @@
+{
+  "repo": "nesdev-org/MesenCE",
+  "branch": "master",
+  "commit": "4b8a196e299b3de297b204fd1208d2981562c89b",
+  "files": [
+    {
+      "path": "Core/SNES/Coprocessors/GSU/Gsu.Instructions.cpp",
+      "sha256": "53d970e082eced744073663fabe2cd5de57a43c66162806f0e8d01a57272528d"
+    },
+    {
+      "path": "Core/SNES/Coprocessors/GSU/Gsu.cpp",
+      "sha256": "51b63cf37b773c83d5df6f98c9d3a7970003676b783cc3b807d8bea508a01baf"
+    },
+    {
+      "path": "Core/SNES/Coprocessors/GSU/Gsu.h",
+      "sha256": "65c67ccd17c959c5bd387af6de0db033d987ff45163b4d51911198e22bea43b2"
+    },
+    {
+      "path": "Core/SNES/Coprocessors/GSU/GsuRamHandler.h",
+      "sha256": "b398160f7d53b1d280ebd180ca8095338c012398ce2a1605017720e69ae90805"
+    },
+    {
+      "path": "Core/SNES/Coprocessors/GSU/GsuRomHandler.h",
+      "sha256": "0f95a030de50bbac9c479a4123597b914465b420f7d1f7f6c03d74574b89de42"
+    },
+    {
+      "path": "Core/SNES/Coprocessors/GSU/GsuTypes.h",
+      "sha256": "7da6daa9b0d51c3c585fb41a833b2eb4dc2458b61643fb2bfa0b6bd0c6ed4fe0"
+    },
+    {
+      "path": "Core/SNES/Coprocessors/SPC7110/Spc7110.cpp",
+      "sha256": "1015f1e544fffb576af82de962edf5234160b0431f48a43a5462c63484577185"
+    },
+    {
+      "path": "Core/SNES/Coprocessors/SPC7110/Spc7110.h",
+      "sha256": "df7c9ec2bf68b484011551b2e4bc2057168bac118dc3994760c06a4f8ddebb4a"
+    },
+    {
+      "path": "Core/SNES/Coprocessors/SPC7110/Spc7110Decomp.cpp",
+      "sha256": "b532b85e372360fe61d7c25a5db4f83cc0694fa8c0e6cd16b0b9335b237c65a4"
+    },
+    {
+      "path": "Core/SNES/Coprocessors/SPC7110/Spc7110Decomp.h",
+      "sha256": "140e82bdd37a7469281db08aef37d5f2918cc824e86113920bc8f728414c82ac"
+    },
+    {
+      "path": "Core/SNES/Debugger/DummySnesCpu.cpp",
+      "sha256": "4587ba100abf2c3a306f86731f907219c1decb38aae5ba0c6b42d8f31c745f03"
+    },
+    {
+      "path": "Core/SNES/Debugger/DummySpc.cpp",
+      "sha256": "392f14f521e21664a2fb02d10e7fff809f18900af2d3a90d34aed9c7b708661b"
+    },
+    {
+      "path": "Core/SNES/Debugger/DummySpc.h",
+      "sha256": "f6d5c51917973ecd760605dc8d47f60ae4d6331873ca519f0db938dd1b919bb4"
+    },
+    {
+      "path": "Core/SNES/Debugger/GsuDebugger.cpp",
+      "sha256": "4ee08eb2b977586f4d7370a99e979c6f95bd9b2629bea261ddd462d4d2061390"
+    },
+    {
+      "path": "Core/SNES/Debugger/GsuDebugger.h",
+      "sha256": "37a81492edd4d8e2757d847f7139cdd726c2997dbeab1e13b03a0c94b757b360"
+    },
+    {
+      "path": "Core/SNES/Debugger/GsuDisUtils.cpp",
+      "sha256": "0ec71de6e0b42180bb5ed1e777ffb51a8736eac4265ec14073839c048cd1e261"
+    },
+    {
+      "path": "Core/SNES/Debugger/GsuDisUtils.h",
+      "sha256": "6bbe9485c76651c1ff4591a2315a291abdd5179557c83eaa93f31d1ead005831"
+    },
+    {
+      "path": "Core/SNES/Debugger/SpcDebugger.cpp",
+      "sha256": "2468cf3869c8fe741d89c3058fe4bb325e6baeec00487a98bd126f731edc740d"
+    },
+    {
+      "path": "Core/SNES/Debugger/SpcDebugger.h",
+      "sha256": "6a236703e53acd00de0fc723c8a6e311a83a750ee654fe48c628efe917980c28"
+    },
+    {
+      "path": "Core/SNES/Debugger/SpcDisUtils.cpp",
+      "sha256": "3fb31eca7fc3ced963682d3a1d7f92b085fcb5eb906ac0aa25d569dd8b9a5180"
+    },
+    {
+      "path": "Core/SNES/Debugger/SpcDisUtils.h",
+      "sha256": "c656525617d81f2bc28139a2855a5c69675841d7188f4672abcef1c0dab12031"
+    },
+    {
+      "path": "Core/SNES/Debugger/TraceLogger/GsuTraceLogger.cpp",
+      "sha256": "7af71f0e221116feec791bcfdf8ee37606f533d60f2311b0f5a8c327f2550575"
+    },
+    {
+      "path": "Core/SNES/Debugger/TraceLogger/GsuTraceLogger.h",
+      "sha256": "2de6decc7aacbf8996ff9f267e79dd0226ff15d35cd88c059180f4649b901b82"
+    },
+    {
+      "path": "Core/SNES/Debugger/TraceLogger/SpcTraceLogger.cpp",
+      "sha256": "34d6d97231173ef3a824ea18ca5020c10fff4a61ff5254a3db9b8be2e6d1cfba"
+    },
+    {
+      "path": "Core/SNES/Debugger/TraceLogger/SpcTraceLogger.h",
+      "sha256": "5a0be4ae7c359d90cde142771e48354ee631cd6397abe770b4722cdb515003b6"
+    },
+    {
+      "path": "Core/SNES/SnesConsole.cpp",
+      "sha256": "4c05ae9caeb14a5b9c6118a2d8724a3a32fc976781ccc72ebd9944663465e400"
+    },
+    {
+      "path": "Core/SNES/SnesConsole.h",
+      "sha256": "5a2fa06810c9959460155403ae921f80bc6be89e1a0719b5d049e1dab61ae5a3"
+    },
+    {
+      "path": "Core/SNES/SnesCpu.cpp",
+      "sha256": "fe484e00cc6e1761a324978c61d28802cd8b291203ededc5623ce67d220240b3"
+    },
+    {
+      "path": "Core/SNES/SnesMemoryManager.cpp",
+      "sha256": "92634007bb773287a8cdafa06c019965aee99f2c8409884d25a2426d8e9ed0c9"
+    },
+    {
+      "path": "Core/SNES/SnesMemoryManager.h",
+      "sha256": "d966143466a49057c1bdbe6ef7ea1470b742bc16117ac1f75e2d02c6ec14945c"
+    },
+    {
+      "path": "Core/SNES/Spc.Instructions.cpp",
+      "sha256": "ab193a05762d48e50ef1a5e83c197dee59d8b5443727438950446d7a043aba3e"
+    },
+    {
+      "path": "Core/SNES/Spc.cpp",
+      "sha256": "0d8cd44664f627e0d20d9098f27eaa04b297afb062275a706355f5b105dca381"
+    },
+    {
+      "path": "Core/SNES/Spc.h",
+      "sha256": "889ea930aab9ddfcdc4423aa8d79d2678ab1a3b2d3281d7ca73cbba70fc8f265"
+    },
+    {
+      "path": "Core/SNES/SpcFileData.h",
+      "sha256": "210d924802b21f9de8519e6b423516b5e1ed2e9847cbfea5975ed0d5a1abc02f"
+    },
+    {
+      "path": "Core/SNES/SpcTimer.h",
+      "sha256": "3f07c5576adb1a2370725dfceb9529d0b9775ba1bab3171fb132f0ddd7a3f800"
+    },
+    {
+      "path": "Core/SNES/SpcTypes.h",
+      "sha256": "efed97c7acbef02cd748b1d4d7c9cc60147f8ce44d99cb209f19209dc5409aa3"
+    },
+    {
+      "path": "Core/Shared/Audio/SoundMixer.cpp",
+      "sha256": "96aa53221249705111085570f0fbb7232374d3f024bf47cec1870e84f7dcecf2"
+    },
+    {
+      "path": "Core/Shared/Audio/SoundMixer.h",
+      "sha256": "855af8348d05be3431d4e8f025e6ae62c3ede6317320df3b860ba5762d911300"
+    },
+    {
+      "path": "Core/Shared/Audio/SoundResampler.cpp",
+      "sha256": "2c1e885f14c788da820231ea2070e010194f3c431cfda6b3578486ec52dac8c0"
+    },
+    {
+      "path": "Core/Shared/Audio/SoundResampler.h",
+      "sha256": "981f9d859d589f2efb7c92c16782e476c033d67650e0ae76ae779dd366398ea5"
+    },
+    {
+      "path": "Core/SNES/BaseCartridge.cpp",
+      "sha256": "33ba30b4fe620c5920e93be79e7c007c2ff4d11a8406c3c7d3870252a6c2e553"
+    },
+    {
+      "path": "Core/SNES/BaseCartridge.h",
+      "sha256": "4347033f41639fe1c7fe216a95cde1b3e115c33d282c3e7d6f9f0412d12cc1b5"
+    }
+  ]
+}

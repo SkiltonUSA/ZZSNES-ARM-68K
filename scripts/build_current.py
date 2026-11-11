@@ -8,7 +8,12 @@ from prepare_ppu_experiment import MODES as PPU_MODES
 ROOT=Path(__file__).resolve().parents[1]
 def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
 def main():
- p=argparse.ArgumentParser();p.add_argument('--timed-superfx-experiment',action='store_true',help='Isolated Legacy/Timed Super FX candidate; requires --release-ax');p.add_argument('--ppu-test',choices=PPU_MODES,help='Isolated raster experiment; requires --release-ax');p.add_argument('--release-ax',action='store_true',help='Build the current beta with configured AHI output and matching launcher');p.add_argument('--ax-audio-test',action='store_true',help='Isolated per-app ZZ9000AX AHI backend; unit 0 fallback');p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');p.add_argument('--reuse-arm-from',type=Path,help='Historical option, rejected for releases requiring rebuilt ARM audio mapping');a=p.parse_args()
+ p=argparse.ArgumentParser()
+ p.add_argument("--gsu-counter-test",action="store_true",help="Isolated legacy GSU budget experiment; requires --release-ax")
+ p.add_argument("--core-profile",action="store_true",help="Isolated GSU/PPU/mixer hardware profiling build")
+ p.add_argument('--timed-superfx-experiment',action='store_true',help='Isolated Legacy/Timed Super FX candidate; requires --release-ax');p.add_argument('--ppu-test',choices=PPU_MODES,help='Isolated raster experiment; requires --release-ax');p.add_argument('--release-ax',action='store_true',help='Build the current beta with configured AHI output and matching launcher');p.add_argument('--ax-audio-test',action='store_true',help='Isolated per-app ZZ9000AX AHI backend; unit 0 fallback');p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');p.add_argument('--reuse-arm-from',type=Path,help='Historical option, rejected for releases requiring rebuilt ARM audio mapping');a=p.parse_args()
+ if a.core_profile and (not a.release_ax or a.ppu_test or a.timed_superfx_experiment):p.error("--core-profile requires --release-ax without other core experiments")
+ if a.gsu_counter_test and (not a.release_ax or a.core_profile or a.timed_superfx_experiment):p.error("--gsu-counter-test requires --release-ax without timing/profile experiments")
  if a.reuse_arm_from:p.error('Current release requires rebuilt ARM audio mapping; historical ARM reuse is not supported')
  if a.timed_superfx_experiment and (not a.release_ax or a.ppu_test):p.error('--timed-superfx-experiment requires --release-ax without --ppu-test')
  if a.ppu_test and not a.release_ax:p.error('--ppu-test requires --release-ax')
@@ -58,6 +63,9 @@ def main():
  if a.timed_superfx_experiment:
   from prepare_timed_superfx import VERSION
   out=ROOT/'.context/timed-superfx-build';stage=out/'player';lib=out/'library';m['version']=VERSION
+ if a.core_profile:
+  out=ROOT/".context/core-profile-build";stage=out/"player";lib=out/"library"
+ if a.gsu_counter_test:out=out.with_name(out.name+"-gsu-counter");stage=out/"player";lib=out/"library"
  shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
  shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
@@ -121,6 +129,12 @@ def main():
   if a.ppu_test:
    from prepare_ppu_experiment import prepare
    prepare(core,a.ppu_test)
+  if a.gsu_counter_test:
+   from prepare_gsu_counter import prepare
+   prepare(core)
+  if a.core_profile:
+   from prepare_core_profile import prepare
+   prepare(core)
   if a.jit_registers:
    from prepare_console_jit import prepare
    jit_begin=prepare(core,stage,snes,dispatch=True)
@@ -188,6 +202,9 @@ def main():
  if a.host_service_test:
   from prepare_host_service import prepare
   prepare(stage,a.host_service_test)
+ if a.core_profile:
+  from prepare_core_profile import host
+  host(stage)
  runtime=json.loads(os.environ.get('BETA_CONTAINER_COMMAND','["podman","--connection","nuflix-converter-root","run","--rm","--platform","linux/amd64"]'))
  cc=runtime+['-v',str(ROOT)+':/work','-w','/work',m['image'],'m68k-amigaos-gcc','-std=c99','-noixemul','-m68020','-O2','-g','-Wall','-Wextra','-Werror','-Wno-unused-function','-Wno-misleading-indentation']
  block,control=('0x2000000','0x180000')if snes else('0x400000','0x80000')

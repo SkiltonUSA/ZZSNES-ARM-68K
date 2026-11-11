@@ -1,0 +1,28 @@
+LIMITS 414 146 / 1920 800
+LAYOUT screen budget 640 x 480 compact 1 window 608 x 420
+PAGE 0 Games viewport 592 x 320 content 592 x 320
+SCROLL 0 0
+PAGE 1 Display viewport 574 x 308 content 574 x 399
+SCROLL 0 91
+PAGE 2 Controllers viewport 574 x 308 content 574 x 697
+SCROLL 0 389
+PAGE 3 Save states viewport 574 x 308 content 574 x 629
+SCROLL 0 321
+PAGE 4 Sound viewport 574 x 308 content 574 x 308
+SCROLL 0 0
+PAGE 5 ROM Manager viewport 574 x 308 content 574 x 308
+SCROLL 0 0
+PAGE 6 About viewport 574 x 308 content 574 x 308
+SCROLL 0 0
+DETAILS open pages=247 original=320 show=1
+DETAILS closed pages=320 show=1
+SETTINGS summary 60 rows
+ACTIVITY bounded history 200, Sound and ROM Manager navigation
+CHOICES five audio outputs, fullscreen/1x/2x/3x
+CHOICES Auto USB/Mega Drive, SN30 USB, Mega Drive 6, Amiga/CD32; no input polling
+RESIZE requested 480 x 360 actual 480 x 360
+RESIZE requested 608 x 360 actual 608 x 360
+RESIZE requested 768 x 360 actual 768 x 360
+AUDIO_VISIBLE top=87 bottom=95 viewport=70..378 scroll=0
+LOADING 384 x 105
+LAYOUT PASS errors=0 pages=7

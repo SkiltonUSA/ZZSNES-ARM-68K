@@ -1,0 +1,8 @@
+{
+  "release_player": "86c38fd75ce8582f09085af9d5b043b16254551a2ea229e89229642fe6996ac5",
+  "capture_player": "d6ddf9c561f8aaeb48da0e04d3da00871a7be2cf4cb14ccfcb725f3bddfbeb43",
+  "timed_player": "73752ae070e4473a00c941d6d87ab949b5eb4ebbb0d75e602ffd0abf4a8479e4",
+  "release_arm_payload_header": "1f04dbff9acd8da7b8f175a543fc1410521ba64e7b91a841d18bec8c36348990",
+  "capture_arm_payload_header": "1f04dbff9acd8da7b8f175a543fc1410521ba64e7b91a841d18bec8c36348990",
+  "rom_sha256": "b86c6113be950337b5cf43c5105f8a442ba897da6fca1cf3af47420d33f76f54"
+}

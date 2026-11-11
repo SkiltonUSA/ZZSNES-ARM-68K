@@ -1,0 +1,68 @@
+[
+  {
+    "label": "Maximum / configured AHI",
+    "log": "sfmxs-a1-w2-n1200-0.log",
+    "frames": 1200,
+    "play_s": 42.872255,
+    "core_s": 30.794074,
+    "core_frames_per_s": 27.99013021358452,
+    "audio": "mode=00000000 mix=0 callbacks=0 silence_queued=0 starvations=0",
+    "gaps": 355,
+    "render": "rendered=1200 skipped=0 options=16"
+  },
+  {
+    "label": "Normal / configured AHI",
+    "log": "sfnorms-a1-w2-n1200-0.log",
+    "frames": 1200,
+    "play_s": 38.753029,
+    "core_s": 26.34532,
+    "core_frames_per_s": 30.965321446228113,
+    "audio": "mode=00000000 mix=0 callbacks=0 silence_queued=0 starvations=0",
+    "gaps": 346,
+    "render": "rendered=1200 skipped=0 options=0"
+  },
+  {
+    "label": "Normal / Paula",
+    "log": "sfpas-a2-w2-n1200-0.log",
+    "frames": 1200,
+    "play_s": 35.190972,
+    "core_s": 26.345525,
+    "core_frames_per_s": 34.099654877392986,
+    "audio": "mode=0002000e mix=22030 callbacks=1155 silence_queued=755 starvations=348",
+    "gaps": 0,
+    "render": "rendered=1200 skipped=0 options=0"
+  },
+  {
+    "label": "Normal / Paula / automatic frameskip",
+    "log": "sfaus-a2-w2-n1200-0.log",
+    "frames": 1200,
+    "play_s": 32.205226,
+    "core_s": 23.140871,
+    "core_frames_per_s": 37.26103334905956,
+    "audio": "mode=0002000e mix=22030 callbacks=1006 silence_queued=606 starvations=347",
+    "gaps": 0,
+    "render": "rendered=923 skipped=277 options=64"
+  },
+  {
+    "label": "Timed GSU / Normal / Paula",
+    "log": "sftis-a2-w2-n1200-0.log",
+    "frames": 1200,
+    "play_s": 39.383954,
+    "core_s": 30.758457,
+    "core_frames_per_s": 30.46926166935905,
+    "audio": "mode=0002000e mix=22030 callbacks=1388 silence_queued=988 starvations=346",
+    "gaps": 0,
+    "render": "rendered=1200 skipped=0 options=8388608"
+  },
+  {
+    "label": "Normal / Paula / auto threshold 50%",
+    "log": "sfths-a2-w2-n1200-0.log",
+    "frames": 1200,
+    "play_s": 24.548807,
+    "core_s": 15.200425,
+    "core_frames_per_s": 48.882212483889745,
+    "audio": "mode=0002000e mix=22030 callbacks=646 silence_queued=246 starvations=194",
+    "gaps": 0,
+    "render": "rendered=187 skipped=1013 options=3342464"
+  }
+]

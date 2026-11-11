@@ -1,0 +1,442 @@
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS synthetic sprite, blend and PPU window comparison: baseline
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS 3600 video/PCM frames: ROM 0, baseline
+PASS 3600 video/PCM frames: ROM 1, baseline
+PASS 3600 video/PCM frames: ROM 2, baseline
+patching file 'libretro/libretro.c'
+.context/ppu-fixture-rows/native-core/src/memmap.c:917:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  917 |    sprintf (Memory.ROMName, "%s", Safe (Memory.ROMName));
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/memmap.c:918:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  918 |    sprintf (Memory.ROMId, "%s", Safe (Memory.ROMId));
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/memmap.c:919:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  919 |    sprintf (Memory.CompanyId, "%s", Safe (Memory.CompanyId));
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/memmap.c:921:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  921 |    sprintf (String, "\"%s\" [%s] %s, %s, Type: %s, Mode: %s, TV: %s, S-RAM: %s, ROMId: %s Company: %2.2s",
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/memmap.c:1863:5: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1863 |     sprintf (tmp, "%dKb", (CPU.Memory_SRAMMask + 1) / 1024);
+      |     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/memmap.c:1873:5: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1873 |     sprintf (tmp, "%dMbits", (Memory.ROMSize >= 7 && Memory.ROMSize < 38 ? 1u << (Memory.ROMSize - 7) : 0u));
+      |     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/memmap.c:1891:5: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1891 |     sprintf (tmp, "%s", Contents [(Memory.ROMType & 0xf) % 3]);
+      |     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/memmap.c:1894:9: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1894 |         sprintf (tmp, "%s+%s", tmp, CoPro [(Memory.ROMType & 0xf0) >> 4]);
+      |         ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/memmap.c:1902:5: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1902 |     sprintf (tmp, "%02x", Memory.ROMSpeed & ~0x10);
+      |     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+9 warnings generated.
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2585:4: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 2585 |    BranchCheck2();
+      |    ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2487:8: note: expanded from macro 'BranchCheck2'
+ 2487 |        else\
+      |        ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2606:4: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 2606 |    BranchCheck1();
+      |    ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2625:4: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 2625 |    BranchCheck1();
+      |    ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2645:4: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 2645 |    BranchCheck1();
+      |    ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3903:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 3903 |       BranchCheck1();
+      |       ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3918:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 3918 |       BranchCheck1();
+      |       ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:4005:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 4005 |       BranchCheck1();
+      |       ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2470:8: note: expanded from macro 'BranchCheck1'
+ 2470 |        else\
+      |        ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:4020:7: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 4020 |       BranchCheck2();
+      |       ^
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2487:8: note: expanded from macro 'BranchCheck2'
+ 2487 |        else\
+      |        ^
+8 warnings generated.
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3330:33: warning: operator '>>' has lower precedence than '+'; '+' will be evaluated first [-Wshift-op-parentheses]
+ 3330 |       PushW(CPU.PC - CPU.PCBase + 1);
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3330:33: note: place parentheses around the '+' expression to silence this warning
+ 3330 |       PushW(CPU.PC - CPU.PCBase + 1);
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3349:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3349 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3349:20: note: place parentheses around the '-' expression to silence this warning
+ 3349 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3383:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3383 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3383:20: note: place parentheses around the '-' expression to silence this warning
+ 3383 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3411:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3411 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3411:20: note: place parentheses around the '-' expression to silence this warning
+ 3411 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3447:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3447 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3447:20: note: place parentheses around the '-' expression to silence this warning
+ 3447 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3475:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3475 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3475:20: note: place parentheses around the '-' expression to silence this warning
+ 3475 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3510:33: warning: operator '>>' has lower precedence than '+'; '+' will be evaluated first [-Wshift-op-parentheses]
+ 3510 |       PushW(CPU.PC - CPU.PCBase + 1);
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3510:33: note: place parentheses around the '+' expression to silence this warning
+ 3510 |       PushW(CPU.PC - CPU.PCBase + 1);
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3529:20: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3529 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3529:20: note: place parentheses around the '-' expression to silence this warning
+ 3529 |       PushW(CPU.PC - CPU.PCBase);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3601:30: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3601 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3601:30: note: place parentheses around the '-' expression to silence this warning
+ 3601 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3623:30: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3623 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3623:30: note: place parentheses around the '-' expression to silence this warning
+ 3623 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+In file included from .context/ppu-fixture-rows/native-core/src/sa1cpu.c:100:
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3633:30: warning: operator '>>' has lower precedence than '-'; '-' will be evaluated first [-Wshift-op-parentheses]
+ 3633 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~ ~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:3633:30: note: place parentheses around the '-' expression to silence this warning
+ 3633 |    PushW(CPU.PC - CPU.PCBase - 1);
+      |    ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+.context/ppu-fixture-rows/native-core/src/cpuops.c:2874:17: note: expanded from macro 'PushW'
+ 2874 |     S9xSetWord (w, Registers.S.W - 1);\
+      |     ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+.context/ppu-fixture-rows/native-core/src/sa1.h:131:82: note: expanded from macro 'S9xSA1SetWord'
+  131 | #define S9xSA1SetWord(word, address) S9xSA1SetByte(word, address); S9xSA1SetByte(word >> 8, address+1);
+      |                                                                                  ^~~~
+11 warnings generated.
+.context/ppu-fixture-rows/native-core/src/snapshot.c:493:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  493 |    sprintf(buffer, "%s:%04d\n", SNAPSHOT_MAGIC, SNAPSHOT_VERSION);
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/snapshot.c:804:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  804 |    sprintf(buffer, "%s:%06d:", name, size);
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/snapshot.c:940:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  940 |    sprintf(buffer, "%s:%06d:", name, data_size);
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+.context/ppu-fixture-rows/native-core/src/snapshot.c:967:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  967 |    sprintf(buffer, "%s:%04d\n", SNAPSHOT_MAGIC, SNAPSHOT_VERSION);
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+4 warnings generated.
+.context/ppu-fixture-rows/native-core/src/spc700.c:98:4: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+   98 |    sprintf(String, "Sound CPU in unknown state executing %s at %04lX\n%s\n", s, IAPU.PC - IAPU.RAM, buffer);
+      |    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+  227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+      |                                                       ^
+1 warning generated.
+.context/ppu-fixture-rows/native-core/src/ppu_.c:1308:22: warning: & has lower precedence than <; < will be evaluated first [-Wparentheses]
+ 1308 |          if (Address & 3 < 2)
+      |                      ^~~~~~~
+.context/ppu-fixture-rows/native-core/src/ppu_.c:1308:22: note: place parentheses around the '<' expression to silence this warning
+ 1308 |          if (Address & 3 < 2)
+      |                      ^
+      |                        (    )
+.context/ppu-fixture-rows/native-core/src/ppu_.c:1308:22: note: place parentheses around the & expression to evaluate it first
+ 1308 |          if (Address & 3 < 2)
+      |                      ^
+      |              (          )
+.context/ppu-fixture-rows/native-core/src/ppu_.c:1314:35: warning: & has lower precedence than ==; == will be evaluated first [-Wparentheses]
+ 1314 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                                   ^~~~~~~~
+.context/ppu-fixture-rows/native-core/src/ppu_.c:1314:35: note: place parentheses around the '==' expression to silence this warning
+ 1314 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                                   ^
+      |                                     (     )
+.context/ppu-fixture-rows/native-core/src/ppu_.c:1314:35: note: place parentheses around the & expression to evaluate it first
+ 1314 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                                   ^
+      |                           (          )
+.context/ppu-fixture-rows/native-core/src/ppu_.c:1314:44: warning: operator '?:' has lower precedence than '&'; '&' will be evaluated first [-Wbitwise-conditional-parentheses]
+ 1314 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                           ~~~~~~~~~~~~~~~~ ^
+.context/ppu-fixture-rows/native-core/src/ppu_.c:1314:44: note: place parentheses around the '&' expression to silence this warning
+ 1314 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                                            ^
+      |                           (               )
+.context/ppu-fixture-rows/native-core/src/ppu_.c:1314:44: note: place parentheses around the '?:' expression to evaluate it first
+ 1314 |                   return (Address & 3 == 1 ? 0xaa : 0xbb);
+      |                                            ^
+      |                                     (                   )
+3 warnings generated.
+.context/ppu-fixture-rows/native-core/src/gfx.c:1463:16: warning: add explicit braces to avoid dangling else [-Wdangling-else]
+ 1463 |                else
+      |                ^
+1 warning generated.
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS synthetic sprite, blend and PPU window comparison: rows
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS 3600 video/PCM frames: ROM 0, rows
+PASS 3600 video/PCM frames: ROM 1, rows
+PASS 3600 video/PCM frames: ROM 2, rows

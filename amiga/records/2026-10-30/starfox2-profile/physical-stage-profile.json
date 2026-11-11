@@ -1,0 +1,24 @@
+{
+  "total_us": 26328190,
+  "stages": {
+    "Super FX": {
+      "us": 8366615,
+      "calls": 318428,
+      "percent": 31.778162494269452
+    },
+    "PPU rendering": {
+      "us": 10326358,
+      "calls": 84732,
+      "percent": 39.22167836072286
+    },
+    "PCM mixing": {
+      "us": 456363,
+      "calls": 1200,
+      "percent": 1.7333626048733315
+    },
+    "unattributed": {
+      "us": 7178854
+    }
+  },
+  "warning": "Instrumented screening, not optimisation speed comparison"
+}

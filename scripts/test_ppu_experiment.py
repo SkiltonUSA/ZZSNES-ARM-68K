@@ -7,7 +7,7 @@ import subprocess
 from compatibility_native import build
 
 ROOT = Path(__file__).resolve().parents[1]
-MODES = ('baseline', 'fixed', 'sprite', 'ppu', 'all')
+MODES = ('baseline', 'fixed', 'sprite', 'ppu', 'all', 'row', 'clip', 'rows')
 
 
 def run(exe, args, log):
@@ -29,13 +29,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--rom', type=Path, action='append', default=[])
     parser.add_argument('--frames', type=int, default=3600)
+    parser.add_argument('--mode', choices=MODES, action='append', help='Test selected modes; baseline is always included')
     parser.add_argument('--profile', action='store_true', help='Also compare instrumented baseline and record operation counts')
     args = parser.parse_args()
     if args.frames < 1:
         parser.error('--frames must be positive')
     output = ROOT / '.context/ppu-review'
     output.mkdir(parents=True, exist_ok=True)
-    for mode in MODES + (('profile',) if args.profile else ()):
+    modes = tuple(dict.fromkeys(('baseline', *(args.mode or MODES))))
+    for mode in modes + (('profile',) if args.profile else ()):
         directory = ROOT / ('.context/ppu-fixture-' + mode)
         fixture = build(ROOT / 'development/ppu-20261029/tests/raster_fixture.c',
                         directory, fx3=True, expanded=True, ppu=mode)

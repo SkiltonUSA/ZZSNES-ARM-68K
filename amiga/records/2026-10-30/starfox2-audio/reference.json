@@ -1,0 +1,10 @@
+{
+  "frames": 600,
+  "sample_frames": 320829,
+  "rate": 32040,
+  "channels": 2,
+  "rom_sha256": "b86c6113be950337b5cf43c5105f8a442ba897da6fca1cf3af47420d33f76f54",
+  "elf_sha256": "dab3cd0a12b6c7ac20d6c756ea261d40fef78aeefe1d407b8475fbd9e099c032",
+  "pcm_sha256": "3b5e42018a325e6fac9cb38830ccc280789ecb6c8c76124b209d623def659bd5",
+  "execution": "Unicorn Cortex-A9 model; not physical cache/performance validation"
+}

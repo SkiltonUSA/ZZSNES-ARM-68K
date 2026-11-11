@@ -1,0 +1,4 @@
+PASS 33280 actual-loop cases: zero/exhausted budget, unsigned wrap, STOP, inactive GSU, return value and ROM read
+PASS video/stereo PCM/GSU state starfox2.sfc 3600
+PASS video/stereo PCM/GSU state stunt.sfc 3600
+PASS video/stereo PCM/GSU state doom.sfc 3600

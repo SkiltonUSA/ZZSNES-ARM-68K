@@ -1,0 +1,8 @@
+patching file 'libretro/libretro.c'
+ld: warning: reducing alignment of section __DATA,__common from 0x8000 to 0x4000 because it exceeds segment maximum alignment
+PASS legacy default, CLSR timing and slice overshoot carry
+PASS cache fill cost, hit cost and flush
+PASS RAM load/store, multiply, ROM buffer and plot cycle costs
+PASS STOP/IRQ and no extra budget from GO/R15 writes
+PASS FX3 retains legacy instruction budgeting; settings persist
+PASS timed state debt/mode, malformed metadata rejection and legacy restore

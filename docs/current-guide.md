@@ -8,17 +8,19 @@ The TF4060 is part of the test machine, not a requirement. Host executables
 target 68020 instructions; the ZZ9000 Cortex-A9 runs emulation. A faster 68k
 helps OS, I/O and audio servicing. Performance on a 68030 is not yet verified.
 
+The [compact launcher update](compact-interface.md) is in development; published release archives retain their previous layout.
+
 ## Games
 
-The 0.7.9 development build adds [SN30 Pro USB and Mega Drive controller options](controllers.md).
-They are not included in the published 0.7.8 package.
+See [controller setup](controllers.md) for USB, CD32 and Mega Drive options.
 
 Select a game, then use **Launch** in the bottom bar. It stays visible on every
 page, so you can adjust settings and launch without returning to Games.
-**Continue latest save** and the save-slot controls resume saved progress.
+The **Save states** tab contains the resume and save-slot controls.
+The Games page shows the current launch settings beneath the preview.
 
-**Add** selects a ROM; **Disks** scans a chosen drawer or drive. Search, Recent and Favourites
-filter the list. Search updates shortly after typing stops; Return applies it
+**Add** selects a ROM; **ROM Manager / Import ROMs** scans a chosen drawer or drive.
+Search sits above the game list. Search updates shortly after typing stops; Return applies it
 immediately. Up/Down selects a game; a letter jumps to the first matching title.
 **Rename** changes its library title while preserving its filename and saves.
 
@@ -26,11 +28,11 @@ immediately. Up/Down selects a game; a letter jumps to the first matching title.
 library save states and captured snapshot. Imported artwork is not deleted.
 
 The library grows with available memory; there is no fixed ROM-count limit.
-Use **Disks / Scan once** to discover ROMs in a selected directory or USB drive.
+Use **ROM Manager / Import ROMs** to discover ROMs in a selected directory or USB drive.
 
 ### ZIP cartridges
 
-Add and Scan once accept ZIPs containing one matching cartridge
+Add and Import ROMs accept ZIPs containing one matching cartridge
 (`.nes` for ZZNES; `.sfc` or `.smc` for ZZSNES). Stored and deflated ZIPs work;
 no external unpacker or temporary extraction drawer is needed. Companion text
 files and macOS metadata are ignored. The game is checked against its CRC before
@@ -153,3 +155,12 @@ Automatic and manual screenshots briefly pause playback. Queued audio finishes
 before capture; playback starts again with a fresh prebuffer.
 
 USB/CD32 controllers mapped in Poseidon: choose **Controllers → USB / CD32 (Poseidon)** and **Save settings**. Native CD32 and Sega-to-CD32 adapters use **Amiga / CD32**; direct Sega six-button pads use **Mega Drive 6** with a passive 5/7 adapter. [Controller setup](controllers.md).
+
+## Sound and activity
+
+Choose the output and start-muted option in **Sound**. ZZSNES also places its
+low-pass filter controls here. **Current settings** reports selected configuration,
+not detected hardware; Auto uses the configured output.
+
+**Details** expands the activity history, which records navigation, game selection, settings changes, import/backup
+actions and player startup/return. It retains the latest 200 messages in memory.

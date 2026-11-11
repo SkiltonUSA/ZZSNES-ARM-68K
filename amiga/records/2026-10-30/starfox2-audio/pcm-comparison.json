@@ -1,0 +1,8 @@
+{
+  "sample_frames": 320829,
+  "individual_samples": 641658,
+  "different": 0,
+  "previous_frame_matches": 0,
+  "hardware_sha256": "fc0186aaab345b7df97605849b7cf58e228c5414bbb2281cd365d20f742d0519",
+  "model_little_endian_sha256": "3b5e42018a325e6fac9cb38830ccc280789ecb6c8c76124b209d623def659bd5"
+}

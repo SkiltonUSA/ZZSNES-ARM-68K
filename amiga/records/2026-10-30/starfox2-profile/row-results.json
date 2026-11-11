@@ -1,0 +1,43 @@
+{
+  "runs": [
+    {
+      "variant": "baseline",
+      "log": "sfbsts-a2-w2-n660-0.log",
+      "frames": 660,
+      "core_us": 9760464,
+      "play_us": 14082476,
+      "starvations": 148,
+      "silence": 170
+    },
+    {
+      "variant": "row",
+      "log": "sfrsts-a2-w2-n660-0.log",
+      "frames": 660,
+      "core_us": 9266845,
+      "play_us": 13662602,
+      "starvations": 126,
+      "silence": 128
+    },
+    {
+      "variant": "baseline",
+      "log": "sfbr2s-a2-w2-n660-0.log",
+      "frames": 660,
+      "core_us": 9759460,
+      "play_us": 14056210,
+      "starvations": 145,
+      "silence": 147
+    },
+    {
+      "variant": "row",
+      "log": "sfrr2s-a2-w2-n660-0.log",
+      "frames": 660,
+      "core_us": 9266224,
+      "play_us": 13657050,
+      "starvations": 126,
+      "silence": 128
+    }
+  ],
+  "baseline_core_mean_us": 9759962,
+  "row_core_mean_us": 9266534.5,
+  "core_time_reduction_percent": 5.055629314950202
+}

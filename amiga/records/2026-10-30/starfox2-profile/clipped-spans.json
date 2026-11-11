@@ -1,0 +1,21 @@
+{
+  "frames": 30,
+  "first_frame": 601,
+  "spans": [
+    {
+      "start": 0,
+      "width": 8,
+      "calls": 733380
+    },
+    {
+      "start": 7,
+      "width": 1,
+      "calls": 11580
+    },
+    {
+      "start": 0,
+      "width": 7,
+      "calls": 11580
+    }
+  ]
+}

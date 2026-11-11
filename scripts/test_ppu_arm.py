@@ -16,13 +16,20 @@ def load(build, base, rom, state):
     return machine
 
 
-def frame(machine):
+def frame(machine, gsu_state=False):
     # GSU-heavy frames can exceed the general helper's 50-million budget.
     assert machine.call('nes_frame', 0, 0, limit=500000000) == 0
     count = machine.call('nes_audio', machine.base + 0x1d0000)
     pointer = struct.unpack('<I', machine.u.mem_read(machine.base + 0x1d0000, 4))[0]
-    return (machine.call('nes_hash'), count,
-            hashlib.sha256(machine.u.mem_read(pointer, count * 4)).hexdigest())
+    result = (machine.call('nes_hash'), count,
+              hashlib.sha256(machine.u.mem_read(pointer, count * 4)).hexdigest())
+    if gsu_state:
+        size = machine.call('ps_fx_state', 0, 0)
+        assert 0 < size <= 2048
+        destination = machine.base + 0x1d1000
+        assert machine.call('ps_fx_state', 0, destination) == size
+        result += (hashlib.sha256(machine.u.mem_read(destination, size)).hexdigest(),)
+    return result
 
 
 def main():
@@ -32,6 +39,7 @@ def main():
     parser.add_argument('--baseline', type=Path, default=Path('.context/ppu-baseline-build'))
     parser.add_argument('--candidate', type=Path, default=Path('.context/ppu-all-build'))
     parser.add_argument('--frames', type=int, default=30)
+    parser.add_argument('--gsu-state', action='store_true', help='Also compare complete serialized GSU state')
     args = parser.parse_args()
     if args.frames < 1:
         parser.error('--frames must be positive')
@@ -41,11 +49,12 @@ def main():
     for build, base in ((args.baseline, 0x12000040),
                         (args.candidate, 0x150020c0), (args.candidate, 0x12000040)):
         machine = load(build, base, rom, state)
-        rows = [frame(machine) for _ in range(args.frames)]
+        rows = [frame(machine, args.gsu_state) for _ in range(args.frames)]
         if expected is None:
             expected = rows
         assert rows == expected, (build, hex(base))
-        print('PASS ARM video/stereo PCM', build.name, hex(base), len(rows), flush=True)
+        print('PASS ARM video/stereo PCM' + ('/GSU state' if args.gsu_state else ''),
+              build.name, hex(base), len(rows), flush=True)
 
 
 if __name__ == '__main__':

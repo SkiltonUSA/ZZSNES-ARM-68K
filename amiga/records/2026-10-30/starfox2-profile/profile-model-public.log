@@ -1,0 +1,5 @@
+PASS same video/stereo PCM ax-release-build 0x12000040 30
+Stage calls: (7864, 5552, 30)
+PASS same video/stereo PCM core-profile-build 0x150020c0 30
+Stage calls: (7864, 5552, 30)
+PASS same video/stereo PCM core-profile-build 0x12000040 30

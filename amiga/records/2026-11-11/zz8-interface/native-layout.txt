@@ -1,0 +1,4 @@
+mkdir -p .context/tests
+cc -std=c99 -Wall -Wextra -Werror -Wno-unused-variable tests/launcher_layout.c -o .context/tests/launcher-layout
+.context/tests/launcher-layout
+PASS: launcher screen budgets and compact selection

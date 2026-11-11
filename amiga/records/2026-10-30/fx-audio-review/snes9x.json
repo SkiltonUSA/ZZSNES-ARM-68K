@@ -1,0 +1,55 @@
+{
+  "repo": "snes9xgit/snes9x",
+  "branch": "master",
+  "commit": "1bcc369e89f08243e0a462882fb1f3e42e51de3a",
+  "files": [
+    {
+      "path": "apu/apu.cpp",
+      "sha256": "7341d5836f71eed32a39a872f6a11cd88da7db240c531fa8bf0d88f109a5f2a0"
+    },
+    {
+      "path": "apu/resampler.h",
+      "sha256": "2727c1fd87360a911834da844ef98890594a07f235cefe0eb4c32765c4372be8"
+    },
+    {
+      "path": "common/audio/s9x_sound_driver_portaudio.cpp",
+      "sha256": "6dc811db81363526d8b31c0ebbe56dc727b8487123d105efee44994efeebdcb4"
+    },
+    {
+      "path": "cpuexec.cpp",
+      "sha256": "37b2f4ece0ff797b616fbeee6084c42a6198d477a08eb1837b5445abacd2c56b"
+    },
+    {
+      "path": "fxemu.cpp",
+      "sha256": "3245c61bf8d619016de537548f3b807412378b912fa5d5da8e4f8ea3779e3a6c"
+    },
+    {
+      "path": "fxemu.h",
+      "sha256": "0edac4786e877f6fc5b452a0115fbb00da2205b01e2cf66f3ecfc84efc9912e7"
+    },
+    {
+      "path": "fxinst.cpp",
+      "sha256": "d3075512b14a0f4d98b2d976127563cab03f58e85bc0c9e6bff94452258936ea"
+    },
+    {
+      "path": "fxinst.h",
+      "sha256": "e609ddc3283feb434f8c8fb4358b0796733f64ea65cf9e08e4090deb26964022"
+    },
+    {
+      "path": "gtk/src/gtk_sound.cpp",
+      "sha256": "8aa9458b4e99128fdaea444f443ce5a6ae2e84236f1158d20d7dd861f3f7fbcb"
+    },
+    {
+      "path": "libretro/libretro.cpp",
+      "sha256": "8fa478c625b39cf360e857fb64e3b0f563c418e8c5a70bc71ce24ea09b165625"
+    },
+    {
+      "path": "snes9x.cpp",
+      "sha256": "adc8f1efe219d24d1d8b6e27b3b797b6e52ec1d6667dfdc7a0298e3139e3ae6d"
+    },
+    {
+      "path": "snes9x.h",
+      "sha256": "0203beba7c7e4803a0d2b0fe2423bacae0b2a12dc410e35fc6d7879c16e93f4f"
+    }
+  ]
+}

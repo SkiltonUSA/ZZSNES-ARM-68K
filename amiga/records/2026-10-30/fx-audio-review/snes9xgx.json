@@ -1,0 +1,115 @@
+{
+  "repo": "dborth/snes9xgx",
+  "branch": "master",
+  "commit": "9a48bc2a2995aa3715cc59986e50319d443b0798",
+  "files": [
+    {
+      "path": "source/snes9x/apu/apu.cpp",
+      "sha256": "141b8d52bb2575655510657853bb836338a50740286f89c369f29cf0bd34fd33"
+    },
+    {
+      "path": "source/snes9x/apu/resampler.h",
+      "sha256": "237c53c49a1211fafbd690cf18a14a2f0d097b4fa7e8c4af607a26941ba59ac7"
+    },
+    {
+      "path": "source/snes9x/cpuexec.cpp",
+      "sha256": "99233aea37e268a8ea4022590856830ac059a868e3106385ed54d7c200a0ad02"
+    },
+    {
+      "path": "source/snes9x/fxemu.cpp",
+      "sha256": "1489727985cc2fb2c4f3d986ac80a65fa3963126714010ce71f3373b29c15da5"
+    },
+    {
+      "path": "source/snes9x/fxemu.h",
+      "sha256": "569b11f3badaad951484ab71575da2dbf4d7401e155ee4c097435691421742fb"
+    },
+    {
+      "path": "source/snes9x/fxinst.cpp",
+      "sha256": "eff49a984e0f89238432560be4efecd7c3c299a12e5223b02f1654ac4920089c"
+    },
+    {
+      "path": "source/snes9x/fxinst.h",
+      "sha256": "5db1896a57843e68c946c0a35b3548920fe0ec4fe72b53d36a9a7eef00675540"
+    },
+    {
+      "path": "source/snes9x/snes9x.h",
+      "sha256": "37e631e69634b10e9b588fbba928ba4bf5438f88160502c8354eae1f84759971"
+    },
+    {
+      "path": "source/snes9xgx.cpp",
+      "sha256": "9c77a843e9022e726fad86fbaddb6c610d47cb93b7bd121022b0c922ef80a098"
+    },
+    {
+      "path": "source/snes9xgx.h",
+      "sha256": "4666011999573701a1107cd0fa3c227a99a882b8cca13b10a6057241452d9e48"
+    },
+    {
+      "path": "source/video.cpp",
+      "sha256": "96a38d78d68b253d9d344d00c9d9061e3cd2bff9ba2215080ac62c2dcecbc974"
+    },
+    {
+      "path": "source/video.h",
+      "sha256": "2049ad46e6c212268f95f130017a54043a67f1955c18a80c934d451b99bb4a41"
+    },
+    {
+      "path": "source/drivers/AudioDriver.h",
+      "sha256": "ab05251282042d3a2f203e3912616773194a06051292025684b1549235f4278e"
+    },
+    {
+      "path": "source/drivers/EmulatorAudioDriver.h",
+      "sha256": "9055ee46d857450477741c67d1ffcf6487884fc0bd39c2b897fc9e9d6339a6cd"
+    },
+    {
+      "path": "source/drivers/ogc/OgcEmulatorAudio.cpp",
+      "sha256": "973cebcf5624db6ebba641f5bdd15f3ef5b2f24c97ef21c453e06acfd36bdd22"
+    },
+    {
+      "path": "source/drivers/ogc/OgcEmulatorAudio.h",
+      "sha256": "9ffbfc649e837788986518353b1478291c5754755622ba8bd5725e2a9420a08d"
+    },
+    {
+      "path": "source/drivers/ogc/gamecube/GameCubeAudioDriver.h",
+      "sha256": "03f61b88c5266ab9bad029f2e13fa2bbcc8f5cfed167fba5aa91ac6da7801d71"
+    },
+    {
+      "path": "source/drivers/ogc/wii/WiiAudioDriver.cpp",
+      "sha256": "4e3d2009ee3a8b80a63e5a90224628f28d20e8fe100158b4e2f0087fa9c375ec"
+    },
+    {
+      "path": "source/drivers/ogc/wii/WiiAudioDriver.h",
+      "sha256": "df751ba17df5c864dd295eecf557a5f70e6e6d956766a2ee67b31deda0e60aae"
+    },
+    {
+      "path": "source/drivers/wut/WutAudioDriver.cpp",
+      "sha256": "e5ed05dcf20a6f3efc6e5cb49c3052e6a4022011e55c5d24a69f7792e6839632"
+    },
+    {
+      "path": "source/drivers/wut/WutAudioDriver.h",
+      "sha256": "ddaabdfd30430afea2471dd6c8553a21342e9eb737fc3450a2d63e8a5495640d"
+    },
+    {
+      "path": "source/drivers/wut/WutEmulatorAudio.cpp",
+      "sha256": "54a7625ae8b48051d23ff8964179c938bf57dba73f52147efbb65da05c982382"
+    },
+    {
+      "path": "source/drivers/wut/WutEmulatorAudio.h",
+      "sha256": "d7d270ed74ac4d845db6cacaaf0b796353a86447f7eeacbcfa1c7225eeef936d"
+    },
+    {
+      "path": "source/libgui/GuiSound.cpp",
+      "sha256": "9a66545759bb209e5b1e162f67a4f2ec248c595ea8e080528fdaaf7b48cdc4dc"
+    },
+    {
+      "path": "source/libgui/GuiSound.h",
+      "sha256": "d29b366faf6af81b7a1a3da25730be7b0023e2c8b2b85f1bc6affc3b4c2cce1d"
+    },
+    {
+      "path": "source/libgui/GuiSoundOggPlayer.cpp",
+      "sha256": "dce2b1fdfb368537c9b6e2a238403636d66b8bb26ff7f86ebab84da5c5760c8c"
+    },
+    {
+      "path": "source/libgui/GuiSoundOggPlayer.h",
+      "sha256": "51637805dc8919d8897a2f0b75b1ddeebcc2366f73908b225115bd71503e6c7c"
+    }
+  ]
+}
