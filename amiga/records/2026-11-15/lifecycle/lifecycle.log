@@ -1,0 +1,89 @@
+OWNED amiga=50000040 arm_candidate=101f0040 size=100663296 nonce=0ccafa49
+BOOTSTRAP amiga=4060f240 arm=007ff240 (P96 allocated/locked)
+MAP status=4d415031 SCTLR=08c50878 MIDR=413fc090 MPIDR=80000001
+MAPPING PASS (eight nonce-derived words)
+ARM ready=41524d31 SCTLR=08c5187d MIDR=413fc090 MPIDR=80000001
+CARTRIDGE SNES region=NTSC period_us=16689 bytes=4194304
+STAGE ROM published; initializing core
+STAGE core initialized; calibrating clock
+STAGE opening display
+WINDOW scale=2 geometry=640x480
+SCANLINE_BACKEND window=2 hardware=0 software=2 parity=0
+BUFFERS pixels=00000000 indices=09edbf64 legacy_host=0
+CONTROLLER mode=3 USB=0
+JOYSTICK available=1 port=1; red=B blue=Y green=Select play=Start
+AUDIO task: per-app AHI mode=0002000e mix=22030; three immutable buffers
+PLAYER SCHEDULING paced + ARM LUT PocketSNES CPU/PPU/SPC/DSP, auto-region 32040Hz stereo; P pause, M mute, Q/Esc quit; bounded picture omission; every core/APU frame retained
+ZZSNES_POCKET START ROM=SD032G:Dev/Life15SNES/game.zip bytes=4194304 timer_hz=333332381 core_only=0
+FRAME n=1 cycles=1 core_hash=b87d5dc5 output_hash=811c9dc5 cpu_ppu_us=9630
+SNAPSHOT saved SD032G:Dev/Life15SNES/shot.zzp
+STATE save OK bytes=1677587 path=SD032G:Dev/Life15SNES/slot.state
+SNAPSHOT saved SD032G:Dev/Life15SNES/shot.zzp
+STATE load OK path=SD032G:Dev/Life15SNES/slot.state
+SCANLINE_BACKEND released: hardware=0
+FULLSCREEN_BITMAP allocated=0885e8a4 screen=0988b9e8 width=320 height=240 allocated_height=960 screen_height=960 on_board=1/1 memory=0ace0864/40c9b640 pitch=1280/1280
+FULLSCREEN mode=50031303 native_format=9 depth=32 slots=4 geometry=320x240
+SCANLINE_BACKEND window=0 hardware=2 software=0 parity=0
+FRAME n=600 cycles=600 core_hash=c8e825fd output_hash=811c9dc5 cpu_ppu_us=6576
+SCANLINE_BACKEND released: hardware=0
+WINDOW scale=2 geometry=640x480
+SCANLINE_BACKEND window=2 hardware=0 software=2 parity=0
+FRAME n=1200 cycles=1200 core_hash=c8e825fd output_hash=811c9dc5 cpu_ppu_us=6648
+FRAME n=1800 cycles=1800 core_hash=c8e825fd output_hash=811c9dc5 cpu_ppu_us=6654
+FRAME n=2400 cycles=2400 core_hash=c8e825fd output_hash=811c9dc5 cpu_ppu_us=6619
+FRAME n=3000 cycles=3000 core_hash=c8e825fd output_hash=811c9dc5 cpu_ppu_us=6652
+FRAME n=3600 cycles=3600 core_hash=c8e825fd output_hash=811c9dc5 cpu_ppu_us=6687
+FRAME n=4200 cycles=4200 core_hash=c8e825fd output_hash=811c9dc5 cpu_ppu_us=6760
+FRAME n=4800 cycles=4800 core_hash=c8e825fd output_hash=811c9dc5 cpu_ppu_us=6670
+FRAME n=5400 cycles=5400 core_hash=c8e825fd output_hash=811c9dc5 cpu_ppu_us=6719
+FRAME n=6000 cycles=6000 core_hash=c8e825fd output_hash=811c9dc5 cpu_ppu_us=6695
+REGION_PACING frames=6000 play_us=116889470 period_us=16689 late_rebases=3
+FULLSCREEN_END queued=2090 flips=2090 pending=-1 ack_wait_us=3445367 fault=0
+AUDIO_OUTPUT mode=0002000e mix=22030 callbacks=2839 silence_queued=838 starvations=15
+AUDIO_TASK queued=3208293 submitted=3208293 completed=3208293 highwater=9 error=0 stopped=1
+FRAME_RENDER rendered=6000 skipped=0 options=0
+AUDIO_END samples=3208293 gaps=0
+PRESENT_OPTIONS window=2 scanlines=2 fps=0 optimised=1 neon_frames=1704
+STAGE closing frontend; requesting ARM return next
+ZZSNES_POCKET END exit=0 frames=6000 elapsed_us=117067286 core_total_us=39632025 output_hash=811c9dc5
+DIRECT_END challenges=2090 verified_frames=0 copy_us=9445450
+PLAYER_PROFILE audio_prepare_us=6734026 flip_drain_us=510939 audio_wait_us=134338 audio_copy_us=3323354 audio_send_us=0
+ARM_REQUEST_PROFILE frame_us=39796713 present_us=9455235
+PRESENT_PROFILE pre_us=692846 request_us=10367398 post_us=1893723
+TEARING_TRIAL variant=C0 native=0 slots=4 ack_blank=375 ack_active=11
+SCANOUT_GATE variant=C0 mode=0 delayed=0 total_us=0 max_us=0 timeouts=0 phase=0
+FRAME_TIMING stage=0 count=5940 mean_us=7436 max_us=31666 bins=0,5073,842,7,18,0
+FRAME_TIMING stage=1 count=5940 mean_us=104 max_us=27011 bins=5831,103,5,0,1,0
+FRAME_TIMING stage=2 count=5940 mean_us=1143 max_us=30008 bins=3831,2058,46,1,4,0
+FRAME_TIMING stage=3 count=2063 mean_us=6040 max_us=621563 bins=0,1944,103,6,9,1
+FRAME_TIMING stage=4 count=5940 mean_us=16786 max_us=646522 bins=0,103,3779,338,1661,59
+FRAME_TIMING stage=5 count=385 mean_us=19727 max_us=67649 bins=0,0,278,52,32,23
+INPUT_PROFILE changes=2
+JOYSTICK_END polls=6000 active=0 last_type=10000000
+AUDIO_IO_PROFILE send_us=0 waitio_us=0
+WAIT_PROFILE kind=0 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=1 calls=164 requested_us=164000 actual_us=236174 max_us=6739
+WAIT_PROFILE kind=2 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=3 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=4 calls=3740 requested_us=3740000 actual_us=6418616 max_us=18131
+WAIT_PROFILE kind=5 calls=0 requested_us=0 actual_us=0 max_us=0
+PROFILE frames=6000 request_us=44283816 copy_us=0 colour_us=0 draw_us=26243825 waits=4126
+EXIT epilogue=52455431 cache_echoes=0 rounds=0
+CACHE original=08c50878 running=08c5187d restored=08c50878
+MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=102f4000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=8097
+REGISTER n=0 original=08c50878 restored=08c50878
+REGISTER n=1 original=00000000 restored=00000000
+REGISTER n=2 original=02000000 restored=02000000
+REGISTER n=3 original=00000000 restored=00000000
+REGISTER n=4 original=00000000 restored=00000000
+REGISTER n=5 original=00000001 restored=00000001
+REGISTER n=6 original=600101d3 restored=600101d3
+REGISTER n=7 original=00000006 restored=00000006
+REGISTER n=8 original=00001000 restored=00001000
+REGISTER n=9 original=00098aa4 restored=00098aa4
+REGISTER n=10 original=44e048e0 restored=44e048e0
+REGISTER n=11 original=00000000 restored=00000000
+REGISTER n=12 original=00000001 restored=00000001
+REGISTER n=13 original=72360000 restored=72360000
+SCANLINE_BACKEND released: hardware=0
+LAUNCHER exit=0; owned memory released

@@ -1110,3 +1110,9 @@ ROM or saved-settings changes.
 Additional SNES candidate hardware and state checks are recorded in
 [the 15 November report](../amiga/records/2026-11-15/README.md).
 XX19d-RIX/XACP1.8; installed players and settings unchanged. No listening claim.
+
+Follow-up: the private candidate passed 6,000 frames with save/load, snapshot,
+window/fullscreen transitions and a 120-frame fresh-process state resume.
+See the report's `lifecycle/` directory. F10 exit is not established: an
+unattended focus check failed on NES, and a delayed-activation experiment was
+not retained. Installed players, defaults and releases remain unchanged.

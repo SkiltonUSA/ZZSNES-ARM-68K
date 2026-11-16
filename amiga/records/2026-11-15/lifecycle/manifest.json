@@ -1,0 +1,10 @@
+{
+  "player_sha256": "4f527d866f2c18d2d08d8b67e3d0b27e4c8056a2f87033a96147952b717e9d08",
+  "game": "Chrono Trigger (USA)",
+  "frames": 6000,
+  "queued_completed_pcm": 3208293,
+  "state_bytes": 1677587,
+  "resume_frames": 120,
+  "firmware": "XX19d-RIX/XACP 1.8",
+  "scope": "Private candidates. No installed profile or save changed. Keyboard exit not established: run reached frame limit."
+}
