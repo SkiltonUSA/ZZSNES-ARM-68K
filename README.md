@@ -195,3 +195,9 @@ Experimental audio handoff results are included in the same report.
 core time in Star Fox 2** from reusing PPU work. Combining sprite batching,
 fixed-colour blending and PPU changes gave no core-time gain in the three tested
 workloads. These variants remain experimental; the beta keeps those variants disabled.
+
+## Development measurements
+
+[Current-firmware optimisation checks](amiga/records/2026-11-15/README.md):
+matched workloads, save/cleanup checks and remaining audio limits.
+These opt-in candidates are separate from the published beta.

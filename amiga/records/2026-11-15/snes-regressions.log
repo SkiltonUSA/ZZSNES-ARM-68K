@@ -1,0 +1,31 @@
+python3 scripts/test_controllers.py
+PASS SN30 HID buttons/hat/axis, short reports, malformed descriptors; Sega phases and all SNES controls
+PASS USB transport: reports, missing stack/device, busy binding, failures, disconnect/reconnect, balanced cleanup
+PASS Sega transport: resource contention, TH phases, pin 9 sense pull-up, port 1 untouched, interrupt/resource release
+PASS player: USB/CD32 and native CD32 mappings, directions, two-button pads, keyboard, no mouse-port reads or USB claims
+mkdir -p .context/tests
+cc -std=c99 -Wall -Wextra -Werror -Wno-unused-variable tests/launcher_layout.c -o .context/tests/launcher-layout
+.context/tests/launcher-layout
+PASS: launcher screen budgets and compact selection
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/source -Idevelopment/optimisation-20261018/player -Idevelopment/optimisation-20261018/host -Idevelopment/borders-20261016/source -Idevelopment/borders-20261016/build-inputs tests/amiga/emulator/region_pacing.c -o .context/test-region-pacing
+.context/test-region-pacing
+PASS LoROM/HiROM/copier/FX region labels, PAL/NTSC caps, stalls, reset and timer wrap
+mkdir -p .context
+cc -O2 -g -fsanitize=address,undefined -Idevelopment/optimisation-20261018/source -Idevelopment/borders-20261016/source tests/amiga/emulator/rom_manager.c -o .context/test-rom-manager
+.context/test-rom-manager
+PASS 20,000-entry duplicate compaction, metadata and selection retention, invalid plans, verified/empty copies, cancellation, non-overwrite and source-change rejection
+cc -O2 -g -fsanitize=address,undefined -Itests/amiga/emulator/mock -Idevelopment/borders-20261016/source tests/amiga/emulator/scan.c -o .context/test-rom-scan
+.context/test-rom-scan
+PASS explicit directory scans, idle inactivity, recursion, dedup, ZIP filtering, invalid roots, cancellation and DOS resource release
+ROM_ZIP_INCLUDE=development/borders-20261016/source/zip python3 tests/amiga/emulator/zip/test.py
+PASS 40 ZIP/plain cases under ASan/UBSan; output guards, exact bytes, CRC, bounds and rejection paths
+mkdir -p .context/audio011-tests
+c++ -std=c++14 -O2 -Wall -Wextra -Werror -DMB_ALLOCATION=0x6000000u -DCJ_BEGIN=0x3400000u -I.context/ax-release-build/core development/audio-publication-20261030/test_audio_pages.cpp -o .context/audio011-tests/pages
+.context/audio011-tests/pages
+PASS 255 audio/adjacent page attributes; ROM, mailbox and bounds preserved
+python3 development/output-quality-20261030/test_worker.py
+PASS actual AX worker: ordered PCM, three-buffer reuse, partial stop, state drain/resume, pause/re-prime, open/unresponsive fallback, start failure, cancel/join
+PASS actual AX worker: ordered PCM, three-buffer reuse, partial stop, state drain/resume, pause/re-prime, open/unresponsive fallback, start failure, cancel/join
+python3 development/output-quality-20261030/test_stream.py
+PASS actual per-app API adapter: allocation/load failures, mode capabilities, HiFi preference in either order and legacy fallback, 32k device clock for both sources, callback liveness timeout, query/start failure, free-before-storage cleanup

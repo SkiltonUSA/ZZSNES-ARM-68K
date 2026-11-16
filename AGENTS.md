@@ -12,7 +12,9 @@ Use only original or user-authorised ROMs; do not commit commercial game data.
 Physical launch requires a free Core1, runtime-probed Exec-owned ZZ9000 RAM,
 uncached mailbox, bounded commands, cancellation and reset before release.
 Preserve all register/MMU/cache witness checks. Do not reuse recorded physical
-addresses as allocations. Only the recorded XX19c/XACP 1.7 contract is verified.
+addresses as allocations. XX19c/XACP 1.7 remains the original contract. Bounded player checks on
+XX19d-RIX/XACP 1.8 are recorded in amiga/records/2026-11-15/README.md;
+they do not establish RasterIX integration or exhaustive cartridge compatibility.
 
 Builds/tests do not deploy or connect automatically. Read current hardware
 ownership before any explicitly authorised physical test. Keep .context/ and

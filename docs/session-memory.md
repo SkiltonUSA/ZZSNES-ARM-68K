@@ -1104,3 +1104,9 @@ scrollbars. Longer configuration pages still scroll. The [i] icon remains.
 Native layout tests and both seven-page hardware probes pass, including the
 640x480 budget and 480/608/768x360 resizing. Launcher-only deployment; no player,
 ROM or saved-settings changes.
+
+## 2026-11-15 — current firmware regression
+
+Additional SNES candidate hardware and state checks are recorded in
+[the 15 November report](../amiga/records/2026-11-15/README.md).
+XX19d-RIX/XACP1.8; installed players and settings unchanged. No listening claim.

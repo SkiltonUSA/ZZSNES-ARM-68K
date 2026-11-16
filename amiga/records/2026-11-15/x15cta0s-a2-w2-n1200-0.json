@@ -1,0 +1,11 @@
+{
+  "app": "SNES",
+  "title": "ct",
+  "kind": "A",
+  "player": ".context/ZZSNES-ARM-68K/.context/ax-release-build/ZZSnes-ui",
+  "player_sha256": "86c38fd75ce8582f09085af9d5b043b16254551a2ea229e89229642fe6996ac5",
+  "rom_sha256": "8db760e756dacacd4be46cac4828123ad3b3ab390e1372803fe133fff4fcfc4b",
+  "state": null,
+  "frames": 1200,
+  "pal": false
+}
