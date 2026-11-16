@@ -17,3 +17,5 @@ ROMs, private checkpoints and screenshots are not included in these records.
 
 A delayed window-activation experiment did not resolve the NES focus check and
 was not retained in either production build. No keyboard-exit claim is made.
+
+[Later focus follow-up](focus-followup/README.md) observed concurrent window tests; an isolated rerun is required.
