@@ -31,7 +31,7 @@ def prepare_launcher(lib):
  edit(p,'static const char *display_choices[]=', '#include "audio_output.h"\nstatic Object *audio_output;\nstatic const char *audio_choices[]={"Auto (configured output)","Configured AHI unit 0","Paula 14-bit / 22.05 kHz","Paula 14-bit / 28 kHz","ZZ9000AX / 32 kHz",NULL};\nstatic const char *display_choices[]=')
  edit(p,'if(!preserve_legacy())return 0;collect();','if(!preserve_legacy())return 0;if(!em_audio_save(value(audio_output,MUIA_Cycle_Active)))return 0;collect();')
  edit(p,'Child,HGroup,Child,mute=CheckMark(FALSE)', 'Child,HGroup,Child,textline("Audio output (all games)"),Child,audio_output=cycle(audio_choices),End,\n    Child,HGroup,Child,mute=CheckMark(FALSE)')
- edit(p,'set(scaling_mode,MUIA_Cycle_Active,model.smooth);','set(scaling_mode,MUIA_Cycle_Active,model.smooth);\n set(audio_output,MUIA_Cycle_Active,em_audio_load());\n set(audio_output,MUIA_ShortHelp,(ULONG)"Auto improves Paula unit 0 to 14-bit / 22.05 kHz.\\nOther configured outputs are retained. No system preference changes.");')
+ edit(p,'set(scaling_mode,MUIA_Cycle_Active,model.smooth);','set(scaling_mode,MUIA_Cycle_Active,model.smooth);\n set(audio_output,MUIA_Cycle_Active,em_audio_load());\n set(audio_output,MUIA_ShortHelp,(ULONG)"Default: Paula 14-bit / 22.05 kHz. Auto detects unit 0.\\nOther configured outputs are retained. No system preference changes.");')
 
 def prepare_rows(stage):
  p=stage/'view.h'

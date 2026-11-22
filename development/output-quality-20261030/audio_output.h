@@ -8,8 +8,8 @@
 #define EM_AUDIO_FILE "PROGDIR:Audio.cfg"
 #endif
 static unsigned em_audio_load(void){
- unsigned choice=0;char extra;FILE*f=fopen(EM_AUDIO_FILE,"r");
- if(f){if(fscanf(f,"ZZAudio1 %u %c",&choice,&extra)!=1||choice>4)choice=0;fclose(f);}return choice;
+ unsigned choice=2;char extra;FILE*f=fopen(EM_AUDIO_FILE,"r");
+ if(f){if(fscanf(f,"ZZAudio1 %u %c",&choice,&extra)!=1||choice>4)choice=2;fclose(f);}return choice;
 }
 static int em_audio_save(unsigned choice){
  FILE*f;if(choice>4)return 0;f=fopen(EM_AUDIO_FILE,"w");if(!f)return 0;

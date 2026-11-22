@@ -201,3 +201,7 @@ workloads. These variants remain experimental; the beta keeps those variants dis
 [Current-firmware optimisation checks](amiga/records/2026-11-15/README.md):
 matched workloads, save/cleanup checks and remaining audio limits.
 These opt-in candidates are separate from the published beta.
+
+### PCM audio rate
+
+Fresh installations default to **Paula 14-bit / 22.05 kHz** output. Higher-rate Paula and ZZ9000AX PCM options remain selectable in Sound; existing saved output choices are retained. Native sound-chip synthesis and save-state formats are unchanged.
