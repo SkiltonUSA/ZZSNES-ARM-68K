@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.12 Beta
+
+Numbered AmiPkg release and rebuilt launcher, with optional clock controls.
+Recorded core/player builds are retained. [Release notes](docs/release-notes.md).
+[Publication checklist](docs/release-process.md).
+
 ## Unreleased — compact launcher
 
 - Dedicated Sound page; ROM Manager replaces the duplicate Disks page.
