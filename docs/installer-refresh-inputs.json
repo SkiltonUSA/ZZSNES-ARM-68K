@@ -1,0 +1,17 @@
+{
+  "package_version": "0.7.11-dev.20261122",
+  "application_version": "0.7.11-dev",
+  "base_installer_sha256": "845112366fcf29d685a696c816f64938cd9e382b7a6ed925d0497fba1f2ed7a2",
+  "replacements": {
+    "zzsnes": {
+      "ZZSNES/ZZSNES": "5466b711866b42926c0ee40886b0d05c0103c9f4c34aeee13fbfe55887cd0376",
+      "ZZSNES/ZZClock": "b0ab72855e3e1aa9e5a9cf072ff3f7e2892b70f4b2b7193f000ff26381edf4d0",
+      "ZZSNES/ZZSnes-ui": "4fd26e5df0b3a9b6d70562b30744895aaf50d6de909f84b7bddf65157f01d565",
+      "ZZSNES/ZZSnes-FX": "4fd26e5df0b3a9b6d70562b30744895aaf50d6de909f84b7bddf65157f01d565",
+      "ZZSNES/Clock-settings.md": "f5054d5ef1bf64c1b49a2693019b5dee302b97f869641832c46a8e4dc95c7474",
+      "ZZSNES/Release-notes.md": "6ae8faffdcaff7cdc20dc009037b1da0c0f19d8f0bc40f74da55921d42077f3b",
+      "ZZSNES/README.md": "1b43afcee3a26d20efa22ca56c6f7dccf20b1194ec2d703729183d3b4343dfb5"
+    }
+  },
+  "validation": "Signed catalogues, CRC and SHA256 round-trip checks; no fresh hardware installation."
+}
