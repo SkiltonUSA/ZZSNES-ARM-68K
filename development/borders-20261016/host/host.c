@@ -354,7 +354,7 @@ int ff_window(volatile uint8_t *base,const struct ad_io *io,int connected){
  c0=armclock();t0=us();Delay(100);
  if(!request(NES_CLOCK,0))goto done;
  c1=armclock();t1=us();rate=(ULONG)((c1-c0)*1000000u/(t1-t0));
- if(rate<320000000u||rate>345000000u)goto done;
+ if(!((rate>=320000000u&&rate<=345000000u)||(rate>=396000000u&&rate<=404000000u))){printf("Unsupported ARM timer: %u Hz\n",rate);goto done;}
  if(!core_only){
  puts("STAGE opening display");fflush(stdout);
  GfxBase=(struct GfxBase *)OpenLibrary("graphics.library",40);if(!GfxBase)goto done;

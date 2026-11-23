@@ -22,6 +22,10 @@ def package(build, output, fx=None, version=None):
    if name==app or name==m['player']:
     if version.encode() not in data:raise ValueError('Executable version mismatch: '+name)
    (drawer/name).write_bytes(data)
+  if b'ZZOverclock' in (build/app).read_bytes():
+   data=(build/'ZZClock').read_bytes()
+   if data[:4]!=bytes.fromhex('000003f3'):raise ValueError('Missing clock client')
+   (drawer/'ZZClock').write_bytes(data);(drawer/'ZZClock').chmod(0o755)
   if app=='ZZSNES':
    if fx is None:raise ValueError('--fx-build is required for ZZSNES')
    data=(fx.resolve()/'ZZSnes-FX').read_bytes()

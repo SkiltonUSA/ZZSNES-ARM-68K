@@ -42,5 +42,7 @@ def main():
  if args.options_probe:
   shutil.copy2(ROOT/'tests/expanded_options_ui_probe.h',lib/'expanded_options_ui_probe.h');flags+=['-DZZ_UI_OPTIONS_PROBE']
  subprocess.run(runtime+['-v',str(ROOT)+':/work','-w','/work',m['image'],'m68k-amigaos-gcc','-std=c99','-noixemul','-m68020','-O2','-g','-Wall','-Wextra','-Werror','-Wno-unused-function','-Wno-misleading-indentation',str((lib/'launcher.c').relative_to(ROOT)),str((lib/'zip/puff.c').relative_to(ROOT)),'-lamiga','-o',str(target.relative_to(ROOT))]+flags,check=True)
+ from build_clock_helper import build as build_clock
+ build_clock(ROOT,out,m['image'])
  print('PASS launcher',target)
 if __name__=='__main__':main()

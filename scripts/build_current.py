@@ -219,5 +219,7 @@ def main():
  if a.optimisation:
   from build_scanlines import build
   build(out)
+ from build_clock_helper import build as build_clock
+ build_clock(ROOT,out,m['image'])
  print('PASS: rebuilt',m['console'],'with preserved release ARM payload'if a.reuse_arm_from else'ARM recompiled'if a.arm else'with verified ARM payload','at',out)
 if __name__=='__main__':main()

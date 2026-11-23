@@ -61,3 +61,6 @@ static void select_page(unsigned page){
     p=lib/'library_scroll.h';s=p.read_text()
     s=once(s,'  scroll=ScrollgroupObject,','  if(i==0){\n   scroll=NewObject(viewport_class->mcc_Class,NULL,\n    MUIA_Group_Spacing,0,MUIA_InnerLeft,0,MUIA_InnerRight,0,\n    MUIA_InnerTop,0,MUIA_InnerBottom,0,MUIA_Group_Child,children[i],TAG_DONE);\n  }else scroll=ScrollgroupObject,')
     p.write_text(s)
+
+    from prepare_clock_ui import prepare as clock_ui
+    clock_ui(lib)

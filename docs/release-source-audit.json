@@ -1,0 +1,71 @@
+{
+  "scope": "Previously uncommitted files exactly matching the published numbered release source archive; no runtime binaries changed.",
+  "files": [
+    {
+      "app": "ZZSNES",
+      "file": "development/borders-20261016/host/host.c",
+      "matches_published_source": true,
+      "sha256": "de1f0a4d5ea08ec5c1ce23a68eb5568d4f27382a90be10bc34f85cb1e883560a"
+    },
+    {
+      "app": "ZZSNES",
+      "file": "scripts/build_current.py",
+      "matches_published_source": true,
+      "sha256": "058ee1df068401ad8abc7938da84e9b094542488464fefb0d7ea86f43996d8f4"
+    },
+    {
+      "app": "ZZSNES",
+      "file": "scripts/build_launcher.py",
+      "matches_published_source": true,
+      "sha256": "7bd8808478a6bf572204843a19916af1949fac193f5efa7dddf7fb0d1093edad"
+    },
+    {
+      "app": "ZZSNES",
+      "file": "scripts/package_current.py",
+      "matches_published_source": true,
+      "sha256": "e4bb77eb66c90dd71f890146ea5a45bac81a09aec9e5b2decfa00a2129d80a87"
+    },
+    {
+      "app": "ZZSNES",
+      "file": "scripts/prepare_console_style.py",
+      "matches_published_source": true,
+      "sha256": "a49573e4ab1935fb19d5d04449d6ac14bd0697ba4c47d6a26382c4d10c5f71b3"
+    },
+    {
+      "app": "ZZSNES",
+      "file": "amiga/common/zzclock/client.c",
+      "matches_published_source": true,
+      "sha256": "d9a1ee043843de1f1b6c949b50698a064d687a96207050f2e297c7aafc43bffc"
+    },
+    {
+      "app": "ZZSNES",
+      "file": "amiga/common/zzclock/mui.h",
+      "matches_published_source": true,
+      "sha256": "89ed8f0690ce77237179885a9eef189f71ef8c69450d611d2b8e1f67bacd4e5a"
+    },
+    {
+      "app": "ZZSNES",
+      "file": "amiga/common/zzclock/policy.h",
+      "matches_published_source": true,
+      "sha256": "8f5f88697db133f9446b38698a4dfdc2dd87f24e36b297f93220d5d9efdf8c5c"
+    },
+    {
+      "app": "ZZSNES",
+      "file": "amiga/common/zzclock/test_policy.c",
+      "matches_published_source": true,
+      "sha256": "6ce85de02fe0df529822f1890ef9dc95433ddcca46735adc358b74f66747a2e3"
+    },
+    {
+      "app": "ZZSNES",
+      "file": "scripts/build_clock_helper.py",
+      "matches_published_source": true,
+      "sha256": "5d87a1503f06cd163d8afe17918e89bcfa113014c4940b8f8eb11c219c960fc1"
+    },
+    {
+      "app": "ZZSNES",
+      "file": "scripts/prepare_clock_ui.py",
+      "matches_published_source": true,
+      "sha256": "2243da29109161527ce5479c38a1529d23a6622ab479a40a18cb3a6182b9b832"
+    }
+  ]
+}
