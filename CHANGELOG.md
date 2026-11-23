@@ -2,6 +2,11 @@
 
 ## 0.7.12 Beta
 
+- Archive documentation refresh: include the current main README as readme.txt,
+  plus about.txt and licence.txt in every installer/component LHA. Executable
+  hashes and application versions are unchanged by this refresh.
+
+
 Numbered AmiPkg release and rebuilt launcher, with optional clock controls.
 Recorded core/player builds are retained. [Release notes](docs/release-notes.md).
 [Publication checklist](docs/release-process.md).

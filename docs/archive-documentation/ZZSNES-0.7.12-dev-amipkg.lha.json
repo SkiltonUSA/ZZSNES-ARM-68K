@@ -1,0 +1,17 @@
+{
+  "base_installer_sha256": "8c9d501f7c60a61ced1315a1f2446a34564de586a18acb5615bb9a090589ea7c",
+  "installer_sha256": "d37d5f81cd42adb78fab1ad697c4812b772916bc12c3cfc69863faef039b7738",
+  "README_sha256": "ea40f506226b753017993b6e8dcaa50d52e69ea1bc3417e774d3bcef101e0d3c",
+  "license_sha256": "5611f6b2f921153a3d27fd7d6ed9994560ed68885a3f4f273b4595701bb32f14",
+  "executable_hashes_unchanged": {
+    "ZZSNES/Install-Scanlines": "cf300fb5169aefd224205fa14feaf79eac18c933ecc37300e5250ae8205ed00a",
+    "ZZSNES/Scanlines/ZZScanlines": "973a23c9bf0a867cba8fe8ed069baeaf90a632ac47ed32a7f5635197492e5757",
+    "ZZSNES/Scanlines/ZZScanlinesGUI": "5eeabbb5a691ee5d6c99e134b9e5909599415f2a6d35961c4f2150f158d0cedd",
+    "ZZSNES/ZZClock": "b0ab72855e3e1aa9e5a9cf072ff3f7e2892b70f4b2b7193f000ff26381edf4d0",
+    "ZZSNES/ZZSNES": "2801b8a7089165a45048494b341130ff8892bcb9429dbf539e1642161a803a66",
+    "ZZSNES/ZZSnes-FX": "4fd26e5df0b3a9b6d70562b30744895aaf50d6de909f84b7bddf65157f01d565",
+    "ZZSNES/ZZSnes-ui": "4fd26e5df0b3a9b6d70562b30744895aaf50d6de909f84b7bddf65157f01d565"
+  },
+  "component_count": 1,
+  "validation": "signed catalogue, payload checksums, full LHA round-trip, exact README and licence in outer and every component, all executables unchanged"
+}
