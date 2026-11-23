@@ -16,5 +16,7 @@
   },
   "player_policy": "Recorded binaries retained; only launcher rebuilt.",
   "launcher_sha256": "2801b8a7089165a45048494b341130ff8892bcb9429dbf539e1642161a803a66",
-  "release_tag": "v0.7.12-beta"
+  "release_tag": "v0.7.12-beta",
+  "launcher_member": "ZZSNES/ZZSNES",
+  "readme_member": "ZZSNES/README.md"
 }
