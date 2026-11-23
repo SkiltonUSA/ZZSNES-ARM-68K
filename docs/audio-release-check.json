@@ -1,0 +1,63 @@
+{
+  "player": "ZZSnes-ui",
+  "sha256": "4fd26e5df0b3a9b6d70562b30744895aaf50d6de909f84b7bddf65157f01d565",
+  "arm_mhz": 800,
+  "window_scale": 2,
+  "scanlines": "software Soft",
+  "output": "Paula HiFi, requested 22050 Hz, actual mixer 22030 Hz",
+  "scope": "Fresh boot, 1200 frames without input. No listening acceptance.",
+  "runs": [
+    {
+      "title": "Chrono Trigger",
+      "log_sha256": "ab618926341f62bfa8a6791873b1a656e51dd8c41b91e6d1bab4e9741f01269f",
+      "audio": {
+        "mode": "0002000e",
+        "mix_hz": 22030,
+        "callbacks": 435,
+        "silence_buffers": 35,
+        "starvation_events": 0
+      },
+      "delivery": {
+        "queued": 641658,
+        "submitted": 641658,
+        "completed": 641658,
+        "highwater": 9,
+        "error": 0,
+        "stopped": 1
+      },
+      "run": {
+        "exit": 0,
+        "frames": 1200,
+        "elapsed_us": 20880543,
+        "core_us": 7882686
+      },
+      "cleanup": true
+    },
+    {
+      "title": "Star Fox 2",
+      "log_sha256": "0f8a19ac13abf9c94e1934c2dc4008735356aa45301243f0de4d46482cd9391b",
+      "audio": {
+        "mode": "0002000e",
+        "mix_hz": 22030,
+        "callbacks": 993,
+        "silence_buffers": 593,
+        "starvation_events": 338
+      },
+      "delivery": {
+        "queued": 641658,
+        "submitted": 641658,
+        "completed": 641658,
+        "highwater": 9,
+        "error": 0,
+        "stopped": 1
+      },
+      "run": {
+        "exit": 0,
+        "frames": 1200,
+        "elapsed_us": 32059210,
+        "core_us": 22578928
+      },
+      "cleanup": true
+    }
+  ]
+}
