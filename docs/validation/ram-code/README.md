@@ -24,7 +24,13 @@ python3 tests/amiga/test_console_jit.py --exhaustive
 Requires Unicorn, Clang and LLVM nm (`LLVM_NM` for the SNES helper). The generated
 ROM is stored only under `.context/ram-code-test`. This checks instruction-model
 behaviour, not real cache coherency, mapper completeness, game speed or audible
-sound. Physical validation of these new fixtures remains pending: the bridge
-reported its Amiga connection disconnected before a hardware test started.
+sound. The fixture subsequently completed a bounded 120-frame physical run at 800 MHz,
+with three verified framebuffer transfers, no register/cache-witness mismatch,
+and owned-memory release. The production installation was unchanged.
+The guest RAM success marker and state replay are checked by the instruction
+model; the physical player log establishes launch/display/cleanup only.
+Both console runs recorded four audio-queue starvations and no audio-device
+error. These silent fixtures do not establish audible quality.
+[Hardware log](hardware.txt) · [Player/fixture hashes](hardware-inputs.json).
 
 [Results](results.txt) · [Exact input hashes](hashes.json).

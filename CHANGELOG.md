@@ -2,6 +2,9 @@
 
 ## Unreleased — register-dispatch compatibility
 
+- Record 120-frame physical fixture runs at 800 MHz with clean teardown;
+  guest assertions/state replay remain instruction-model checks.
+
 - Add original self-modifying RAM cartridges, state replay and optional exhaustive
   register/flag checks. No core or release binary changed.
 - [Validation and limits](docs/validation/ram-code/README.md).
