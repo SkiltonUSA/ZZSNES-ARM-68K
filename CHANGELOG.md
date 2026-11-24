@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — flipped-tile correction
+
+- Correct discarded byte-swap results in portable horizontally flipped tile
+  clipping, behind an isolated candidate build option.
+- 25,344 native and 6,336 Cortex-A9 pixel/depth oracle cases pass. A physical
+  120-frame synthetic run exits cleanly; wider game coverage remains pending.
+- Restore the released 666/800 MHz calibration policy in fresh builds.
+  Published 0.7.12 binaries remain unchanged.
+- [Cause, correction and checks](docs/clipped-tiles.md).
+
 ## 0.7.12 Beta
 
 - Archive documentation refresh: include the current main README as readme.txt,

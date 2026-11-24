@@ -1,0 +1,15 @@
+Physical A4000TX / ZZ9000, 800 MHz retained. Synthetic fixture; 120 guest frames.
+Not a listening, interactive game or performance comparison.
+
+CARTRIDGE SNES region=NTSC period_us=16689 bytes=32768
+ZZSNES_POCKET START ROM=[fixture]/system.sfc bytes=32768 timer_hz=399998266 core_only=0
+FULLSCREEN_END queued=108 flips=108 pending=-1 ack_wait_us=886210 fault=0
+AUDIO_OUTPUT mode=0002000e mix=22030 callbacks=257 silence_queued=217 starvations=4
+AUDIO_TASK queued=64165 submitted=64165 completed=64165 highwater=9 error=0 stopped=1
+AUDIO_END samples=64165 gaps=0
+ZZSNES_POCKET END exit=0 frames=120 elapsed_us=8765957 core_total_us=521860 output_hash=b37d1dc5
+DIRECT_END challenges=108 verified_frames=3 copy_us=173189
+MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=102f4000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=231
+LAUNCHER exit=0; owned memory released
+
+After both runs: Core1 idle; Core0 AGA inactive; clock fault=0; 59.6 C.

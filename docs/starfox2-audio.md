@@ -212,9 +212,9 @@ opt-in; installed 0.7.11 and saved settings are unchanged. There is no new
 release or claim that the reported stutter is solved.
 
 Next profiling targets are `DrawBackgroundOffset` and the GSU `fx_run` dispatch,
-register and memory helpers. Preserve GSU stop/IRQ semantics and timing. A
-separate investigation should examine the inherited flipped-clipping macro
-behavior before changing its output. Audio buffering can absorb short bursts,
+register and memory helpers. Preserve GSU stop/IRQ semantics and timing. The
+[separate flipped-clipping correction](clipped-tiles.md) passes pixel/depth
+oracles; physical validation remains pending. Audio buffering can absorb short bursts,
 but sustained production must first meet the playback rate.
 
 The combined candidate also completed 660 frames from the frame-3,000 checkpoint:

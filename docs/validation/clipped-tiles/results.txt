@@ -1,0 +1,4 @@
+Baseline: clip mismatch flip=1 row=0 lines=1 start=0 width=1 x=16 y=1 pixel=1234/4077 depth=0/7
+
+PASS clipped tile pixel/depth oracle: 25344 cases, all flips, rows, widths, transparency and depth
+PASS Cortex-A9 clipped tiles: 6336 pixel/depth cases; no physical timing claim

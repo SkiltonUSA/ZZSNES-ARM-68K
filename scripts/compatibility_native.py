@@ -2,7 +2,7 @@
 from pathlib import Path
 import shutil,subprocess,hashlib
 
-def build(source,O,*,experimental=False,baseline=False,fx3=False,snapshot_fix=False,expanded=False,ppu=None,timed_fx=False,gsu_counter=False):
+def build(source,O,*,experimental=False,baseline=False,fx3=False,snapshot_fix=False,expanded=False,ppu=None,timed_fx=False,gsu_counter=False,clip_fix=False):
  r=Path(__file__).resolve().parents[1];snap=r/'development/beta-20261015';core=O/'native-core';O.mkdir(parents=True,exist_ok=True)
  shutil.copytree(snap/'source/core',core,dirs_exist_ok=True)
  if not baseline:
@@ -28,6 +28,9 @@ def build(source,O,*,experimental=False,baseline=False,fx3=False,snapshot_fix=Fa
   prepare(core,ppu)
  if gsu_counter:
   from prepare_gsu_counter import prepare
+  prepare(core)
+ if clip_fix:
+  from prepare_clipped_tiles import prepare
   prepare(core)
  names='apu apuaux c4 c4emu cheats cheats2 clip data dsp1 fxemu fxinst globals dma memmap cpu cpuexec cpuops sa1 sa1cpu sdd1 sdd1emu snapshot soundux spc700 srtc ppu_ gfx tile'.split()
  if timed_fx:names+=['timed_fx','fxinst_timed']
