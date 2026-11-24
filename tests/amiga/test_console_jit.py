@@ -1,8 +1,9 @@
 """Execute emitted A32 on Cortex-A9 model and compare independent arithmetic."""
-import ctypes,struct,subprocess,tempfile
+import argparse,ctypes,struct,subprocess,tempfile
 from pathlib import Path
 from unicorn import Uc,UC_ARCH_ARM,UC_MODE_ARM
 from unicorn.arm_const import *
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--exhaustive',action='store_true');options=p.parse_args()
 root=Path(__file__).resolve().parents[2]
 with tempfile.TemporaryDirectory() as tmp:
  p=Path(tmp);(p/'wrap.c').write_text('#include "amiga/common/arm_jit/register_op.h"\nunsigned emit(unsigned *p,unsigned src,unsigned dst,int delta,unsigned bits,unsigned kind){return cj_emit(p,src,dst,delta,bits,kind,10,5,6);}\n')
@@ -16,7 +17,7 @@ with tempfile.TemporaryDirectory() as tmp:
    for kind in (0,1,2): # no flags, packed NES flags, cached SNES flags
     code=(ctypes.c_uint*32)();n=lib.emit(code,2,4,delta,bits,kind);assert 0<n<=32
     u.mem_write(0x10000,bytes(code)[:n*4]);u.ctl_remove_cache(0x10000,0x10100)
-    values=range(256) if bits==8 else [0,1,127,128,255,256,32767,32768,65534,65535]
+    values=range(1<<bits) if bits==8 or options.exhaustive else [0,1,127,128,255,256,32767,32768,65534,65535]
     for v in values:
      for flags in (0,255,0x41,0x82):
       state=bytearray([0x91]*64);state[2:2+bits//8]=v.to_bytes(bits//8,'little');state[10]=flags

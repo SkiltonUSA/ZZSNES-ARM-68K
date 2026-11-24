@@ -209,6 +209,10 @@ workloads. These variants remain experimental; the beta keeps those variants dis
 
 ## Development measurements
 
+[RAM-code and register-dispatch validation](docs/validation/ram-code/README.md):
+self-modifying RAM, state replay and exhaustive arithmetic checks pass in the ARM
+instruction model. Physical validation of these fixtures remains pending.
+
 [Flipped-tile clipping correction](docs/clipped-tiles.md): native and Cortex-A9
 pixel/depth checks and a physical 120-frame smoke test pass; not included in the
 published beta.

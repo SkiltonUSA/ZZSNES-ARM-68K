@@ -1,0 +1,6 @@
+{
+  ".context/clipped-flip-build/player/pocket.elf": "2d2ec784a2494009d72d2a8ef263b7f598a5e5406efb9af908b9e1bce2d215e1",
+  "amiga/common/arm_jit/register_op.h": "78f07779754d20250e0600332b458029d7262771d8a0c93b0314c5a249e93a50",
+  "scripts/test_ram_code.py": "9c8d46c75576a30c56b565c86f124d0bdfc91fad05645a339dab42c9a48d5d4f",
+  "tests/amiga/test_console_jit.py": "ed0dac4b3d10d832c6e9d5a90778996c572a5e40e7975ddcfe519424ba469d0a"
+}

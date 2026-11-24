@@ -1,0 +1,8 @@
+PASS SNES 0x12000040 512 live opcode changes and RAM-code state replay; translated blocks 768
+PASS SNES 0x150020c0 512 live opcode changes and RAM-code state replay; translated blocks 768
+Fixture SHA256 756a95fd6904ef1c9ef6af7f512566d64008c067d03ac1b7b699951e6f66637a
+
+PASS A9 register translation: 9576 8/16-bit arithmetic, NZ flags and untouched-state cases
+
+Shared byte-identical register_op.h exhaustive run:
+PASS A9 register translation: 2368512 8/16-bit arithmetic, NZ flags and untouched-state cases
