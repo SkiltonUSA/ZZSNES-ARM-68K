@@ -4,8 +4,11 @@ Current features and installation are in [the README](../README.md). Earlier
 0.2.x measurements are historical. Per-game thumbnail states, battery SRAM,
 expanded cartridge/settings controls and per-app audio choices are implemented.
 
-1. **Super FX continuity:** Star Fox 2 still misses audio deadlines in demanding
-   scenes. Profile GSU and PPU work before adding buffers. The existing timed
+The 0.7.13 clipping correction, row renderer, signed installer and installed-player
+checks are complete. [Release evidence](validation/release-0.7.13/README.md).
+
+1. **Super FX continuity:** Star Fox 2, Stunt Race FX and Doom still miss audio
+   deadlines in demanding scenes. Profile GSU and PPU work before adding buffers. The existing timed
    Super FX experiment was slower in the recorded boot test and stays optional.
    [Investigation](starfox2-audio.md).
 2. **Cartridge coverage:** broaden commercial C4/S-DD1, enhancement-chip states

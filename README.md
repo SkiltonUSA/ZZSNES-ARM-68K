@@ -1,6 +1,8 @@
 # ZZSNES — 0.7.13 Beta
 
 <!-- current-release -->
+
+[Remaining work and validation limits](docs/roadmap.md). Historical results retain their tested build labels.
 ## Current release — 0.7.13 Beta
 
 [Download the AmiPkg installer](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.13-beta) · [Changes and installation](docs/release-notes.md)
@@ -27,7 +29,7 @@ This beta needs **96 MiB of allocatable ZZ9000 RAM**, plus display and AmigaOS m
 [Installation](docs/package-manager.md) · [User guide](docs/current-guide.md) ·
 [Changes](CHANGELOG.md) · [Interface gallery](docs/current-interface.md)
 
-**New:** corrected shared audio-buffer caching, pause/resume priming and AX startup fallback. [ARM fix and validation](docs/arm-audio-publication.md).
+**Retained audio improvements:** corrected shared audio-buffer caching, pause/resume priming and AX startup fallback. [ARM fix and validation](docs/arm-audio-publication.md).
 Chrono Trigger capture: **641,658 samples matched the ARM reference, zero differences**.
 
 Published app version: **0.7.13-dev**.

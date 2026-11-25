@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased documentation corrections
+
+- Reconcile current features and remaining work with release/validation records;
+  distinguish completed, experimental and parked work. Historical test results
+  retain their original build identities.
+- Documentation only: no executable, installed configuration or release archive
+  changed. Published archives retain the README snapshot at their release tag.
+
 ## 0.7.13 Beta
 
 - Integrate the portable flipped-tile clipping correction and validated row
