@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — build records
+
+- Add fresh isolated output directories and actual artifact/input hashes after a
+  successful build; exclude stale copied snapshot manifests. Existing tested
+  binaries and published releases are unchanged.
+- [Checks and limits](docs/validation/build-identities/README.md).
+
 ## Unreleased — register-dispatch compatibility
 
 - Record 120-frame physical fixture runs at 800 MHz with clean teardown;

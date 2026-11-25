@@ -31,3 +31,7 @@ project licence, and `about.txt` with credits. Retain all component licence
 notices. Root component-archive documents stay outside the application
 copyTree, so they do not consume installed-file receipt slots. The release
 checker verifies these documents against the source repository.
+
+Build experiments with `scripts/build_current.py --output-dir .context/<new-name>`
+and the required candidate flags. Retain the resulting `build.json` with the
+artifacts. [Build identity checks](validation/build-identities/README.md).

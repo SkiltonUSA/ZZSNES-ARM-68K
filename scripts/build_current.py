@@ -6,9 +6,12 @@ import argparse,hashlib,importlib.util,json,os,re,shutil,subprocess
 from pathlib import Path
 from prepare_ppu_experiment import MODES as PPU_MODES
 ROOT=Path(__file__).resolve().parents[1]
-def run(a):subprocess.run(list(map(str,a)),cwd=ROOT,check=True)
+COMMANDS=[]
+def run(a):
+ command=list(map(str,a));subprocess.run(command,cwd=ROOT,check=True);COMMANDS.append(command)
 def main():
  p=argparse.ArgumentParser()
+ p.add_argument("--output-dir",type=Path,help="Fresh isolated output directory inside this repository")
  p.add_argument("--clipped-flip-test",action="store_true",help="Isolated portable flipped-tile clipping correction; requires --release-ax")
  p.add_argument("--gsu-counter-test",action="store_true",help="Isolated legacy GSU budget experiment; requires --release-ax")
  p.add_argument("--core-profile",action="store_true",help="Isolated GSU/PPU/mixer hardware profiling build")
@@ -69,28 +72,35 @@ def main():
   out=ROOT/".context/core-profile-build";stage=out/"player";lib=out/"library"
  if a.gsu_counter_test:out=out.with_name(out.name+"-gsu-counter");stage=out/"player";lib=out/"library"
  if a.clipped_flip_test:out=ROOT/".context/clipped-flip-build";stage=out/"player";lib=out/"library";m["version"]+=" clipped tile test"
- shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True);library_snap=ROOT/m['library_snapshot_dir']
- shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True)
+ if a.output_dir:
+  out=a.output_dir.resolve() if a.output_dir.is_absolute() else (ROOT/a.output_dir).resolve()
+  if not out.is_relative_to(ROOT) or out==ROOT or out.exists():p.error('--output-dir must be a new directory inside the repository')
+  stage=out/'player';lib=out/'library'
+ # A failed rebuild must not leave a previous success manifest behind.
+ (out/'build.json').unlink(missing_ok=True)
+ for stale in out.rglob('next-build.json'):stale.unlink()
+ shutil.copytree(snap/'build-inputs/player',stage,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'));library_snap=ROOT/m['library_snapshot_dir']
+ shutil.copytree(library_snap/'build-inputs',lib,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
  for header in (library_snap/'source').glob('*.h'):shutil.copy2(header,lib/header.name)
- shutil.copytree(library_snap/'source/zip',lib/'zip',dirs_exist_ok=True)
- shutil.copytree(ROOT/m['host_snapshot_dir'],stage,dirs_exist_ok=True)
- shutil.copytree(ROOT/m['player_overlay_dir'],stage,dirs_exist_ok=True)
+ shutil.copytree(library_snap/'source/zip',lib/'zip',dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
+ shutil.copytree(ROOT/m['host_snapshot_dir'],stage,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
+ shutil.copytree(ROOT/m['player_overlay_dir'],stage,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
  if a.thin_scanlines:
   thin=ROOT/'development/thin-scanlines-20261016'
-  shutil.copytree(thin/'host',stage,dirs_exist_ok=True)
-  shutil.copytree(thin/'player',stage,dirs_exist_ok=True)
-  shutil.copytree(thin/'source',lib,dirs_exist_ok=True)
+  shutil.copytree(thin/'host',stage,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
+  shutil.copytree(thin/'player',stage,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
+  shutil.copytree(thin/'source',lib,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
  if a.optimisation:
   overlay=ROOT/'development/optimisation-20261018'
-  shutil.copytree(overlay/'player',stage,dirs_exist_ok=True)
-  if (overlay/'source').exists():shutil.copytree(overlay/'source',lib,dirs_exist_ok=True)
-  if (overlay/'host').exists():shutil.copytree(overlay/'host',stage,dirs_exist_ok=True)
-  shutil.copytree(ROOT/'development/scalable-launcher-20261019/source',lib,dirs_exist_ok=True)
+  shutil.copytree(overlay/'player',stage,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
+  if (overlay/'source').exists():shutil.copytree(overlay/'source',lib,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
+  if (overlay/'host').exists():shutil.copytree(overlay/'host',stage,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
+  shutil.copytree(ROOT/'development/scalable-launcher-20261019/source',lib,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
   header=lib/'library_mui.h';header.write_text(header.read_text().replace('0.6.1 Beta','0.6.2-dev'))
  if a.expanded:
   expanded=ROOT/'development/expanded-20261019'
-  for name,dest in [('player',stage),('host',stage),('source',lib)]:shutil.copytree(expanded/name,dest,dirs_exist_ok=True)
-  for dest in (stage,lib):shutil.copytree(expanded/'common',dest,dirs_exist_ok=True)
+  for name,dest in [('player',stage),('host',stage),('source',lib)]:shutil.copytree(expanded/name,dest,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
+  for dest in (stage,lib):shutil.copytree(expanded/'common',dest,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
  shutil.copy2(library_snap/'source/icon.c',lib/'icon.c')
  (lib/'icon.c').write_text((lib/'icon.c').read_text().replace('DOSBox icon',m['console']+' icon'))
  if m['console']=='ZZNES':
@@ -106,22 +116,22 @@ def main():
   prepare(stage,lib,snes)
  if a.arm:
   core=out/'core';objects=[]
-  shutil.copytree(source/'core',core,dirs_exist_ok=True)
+  shutil.copytree(source/'core',core,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
   if compatibility:
-   shutil.copytree(ROOT/'development/compatibility-20261016/core',core,dirs_exist_ok=True)
+   shutil.copytree(ROOT/'development/compatibility-20261016/core',core,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
   # Derived sprite lists must be rebuilt for normal players too. This single
   # restore fix does not enable the experimental cartridge compatibility path.
   if snes:shutil.copy2(ROOT/'development/compatibility-20261016/core/src/snapshot.c',core/'src/snapshot.c')
   if a.fx3:
-   shutil.copytree(ROOT/'development/fx3-20261016/core',core,dirs_exist_ok=True)
+   shutil.copytree(ROOT/'development/fx3-20261016/core',core,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
    for dest in [stage,core]:shutil.copy2(ROOT/'development/fx3-20261016/cartridge.h',dest/'cartridge.h')
   if a.experimental_chips:
    header=(stage/'cartridge.h').read_text()
    header=header.replace('(map==0x20+i||map==0x30+i||contra)&&type<=2','(((map==0x20+i||map==0x30+i||contra)&&type<=2)||(!i&&map==0x20&&(type==0x13||type==0x14||type==0x15||type==0x1a))||(!i&&map==0x23&&(type==0x34||type==0x35)))')
    (stage/'cartridge.h').write_text(header);(core/'cartridge.h').write_text(header)
   if a.expanded:
-   shutil.copytree(expanded/'core',core,dirs_exist_ok=True)
-   for dest in (core,stage):shutil.copytree(expanded/'common',dest,dirs_exist_ok=True)
+   shutil.copytree(expanded/'core',core,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
+   for dest in (core,stage):shutil.copytree(expanded/'common',dest,dirs_exist_ok=True,ignore=shutil.ignore_patterns('next-build.json'))
   if a.optimisation and snes:
    shutil.copy2(stage/'region.h',core/'region.h')
    run(['patch','-p1','-d',core,'-i',ROOT/'development/optimisation-20261018/region-clock.patch'])
@@ -229,5 +239,7 @@ def main():
   build(out)
  from build_clock_helper import build as build_clock
  build_clock(ROOT,out,m['image'])
+ from build_identity import record_build
+ record_build(ROOT,out,m['console'],m['version'],[m['console'],'ZZSnes-FX' if a.fx3 else m['player'],'MakeIcon','ZZClock','player/zz_payload.h']+([m['player']] if a.expanded else []),COMMANDS)
  print('PASS: rebuilt',m['console'],'with preserved release ARM payload'if a.reuse_arm_from else'ARM recompiled'if a.arm else'with verified ARM payload','at',out)
 if __name__=='__main__':main()

@@ -1,0 +1,13 @@
+{
+  "console": "ZZSNES",
+  "version": "0.7.12-dev clipped tile test",
+  "output": ".context/clipped-identity-final",
+  "artifacts": {
+    "ZZSNES": "753b9b1f707976cd9aa48cffa11d84412b7da62e767a877dff7646d9fb8c139c",
+    "ZZSnes-FX": "3acdaa884533ee3eaabd97618898ff23c53d05503856388680bdcf2eba95cec7",
+    "MakeIcon": "7605509fd454b2dbce08aa546552d54d00910a075c701e1b70e2f0578362be33",
+    "ZZClock": "b0ab72855e3e1aa9e5a9cf072ff3f7e2892b70f4b2b7193f000ff26381edf4d0",
+    "player/zz_payload.h": "dce69fbf18a5e483e35e8f3b6acc326b02af3bf04ac80560b8965f03d169c27c",
+    "ZZSnes-ui": "3acdaa884533ee3eaabd97618898ff23c53d05503856388680bdcf2eba95cec7"
+  }
+}
