@@ -1,6 +1,6 @@
 # Horizontally flipped tile clipping
 
-**Development correction; not included in 0.7.12 Beta.** This is a rendering
+**Included in 0.7.13 Beta.** This is a rendering
 correctness fix, not an audio or FPS optimisation.
 
 The portable `SWAP_DWORD` macro returned a reversed value, but clipping callers

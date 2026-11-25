@@ -1,17 +1,18 @@
-# ZZSNES — 0.7.12 Beta
+# ZZSNES — 0.7.13 Beta
 
 <!-- current-release -->
-## Current release — 0.7.12 Beta
+## Current release — 0.7.13 Beta
 
-[Download the AmiPkg installer](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.12-beta) · [Changes and installation](docs/release-notes.md)
+[Download the AmiPkg installer](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.13-beta) · [Changes and installation](docs/release-notes.md)
 
+- Corrected flipped-tile clipping and batched complete-row rendering, with unchanged guest timing and sound synthesis.
 - **Settings → ZZOverclock:** 666.7 MHz or experimental 800 MHz, with Apply and Refresh.
 - The clock service is optional; standard XACP installations can still run the emulator.
 - Destination selection and dependency checks; existing settings and saves are preserved.
 - Archives include the main README as `readme.txt`, plus `about.txt` and `licence.txt`.
 - Launcher and release use the same version number. No automatic clock change or firmware installation.
 
-Development: [0.7.13 candidate and remaining checks](docs/candidate-0.7.13.md). The public release above is unchanged.
+[Release validation and limits](docs/candidate-0.7.13.md). Super FX audio can still break up in heavier scenes.
 
 <img src="docs/screenshots/logo.png" width="160" alt="ZZSNES logo">
 
@@ -22,14 +23,14 @@ files, controls, display coordination and batched AHI audio.
 
 This beta needs **96 MiB of allocatable ZZ9000 RAM**, plus display and AmigaOS memory.
 
-**[Download 0.7.12 Beta — AmiPkg installer](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.12-beta)** ·
+**[Download 0.7.13 Beta — AmiPkg installer](https://github.com/SkiltonUSA/ZZSNES-ARM-68K/releases/tag/v0.7.13-beta)** ·
 [Installation](docs/package-manager.md) · [User guide](docs/current-guide.md) ·
 [Changes](CHANGELOG.md) · [Interface gallery](docs/current-interface.md)
 
 **New:** corrected shared audio-buffer caching, pause/resume priming and AX startup fallback. [ARM fix and validation](docs/arm-audio-publication.md).
 Chrono Trigger capture: **641,658 samples matched the ARM reference, zero differences**.
 
-Published app version: **0.7.12-dev**.
+Published app version: **0.7.13-dev**.
 
 Includes [USB/CD32, SN30 Pro and Mega Drive controller options](docs/controllers.md).
 Connected-controller validation remains limited; see the setup guide.

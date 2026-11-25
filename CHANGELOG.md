@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.7.13 candidate — pending hardware acceptance
+## 0.7.13 Beta
 
 - Integrate the portable flipped-tile clipping correction and validated row
   rendering into the normal release build, without dropping picture rows/audio.

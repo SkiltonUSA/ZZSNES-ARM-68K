@@ -1,22 +1,24 @@
 {
-  "package_version": "0.7.12-dev",
-  "application_version": "0.7.12-dev",
-  "base_installer_sha256": "845112366fcf29d685a696c816f64938cd9e382b7a6ed925d0497fba1f2ed7a2",
+  "package_version": "0.7.13-dev",
+  "application_version": "0.7.13-dev",
+  "base_installer_sha256": "d37d5f81cd42adb78fab1ad697c4812b772916bc12c3cfc69863faef039b7738",
   "replacements": {
     "zzsnes": {
-      "ZZSNES/ZZSNES": "2801b8a7089165a45048494b341130ff8892bcb9429dbf539e1642161a803a66",
+      "ZZSNES/ZZSNES": "1dd9bfc34e3c79e559658cec8795ed0ea8854cc1905eb1c8f2ee57708009a498",
       "ZZSNES/ZZClock": "b0ab72855e3e1aa9e5a9cf072ff3f7e2892b70f4b2b7193f000ff26381edf4d0",
-      "ZZSNES/ZZSnes-ui": "4fd26e5df0b3a9b6d70562b30744895aaf50d6de909f84b7bddf65157f01d565",
-      "ZZSNES/ZZSnes-FX": "4fd26e5df0b3a9b6d70562b30744895aaf50d6de909f84b7bddf65157f01d565",
-      "ZZSNES/Clock-settings.md": "f5054d5ef1bf64c1b49a2693019b5dee302b97f869641832c46a8e4dc95c7474",
-      "ZZSNES/Release-notes.md": "b6e8ddedfb6553effef5b32d5c28ed086d4495a044159278d362d2dfe6a5ffd7",
-      "ZZSNES/README.md": "06eb0600792c0a2162433c6efff0671a9d548b5536b1162d509040ba6dd26848",
-      "ZZSNES/CHANGELOG.md": "02e94f52180ed262c48b7d658d3c77188bd3fd0a756732fba4c6d2890805384e"
+      "ZZSNES/ZZSnes-ui": "168caa9450eafe0c18a1377416630e409ba979426bcf1c3aaca0af275e8c6bc2",
+      "ZZSNES/ZZSnes-FX": "168caa9450eafe0c18a1377416630e409ba979426bcf1c3aaca0af275e8c6bc2",
+      "ZZSNES/README.md": "32621eb569f69b66e565605619076421159dca65832e914a3878d59f83a0f3bf",
+      "ZZSNES/ReadMe.txt": "32621eb569f69b66e565605619076421159dca65832e914a3878d59f83a0f3bf",
+      "ZZSNES/CHANGELOG.md": "fc4d30a5e81980dc5c5c5421d2fcc1640fc368b832f6ecd6400d44c4c081da9f",
+      "ZZSNES/Changes.md": "fc4d30a5e81980dc5c5c5421d2fcc1640fc368b832f6ecd6400d44c4c081da9f",
+      "ZZSNES/Release-notes.md": "d2ece5fb7e6982d607ea3838f2998103b68acc4a163b818a8b246417c5993965",
+      "ZZSNES/Version.txt": "45763bf5e7fd0b96dc3756c0ec0153bfa4bb65ea666d05294fab90f283ed2a53"
     }
   },
-  "player_policy": "Recorded binaries retained; only launcher rebuilt.",
-  "launcher_sha256": "2801b8a7089165a45048494b341130ff8892bcb9429dbf539e1642161a803a66",
-  "release_tag": "v0.7.12-beta",
+  "player_policy": "Launcher and ARM/68k players rebuilt together; recorded candidate identities.",
+  "launcher_sha256": "1dd9bfc34e3c79e559658cec8795ed0ea8854cc1905eb1c8f2ee57708009a498",
+  "release_tag": "v0.7.13-beta",
   "launcher_member": "ZZSNES/ZZSNES",
   "readme_member": "ZZSNES/README.md"
 }

@@ -1,36 +1,23 @@
-# ZZSNES 0.7.12 Beta
+# ZZSNES 0.7.13 Beta
 
-Application/launcher version: **0.7.12-dev**. AmiPkg version: **0.7.12-dev**.
+Application/launcher version: **0.7.13-dev**. AmiPkg version: **0.7.13-dev**.
 
 ## Changes
 
-- Rebuild the launcher with the next numbered release; remove the dated package suffix.
-- Include Settings → ZZOverclock, with 666.7 MHz and experimental 800 MHz controls.
-- Retain the recorded emulator players and their build identifiers. This release does not rebuild or relabel those cores.
-- Update the main README and linked feature documentation.
+- Corrected flipped-tile clipping and batched complete-row rendering, with unchanged guest timing and sound synthesis.
+- Matching rebuilt launcher and player versions, with isolated build records.
+- AmiPkg includes the current README, credits and licence documents.
 
-Includes the compact launcher, controller choices, 22.05 kHz Paula default and clock-aware standard/Super FX players. Native SNES synthesis and save formats are retained.
+Super FX games can still exceed the audio-production budget; Star Fox 2, Stunt Race FX and Doom audio gaps remain unresolved. No pitch, frameskip or emulated clock changes are introduced.
 
-## Installation and compatibility
+## Installation
 
-Extract the LHA, open its drawer and double-click Install. Choose a writable
-destination and close emulators before updating. Dependency checks and existing
-settings/saves are preserved. Clock control requires the optional ABI 3 firmware
-service; its absence disables clock controls only. The clock affects the whole
-board. No firmware is installed and no clock change happens automatically.
-Use suitable cooling for 800 MHz; temperature preflight is not a continuous
-thermal watchdog. No new performance gain is claimed here.
+Extract the LHA and open Install. Choose a writable destination. Close the emulator
+before updating; existing settings, ROMs and saves are preserved. MUI and AHI
+requirements are checked. Clock controls require the optional clock service;
+normal emulation does not. No firmware or clock change happens automatically.
 
-## Verification
+## Validation
 
-All launchers were cross-compiled into separate release directories. Recorded
-player hashes are retained. Installer signatures, payload hashes, extraction,
-component references and application version strings are checked before publication.
-Prior hardware evidence remains separate from these package checks.
-
-## Archive documentation refresh
-
-Installers and component LHAs include readme.txt copied from the main README,
-about.txt with credits and licence.txt. Existing component notices are retained.
-This documentation-only refresh leaves executable hashes and application
-versions unchanged.
+[Build identities, model tests and physical checks](validation/release-0.7.13/README.md).
+Listening acceptance is separate from automated delivery and clean-exit checks.

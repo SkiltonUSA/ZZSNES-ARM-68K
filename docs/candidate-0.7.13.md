@@ -1,8 +1,6 @@
-# ZZSNES 0.7.13 Beta candidate
+# ZZSNES 0.7.13 Beta validation
 
-Built and tested locally; not yet published or installed as the default.
-Final physical installation and clean-exit validation are pending after a bridge
-screenshot timeout. The current public release remains unchanged.
+Release build and physical checks are recorded below. Listening acceptance remains separate.
 
 The release build corrects horizontally flipped partial-tile masks. The portable
 byte-swap macro now changes its argument as its callers expect. The combined row renderer also avoids repeated tile setup and clipping work for
@@ -18,10 +16,10 @@ of this combined candidate or a claim that audio starvation is resolved.
 The independent clipping oracle passes 25,344 native sanitizer cases and 6,336
 Cortex-A9 model cases. Race-state model comparisons validate the current build
 against the previously tested corrected candidate. Physical startup tests of
-that earlier candidate are recorded separately; final gameplay/listening and
-installation acceptance remain pending.
+that earlier candidate are recorded separately. Final-build startup and matched
+row-rendering checks are linked below; listening confirmation remains pending.
 
-Star Fox 2 can still exceed the single-core audio-production budget. Existing
+Super FX games including Star Fox 2, Stunt Race FX and Doom can still exceed the single-core audio-production budget. Existing
 frame skipping reduces work but trades away pictures and does not eliminate
 all starvation. No default frame-skipping, pitch or playback-rate change is made.
 

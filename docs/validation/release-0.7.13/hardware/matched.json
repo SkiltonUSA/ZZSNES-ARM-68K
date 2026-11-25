@@ -1,0 +1,60 @@
+[
+  {
+    "game": "snes-stunt",
+    "baseline": {
+      "case": "baseline-snes-stunt",
+      "window": 1,
+      "frames": 1800,
+      "resume": 0,
+      "pass": true,
+      "starvations": 51,
+      "silence_queued": 74,
+      "elapsed_us": 33742171,
+      "core_total_us": 13839243,
+      "error": 0
+    },
+    "rows": {
+      "case": "matrix-snes-stunt",
+      "window": 1,
+      "frames": 1800,
+      "resume": 0,
+      "pass": true,
+      "starvations": 50,
+      "silence_queued": 95,
+      "elapsed_us": 34065863,
+      "core_total_us": 13458622,
+      "error": 0
+    },
+    "sampled_video_hashes_match": true,
+    "core_time_reduction_percent": 2.7503021660939098
+  },
+  {
+    "game": "snes-starfox2",
+    "baseline": {
+      "case": "baseline-snes-starfox2",
+      "window": 0,
+      "frames": 1800,
+      "resume": 0,
+      "pass": true,
+      "starvations": 415,
+      "silence_queued": 564,
+      "elapsed_us": 43562984,
+      "core_total_us": 31806179,
+      "error": 0
+    },
+    "rows": {
+      "case": "matrix-snes-starfox2",
+      "window": 0,
+      "frames": 1800,
+      "resume": 0,
+      "pass": true,
+      "starvations": 401,
+      "silence_queued": 546,
+      "elapsed_us": 43225965,
+      "core_total_us": 31020433,
+      "error": 0
+    },
+    "sampled_video_hashes_match": true,
+    "core_time_reduction_percent": 2.470419348391395
+  }
+]

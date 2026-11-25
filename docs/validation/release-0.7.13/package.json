@@ -1,21 +1,48 @@
 {
   "version": "0.7.13-dev",
-  "published": false,
-  "installed_as_default": false,
-  "archive": "ZZSNES-0.7.13-dev-amipkg.lha",
-  "archive_sha256": "d54ee8f034aa00c6e0d1095e0ac36f2ca5e69adaa69dc7e5bb52531bacb384bf",
-  "bytes": 1424680,
-  "checks": [
-    "catalogue signature",
-    "archive round-trip",
-    "payload hashes",
-    "matching executable versions",
-    "exact main README/about/licence",
-    "no private ROM/settings/save payloads"
-  ],
-  "pending": [
-    "physical install",
-    "gameplay/listening acceptance",
-    "clean exit"
-  ]
+  "base_sha256": "d37d5f81cd42adb78fab1ad697c4812b772916bc12c3cfc69863faef039b7738",
+  "installer_sha256": "2dff8376bf1bcd47c25d7d844fb7d0402fd615743493d9ba1ede75183000dbc2",
+  "packages": {
+    "zzsnes": {
+      "files": {
+        "ZZSNES/CHANGELOG.md": "fc4d30a5e81980dc5c5c5421d2fcc1640fc368b832f6ecd6400d44c4c081da9f",
+        "ZZSNES/COPYING3": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+        "ZZSNES/Changes.md": "fc4d30a5e81980dc5c5c5421d2fcc1640fc368b832f6ecd6400d44c4c081da9f",
+        "ZZSNES/Clock-settings.md": "f5054d5ef1bf64c1b49a2693019b5dee302b97f869641832c46a8e4dc95c7474",
+        "ZZSNES/Credits.txt": "6c99cb4baac38d78e4dbec3d91d51af24a3340be553f2da08d0c376a8e52bc7f",
+        "ZZSNES/Install-Scanlines": "cf300fb5169aefd224205fa14feaf79eac18c933ecc37300e5250ae8205ed00a",
+        "ZZSNES/Install-Scanlines.info": "d30c1bcb250c2e2e76239b38f5abff524dc2447a329fc2f2dce1a8d28d5df924",
+        "ZZSNES/LICENSE-Snes9x": "7c99d452508b90c46d74ac5d516d3d7de4ff3406bc7c4ad595215205369594ba",
+        "ZZSNES/LICENSE-puff": "969b7be2a930db0cdcb19b0e5b29ae6741f5a8f663b6dba6d647e12ec60cfa8e",
+        "ZZSNES/LICENSE-xSysInfo": "323187598a84a70032b38d9f483ba9c0f6172b0635ef32ce924393356f279829",
+        "ZZSNES/README.md": "32621eb569f69b66e565605619076421159dca65832e914a3878d59f83a0f3bf",
+        "ZZSNES/ReadMe.txt": "32621eb569f69b66e565605619076421159dca65832e914a3878d59f83a0f3bf",
+        "ZZSNES/Release-notes.md": "d2ece5fb7e6982d607ea3838f2998103b68acc4a163b818a8b246417c5993965",
+        "ZZSNES/SHA256SUMS": "ed6d570de3c4e6830193526d50c38d5771044ff19cf47051e88a3b219bfb9b68",
+        "ZZSNES/Scanlines.txt": "909755d137fbe3ab426a99d6abb8edfbd10a3d84ead7f5ea34d850768ed76727",
+        "ZZSNES/Scanlines/Source/build_scanlines.py": "37677c451757c82816bcee956390980aa2e544c2b06dfe19dd7f020c3a6415dc",
+        "ZZSNES/Scanlines/Source/install.c": "09f889813c44dd4bcc5a9926e18585a184be1bb04bc510705b0938c8ed1d2264",
+        "ZZSNES/Scanlines/Source/vendor/LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+        "ZZSNES/Scanlines/Source/vendor/README.md": "deb29b7119d49bcac7bd2aeeeb34a3bb833854f27f5b0c14a37fdc17c6e48dfe",
+        "ZZSNES/Scanlines/Source/vendor/ZZScanlines.c": "ecdc8403dde5aa3886bba5ad9fae179b33638a922899b7e32519008018d527fc",
+        "ZZSNES/Scanlines/Source/vendor/ZZScanlinesGUI.c": "e90bc5a80aa767b0defaeec26fd80c861252d657494f339520d05483d95bb486",
+        "ZZSNES/Scanlines/Source/vendor/upstream.json": "7b7343b357b1044f20916ec402d365e5aa5d656960503f890727d85e64929359",
+        "ZZSNES/Scanlines/ZZScanlines": "973a23c9bf0a867cba8fe8ed069baeaf90a632ac47ed32a7f5635197492e5757",
+        "ZZSNES/Scanlines/ZZScanlinesGUI": "5eeabbb5a691ee5d6c99e134b9e5909599415f2a6d35961c4f2150f158d0cedd",
+        "ZZSNES/Version.txt": "45763bf5e7fd0b96dc3756c0ec0153bfa4bb65ea666d05294fab90f283ed2a53",
+        "ZZSNES/ZZClock": "b0ab72855e3e1aa9e5a9cf072ff3f7e2892b70f4b2b7193f000ff26381edf4d0",
+        "ZZSNES/ZZSNES": "1dd9bfc34e3c79e559658cec8795ed0ea8854cc1905eb1c8f2ee57708009a498",
+        "ZZSNES/ZZSNES.info": "d30c1bcb250c2e2e76239b38f5abff524dc2447a329fc2f2dce1a8d28d5df924",
+        "ZZSNES/ZZSNES.png": "45bbc3d9ee8545e3a0a4cfe826835f12128daa96be734bb96b1ca4d8d666b57b",
+        "ZZSNES/ZZSnes-FX": "168caa9450eafe0c18a1377416630e409ba979426bcf1c3aaca0af275e8c6bc2",
+        "ZZSNES/ZZSnes-ui": "168caa9450eafe0c18a1377416630e409ba979426bcf1c3aaca0af275e8c6bc2",
+        "about.txt": "475737e59b20267932a032dacf522c985987f5abc644e9acbba0310ac0f8ea06",
+        "licence.txt": "5611f6b2f921153a3d27fd7d6ed9994560ed68885a3f4f273b4595701bb32f14",
+        "readme.txt": "32621eb569f69b66e565605619076421159dca65832e914a3878d59f83a0f3bf"
+      },
+      "archive_sha256": "4adb7c71e74857ce83ffe02d9ff39c9a45158643f873e812fb4c56c4deb64f61"
+    }
+  },
+  "installer_replacements": {},
+  "validation": "signatures, payload hashes and full LHA round-trip; no fresh physical install"
 }

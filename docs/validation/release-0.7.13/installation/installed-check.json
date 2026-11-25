@@ -1,0 +1,14 @@
+[
+  {
+    "case": "installed-snes-chrono",
+    "window": 0,
+    "frames": 120,
+    "resume": 0,
+    "pass": true,
+    "starvations": 0,
+    "silence_queued": 2,
+    "elapsed_us": 4344869,
+    "core_total_us": 504961,
+    "error": 0
+  }
+]

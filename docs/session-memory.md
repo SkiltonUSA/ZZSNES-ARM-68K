@@ -1,3 +1,13 @@
+## 0.7.13 Beta installed — 25 November 2026
+
+Matching launcher/player and signed AmiPkg installed in SD032G:Emulator/ZZSNES.
+Fresh/repeat installs, preserved settings and final installed-player lifecycle
+checks pass. Build identities and limits are in [release validation](validation/release-0.7.13/README.md).
+Core1 idle, Core0 AGA inactive, KEEP 800 MHz unchanged. Listening deferred.
+Heavy Super FX scene audio gaps remain unresolved.
+
+Earlier entries below are historical.
+
 ## 0.7.3 Beta installed — 29 October 2026
 
 ## Super FX race correction — 29 October 2026
