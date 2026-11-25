@@ -1,0 +1,50 @@
+[
+  {
+    "case": "offset-renderer-0-reference",
+    "window": 0,
+    "frames": 900,
+    "resume": 0,
+    "pass": true,
+    "starvations": 222,
+    "silence_queued": 312,
+    "elapsed_us": 23478280,
+    "core_total_us": 16487228,
+    "error": 0
+  },
+  {
+    "case": "offset-renderer-1-candidate",
+    "window": 0,
+    "frames": 900,
+    "resume": 0,
+    "pass": true,
+    "starvations": 219,
+    "silence_queued": 298,
+    "elapsed_us": 23232018,
+    "core_total_us": 16208602,
+    "error": 0
+  },
+  {
+    "case": "offset-renderer-2-candidate",
+    "window": 0,
+    "frames": 900,
+    "resume": 0,
+    "pass": true,
+    "starvations": 215,
+    "silence_queued": 298,
+    "elapsed_us": 23156223,
+    "core_total_us": 16209849,
+    "error": 0
+  },
+  {
+    "case": "offset-renderer-3-reference",
+    "window": 0,
+    "frames": 900,
+    "resume": 0,
+    "pass": true,
+    "starvations": 226,
+    "silence_queued": 314,
+    "elapsed_us": 23524306,
+    "core_total_us": 16488666,
+    "error": 0
+  }
+]

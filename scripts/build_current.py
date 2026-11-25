@@ -26,6 +26,7 @@ def main():
  if a.reuse_arm_from:p.error('Current release requires rebuilt ARM audio mapping; historical ARM reuse is not supported')
  if a.timed_superfx_experiment and (not a.release_ax or a.ppu_test):p.error('--timed-superfx-experiment requires --release-ax without --ppu-test')
  if a.ppu_test and not a.release_ax:p.error('--ppu-test requires --release-ax')
+ if a.ppu_test=='offset' and not a.output_dir:p.error('--ppu-test offset requires --output-dir')
  if a.release_ax:
   if a.ax_audio_test or a.presentation_test or a.host_service_test or a.audio_early or a.ack_poll_us:p.error('release build cannot include diagnostic options')
   a.arm=a.optimisation=a.jit_registers=True

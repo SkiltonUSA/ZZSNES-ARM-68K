@@ -1,0 +1,14 @@
+[
+  {
+    "case": "offset-race-repeat-0-reference",
+    "window": 0,
+    "frames": 600,
+    "resume": 1,
+    "pass": true,
+    "starvations": 194,
+    "silence_queued": 211,
+    "elapsed_us": 16696138,
+    "core_total_us": 12078130,
+    "error": 0
+  }
+]

@@ -1,0 +1,4 @@
+PASS 2048 offset-background cases: modes 2/4, tiles 8/16, scroll/bank wrap, clipping, depth and blending
+PASS video/stereo PCM/GSU: starfox2.sfc 1200
+PASS video/stereo PCM/GSU: stunt.sfc 1200
+PASS video/stereo PCM/GSU: doom.sfc 1200

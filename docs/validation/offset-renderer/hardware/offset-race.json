@@ -1,0 +1,50 @@
+[
+  {
+    "case": "offset-race-0-reference",
+    "window": 0,
+    "frames": 600,
+    "resume": 1,
+    "pass": true,
+    "starvations": 185,
+    "silence_queued": 253,
+    "elapsed_us": 17367143,
+    "core_total_us": 12079736,
+    "error": 0
+  },
+  {
+    "case": "offset-race-1-candidate",
+    "window": 0,
+    "frames": 600,
+    "resume": 1,
+    "pass": true,
+    "starvations": 194,
+    "silence_queued": 212,
+    "elapsed_us": 16513697,
+    "core_total_us": 12141058,
+    "error": 0
+  },
+  {
+    "case": "offset-race-2-candidate",
+    "window": 0,
+    "frames": 600,
+    "resume": 1,
+    "pass": true,
+    "starvations": 192,
+    "silence_queued": 212,
+    "elapsed_us": 16552202,
+    "core_total_us": 12142378,
+    "error": 0
+  },
+  {
+    "case": "offset-race-3-reference",
+    "window": 0,
+    "frames": 600,
+    "resume": 1,
+    "pass": true,
+    "starvations": 192,
+    "silence_queued": 211,
+    "elapsed_us": 16510356,
+    "core_total_us": 12077276,
+    "error": 0
+  }
+]

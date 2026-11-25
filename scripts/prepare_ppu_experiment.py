@@ -1,7 +1,7 @@
 """Isolated single-core raster experiments; never modify archived core sources."""
 from pathlib import Path
 
-MODES = ('baseline', 'profile', 'fixed', 'sprite', 'ppu', 'all', 'row', 'clip', 'rows')
+MODES = ('baseline', 'profile', 'fixed', 'sprite', 'ppu', 'all', 'row', 'clip', 'rows', 'offset')
 COUNTERS = ('updates', 'empty_updates', 'clip_rebuilds', 'sprite_rebuilds',
             'sprite_passes', 'sprites_visited', 'sprite_tile_rows', 'sprite_lines',
             'renderer_selections', 'normal_selections', 'fixed_full_selections',
@@ -168,6 +168,37 @@ def clipped_rows(tile):
     return tile[:start] + body + tile[end:]
 
 
+def offset_specialization(gfx):
+    """Select mode/tile geometry once, outside the per-cell offset renderer."""
+    start = gfx.index('void DrawBackgroundOffset(')
+    end = gfx.index('void DrawBackgroundMode5(', start)
+    original = gfx[start:end]
+    signature = 'void DrawBackgroundOffset(uint32 BGMode, uint32 bg, uint8 Z1, uint8 Z2)'
+    assert original.count(signature) == 1
+    functions = []
+    for mode in (2, 4):
+        for size in (8, 16):
+            name = 'DrawBackgroundOffset_%d_%d' % (mode, size)
+            body = original.replace(signature, 'static void ' + name + '(uint32 bg, uint8 Z1, uint8 Z2)')
+            body = body.replace('BGMode', str(mode)).replace('BG.TileSize', str(size))
+            functions.append(body)
+    functions.append(signature + """
+{
+   /* These values stay fixed during this synchronous raster update. Tile
+    * renderers may populate caches, but do not change mode or tile geometry. */
+   if (BGMode == 4) {
+      if (BG.TileSize == 16) DrawBackgroundOffset_4_16(bg, Z1, Z2);
+      else DrawBackgroundOffset_4_8(bg, Z1, Z2);
+   } else {
+      if (BG.TileSize == 16) DrawBackgroundOffset_2_16(bg, Z1, Z2);
+      else DrawBackgroundOffset_2_8(bg, Z1, Z2);
+   }
+}
+
+""")
+    return gfx[:start] + ''.join(functions) + gfx[end:]
+
+
 def prepare(core, mode):
     if mode not in MODES:
         raise ValueError('Unknown PPU experiment: ' + mode)
@@ -194,14 +225,16 @@ def prepare(core, mode):
             index = 13 if 'Clipped' in name else 12
             return match.group(0) + '\n   zz_ppu_profile[%d] += LineCount;' % index
         tile = re.sub(r'void (Draw(?:Clipped)?Tile16\w*)\([^)]*\)\n\{', count_rows, tile)
-    if mode in ('clip', 'rows'):
+    if mode in ('clip', 'rows', 'offset'):
         tile = clipped_rows(tile)
-    if mode in ('row', 'rows'):
+    if mode in ('row', 'rows', 'offset'):
         tile = tile_rows(tile)
-    if mode == 'rows':
+    if mode in ('rows', 'offset'):
         marker = 'uint32 StartLine, uint32 LineCount)\n{\n   TILE_PREAMBLE\n   /* Preserve'
         replacement = 'uint32 StartLine, uint32 LineCount)\n{\n   if (StartPixel == 0 && Width == 8) {\n      DrawTile16(Tile, Offset, StartLine, LineCount);\n      return;\n   }\n   TILE_PREAMBLE\n   /* Preserve'
         tile = replace_once(tile, marker, replacement)
+    if mode == 'offset':
+        gfx = offset_specialization(gfx)
     if mode in ('fixed', 'all'):
         gfx, tile = fixed_colour(gfx, tile)
     if mode in ('sprite', 'all'):

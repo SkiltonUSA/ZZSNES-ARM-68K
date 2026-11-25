@@ -15,7 +15,9 @@
 - Launcher and release use the same version number. No automatic clock change or firmware installation.
 
 [Release validation and limits](docs/candidate-0.7.13.md). Super FX audio can still break up in heavier scenes.
-[Latest Super FX optimisation tests](docs/validation/gsu-fetch/README.md): small experimental core-time gain; audio gaps remain.
+Experimental [GSU fetch](docs/validation/gsu-fetch/README.md) and
+[offset-renderer tests](docs/validation/offset-renderer/README.md) show small,
+workload-dependent gains. Audio gaps remain; production defaults are unchanged.
 
 <img src="docs/screenshots/logo.png" width="160" alt="ZZSNES logo">
 

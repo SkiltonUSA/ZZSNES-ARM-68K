@@ -1,0 +1,72 @@
+OWNED amiga=50000040 arm_candidate=101f0040 size=100663296 nonce=0e8d7caf
+BOOTSTRAP amiga=40c78400 arm=00e68400 (P96 allocated/locked)
+MAP status=4d415031 SCTLR=08c50878 MIDR=413fc090 MPIDR=80000001
+MAPPING PASS (eight nonce-derived words)
+ARM ready=41524d31 SCTLR=08c5187d MIDR=413fc090 MPIDR=80000001
+CARTRIDGE SNES region=NTSC period_us=16689 bytes=1048576
+STAGE ROM published; initializing core
+STATE load OK path=SD032G:Dev/ConsoleValidation/offset-race.state
+STAGE core initialized; calibrating clock
+STAGE opening display
+FULLSCREEN_BITMAP allocated=0885ddb4 screen=08fe7b90 width=320 height=240 allocated_height=960 screen_height=960 on_board=1/1 memory=09876a3c/40c78400 pitch=1280/1280
+FULLSCREEN mode=50031303 native_format=9 depth=32 slots=4 geometry=320x240
+SCANLINE_BACKEND window=0 hardware=0 software=0 parity=0
+SCANOUT_REFRESH intervals=16 mean_us=17849 min_us=16596 max_us=33312 observed_millihz=56023
+BUFFERS pixels=00000000 indices=096a07ac legacy_host=0
+CONTROLLER mode=3 USB=0
+JOYSTICK available=1 port=1; red=B blue=Y green=Select play=Start
+AUDIO task: per-app AHI mode=0002000e mix=22030; three immutable buffers
+PLAYER SCHEDULING paced + ARM LUT PocketSNES CPU/PPU/SPC/DSP, auto-region 32040Hz stereo; P pause, M mute, Q/Esc quit; bounded picture omission; every core/APU frame retained
+ZZSNES_POCKET START ROM=SD032G:Dev/ConsoleValidation/stunt.zip bytes=1048576 timer_hz=399999036 core_only=0
+FRAME n=1 cycles=3420 core_hash=bddbe2b5 output_hash=d943ed0a cpu_ppu_us=28624
+FRAME n=600 cycles=4019 core_hash=1e2f960c output_hash=811c9dc5 cpu_ppu_us=10437
+REGION_PACING frames=600 play_us=16433898 period_us=16689 late_rebases=61
+FULLSCREEN_END queued=202 flips=202 pending=-1 ack_wait_us=1668051 fault=0
+AUDIO_OUTPUT mode=0002000e mix=22030 callbacks=412 silence_queued=212 starvations=192
+AUDIO_TASK queued=320829 submitted=320829 completed=320829 highwater=9 error=0 stopped=1
+FRAME_RENDER rendered=600 skipped=0 options=0
+AUDIO_END samples=320829 gaps=0
+PRESENT_OPTIONS window=0 scanlines=0 fps=0 optimised=1 neon_frames=0
+STAGE closing frontend; requesting ARM return next
+ZZSNES_POCKET END exit=0 frames=600 elapsed_us=16552202 core_total_us=12142378 output_hash=811c9dc5
+DIRECT_END challenges=202 verified_frames=1 copy_us=331978
+PLAYER_PROFILE audio_prepare_us=663943 flip_drain_us=80616 audio_wait_us=17963 audio_copy_us=340356 audio_send_us=0
+ARM_REQUEST_PROFILE frame_us=12153966 present_us=332968
+PRESENT_PROFILE pre_us=69488 request_us=415912 post_us=2053111
+TEARING_TRIAL variant=C0 native=0 slots=4 ack_blank=197 ack_active=5
+SCANOUT_GATE variant=C0 mode=0 delayed=0 total_us=0 max_us=0 timeouts=0 phase=0
+FRAME_TIMING stage=0 count=540 mean_us=20894 max_us=36651 bins=0,0,167,65,304,4
+FRAME_TIMING stage=1 count=540 mean_us=145 max_us=6126 bins=524,16,0,0,0,0
+FRAME_TIMING stage=2 count=540 mean_us=1085 max_us=14763 bins=314,223,3,0,0,0
+FRAME_TIMING stage=3 count=182 mean_us=2638 max_us=14125 bins=0,180,2,0,0,0
+FRAME_TIMING stage=4 count=540 mean_us=23897 max_us=46654 bins=0,0,115,67,335,23
+FRAME_TIMING stage=5 count=182 mean_us=71166 max_us=101283 bins=0,0,0,0,3,179
+INPUT_PROFILE changes=0
+JOYSTICK_END polls=600 active=0 last_type=10000000
+AUDIO_IO_PROFILE send_us=0 waitio_us=0
+WAIT_PROFILE kind=0 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=1 calls=90 requested_us=90000 actual_us=121062 max_us=4963
+WAIT_PROFILE kind=2 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=3 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=4 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=5 calls=0 requested_us=0 actual_us=0 max_us=0
+PROFILE frames=600 request_us=12506502 copy_us=0 colour_us=0 draw_us=2580953 waits=90
+EXIT epilogue=52455431 cache_echoes=0 rounds=0
+CACHE original=08c50878 running=08c5187d restored=08c50878
+MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=102f4000 ccsidr=701fe019 witness_bad=0 mailbox_rounds=808
+REGISTER n=0 original=08c50878 restored=08c50878
+REGISTER n=1 original=00000000 restored=00000000
+REGISTER n=2 original=02000001 restored=02000001
+REGISTER n=3 original=00000000 restored=00000000
+REGISTER n=4 original=00000000 restored=00000000
+REGISTER n=5 original=00000001 restored=00000001
+REGISTER n=6 original=600f01d3 restored=600f01d3
+REGISTER n=7 original=00000006 restored=00000006
+REGISTER n=8 original=00000000 restored=00000000
+REGISTER n=9 original=00098aa4 restored=00098aa4
+REGISTER n=10 original=44e048e0 restored=44e048e0
+REGISTER n=11 original=00000000 restored=00000000
+REGISTER n=12 original=00000001 restored=00000001
+REGISTER n=13 original=72360000 restored=72360000
+SCANLINE_BACKEND released: hardware=0
+LAUNCHER exit=0; owned memory released

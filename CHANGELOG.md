@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — offset-background renderer experiment
+
+- Add an isolated mode/tile-size-specialized offset renderer and native differential
+  tests. Default builds and state formats are unchanged.
+- Nine hardware runs: Star Fox 2 core time improves 1.69%; the valid Stunt Race FX
+  comparison is 0.53% slower. Exclude one thumbnail-refresh run from timing. Audio
+  starvation remains; keep this experimental rather than replacing the release.
+- [Native, ARM replay and physical evidence](docs/validation/offset-renderer/README.md).
+
 ## Unreleased — Super FX fetch experiments
 
 - Add isolated derived-mask and ordinary-GSU pipeline-loop build options.

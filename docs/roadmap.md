@@ -13,7 +13,10 @@ checks are complete. [Release evidence](validation/release-0.7.13/README.md).
    [Investigation](starfox2-audio.md). Two fetch experiments are now measured: a
    derived mask is slower; an ordinary-GSU loop reduces core time by 0.66% in the
    matched Star Fox 2 sequence but does not resolve starvation. Neither is promoted.
-   [Results and next validation](validation/gsu-fetch/README.md).
+   [Results and next validation](validation/gsu-fetch/README.md). Offset-renderer
+   specialization is also tested: 1.69% less Star Fox 2 core time, but 0.53% more
+   in Stunt Race FX; no production promotion. Larger, repeatable savings and
+   listening validation remain necessary. [Evidence](validation/offset-renderer/README.md).
 2. **Cartridge coverage:** broaden commercial C4/S-DD1, enhancement-chip states
    and FX3 checks. Existing gates and fixture passes do not prove every game.
 3. **Video:** broaden high-resolution/interlace and scrolling checks; preserve
