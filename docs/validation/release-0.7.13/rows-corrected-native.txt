@@ -1,0 +1,12 @@
+PASS synthetic sprite, blend and PPU window comparison: baseline
+PASS 3600 video/PCM frames: ROM 0, baseline
+PASS 3600 video/PCM frames: ROM 1, baseline
+PASS 3600 video/PCM frames: ROM 2, baseline
+PASS 3600 video/PCM frames: ROM 3, baseline
+PASS 3600 video/PCM frames: ROM 4, baseline
+PASS synthetic sprite, blend and PPU window comparison: rows
+PASS 3600 video/PCM frames: ROM 0, rows
+PASS 3600 video/PCM frames: ROM 1, rows
+PASS 3600 video/PCM frames: ROM 2, rows
+PASS 3600 video/PCM frames: ROM 3, rows
+PASS 3600 video/PCM frames: ROM 4, rows

@@ -1,0 +1,27 @@
+[
+  {
+    "test_index": 0,
+    "title": "Stunt Race FX",
+    "sha256": "c04d80b84514202ff319384ca20641eb0189e975eed5612915bd9c224b2ab30a"
+  },
+  {
+    "test_index": 1,
+    "title": "Star Fox 2",
+    "sha256": "b86c6113be950337b5cf43c5105f8a442ba897da6fca1cf3af47420d33f76f54"
+  },
+  {
+    "test_index": 2,
+    "title": "Super Mario World",
+    "sha256": "0838e531fe22c077528febe14cb3ff7c492f1f5fa8de354192bdff7137c27f5b"
+  },
+  {
+    "test_index": 3,
+    "title": "Chrono Trigger",
+    "sha256": "06d1c2b06b716052c5596aaa0c2e5632a027fee1a9a28439e509f813c30829a9"
+  },
+  {
+    "test_index": 4,
+    "title": "Contra III",
+    "sha256": "a93ea87fc835c530b5135c5294433d15eef6dbf656144b387e89ac19cf864996"
+  }
+]

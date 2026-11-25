@@ -1,0 +1,21 @@
+{
+  "version": "0.7.13-dev",
+  "published": false,
+  "installed_as_default": false,
+  "archive": "ZZSNES-0.7.13-dev-amipkg.lha",
+  "archive_sha256": "d54ee8f034aa00c6e0d1095e0ac36f2ca5e69adaa69dc7e5bb52531bacb384bf",
+  "bytes": 1424680,
+  "checks": [
+    "catalogue signature",
+    "archive round-trip",
+    "payload hashes",
+    "matching executable versions",
+    "exact main README/about/licence",
+    "no private ROM/settings/save payloads"
+  ],
+  "pending": [
+    "physical install",
+    "gameplay/listening acceptance",
+    "clean exit"
+  ]
+}

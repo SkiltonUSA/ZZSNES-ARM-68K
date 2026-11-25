@@ -1,0 +1,13 @@
+{
+  "console": "ZZSNES",
+  "version": "0.7.13-dev",
+  "output": ".context/release-0.7.13-rows",
+  "artifacts": {
+    "ZZSNES": "1dd9bfc34e3c79e559658cec8795ed0ea8854cc1905eb1c8f2ee57708009a498",
+    "ZZSnes-FX": "168caa9450eafe0c18a1377416630e409ba979426bcf1c3aaca0af275e8c6bc2",
+    "MakeIcon": "96d400c85e2989695d75413267ee0f9222704b6491fb7962ab7785a647a82b12",
+    "ZZClock": "b0ab72855e3e1aa9e5a9cf072ff3f7e2892b70f4b2b7193f000ff26381edf4d0",
+    "player/zz_payload.h": "795486b1eba55adc57f2b67043ba3ea5a5bae35bcac2777fcab0980d54241bd6",
+    "ZZSnes-ui": "168caa9450eafe0c18a1377416630e409ba979426bcf1c3aaca0af275e8c6bc2"
+  }
+}

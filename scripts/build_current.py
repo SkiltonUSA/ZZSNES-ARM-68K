@@ -139,13 +139,13 @@ def main():
    from prepare_timed_superfx import prepare,options
    prepare(core);options(stage)
    m['arm_sources'] += [str((core/'src'/name).relative_to(ROOT)) for name in ('timed_fx.c','fxinst_timed.c')]
-  if a.ppu_test:
+  if a.ppu_test or a.release_ax:
    from prepare_ppu_experiment import prepare
-   prepare(core,a.ppu_test)
+   prepare(core,a.ppu_test or "rows")
   if a.gsu_counter_test:
    from prepare_gsu_counter import prepare
    prepare(core)
-  if a.clipped_flip_test:
+  if a.release_ax or a.clipped_flip_test:
    from prepare_clipped_tiles import prepare
    prepare(core)
   if a.core_profile:

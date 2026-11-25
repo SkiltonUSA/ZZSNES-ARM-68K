@@ -1,0 +1,1 @@
+PASS Cortex-A9 clipped tiles: 6336 pixel/depth cases; no physical timing claim

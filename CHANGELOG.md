@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.13 candidate — pending hardware acceptance
+
+- Integrate the portable flipped-tile clipping correction and validated row
+  rendering into the normal release build, without dropping picture rows/audio.
+- Rebuild matching launcher/player versions in an isolated output directory.
+- [Validation and remaining limits](docs/candidate-0.7.13.md).
+
 ## Unreleased — build records
 
 - Add fresh isolated output directories and actual artifact/input hashes after a

@@ -1,6 +1,7 @@
 # Renderer and Super FX optimisation review
 
-The `rows` renderer remains an opt-in development build. Repeated physical
+The `rows` renderer is integrated in the [0.7.13 candidate](candidate-0.7.13.md),
+which is awaiting final physical acceptance. Public 0.7.12 is unchanged. Repeated physical
 Star Fox 2 tests confirm a saving in ARM core time, but the tested scene still
 starves the audio output. This is not a general FPS or sound-quality claim.
 
@@ -62,6 +63,7 @@ The game inputs and checkpoint are private test inputs, not included here.
 function entries. Predicated instructions count as slots; the results are not
 Cortex-A9 cycle timings, cache measurements or FPS.
 
-The installed release and default build flags are unchanged. See the
+These measurements predate the 0.7.13 integration; the installed release remains
+unchanged. The GSU counter experiment remains opt-in. See the
 [test record](../amiga/records/2026-11-11/renderer-gsu/README.md) for individual
 hardware runs, build hashes and limitations.

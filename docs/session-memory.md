@@ -1116,3 +1116,15 @@ window/fullscreen transitions and a 120-frame fresh-process state resume.
 See the report's `lifecycle/` directory. F10 exit is not established: an
 unattended focus check failed on NES, and a delayed-activation experiment was
 not retained. Installed players, defaults and releases remain unchanged.
+
+## 0.7.13 candidate integration — 2026-11-25
+
+Only NES/SNES work is active. The normal release build now includes the changes
+in [candidate notes](candidate-0.7.13.md); exact local/native/ARM checks are in
+[validation](validation/release-0.7.13/README.md). Public/installed versions are
+unchanged. Signed AmiPkg candidates are staged privately, not published.
+
+The physical Stunt Race FX run lost bridge responses during a screenshot request.
+The shared gateway is paused; cleanup is unverified and the existing lease is
+retained. Do not launch another Core1 test until the target is inspected and
+idle is verified. No clock, firmware or other emulator changes were made.

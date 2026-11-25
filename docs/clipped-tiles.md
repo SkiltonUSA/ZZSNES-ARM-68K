@@ -47,3 +47,6 @@ It also does not solve Super FX games that exceed the audio production budget.
 [Recorded checks](validation/clipped-tiles/results.txt).
 
 [Physical smoke test](validation/clipped-tiles/hardware.txt).
+
+The [0.7.13 candidate](candidate-0.7.13.md) integrates this correction with the
+row renderer. Final physical acceptance is pending; public 0.7.12 is unchanged.

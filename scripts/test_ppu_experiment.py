@@ -30,6 +30,7 @@ def main():
     parser.add_argument('--rom', type=Path, action='append', default=[])
     parser.add_argument('--frames', type=int, default=3600)
     parser.add_argument('--mode', choices=MODES, action='append', help='Test selected modes; baseline is always included')
+    parser.add_argument('--clip-fix', action='store_true', help='Compare all variants with the corrected flipped-tile masks')
     parser.add_argument('--profile', action='store_true', help='Also compare instrumented baseline and record operation counts')
     args = parser.parse_args()
     if args.frames < 1:
@@ -40,14 +41,14 @@ def main():
     for mode in modes + (('profile',) if args.profile else ()):
         directory = ROOT / ('.context/ppu-fixture-' + mode)
         fixture = build(ROOT / 'development/ppu-20261029/tests/raster_fixture.c',
-                        directory, fx3=True, expanded=True, ppu=mode)
+                        directory, fx3=True, expanded=True, ppu=mode, clip_fix=args.clip_fix)
         trace = output / ('fixture-' + mode + '.trace')
         run(fixture, [trace], output / ('fixture-' + mode + '.log'))
         compare(trace, output / 'fixture-baseline.trace')
         print('PASS synthetic sprite, blend and PPU window comparison:', mode, flush=True)
         if args.rom:
             game = build(ROOT / 'development/ppu-20261029/tests/game_trace.c',
-                         directory, fx3=True, expanded=True, ppu=mode)
+                         directory, fx3=True, expanded=True, ppu=mode, clip_fix=args.clip_fix)
             for index, rom in enumerate(args.rom):
                 trace = output / f'game-{index}-{mode}.trace'
                 run(game, [rom.resolve(), args.frames, trace],
