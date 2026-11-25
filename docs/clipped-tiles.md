@@ -33,8 +33,10 @@ error; four queue starvations were recorded. This is a startup/rendering/cleanup
 smoke test, not an audio-quality or game-compatibility result. Released binaries
 are unchanged. A further 900-frame startup/intro pass completes Chrono Trigger,
 Contra III, Super Mario World, Stunt Race FX and Doom, including windowed and
-fullscreen output and saved previews. Queue starvations remain, and gameplay,
-scrolling/race scenes and listening acceptance are still pending.
+fullscreen output and saved previews. Those runs include costly periodic verification. Subsequent normal-mode startup
+runs report zero queue starvations for these five titles; Star Fox 2 still falls
+behind. Gameplay, scrolling/race scenes and listening acceptance remain pending.
+[Audio measurements without verification](validation/audio-without-verification/README.md).
 [Game startup checks and limits](validation/clipped-tiles/games/README.md).
 
 Fresh builds include the previously validated 666/800 MHz measured-timer gate.

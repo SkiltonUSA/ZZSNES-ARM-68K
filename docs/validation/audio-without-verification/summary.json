@@ -1,0 +1,77 @@
+{
+  "player_sha256": "322ba541bcc0030dda12a9523fd44613298277f4e35be56b5bc895c204b88cec",
+  "runs": [
+    {
+      "game": "chrono",
+      "frames": 900,
+      "windowed": true,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 17372162,
+      "core_total_us": 5673834,
+      "present_post_us": 2014761,
+      "starvations": 0,
+      "silence_queued": 2
+    },
+    {
+      "game": "contra",
+      "frames": 900,
+      "windowed": false,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 17153363,
+      "core_total_us": 3756965,
+      "present_post_us": 2011259,
+      "starvations": 0,
+      "silence_queued": 2
+    },
+    {
+      "game": "smw",
+      "frames": 900,
+      "windowed": true,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 17115337,
+      "core_total_us": 5821515,
+      "present_post_us": 1989030,
+      "starvations": 0,
+      "silence_queued": 2
+    },
+    {
+      "game": "stunt",
+      "frames": 900,
+      "windowed": false,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 17219570,
+      "core_total_us": 5502926,
+      "present_post_us": 2054128,
+      "starvations": 0,
+      "silence_queued": 2
+    },
+    {
+      "game": "doom",
+      "frames": 900,
+      "windowed": true,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 17132793,
+      "core_total_us": 6514832,
+      "present_post_us": 1953882,
+      "starvations": 0,
+      "silence_queued": 2
+    },
+    {
+      "game": "starfox2",
+      "frames": 900,
+      "windowed": false,
+      "pass": true,
+      "snapshot_saved": true,
+      "elapsed_us": 24288709,
+      "core_total_us": 16913000,
+      "present_post_us": 2230868,
+      "starvations": 222,
+      "silence_queued": 359
+    }
+  ]
+}

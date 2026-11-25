@@ -9,6 +9,13 @@
   register/flag checks. No core or release binary changed.
 - [Validation and limits](docs/validation/ram-code/README.md).
 
+## Unreleased — audio validation
+
+- Separate periodic pixel-verification overhead from normal playback. Six
+  900-frame checks complete: five have zero queue starvations; Star Fox 2 still
+  exceeds the core-time budget. No production audio algorithm changed.
+  [Measurements and limits](docs/validation/audio-without-verification/README.md).
+
 ## Unreleased — flipped-tile correction
 
 - Correct discarded byte-swap results in portable horizontally flipped tile

@@ -224,3 +224,10 @@ buffers. Sampled pictures match the baseline and teardown passed. This is a
 scene-specific core measurement, not an equivalent gameplay-FPS gain.
 Postflight bridge responsive, Core1 idle. Raw logs and build hashes are retained
 in the profiling records linked above; commercial ROMs, states and PCM are excluded.
+
+## Current 800 MHz follow-up
+
+A 900-frame run without periodic pixel verification still exceeds the NTSC
+core-time budget and records 222 queue starvations. Other tested startup sequences
+record zero. [Current measurements and limits](validation/audio-without-verification/README.md).
+The older comparison table above retains its original firmware/build conditions.

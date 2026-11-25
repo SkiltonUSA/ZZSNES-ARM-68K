@@ -30,3 +30,8 @@ These are the player's 128×112 previews, not full-resolution gameplay captures.
 
 ![Chrono Trigger startup](chrono-startup.png)
 ![Contra III startup](contra-startup.png)
+
+[Follow-up without periodic verification](../../audio-without-verification/README.md)
+records zero startup queue starvations for these five titles. The prior diagnostic
+counts above must not be treated as production audio measurements. Star Fox 2
+remains a separate sustained-workload problem.

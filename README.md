@@ -214,6 +214,9 @@ self-modifying RAM, state replay and exhaustive arithmetic checks pass in the AR
 instruction model. Bounded physical launch/display/cleanup checks also pass; full hardware
 state-replay and gameplay coverage remain pending.
 
+[Normal-mode audio checks](docs/validation/audio-without-verification/README.md)
+separate diagnostic overhead from playback; Star Fox 2 still has an audio workload limit.
+
 [Flipped-tile clipping correction](docs/clipped-tiles.md): native and Cortex-A9
 pixel/depth checks and a physical 120-frame smoke test pass; not included in the
 published beta.
