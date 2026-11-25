@@ -1,0 +1,103 @@
+{
+  "player_sha256": "322ba541bcc0030dda12a9523fd44613298277f4e35be56b5bc895c204b88cec",
+  "rows": [
+    {
+      "mode": "all",
+      "options": 0,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 23574439,
+      "core_total_us": 16913525,
+      "present_post_us": 2008639,
+      "starvations": 222,
+      "silence_queued": 321,
+      "rendered": 900,
+      "skipped": 0,
+      "guest_frames": 900
+    },
+    {
+      "mode": "fixed1",
+      "options": 1,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 20585445,
+      "core_total_us": 13307121,
+      "present_post_us": 1936599,
+      "starvations": 153,
+      "silence_queued": 174,
+      "rendered": 450,
+      "skipped": 450,
+      "guest_frames": 900
+    },
+    {
+      "mode": "fixed2",
+      "options": 2,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 19207133,
+      "core_total_us": 12055852,
+      "present_post_us": 1962473,
+      "starvations": 102,
+      "silence_queued": 105,
+      "rendered": 300,
+      "skipped": 600,
+      "guest_frames": 900
+    },
+    {
+      "mode": "auto",
+      "options": 64,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 22921827,
+      "core_total_us": 16133496,
+      "present_post_us": 2005301,
+      "starvations": 224,
+      "silence_queued": 289,
+      "rendered": 826,
+      "skipped": 74,
+      "guest_frames": 900
+    },
+    {
+      "mode": "threshold50",
+      "options": 3342464,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 17774214,
+      "core_total_us": 9964889,
+      "present_post_us": 1995927,
+      "starvations": 30,
+      "silence_queued": 32,
+      "rendered": 186,
+      "skipped": 714,
+      "guest_frames": 900
+    },
+    {
+      "mode": "threshold75",
+      "options": 4980864,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 17773492,
+      "core_total_us": 9837373,
+      "present_post_us": 1941941,
+      "starvations": 31,
+      "silence_queued": 33,
+      "rendered": 37,
+      "skipped": 863,
+      "guest_frames": 900
+    },
+    {
+      "mode": "threshold90",
+      "options": 5963904,
+      "pass": true,
+      "snapshot_saved": false,
+      "elapsed_us": 17794697,
+      "core_total_us": 9836687,
+      "present_post_us": 2007030,
+      "starvations": 31,
+      "silence_queued": 33,
+      "rendered": 37,
+      "skipped": 863,
+      "guest_frames": 900
+    }
+  ]
+}

@@ -231,3 +231,11 @@ A 900-frame run without periodic pixel verification still exceeds the NTSC
 core-time budget and records 222 queue starvations. Other tested startup sequences
 record zero. [Current measurements and limits](validation/audio-without-verification/README.md).
 The older comparison table above retains its original firmware/build conditions.
+
+## Current candidate frameskip comparison
+
+A later [seven-mode comparison at the retained 800 MHz clock](validation/starfox2-frameskip/README.md)
+excludes periodic verification and preview writes. Threshold 50 reduces measured
+starvations from 222 to 30 over 900 guest frames, but still falls below real time.
+Higher thresholds do not materially improve it. This is an optional rendering
+tradeoff, not a new sound fix or a change to the released defaults.

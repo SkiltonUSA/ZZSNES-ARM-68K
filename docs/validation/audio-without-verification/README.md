@@ -35,8 +35,8 @@ code path.
 Star Fox 2 remains different: core execution alone averages 18.79 ms per guest
 frame over this interval, above the nominal 16.69 ms NTSC budget. Rendering and
 host servicing add cost. Its new preview adds a one-time interruption, but does
-not explain the sustained core workload. Existing frameskip options require a
-separate controlled comparison before recommending a setting.
+not explain the sustained core workload. A subsequent [controlled frameskip comparison](../starfox2-frameskip/README.md)
+reduces the shortage but does not eliminate it.
 
 Zero starvation in a short startup run does not establish audible quality or
 interactive gameplay/scrolling correctness. The known special-chip gameplay

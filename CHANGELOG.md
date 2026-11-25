@@ -11,6 +11,10 @@
 
 ## Unreleased — audio validation
 
+- Compare seven Star Fox 2 frameskip settings without diagnostic overhead.
+  Threshold 50 reduces starvation but does not eliminate it; defaults stay
+  unchanged. [Results](docs/validation/starfox2-frameskip/README.md).
+
 - Separate periodic pixel-verification overhead from normal playback. Six
   900-frame checks complete: five have zero queue starvations; Star Fox 2 still
   exceeds the core-time budget. No production audio algorithm changed.
