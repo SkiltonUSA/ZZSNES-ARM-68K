@@ -1,0 +1,54 @@
+MAPPING PASS (eight nonce-derived words)
+CARTRIDGE SNES region=NTSC period_us=16689 bytes=1048576
+STAGE ROM published; initializing core
+STAGE core initialized; calibrating clock
+STAGE opening display
+FULLSCREEN_BITMAP allocated=08823024 screen=09241960 width=320 height=240 allocated_height=960 screen_height=960 on_board=1/1 memory=0986bd34/40c78400 pitch=1280/1280
+FULLSCREEN mode=50031303 native_format=9 depth=32 slots=4 geometry=320x240
+SCANLINE_BACKEND window=0 hardware=0 software=0 parity=0
+SCANOUT_REFRESH intervals=16 mean_us=19949 min_us=16522 max_us=33863 observed_millihz=50125
+BUFFERS pixels=00000000 indices=09a87d44 legacy_host=0
+CONTROLLER mode=3 USB=0
+JOYSTICK available=1 port=1; red=B blue=Y green=Select play=Start
+AUDIO task: per-app AHI mode=0002000e mix=22030; three immutable buffers
+PLAYER SCHEDULING paced + ARM LUT PocketSNES CPU/PPU/SPC/DSP, auto-region 32040Hz stereo; P pause, M mute, Q/Esc quit; bounded picture omission; every core/APU frame retained
+ZZSNES_POCKET START ROM=[fixture]/contra.sfc bytes=1048576 timer_hz=399998504 core_only=0
+FRAME n=1 cycles=1 core_hash=b87d5dc5 output_hash=3fde1dc5 cpu_ppu_us=3899
+SNAPSHOT saved [fixture]/contra.shot
+FRAME n=600 cycles=600 core_hash=2c9391a3 output_hash=c7a74d60 cpu_ppu_us=3962
+REGION_PACING frames=900 play_us=49157272 period_us=16689 late_rebases=14
+FULLSCREEN_END queued=835 flips=835 pending=-1 ack_wait_us=7391368 fault=0
+AUDIO_OUTPUT mode=0002000e mix=22030 callbacks=1902 silence_queued=1602 starvations=41
+AUDIO_TASK queued=481244 submitted=481244 completed=481244 highwater=9 error=0 stopped=1
+FRAME_RENDER rendered=900 skipped=0 options=0
+AUDIO_END samples=481244 gaps=0
+PRESENT_OPTIONS window=0 scanlines=0 fps=0 optimised=1 neon_frames=0
+STAGE closing frontend; requesting ARM return next
+ZZSNES_POCKET END exit=0 frames=900 elapsed_us=49168111 core_total_us=3754920 output_hash=17f948c6
+DIRECT_END challenges=835 verified_frames=16 copy_us=1330274
+PLAYER_PROFILE audio_prepare_us=1204641 flip_drain_us=820434 audio_wait_us=20031 audio_copy_us=446465 audio_send_us=0
+ARM_REQUEST_PROFILE frame_us=3790821 present_us=1333946
+PRESENT_PROFILE pre_us=351441 request_us=1562362 post_us=34114003
+TEARING_TRIAL variant=C0 native=0 slots=4 ack_blank=809 ack_active=26
+SCANOUT_GATE variant=C0 mode=0 delayed=0 total_us=0 max_us=0 timeouts=0 phase=0
+FRAME_TIMING stage=0 count=840 mean_us=4793 max_us=24980 bins=0,797,40,1,2,0
+FRAME_TIMING stage=1 count=840 mean_us=979 max_us=16654 bins=623,208,9,0,0,0
+FRAME_TIMING stage=2 count=840 mean_us=1300 max_us=17933 bins=546,286,7,1,0,0
+FRAME_TIMING stage=3 count=779 mean_us=40974 max_us=2387456 bins=0,764,1,0,0,14
+FRAME_TIMING stage=4 count=840 mean_us=52449 max_us=2394921 bins=0,3,741,64,18,14
+FRAME_TIMING stage=5 count=778 mean_us=53855 max_us=2186985 bins=0,0,643,57,43,35
+INPUT_PROFILE changes=0
+JOYSTICK_END polls=900 active=0 last_type=10000000
+AUDIO_IO_PROFILE send_us=0 waitio_us=0
+WAIT_PROFILE kind=0 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=1 calls=37 requested_us=37000 actual_us=49188 max_us=5299
+WAIT_PROFILE kind=2 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=3 calls=0 requested_us=0 actual_us=0 max_us=0
+WAIT_PROFILE kind=4 calls=240 requested_us=240000 actual_us=387320 max_us=11730
+WAIT_PROFILE kind=5 calls=0 requested_us=0 actual_us=0 max_us=0
+PROFILE frames=900 request_us=4271278 copy_us=0 colour_us=0 draw_us=36118502 waits=387
+EXIT epilogue=52455431 cache_echoes=0 rounds=0
+CACHE original=08c50878 running=08c5187d restored=08c50878
+MMU_RESTORE phase=3 register_mismatches=00000000 cpsr_control=1d3 expected=1d3 ttbr=<allocation-relative> ccsidr=701fe019 witness_bad=0 mailbox_rounds=1738
+SCANLINE_BACKEND released: hardware=0
+LAUNCHER exit=0; owned memory released

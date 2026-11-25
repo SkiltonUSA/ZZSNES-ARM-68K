@@ -14,7 +14,9 @@
 - Correct discarded byte-swap results in portable horizontally flipped tile
   clipping, behind an isolated candidate build option.
 - 25,344 native and 6,336 Cortex-A9 pixel/depth oracle cases pass. A physical
-  120-frame synthetic run exits cleanly; wider game coverage remains pending.
+  120-frame synthetic run and five 900-frame game startup/intro runs exit
+  cleanly. Interactive scrolling/race scenes and listening remain pending.
+  [Game checks](docs/validation/clipped-tiles/games/README.md).
 - Restore the released 666/800 MHz calibration policy in fresh builds.
   Published 0.7.12 binaries remain unchanged.
 - [Cause, correction and checks](docs/clipped-tiles.md).

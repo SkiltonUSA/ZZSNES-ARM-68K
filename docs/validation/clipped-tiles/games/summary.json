@@ -1,0 +1,51 @@
+{
+  "candidate_sha256": "322ba541bcc0030dda12a9523fd44613298277f4e35be56b5bc895c204b88cec",
+  "clock_mhz": 800,
+  "cases": [
+    {
+      "game": "chrono",
+      "frames": 900,
+      "windowed": true,
+      "pass": true,
+      "snapshot_saved": true,
+      "audio_starvations": 41,
+      "phase": "Startup/intro only; no gameplay input"
+    },
+    {
+      "game": "contra",
+      "frames": 900,
+      "windowed": false,
+      "pass": true,
+      "snapshot_saved": true,
+      "audio_starvations": 41,
+      "phase": "Startup/intro only; no gameplay input"
+    },
+    {
+      "game": "smw",
+      "frames": 900,
+      "windowed": true,
+      "pass": true,
+      "snapshot_saved": true,
+      "audio_starvations": 38,
+      "phase": "Startup/intro only; no gameplay input"
+    },
+    {
+      "game": "stunt",
+      "frames": 900,
+      "windowed": false,
+      "pass": true,
+      "snapshot_saved": true,
+      "audio_starvations": 43,
+      "phase": "Startup/intro only; no gameplay input"
+    },
+    {
+      "game": "doom",
+      "frames": 900,
+      "windowed": true,
+      "pass": true,
+      "snapshot_saved": true,
+      "audio_starvations": 42,
+      "phase": "Startup/intro only; no gameplay input"
+    }
+  ]
+}

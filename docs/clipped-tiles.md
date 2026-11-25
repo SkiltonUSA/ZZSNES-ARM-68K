@@ -31,7 +31,11 @@ checks, zero display faults, register/cache-witness restoration and owned-memory
 release. All 64,165 generated audio samples were delivered without a device
 error; four queue starvations were recorded. This is a startup/rendering/cleanup
 smoke test, not an audio-quality or game-compatibility result. Released binaries
-are unchanged; game screenshots and wider physical coverage remain pending.
+are unchanged. A further 900-frame startup/intro pass completes Chrono Trigger,
+Contra III, Super Mario World, Stunt Race FX and Doom, including windowed and
+fullscreen output and saved previews. Queue starvations remain, and gameplay,
+scrolling/race scenes and listening acceptance are still pending.
+[Game startup checks and limits](validation/clipped-tiles/games/README.md).
 
 Fresh builds include the previously validated 666/800 MHz measured-timer gate.
 It does not change the ARM clock, guest timing or configured PCM output.
