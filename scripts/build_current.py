@@ -13,12 +13,16 @@ def main():
  p=argparse.ArgumentParser()
  p.add_argument("--output-dir",type=Path,help="Fresh isolated output directory inside this repository")
  p.add_argument("--clipped-flip-test",action="store_true",help="Isolated portable flipped-tile clipping correction; requires --release-ax")
+ p.add_argument("--gsu-fetch-loop-test",action="store_true",help="Isolated ordinary GSU pipeline specialization; requires --release-ax and --output-dir")
+ p.add_argument("--gsu-fetch-test",action="store_true",help="Isolated derived GSU program-fetch mask; requires --release-ax and --output-dir")
  p.add_argument("--gsu-counter-test",action="store_true",help="Isolated legacy GSU budget experiment; requires --release-ax")
  p.add_argument("--core-profile",action="store_true",help="Isolated GSU/PPU/mixer hardware profiling build")
  p.add_argument('--timed-superfx-experiment',action='store_true',help='Isolated Legacy/Timed Super FX candidate; requires --release-ax');p.add_argument('--ppu-test',choices=PPU_MODES,help='Isolated raster experiment; requires --release-ax');p.add_argument('--release-ax',action='store_true',help='Build the current beta with configured AHI output and matching launcher');p.add_argument('--ax-audio-test',action='store_true',help='Isolated per-app ZZ9000AX AHI backend; unit 0 fallback');p.add_argument('--host-service-test',choices=('profile','batch4'),help='Isolated 68k cost profiling or four-frame AHI batch test');p.add_argument('--presentation-test',choices=('serial','overlap'),help='Isolated every-frame presentation test; periodic readbacks and automatic capture disabled');p.add_argument('--ack-poll-us',type=int,choices=(0,250),default=0,help='Experimental bounded fullscreen ACK register polling');p.add_argument('--audio-early',action='store_true',help='Experimental batch-ready AHI handoff before presentation');p.add_argument('--jit-registers',action='store_true',help='Experimental register-only A9 translation; 32 MiB executable cache');p.add_argument('--expanded',action='store_true');p.add_argument('--arm',action='store_true');p.add_argument('--optimisation',action='store_true');p.add_argument('--core-o2',action='store_true');p.add_argument('--superfx',dest='fx3',action='store_true');p.add_argument('--thin-scanlines',action='store_true');p.add_argument('--experimental-chips',action='store_true');p.add_argument('--compatibility',action='store_true');p.add_argument('--reuse-arm-from',type=Path,help='Historical option, rejected for releases requiring rebuilt ARM audio mapping');a=p.parse_args()
  if a.clipped_flip_test and (not a.release_ax or a.ppu_test or a.core_profile or a.gsu_counter_test or a.timed_superfx_experiment):p.error("--clipped-flip-test requires --release-ax without other core experiments")
  if a.core_profile and (not a.release_ax or a.ppu_test or a.timed_superfx_experiment):p.error("--core-profile requires --release-ax without other core experiments")
  if a.gsu_counter_test and (not a.release_ax or a.core_profile or a.timed_superfx_experiment):p.error("--gsu-counter-test requires --release-ax without timing/profile experiments")
+ if a.gsu_fetch_loop_test and a.gsu_fetch_test:p.error("Choose one GSU fetch experiment")
+ if (a.gsu_fetch_test or a.gsu_fetch_loop_test) and (not a.release_ax or not a.output_dir or a.gsu_counter_test or a.timed_superfx_experiment or a.core_profile):p.error("GSU fetch experiments require --release-ax and --output-dir without other GSU experiments")
  if a.reuse_arm_from:p.error('Current release requires rebuilt ARM audio mapping; historical ARM reuse is not supported')
  if a.timed_superfx_experiment and (not a.release_ax or a.ppu_test):p.error('--timed-superfx-experiment requires --release-ax without --ppu-test')
  if a.ppu_test and not a.release_ax:p.error('--ppu-test requires --release-ax')
@@ -142,6 +146,12 @@ def main():
   if a.ppu_test or a.release_ax:
    from prepare_ppu_experiment import prepare
    prepare(core,a.ppu_test or "rows")
+  if a.gsu_fetch_loop_test:
+   from prepare_gsu_fetch import prepare_loop
+   prepare_loop(core)
+  if a.gsu_fetch_test:
+   from prepare_gsu_fetch import prepare
+   prepare(core)
   if a.gsu_counter_test:
    from prepare_gsu_counter import prepare
    prepare(core)

@@ -1,0 +1,12 @@
+python3 scripts/verify_backup.py
+PASS: saved artifacts, pinned core sources, measured mean and hardware completion markers
+PASS: MUI release identities, displayed FPS, teardown and artifact ROM/state exclusions
+python3 scripts/build_pocketsnes.py
+python3 scripts/build_mesen_snes.py
+python3 scripts/build_mesen_snes_system.py --integer-clock
+CHECK pixels=PASS dma=PASS spc_boot_ports=PASS wram_mirrors=PASS serial_pad=PASS cancellation=PASS reject_chip_and_truncation=PASS
+python3 scripts/test_state_sprites.py
+archived: FAIL: restored state did not rebuild its sprite list
+normal: PASS: fresh/stale sprite data rebuilt; exact 30-frame video and PCM replay
+superfx: PASS: fresh/stale sprite data rebuilt; exact 30-frame video and PCM replay
+PASS: archived failure reproduced; normal and Super FX builds restore sprites

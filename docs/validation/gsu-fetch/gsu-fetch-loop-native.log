@@ -1,0 +1,4 @@
+PASS 67108864 fetch addresses, all banks/FX modes, 16-bit wrap and high-bit boundary
+PASS video/stereo PCM/GSU state: starfox2.sfc 1200
+PASS video/stereo PCM/GSU state: stunt.sfc 1200
+PASS video/stereo PCM/GSU state: doom.sfc 1200

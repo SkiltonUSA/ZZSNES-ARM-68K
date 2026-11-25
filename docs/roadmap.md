@@ -10,7 +10,10 @@ checks are complete. [Release evidence](validation/release-0.7.13/README.md).
 1. **Super FX continuity:** Star Fox 2, Stunt Race FX and Doom still miss audio
    deadlines in demanding scenes. Profile GSU and PPU work before adding buffers. The existing timed
    Super FX experiment was slower in the recorded boot test and stays optional.
-   [Investigation](starfox2-audio.md).
+   [Investigation](starfox2-audio.md). Two fetch experiments are now measured: a
+   derived mask is slower; an ordinary-GSU loop reduces core time by 0.66% in the
+   matched Star Fox 2 sequence but does not resolve starvation. Neither is promoted.
+   [Results and next validation](validation/gsu-fetch/README.md).
 2. **Cartridge coverage:** broaden commercial C4/S-DD1, enhancement-chip states
    and FX3 checks. Existing gates and fixture passes do not prove every game.
 3. **Video:** broaden high-resolution/interlace and scrolling checks; preserve

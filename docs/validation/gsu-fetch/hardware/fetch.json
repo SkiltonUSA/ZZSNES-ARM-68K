@@ -1,0 +1,50 @@
+[
+  {
+    "case": "fetch-0-reference",
+    "window": 0,
+    "frames": 900,
+    "resume": 0,
+    "pass": true,
+    "starvations": 224,
+    "silence_queued": 334,
+    "elapsed_us": 23857372,
+    "core_total_us": 16489238,
+    "error": 0
+  },
+  {
+    "case": "fetch-1-candidate",
+    "window": 0,
+    "frames": 900,
+    "resume": 0,
+    "pass": true,
+    "starvations": 228,
+    "silence_queued": 332,
+    "elapsed_us": 24018859,
+    "core_total_us": 16878345,
+    "error": 0
+  },
+  {
+    "case": "fetch-2-candidate",
+    "window": 0,
+    "frames": 900,
+    "resume": 0,
+    "pass": true,
+    "starvations": 230,
+    "silence_queued": 332,
+    "elapsed_us": 23829179,
+    "core_total_us": 16877270,
+    "error": 0
+  },
+  {
+    "case": "fetch-3-reference",
+    "window": 0,
+    "frames": 900,
+    "resume": 0,
+    "pass": true,
+    "starvations": 220,
+    "silence_queued": 307,
+    "elapsed_us": 23531478,
+    "core_total_us": 16486671,
+    "error": 0
+  }
+]

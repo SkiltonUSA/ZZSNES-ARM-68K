@@ -11,8 +11,11 @@ from unicorn.arm_const import *
 ROOT = Path(__file__).resolve().parents[3]
 p = argparse.ArgumentParser()
 p.add_argument('elf', type=Path)
+p.add_argument('--current-build', type=Path, help='Current 96 MiB build, with its matching ELF packer')
 a = p.parse_args()
-spec = importlib.util.spec_from_file_location('pack', ROOT/'development/beta-20261015/source/core/elf.py')
+packer = a.current_build/'core/elf.py' if a.current_build else ROOT/'development/beta-20261015/source/core/elf.py'
+runtime = 0x6000000 if a.current_build else 0x2000000
+spec = importlib.util.spec_from_file_location('pack', packer)
 pack = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pack)
 rom = bytearray((i >> 16) ^ 0x5a for i in range(0x400000))
@@ -32,13 +35,13 @@ for base in (0x12000040, 0x150020c0):
         if len(f := line.split()) == 3}
     u = Uc(UC_ARCH_ARM, UC_MODE_ARM)
     u.ctl_set_cpu_model(UC_CPU_ARM_CORTEX_A9)
-    u.mem_map(base & ~4095, 0x2002000)
+    u.mem_map(base & ~4095, runtime + 0x2000)
     u.mem_write(base, bytes(image))
     u.mem_write(base + 0x200000, bytes(rom))
 
     def call(name, *args):
         end = base + 0x1e0000
-        u.reg_write(UC_ARM_REG_SP, base + 0x1fffff0)
+        u.reg_write(UC_ARM_REG_SP, base + runtime - 16)
         u.reg_write(UC_ARM_REG_LR, end)
         for r, v in zip((UC_ARM_REG_R0, UC_ARM_REG_R1, UC_ARM_REG_R2, UC_ARM_REG_R3), args):
             u.reg_write(r, v)

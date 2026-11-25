@@ -2,7 +2,7 @@
 from pathlib import Path
 import shutil,subprocess,hashlib
 
-def build(source,O,*,experimental=False,baseline=False,fx3=False,snapshot_fix=False,expanded=False,ppu=None,timed_fx=False,gsu_counter=False,clip_fix=False):
+def build(source,O,*,experimental=False,baseline=False,fx3=False,snapshot_fix=False,expanded=False,ppu=None,timed_fx=False,gsu_counter=False,clip_fix=False,gsu_fetch=False,gsu_fetch_loop=False):
  r=Path(__file__).resolve().parents[1];snap=r/'development/beta-20261015';core=O/'native-core';O.mkdir(parents=True,exist_ok=True)
  shutil.copytree(snap/'source/core',core,dirs_exist_ok=True)
  if not baseline:
@@ -26,6 +26,12 @@ def build(source,O,*,experimental=False,baseline=False,fx3=False,snapshot_fix=Fa
  if ppu is not None:
   from prepare_ppu_experiment import prepare
   prepare(core,ppu)
+ if gsu_fetch_loop:
+  from prepare_gsu_fetch import prepare_loop
+  prepare_loop(core)
+ if gsu_fetch:
+  from prepare_gsu_fetch import prepare
+  prepare(core)
  if gsu_counter:
   from prepare_gsu_counter import prepare
   prepare(core)

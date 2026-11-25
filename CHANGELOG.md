@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — Super FX fetch experiments
+
+- Add isolated derived-mask and ordinary-GSU pipeline-loop build options.
+  Default builds, installed players and save-state formats are unchanged.
+- Exact native/ARM replay and FX3 boundary checks pass. Eight physical Star Fox 2
+  runs complete cleanly; the mask is 2.36% slower, while the separate loop reduces
+  core time by 0.66% but does not resolve audio starvation. Neither is promoted.
+- [Build identities, measurements and limitations](docs/validation/gsu-fetch/README.md).
+
 ## Unreleased documentation corrections
 
 - Reconcile current features and remaining work with release/validation records;
